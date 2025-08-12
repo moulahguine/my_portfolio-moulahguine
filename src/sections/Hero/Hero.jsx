@@ -1,4 +1,5 @@
 import "./Hero.scss";
+import heroImage from "../../assets/images/hero-img.png";
 
 export default function Hero() {
   return (
@@ -21,10 +22,8 @@ export default function Hero() {
         <div className="hero__media" aria-hidden="true">
           <img
             className="hero__image"
-            src="/images/hero-illustration.svg"
+            src={heroImage}
             alt="Abstract developer illustration"
-            width="480"
-            height="360"
             loading="eager"
           />
         </div>

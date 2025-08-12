@@ -1,10 +1,18 @@
 .hero {
   padding: clamp(6rem, 5vw + 4rem, 10rem) 1.25rem 4rem;
-  color: #ffffff;
   background: linear-gradient(180deg, #b2e0d4 0%, #fff 100%);
+  backdrop-filter: blur(100px);
   min-height: 100vh;
   display: grid;
   align-items: center;
+  position: relative;
+
+  @media (max-width: 879px) {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .hero__inner {
@@ -14,9 +22,22 @@
   gap: 2rem;
   align-items: center;
   grid-template-columns: 1fr;
+  position: relative;
+  z-index: 1;
 
   @media (min-width: 880px) {
     grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  @media (max-width: 879px) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
   }
 }
 
@@ -24,12 +45,15 @@
   font-size: clamp(2rem, 2vw + 1.75rem, 3.25rem);
   line-height: 1.1;
   margin-bottom: 0.75rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero__subtitle {
-  color: rgba(255, 255, 255, 0.85);
   font-size: clamp(1rem, 0.6vw + 0.95rem, 1.25rem);
   margin-bottom: 1.5rem;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero__actions {
@@ -40,11 +64,38 @@
 .hero__media {
   display: grid;
   place-items: center;
+  position: relative;
+
+  @media (max-width: 879px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+  }
 }
 
 .hero__image {
-  width: min(520px, 90%);
-  height: auto;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  max-width: none;
+
+  @media (min-width: 880px) {
+    width: 100%;
+    height: auto;
+    max-width: 1000px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 879px) {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
+  }
 }
 
 .btn {
