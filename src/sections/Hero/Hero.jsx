@@ -1,22 +1,40 @@
 import "./Hero.scss";
 import heroImage from "../../assets/images/hero-img.webp";
+import { MdOutlineLocationOn } from "react-icons/md";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
+  const [heroHeight, setHeroHeight] = useState(window.innerHeight);
+
+  useEffect(() => {
+    const initialHeight = window.innerHeight;
+    setHeroHeight(initialHeight);
+  }, []);
+
   return (
-    <section id="home" className="hero" aria-label="Hero">
+    <section
+      style={{ height: `${heroHeight}px` }}
+      id="home"
+      className="hero"
+      aria-label="Hero"
+    >
       <div className="hero__inner">
         <div className="hero__content">
           <h1 className="hero__title">Hi, I'm mohamed oulahguine</h1>
-          <p className="hero__subtitle">
+          <h1 className="hero__subtitle">frontend developer</h1>
+          <p className="hero__description">
             Energetic frontend developer focused on performance, quality, and
             pixel-perfect details. I write clean, well-designed code to build
             smooth, create responsive websites with mobile first approach.
           </p>
           <div className="hero__location">
-            <p>Living in Istanbul, Türkiye — originally from Morocco</p>
+            <p>
+              <MdOutlineLocationOn />
+              Living in Istanbul, Türkiye — originally from Morocco
+            </p>
           </div>
-          <div className="hero__actions">
-            <a className="btn btn--primary" href="#projects">
+          <div className="hero__resume">
+            <a className="btn" href="#">
               resume
             </a>
           </div>
