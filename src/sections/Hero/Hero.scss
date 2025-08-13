@@ -1,52 +1,215 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
 .hero {
-  background: linear-gradient(180deg, #b2e0d4 0%, #fff 100%);
+  background: $bg-gradient;
   backdrop-filter: blur(100px);
   display: grid;
   align-items: center;
-  height: 100vh;
   width: 100%;
+  position: relative;
+  overflow: hidden;
+
   .hero__inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
+    @include container;
+    @include grid-2-columns;
     align-items: center;
-    gap: 2rem;
-    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero__content {
+    @include slide-in-left;
+
+    .hero__title {
+      @include heading-1;
+      margin-bottom: $spacing-base;
+      color: $text-primary;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      @include fade-in-up(0.3s);
+
+      span {
+        @include text-gradient;
+      }
+    }
+
+    .hero__subtitle {
+      @include heading-2;
+      margin-bottom: $spacing-lg;
+      color: $text-secondary;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      @include fade-in-up(0.5s);
+    }
+
+    .hero__description {
+      @include body-text;
+      margin-bottom: $spacing-xl;
+      color: $text-muted;
+      max-width: 500px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      @include fade-in-up(0.7s);
+    }
+
+    .hero__location {
+      @include flex-center;
+      gap: $spacing-sm;
+      margin-bottom: $spacing-2xl;
+      padding: $spacing-md $spacing-lg;
+      @include glass-effect;
+      width: fit-content;
+      @include fade-in-up(0.9s);
+
+      p {
+        color: $text-primary;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        margin: 0;
+        @include flex-center;
+        gap: $spacing-sm;
+      }
+
+      .location__icon {
+        color: $color-primary-light;
+        font-size: $font-size-lg;
+      }
+    }
+
+    .hero__resume {
+      @include flex-center;
+      justify-content: flex-start;
+      gap: $spacing-xl;
+      flex-wrap: wrap;
+      @include fade-in-up(1.1s);
+
+      .btn {
+        @include button-primary;
+        gap: $spacing-sm;
+
+        .dow__resume {
+          font-size: $font-size-lg;
+          transition: transform $transition-normal ease;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent
+          );
+          transition: left $transition-slow;
+        }
+
+        &:hover {
+          .dow__resume {
+            transform: translateY(-1px);
+          }
+
+          &::before {
+            left: 100%;
+          }
+        }
+      }
+
+      .hero__social {
+        @include flex-center;
+        gap: $social-gap;
+
+        .social__link {
+          @include flex-center;
+          gap: $spacing-sm;
+          color: $text-primary;
+          font-size: $social-icon-size;
+          font-weight: $font-weight-medium;
+          transition: all $transition-fast;
+
+          &:hover {
+            @include hover-scale(1.1);
+            color: $text-secondary;
+          }
+        }
+      }
+    }
   }
 }
 
-.hero__title {
-}
-
-.hero__subtitle {
-}
-
-.hero__description {
-}
-
-.hero__actions {
-}
-
-.btn {
-}
-
-.btn:hover {
-}
-
-.btn--primary {
-}
-
-.btn--ghost {
-}
-
 .hero__media {
-  display: grid;
-  place-items: center;
+  @include grid-center;
   position: relative;
+  @include slide-in-right(0.2s);
+
   .hero__image {
     border-radius: 55% 44% 65% 37% / 52% 28% 73% 49%;
-    height: 500px;
+    height: $hero-image-height;
     width: 100%;
     object-fit: cover;
+    border: 3px solid $border-light;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+
+    &:hover {
+      @include hover-scale(1.02);
+    }
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

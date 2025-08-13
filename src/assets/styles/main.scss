@@ -1,4 +1,3 @@
-/* Import SCSS partials */
-@use "./variables" as *;
-@use "./mixins" as *;
-@use "./global";
+@import "variables";
+@import "mixins";
+@import "global";

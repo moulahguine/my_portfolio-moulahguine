@@ -3,21 +3,26 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-/* Body defaults */
-body {
+  text-transform: capitalize;
   font-family: "Roboto", sans-serif;
-  line-height: 1.6;
 }
 
-/* Links */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-primary;
+  line-height: $line-height-normal;
+  color: $text-primary;
+  background-color: $bg-primary;
+}
+
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Images */
 img {
   max-width: 100%;
   display: block;
