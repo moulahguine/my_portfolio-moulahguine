@@ -51,30 +51,6 @@
       @include fade-in-up(0.7s);
     }
 
-    .hero__location {
-      @include flex-center;
-      gap: $spacing-sm;
-      margin-bottom: $spacing-2xl;
-      padding: $spacing-md $spacing-lg;
-      @include glass-effect;
-      width: fit-content;
-      @include fade-in-up(0.9s);
-
-      p {
-        color: $text-primary;
-        font-size: $font-size-sm;
-        font-weight: $font-weight-medium;
-        margin: 0;
-        @include flex-center;
-        gap: $spacing-sm;
-      }
-
-      .location__icon {
-        color: $color-primary-light;
-        font-size: $font-size-lg;
-      }
-    }
-
     .hero__resume {
       @include flex-center;
       justify-content: flex-start;
@@ -123,7 +99,6 @@
 
 .hero__media {
   @include grid-center;
-  position: relative;
   @include slide-in-right(0.2s);
   width: 500px;
   height: 500px;
@@ -133,6 +108,7 @@
   transition: all 0.3s ease;
   position: relative;
   .hero__image {
+    z-index: 500;
     position: absolute;
   }
   &:hover {
@@ -141,6 +117,7 @@
 }
 
 .hero__social {
+  @include slide-in-right(0.5s);
   @include flex-column;
   gap: $spacing-lg;
 

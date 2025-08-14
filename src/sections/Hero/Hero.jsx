@@ -1,19 +1,13 @@
 import "./Hero.scss";
 import heroImage from "../../assets/images/hero-img.webp";
-import { MdOutlineLocationOn } from "react-icons/md";
 import { HiDownload } from "react-icons/hi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiCodepen } from "react-icons/si";
-import { useEffect, useState } from "react";
-import ReactCountryFlag from "react-country-flag";
+import { useHeroHeight } from "../../hooks";
+import Location from "../../components/Location/Location";
 
 export default function Hero() {
-  const [heroHeight, setHeroHeight] = useState(window.innerHeight);
-
-  useEffect(() => {
-    const initialHeight = window.innerHeight;
-    setHeroHeight(initialHeight);
-  }, []);
+  const heroHeight = useHeroHeight();
 
   return (
     <section
@@ -34,14 +28,7 @@ export default function Hero() {
             . I write clean, well-designed code to build smooth, create
             responsive websites with mobile first approach.
           </p>
-          <div className="hero__location">
-            <MdOutlineLocationOn className="location__icon" />
-            <p>
-              Living in Istanbul, Türkiye{" "}
-              <ReactCountryFlag svg countryCode="tr" /> (originally from Morocco{" "}
-              <ReactCountryFlag svg countryCode="ma" />)
-            </p>
-          </div>
+          <Location />
           <div className="hero__resume">
             <a className="btn" href="/resume.pdf" download>
               <HiDownload className="dow__resume" />
