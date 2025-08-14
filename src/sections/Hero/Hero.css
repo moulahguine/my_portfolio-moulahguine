@@ -1,7 +1,7 @@
 .hero {
   background: linear-gradient(180deg, #b2e0d4 0%, #ffffff 100%);
-  -webkit-backdrop-filter: blur(100px);
-          backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
   display: grid;
   align-items: center;
   width: 100%;
@@ -13,8 +13,7 @@
   margin: 0 auto;
   padding: 0 2rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4rem;
+  grid-template-columns: 1fr 1fr 20px;
   align-items: center;
   position: relative;
   z-index: 2;
@@ -138,52 +137,46 @@
 .hero .hero__content .hero__resume .btn:hover::before {
   left: 100%;
 }
-.hero .hero__content .hero__resume .hero__social {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-.hero .hero__content .hero__resume .hero__social .social__link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  color: #266e5b;
-  font-size: 1.6rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-.hero .hero__content .hero__resume .hero__social .social__link:hover {
-  transition: transform 0.3s ease ease;
-  color: #4a7c59;
-}
-.hero .hero__content .hero__resume .hero__social .social__link:hover:hover {
-  transform: scale(1.1);
-}
 
 .hero__media {
   display: grid;
   place-items: center;
   position: relative;
   animation: slideInFromRight 1s ease-out 0.2s both;
+  width: 500px;
+  height: 500px;
+  border-radius: 55% 44% 65% 37%/52% 28% 73% 49%;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
 }
 .hero__media .hero__image {
-  border-radius: 55% 44% 65% 37%/52% 28% 73% 49%;
-  height: 500px;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border: 3px solid rgba(255, 255, 255, 0.2);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  position: absolute;
 }
-.hero__media .hero__image:hover {
+.hero__media:hover {
+  scale: 1.05;
+}
+
+.hero__social {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.hero__social svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #266e5b;
+  font-size: 1.5rem;
+  transition: all 0.2s ease;
+}
+.hero__social svg:hover {
   transition: transform 0.3s ease ease;
+  color: #4a7c59;
 }
-.hero__media .hero__image:hover:hover {
-  transform: scale(1.02);
+.hero__social svg:hover:hover {
+  transform: scale(1.1);
 }
 
 @keyframes slideInFromLeft {

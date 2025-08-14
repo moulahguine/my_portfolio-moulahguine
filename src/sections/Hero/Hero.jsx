@@ -37,27 +37,16 @@ export default function Hero() {
           <div className="hero__location">
             <MdOutlineLocationOn className="location__icon" />
             <p>
-              Living in Istanbul, Türkiye <ReactCountryFlag countryCode="tr" />{" "}
-              (originally from Morocco <ReactCountryFlag countryCode="ma" />)
+              Living in Istanbul, Türkiye{" "}
+              <ReactCountryFlag svg countryCode="tr" /> (originally from Morocco{" "}
+              <ReactCountryFlag svg countryCode="ma" />)
             </p>
           </div>
           <div className="hero__resume">
-            <a className="btn" href="#">
+            <a className="btn" href="/resume.pdf" download>
               <HiDownload className="dow__resume" />
               resume
             </a>
-
-            <div className="hero__social">
-              <a href="#" className="social__link" aria-label="GitHub">
-                <FaGithub />
-              </a>
-              <a href="#" className="social__link" aria-label="CodePen">
-                <SiCodepen />
-              </a>
-              <a href="#" className="social__link" aria-label="LinkedIn">
-                <FaLinkedin />
-              </a>
-            </div>
           </div>
         </div>
         <div className="hero__media" aria-hidden="true">
@@ -67,6 +56,35 @@ export default function Hero() {
             alt="Abstract developer illustration"
             loading="eager"
           />
+        </div>
+        <div className="hero__social">
+          <a
+            href="https://github.com/moulahguine"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social__link"
+            aria-label="GitHub"
+          >
+            <FaGithub />
+          </a>
+          <a
+            href="https://codepen.io/moulahguine"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social__link"
+            aria-label="CodePen"
+          >
+            <SiCodepen />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/moulahguine"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social__link"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin />
+          </a>
         </div>
       </div>
     </section>
