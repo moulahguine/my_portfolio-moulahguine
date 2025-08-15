@@ -1,5 +1,5 @@
 import "./Hero.scss";
-import heroImage from "../../assets/images/hero-img.webp";
+import heroImage from "../../assets/images/hero-section/hero-img.webp";
 import { HiDownload } from "react-icons/hi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiCodepen } from "react-icons/si";
