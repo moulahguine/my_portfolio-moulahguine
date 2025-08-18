@@ -2,13 +2,14 @@
 @use "../../assets/styles/mixins" as *;
 
 .hero {
-  background: $bg-gradient;
-  backdrop-filter: blur(50px);
   display: grid;
   align-items: center;
   width: 100%;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(-45deg, #4a7c59b3, #b2e0d4, #cbd5e1);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
 
   .hero__inner {
     @include container;
@@ -17,174 +18,110 @@
     align-items: center;
     position: relative;
     z-index: 2;
-  }
+    .hero__content {
+      .hero__title {
+        @include heading-1;
+        margin-bottom: $spacing-base;
+        color: $text-primary;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-  .hero__content {
-    @include slide-in-left;
-
-    .hero__title {
-      @include heading-1;
-      margin-bottom: $spacing-base;
-      color: $text-primary;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      @include fade-in-up(0.3s);
-
-      span {
-        @include text-gradient;
+        span {
+          @include text-gradient;
+        }
       }
-    }
 
-    .hero__subtitle {
-      @include heading-2;
-      margin-bottom: $spacing-lg;
-      color: $text-secondary;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-      @include fade-in-up(0.5s);
-    }
+      .hero__subtitle {
+        @include heading-2;
+        margin-bottom: $spacing-lg;
+        color: $text-secondary;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
 
-    .hero__description {
-      @include body-text;
-      margin-bottom: $spacing-xl;
-      color: $text-muted;
-      max-width: 500px;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-      @include fade-in-up(0.7s);
-    }
+      .hero__description {
+        @include body-text;
+        margin-bottom: $spacing-xl;
+        color: $text-muted;
+        max-width: 500px;
+      }
+      // you can find locaion style in location folder inside components folder
+      .hero__resume {
+        @include flex-center;
+        justify-content: flex-start;
+        gap: 1rem;
+        flex-wrap: wrap;
 
-    .hero__resume {
-      @include flex-center;
-      justify-content: flex-start;
-      gap: $spacing-xl;
-      flex-wrap: wrap;
-      @include fade-in-up(1.1s);
-
-      .btn {
-        @include button-primary;
-        gap: $spacing-sm;
-
-        .dow__resume {
-          font-size: $font-size-lg;
-          transition: transform $transition-normal ease;
-        }
-
-        &::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.4),
-            transparent
-          );
-          transition: left $transition-slow;
-        }
-
-        &:hover {
-          .dow__resume {
-            transform: translateY(-1px);
-          }
+        .btn {
+          @include button-primary;
+          gap: 0.5rem;
 
           &::before {
-            left: 100%;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+              90deg,
+              transparent,
+              rgba(255, 255, 255, 0.4),
+              transparent
+            );
+            transition: left 0.3s ease;
+          }
+
+          &:hover {
+            transform: translateY(0);
+            &::before {
+              left: 100%;
+            }
           }
         }
+      }
+    }
+    .hero__media {
+      @include grid-center;
+      width: 500px;
+      height: 500px;
+      border-radius: 55% 44% 65% 37% / 52% 28% 73% 49%;
+      overflow: hidden;
+      border: 3px solid $border-light;
+      transition: all 0.3s ease;
+      position: relative;
+      .hero__image {
+        z-index: 500;
+        position: absolute;
+      }
+      &:hover {
+        box-shadow: 0 0 15px 10px #80b8a9;
+        scale: 1.05;
+      }
+    }
+    .hero__social {
+      @include slide-in-right(0.5s);
+      @include flex-column;
+
+      svg {
+        @include flex-center;
+        color: $text-primary;
+        font-size: $font-size-2xl;
+        transition: all 0.3s ease;
+        margin: 10px 0;
       }
     }
   }
 }
 
-.hero__media {
-  @include grid-center;
-  @include slide-in-right(0.2s);
-  width: 500px;
-  height: 500px;
-  border-radius: 55% 44% 65% 37% / 52% 28% 73% 49%;
-  overflow: hidden;
-  border: 3px solid $border-light;
-  transition: all 0.3s ease;
-  position: relative;
-  .hero__image {
-    z-index: 500;
-    position: absolute;
-  }
-  &:hover {
-    scale: 1.05;
-  }
-}
+// hero background animation
 
-.hero__social {
-  @include slide-in-right(0.5s);
-  @include flex-column;
-  gap: $spacing-lg;
-
-  svg {
-    @include flex-center;
-    color: $text-primary;
-    font-size: $font-size-2xl;
-    transition: all $transition-fast;
-
-    &:hover {
-      @include hover-scale(1.1);
-      color: $text-secondary;
-    }
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
   }
-}
-
-@keyframes slideInFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-100px);
+  50% {
+    background-position: 100% 50%;
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInFromRight {
-  from {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInFromTop {
-  from {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInFromBottom {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  100% {
+    background-position: 0% 50%;
   }
 }

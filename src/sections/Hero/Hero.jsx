@@ -5,6 +5,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiCodepen } from "react-icons/si";
 import { useHeroHeight } from "../../hooks";
 import Location from "../../components/Location/Location";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   const heroHeight = useHeroHeight();
@@ -16,36 +17,87 @@ export default function Hero() {
       className="hero"
       aria-label="Hero"
     >
-      <div className="hero__inner">
-        <div className="hero__content">
-          <h1 className="hero__title">
+      <motion.div
+        className="hero__inner"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <motion.div
+          className="hero__content"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <motion.h1
+            className="hero__title"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             Hi👋, I'm <span>mohamed oulahguine</span>
-          </h1>
-          <h1 className="hero__subtitle">frontend developer</h1>
-          <p className="hero__description">
+          </motion.h1>
+          <motion.h1
+            className="hero__subtitle"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            frontend developer
+          </motion.h1>
+          <motion.p
+            className="hero__description"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+          >
             Energetic frontend developer focused on <strong>performance</strong>
             , <strong>quality</strong>, & <strong>pixel-perfect details</strong>
             . I write clean, well-designed code to build smooth, create
             responsive websites with mobile first approach.
-          </p>
-          <Location />
-          <div className="hero__resume">
+          </motion.p>
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+          >
+            <Location />
+          </motion.div>
+          <motion.div
+            className="hero__resume"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.1 }}
+          >
             <a className="btn" href="/resume.pdf" download>
-              <HiDownload className="dow__resume" />
+              <HiDownload className="download__resume" />
               resume
             </a>
-          </div>
-        </div>
-        <div className="hero__media" aria-hidden="true">
+          </motion.div>
+        </motion.div>
+        <motion.div
+          className="hero__media"
+          aria-hidden="true"
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
           <img
             className="hero__image"
             src={heroImage}
             alt="Abstract developer illustration"
             loading="eager"
           />
-        </div>
-        <div className="hero__social">
-          <a
+        </motion.div>
+        <motion.div
+          className="hero__social"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.3 }}
+        >
+          <motion.a
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.95 }}
             href="https://github.com/moulahguine"
             target="_blank"
             rel="noopener noreferrer"
@@ -53,8 +105,10 @@ export default function Hero() {
             aria-label="GitHub"
           >
             <FaGithub />
-          </a>
-          <a
+          </motion.a>
+          <motion.a
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.95 }}
             href="https://codepen.io/moulahguine"
             target="_blank"
             rel="noopener noreferrer"
@@ -62,8 +116,10 @@ export default function Hero() {
             aria-label="CodePen"
           >
             <SiCodepen />
-          </a>
-          <a
+          </motion.a>
+          <motion.a
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.95 }}
             href="https://www.linkedin.com/in/moulahguine"
             target="_blank"
             rel="noopener noreferrer"
@@ -71,9 +127,9 @@ export default function Hero() {
             aria-label="LinkedIn"
           >
             <FaLinkedin />
-          </a>
-        </div>
-      </div>
+          </motion.a>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
