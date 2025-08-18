@@ -6,7 +6,18 @@ import About from "./sections/About/About";
 
 export default function App() {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter basename="/my_portfolio-moulahguine">
+      <div
+        style={{
+          padding: "10px",
+          background: "red",
+          color: "white",
+          fontSize: "16px",
+        }}
+      >
+        🚨 TEST: React is working! If you see this, the issue is in components
+        below.
+      </div>
       <Header />
       <main>
         <Routes>
