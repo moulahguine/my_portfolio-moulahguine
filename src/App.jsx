@@ -6,7 +6,7 @@ import About from "./sections/About/About";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Header />
       <main>
         <Routes>
