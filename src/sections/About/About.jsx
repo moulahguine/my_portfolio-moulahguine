@@ -5,56 +5,93 @@ import {
   FaHeart,
   FaUsers,
   FaMagic,
+  FaLaptop,
+  FaMobile,
+  FaDesktop,
+  FaShieldAlt,
 } from "react-icons/fa";
-import { MdOutlineSchool, MdOutlineWork } from "react-icons/md";
-import { BiTargetLock } from "react-icons/bi";
 import "./About.scss";
 import aboutImage from "../../assets/images/about-section/about-img.jpg";
 import { motion } from "framer-motion";
 
 export default function About() {
-  const highlights = [
+  const skills = [
     {
       icon: <FaCode />,
-      title: "Clean Code",
-      description:
-        "Writing clear, maintainable, and scalable code for long-term project success.",
+      title: "Frontend Development",
+      color: "#3B82F6",
+    },
+    {
+      icon: <FaLaptop />,
+      title: "React & tailwind",
+      color: "#10B981",
+    },
+    {
+      icon: <FaMobile />,
+      title: "Responsive Design",
+      color: "#F59E0B",
+    },
+    {
+      icon: <FaDesktop />,
+      title: "UI/UX Design",
+      color: "#8B5CF6",
+    },
+    {
+      icon: <FaShieldAlt />,
+      title: "Testing & Security",
+      color: "#84CC16",
+    },
+  ];
+
+  const leftProcess = [
+    {
+      icon: <FaCode />,
+      title: "Code Development",
+      description: "Building clean, maintainable code with modern frameworks",
     },
     {
       icon: <FaLightbulb />,
-      title: "Problem Solver",
-      description:
-        "Finding effective solutions to technical challenges with a logical approach.",
-    },
-    {
-      icon: <FaRocket />,
-      title: "Fast Performance",
-      description:
-        "Building applications that load quickly and run smoothly on any device.",
-    },
-    {
-      icon: <FaHeart />,
-      title: "User-Focused",
-      description:
-        "Designing interfaces that are intuitive, accessible, and user-friendly.",
+      title: "Problem Solving",
+      description: "Analyzing challenges and implementing efficient solutions",
     },
     {
       icon: <FaUsers />,
       title: "Team Collaboration",
-      description:
-        "Working effectively with designers, developers, and stakeholders to deliver results.",
+      description: "Working effectively with cross-functional teams",
+    },
+  ];
+
+  const rightProcess = [
+    {
+      icon: <FaRocket />,
+      title: "Project Planning",
+      description: "Strategic planning and architecture design",
     },
     {
       icon: <FaMagic />,
-      title: "Continuous Improvement",
-      description:
-        "Keeping up with new technologies to create modern, high-quality solutions.",
+      title: "Implementation",
+      description: "Bringing designs to life with precision and creativity",
+    },
+    {
+      icon: <FaHeart />,
+      title: "Quality Assurance",
+      description: "Thorough testing and optimization for best performance",
     },
   ];
+
+  const processCardVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6 },
+    },
+  };
 
   return (
     <section id="about" className="about">
       <div className="container">
+        {/* Header Section */}
         <motion.div
           className="about__header"
           initial={{ y: 50, opacity: 0 }}
@@ -63,119 +100,132 @@ export default function About() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="section-title">About Me</h2>
-          <p className="section-subtitle">My introduction</p>
         </motion.div>
 
-        <div className="about__content">
-          <div className="about__main">
-            <motion.div
-              className="about__image"
-              initial={{ x: -100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <div className="image-container">
-                <div className="image-placeholder">
-                  <img src={aboutImage} alt="" />
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="about__text"
-              initial={{ x: 100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <h3>Who I Am 🤔</h3>
-
-              <p>
-                Frontend Developer who creates <strong>responsive</strong>,
-                <strong> high-performance websites</strong> and{" "}
-                <strong>web applications</strong>. Skilled in{" "}
-                <strong>React</strong>, JavaScript,{" "}
-                <strong>Tailwind CSS</strong>, and HTML, I build clean, reusable
-                components and write maintainable code. I deliver pixel-perfect
-                designs, smooth user experiences, and solutions that are
-                optimized for speed and scalability.
-              </p>
-
-              <div className="about__journey">
-                <motion.div
-                  className="journey-item"
-                  initial={{ y: 30, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                >
-                  <MdOutlineSchool className="journey-icon" />
-                  <div className="journey-content">
-                    <h4>Education</h4>
-                    <p>
-                      Software Engineering Student specializing in Web
-                      Development
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="journey-item"
-                  initial={{ y: 30, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
-                >
-                  <MdOutlineWork className="journey-icon" />
-                  <div className="journey-content">
-                    <h4>Experience</h4>
-                    <p>3+ years building web applications</p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="journey-item"
-                  initial={{ y: 30, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 1.0 }}
-                >
-                  <BiTargetLock className="journey-icon" />
-                  <div className="journey-content">
-                    <h4>Focus</h4>
-                    <p>Frontend Development</p>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-
+        {/* description */}
+        <motion.div
+          className="about__description"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
+          <p>
+            Frontend Developer who creates <strong>responsive</strong>,
+            <strong> high-performance</strong> websites and web applications.
+            Skilled in <strong>React</strong>, JavaScript,
+            <strong> Tailwind CSS</strong>, and HTML, I build clean, reusable
+            components and write maintainable code. I deliver pixel-perfect
+            designs, smooth user experiences, and solutions that are optimized
+            for speed and scalability.
+          </p>
+        </motion.div>
+        {/* Main Content */}
+        <div className="about__main-content">
+          {/* Left Process Flow */}
           <motion.div
-            className="about__highlights"
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
+            className="process-flow left-flow"
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            {leftProcess.map((step, index) => (
+              <motion.div
+                key={index}
+                className="process-card"
+                variants={processCardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+              >
+                <div className="process-icon">{step.icon}</div>
+                <h4>{step.title}</h4>
+                <p>{step.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Central Image */}
+          <motion.div
+            className="central-image"
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <div className="highlights-grid">
-              {highlights.map((highlight, index) => (
-                <motion.div
-                  key={index}
-                  className="highlight-card"
-                  initial={{ y: 50, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <div className="highlight-icon">{highlight.icon}</div>
-                  <h4>{highlight.title}</h4>
-                  <p>{highlight.description}</p>
-                </motion.div>
-              ))}
+            <div className="image-background">
+              <div className="image-bg">
+                <img src={aboutImage} alt="Mohamed Oulahguine" />
+                <div className="dropdown-menu">
+                  <label>Specialization</label>
+                  <div className="dropdown-content">
+                    <span>Frontend Development</span>
+                    <FaCode className="dropdown-icon" />
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
+
+          {/* Right Process Flow */}
+          <motion.div
+            className="process-flow right-flow"
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            {rightProcess.map((step, index) => (
+              <motion.div
+                key={index}
+                className="process-card"
+                variants={processCardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+              >
+                <div className="process-icon">{step.icon}</div>
+                <h4>{step.title}</h4>
+                <p>{step.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
+
+        {/* Skills Row */}
+        <motion.div
+          className="skills-row"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          {skills.map((skill, index) => (
+            <motion.div
+              key={index}
+              className="skill-item"
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              whileHover={{ scale: 1.1 }}
+            >
+              <div className="skill-icon" style={{ color: skill.color }}>
+                {skill.icon}
+              </div>
+              <span className="skill-title">{skill.title}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <div className="experience-highlight">
+          <p>3+ years building web applications</p>
+        </div>
+        {/* Connecting Arc */}
+        <div className="connecting-arc"></div>
       </div>
     </section>
   );
