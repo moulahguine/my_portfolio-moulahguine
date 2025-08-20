@@ -123,3 +123,23 @@
     transform: scale($scale);
   }
 }
+
+@mixin skillPosition($top: 0%, $left: 0%, $rotate: 0deg) {
+  top: $top;
+  left: $left;
+  transform: rotate($rotate);
+}
+
+// Section Header Style
+@mixin section-header-style {
+  position: absolute;
+  max-width: fit-content;
+  left: 50px;
+  top: -150px;
+
+  .section-title {
+    font-size: 5rem;
+    font-weight: $font-weight-bold;
+    color: $color-accent-light;
+  }
+}

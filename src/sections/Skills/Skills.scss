@@ -1,0 +1,155 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+.skills {
+  background: $bg-primary;
+  position: relative;
+  padding: 5rem 0;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+    // Header Styles
+    .skills__header {
+      @include section-header-style;
+    }
+    // Main Section
+    .skills__section {
+      position: relative;
+      // Scattered Layout with Random Positioning
+      .skills__grid {
+        position: relative;
+        height: 600px;
+        padding: $spacing-xl 0;
+        margin: 0 auto;
+        max-width: 1000px;
+
+        // Create scattered effect with absolute positioning
+        .skill-item {
+          position: absolute;
+          @include flex-column;
+          @include flex-center;
+          padding: $spacing-base $spacing-lg;
+          backdrop-filter: blur(10px);
+          border-radius: 20px;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          transition: all 0.4s ease;
+          cursor: auto;
+          width: 140px;
+          height: 140px;
+
+          // HTML
+          &:nth-child(1) {
+            @include skillPosition(1%, 15%, 5deg);
+          }
+
+          // css
+          &:nth-child(2) {
+            @include skillPosition(15%, 30%, -5deg);
+          }
+
+          // javaScript
+          &:nth-child(3) {
+            @include skillPosition(-5%, 50%, 0deg);
+          }
+
+          //react
+          &:nth-child(4) {
+            @include skillPosition(1%, 70%, -15deg);
+          }
+
+          // sass
+          &:nth-child(5) {
+            @include skillPosition(45%, 30%, 15deg);
+          }
+
+          // tailwind css
+          &:nth-child(6) {
+            @include skillPosition(30%, 45%, 5deg);
+          }
+
+          // next.js
+          &:nth-child(7) {
+            @include skillPosition(30%, 80%, 5deg);
+          }
+
+          // redux
+          &:nth-child(8) {
+            @include skillPosition(30%, 63%, 25deg);
+          }
+
+          // Material UI
+          &:nth-child(9) {
+            @include skillPosition(30%, 10%, -5deg);
+          }
+
+          // framer motion
+          &:nth-child(10) {
+            @include skillPosition(60%, 80%, -5deg);
+          }
+
+          // GIT
+          &:nth-child(11) {
+            @include skillPosition(70%, 30%, 0deg);
+          }
+
+          // gtihub
+          &:nth-child(12) {
+            @include skillPosition(60%, 50%, -5deg);
+          }
+
+          // codePen
+          &:nth-child(13) {
+            @include skillPosition(60%, 10%, -5deg);
+          }
+
+          // vite
+          &:nth-child(14) {
+            @include skillPosition(70%, 65%, 0deg);
+          }
+
+          // Hover Effects
+          &:hover {
+            transform: translateY(-8px) scale(1.05) rotate(0deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+
+            .skill-icon {
+              transform: rotate(5deg);
+            }
+
+            .skill-name {
+              transform: translateY(-2px);
+            }
+          }
+
+          // Skill Icon
+          .skill-icon {
+            font-size: $font-size-5xl;
+            margin-bottom: $spacing-md;
+            width: 80px;
+            height: 80px;
+
+            svg {
+              width: 100%;
+              height: 100%;
+              padding: $spacing-sm;
+            }
+          }
+
+          // Skill Name
+          .skill-name {
+            font-size: $font-size-sm;
+            font-weight: $font-weight-semibold;
+            color: $color-primary-lighter;
+            text-align: center;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+  }
+}

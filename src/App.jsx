@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Hero from "./sections/Hero/Hero";
 import About from "./sections/About/About";
+import Skills from "./sections/Skills/Skills";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
               <>
                 <Hero />
                 <About />
+                <Skills />
               </>
             }
           />

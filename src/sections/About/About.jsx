@@ -5,44 +5,12 @@ import {
   FaHeart,
   FaUsers,
   FaMagic,
-  FaLaptop,
-  FaMobile,
-  FaDesktop,
-  FaShieldAlt,
 } from "react-icons/fa";
 import "./About.scss";
 import aboutImage from "../../assets/images/about-section/about-img.jpg";
 import { motion } from "framer-motion";
 
 export default function About() {
-  const skills = [
-    {
-      icon: <FaCode />,
-      title: "Frontend Development",
-      color: "#3B82F6",
-    },
-    {
-      icon: <FaLaptop />,
-      title: "React & tailwind",
-      color: "#10B981",
-    },
-    {
-      icon: <FaMobile />,
-      title: "Responsive Design",
-      color: "#F59E0B",
-    },
-    {
-      icon: <FaDesktop />,
-      title: "UI/UX Design",
-      color: "#8B5CF6",
-    },
-    {
-      icon: <FaShieldAlt />,
-      title: "Testing & Security",
-      color: "#84CC16",
-    },
-  ];
-
   const leftProcess = [
     {
       icon: <FaCode />,
@@ -101,7 +69,6 @@ export default function About() {
         >
           <h2 className="section-title">About Me</h2>
         </motion.div>
-
         {/* description */}
         <motion.div
           className="about__description"
@@ -194,38 +161,10 @@ export default function About() {
             ))}
           </motion.div>
         </div>
-
-        {/* Skills Row */}
-        <motion.div
-          className="skills-row"
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          {skills.map((skill, index) => (
-            <motion.div
-              key={index}
-              className="skill-item"
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ scale: 1.1 }}
-            >
-              <div className="skill-icon" style={{ color: skill.color }}>
-                {skill.icon}
-              </div>
-              <span className="skill-title">{skill.title}</span>
-            </motion.div>
-          ))}
-        </motion.div>
-
+        <div className="connecting-arc"></div>
         <div className="experience-highlight">
           <p>3+ years building web applications</p>
         </div>
-        {/* Connecting Arc */}
-        <div className="connecting-arc"></div>
       </div>
     </section>
   );

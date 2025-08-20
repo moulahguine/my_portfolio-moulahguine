@@ -2,11 +2,10 @@
 @use "../../assets/styles/mixins" as *;
 
 .hero {
+  position: relative;
   display: grid;
   align-items: center;
   width: 100%;
-  position: relative;
-  overflow: hidden;
   background: linear-gradient(
     -45deg,
     $bg-primary,
@@ -16,56 +15,7 @@
   background-size: 400% 400%;
   border-bottom-right-radius: 100% 10%;
   animation: gradientShift 8s ease infinite;
-
-  // Floating particles
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(
-        2px 2px at 20px 30px,
-        $color-primary,
-        transparent
-      ),
-      radial-gradient(2px 2px at 40px 70px, $color-primary-lighter, transparent),
-      radial-gradient(1px 1px at 90px 40px, $color-primary-lighter, transparent),
-      radial-gradient(
-        1px 1px at 130px 80px,
-        $color-primary-lighter,
-        transparent
-      ),
-      radial-gradient(
-        2px 2px at 160px 30px,
-        $color-primary-lighter,
-        transparent
-      );
-    background-attachment: fixed;
-    background-repeat: repeat;
-    background-size: 200px 100px;
-    animation: float 20s linear infinite;
-    pointer-events: none;
-  }
-
-  // Animated waves
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      45deg,
-      transparent 30%,
-      rgba(255, 255, 255, 0.1) 50%,
-      transparent 70%
-    );
-    animation: wave 6s ease-in-out infinite;
-    pointer-events: none;
-  }
+  overflow: hidden;
 
   .hero__inner {
     @include container;
@@ -179,27 +129,5 @@
   }
   100% {
     background-position: 0% 50%;
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px) translateX(0px);
-  }
-  50% {
-    transform: translateY(-20px) translateX(10px);
-  }
-  100% {
-    transform: translateY(0px) translateX(0px);
-  }
-}
-
-@keyframes wave {
-  0%,
-  100% {
-    transform: translateX(-100%) rotate(45deg);
-  }
-  50% {
-    transform: translateX(100%) rotate(45deg);
   }
 }
