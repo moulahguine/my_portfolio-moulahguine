@@ -15,7 +15,7 @@
   max-width: -moz-fit-content;
   max-width: fit-content;
   left: 50px;
-  top: -150px;
+  top: 0;
 }
 .skills .container .skills__header .section-title {
   font-size: 5rem;
@@ -24,6 +24,7 @@
 }
 .skills .container .skills__section {
   position: relative;
+  top: 150px;
 }
 .skills .container .skills__section .skills__grid {
   position: relative;

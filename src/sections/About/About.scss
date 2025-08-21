@@ -2,8 +2,7 @@
 @use "../../assets/styles/mixins" as *;
 
 .about {
-  margin: 15rem 0;
-  background: #fff;
+  background-color: $bg-primary;
   position: relative;
 
   .container {
@@ -19,10 +18,9 @@
 
     // description
     .about__description {
-      border-radius: 16px;
       padding: 32px;
-      max-width: 800px;
-      margin-bottom: 40px;
+      max-width: 700px;
+      margin-left: auto;
 
       p {
         font-size: $font-size-lg;

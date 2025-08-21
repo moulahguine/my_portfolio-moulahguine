@@ -1,6 +1,5 @@
 .about {
-  margin: 15rem 0;
-  background: #fff;
+  background-color: #fff;
   position: relative;
 }
 .about .container {
@@ -14,7 +13,7 @@
   max-width: -moz-fit-content;
   max-width: fit-content;
   left: 50px;
-  top: -150px;
+  top: 0;
 }
 .about .container .about__header .section-title {
   font-size: 5rem;
@@ -22,10 +21,9 @@
   color: #cbd5e1;
 }
 .about .container .about__description {
-  border-radius: 16px;
   padding: 32px;
-  max-width: 800px;
-  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
 }
 .about .container .about__description p {
   font-size: 1.125rem;

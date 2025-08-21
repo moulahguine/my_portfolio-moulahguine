@@ -13,6 +13,12 @@
   line-height: $line-height-tight;
 }
 
+@mixin heading-3 {
+  font-size: clamp($font-size-lg, 2.5vw, $font-size-2xl);
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+}
+
 @mixin body-text {
   font-size: clamp($font-size-base, 1.9vw, $font-size-lg);
   line-height: $line-height-relaxed;
@@ -135,7 +141,7 @@
   position: absolute;
   max-width: fit-content;
   left: 50px;
-  top: -150px;
+  top: 0;
 
   .section-title {
     font-size: 5rem;
