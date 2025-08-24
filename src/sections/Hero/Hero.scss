@@ -3,18 +3,11 @@
 
 .hero {
   position: relative;
-  display: grid;
-  align-items: center;
+  @include grid-center;
   width: 100%;
-  background: linear-gradient(
-    -45deg,
-    $bg-primary,
-    $color-accent,
-    $color-accent-light
-  );
+  background-color: $color-accent-lighter;
   background-size: 400% 400%;
   border-bottom-right-radius: 100% 10%;
-  animation: gradientShift 8s ease infinite;
   overflow: hidden;
 
   .hero__inner {
@@ -99,7 +92,7 @@
         position: absolute;
       }
       &:hover {
-        box-shadow: 0 0 15px 10px #80b8a9;
+        box-shadow: 0 0 15px 3px $color-accent;
         scale: 1.05;
       }
     }

@@ -138,11 +138,6 @@
 
 // Section Header Style
 @mixin section-header-style {
-  position: absolute;
-  max-width: fit-content;
-  left: 50px;
-  top: 0;
-
   .section-title {
     font-size: 5rem;
     font-weight: $font-weight-bold;

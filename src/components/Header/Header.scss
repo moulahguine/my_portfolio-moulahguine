@@ -1,56 +1,99 @@
 @use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
 
 .site-header {
-  z-index: 1000;
+  width: 100%;
   position: fixed;
   top: 1rem;
-  left: 50%;
-  translate: -50%;
-  background: #ffffff26;
-  backdrop-filter: blur(10px);
-  width: clamp(22.938rem, -14.25rem + 99.167vw, 75rem);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.75rem 1.25rem;
-  background-color: $color-accent;
-  .userName {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.625rem;
-    color: #ffffff;
+  z-index: 1000;
 
-    .userName__logo {
-      display: block;
+  .container {
+    @include container;
+    @include flex-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    background-color: #ffffff96;
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, #2d2d2d37, transparent);
+      transition: left 0.5s ease;
     }
 
-    .userName__name {
-      font-family: "Roboto", system-ui, -apple-system, Segoe UI, Helvetica,
-        Arial, sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.2px;
-      text-transform: lowercase;
-    }
-  }
-
-  .primary-nav__list {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
-
-    .primary-nav__item a {
-      color: rgba(255, 255, 255, 0.88);
-      font-weight: 500;
+    &:hover {
+      transform: translateY(0);
+      &::before {
+        left: 100%;
+      }
     }
 
-    .primary-nav__item a:hover,
-    .primary-nav__item a:focus-visible {
-      color: #ffffff;
+    .header__logo {
+      .userName {
+        text-transform: uppercase;
+        color: $color-primary-light;
+        font-size: 1.2rem;
+        font-weight: 700;
+
+        .userName__m {
+          padding: 0 5px;
+          background-color: $color-primary-light;
+          color: #ffffff;
+          border-radius: 4px;
+        }
+      }
+    }
+
+    .primary-nav {
+      .primary-nav__list {
+        display: flex;
+        gap: $spacing-sm;
+        margin: 0;
+        padding: 0;
+
+        .primary-nav__item {
+          a {
+            position: relative;
+            color: $color-primary-light;
+            font-size: $font-size-base;
+            font-weight: $font-weight-bold;
+            transition: color $transition-normal;
+            padding: $spacing-sm $spacing-base;
+            border-radius: 50px;
+            overflow: hidden;
+            display: inline-block;
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: -100%;
+              width: 100%;
+              height: 100%;
+              background-color: $color-primary-light;
+              transition: left $transition-normal;
+              border-radius: inherit;
+              z-index: -1;
+            }
+
+            &:hover,
+            &.active {
+              color: #fff;
+
+              &::before {
+                left: 0;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

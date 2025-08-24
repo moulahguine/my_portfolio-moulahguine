@@ -4,31 +4,78 @@
 .location {
   @include flex-center;
   gap: 0.5rem;
-  margin-bottom: $spacing-2xl;
-  padding: $spacing-md $spacing-lg;
-  @include glass-effect;
-  width: fit-content;
-  cursor: pointer;
   @include fade-in-up(0.9s);
   transition: all 0.3s ease-in-out;
+  width: fit-content;
+  margin-bottom: $spacing-2xl;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-lg;
+  position: relative;
+  cursor: none;
+  border: 1px solid transparent;
+
+  // underline effect
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: $color-accent;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+  }
 
   &:hover {
-    transform: translateY(2px);
-    box-shadow: 0 0px 5px $color-primary;
+    transform: translateY(-2px);
+
+    .location__icon {
+      color: $color-accent;
+      transform: scale(1.1);
+    }
+
+    p {
+      color: $color-accent;
+    }
+
+    &::after {
+      width: 80%;
+    }
   }
 
   p {
+    @include flex-center;
+    gap: $spacing-sm;
     color: $text-primary;
     font-size: $font-size-sm;
     font-weight: $font-weight-medium;
     margin: 0;
-    @include flex-center;
-    gap: $spacing-sm;
   }
 
   .location__icon {
     color: $color-primary-light;
     font-size: $font-size-lg;
+  }
+
+  // Custom cursor styles
+  .custom-cursor {
+    @include flex-center;
+    position: absolute;
+    z-index: 999;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: $color-primary;
+    pointer-events: none;
+
+    span {
+      color: $text-white;
+      font-size: $font-size-xs;
+      font-weight: $font-weight-semibold;
+      text-transform: uppercase;
+      user-select: none;
+    }
   }
 }
 

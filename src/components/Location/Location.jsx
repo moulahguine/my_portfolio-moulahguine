@@ -1,20 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdPending } from "react-icons/md";
+import "./Location.scss";
+import ReactCountryFlag from "react-country-flag";
+import { motion, AnimatePresence } from "framer-motion";
 import locationMap from "../../assets/images/hero-section/location/worldMap.png";
 import moroccoImage from "../../assets/images/hero-section/location/morocco.jpg";
 import turkeyImage from "../../assets/images/hero-section/location/turkey.jpg";
 import germanyImage from "../../assets/images/hero-section/location/germany.jpeg";
-import "./Location.scss";
-import ReactCountryFlag from "react-country-flag";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function Location() {
   const [isMapOpen, setIsMapOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const locationRef = useRef(null);
 
   useEffect(() => {
     setMounted(true);
@@ -48,14 +51,68 @@ export default function Location() {
     setIsMapOpen(false);
   };
 
+  // Handle mouse movement for custom cursor
+  const handleMouseMove = (e) => {
+    if (locationRef.current) {
+      const rect = locationRef.current.getBoundingClientRect();
+      setCursorPosition({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    }
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+
   return (
     <>
-      <div className="location" onClick={openMap}>
+      <div
+        ref={locationRef}
+        className="location"
+        onClick={openMap}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openMap();
+          }
+        }}
+        aria-label="Click to view location journey on map"
+      >
         <MdOutlineLocationOn className="location__icon" />
         <p>
-          Living in Istanbul, Türkiye <ReactCountryFlag svg countryCode="tr" />{" "}
+          Living in Istanbul, Türkiye <ReactCountryFlag svg countryCode="tr" />
           (originally from Morocco <ReactCountryFlag svg countryCode="ma" />)
         </p>
+
+        {/* Custom cursor circle */}
+        <AnimatePresence>
+          {isHovering && (
+            <motion.div
+              className="custom-cursor"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              style={{
+                left: cursorPosition.x,
+                top: cursorPosition.y,
+              }}
+            >
+              <span>view</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {mounted &&

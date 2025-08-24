@@ -31,7 +31,8 @@
   line-height: 1.6;
   margin-bottom: 1rem;
   font-style: italic;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 .about .container .about__main-content {
   display: grid;
@@ -53,10 +54,18 @@
 .about .container .about__main-content .process-flow.left-flow .process-card {
   position: relative;
 }
-.about .container .about__main-content .process-flow.left-flow .process-card:nth-child(2) {
+.about
+  .container
+  .about__main-content
+  .process-flow.left-flow
+  .process-card:nth-child(2) {
   transform: translate(-50px) !important;
 }
-.about .container .about__main-content .process-flow.left-flow .process-card::after {
+.about
+  .container
+  .about__main-content
+  .process-flow.left-flow
+  .process-card::after {
   content: "";
   position: absolute;
   top: 100%;
@@ -67,14 +76,26 @@
   background: linear-gradient(to bottom, #4a7c59, transparent);
   border-left: 2px dashed #4a7c59;
 }
-.about .container .about__main-content .process-flow.left-flow .process-card:nth-child(1)::after {
+.about
+  .container
+  .about__main-content
+  .process-flow.left-flow
+  .process-card:nth-child(1)::after {
   transform: rotate(15deg);
 }
-.about .container .about__main-content .process-flow.left-flow .process-card:nth-child(2)::after {
+.about
+  .container
+  .about__main-content
+  .process-flow.left-flow
+  .process-card:nth-child(2)::after {
   transform: rotate(-15deg);
   left: 70%;
 }
-.about .container .about__main-content .process-flow.left-flow .process-card:last-child::after {
+.about
+  .container
+  .about__main-content
+  .process-flow.left-flow
+  .process-card:last-child::after {
   display: none;
 }
 .about .container .about__main-content .process-flow.right-flow {
@@ -83,10 +104,18 @@
 .about .container .about__main-content .process-flow.right-flow .process-card {
   position: relative;
 }
-.about .container .about__main-content .process-flow.right-flow .process-card:nth-child(2) {
+.about
+  .container
+  .about__main-content
+  .process-flow.right-flow
+  .process-card:nth-child(2) {
   transform: translate(50px) !important;
 }
-.about .container .about__main-content .process-flow.right-flow .process-card::before {
+.about
+  .container
+  .about__main-content
+  .process-flow.right-flow
+  .process-card::before {
   content: "";
   position: absolute;
   bottom: 100%;
@@ -97,14 +126,26 @@
   background: linear-gradient(to top, #4a7c59, transparent);
   border-left: 2px dashed #4a7c59;
 }
-.about .container .about__main-content .process-flow.right-flow .process-card:nth-child(2)::before {
+.about
+  .container
+  .about__main-content
+  .process-flow.right-flow
+  .process-card:nth-child(2)::before {
   transform: rotate(-15deg);
 }
-.about .container .about__main-content .process-flow.right-flow .process-card:nth-child(3)::before {
+.about
+  .container
+  .about__main-content
+  .process-flow.right-flow
+  .process-card:nth-child(3)::before {
   left: 70%;
   transform: rotate(15deg);
 }
-.about .container .about__main-content .process-flow.right-flow .process-card:first-child::before {
+.about
+  .container
+  .about__main-content
+  .process-flow.right-flow
+  .process-card:first-child::before {
   display: none;
 }
 .about .container .about__main-content .process-flow .process-card {
@@ -119,7 +160,12 @@
   transform: translateY(-5px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
-.about .container .about__main-content .process-flow .process-card .process-icon {
+.about
+  .container
+  .about__main-content
+  .process-flow
+  .process-card
+  .process-icon {
   font-size: 2.25rem;
   color: #b2e0d4;
   margin-bottom: 1rem;
@@ -153,22 +199,39 @@
   box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
   background: linear-gradient(130deg, #b2e0d4, #fff);
 }
-.about .container .about__main-content .central-image .image-background .image-bg {
+.about
+  .container
+  .about__main-content
+  .central-image
+  .image-background
+  .image-bg {
   width: 80%;
   height: 80%;
   overflow: hidden;
   border-radius: 50%;
 }
-.about .container .about__main-content .central-image .image-background .image-bg img {
+.about
+  .container
+  .about__main-content
+  .central-image
+  .image-background
+  .image-bg
+  img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 50%;
   transform: scale(4) translate(55px, 25px);
   transition: transform 0.3s ease-in-out;
 }
-.about .container .about__main-content .central-image .image-background .image-bg .dropdown-menu {
+.about
+  .container
+  .about__main-content
+  .central-image
+  .image-background
+  .image-bg
+  .dropdown-menu {
   animation: centerAimation 2.5s infinite alternate-reverse;
   position: absolute;
   top: 20px;
@@ -179,28 +242,60 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   min-width: 200px;
 }
-.about .container .about__main-content .central-image .image-background .image-bg .dropdown-menu label {
+.about
+  .container
+  .about__main-content
+  .central-image
+  .image-background
+  .image-bg
+  .dropdown-menu
+  label {
   display: block;
   font-size: 0.75rem;
   font-weight: 500;
   color: #6b7280;
   margin-bottom: 4px;
   text-transform: uppercase;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-.about .container .about__main-content .central-image .image-background .image-bg .dropdown-menu .dropdown-content {
+.about
+  .container
+  .about__main-content
+  .central-image
+  .image-background
+  .image-bg
+  .dropdown-menu
+  .dropdown-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
 }
-.about .container .about__main-content .central-image .image-background .image-bg .dropdown-menu .dropdown-content span {
+.about
+  .container
+  .about__main-content
+  .central-image
+  .image-background
+  .image-bg
+  .dropdown-menu
+  .dropdown-content
+  span {
   font-size: 0.875rem;
   font-weight: 500;
   color: #1f2937;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-.about .container .about__main-content .central-image .image-background .image-bg .dropdown-menu .dropdown-content .dropdown-icon {
+.about
+  .container
+  .about__main-content
+  .central-image
+  .image-background
+  .image-bg
+  .dropdown-menu
+  .dropdown-content
+  .dropdown-icon {
   font-size: 0.875rem;
   color: #266e5b;
 }
@@ -231,11 +326,12 @@
 }
 
 @keyframes centerAimation {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
     transform: scale(1.05);
     transform: translateY(-5px);
   }
-}/*# sourceMappingURL=About.css.map */
+} /*# sourceMappingURL=About.css.map */
