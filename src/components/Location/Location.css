@@ -3,36 +3,75 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-bottom: 2.5rem;
-  padding: 0.75rem 1.5rem;
-  background: rgba(38, 110, 91, 0.1);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(38, 110, 91, 0.2);
-  border-radius: 1rem;
-  width: -moz-fit-content;
-  width: fit-content;
-  cursor: pointer;
   animation: fadeInUp 0.8s ease-out 0.9s both;
   transition: all 0.3s ease-in-out;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 2.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+  position: relative;
+  cursor: none;
+  border: 1px solid transparent;
+}
+.location::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: #505050;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
 }
 .location:hover {
-  transform: translateY(2px);
-  box-shadow: 0 0px 5px #266e5b;
+  transform: translateY(-2px);
+}
+.location:hover .location__icon {
+  color: #505050;
+  transform: scale(1.1);
+}
+.location:hover p {
+  color: #505050;
+}
+.location:hover::after {
+  width: 80%;
 }
 .location p {
-  color: #266e5b;
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  color: #1a1a1a;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0;
 }
 .location .location__icon {
-  color: #4a7c59;
+  color: #404040;
   font-size: 1.125rem;
+}
+.location .custom-cursor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #1a1a1a;
+  pointer-events: none;
+}
+.location .custom-cursor span {
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .map-overlay {
@@ -45,7 +84,7 @@
   height: 100vh;
   background: rgba(0, 0, 0, 0.4);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  backdrop-filter: blur(20px) saturate(180%);
+          backdrop-filter: blur(20px) saturate(180%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,32 +154,17 @@
   overflow: hidden;
   background: center/200% no-repeat;
 }
-.map-overlay
-  .map-modal
-  .map-content
-  .locations
-  .location-card
-  .location-item::before {
+.map-overlay .map-modal .map-content .locations .location-card .location-item::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0.6) 100%
-  );
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
   z-index: 1;
 }
-.map-overlay
-  .map-modal
-  .map-content
-  .locations
-  .location-card
-  .location-item
-  .location-content {
+.map-overlay .map-modal .map-content .locations .location-card .location-item .location-content {
   position: relative;
   z-index: 2;
   height: 100%;
@@ -149,37 +173,17 @@
   justify-content: center;
   text-align: center;
 }
-.map-overlay
-  .map-modal
-  .map-content
-  .locations
-  .location-card
-  .location-item
-  .location-content
-  span {
+.map-overlay .map-modal .map-content .locations .location-card .location-item .location-content span {
   color: #ffffff;
   font-size: 1.2rem;
   font-weight: 600;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
-.map-overlay
-  .map-modal
-  .map-content
-  .locations
-  .location-card
-  .location-item
-  .location-content
-  span
-  small {
+.map-overlay .map-modal .map-content .locations .location-card .location-item .location-content span small {
   font-size: 0.9rem;
   font-weight: 400;
 }
-.map-overlay
-  .map-modal
-  .map-content
-  .locations
-  .location-card
-  .status-indicator {
+.map-overlay .map-modal .map-content .locations .location-card .status-indicator {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -188,41 +192,20 @@
   font-size: 14px;
   font-weight: 500;
 }
-.map-overlay
-  .map-modal
-  .map-content
-  .locations
-  .location-card
-  .status-indicator
-  svg {
+.map-overlay .map-modal .map-content .locations .location-card .status-indicator svg {
   font-size: 16px;
 }
-.map-overlay
-  .map-modal
-  .map-content
-  .locations
-  .location-card
-  .status-indicator.completed {
+.map-overlay .map-modal .map-content .locations .location-card .status-indicator.completed {
   background: rgba(34, 197, 94, 0.1);
   color: #16a34a;
   border: 1px solid rgba(34, 197, 94, 0.2);
 }
-.map-overlay
-  .map-modal
-  .map-content
-  .locations
-  .location-card
-  .status-indicator.in-progress {
+.map-overlay .map-modal .map-content .locations .location-card .status-indicator.in-progress {
   background: rgba(59, 130, 246, 0.1);
   color: #2563eb;
   border: 1px solid rgba(59, 130, 246, 0.2);
 }
-.map-overlay
-  .map-modal
-  .map-content
-  .locations
-  .location-card
-  .status-indicator.planned {
+.map-overlay .map-modal .map-content .locations .location-card .status-indicator.planned {
   background: rgba(168, 85, 247, 0.1);
   color: #9333ea;
   border: 1px solid rgba(168, 85, 247, 0.2);
@@ -238,5 +221,5 @@
   height: auto;
   display: block;
   -o-object-fit: contain;
-  object-fit: contain;
-} /*# sourceMappingURL=Location.css.map */
+     object-fit: contain;
+}/*# sourceMappingURL=Location.css.map */

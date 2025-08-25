@@ -4,7 +4,6 @@ import Header from "./components/Header/Header";
 import Hero from "./sections/Hero/Hero";
 import About from "./sections/About/About";
 import Skills from "./sections/Skills/Skills";
-import Projects from "./sections/Projects/Projects.jsx";
 
 export default function App() {
   return (
@@ -19,7 +18,6 @@ export default function App() {
                 <Hero />
                 <About />
                 <Skills />
-                <Projects />
               </>
             }
           />

@@ -3,8 +3,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  text-transform: capitalize;
   font-family: "Roboto", sans-serif;
+  list-style: none;
 }
 
 html {
@@ -14,8 +14,8 @@ html {
 body {
   font-family: "Open Sans", sans-serif;
   line-height: 1.5;
-  color: #266e5b;
-  background-color: #fff;
+  color: #1a1a1a;
+  background-color: #ffffff;
 }
 
 a {
@@ -26,4 +26,4 @@ a {
 img {
   max-width: 100%;
   display: block;
-} /*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */

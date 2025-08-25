@@ -1,169 +1,120 @@
-import {
-  FaCode,
-  FaLightbulb,
-  FaRocket,
-  FaHeart,
-  FaUsers,
-  FaMagic,
-} from "react-icons/fa";
+import { FaGraduationCap, FaClock, FaLaptopCode } from "react-icons/fa";
 import "./About.scss";
-import aboutImage from "../../assets/images/about-section/about-img.jpg";
+import aboutImage from "../../assets/images/about-section/about-section2.jpg";
 import { motion } from "framer-motion";
 
 export default function About() {
-  const leftProcess = [
+  const quickFacts = [
     {
-      icon: <FaCode />,
-      title: "Code Development",
-      description: "Building clean, maintainable code with modern frameworks",
+      icon: <FaGraduationCap />,
+      label: "Education ",
+      value: "B.Sc. in Software Engineering (Year 3, expected 2027)",
     },
     {
-      icon: <FaLightbulb />,
-      title: "Problem Solving",
-      description: "Analyzing challenges and implementing efficient solutions",
+      icon: <FaClock />,
+      label: "Experience",
+      value: "3+ Years Frontend Development",
     },
     {
-      icon: <FaUsers />,
-      title: "Team Collaboration",
-      description: "Working effectively with cross-functional teams",
+      icon: <FaLaptopCode />,
+      label: "Work",
+      value: "Freelance & Projects",
     },
   ];
-
-  const rightProcess = [
-    {
-      icon: <FaRocket />,
-      title: "Project Planning",
-      description: "Strategic planning and architecture design",
-    },
-    {
-      icon: <FaMagic />,
-      title: "Implementation",
-      description: "Bringing designs to life with precision and creativity",
-    },
-    {
-      icon: <FaHeart />,
-      title: "Quality Assurance",
-      description: "Thorough testing and optimization for best performance",
-    },
-  ];
-
-  const processCardVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6 },
-    },
-  };
 
   return (
     <section id="about" className="about">
       <div className="container">
-        {/* Header Section */}
+        {/* Header */}
         <motion.div
           className="about__header"
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">About Me</h2>
         </motion.div>
-        {/* description */}
-        <motion.div
-          className="about__description"
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <p>
-            Frontend Developer who creates <strong>responsive</strong>,
-            <strong> high-performance</strong> websites and web applications.
-            Skilled in <strong>React</strong>, JavaScript,
-            <strong> Tailwind CSS</strong>, and HTML, I build clean, reusable
-            components and write maintainable code. I deliver pixel-perfect
-            designs, smooth user experiences, and solutions that are optimized
-            for speed and scalability.
-          </p>
-        </motion.div>
+
         {/* Main Content */}
         <div className="about__main-content">
-          {/* Left Process Flow */}
+          {/* Left Column - Profile Image */}
           <motion.div
-            className="process-flow left-flow"
-            initial={{ x: -100, opacity: 0 }}
+            className="about__image"
+            initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.3 }}
           >
-            {leftProcess.map((step, index) => (
-              <motion.div
-                key={index}
-                className="process-card"
-                variants={processCardVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-              >
-                <div className="process-icon">{step.icon}</div>
-                <h4>{step.title}</h4>
-                <p>{step.description}</p>
-              </motion.div>
-            ))}
+            <img
+              src={aboutImage}
+              alt="personality image in about section"
+              className={`image visible`}
+            />
           </motion.div>
 
-          {/* Central Image */}
+          {/* Right Column - Information */}
+          <div className="about__info">
+            {/* Intro Paragraph */}
+            <motion.div
+              className="about__intro"
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <p>
+                I’m a Frontend Developer with 3+ years of professional
+                experience. Since 2019, I have delivered projects ranging from
+                e-commerce platforms to dashboards. My work focuses on{" "}
+                <strong>
+                  clean, maintainable, and scalable front-end code
+                </strong>{" "}
+                using{" "}
+                <strong>
+                  React, JavaScript, Sass, Redux, Material UI, and Framer Motion
+                </strong>
+                . I optimize interfaces for{" "}
+                <strong>performance and responsiveness</strong> across devices.
+                <br />
+                <br />I collaborate closely with designers and developers to
+                translate concepts into fully functional applications. I pay
+                attention to{" "}
+                <strong>
+                  clear design, easy-to-use interfaces, and consistent behavior
+                </strong>{" "}
+                in every project, ensuring that each interface is both
+                functional and intuitive.
+                <br />
+                <br />
+                I’m actively seeking{" "}
+                <strong>Frontend Developer opportunities</strong> where I can
+                contribute to useful projects. Please feel free to{" "}
+                <strong>contact me</strong> if you’d like to discuss a role or
+                collaboration.
+              </p>
+            </motion.div>
+          </div>
+          {/* Quick Facts Grid */}
           <motion.div
-            className="central-image"
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
+            className="about__facts"
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className="image-background">
-              <div className="image-bg">
-                <img src={aboutImage} alt="Mohamed Oulahguine" />
-                <div className="dropdown-menu">
-                  <label>Specialization</label>
-                  <div className="dropdown-content">
-                    <span>Frontend Development</span>
-                    <FaCode className="dropdown-icon" />
+            <div className="facts-grid">
+              {quickFacts.map((fact, index) => (
+                <motion.div key={index} className="fact-card">
+                  <div className="fact-icon">{fact.icon}</div>
+                  <div className="fact-content">
+                    <span className="fact-label">{fact.label}</span>
+                    <span className="fact-value">{fact.value}</span>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
-
-          {/* Right Process Flow */}
-          <motion.div
-            className="process-flow right-flow"
-            initial={{ x: 100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            {rightProcess.map((step, index) => (
-              <motion.div
-                key={index}
-                className="process-card"
-                variants={processCardVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-              >
-                <div className="process-icon">{step.icon}</div>
-                <h4>{step.title}</h4>
-                <p>{step.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-        <div className="connecting-arc"></div>
-        <div className="experience-highlight">
-          <p>3+ years building web applications</p>
         </div>
       </div>
     </section>

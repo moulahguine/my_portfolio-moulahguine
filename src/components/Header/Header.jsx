@@ -9,13 +9,13 @@ export default function Header() {
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
     { id: "experience", label: "Experience" },
-    { id: "contact", label: "Contact" }
+    { id: "contact", label: "Contact" },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll("section[id]");
-      const scrollPosition = window.scrollY + 100; 
+      const scrollPosition = window.scrollY + 100;
 
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
@@ -32,7 +32,7 @@ export default function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); 
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -43,7 +43,7 @@ export default function Header() {
     <header className="site-header">
       <div className="container">
         <div className="header__logo">
-          <a className="userName" aria-label="Go to home section">
+          <a href="#hero" className="userName" aria-label="Go to home section">
             <span className="userName__m">m</span> oulahguine
           </a>
         </div>
@@ -52,7 +52,7 @@ export default function Header() {
           <ul className="primary-nav__list">
             {navigationItems.map((item) => (
               <li key={item.id} className="primary-nav__item">
-                <a 
+                <a
                   href={`#${item.id}`}
                   className={isActive(item.id) ? "active" : ""}
                 >

@@ -13,7 +13,7 @@ export default function Hero() {
   return (
     <section
       style={{ height: `${heroHeight}px` }}
-      id="home"
+      id="hero"
       className="hero"
       aria-label="Hero"
     >
@@ -35,7 +35,7 @@ export default function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Hi👋, I'm <span>mohamed oulahguine</span>
+            Hi👋, I'm <span>Mohamed Oulahguine</span>
           </motion.h1>
           <motion.h1
             className="hero__subtitle"
@@ -43,7 +43,7 @@ export default function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            frontend developer
+            Frontend Developer
           </motion.h1>
           <motion.p
             className="hero__description"
@@ -51,10 +51,8 @@ export default function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
-            Energetic frontend developer focused on <strong>performance</strong>
-            , <strong>quality</strong>, & <strong>pixel-perfect details</strong>
-            . I write clean, well-designed code to build smooth, create
-            responsive websites with mobile first approach.
+            Turning ideas into interactive, responsive web apps using React &
+            modern frontend tools
           </motion.p>
           <motion.div
             initial={{ y: 50, opacity: 0 }}
