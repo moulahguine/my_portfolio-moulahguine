@@ -111,6 +111,15 @@
                 lighten($color-accent, 20%)
               );
             }
+            &::before {
+              top: 0;
+              left: 0;
+            }
+
+            &::after {
+              bottom: 0;
+              right: 0;
+            }
 
             .fact-icon {
               flex-shrink: 0;
@@ -146,44 +155,6 @@
                 color: $color-accent;
                 font-weight: $font-weight-medium;
               }
-            }
-          }
-          .fact-card:nth-child(1) {
-            &::before {
-              top: 0;
-              left: 0;
-            }
-
-            &::after {
-              bottom: 0;
-              right: 0;
-            }
-          }
-          .fact-card:nth-child(2) {
-            scale: 1.05;
-            &::before {
-              border-radius: 16px 0 16px 0;
-              top: 0;
-              left: 0;
-            }
-
-            &::after {
-              border-radius: 0 0 0 16px;
-              top: 0;
-              right: 0;
-            }
-          }
-          .fact-card:nth-child(3) {
-            &::before {
-              border-radius: 0 0 0 16px;
-              top: 0;
-              right: 0;
-            }
-
-            &::after {
-              border-radius: 0 16px 0 0;
-              bottom: 0;
-              left: 0;
             }
           }
         }

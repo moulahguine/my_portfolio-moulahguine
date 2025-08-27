@@ -1,3 +1,4 @@
+import React from "react";
 import "./Hero.scss";
 import heroImage from "../../assets/images/hero-section/hero-img.webp";
 import { HiDownload } from "react-icons/hi";
@@ -6,6 +7,7 @@ import { SiCodepen } from "react-icons/si";
 import { useHeroHeight } from "../../hooks";
 import Location from "../../components/Location/Location";
 import { motion } from "framer-motion";
+import Aurora from "../../components/DotGrid/DotGrid";
 
 export default function Hero() {
   const heroHeight = useHeroHeight();
@@ -17,8 +19,15 @@ export default function Hero() {
       className="hero"
       aria-label="Hero"
     >
+      <Aurora
+        colorStops={["#ffffff", "#fff", "#fff"]}
+        blend={0.7}
+        amplitude={0.5}
+        speed={1.0}
+      />
+
       <motion.div
-        className="hero__inner"
+        className="container"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -35,7 +44,7 @@ export default function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Hi👋, I'm <span>Mohamed Oulahguine</span>
+            Hi👋, I&apos;m <span>Mohamed Oulahguine</span>
           </motion.h1>
           <motion.h1
             className="hero__subtitle"
@@ -83,8 +92,7 @@ export default function Hero() {
           <img
             className="hero__image"
             src={heroImage}
-            alt="Abstract developer illustration"
-            loading="eager"
+            alt="Mohamed Oulahguine - Frontend Developer"
           />
         </motion.div>
         <motion.div
@@ -93,39 +101,30 @@ export default function Hero() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 1.3 }}
         >
-          <motion.a
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.95 }}
-            href="https://github.com/moulahguine"
+          <a
+            href="https://github.com/yourusername"
             target="_blank"
             rel="noopener noreferrer"
-            className="social__link"
-            aria-label="GitHub"
+            aria-label="GitHub Profile"
           >
             <FaGithub />
-          </motion.a>
-          <motion.a
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.95 }}
-            href="https://codepen.io/moulahguine"
+          </a>
+          <a
+            href="https://linkedin.com/in/yourusername"
             target="_blank"
             rel="noopener noreferrer"
-            className="social__link"
-            aria-label="CodePen"
-          >
-            <SiCodepen />
-          </motion.a>
-          <motion.a
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.95 }}
-            href="https://www.linkedin.com/in/moulahguine"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social__link"
-            aria-label="LinkedIn"
+            aria-label="LinkedIn Profile"
           >
             <FaLinkedin />
-          </motion.a>
+          </a>
+          <a
+            href="https://codepen.io/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="CodePen Profile"
+          >
+            <SiCodepen />
+          </a>
         </motion.div>
       </motion.div>
     </section>

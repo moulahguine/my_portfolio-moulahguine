@@ -64,9 +64,9 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <p>
-                I’m a Frontend Developer with 3+ years of professional
-                experience. Since 2019, I have delivered projects ranging from
-                e-commerce platforms to dashboards. My work focuses on{" "}
+                I’m a Frontend Developer with 3+ years of experience. Since
+                2019, I have delivered projects ranging from e-commerce
+                platforms to dashboards. My work focuses on{" "}
                 <strong>
                   clean, maintainable, and scalable front-end code
                 </strong>{" "}

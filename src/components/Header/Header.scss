@@ -10,14 +10,13 @@
   .container {
     @include container;
     @include flex-between;
+    @include sweep-hover(#c4c4c437);
     padding-top: 10px;
     padding-bottom: 10px;
-    border-radius: 20px;
+    border-radius: 2rem;
     background-color: #ffffff96;
     backdrop-filter: blur(20px);
     overflow: hidden;
-
-    @include sweep-hover(#c4c4c437);
 
     .header__logo {
       .userName {
@@ -30,6 +29,7 @@
           padding: 0 5px;
           background-color: $color-primary-light;
           color: #ffffff;
+          font-size: inherit;
           border-radius: 4px;
         }
       }
@@ -37,12 +37,13 @@
 
     .primary-nav {
       .primary-nav__list {
-        display: flex;
-        gap: $spacing-sm;
+        @include flex-center;
+        column-gap: $spacing-sm;
         margin: 0;
         padding: 0;
 
         .primary-nav__item {
+          display: flex;
           a {
             position: relative;
             color: $color-primary-light;
