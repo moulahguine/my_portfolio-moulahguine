@@ -3,11 +3,9 @@
 
 .about {
   background-color: $bg-primary;
-  //background-color: aqua;
-  padding: calc($spacing-4xl + 2rem) 0;
+  padding: calc($spacing-4xl + 1rem) 0 calc($spacing-4xl + 3rem);
 
   .container {
-    //overflow: hidden;
     @include container;
 
     // Header Section
@@ -70,10 +68,30 @@
             margin: 0;
           }
         }
+
+        .about__btn {
+          display: flex;
+          gap: $spacing-base;
+
+          .show__projects {
+            background-color: transparent;
+            color: $color-accent;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: inset 0 -1px 0 transparent;
+            transition: box-shadow 0.3s ease-in-out;
+            &:hover {
+              box-shadow: inset 0 -1px 0 $color-accent;
+            }
+          }
+          .hire__me {
+            background-color: $color-accent;
+          }
+        }
       }
       // Quick Facts Grid
       .about__facts {
-        margin: 6rem 0 0;
+        margin: 5rem 0 0;
         grid-column: span 2;
 
         .facts-grid {

@@ -1,6 +1,6 @@
 .about {
   background-color: #ffffff;
-  padding: 6rem 0;
+  padding: 5rem 0 7rem;
 }
 .about .container {
   max-width: 1200px;
@@ -72,8 +72,26 @@
   line-height: 1.7;
   margin: 0;
 }
+.about .container .about__main-content .about__info .about__btn {
+  display: flex;
+  gap: 1rem;
+}
+.about .container .about__main-content .about__info .about__btn .show__projects {
+  background-color: transparent;
+  color: #505050;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: inset 0 -1px 0 transparent;
+  transition: box-shadow 0.3s ease-in-out;
+}
+.about .container .about__main-content .about__info .about__btn .show__projects:hover {
+  box-shadow: inset 0 -1px 0 #505050;
+}
+.about .container .about__main-content .about__info .about__btn .hire__me {
+  background-color: #505050;
+}
 .about .container .about__main-content .about__facts {
-  margin: 6rem 0 0;
+  margin: 5rem 0 0;
   grid-column: span 2;
 }
 .about .container .about__main-content .about__facts .facts-grid {

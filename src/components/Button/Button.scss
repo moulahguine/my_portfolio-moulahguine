@@ -1,0 +1,19 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+.btn {
+  @include flex-center;
+  @include sweep-hover(#fff);
+  cursor: pointer;
+  background-color: $color-primary;
+  justify-content: flex-start;
+  color: $bg-primary;
+  gap: $spacing-base;
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+  padding: $spacing-base $spacing-lg;
+  border-radius: 2rem;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+}

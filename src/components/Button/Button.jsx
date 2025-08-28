@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import "./Button.scss";
 
 function Button({
   children,
@@ -36,7 +37,7 @@ function Button({
         download={download}
         target={target}
         rel={rel}
-        className={buttonClasses}
+        className={`${buttonClasses} btn__href`}
         onClick={onClick}
         {...props}
       >
@@ -49,7 +50,7 @@ function Button({
   return (
     <button
       type="button"
-      className={buttonClasses}
+      className={`${buttonClasses} btn`}
       onClick={onClick}
       {...props}
     >

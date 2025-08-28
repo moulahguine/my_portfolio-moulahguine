@@ -46,29 +46,6 @@
         max-width: 500px;
       }
       // you can find locaion style in location folder inside components folder
-      .hero__resume {
-        @include flex-center;
-        justify-content: flex-start;
-        gap: $spacing-base;
-        width: fit-content;
-        position: relative;
-        overflow: hidden;
-        @include sweep-hover(#fff);
-        .resume-btn {
-          @include flex-center;
-          gap: $spacing-sm;
-          background-color: $color-primary;
-          padding: $spacing-base $spacing-lg;
-          border-radius: 2rem;
-          color: #fff;
-          font-size: $font-size-base;
-          font-weight: $font-weight-bold;
-          svg {
-            transform: translateY(2px);
-            font-size: 1.3rem;
-          }
-        }
-      }
     }
     .hero__media {
       @include grid-center;

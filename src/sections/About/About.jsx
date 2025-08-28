@@ -1,14 +1,8 @@
-import {
-  FaClock,
-  FaLaptopCode,
-  FaUsers,
-  FaRocket,
-  FaCogs,
-} from "react-icons/fa";
-import "./About.scss";
-import aboutImage from "../../assets/images/about-section/about-section2.jpg";
+import { FaClock, FaLaptopCode, FaUsers, FaCogs } from "react-icons/fa";
+import aboutImage from "../../assets/images/about-section/about-section1.jpg";
 import { motion } from "framer-motion";
-import { acesFilmicToneMapping } from "three/tsl";
+import Button from "../../components/Button/Button";
+import "./About.scss";
 
 export default function About() {
   const quickFacts = [
@@ -98,11 +92,16 @@ export default function About() {
                 <strong>Frontend Development opportunities </strong>
                 and collaborations where I can contribute to impactful projects.{" "}
                 <br />
-                <strong style={{ textTransform: "uppercase" }}>
-                  let's talk
-                </strong>
               </p>
             </motion.div>
+            <div className="about__btn">
+              <Button href="#contactme" className="hire__me">
+                Hire Me
+              </Button>
+              <Button href="#projects" className="show__projects">
+                See My Work
+              </Button>
+            </div>
           </div>
           {/* Quick Facts Grid */}
           <motion.div
@@ -110,14 +109,14 @@ export default function About() {
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.3, delay: 0.4 }}
           >
             <div className="facts-grid">
               {quickFacts.map((fact, index) => (
                 <motion.div
                   key={index}
                   className="fact-card"
-                  whileHover={{ scale: 1.2, transition: 0.3 }}
+                  whileHover={{ scale: 1.09, transition: 0.1 }}
                 >
                   <div className="fact-icon">{fact.icon}</div>
                   <div className="fact-content">
