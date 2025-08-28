@@ -73,31 +73,29 @@
   margin: 0;
 }
 .about .container .about__main-content .about__facts {
+  margin: 6rem 0 0;
   grid-column: span 2;
 }
 .about .container .about__main-content .about__facts .facts-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 2rem;
-  position: relative;
 }
 .about .container .about__main-content .about__facts .facts-grid .fact-card {
+  flex: 1 0 250px;
   display: flex;
   flex-direction: column;
-  position: relative;
   align-items: center;
-  background: #ffffff;
   gap: 1.5rem;
+  background-color: #ffffff;
   padding: 2rem;
-  max-width: 500px;
-  height: 200px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  height: 250px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   transition: all 0.3s ease;
-}
-.about .container .about__main-content .about__facts .facts-grid .fact-card:hover {
-  scale: 1.09 !important;
+  position: relative;
 }
 .about .container .about__main-content .about__facts .facts-grid .fact-card::before, .about .container .about__main-content .about__facts .facts-grid .fact-card::after {
   content: "";

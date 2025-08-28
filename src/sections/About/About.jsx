@@ -1,24 +1,38 @@
-import { FaGraduationCap, FaClock, FaLaptopCode } from "react-icons/fa";
+import {
+  FaClock,
+  FaLaptopCode,
+  FaUsers,
+  FaRocket,
+  FaCogs,
+} from "react-icons/fa";
 import "./About.scss";
 import aboutImage from "../../assets/images/about-section/about-section2.jpg";
 import { motion } from "framer-motion";
+import { acesFilmicToneMapping } from "three/tsl";
 
 export default function About() {
   const quickFacts = [
     {
-      icon: <FaGraduationCap />,
-      label: "Education ",
-      value: "B.Sc. in Software Engineering (Year 3, expected 2027)",
+      icon: <FaCogs />,
+      label: "How I Work ",
+      value:
+        "JavaScript-first • Jest tests • Code reviews • CI/CD & performance budgets",
     },
     {
       icon: <FaClock />,
       label: "Experience",
-      value: "3+ Years Frontend Development",
+      value: "3+ years in Frontend Development (React ecosystem)",
     },
     {
       icon: <FaLaptopCode />,
-      label: "Work",
-      value: "Freelance & Projects",
+      label: "Projects",
+      value: "Freelance & client delivery — dashboards, e-commerce platforms",
+    },
+    {
+      icon: <FaUsers />,
+      label: "Collaboration",
+      value:
+        "Translate Figma to components • Work with designers & backend engineers",
     },
   ];
 
@@ -52,7 +66,6 @@ export default function About() {
               className={`image visible`}
             />
           </motion.div>
-
           {/* Right Column - Information */}
           <div className="about__info">
             {/* Intro Paragraph */}
@@ -64,34 +77,30 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <p>
-                I’m a Frontend Developer with 3+ years of experience. Since
-                2019, I have delivered projects ranging from e-commerce
-                platforms to dashboards. My work focuses on{" "}
+                I’m a <strong>Frontend Developer</strong> with
+                <strong> 3+ years of experience</strong> delivering
+                <strong> SPAs</strong>, <strong>dashboards</strong>, and
+                <strong> e-commerce platforms</strong>. I focus on
+                <strong> performance</strong>,
+                <strong> clean state management</strong>, and
+                <strong> accessible interfaces</strong> that feel fast on any
+                device.
+                <br />
+                <br /> I work closely with <strong>designers</strong> and{" "}
+                <strong>backend engineers</strong>, turning Figma designs into
+                components, write <strong>maintainable code</strong>, and{" "}
                 <strong>
-                  clean, maintainable, and scalable front-end code
-                </strong>{" "}
-                using{" "}
-                <strong>
-                  React, JavaScript, Sass, Redux, Material UI, and Framer Motion
+                  review PRs to keep quality high
+                  <br />
                 </strong>
-                . I optimize interfaces for{" "}
-                <strong>performance and responsiveness</strong> across devices.
                 <br />
-                <br />I collaborate closely with designers and developers to
-                translate concepts into fully functional applications. I pay
-                attention to{" "}
-                <strong>
-                  clear design, easy-to-use interfaces, and consistent behavior
-                </strong>{" "}
-                in every project, ensuring that each interface is both
-                functional and intuitive.
+                I'm actively seeking{" "}
+                <strong>Frontend Development opportunities </strong>
+                and collaborations where I can contribute to impactful projects.{" "}
                 <br />
-                <br />
-                I’m actively seeking{" "}
-                <strong>Frontend Developer opportunities</strong> where I can
-                contribute to useful projects. Please feel free to{" "}
-                <strong>contact me</strong> if you’d like to discuss a role or
-                collaboration.
+                <strong style={{ textTransform: "uppercase" }}>
+                  let's talk
+                </strong>
               </p>
             </motion.div>
           </div>
@@ -105,7 +114,11 @@ export default function About() {
           >
             <div className="facts-grid">
               {quickFacts.map((fact, index) => (
-                <motion.div key={index} className="fact-card">
+                <motion.div
+                  key={index}
+                  className="fact-card"
+                  whileHover={{ scale: 1.2, transition: 0.3 }}
+                >
                   <div className="fact-icon">{fact.icon}</div>
                   <div className="fact-content">
                     <span className="fact-label">{fact.label}</span>

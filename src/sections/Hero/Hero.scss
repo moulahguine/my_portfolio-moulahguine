@@ -18,6 +18,10 @@
     z-index: 10;
     .hero__content {
       .hero__title {
+        .hiEmoji {
+          all: unset;
+          display: inline-block;
+        }
         @include heading-1;
         margin-bottom: $spacing-base;
         color: $text-primary;
@@ -45,17 +49,23 @@
       .hero__resume {
         @include flex-center;
         justify-content: flex-start;
-        gap: 1rem;
-        flex-wrap: wrap;
-
-        .btn {
-          @include button-primary;
-          gap: 0.5rem;
-
-          @include sweep-hover($color-accent-lighter);
-
-          &:hover {
-            transform: translateY(0);
+        gap: $spacing-base;
+        width: fit-content;
+        position: relative;
+        overflow: hidden;
+        @include sweep-hover(#fff);
+        .resume-btn {
+          @include flex-center;
+          gap: $spacing-sm;
+          background-color: $color-primary;
+          padding: $spacing-base $spacing-lg;
+          border-radius: 2rem;
+          color: #fff;
+          font-size: $font-size-base;
+          font-weight: $font-weight-bold;
+          svg {
+            transform: translateY(2px);
+            font-size: 1.3rem;
           }
         }
       }
@@ -69,11 +79,13 @@
       border: 3px solid $border-light;
       transition: all 0.3s ease;
       position: relative;
+      @include sweep-hover(#fff);
       .hero__image {
         z-index: 15;
         position: absolute;
       }
       &:hover {
+        border-radius: 73% 27% 78% 22% / 32% 65% 35% 68%;
         box-shadow: 0 0 15px 3px $color-accent;
         scale: 1.05;
       }
@@ -83,39 +95,39 @@
       @include flex-column;
       position: relative;
       z-index: 20;
+      gap: 1rem;
 
-      svg {
+      .social-link {
         @include flex-center;
-        color: $text-primary;
-        font-size: $font-size-2xl;
-        transition: all 0.3s ease;
-        margin: 10px 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+
+        @include sweep-hover(rgba(255, 255, 255, 0.2));
+
+        svg {
+          color: $text-primary;
+          font-size: 1.5rem;
+        }
+
+        &.github-link:hover svg {
+          color: #333;
+        }
+
+        &.linkedin-link:hover svg {
+          color: #0077b5;
+        }
+
+        &.codepen-link:hover svg {
+          color: #000;
+        }
       }
     }
-  }
-}
-
-@keyframes path0 {
-  0% {
-    transform: rotate(-10deg);
-  }
-  100% {
-    transform: rotate(10deg);
-  }
-}
-@keyframes path1 {
-  0% {
-    transform: rotate(-30deg);
-  }
-  100% {
-    transform: rotate(30deg);
-  }
-}
-@keyframes path2 {
-  0% {
-    transform: rotate(40deg);
-  }
-  100% {
-    transform: rotate(-40deg);
   }
 }

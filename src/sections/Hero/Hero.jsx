@@ -8,9 +8,34 @@ import { useHeroHeight } from "../../hooks";
 import Location from "../../components/Location/Location";
 import { motion } from "framer-motion";
 import Aurora from "../../components/DotGrid/DotGrid";
+import Button from "../../components/Button/Button";
 
 export default function Hero() {
   const heroHeight = useHeroHeight();
+
+  const socialLinks = [
+    {
+      href: "https://github.com/moulahguine",
+      icon: <FaGithub />,
+      label: "GitHub Profile",
+      delay: 0.9,
+      className: "github-link",
+    },
+    {
+      href: "https://linkedin.com/in/moulahguine",
+      icon: <FaLinkedin />,
+      label: "LinkedIn Profile",
+      delay: 1.0,
+      className: "linkedin-link",
+    },
+    {
+      href: "https://codepen.io/moulahguine",
+      icon: <SiCodepen />,
+      label: "CodePen Profile",
+      delay: 1.1,
+      className: "codepen-link",
+    },
+  ];
 
   return (
     <section
@@ -21,9 +46,9 @@ export default function Hero() {
     >
       <Aurora
         colorStops={["#ffffff", "#fff", "#fff"]}
-        blend={0.7}
-        amplitude={0.5}
-        speed={1.0}
+        blend={0.8}
+        amplitude={0.2}
+        speed={3}
       />
 
       <motion.div
@@ -44,7 +69,16 @@ export default function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Hi👋, I&apos;m <span>Mohamed Oulahguine</span>
+            Hi{" "}
+            <motion.span
+              className="hiEmoji"
+              initial={{ rotate: -20 }}
+              animate={{ rotate: [0, -20, 0, -20, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
+            >
+              &#128075;
+            </motion.span>
+            , I&apos;m <span>Mohamed Oulahguine</span>
           </motion.h1>
           <motion.h1
             className="hero__subtitle"
@@ -76,15 +110,19 @@ export default function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 1.1 }}
           >
-            <a className="btn" href="/resume.pdf" download>
-              <HiDownload className="download__resume" />
-              resume
-            </a>
+            <Button
+              href="/resume.pdf"
+              download
+              icon={<HiDownload />}
+              iconPosition="left"
+              className="resume-btn"
+            >
+              Resume
+            </Button>
           </motion.div>
         </motion.div>
         <motion.div
           className="hero__media"
-          aria-hidden="true"
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -101,30 +139,22 @@ export default function Hero() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 1.3 }}
         >
-          <a
-            href="https://github.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub Profile"
-          >
-            <FaGithub />
-          </a>
-          <a
-            href="https://linkedin.com/in/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn Profile"
-          >
-            <FaLinkedin />
-          </a>
-          <a
-            href="https://codepen.io/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="CodePen Profile"
-          >
-            <SiCodepen />
-          </a>
+          {socialLinks.map(({ href, icon, label, delay, className }) => (
+            <motion.a
+              key={label}
+              className={`social-link ${className}`}
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.2, delay, ease: "easeInOut" }}
+              whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+            >
+              {icon}
+            </motion.a>
+          ))}
         </motion.div>
       </motion.div>
     </section>

@@ -3,9 +3,11 @@
 
 .about {
   background-color: $bg-primary;
+  //background-color: aqua;
   padding: calc($spacing-4xl + 2rem) 0;
 
   .container {
+    //overflow: hidden;
     @include container;
 
     // Header Section
@@ -71,31 +73,27 @@
       }
       // Quick Facts Grid
       .about__facts {
+        margin: 6rem 0 0;
         grid-column: span 2;
 
         .facts-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          @include flex-center;
+          flex-wrap: wrap;
           gap: $spacing-xl;
-          position: relative;
 
           .fact-card {
+            flex: 1 0 250px;
             @include flex-column;
-            position: relative;
             align-items: center;
-            background: $bg-primary;
             gap: $spacing-lg;
+            background-color: $bg-primary;
             padding: $spacing-xl;
-            max-width: 500px;
-            height: 200px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            height: 250px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
             border-radius: 16px;
             transition: all 0.3s ease;
+            position: relative;
 
-            &:hover {
-              scale: 1.09 !important;
-            }
             // Card corner design
             &::before,
             &::after {

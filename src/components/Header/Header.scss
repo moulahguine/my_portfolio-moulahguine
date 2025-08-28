@@ -10,11 +10,11 @@
   .container {
     @include container;
     @include flex-between;
-    @include sweep-hover(#c4c4c437);
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 2rem;
-    background-color: #ffffff96;
+    background-color: #ffffff57;
+    box-shadow: 0 1px 5px $color-accent-lighter;
     backdrop-filter: blur(20px);
     overflow: hidden;
 
