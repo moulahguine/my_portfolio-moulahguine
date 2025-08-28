@@ -1,146 +1,136 @@
 @use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
 
 .skills {
-  padding: calc($spacing-4xl + 2rem) 0;
-  background-color: $bg-primary;
   position: relative;
+  background-color: $bg-primary;
+  padding: calc($spacing-4xl + 3rem) 0;
 
   .container {
-    max-width: $container-max-width;
     margin: 0 auto;
-    padding: 0 $spacing-lg;
+    padding: 0 $spacing-md;
+    max-width: $container-max-width;
 
     .skills__header {
       text-align: center;
       margin-bottom: $spacing-4xl;
 
       .skills__title {
-        font-size: $font-size-3xl;
-        font-weight: $font-weight-bold;
-        color: $color-primary;
-        margin-bottom: $spacing-md;
-        background: linear-gradient(135deg, $color-primary, $color-accent);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        @include section-header-style;
       }
 
       .skills__subtitle {
-        font-size: $font-size-lg;
         color: $color-accent;
+        font-size: $font-size-lg;
         font-weight: $font-weight-medium;
-        max-width: 600px;
-        margin: 0 auto;
       }
     }
 
     .skills__grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: $spacing-xl;
-      max-width: 1200px;
-      margin: 0 auto;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      gap: $spacing-4xl;
+      max-width: inherit;
+      padding-top: 5rem;
+      section {
+        display: grid;
+        grid-template-columns: 20% 80%;
+        gap: $spacing-base;
+        h2 {
+          color: $color-accent;
+          font-size: $font-size-3xl;
+          font-weight: $font-weight-bold;
+        }
+        div {
+          display: flex;
+          justify-content: space-evenly;
+          flex-wrap: wrap;
+          .skill-card {
+            @include flex-center;
+            position: relative;
+            max-width: 200px;
+            border-radius: 16px;
+            padding: $spacing-lg;
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+
+            &::before {
+              content: "";
+              position: absolute;
+              inset: 0;
+              border-radius: 16px;
+              padding: 2px;
+              background: linear-gradient(
+                135deg,
+                var(--skill-color),
+                transparent
+              );
+              mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+              mask-composite: exclude;
+            }
+
+            &:hover {
+              transform: translateY(-4px);
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            }
+
+            .skill-card__icon {
+              @include flex-center;
+              position: absolute;
+              left: 0;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              color: var(--skill-color);
+              width: 50px;
+              height: 50px;
+              font-size: $font-size-3xl;
+              background: linear-gradient(
+                135deg,
+                rgba(139, 92, 246, 0.1),
+                rgba(139, 92, 246, 0.05)
+              );
+              border-radius: 50%;
+              margin: 0 auto $spacing-lg;
+            }
+
+            .skill-card__content {
+              @include flex-column;
+              text-align: center;
+              gap: $spacing-sm;
+              .skill-card__name {
+                font-size: $font-size-base;
+                font-weight: $font-weight-bold;
+                color: var(--skill-color);
+                line-height: 1.2;
+              }
+
+              .skill-card__description {
+                font-size: $font-size-sm;
+                color: $color-accent;
+              }
+            }
+
+            .skill-card__level {
+              display: inline-block;
+              padding: $spacing-xs $spacing-sm;
+              background: var(--skill-color);
+              color: white;
+              font-size: $font-size-xs;
+              font-weight: $font-weight-semibold;
+              border-radius: 20px;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            }
+          }
+        }
+      }
     }
-  }
-}
-
-.skill-card {
-  background: $bg-secondary;
-  border-radius: 16px;
-  padding: $spacing-xl;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 2px solid transparent;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 16px;
-    padding: 2px;
-    background: linear-gradient(135deg, var(--skill-color), transparent);
-    mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-
-    &::before {
-      opacity: 1;
-    }
-
-    .skill-card__icon {
-      color: var(--skill-color);
-      transform: scale(1.1);
-    }
-  }
-
-  &:active {
-    transform: translateY(-2px) scale(0.98);
-  }
-
-  &__icon {
-    font-size: $font-size-3xl;
-    color: $color-accent;
-    margin-bottom: $spacing-lg;
-    transition: all 0.3s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(
-      135deg,
-      rgba(139, 92, 246, 0.1),
-      rgba(139, 92, 246, 0.05)
-    );
-    border-radius: 50%;
-    margin: 0 auto $spacing-lg;
-  }
-
-  &__content {
-    text-align: center;
-  }
-
-  &__name {
-    font-size: $font-size-xl;
-    font-weight: $font-weight-bold;
-    color: $color-primary;
-    margin-bottom: $spacing-sm;
-    line-height: 1.2;
-  }
-
-  &__description {
-    font-size: $font-size-sm;
-    color: $color-accent;
-    margin-bottom: $spacing-md;
-    line-height: 1.5;
-    font-weight: $font-weight-medium;
-  }
-
-  &__level {
-    display: inline-block;
-    padding: $spacing-xs $spacing-sm;
-    background: var(--skill-color);
-    color: white;
-    font-size: $font-size-xs;
-    font-weight: $font-weight-semibold;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
 }
 

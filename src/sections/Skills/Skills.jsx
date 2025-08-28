@@ -11,7 +11,7 @@ import {
 import "./Skills.scss";
 
 const Skills = () => {
-  const skills = [
+  const foundationSkills = [
     {
       id: 1,
       name: "HTML",
@@ -44,6 +44,9 @@ const Skills = () => {
       color: "#3178C6",
       description: "Type safety and interfaces",
     },
+  ];
+
+  const libraryFrameworkSkills = [
     {
       id: 5,
       name: "React",
@@ -76,6 +79,9 @@ const Skills = () => {
       color: "#06B6D4",
       description: "Utility-first styling",
     },
+  ];
+
+  const toolSkills = [
     {
       id: 9,
       name: "Vite",
@@ -149,35 +155,117 @@ const Skills = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {skills.map((skill) => (
-            <motion.div
-              key={skill.id}
-              className="skill-card"
-              variants={cardVariants}
-              whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.2 },
-              }}
-              whileTap={{
-                scale: 0.95,
-                rotate: [0, -2, 2, 0],
-                transition: { duration: 0.2 },
-              }}
-              onClick={() => handleCardClick(skill.name)}
-              style={{
-                "--skill-color": skill.color,
-              }}
-            >
-              <div className="skill-card__icon">
-                <skill.icon />
-              </div>
-              <div className="skill-card__content">
-                <h3 className="skill-card__name">{skill.name}</h3>
-                <p className="skill-card__description">{skill.description}</p>
-                <span className="skill-card__level">{skill.level}</span>
-              </div>
-            </motion.div>
-          ))}
+          <section>
+            <h2>Foundation</h2>
+            <div>
+              {foundationSkills.map((skill) => (
+                <motion.div
+                  key={skill.id}
+                  className="skill-card"
+                  variants={cardVariants}
+                  whileHover={{
+                    scale: 1.05,
+                    transition: { duration: 0.2 },
+                  }}
+                  whileTap={{
+                    scale: 0.95,
+                    rotate: [0, -2, 2, 0],
+                    transition: { duration: 0.2 },
+                  }}
+                  onClick={() => handleCardClick(skill.name)}
+                  style={{
+                    "--skill-color": skill.color,
+                  }}
+                >
+                  <div className="skill-card__icon">
+                    <skill.icon />
+                  </div>
+                  <div className="skill-card__content">
+                    <h3 className="skill-card__name">{skill.name}</h3>
+                    <p className="skill-card__description">
+                      {skill.description}
+                    </p>
+                    {/* <span className="skill-card__level">{skill.level}</span> */}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2>Libraries & Frameworks</h2>
+            <div>
+              {" "}
+              {libraryFrameworkSkills.map((skill) => (
+                <motion.div
+                  key={skill.id}
+                  className="skill-card"
+                  variants={cardVariants}
+                  whileHover={{
+                    scale: 1.05,
+                    transition: { duration: 0.2 },
+                  }}
+                  whileTap={{
+                    scale: 0.95,
+                    rotate: [0, -2, 2, 0],
+                    transition: { duration: 0.2 },
+                  }}
+                  onClick={() => handleCardClick(skill.name)}
+                  style={{
+                    "--skill-color": skill.color,
+                  }}
+                >
+                  <div className="skill-card__icon">
+                    <skill.icon />
+                  </div>
+                  <div className="skill-card__content">
+                    <h3 className="skill-card__name">{skill.name}</h3>
+                    <p className="skill-card__description">
+                      {skill.description}
+                    </p>
+                    {/* <span className="skill-card__level">{skill.level}</span> */}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2>Tools</h2>
+            <div>
+              {toolSkills.map((skill) => (
+                <motion.div
+                  key={skill.id}
+                  className="skill-card"
+                  variants={cardVariants}
+                  whileHover={{
+                    scale: 1.05,
+                    transition: { duration: 0.2 },
+                  }}
+                  whileTap={{
+                    scale: 0.95,
+                    rotate: [0, -2, 2, 0],
+                    transition: { duration: 0.2 },
+                  }}
+                  onClick={() => handleCardClick(skill.name)}
+                  style={{
+                    "--skill-color": skill.color,
+                  }}
+                >
+                  <div className="skill-card__icon">
+                    <skill.icon />
+                  </div>
+                  <div className="skill-card__content">
+                    <h3 className="skill-card__name">{skill.name}</h3>
+                    <p className="skill-card__description">
+                      {skill.description}
+                    </p>
+                    {/* <span className="skill-card__level">{skill.level}</span> */}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
         </motion.div>
       </div>
     </section>
