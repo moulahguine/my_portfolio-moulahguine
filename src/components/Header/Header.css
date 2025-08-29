@@ -1,3 +1,26 @@
+/* 12px */
+/* 14px */
+/* 16px */
+/* 18px */
+/* 20px */
+/* 24px */
+/* 28px */
+/* 32px */
+/* 40px */
+/* 48px */
+/* 4px */
+/* 8px */
+/* 12px */
+/* 16px */
+/* 24px */
+/* 32px */
+/* 40px */
+/* 4px */
+/* 8px */
+/* 16px */
+/* 32px */
+/* 48px */
+/* 64px */
 .site-header {
   width: 100%;
   position: fixed;
@@ -13,25 +36,28 @@
   justify-content: space-between;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-radius: 2rem;
-  background-color: rgba(255, 255, 255, 0.3411764706);
-  box-shadow: 0 1px 5px rgba(238, 238, 238, 0.7450980392);
-  -webkit-backdrop-filter: blur(20px);
-          backdrop-filter: blur(20px);
+  border-radius: 3rem;
   overflow: hidden;
+  background: rgba(254, 254, 254, 0.54);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(226, 232, 240, 0.3);
+  box-shadow: 0 8px 32px rgba(45, 55, 72, 0.06);
+  border-radius: 3rem;
 }
 .site-header .container .header__logo .userName {
   text-transform: uppercase;
-  color: #404040;
+  color: #1a202c;
   font-size: 1.2rem;
   font-weight: 700;
 }
 .site-header .container .header__logo .userName .userName__m {
   padding: 0 5px;
-  background-color: #404040;
-  color: #ffffff;
+  background: #2d3748;
+  color: #fefefe;
   font-size: inherit;
   border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(45, 55, 72, 0.06);
 }
 .site-header .container .primary-nav .primary-nav__list {
   display: flex;
@@ -47,10 +73,10 @@
 }
 .site-header .container .primary-nav .primary-nav__list .primary-nav__item a {
   position: relative;
-  color: #404040;
+  color: #4a5568;
   font-size: 1rem;
   font-weight: 700;
-  transition: color 0.3s ease;
+  transition: color 300ms ease-in-out;
   padding: 0.5rem 1rem;
   border-radius: 50px;
   overflow: hidden;
@@ -63,13 +89,13 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background-color: #404040;
-  transition: left 0.3s ease;
+  background: #2d3748;
+  transition: left 300ms ease-in-out;
   border-radius: inherit;
   z-index: -1;
 }
 .site-header .container .primary-nav .primary-nav__list .primary-nav__item a:hover, .site-header .container .primary-nav .primary-nav__list .primary-nav__item a.active {
-  color: #fff;
+  color: #fefefe;
 }
 .site-header .container .primary-nav .primary-nav__list .primary-nav__item a:hover::before, .site-header .container .primary-nav .primary-nav__list .primary-nav__item a.active::before {
   left: 0;

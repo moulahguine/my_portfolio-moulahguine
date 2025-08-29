@@ -9,8 +9,7 @@ export default function About() {
     {
       icon: <FaCogs />,
       label: "How I Work ",
-      value:
-        "JavaScript-first • Jest tests • Code reviews • CI/CD & performance budgets",
+      value: "JavaScript-first • Jest tests • Code reviews • performance ",
     },
     {
       icon: <FaClock />,
@@ -20,7 +19,7 @@ export default function About() {
     {
       icon: <FaLaptopCode />,
       label: "Projects",
-      value: "Freelance & client delivery — dashboards, e-commerce platforms",
+      value: "Freelance & client delivery dashboards, e-commerce platforms",
     },
     {
       icon: <FaUsers />,
@@ -109,14 +108,14 @@ export default function About() {
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: 0.4 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
           >
             <div className="facts-grid">
               {quickFacts.map((fact, index) => (
                 <motion.div
                   key={index}
                   className="fact-card"
-                  whileHover={{ scale: 1.09, transition: 0.1 }}
+                  whileHover={{ scale: 1.05, transition: 0.3 }}
                 >
                   <div className="fact-icon">{fact.icon}</div>
                   <div className="fact-content">

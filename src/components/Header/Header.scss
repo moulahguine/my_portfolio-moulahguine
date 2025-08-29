@@ -12,25 +12,24 @@
     @include flex-between;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-radius: 2rem;
-    box-shadow: 0 1px 5px $color-accent-lighter;
-    background-color: #ffffff57;
-    backdrop-filter: blur(20px);
+    border-radius: 3rem;
     overflow: hidden;
+    @include glass-effect-light;
 
     .header__logo {
       .userName {
         text-transform: uppercase;
-        color: $color-primary-light;
+        color: $color-text;
         font-size: 1.2rem;
         font-weight: 700;
 
         .userName__m {
           padding: 0 5px;
-          background-color: $color-primary-light;
-          color: #ffffff;
+          background: $color-primary;
+          color: $color-surface;
           font-size: inherit;
           border-radius: 4px;
+          @include card-shadow;
         }
       }
     }
@@ -38,7 +37,7 @@
     .primary-nav {
       .primary-nav__list {
         @include flex-center;
-        column-gap: $spacing-sm;
+        column-gap: $space-8;
         margin: 0;
         padding: 0;
 
@@ -46,11 +45,11 @@
           display: flex;
           a {
             position: relative;
-            color: $color-primary-light;
-            font-size: $font-size-base;
-            font-weight: $font-weight-bold;
-            transition: color $transition-normal;
-            padding: $spacing-sm $spacing-base;
+            color: $color-text-muted;
+            font-size: $font-size-16;
+            font-weight: $fw-bold;
+            transition: color $transition-base;
+            padding: $space-8 $space-16;
             border-radius: 50px;
             overflow: hidden;
             display: inline-block;
@@ -62,15 +61,15 @@
               left: -100%;
               width: 100%;
               height: 100%;
-              background-color: $color-primary-light;
-              transition: left $transition-normal;
+              background: $color-primary;
+              transition: left $transition-base;
               border-radius: inherit;
               z-index: -1;
             }
 
             &:hover,
             &.active {
-              color: #fff;
+              color: $color-surface;
 
               &::before {
                 left: 0;

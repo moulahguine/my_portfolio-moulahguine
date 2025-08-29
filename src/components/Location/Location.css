@@ -1,3 +1,26 @@
+/* 12px */
+/* 14px */
+/* 16px */
+/* 18px */
+/* 20px */
+/* 24px */
+/* 28px */
+/* 32px */
+/* 40px */
+/* 48px */
+/* 4px */
+/* 8px */
+/* 12px */
+/* 16px */
+/* 24px */
+/* 32px */
+/* 40px */
+/* 4px */
+/* 8px */
+/* 16px */
+/* 32px */
+/* 48px */
+/* 64px */
 .location {
   display: flex;
   align-items: center;
@@ -9,7 +32,7 @@
   width: fit-content;
   margin-bottom: 2.5rem;
   padding: 0.5rem 0.75rem;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   position: relative;
   cursor: none;
   border: 1px solid transparent;
@@ -21,19 +44,20 @@
   left: 50%;
   width: 0;
   height: 1px;
-  background: #505050;
+  background: #2d3748;
   transition: all 0.3s ease-in-out;
   transform: translateX(-50%);
 }
 .location:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(45, 55, 72, 0.12);
 }
 .location:hover .location__icon {
-  color: #505050;
+  color: #2d3748;
   transform: scale(1.1);
 }
 .location:hover p {
-  color: #505050;
+  color: #2d3748;
 }
 .location:hover::after {
   width: 80%;
@@ -43,13 +67,13 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  color: #1a1a1a;
+  color: #1a202c;
   font-size: 0.875rem;
   font-weight: 500;
   margin: 0;
 }
 .location .location__icon {
-  color: #404040;
+  color: #4a5568;
   font-size: 1.125rem;
 }
 .location .custom-cursor {
@@ -61,11 +85,12 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: #1a1a1a;
+  background: #2d3748;
   pointer-events: none;
+  box-shadow: 0 2px 12px rgba(45, 55, 72, 0.06);
 }
 .location .custom-cursor span {
-  color: #ffffff;
+  color: #fefefe;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -76,13 +101,10 @@
 
 .map-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(45, 55, 72, 0.4);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
           backdrop-filter: blur(20px) saturate(180%);
   display: flex;
@@ -92,7 +114,7 @@
   transform: translateZ(0);
 }
 .map-overlay .map-modal {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(254, 254, 254, 0.95);
   border-radius: 2rem;
   padding: 0;
   max-width: 1200px;
@@ -102,18 +124,24 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  background: rgba(254, 254, 254, 0.54);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(226, 232, 240, 0.3);
+  box-shadow: 0 8px 32px rgba(45, 55, 72, 0.06);
+  border-radius: 3rem;
 }
 .map-overlay .map-modal .map-close {
   position: absolute;
   top: 24px;
   right: 24px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(254, 254, 254, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.3);
   border-radius: 50%;
   width: 44px;
   height: 44px;
   font-size: 20px;
-  color: #64748b;
+  color: #4a5568;
   cursor: pointer;
   z-index: 10;
   display: flex;
@@ -121,8 +149,8 @@
   justify-content: center;
 }
 .map-overlay .map-modal .map-close:hover {
-  color: #1e293b;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #1a202c;
+  box-shadow: 0 4px 12px rgba(45, 55, 72, 0.08);
 }
 .map-overlay .map-modal .map-content {
   padding: 48px 40px 40px;
@@ -149,7 +177,7 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(254, 254, 254, 0.3);
   position: relative;
   overflow: hidden;
   background: center/200% no-repeat;
@@ -161,7 +189,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+  background: linear-gradient(135deg, rgba(45, 55, 72, 0.2) 0%, rgba(45, 55, 72, 0.6) 100%);
   z-index: 1;
 }
 .map-overlay .map-modal .map-content .locations .location-card .location-item .location-content {
@@ -174,10 +202,10 @@
   text-align: center;
 }
 .map-overlay .map-modal .map-content .locations .location-card .location-item .location-content span {
-  color: #ffffff;
+  color: #fefefe;
   font-size: 1.2rem;
   font-weight: 600;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 8px rgba(45, 55, 72, 0.6);
 }
 .map-overlay .map-modal .map-content .locations .location-card .location-item .location-content span small {
   font-size: 0.9rem;
@@ -196,14 +224,14 @@
   font-size: 16px;
 }
 .map-overlay .map-modal .map-content .locations .location-card .status-indicator.completed {
-  background: rgba(34, 197, 94, 0.1);
-  color: #16a34a;
-  border: 1px solid rgba(34, 197, 94, 0.2);
+  background: rgba(45, 55, 72, 0.1);
+  color: #38a169;
+  border: 1px solid rgba(45, 55, 72, 0.2);
 }
 .map-overlay .map-modal .map-content .locations .location-card .status-indicator.in-progress {
-  background: rgba(59, 130, 246, 0.1);
-  color: #2563eb;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: rgba(91, 155, 213, 0.1);
+  color: #5b9bd5;
+  border: 1px solid rgba(91, 155, 213, 0.2);
 }
 .map-overlay .map-modal .map-content .locations .location-card .status-indicator.planned {
   background: rgba(168, 85, 247, 0.1);
@@ -213,7 +241,7 @@
 .map-overlay .map-modal .map-content .map-container {
   border-radius: 20px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(254, 254, 254, 0.5);
   min-height: 400px;
 }
 .map-overlay .map-modal .map-content .map-container img {

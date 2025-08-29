@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "mixins" as *;
 
 /* CSS Reset */
 * {
@@ -14,10 +15,11 @@ html {
 }
 
 body {
-  font-family: $font-family-primary;
+  font-family: "Open Sans", sans-serif;
   line-height: $line-height-normal;
-  color: $text-primary;
-  background-color: $bg-primary;
+  color: $color-text;
+  @include soft-gradient;
+  min-height: 100vh;
 }
 
 a {

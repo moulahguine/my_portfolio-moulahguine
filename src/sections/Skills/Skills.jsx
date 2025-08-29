@@ -1,135 +1,34 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaGithub } from "react-icons/fa";
-import {
-  SiSass,
-  SiNextdotjs,
-  SiFramer,
-  SiTailwindcss,
-  SiVite,
-} from "react-icons/si";
+import { skillCategories, skillColors } from "./skillsData";
 import "./Skills.scss";
 
-const Skills = () => {
-  const foundationSkills = [
-    {
-      id: 1,
-      name: "HTML",
-      icon: FaHtml5,
-      level: "Advanced",
-      color: "#E34F26",
-      description: "Semantic markup and accessibility",
-    },
-    {
-      id: 2,
-      name: "CSS",
-      icon: FaCss3Alt,
-      level: "Advanced",
-      color: "#1572B6",
-      description: "Modern layouts and animations",
-    },
-    {
-      id: 3,
-      name: "JavaScript",
-      icon: FaJs,
-      level: "Advanced",
-      color: "#F7DF1E",
-      description: "ES6+ and modern patterns",
-    },
-    {
-      id: 4,
-      name: "Sass",
-      icon: SiSass,
-      level: "Proficient",
-      color: "#3178C6",
-      description: "Type safety and interfaces",
-    },
-  ];
-
-  const libraryFrameworkSkills = [
-    {
-      id: 5,
-      name: "React",
-      icon: FaReact,
-      level: "Advanced",
-      color: "#61DAFB",
-      description: "Hooks, context, and performance",
-    },
-    {
-      id: 6,
-      name: "Next.js",
-      icon: SiNextdotjs,
-      level: "Proficient",
-      color: "#000000",
-      description: "SSR, routing, and optimization",
-    },
-    {
-      id: 7,
-      name: "Framer Motion",
-      icon: SiFramer,
-      level: "Proficient",
-      color: "#0055FF",
-      description: "Smooth animations and transitions",
-    },
-    {
-      id: 8,
-      name: "Tailwind CSS",
-      icon: SiTailwindcss,
-      level: "Proficient",
-      color: "#06B6D4",
-      description: "Utility-first styling",
-    },
-  ];
-
-  const toolSkills = [
-    {
-      id: 9,
-      name: "Vite",
-      icon: SiVite,
-      level: "Proficient",
-      color: "#646CFF",
-      description: "Fast build tooling",
-    },
-    {
-      id: 10,
-      name: "Git/GitHub",
-      icon: FaGithub,
-      level: "Advanced",
-      color: "#181717",
-      description: "Version control and collaboration",
-    },
-  ];
-
+function Skills() {
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.1 },
     },
   };
 
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-      scale: 0.9,
-    },
+  const categoryVariants = {
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.4 },
     },
   };
 
-  const handleCardClick = (skillName) => {
-    console.log(`Clicked on ${skillName}`);
+  const skillItemVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.3 },
+    },
+    hover: { scale: 1.05, transition: { duration: 0.2 } },
   };
 
   return (
@@ -137,139 +36,61 @@ const Skills = () => {
       <div className="container">
         <motion.div
           className="skills__header"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
         >
-          <h2 className="skills__title">Skills & Technologies</h2>
-          <p className="skills__subtitle">
-            Frontend technologies I work with daily
-          </p>
+          <h2 className="skills__title">Skills</h2>
         </motion.div>
 
         <motion.div
-          className="skills__grid"
+          className="skills__content"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
         >
-          <section>
-            <h2>Foundation</h2>
-            <div>
-              {foundationSkills.map((skill) => (
-                <motion.div
-                  key={skill.id}
-                  className="skill-card"
-                  variants={cardVariants}
-                  whileHover={{
-                    scale: 1.05,
-                    transition: { duration: 0.2 },
-                  }}
-                  whileTap={{
-                    scale: 0.95,
-                    rotate: [0, -2, 2, 0],
-                    transition: { duration: 0.2 },
-                  }}
-                  onClick={() => handleCardClick(skill.name)}
-                  style={{
-                    "--skill-color": skill.color,
-                  }}
-                >
-                  <div className="skill-card__icon">
-                    <skill.icon />
-                  </div>
-                  <div className="skill-card__content">
-                    <h3 className="skill-card__name">{skill.name}</h3>
-                    <p className="skill-card__description">
-                      {skill.description}
-                    </p>
-                    {/* <span className="skill-card__level">{skill.level}</span> */}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </section>
+          {/* Render each category with its skills */}
+          {skillCategories.map((category) => (
+            <motion.div
+              key={category.id}
+              className="category-section"
+              variants={categoryVariants}
+            >
+              {/* Category Title */}
+              <div className="category-title">
+                {category.name.toUpperCase()}
+              </div>
 
-          <section>
-            <h2>Libraries & Frameworks</h2>
-            <div>
-              {" "}
-              {libraryFrameworkSkills.map((skill) => (
-                <motion.div
-                  key={skill.id}
-                  className="skill-card"
-                  variants={cardVariants}
-                  whileHover={{
-                    scale: 1.05,
-                    transition: { duration: 0.2 },
-                  }}
-                  whileTap={{
-                    scale: 0.95,
-                    rotate: [0, -2, 2, 0],
-                    transition: { duration: 0.2 },
-                  }}
-                  onClick={() => handleCardClick(skill.name)}
-                  style={{
-                    "--skill-color": skill.color,
-                  }}
-                >
-                  <div className="skill-card__icon">
-                    <skill.icon />
-                  </div>
-                  <div className="skill-card__content">
-                    <h3 className="skill-card__name">{skill.name}</h3>
-                    <p className="skill-card__description">
-                      {skill.description}
-                    </p>
-                    {/* <span className="skill-card__level">{skill.level}</span> */}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </section>
+              {/* Skills Grid for this category */}
+              <div className="skills-grid">
+                {category.skills.map((skill) => {
+                  const IconComponent = skill.icon;
+                  const skillColor = skillColors[skill.name] || "#6C757D";
 
-          <section>
-            <h2>Tools</h2>
-            <div>
-              {toolSkills.map((skill) => (
-                <motion.div
-                  key={skill.id}
-                  className="skill-card"
-                  variants={cardVariants}
-                  whileHover={{
-                    scale: 1.05,
-                    transition: { duration: 0.2 },
-                  }}
-                  whileTap={{
-                    scale: 0.95,
-                    rotate: [0, -2, 2, 0],
-                    transition: { duration: 0.2 },
-                  }}
-                  onClick={() => handleCardClick(skill.name)}
-                  style={{
-                    "--skill-color": skill.color,
-                  }}
-                >
-                  <div className="skill-card__icon">
-                    <skill.icon />
-                  </div>
-                  <div className="skill-card__content">
-                    <h3 className="skill-card__name">{skill.name}</h3>
-                    <p className="skill-card__description">
-                      {skill.description}
-                    </p>
-                    {/* <span className="skill-card__level">{skill.level}</span> */}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </section>
+                  return (
+                    <motion.div
+                      key={skill.id}
+                      className={`skill-item`}
+                      variants={skillItemVariants}
+                      style={{ "--skill-color": skillColor }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                    >
+                      <div className="skill-icon">
+                        <IconComponent />
+                      </div>
+                      <span className="skill-name">{skill.name}</span>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
   );
-};
+}
 
 export default Skills;

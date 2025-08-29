@@ -2,51 +2,47 @@
 @use "../../assets/styles/mixins" as *;
 
 .about {
-  background-color: $bg-primary;
-  padding: calc($spacing-4xl + 1rem) 0 calc($spacing-4xl + 3rem);
+  @include surface-gradient;
+  padding: calc($space-40 + 2rem) 0 calc($space-40 + 3rem);
 
   .container {
     @include container;
 
     // Header Section
     .about__header {
-      text-align: center;
-      margin-bottom: $spacing-4xl;
-
-      .section-title {
-        @include section-header-style;
-      }
+      @include section-title;
+      margin-bottom: $space-40 + 2rem;
     }
 
     // Main Content
     .about__main-content {
       display: grid;
       grid-template-columns: 1fr 1.5fr;
-      gap: $spacing-4xl;
+      gap: $space-40;
       align-items: start;
 
       // Left Column - Profile Image
       .about__image {
         grid-column: span 1;
         width: 500px;
-        height: 500px;
+        aspect-ratio: 1 / 1;
         border-radius: 23% 77% 20% 80% / 90% 19% 81% 10%;
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
-        box-shadow: -55px 50px 0px $color-accent-lighter;
+        box-shadow: -55px 50px 0px rgba(45, 55, 72, 0.15);
 
         img {
           object-fit: cover;
           position: absolute;
           width: 100%;
-          height: 100%;
+          aspect-ratio: 1 / 1;
         }
 
-        @include sweep-hover($color-accent-lighter);
+        @include sweep-hover($color-bg);
 
         &:hover {
-          box-shadow: -25px 25px 0px $color-accent-lighter;
+          box-shadow: -25px 25px 0px rgba(45, 55, 72, 0.2);
           scale: 1.05;
         }
       }
@@ -55,15 +51,15 @@
       .about__info {
         grid-column: span 1;
         @include flex-column;
-        gap: $spacing-2xl;
+        gap: $space-40;
 
         // Intro Paragraph
         .about__intro {
           max-width: 42rem;
 
           p {
-            font-size: $font-size-lg;
-            color: $color-primary-lighter;
+            font-size: $font-size-18;
+            color: $color-text-muted;
             line-height: 1.7;
             margin: 0;
           }
@@ -71,46 +67,50 @@
 
         .about__btn {
           display: flex;
-          gap: $spacing-base;
+          gap: $space-16;
 
           .show__projects {
             background-color: transparent;
-            color: $color-accent;
+            color: $color-primary;
             border-radius: 0;
             padding: 0;
             box-shadow: inset 0 -1px 0 transparent;
             transition: box-shadow 0.3s ease-in-out;
             &:hover {
-              box-shadow: inset 0 -1px 0 $color-accent;
+              box-shadow: inset 0 -1px 0 $color-primary;
             }
           }
           .hire__me {
-            background-color: $color-accent;
+            background-color: $color-primary;
+            @include primary-shadow;
+            &:hover {
+              background-color: $color-primary-hover;
+              @include primary-shadow-hover;
+            }
           }
         }
       }
       // Quick Facts Grid
       .about__facts {
-        margin: 5rem 0 0;
+        margin: 3rem 0 0;
         grid-column: span 2;
 
         .facts-grid {
           @include flex-center;
           flex-wrap: wrap;
-          gap: $spacing-xl;
+          gap: $space-32;
 
           .fact-card {
-            flex: 1 0 250px;
             @include flex-column;
             align-items: center;
-            gap: $spacing-lg;
-            background-color: $bg-primary;
-            padding: $spacing-xl;
-            height: 250px;
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            gap: $space-16;
+            @include interactive-card;
+            padding: calc($space-40 + 1rem) $space-16;
+            width: 260px;
+            aspect-ratio: 1 / 1;
             border-radius: 16px;
-            transition: all 0.3s ease;
             position: relative;
+            overflow: hidden;
 
             // Card corner design
             &::before,
@@ -118,14 +118,10 @@
               content: "";
               position: absolute;
               width: 40px;
-              height: 40px;
+              aspect-ratio: 1 / 1;
               border-radius: 16px 0 16px 0;
               z-index: 1;
-              background: linear-gradient(
-                135deg,
-                $color-accent,
-                lighten($color-accent, 20%)
-              );
+              @include primary-gradient;
             }
             &::before {
               top: 0;
@@ -138,38 +134,30 @@
             }
 
             .fact-icon {
-              flex-shrink: 0;
-              @include flex-center;
-              font-size: $font-size-2xl;
-              color: $color-accent;
-              width: 50px;
-              height: 50px;
-              background: linear-gradient(
-                135deg,
-                rgba(139, 92, 246, 0.1),
-                rgba(139, 92, 246, 0.05)
-              );
-              border-radius: 50%;
-              transition: all 0.3s ease;
-              box-shadow: 0 4px 15px $shadow-primary;
+              position: absolute;
+              bottom: -85px;
+              left: 0;
+              font-size: 10rem;
+              opacity: 0.1;
+              color: $color-primary-hover;
             }
 
             .fact-content {
-              display: flex;
-              flex-direction: column;
+              @include flex-column;
               text-align: center;
+              gap: $space-12;
               flex: 1;
 
               .fact-label {
-                font-size: $font-size-xl;
-                color: $color-primary;
-                font-weight: $font-weight-bold;
+                font-size: $font-size-24;
+                color: $color-text;
+                font-weight: $fw-bold;
               }
 
               .fact-value {
-                font-size: $font-size-sm;
-                color: $color-accent;
-                font-weight: $font-weight-medium;
+                font-size: $font-size-16;
+                color: $color-primary-500;
+                text-shadow: 0 0 1px #000;
               }
             }
           }

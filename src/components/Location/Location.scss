@@ -7,12 +7,13 @@
   @include fade-in-up(0.9s);
   transition: all 0.3s ease-in-out;
   width: fit-content;
-  margin-bottom: $spacing-2xl;
-  padding: $spacing-sm $spacing-md;
+  margin-bottom: $space-40;
+  padding: $space-8 $space-12;
   border-radius: $radius-lg;
   position: relative;
   cursor: none;
   border: 1px solid transparent;
+  //@include glass-effect-surface;
 
   // underline effect
   &::after {
@@ -22,21 +23,22 @@
     left: 50%;
     width: 0;
     height: 1px;
-    background: $color-accent;
+    background: $color-primary;
     transition: all 0.3s ease-in-out;
     transform: translateX(-50%);
   }
 
   &:hover {
     transform: translateY(-2px);
+    @include card-shadow-hover;
 
     .location__icon {
-      color: $color-accent;
+      color: $color-primary;
       transform: scale(1.1);
     }
 
     p {
-      color: $color-accent;
+      color: $color-primary;
     }
 
     &::after {
@@ -46,16 +48,16 @@
 
   p {
     @include flex-center;
-    gap: $spacing-sm;
-    color: $text-primary;
-    font-size: $font-size-sm;
-    font-weight: $font-weight-medium;
+    gap: $space-8;
+    color: $color-text;
+    font-size: $font-size-14;
+    font-weight: $fw-medium;
     margin: 0;
   }
 
   .location__icon {
-    color: $color-primary-light;
-    font-size: $font-size-lg;
+    color: $color-text-muted;
+    font-size: $font-size-18;
   }
 
   // Custom cursor styles
@@ -66,13 +68,14 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: $color-primary;
+    background: $color-primary;
     pointer-events: none;
+    @include card-shadow;
 
     span {
-      color: $text-white;
-      font-size: $font-size-xs;
-      font-weight: $font-weight-semibold;
+      color: $color-surface;
+      font-size: $font-size-12;
+      font-weight: $fw-semibold;
       text-transform: uppercase;
       user-select: none;
     }
@@ -81,20 +84,17 @@
 
 .map-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(45, 55, 72, 0.4);
   backdrop-filter: blur(20px) saturate(180%);
   @include flex-center;
   z-index: 9999;
   transform: translateZ(0);
 
   .map-modal {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(254, 254, 254, 0.95);
     border-radius: 2rem;
     padding: 0;
     max-width: 1200px;
@@ -103,25 +103,26 @@
     overflow: hidden;
     position: relative;
     @include flex-column;
+    @include glass-effect-light;
 
     .map-close {
       position: absolute;
       top: 24px;
       right: 24px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(254, 254, 254, 0.9);
+      border: 1px solid rgba(226, 232, 240, 0.3);
       border-radius: 50%;
       width: 44px;
       height: 44px;
       font-size: 20px;
-      color: #64748b;
+      color: $color-text-muted;
       cursor: pointer;
       z-index: 10;
       @include flex-center;
 
       &:hover {
-        color: #1e293b;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        color: $color-text;
+        box-shadow: 0 4px 12px $color-shadow;
       }
     }
 
@@ -145,7 +146,7 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(254, 254, 254, 0.3);
             position: relative;
             overflow: hidden;
             background: center / 200% no-repeat;
@@ -159,8 +160,8 @@
               bottom: 0;
               background: linear-gradient(
                 135deg,
-                rgba(0, 0, 0, 0.2) 0%,
-                rgba(0, 0, 0, 0.6) 100%
+                rgba(45, 55, 72, 0.2) 0%,
+                rgba(45, 55, 72, 0.6) 100%
               );
               z-index: 1;
             }
@@ -173,10 +174,10 @@
               text-align: center;
 
               span {
-                color: #ffffff;
+                color: $color-surface;
                 font-size: 1.2rem;
                 font-weight: 600;
-                text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+                text-shadow: 0 2px 8px rgba(45, 55, 72, 0.6);
 
                 small {
                   font-size: 0.9rem;
@@ -200,15 +201,15 @@
             }
 
             &.completed {
-              background: rgba(34, 197, 94, 0.1);
-              color: #16a34a;
-              border: 1px solid rgba(34, 197, 94, 0.2);
+              background: rgba(45, 55, 72, 0.1);
+              color: $color-success;
+              border: 1px solid rgba(45, 55, 72, 0.2);
             }
 
             &.in-progress {
-              background: rgba(59, 130, 246, 0.1);
-              color: #2563eb;
-              border: 1px solid rgba(59, 130, 246, 0.2);
+              background: rgba(91, 155, 213, 0.1);
+              color: #5b9bd5;
+              border: 1px solid rgba(91, 155, 213, 0.2);
             }
 
             &.planned {
@@ -223,7 +224,7 @@
       .map-container {
         border-radius: 20px;
         overflow: hidden;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(254, 254, 254, 0.5);
         min-height: 400px;
 
         img {

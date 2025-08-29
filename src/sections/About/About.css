@@ -1,6 +1,29 @@
+/* 12px */
+/* 14px */
+/* 16px */
+/* 18px */
+/* 20px */
+/* 24px */
+/* 28px */
+/* 32px */
+/* 40px */
+/* 48px */
+/* 4px */
+/* 8px */
+/* 12px */
+/* 16px */
+/* 24px */
+/* 32px */
+/* 40px */
+/* 4px */
+/* 8px */
+/* 16px */
+/* 32px */
+/* 48px */
+/* 64px */
 .about {
-  background-color: #ffffff;
-  padding: 5rem 0 7rem;
+  background: linear-gradient(135deg, #fefefe, rgba(45, 55, 72, 0.03));
+  padding: 4.5rem 0 5.5rem;
 }
 .about .container {
   max-width: 1200px;
@@ -8,36 +31,35 @@
   padding: 0 2rem;
 }
 .about .container .about__header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-.about .container .about__header .section-title {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 700;
-  color: #505050;
+  color: #2d3748;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  margin-bottom: 4.5rem;
 }
 .about .container .about__main-content {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  gap: 4rem;
+  gap: 2.5rem;
   align-items: start;
 }
 .about .container .about__main-content .about__image {
   grid-column: span 1;
   width: 500px;
-  height: 500px;
+  aspect-ratio: 1/1;
   border-radius: 23% 77% 20% 80%/90% 19% 81% 10%;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: -55px 50px 0px rgba(238, 238, 238, 0.7450980392);
+  box-shadow: -55px 50px 0px rgba(45, 55, 72, 0.15);
 }
 .about .container .about__main-content .about__image img {
   -o-object-fit: cover;
      object-fit: cover;
   position: absolute;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 1/1;
 }
 .about .container .about__main-content .about__image::before {
   content: "";
@@ -46,7 +68,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(238, 238, 238, 0.7450980392), transparent);
+  background: linear-gradient(90deg, transparent, #f8fafc, transparent);
   transition: left 0.3s ease;
   z-index: 50;
 }
@@ -54,7 +76,7 @@
   left: 100%;
 }
 .about .container .about__main-content .about__image:hover {
-  box-shadow: -25px 25px 0px rgba(238, 238, 238, 0.7450980392);
+  box-shadow: -25px 25px 0px rgba(45, 55, 72, 0.2);
   scale: 1.05;
 }
 .about .container .about__main-content .about__info {
@@ -68,7 +90,7 @@
 }
 .about .container .about__main-content .about__info .about__intro p {
   font-size: 1.125rem;
-  color: #666666;
+  color: #4a5568;
   line-height: 1.7;
   margin: 0;
 }
@@ -78,20 +100,25 @@
 }
 .about .container .about__main-content .about__info .about__btn .show__projects {
   background-color: transparent;
-  color: #505050;
+  color: #2d3748;
   border-radius: 0;
   padding: 0;
   box-shadow: inset 0 -1px 0 transparent;
   transition: box-shadow 0.3s ease-in-out;
 }
 .about .container .about__main-content .about__info .about__btn .show__projects:hover {
-  box-shadow: inset 0 -1px 0 #505050;
+  box-shadow: inset 0 -1px 0 #2d3748;
 }
 .about .container .about__main-content .about__info .about__btn .hire__me {
-  background-color: #505050;
+  background-color: #2d3748;
+  box-shadow: 0 4px 15px rgba(45, 55, 72, 0.08);
+}
+.about .container .about__main-content .about__info .about__btn .hire__me:hover {
+  background-color: #1a202c;
+  box-shadow: 0 8px 25px rgba(45, 55, 72, 0.12);
 }
 .about .container .about__main-content .about__facts {
-  margin: 5rem 0 0;
+  margin: 3rem 0 0;
   grid-column: span 2;
 }
 .about .container .about__main-content .about__facts .facts-grid {
@@ -102,27 +129,37 @@
   gap: 2rem;
 }
 .about .container .about__main-content .about__facts .facts-grid .fact-card {
-  flex: 1 0 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  background-color: #ffffff;
-  padding: 2rem;
-  height: 250px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  gap: 1rem;
+  background: rgba(254, 254, 254, 0.9);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(226, 232, 240, 0.4);
+  box-shadow: 0 4px 20px rgba(45, 55, 72, 0.04);
+  border-radius: 0.5rem;
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+  padding: 3.5rem 1rem;
+  width: 260px;
+  aspect-ratio: 1/1;
   border-radius: 16px;
-  transition: all 0.3s ease;
   position: relative;
+  overflow: hidden;
+}
+.about .container .about__main-content .about__facts .facts-grid .fact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(45, 55, 72, 0.12);
 }
 .about .container .about__main-content .about__facts .facts-grid .fact-card::before, .about .container .about__main-content .about__facts .facts-grid .fact-card::after {
   content: "";
   position: absolute;
   width: 40px;
-  height: 40px;
+  aspect-ratio: 1/1;
   border-radius: 16px 0 16px 0;
   z-index: 1;
-  background: linear-gradient(135deg, #505050, #838383);
+  background: linear-gradient(135deg, #2d3748, #4a5568);
 }
 .about .container .about__main-content .about__facts .facts-grid .fact-card::before {
   top: 0;
@@ -133,32 +170,27 @@
   right: 0;
 }
 .about .container .about__main-content .about__facts .facts-grid .fact-card .fact-icon {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  color: #505050;
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(26, 26, 26, 0.1);
+  position: absolute;
+  bottom: -85px;
+  left: 0;
+  font-size: 10rem;
+  opacity: 0.1;
+  color: #1a202c;
 }
 .about .container .about__main-content .about__facts .facts-grid .fact-card .fact-content {
   display: flex;
   flex-direction: column;
   text-align: center;
+  gap: 0.75rem;
   flex: 1;
 }
 .about .container .about__main-content .about__facts .facts-grid .fact-card .fact-content .fact-label {
-  font-size: 1.25rem;
-  color: #1a1a1a;
+  font-size: 1.5rem;
+  color: #1a202c;
   font-weight: 700;
 }
 .about .container .about__main-content .about__facts .facts-grid .fact-card .fact-content .fact-value {
-  font-size: 0.875rem;
-  color: #505050;
-  font-weight: 500;
+  font-size: 1rem;
+  color: #4a5568;
+  text-shadow: 0 0 1px #000;
 }/*# sourceMappingURL=About.css.map */

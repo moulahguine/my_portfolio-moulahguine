@@ -1,3 +1,26 @@
+/* 12px */
+/* 14px */
+/* 16px */
+/* 18px */
+/* 20px */
+/* 24px */
+/* 28px */
+/* 32px */
+/* 40px */
+/* 48px */
+/* 4px */
+/* 8px */
+/* 12px */
+/* 16px */
+/* 24px */
+/* 32px */
+/* 40px */
+/* 4px */
+/* 8px */
+/* 16px */
+/* 32px */
+/* 48px */
+/* 64px */
 .hero {
   position: relative;
   display: grid;
@@ -5,7 +28,7 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-color: #ffffff;
+  background: linear-gradient(135deg, #f8fafc, rgba(45, 55, 72, 0.03));
 }
 .hero .container {
   max-width: 1200px;
@@ -18,46 +41,46 @@
   z-index: 10;
 }
 .hero .container .hero__content .hero__title {
-  font-size: clamp(1.875rem, 5vw, 3rem);
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.25;
   margin-bottom: 1rem;
-  color: #1a1a1a;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #1a202c;
+  text-shadow: 0 2px 4px rgba(45, 55, 72, 0.08);
 }
 .hero .container .hero__content .hero__title .hiEmoji {
   all: unset;
   display: inline-block;
 }
 .hero .container .hero__content .hero__title span {
-  background: linear-gradient(135deg, #1a1a1a, #404040);
+  background: linear-gradient(135deg, #2d3748, #4a5568);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 .hero .container .hero__content .hero__subtitle {
-  font-size: clamp(1.25rem, 3vw, 1.875rem);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.25;
   margin-bottom: 1.5rem;
-  color: #404040;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  color: #4a5568;
+  text-shadow: 0 1px 2px rgba(45, 55, 72, 0.04);
 }
 .hero .container .hero__content .hero__description {
   font-size: clamp(1rem, 1.9vw, 1.125rem);
-  line-height: 1.7;
+  line-height: 1.75;
   margin-bottom: 2rem;
-  color: #666666;
+  color: #718096;
   max-width: 500px;
 }
 .hero .container .hero__media {
   display: grid;
   place-items: center;
   width: 500px;
-  height: 500px;
+  aspect-ratio: 1/1;
   border-radius: 55% 44% 65% 37%/52% 28% 73% 49%;
   overflow: hidden;
-  border: 3px solid rgba(255, 255, 255, 0.2);
+  border: 3px solid #2d3748;
   transition: all 0.3s ease;
   position: relative;
 }
@@ -68,7 +91,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, #fff, transparent);
+  background: linear-gradient(90deg, transparent, #fefefe, transparent);
   transition: left 0.3s ease;
   z-index: 50;
 }
@@ -81,7 +104,7 @@
 }
 .hero .container .hero__media:hover {
   border-radius: 73% 27% 78% 22%/32% 65% 35% 68%;
-  box-shadow: 0 0 15px 3px #505050;
+  box-shadow: 0 0 20px 5px rgba(45, 55, 72, 0.15);
   scale: 1.05;
 }
 .hero .container .hero__social {
@@ -96,13 +119,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(254, 254, 254, 0.54);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(226, 232, 240, 0.3);
+  box-shadow: 0 8px 32px rgba(45, 55, 72, 0.06);
+  border-radius: 3rem;
+  box-shadow: 0 2px 12px rgba(45, 55, 72, 0.06);
   width: 50px;
-  height: 50px;
+  aspect-ratio: 1/1;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -114,7 +140,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, #4a5568, transparent);
   transition: left 0.3s ease;
   z-index: 50;
 }
@@ -122,11 +148,11 @@
   left: 100%;
 }
 .hero .container .hero__social .social-link svg {
-  color: #1a1a1a;
+  color: #1a202c;
   font-size: 1.5rem;
 }
 .hero .container .hero__social .social-link.github-link:hover svg {
-  color: #333;
+  color: #1a202c;
 }
 .hero .container .hero__social .social-link.linkedin-link:hover svg {
   color: #0077b5;

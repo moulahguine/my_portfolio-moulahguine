@@ -44,13 +44,6 @@ export default function Hero() {
       className="hero"
       aria-label="Hero"
     >
-      <Aurora
-        colorStops={["#ffffff", "#fff", "#fff"]}
-        blend={0.8}
-        amplitude={0.2}
-        speed={3}
-      />
-
       <motion.div
         className="container"
         initial={{ opacity: 0 }}

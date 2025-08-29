@@ -3,17 +3,30 @@
 
 .btn {
   @include flex-center;
-  @include sweep-hover(#fff);
+  @include sweep-hover($color-surface);
   cursor: pointer;
-  background-color: $color-primary;
+  background: $color-primary;
   justify-content: flex-start;
-  color: $bg-primary;
-  gap: $spacing-base;
+  color: $color-surface;
+  gap: $space-16;
   width: fit-content;
   position: relative;
   overflow: hidden;
-  padding: $spacing-base $spacing-lg;
+  padding: $space-16 $space-24;
   border-radius: 2rem;
-  font-size: $font-size-base;
-  font-weight: $font-weight-bold;
+  font-size: $font-size-16;
+  font-weight: $fw-bold;
+  @include primary-shadow;
+  transition: all $transition-base;
+
+  &:hover {
+    background: $color-primary-hover;
+    @include primary-shadow-hover;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    background: $color-primary-hover;
+    transform: translateY(0);
+  }
 }

@@ -1,126 +1,92 @@
-// Colors
-$color-primary: #1a1a1a; // Darker primary for better contrast
-$color-primary-light: #404040; // Lighter shade of primary
-$color-primary-lighter: #666666; // Even lighter shade
-$color-accent: #505050; // Gray accent that harmonizes with primary
-$color-accent-light: #737373; // Light gray accent
-$color-accent-lighter: #eeeeeebe; // Lighter gray accent
-$color-accent-dark: #2a2a2a; // Darker gray accent
+// ----------------------- TYPOGRAPHY -----------------------
+$base-font-size: 16px; // project base
+$font-size-12: 0.75rem; /* 12px */
+$font-size-14: 0.875rem; /* 14px */
+$font-size-16: 1rem; /* 16px */
+$font-size-18: 1.125rem; /* 18px */
+$font-size-20: 1.25rem; /* 20px */
+$font-size-24: 1.5rem; /* 24px */
+$font-size-28: 1.75rem; /* 28px */
+$font-size-32: 2rem; /* 32px */
+$font-size-40: 2.5rem; /* 40px */
+$font-size-48: 3rem; /* 48px */
 
-// Background Colors
-$bg-primary: #ffffff; // Pure white background
-$bg-secondary: #f8fafc; // Light gray background
-$bg-tertiary: #f1f5f9; // Slightly darker gray
-$bg-overlay: rgba(26, 26, 26, 0.1); // Semi-transparent overlay
-$bg-overlay-hover: rgba(26, 26, 26, 0.15); // Hover overlay
-$bg-header: rgba(255, 255, 255, 0.9); // Header background with transparency
-$bg-header-hover: rgba(26, 26, 26, 0.95); // Header hover background
-
-// Text Colors
-$text-primary: $color-primary; // Primary text color
-$text-secondary: $color-primary-light; // Secondary text
-$text-muted: $color-primary-lighter; // Muted text
-$text-white: #ffffff; // White text
-$text-inverse: #ffffff; // Text on dark backgrounds
-
-// Border Colors
-$border-primary: rgba(26, 26, 26, 0.2); // Primary border
-$border-light: rgba(255, 255, 255, 0.2); // Light border
-$border-accent: rgba(80, 80, 80, 0.3); // Accent border
-
-// Shadow Colors
-$shadow-primary: rgba(26, 26, 26, 0.1); // Primary shadow
-$shadow-hover: rgba(26, 26, 26, 0.2); // Hover shadow
-$shadow-light: rgba(26, 26, 26, 0.05); // Light shadow
-$shadow-accent: rgba(80, 80, 80, 0.2); // Accent shadow
-
-// Typography
-$font-family-primary: "Open Sans", sans-serif;
-$font-family-secondary: "Roboto", sans-serif;
-
-// Font Sizes
-$font-size-xs: 0.75rem; // 12px
-$font-size-sm: 0.875rem; // 14px
-$font-size-base: 1rem; // 16px
-$font-size-lg: 1.125rem; // 18px
-$font-size-xl: 1.25rem; // 20px
-$font-size-2xl: 1.5rem; // 24px
-$font-size-3xl: 1.875rem; // 30px
-$font-size-4xl: 2.25rem; // 36px
-$font-size-5xl: 3rem; // 48px
-$font-size-6xl: 3.75rem; // 60px
-$font-size-7xl: 4rem; // 60px
-
-// Font Weights
-$font-weight-light: 300;
-$font-weight-normal: 400;
-$font-weight-medium: 500;
-$font-weight-semibold: 600;
-$font-weight-bold: 700;
-
-// Line Heights
-$line-height-tight: 1.1;
+// Line height
+$line-height-tight: 1.25;
 $line-height-normal: 1.5;
-$line-height-relaxed: 1.7;
+$line-height-relaxed: 1.75;
 
-// Spacing
-$spacing-xs: 0.25rem; // 4px
-$spacing-sm: 0.5rem; // 8px
-$spacing-md: 0.75rem; // 12px
-$spacing-base: 1rem; // 16px
-$spacing-lg: 1.5rem; // 24px
-$spacing-xl: 2rem; // 32px
-$spacing-2xl: 2.5rem; // 40px
-$spacing-3xl: 3rem; // 48px
-$spacing-4xl: 4rem; // 64px
+// Font weights
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
 
-// Border Radius
-$radius-sm: 0.25rem; // 4px
-$radius-md: 0.5rem; // 8px
-$radius-lg: 0.75rem; // 12px
-$radius-xl: 1rem; // 16px
-$radius-2xl: 1.5rem; // 24px
-$radius-full: 50px;
+// ----------------------- COLOR PALETTE (SOFT GRAYSCALE - MODERN & ELEGANT) -----------------------
 
-// Transitions
-$transition-fast: 0.2s ease;
-$transition-normal: 0.3s ease;
-$transition-slow: 0.5s ease;
-$transition-bounce: cubic-bezier(0.4, 0, 0.2, 1);
+// Primary Identity (Soft Grays)
+$color-primary: #2d3748; // Rich dark gray - main brand color (not pure black)
+$color-primary-500: #4a5568; // Medium gray for accents
+$color-primary-hover: #1a202c; // Darker gray for hover states (not pure black)
 
-// Breakpoints
-$breakpoint-sm: 480px;
+// Background Scale (Soft & Paper-like)
+$color-bg: #f8fafc; // Main background - very light gray (paper color)
+$color-surface: #fefefe; // Cards/surfaces - soft off-white (not pure white)
+$color-surface-secondary: #f1f5f9; // Secondary surfaces - light gray
+$color-surface-tertiary: #e2e8f0; // Tertiary surfaces - slightly darker gray
+
+// Text Scale (Rich & Readable)
+$color-text: #1a202c; // Primary text - rich dark gray (almost black, but soft)
+$color-text-muted: #4a5568; // Secondary text - medium gray
+$color-text-light: #718096; // Light text - lighter gray for captions
+$color-text-lighter: #a0aec0; // Very light text - hints and placeholders
+
+// Border Scale (Soft & Subtle)
+$color-border: #e2e8f0; // Subtle borders - soft gray (not harsh black)
+$color-border-light: #f1f5f9; // Light borders - very soft gray
+$color-border-hover: #cbd5e0; // Hover borders - slightly more visible
+
+// Semantic Colors (Soft Grayscale Variations)
+$color-success: #38a169; // Success - soft green-gray
+$color-warning: #d69e2e; // Warning - soft amber-gray
+$color-danger: #e53e3e; // Danger - soft red-gray
+
+// Shadows & Effects (Soft & Modern)
+$color-shadow: rgba(45, 55, 72, 0.08); // Soft gray shadow
+$color-shadow-hover: rgba(45, 55, 72, 0.12); // Hover shadow
+$color-shadow-light: rgba(45, 55, 72, 0.04); // Light shadow
+$color-shadow-card: rgba(45, 55, 72, 0.06); // Card shadow
+
+// ----------------------- SPACING (scale) -----------------------
+$space-4: 0.25rem; /* 4px */
+$space-8: 0.5rem; /* 8px */
+$space-12: 0.75rem; /* 12px */
+$space-16: 1rem; /* 16px */
+$space-24: 1.5rem; /* 24px */
+$space-32: 2rem; /* 32px */
+$space-40: 2.5rem; /* 40px */
+
+// ----------------------- RADIUS -----------------------
+$radius-sm: 0.25rem; /* 4px */
+$radius-md: 0.5rem; /* 8px */
+$radius-lg: 1rem; /* 16px */
+$radius-xl: 2rem; /* 32px */
+$radius-1xl: 3rem; /* 48px */
+$radius-2xl: 4rem; /* 64px */
+
+// ----------------------- TRANSITIONS -----------------------
+$transition-fast: 150ms ease-in-out;
+$transition-base: 300ms ease-in-out;
+$transition-slow: 500ms ease-in-out;
+
+// ----------------------- BREAKPOINTS -----------------------
+$breakpoint-sm: 640px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;
-$breakpoint-xl: 1200px;
+$breakpoint-xl: 1280px;
 $breakpoint-2xl: 1536px;
 
-// Z-index
+// ----------------------- Z-INDEX -----------------------
 $z-dropdown: 1000;
-$z-sticky: 1020;
-$z-fixed: 1030;
-$z-modal-backdrop: 1040;
-$z-modal: 1050;
-$z-popover: 1060;
-$z-tooltip: 1070;
-
-// Container
-$container-max-width: 1200px;
-$container-padding: $spacing-xl;
-
-// Hero specific
-$hero-height: 100vh;
-$hero-image-height: 500px;
-$hero-image-height-mobile: 300px;
-$hero-image-height-small: 250px;
-
-// Button
-$btn-padding-x: $spacing-xl;
-$btn-padding-y: $spacing-base;
-$btn-border-radius: $radius-full;
-$btn-font-size: $font-size-base;
-$btn-font-weight: $font-weight-semibold;
-
-// Social Icons
-$social-icon-size: 1.6rem;
-$social-gap: $spacing-base;
+$z-header: 900;
+$z-modal: 1100;

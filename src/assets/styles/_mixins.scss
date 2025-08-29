@@ -2,25 +2,25 @@
 
 // Typography
 @mixin heading-1 {
-  font-size: clamp($font-size-3xl, 5vw, $font-size-5xl);
-  font-weight: $font-weight-bold;
+  font-size: clamp($font-size-28, 5vw, $font-size-40);
+  font-weight: $fw-bold;
   line-height: $line-height-tight;
 }
 
 @mixin heading-2 {
-  font-size: clamp($font-size-xl, 3vw, $font-size-3xl);
-  font-weight: $font-weight-semibold;
+  font-size: clamp($font-size-20, 3vw, $font-size-28);
+  font-weight: $fw-semibold;
   line-height: $line-height-tight;
 }
 
 @mixin heading-3 {
-  font-size: clamp($font-size-lg, 2.5vw, $font-size-2xl);
-  font-weight: $font-weight-semibold;
+  font-size: clamp($font-size-18, 2.5vw, $font-size-24);
+  font-weight: $fw-semibold;
   line-height: $line-height-tight;
 }
 
 @mixin body-text {
-  font-size: clamp($font-size-base, 1.9vw, $font-size-lg);
+  font-size: clamp($font-size-16, 1.9vw, $font-size-18);
   line-height: $line-height-relaxed;
 }
 
@@ -51,7 +51,7 @@
 @mixin grid-2-columns {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: $spacing-4xl;
+  gap: $space-40;
 }
 
 // Buttons
@@ -59,13 +59,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-sm;
-  padding: $btn-padding-y $btn-padding-x;
-  border-radius: $btn-border-radius;
-  font-weight: $btn-font-weight;
-  font-size: $btn-font-size;
+  gap: $space-8;
+  padding: $space-16 $space-32;
+  border-radius: 50px;
+  font-weight: $fw-semibold;
+  font-size: $font-size-16;
   text-decoration: none;
-  transition: all $transition-normal $transition-bounce;
+  transition: all $transition-base;
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -74,22 +74,19 @@
 
 @mixin button-primary {
   @include button-base;
-  background: linear-gradient(135deg, $color-primary, $color-primary-light);
-  color: $text-white;
-  box-shadow: 0 4px 15px $shadow-primary;
+  @include primary-gradient;
+  color: $color-surface;
+  @include primary-shadow;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px $shadow-hover;
+    @include primary-shadow-hover;
   }
 }
 
 // Glassmorphism
 @mixin glass-effect {
-  background: $bg-overlay;
-  backdrop-filter: blur(10px);
-  border: 1px solid $border-primary;
-  border-radius: $radius-xl;
+  @include glass-effect-light;
 }
 
 // Animations
@@ -107,13 +104,13 @@
 
 // Container
 @mixin container {
-  max-width: $container-max-width;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 $container-padding;
+  padding: 0 $space-32;
 }
 
 // Text gradient
-@mixin text-gradient($color1: $color-primary, $color2: $color-primary-light) {
+@mixin text-gradient($color1: $color-primary, $color2: $color-primary-500) {
   background: linear-gradient(135deg, $color1, $color2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -121,9 +118,8 @@
 }
 
 // Hover effects
-
 @mixin hover-scale($scale: 1.05) {
-  transition: transform $transition-normal ease;
+  transition: transform $transition-base ease;
 
   &:hover {
     transform: scale($scale);
@@ -138,9 +134,9 @@
 
 // Section Header Style
 @mixin section-header-style {
-  font-size: $font-size-7xl;
-  font-weight: $font-weight-bold;
-  color: $color-accent;
+  font-size: $font-size-48 + 1rem;
+  font-weight: $fw-bold;
+  color: $color-primary;
 }
 
 @mixin sweep-hover($bg-color) {
@@ -158,4 +154,142 @@
   &:hover::before {
     left: 100%;
   }
+}
+// Reusable classes will reference these variables. Use inside component files or a global _effects.scss.
+@mixin glass-effect-light {
+  background: rgba(254, 254, 254, 0.542);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(226, 232, 240, 0.3);
+  box-shadow: 0 8px 32px $color-shadow-card;
+  border-radius: $radius-2xl;
+}
+
+@mixin glass-effect-dark {
+  background: rgba(45, 55, 72, 0.1);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(226, 232, 240, 0.2);
+  box-shadow: 0 8px 32px $color-shadow;
+  border-radius: $radius-md;
+}
+
+@mixin glass-effect-surface {
+  background: rgba(254, 254, 254, 0.9);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(226, 232, 240, 0.4);
+  box-shadow: 0 4px 20px $color-shadow-light;
+  border-radius: $radius-md;
+}
+
+// Soft grayscale theme mixins
+@mixin primary-gradient {
+  background: linear-gradient(135deg, $color-primary, $color-primary-500);
+}
+
+@mixin primary-shadow {
+  box-shadow: 0 4px 15px $color-shadow;
+}
+
+@mixin primary-shadow-hover {
+  box-shadow: 0 8px 25px $color-shadow-hover;
+}
+
+@mixin card-shadow {
+  box-shadow: 0 2px 12px $color-shadow-card;
+}
+
+@mixin card-shadow-hover {
+  box-shadow: 0 8px 25px $color-shadow-hover;
+}
+
+// Glass Effects
+@mixin glass-effect-light {
+  background: rgba(254, 254, 254, 0.54);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(226, 232, 240, 0.3);
+  box-shadow: 0 8px 32px $color-shadow-card;
+  border-radius: 3rem;
+}
+
+@mixin glass-effect-dark {
+  background: rgba(45, 55, 72, 0.1);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(226, 232, 240, 0.2);
+  box-shadow: 0 8px 32px $color-shadow;
+  border-radius: $radius-md;
+}
+
+@mixin glass-effect-surface {
+  background: rgba(254, 254, 254, 0.9);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(226, 232, 240, 0.4);
+  box-shadow: 0 4px 20px $color-shadow-light;
+  border-radius: $radius-md;
+}
+
+// Shadow Mixins
+@mixin primary-shadow {
+  box-shadow: 0 4px 15px $color-shadow;
+}
+
+@mixin primary-shadow-hover {
+  box-shadow: 0 8px 25px $color-shadow-hover;
+}
+
+@mixin card-shadow {
+  box-shadow: 0 2px 12px $color-shadow-card;
+}
+
+@mixin card-shadow-hover {
+  box-shadow: 0 8px 25px $color-shadow-hover;
+}
+
+// Gradient Mixins
+@mixin primary-gradient {
+  background: linear-gradient(135deg, $color-primary, $color-primary-500);
+}
+
+@mixin soft-gradient {
+  background: linear-gradient(135deg, $color-bg, rgba(45, 55, 72, 0.03));
+}
+
+@mixin surface-gradient {
+  background: linear-gradient(135deg, $color-surface, rgba(45, 55, 72, 0.03));
+}
+
+// Interactive Mixins
+@mixin hover-lift {
+  transition: all $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    @include card-shadow-hover;
+  }
+}
+
+@mixin interactive-card {
+  @include glass-effect-surface;
+  @include hover-lift;
+  cursor: pointer;
+}
+
+// Text Mixins
+@mixin text-gradient {
+  background: linear-gradient(135deg, $color-primary, $color-primary-500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@mixin section-title {
+  font-size: $font-size-48;
+  font-weight: $fw-bold;
+  color: $color-primary;
+  text-align: center;
+  margin-bottom: $space-40;
 }
