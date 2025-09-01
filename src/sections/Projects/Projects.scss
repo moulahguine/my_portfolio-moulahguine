@@ -1,0 +1,201 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+// Main projects section container
+.projects {
+  @include surface-gradient;
+  padding: calc($space-40 + 2rem) 0 calc($space-40 + 3rem);
+
+  .projects__header {
+    @include section-title;
+    margin-bottom: $space-40;
+
+    .projects__title {
+      @include section-header-style;
+    }
+  }
+
+  .container {
+    @include container;
+    position: relative;
+    height: 300vh;
+
+    // Loading state
+    .loading {
+      text-align: center;
+      padding: $space-40;
+      font-size: $font-size-18;
+      color: $color-text-muted;
+    }
+    // Individual project card styling
+    .project-card {
+      position: sticky;
+      top: calc($space-40 + 3rem);
+      margin-bottom: 50px;
+      border-radius: $radius-xl;
+      overflow: hidden;
+      width: 100%;
+      height: 600px;
+      @include flex-column;
+
+      .project-card__background {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+
+        img {
+          width: 100%;
+          aspect-ratio: 1/1;
+          object-fit: cover;
+          transition: transform $transition-base;
+        }
+
+        &:hover img {
+          transform: scale(1.05);
+        }
+      }
+
+      // Overlay for better text readability
+      .project-card__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 2;
+      }
+
+      // Top Right Links
+      .project-card__top {
+        position: relative;
+        z-index: 10;
+        padding: $space-24;
+        width: 100%;
+        @include flex-between;
+
+        // Top Left Logo
+        .project-card__top-logo {
+          width: 100px;
+          position: relative;
+
+          // Logo
+          .project-card__logo {
+            width: 60px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            overflow: hidden;
+            background: $color-surface;
+          }
+          // GitHub Stats
+          .project-card__stats {
+            position: absolute;
+            top: 0;
+            left: 40%;
+            display: flex;
+            gap: $space-16;
+            padding: $space-4;
+            border-radius: $radius-lg;
+            background-color: $color-surface;
+            width: fit-content;
+            .project-card__stat {
+              color: $color-primary;
+              font-size: $font-size-12;
+              font-weight: $fw-bold;
+            }
+          }
+        }
+
+        .project-card__top-links {
+          display: flex;
+          gap: $space-16;
+          .project-card__link {
+            position: relative;
+            z-index: 99;
+            color: $color-surface;
+            font-size: $font-size-20;
+            transform: scale(1);
+            transition: all 0.3s ease-in-out;
+            &:hover {
+              transform: scale(1.2);
+            }
+          }
+        }
+      }
+
+      // Main content area of the card
+      .project-card__content {
+        position: relative;
+        height: 100%;
+        z-index: 10;
+        padding: $space-40;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: $space-32;
+        // Left Side - Title
+        .project-card__left {
+          flex: 1;
+          width: 50%;
+          .project-card__title {
+            width: 100%;
+            font-size: $font-size-32 + 2.5rem;
+            font-weight: $fw-bold;
+            color: $color-surface;
+          }
+        }
+        // Right Side - Description and Technologies
+        .project-card__right {
+          flex: 1;
+          width: 50%;
+          height: 100%;
+          text-align: right;
+          position: relative;
+
+          // Project description
+          .project-card__description {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            transform: translate(-50%, -50%);
+            font-size: $font-size-16;
+            color: $color-text-lighter;
+            line-height: $line-height-relaxed;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: $space-16;
+            border-radius: $radius-md;
+          }
+          .project-card__technologies {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            gap: $space-12;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+
+            .project-card__tech-logo {
+              background: rgba(255, 255, 255, 0.1);
+              color: $color-surface;
+              padding: $space-8 $space-16;
+              border-radius: $radius-md;
+              font-size: $font-size-12;
+              font-weight: $fw-medium;
+              backdrop-filter: blur(10px);
+              border: 1px solid rgba(255, 255, 255, 0.2);
+              transition: all $transition-base;
+
+              &:hover {
+                background: rgba(255, 255, 255, 0.2);
+                transform: translateY(-2px);
+              }
+            }
+
+            .project-card__tech-name {
+              color: $color-surface;
+            }
+          }
+        }
+      }
+    }
+  }
+}
