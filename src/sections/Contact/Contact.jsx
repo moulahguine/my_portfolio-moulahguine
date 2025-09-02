@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import instagram from "../../assets/images/contact-section/instagram.jpg";
+import telegram from "../../assets/images/contact-section/telegram.jpg";
+import whatsapp from "../../assets/images/contact-section/whatsapp.jpg";
+import github from "../../assets/images/contact-section/github.jpg";
 import {
   FaEnvelope,
   FaLinkedin,
@@ -7,6 +11,8 @@ import {
   FaWhatsapp,
   FaCheckCircle,
   FaExclamationCircle,
+  FaInstagram,
+  FaTelegram,
 } from "react-icons/fa";
 import "./Contact.scss";
 
@@ -24,28 +30,25 @@ function Contact() {
   // Quick action links - replace with your actual links
   const quickActions = [
     {
-      icon: FaEnvelope,
+      icon: FaInstagram,
       label: "Email",
-      href: "mailto:your.email@example.com",
-      color: "#EA4335",
+      href: "https://instagram.com/moulahguine",
+      color: "linear-gradient(to right,#833ab4,#fd1d1d,#fcb045)",
+      backGround: instagram,
     },
     {
-      icon: FaLinkedin,
+      icon: FaTelegram,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/your-profile",
+      href: "https://linkedin.com/in/moulahguine",
       color: "#0077B5",
-    },
-    {
-      icon: FaGithub,
-      label: "GitHub",
-      href: "https://github.com/your-username",
-      color: "#333333",
+      backGround: telegram,
     },
     {
       icon: FaWhatsapp,
       label: "WhatsApp",
-      href: "https://wa.me/your-phone-number",
+      href: "https://wa.me/5548826567",
       color: "#25D366",
+      backGround: whatsapp,
     },
   ];
 
@@ -130,191 +133,180 @@ function Contact() {
 
   return (
     <section id="contact" className="contact">
+      {/* Header Section */}
+      <motion.div
+        className="contact__header"
+        initial={{ opacity: 0, y: -50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <h2 className="contact__title">contact me</h2>
+        <p className="contact__subtitle">Looking for my next challenge.</p>
+      </motion.div>
+
       <div className="container">
-        {/* Header Section */}
+        {/* Quick Action Buttons */}
         <motion.div
-          className="contact__header"
-          initial={{ opacity: 0, y: -50 }}
+          className="contact__quick-actions"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="contact__title">
-            Let's build something amazing together
-          </h2>
-          <p className="contact__subtitle">
-            I'm always open to discussing new opportunities, collaborations, or
-            projects.
-          </p>
+          <div className="contact__action-cards">
+            {quickActions.map((action, index) => (
+              <motion.a
+                key={action.label}
+                href={action.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact__action-card"
+                style={{
+                  "--action-color": action.color,
+                  "--backGround": `url(${action.backGround})`,
+                }}
+              >
+                <div className="contact__action-icon-lay">
+                  <action.icon className="contact__action-icon" />
+                </div>
+              </motion.a>
+            ))}
+          </div>
         </motion.div>
 
-        <div className="contact__content">
-          {/* Quick Action Buttons */}
-          <motion.div
-            className="contact__quick-actions"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h3 className="contact__section-title">Quick Connect</h3>
-            <div className="contact__action-buttons">
-              {quickActions.map((action, index) => (
-                <motion.a
-                  key={action.label}
-                  href={action.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="contact__action-button"
-                  style={{ "--action-color": action.color }}
-                  whileHover={{ scale: 1.1, y: -5 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <action.icon className="contact__action-icon" />
-                  <span className="contact__action-label">{action.label}</span>
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
+        {/* Contact Form */}
+        <motion.div
+          className="contact__form-section"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <form className="contact__form" onSubmit={handleSubmit}>
+            {/* Honeypot field for spam protection */}
+            <input
+              type="text"
+              name="honeypot"
+              value={formData.honeypot}
+              onChange={handleInputChange}
+              style={{ display: "none" }}
+              tabIndex="-1"
+              autoComplete="off"
+            />
 
-          {/* Contact Form */}
-          <motion.div
-            className="contact__form-section"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <h3 className="contact__section-title">Send me a message</h3>
-            <form className="contact__form" onSubmit={handleSubmit}>
-              {/* Honeypot field for spam protection */}
-              <input
-                type="text"
-                name="honeypot"
-                value={formData.honeypot}
-                onChange={handleInputChange}
-                style={{ display: "none" }}
-                tabIndex="-1"
-                autoComplete="off"
-              />
-
-              <div className="contact__form-row">
-                <div className="contact__form-group">
-                  <label htmlFor="name" className="contact__label">
-                    Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className={`contact__input ${errors.name ? "contact__input--error" : ""}`}
-                    placeholder="Your name"
-                    required
-                  />
-                  {errors.name && (
-                    <span className="contact__error">
-                      <FaExclamationCircle />
-                      {errors.name}
-                    </span>
-                  )}
-                </div>
-
-                <div className="contact__form-group">
-                  <label htmlFor="email" className="contact__label">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className={`contact__input ${errors.email ? "contact__input--error" : ""}`}
-                    placeholder="your.email@example.com"
-                    required
-                  />
-                  {errors.email && (
-                    <span className="contact__error">
-                      <FaExclamationCircle />
-                      {errors.email}
-                    </span>
-                  )}
-                </div>
+            <div className="contact__form-row">
+              <div className="contact__form-group">
+                <label htmlFor="name" className="contact__label">
+                  Name *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className={`contact__input ${errors.name ? "contact__input--error" : ""}`}
+                  placeholder="Your name"
+                  required
+                />
+                {errors.name && (
+                  <span className="contact__error">
+                    <FaExclamationCircle />
+                    {errors.name}
+                  </span>
+                )}
               </div>
 
               <div className="contact__form-group">
-                <label htmlFor="message" className="contact__label">
-                  Message *
+                <label htmlFor="email" className="contact__label">
+                  Email *
                 </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
                   onChange={handleInputChange}
-                  className={`contact__textarea ${errors.message ? "contact__textarea--error" : ""}`}
-                  placeholder="Tell me about your project or opportunity..."
-                  rows="6"
+                  className={`contact__input ${errors.email ? "contact__input--error" : ""}`}
+                  placeholder="your.email@example.com"
                   required
                 />
-                {errors.message && (
+                {errors.email && (
                   <span className="contact__error">
                     <FaExclamationCircle />
-                    {errors.message}
+                    {errors.email}
                   </span>
                 )}
               </div>
+            </div>
 
-              <motion.button
-                type="submit"
-                className="contact__submit-button"
-                disabled={isSubmitting}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {isSubmitting ? (
-                  <span className="contact__submit-loading">
-                    <div className="contact__spinner"></div>
-                    Sending...
-                  </span>
-                ) : (
-                  "Send Message"
-                )}
-              </motion.button>
-
-              {/* Status Messages */}
-              {submitStatus && (
-                <motion.div
-                  className={`contact__status contact__status--${submitStatus}`}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  {submitStatus === "success" ? (
-                    <>
-                      <FaCheckCircle />
-                      <span>
-                        Message sent successfully! I'll get back to you soon.
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      <FaExclamationCircle />
-                      <span>
-                        Something went wrong. Please try again or use the quick
-                        action buttons above.
-                      </span>
-                    </>
-                  )}
-                </motion.div>
+            <div className="contact__form-group">
+              <label htmlFor="message" className="contact__label">
+                Message *
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                className={`contact__textarea ${errors.message ? "contact__textarea--error" : ""}`}
+                placeholder="Tell me about your project or opportunity..."
+                rows="6"
+                required
+              />
+              {errors.message && (
+                <span className="contact__error">
+                  <FaExclamationCircle />
+                  {errors.message}
+                </span>
               )}
-            </form>
-          </motion.div>
-        </div>
+            </div>
+
+            <motion.button
+              type="submit"
+              className="contact__submit-button"
+              disabled={isSubmitting}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {isSubmitting ? (
+                <span className="contact__submit-loading">
+                  <div className="contact__spinner"></div>
+                  Sending...
+                </span>
+              ) : (
+                "Send Message"
+              )}
+            </motion.button>
+
+            {/* Status Messages */}
+            {submitStatus && (
+              <motion.div
+                className={`contact__status contact__status--${submitStatus}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                {submitStatus === "success" ? (
+                  <>
+                    <FaCheckCircle />
+                    <span>
+                      Message sent successfully! I'll get back to you soon.
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <FaExclamationCircle />
+                    <span>
+                      Something went wrong. Please try again or use the quick
+                      action buttons above.
+                    </span>
+                  </>
+                )}
+              </motion.div>
+            )}
+          </form>
+        </motion.div>
       </div>
     </section>
   );
