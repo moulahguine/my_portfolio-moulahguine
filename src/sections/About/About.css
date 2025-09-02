@@ -23,7 +23,7 @@
 /* 64px */
 .about {
   background: linear-gradient(135deg, #fefefe, rgba(45, 55, 72, 0.03));
-  padding: 4.5rem 0 5.5rem;
+  padding: 4.5rem 0 11.5rem;
 }
 .about .container {
   max-width: 1200px;
@@ -193,4 +193,20 @@
   font-size: 1rem;
   color: #4a5568;
   text-shadow: 0 0 1px #000;
+}
+.about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(1) {
+  translate: -20% 40%;
+  rotate: 20deg;
+}
+.about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(2) {
+  translate: -20% 20%;
+  rotate: 5deg;
+}
+.about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(3) {
+  translate: -20% 20%;
+  rotate: 5deg;
+}
+.about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(4) {
+  translate: -20% 20%;
+  rotate: 5deg;
 }/*# sourceMappingURL=About.css.map */

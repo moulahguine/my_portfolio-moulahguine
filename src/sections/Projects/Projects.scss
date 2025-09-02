@@ -197,5 +197,11 @@
         }
       }
     }
+    .project-card:nth-child(2) {
+      top: calc($space-40 + 7rem);
+    }
+    .project-card:nth-child(3) {
+      top: calc($space-40 + 11rem);
+    }
   }
 }

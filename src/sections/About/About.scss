@@ -3,7 +3,7 @@
 
 .about {
   @include surface-gradient;
-  padding: calc($space-40 + 2rem) 0 calc($space-40 + 3rem);
+  padding: calc($space-40 + 2rem) 0 calc($space-40 + 9rem);
 
   .container {
     @include container;
@@ -160,6 +160,22 @@
                 text-shadow: 0 0 1px #000;
               }
             }
+          }
+          .fact-card:nth-child(1) {
+            translate: -20% 40%;
+            rotate: 20deg;
+          }
+          .fact-card:nth-child(2) {
+            translate: -20% 20%;
+            rotate: 5deg;
+          }
+          .fact-card:nth-child(3) {
+            translate: -20% 20%;
+            rotate: 5deg;
+          }
+          .fact-card:nth-child(4) {
+            translate: -20% 20%;
+            rotate: 5deg;
           }
         }
       }

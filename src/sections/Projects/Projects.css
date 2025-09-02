@@ -204,4 +204,10 @@
 }
 .projects .container .project-card .project-card__content .project-card__right .project-card__technologies .project-card__tech-name {
   color: #fefefe;
+}
+.projects .container .project-card:nth-child(2) {
+  top: 9.5rem;
+}
+.projects .container .project-card:nth-child(3) {
+  top: 13.5rem;
 }/*# sourceMappingURL=Projects.css.map */
