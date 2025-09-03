@@ -94,7 +94,7 @@ export default function About() {
               </p>
             </motion.div>
             <div className="about__btn">
-              <Button href="#contactme" className="hire__me">
+              <Button href="#contact" className="hire__me">
                 Hire Me
               </Button>
               <Button href="#projects" className="show__projects">

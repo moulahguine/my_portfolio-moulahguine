@@ -3,11 +3,9 @@ import { motion } from "framer-motion";
 import instagram from "../../assets/images/contact-section/instagram.jpg";
 import telegram from "../../assets/images/contact-section/telegram.jpg";
 import whatsapp from "../../assets/images/contact-section/whatsapp.jpg";
-import github from "../../assets/images/contact-section/github.jpg";
+import linkedin from "../../assets/images/contact-section/linkedin.png";
 import {
-  FaEnvelope,
   FaLinkedin,
-  FaGithub,
   FaWhatsapp,
   FaCheckCircle,
   FaExclamationCircle,
@@ -31,17 +29,17 @@ function Contact() {
   const quickActions = [
     {
       icon: FaInstagram,
-      label: "Email",
+      label: "Instagram",
       href: "https://instagram.com/moulahguine",
       color: "linear-gradient(to right,#833ab4,#fd1d1d,#fcb045)",
       backGround: instagram,
     },
     {
-      icon: FaTelegram,
+      icon: FaLinkedin,
       label: "LinkedIn",
       href: "https://linkedin.com/in/moulahguine",
       color: "#0077B5",
-      backGround: telegram,
+      backGround: linkedin,
     },
     {
       icon: FaWhatsapp,
@@ -49,6 +47,13 @@ function Contact() {
       href: "https://wa.me/5548826567",
       color: "#25D366",
       backGround: whatsapp,
+    },
+    {
+      icon: FaTelegram,
+      label: "Telegran",
+      href: "https://t.me/moulahguine",
+      color: "#0077B5",
+      backGround: telegram,
     },
   ];
 
@@ -167,7 +172,7 @@ function Contact() {
                   "--backGround": `url(${action.backGround})`,
                 }}
               >
-                <div className="contact__action-icon-lay">
+                <div className="contact__action-icon-bg">
                   <action.icon className="contact__action-icon" />
                 </div>
               </motion.a>

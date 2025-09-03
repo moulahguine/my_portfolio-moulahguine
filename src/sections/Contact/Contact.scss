@@ -30,97 +30,111 @@
 
     // Quick actions section
     .contact__quick-actions {
-      .contact__section-title {
-        @include heading-3;
-        color: $color-text;
-      }
-
       .contact__action-cards {
         display: flex;
-        justify-content: center;
         align-items: center;
         height: 100%;
         gap: $space-12;
+        position: relative;
+        overflow: visible;
         perspective: 100px;
-        position: relative;
         transform-style: preserve-3d;
-        backface-visibility: hidden; // prevents blurring
-        will-change: transform;
-      }
 
-      .contact__action-card {
-        @include flex-center;
-        align-items: center;
-        gap: $space-12;
-        padding: $space-24;
-        border-radius: $radius-lg;
-        background-image: var(--backGround);
-        box-shadow: 0 0 15px var(--action-color);
-        //border: solid 1px var(--action-color);
-        width: 150px;
-        height: 250px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        transform-style: preserve-3d;
-        position: relative;
-        overflow: hidden;
-        transition: all 0.3s ease-in-out;
-        backface-visibility: hidden; // prevents blurring
-        will-change: transform;
-
-        &::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: #0000008b;
-        }
-        .contact__action-icon-lay {
-          background-color: var(--action-color);
-          transition: all $transition-base;
-          z-index: 2;
-          position: relative;
-          width: 50px;
-          aspect-ratio: 1/1;
-          border-radius: 50%;
+        .contact__action-card {
           @include flex-center;
-          .contact__action-icon {
-            font-size: $font-size-28;
-            color: #fff;
+          border-radius: $radius-md;
+          box-shadow: 0 0 20px $color-primary-500;
+          border: solid 2px $color-primary-500;
+          width: 150px;
+          height: 250px;
+          background: var(--backGround) center / cover no-repeat;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.3s ease-in-out;
+
+          &:hover {
+            box-shadow: 0 0 20px var(--action-color);
+            border: solid 2px var(--action-color);
+            .contact__action-icon-bg {
+              background-color: var(--action-color);
+            }
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0000008b;
+          }
+
+          .contact__action-icon-bg {
+            @include flex-center;
+            background-color: $color-primary-500;
+            position: relative;
+            z-index: 2;
+            width: 50px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            transition: inherit;
+
+            .contact__action-icon {
+              font-size: $font-size-28;
+              color: #fff;
+            }
           }
         }
-      }
-      .contact__action-card:nth-child(1) {
-        transform: translateZ(8px) rotateX(0deg) rotateY(5deg);
-        box-shadow:
-          0 0 5px #833ab4,
-          0 0 10px #fd1d1d,
-          0 0 15px #fcb045;
-        mask-composite: exclude;
+        // first card
+        .contact__action-card:nth-child(1) {
+          transform: translateZ(8px) rotateX(0deg) rotateY(3deg)
+            translateX(-25px);
 
-        &:hover {
-          transform: translateZ(55px) rotateX(0deg) rotateY(0deg)
-            translateX(150px);
+          .contact__action-icon-bg {
+            background: $color-primary-500;
+          }
+
+          &:hover {
+            box-shadow:
+              0 0 5px #833ab4,
+              0 0 10px #fd1d1d,
+              0 0 15px #fcb045;
+            transform: translateZ(35px) rotateX(0deg) rotateY(0deg)
+              translateX(50px);
+            .contact__action-icon-bg {
+              background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+            }
+          }
         }
 
-        .contact__action-icon-lay {
-          background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+        // second card
+        .contact__action-card:nth-child(2) {
+          transform: translateZ(12px) rotateX(0deg) rotateY(3deg)
+            translateX(-15px);
+          &:hover {
+            transform: translateZ(35px) rotateX(0deg) rotateY(0deg)
+              translateX(0px);
+          }
         }
-      }
-      .contact__action-card:nth-child(2) {
-        transform: translateZ(18px) rotateX(0deg) rotateY(0deg);
-        &:hover {
-          transform: translateZ(50px) rotateX(0deg) rotateY(0deg);
+
+        // third card
+        .contact__action-card:nth-child(3) {
+          transform: translateZ(16px) rotateX(0deg) rotateY(3deg)
+            translateX(-30px);
+          &:hover {
+            transform: translateZ(35px) rotateX(0deg) rotateY(0deg)
+              translateX(-50px);
+          }
         }
-      }
-      .contact__action-card:nth-child(3) {
-        transform: translateZ(8px) rotateX(0deg) rotateY(-5deg);
-        &:hover {
-          transform: translateZ(55px) rotateX(0deg) rotateY(0deg)
-            translateX(-100px);
+
+        // forth card
+        .contact__action-card:nth-child(4) {
+          transform: translateZ(18px) rotateX(0deg) rotateY(3deg)
+            translateX(-80px);
+          &:hover {
+            transform: translateZ(35px) rotateX(0deg) rotateY(0deg)
+              translateX(-100px);
+          }
         }
       }
     }

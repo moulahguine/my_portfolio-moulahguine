@@ -52,94 +52,91 @@
   max-width: 1200px;
   gap: 2.5rem;
 }
-.contact .container .contact__quick-actions .contact__section-title {
-  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-  font-weight: 600;
-  line-height: 1.25;
-  color: #1a202c;
-}
 .contact .container .contact__quick-actions .contact__action-cards {
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 100%;
   gap: 0.75rem;
-  perspective: 100px;
   position: relative;
+  overflow: visible;
+  perspective: 100px;
   transform-style: preserve-3d;
-  backface-visibility: hidden;
-  will-change: transform;
 }
-.contact .container .contact__quick-actions .contact__action-card {
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  background-image: var(--backGround);
-  box-shadow: 0 0 15px var(--action-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px #4a5568;
+  border: solid 2px #4a5568;
   width: 150px;
   height: 250px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  transform-style: preserve-3d;
+  background: var(--backGround) center/cover no-repeat;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  backface-visibility: hidden;
-  will-change: transform;
 }
-.contact .container .contact__quick-actions .contact__action-card::after {
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:hover {
+  box-shadow: 0 0 20px var(--action-color);
+  border: solid 2px var(--action-color);
+}
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:hover .contact__action-icon-bg {
+  background-color: var(--action-color);
+}
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5450980392);
 }
-.contact .container .contact__quick-actions .contact__action-card .contact__action-icon-lay {
-  background-color: var(--action-color);
-  transition: all 300ms ease-in-out;
-  z-index: 2;
-  position: relative;
-  width: 50px;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card .contact__action-icon-bg {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #4a5568;
+  position: relative;
+  z-index: 2;
+  width: 50px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  transition: inherit;
 }
-.contact .container .contact__quick-actions .contact__action-card .contact__action-icon-lay .contact__action-icon {
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card .contact__action-icon-bg .contact__action-icon {
   font-size: 1.75rem;
   color: #fff;
 }
-.contact .container .contact__quick-actions .contact__action-card:nth-child(1) {
-  transform: translateZ(8px) rotateX(0deg) rotateY(5deg);
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(1) {
+  transform: translateZ(8px) rotateX(0deg) rotateY(3deg) translateX(-25px);
+}
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(1) .contact__action-icon-bg {
+  background: #4a5568;
+}
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(1):hover {
   box-shadow: 0 0 5px #833ab4, 0 0 10px #fd1d1d, 0 0 15px #fcb045;
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
+  transform: translateZ(35px) rotateX(0deg) rotateY(0deg) translateX(50px);
 }
-.contact .container .contact__quick-actions .contact__action-card:nth-child(1):hover {
-  transform: translateZ(55px) rotateX(0deg) rotateY(0deg) translateX(150px);
-}
-.contact .container .contact__quick-actions .contact__action-card:nth-child(1) .contact__action-icon-lay {
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(1):hover .contact__action-icon-bg {
   background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
 }
-.contact .container .contact__quick-actions .contact__action-card:nth-child(2) {
-  transform: translateZ(18px) rotateX(0deg) rotateY(0deg);
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(2) {
+  transform: translateZ(12px) rotateX(0deg) rotateY(3deg) translateX(-15px);
 }
-.contact .container .contact__quick-actions .contact__action-card:nth-child(2):hover {
-  transform: translateZ(50px) rotateX(0deg) rotateY(0deg);
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(2):hover {
+  transform: translateZ(35px) rotateX(0deg) rotateY(0deg) translateX(0px);
 }
-.contact .container .contact__quick-actions .contact__action-card:nth-child(3) {
-  transform: translateZ(8px) rotateX(0deg) rotateY(-5deg);
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(3) {
+  transform: translateZ(16px) rotateX(0deg) rotateY(3deg) translateX(-30px);
 }
-.contact .container .contact__quick-actions .contact__action-card:nth-child(3):hover {
-  transform: translateZ(55px) rotateX(0deg) rotateY(0deg) translateX(-100px);
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(3):hover {
+  transform: translateZ(35px) rotateX(0deg) rotateY(0deg) translateX(-50px);
+}
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(4) {
+  transform: translateZ(18px) rotateX(0deg) rotateY(3deg) translateX(-80px);
+}
+.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(4):hover {
+  transform: translateZ(35px) rotateX(0deg) rotateY(0deg) translateX(-100px);
 }
 .contact .container .contact__form-section {
   display: flex;
