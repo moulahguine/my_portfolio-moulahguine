@@ -7,7 +7,6 @@ import { SiCodepen } from "react-icons/si";
 import { useHeroHeight } from "../../hooks";
 import Location from "../../components/Location/Location";
 import { motion } from "framer-motion";
-import Aurora from "../../components/DotGrid/DotGrid";
 import Button from "../../components/Button/Button";
 
 export default function Hero() {

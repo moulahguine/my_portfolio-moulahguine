@@ -7,24 +7,19 @@ import linkedin from "../../assets/images/contact-section/linkedin.png";
 import {
   FaLinkedin,
   FaWhatsapp,
-  FaCheckCircle,
-  FaExclamationCircle,
   FaInstagram,
   FaTelegram,
+  FaPhone,
+  FaCopy,
+  FaRegCopy,
 } from "react-icons/fa";
 import "./Contact.scss";
+import React from "react";
+import { useForm, ValidationError } from "@formspree/react";
+import { TfiEmail } from "react-icons/tfi";
+import { FaMapLocation } from "react-icons/fa6";
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-    honeypot: "", // Hidden field for spam protection
-  });
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
-
   // Quick action links - replace with your actual links
   const quickActions = [
     {
@@ -57,12 +52,46 @@ function Contact() {
     },
   ];
 
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState({});
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [formResponse, setFormResponse] = useState({ type: "", message: "" });
+  const [copyFeedback, setCopyFeedback] = useState({
+    email: false,
+    phone: false,
+  });
+
+  // Enhanced form submission
+  const [state, handleSubmit] = useForm("myzdnqpd");
+
+  // Copy to clipboard function
+  const copyToClipboard = async (text, type) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopyFeedback((prev) => ({ ...prev, [type]: true }));
+      setTimeout(() => {
+        setCopyFeedback((prev) => ({ ...prev, [type]: false }));
+      }, 1000);
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+    }
+  };
+
   // Form validation
   const validateForm = () => {
     const newErrors = {};
 
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
+    }
+
+    if (!formData.company.trim()) {
+      newErrors.company = "Company name is required";
     }
 
     if (!formData.email.trim()) {
@@ -75,48 +104,9 @@ function Contact() {
       newErrors.message = "Message is required";
     }
 
-    // Check honeypot field
-    if (formData.honeypot) {
-      newErrors.honeypot = "Spam detected";
-    }
-
     setErrors(newErrors);
+    console.log(Object.keys(newErrors).length === 0);
     return Object.keys(newErrors).length === 0;
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitStatus(null);
-
-    try {
-      // Simulate API call - replace with actual form submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // Log form data (replace with actual submission logic)
-      console.log("Form submitted:", {
-        name: formData.name,
-        email: formData.email,
-        message: formData.message,
-      });
-
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", message: "", honeypot: "" });
-
-      // Reset success message after 5 seconds
-      setTimeout(() => setSubmitStatus(null), 5000);
-    } catch (error) {
-      console.error("Form submission error:", error);
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
   };
 
   // Handle input changes
@@ -136,6 +126,40 @@ function Contact() {
     }
   };
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    // Submit to Formspree
+    await handleSubmit(e);
+  };
+
+  // Show success message
+  if (state.succeeded) {
+    if (!showSuccess) {
+      setShowSuccess(true);
+      setFormResponse({
+        type: "success",
+        message: "Thank you! I'll reply within 24 hours.",
+      });
+      setTimeout(() => {
+        setShowSuccess(false);
+        setFormResponse({ type: "", message: "" });
+      }, 5000);
+    }
+  }
+
+  // Show error message
+  if (state.errors && state.errors.length > 0 && !formResponse.message) {
+    setFormResponse({
+      type: "error",
+      message: "Something went wrong, please try again.",
+    });
+  }
+
   return (
     <section id="contact" className="contact">
       {/* Header Section */}
@@ -147,7 +171,11 @@ function Contact() {
         transition={{ duration: 0.8 }}
       >
         <h2 className="contact__title">contact me</h2>
-        <p className="contact__subtitle">Looking for my next challenge.</p>
+        <p className="contact__intro">
+          If you're looking for someone who builds fast, responsive apps, I'd be
+          glad to connect. Drop me a message here, and I'll get back to you
+          quickly.
+        </p>
       </motion.div>
 
       <div className="container">
@@ -159,6 +187,9 @@ function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
+          <h3 className="contact__social-title">
+            Reach out on the platform that works best for you.
+          </h3>
           <div className="contact__action-cards">
             {quickActions.map((action, index) => (
               <motion.a
@@ -178,104 +209,101 @@ function Contact() {
               </motion.a>
             ))}
           </div>
+          {/* Trust Signals Footer */}
+          <div className="contact__footer">
+            <div className="contact__footer-location">
+              <FaMapLocation />
+              <p>Based in Turkey, available for remote and onsite roles.</p>
+            </div>
+            <div
+              className="contact__footer-email"
+              onClick={() =>
+                copyToClipboard("mohamedoulahguine@gmail.com", "email")
+              }
+            >
+              <TfiEmail />
+              <p>
+                {copyFeedback.email
+                  ? " Copied!"
+                  : "mohamedoulahguine@gmail.com"}
+              </p>
+              {!copyFeedback.email && <FaRegCopy />}
+            </div>
+            <div
+              className="contact__footer-number"
+              onClick={() => copyToClipboard("+90 554 882 65 67", "phone")}
+            >
+              <FaPhone />
+              <p>{copyFeedback.phone ? " Copied!" : "+90 554 882 65 67"}</p>
+              {!copyFeedback.phone && <FaRegCopy />}
+            </div>
+          </div>
         </motion.div>
 
         {/* Contact Form */}
-        <motion.div
-          className="contact__form-section"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <form className="contact__form" onSubmit={handleSubmit}>
-            {/* Honeypot field for spam protection */}
-            <input
-              type="text"
-              name="honeypot"
-              value={formData.honeypot}
-              onChange={handleInputChange}
-              style={{ display: "none" }}
-              tabIndex="-1"
-              autoComplete="off"
-            />
-
+        <div className="contact__form-section">
+          <span className="contact__form-icon">
+            <TfiEmail />
+          </span>
+          <form className="contact__form" onSubmit={onSubmit}>
             <div className="contact__form-row">
               <div className="contact__form-group">
-                <label htmlFor="name" className="contact__label">
-                  Name *
-                </label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
+                  placeholder="What should I call you?"
                   className={`contact__input ${errors.name ? "contact__input--error" : ""}`}
-                  placeholder="Your name"
-                  required
                 />
-                {errors.name && (
-                  <span className="contact__error">
-                    <FaExclamationCircle />
-                    {errors.name}
-                  </span>
-                )}
               </div>
 
               <div className="contact__form-group">
-                <label htmlFor="email" className="contact__label">
-                  Email *
-                </label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  placeholder="Where do you work?"
+                  className={`contact__input ${errors.company ? "contact__input--error" : ""}`}
+                />
+              </div>
+
+              <div className="contact__form-group">
                 <input
                   type="email"
                   id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
+                  placeholder="Where can I reply back?"
                   className={`contact__input ${errors.email ? "contact__input--error" : ""}`}
-                  placeholder="your.email@example.com"
-                  required
                 />
-                {errors.email && (
-                  <span className="contact__error">
-                    <FaExclamationCircle />
-                    {errors.email}
-                  </span>
-                )}
               </div>
-            </div>
 
-            <div className="contact__form-group">
-              <label htmlFor="message" className="contact__label">
-                Message *
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                className={`contact__textarea ${errors.message ? "contact__textarea--error" : ""}`}
-                placeholder="Tell me about your project or opportunity..."
-                rows="6"
-                required
-              />
-              {errors.message && (
-                <span className="contact__error">
-                  <FaExclamationCircle />
-                  {errors.message}
-                </span>
-              )}
+              <div className="contact__form-group">
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder="Tell me about the role or project…"
+                  className={`contact__textarea ${errors.message ? "contact__textarea--error" : ""}`}
+                  rows="6"
+                />
+              </div>
             </div>
 
             <motion.button
               type="submit"
               className="contact__submit-button"
-              disabled={isSubmitting}
+              disabled={state.submitting}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              {isSubmitting ? (
+              {state.submitting ? (
                 <span className="contact__submit-loading">
                   <div className="contact__spinner"></div>
                   Sending...
@@ -285,33 +313,31 @@ function Contact() {
               )}
             </motion.button>
 
-            {/* Status Messages */}
-            {submitStatus && (
-              <motion.div
-                className={`contact__status contact__status--${submitStatus}`}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
+            {/* Form Response Message */}
+            {formResponse.message && (
+              <p
+                id="form-response"
+                className={`form__response form__response--${formResponse.type}`}
               >
-                {submitStatus === "success" ? (
-                  <>
-                    <FaCheckCircle />
-                    <span>
-                      Message sent successfully! I'll get back to you soon.
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <FaExclamationCircle />
-                    <span>
-                      Something went wrong. Please try again or use the quick
-                      action buttons above.
-                    </span>
-                  </>
-                )}
-              </motion.div>
+                {formResponse.message}
+              </p>
             )}
+
+            {/* Formspree Validation Errors */}
+            <ValidationError
+              prefix="Email"
+              field="email"
+              errors={state.errors}
+              className="contact__error"
+            />
+            <ValidationError
+              prefix="Message"
+              field="message"
+              errors={state.errors}
+              className="contact__error"
+            />
           </form>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
