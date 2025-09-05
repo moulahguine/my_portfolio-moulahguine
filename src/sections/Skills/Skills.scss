@@ -2,9 +2,8 @@
 @use "../../assets/styles/mixins" as *;
 
 .skills {
-  @include surface-gradient;
+  background-color: $color-bg;
   padding: calc($space-40 + 2rem) 0;
-  border-bottom-right-radius: 100% 10%;
 
   .container {
     @include container;
@@ -26,13 +25,7 @@
         @include flex-between;
         gap: $space-24;
         padding: $space-24 $space-16;
-        transition: scale $transition-base;
-        box-shadow: 0 8px 32px rgba(45, 55, 72, 0.1);
         border-radius: $space-16;
-
-        &:hover {
-          scale: 1.03;
-        }
 
         .category-title {
           font-size: $font-size-28;
@@ -78,7 +71,9 @@
           height: fit-content;
 
           .skill-item {
-            @include flex-center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background-color: $color-shadow-light;
             position: relative;
             transition: all $transition-base;
@@ -88,10 +83,9 @@
             .skill-icon {
               width: 40px;
               aspect-ratio: 1/1;
-              margin-bottom: $space-12;
               @include flex-center;
               color: var(--skill-color);
-              font-size: $font-size-32;
+              font-size: $font-size-20;
               transition: all $transition-base;
 
               svg {
@@ -101,7 +95,7 @@
             }
 
             .skill-name {
-              font-size: $font-size-18;
+              font-size: $font-size-14;
               font-weight: $fw-bold;
               color: $color-primary;
               text-align: center;

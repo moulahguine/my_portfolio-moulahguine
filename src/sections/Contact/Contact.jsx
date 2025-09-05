@@ -17,6 +17,7 @@ import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import { TfiEmail } from "react-icons/tfi";
 import { FaMapLocation } from "react-icons/fa6";
+import HoverCursor from "../../components/HoverCursor/HoverCursor";
 
 function Contact() {
   // Quick action links - replace with your actual links
@@ -214,7 +215,8 @@ function Contact() {
               <FaMapLocation />
               <p>Based in Turkey, available for remote and onsite roles.</p>
             </div>
-            <div
+            <HoverCursor
+              content="copy"
               className="contact__footer-email"
               onClick={() =>
                 copyToClipboard("mohamedoulahguine@gmail.com", "email")
@@ -227,15 +229,17 @@ function Contact() {
                   : "mohamedoulahguine@gmail.com"}
               </p>
               {!copyFeedback.email && <FaRegCopy />}
-            </div>
-            <div
+            </HoverCursor>
+
+            <HoverCursor
+              content="copy"
               className="contact__footer-number"
               onClick={() => copyToClipboard("+90 554 882 65 67", "phone")}
             >
               <FaPhone />
               <p>{copyFeedback.phone ? " Copied!" : "+90 554 882 65 67"}</p>
               {!copyFeedback.phone && <FaRegCopy />}
-            </div>
+            </HoverCursor>
           </div>
         </motion.div>
 

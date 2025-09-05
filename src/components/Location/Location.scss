@@ -3,17 +3,15 @@
 
 .location {
   @include flex-center;
-  gap: 0.5rem;
+  gap: $space-8;
   @include fade-in-up(0.9s);
   transition: all 0.3s ease-in-out;
   width: fit-content;
-  margin-bottom: $space-40;
-  padding: $space-8 $space-12;
+  padding: $space-8 0;
   border-radius: $radius-lg;
   position: relative;
   cursor: none;
   border: 1px solid transparent;
-  //@include glass-effect-surface;
 
   // underline effect
   &::after {
@@ -30,7 +28,6 @@
 
   &:hover {
     transform: translateY(-2px);
-    @include card-shadow-hover;
 
     .location__icon {
       color: $color-primary;
@@ -59,69 +56,49 @@
     color: $color-text-muted;
     font-size: $font-size-18;
   }
-
-  // Custom cursor styles
-  .custom-cursor {
-    @include flex-center;
-    position: absolute;
-    z-index: 999;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: $color-primary;
-    pointer-events: none;
-    @include card-shadow;
-
-    span {
-      color: $color-surface;
-      font-size: $font-size-12;
-      font-weight: $fw-semibold;
-      text-transform: uppercase;
-      user-select: none;
-    }
-  }
 }
 
 .map-overlay {
+  @include flex-center;
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(45, 55, 72, 0.4);
   backdrop-filter: blur(20px) saturate(180%);
-  @include flex-center;
   z-index: 9999;
-  transform: translateZ(0);
 
   .map-modal {
-    background: rgba(254, 254, 254, 0.95);
-    border-radius: 2rem;
-    padding: 0;
+    @include flex-column;
+    @include glass-effect-light;
+    border-radius: $space-16;
     max-width: 1200px;
     width: 92%;
     max-height: 90vh;
+    padding: 0;
     overflow: hidden;
     position: relative;
-    @include flex-column;
-    @include glass-effect-light;
 
+    // close icon
     .map-close {
+      @include flex-center;
       position: absolute;
-      top: 24px;
-      right: 24px;
-      background: rgba(254, 254, 254, 0.9);
-      border: 1px solid rgba(226, 232, 240, 0.3);
+      top: $space-24;
+      right: $space-24;
+      background: $color-bg;
+      color: $color-text-muted;
       border-radius: 50%;
       width: 44px;
-      height: 44px;
+      aspect-ratio: 1/1;
       font-size: 20px;
-      color: $color-text-muted;
-      cursor: pointer;
+      border: none;
+      outline: none;
       z-index: 10;
-      @include flex-center;
+      cursor: pointer;
+      transition: all 0.3s ease-out;
 
       &:hover {
-        color: $color-text;
+        transform: rotate(90deg) !important;
         box-shadow: 0 4px 12px $color-shadow;
       }
     }
@@ -137,101 +114,103 @@
         padding: 0 20px;
 
         .location-card {
-          @include flex-center;
+          @include flex-column;
           align-items: center;
           flex: 1;
           gap: 1rem;
+          position: relative;
 
           .location-item {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 1px solid rgba(254, 254, 254, 0.3);
+            background-color: rgba(183, 183, 183, 0.699) !important;
             position: relative;
+            z-index: 2;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 1px solid $color-border;
             overflow: hidden;
             background: center / 200% no-repeat;
+            transition: all 0.3s ease-in-out;
+            filter: brightness(90%);
 
-            &::before {
-              content: "";
-              position: absolute;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
-              background: linear-gradient(
-                135deg,
-                rgba(45, 55, 72, 0.2) 0%,
-                rgba(45, 55, 72, 0.6) 100%
-              );
-              z-index: 1;
+            &:hover:not(.soon) {
+              filter: brightness(100%);
+              transform: scale(1.09);
+              box-shadow: 0 0 20px rgba(183, 0, 0, 0.4);
             }
+          }
 
-            .location-content {
-              position: relative;
-              z-index: 2;
-              height: 100%;
-              @include flex-center;
-              text-align: center;
+          .location-content {
+            @include flex-center;
+            text-align: center;
 
-              span {
-                color: $color-surface;
-                font-size: 1.2rem;
-                font-weight: 600;
-                text-shadow: 0 2px 8px rgba(45, 55, 72, 0.6);
+            span {
+              color: $color-text-muted;
+              font-size: $font-size-16;
+              font-weight: $fw-semibold;
 
-                small {
-                  font-size: 0.9rem;
-                  font-weight: 400;
-                }
+              small {
+                font-size: $font-size-12;
+                font-weight: $fw-regular;
               }
             }
           }
 
-          .status-indicator {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 1rem;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
+          .location-line {
+            position: absolute;
+            top: 25%;
+            transform: translateY(-25%);
+            left: 210px;
+            width: 300px;
+            height: 5px;
+            background-color: $color-shadow-card;
+            z-index: 1;
+          }
+        }
 
-            svg {
-              font-size: 16px;
-            }
+        .location-card:last-of-type {
+          .location-line,
+          .location-item {
+            display: none;
+          }
+          .location-content {
+            position: relative;
+            background-color: $color-primary-500;
+            width: 80px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            top: -25px;
 
-            &.completed {
-              background: rgba(45, 55, 72, 0.1);
-              color: $color-success;
-              border: 1px solid rgba(45, 55, 72, 0.2);
-            }
-
-            &.in-progress {
-              background: rgba(91, 155, 213, 0.1);
-              color: #5b9bd5;
-              border: 1px solid rgba(91, 155, 213, 0.2);
-            }
-
-            &.planned {
-              background: rgba(168, 85, 247, 0.1);
-              color: #9333ea;
-              border: 1px solid rgba(168, 85, 247, 0.2);
+            span {
+              color: $color-surface;
             }
           }
         }
       }
 
       .map-container {
-        border-radius: 20px;
-        overflow: hidden;
-        background: rgba(254, 254, 254, 0.5);
+        position: relative;
+        border-radius: $space-24;
+        background: $color-shadow;
         min-height: 400px;
+        overflow: hidden;
 
-        img {
-          width: 100%;
-          height: auto;
-          display: block;
-          object-fit: contain;
+        .interactive-map-container {
+          width: inherit;
+          height: inherit;
+
+          // Leaflet map container styles
+          .leaflet-container {
+            border-radius: 20px;
+            height: inherit;
+            width: inherit;
+            background: #f8fafc;
+          }
+
+          // Leaflet attribution styling - Hide the attribution
+          .leaflet-control-attribution {
+            display: none !important;
+          }
         }
       }
     }

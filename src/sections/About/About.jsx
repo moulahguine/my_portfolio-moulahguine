@@ -66,26 +66,18 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <p>
-                I’m a <strong>Frontend Developer</strong> with
-                <strong> 3+ years of experience</strong> delivering
-                <strong> SPAs</strong>, <strong>dashboards</strong>, and
-                <strong> e-commerce platforms</strong>. I focus on
-                <strong> performance</strong>,
-                <strong> clean state management</strong>, and
-                <strong> accessible interfaces</strong> that feel fast on any
-                device.
+                I’m a Frontend Developer with 3+ years of experience delivering
+                SPAs, dashboards, and e-commerce platforms. I focus on
+                performance, clean state management, and accessible interfaces
+                that feel fast on any device.
                 <br />
-                <br /> I work closely with <strong>designers</strong> and{" "}
-                <strong>backend engineers</strong>, turning Figma designs into
-                components, write <strong>maintainable code</strong>, and{" "}
-                <strong>
-                  review PRs to keep quality high
-                  <br />
-                </strong>
+                <br /> I work closely with designers and backend engineers,
+                turning Figma designs into components, write maintainable code,
+                and review PRs to keep quality high
                 <br />
-                I'm actively seeking{" "}
-                <strong>Frontend Development opportunities </strong>
-                and collaborations where I can contribute to impactful projects.{" "}
+                <br />
+                I'm actively seeking Frontend Development opportunities and
+                collaborations where I can contribute to impactful projects.{" "}
                 <br />
               </p>
             </motion.div>
@@ -111,7 +103,7 @@ export default function About() {
                 <motion.div
                   key={index}
                   className="fact-card"
-                  whileHover={{ scale: 1.05, transition: 0.3 }}
+                  whileHover={{ scale: 1.02, transition: 0.2 }}
                 >
                   <div className="fact-icon">{fact.icon}</div>
                   <div className="fact-content">

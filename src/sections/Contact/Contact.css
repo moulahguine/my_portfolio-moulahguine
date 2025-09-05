@@ -179,7 +179,7 @@
   font-size: 0.875rem;
 }
 .contact .container .contact__quick-actions .contact__footer div:not(.contact__footer-location) {
-  cursor: pointer;
+  cursor: none;
   transition: all 0.3s ease-in-out;
 }
 .contact .container .contact__quick-actions .contact__footer div:not(.contact__footer-location):active {

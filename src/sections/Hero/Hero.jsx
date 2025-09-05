@@ -2,7 +2,7 @@ import React from "react";
 import "./Hero.scss";
 import heroImage from "../../assets/images/hero-section/hero-img.webp";
 import { HiDownload } from "react-icons/hi";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaCircle, FaDotCircle, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiCodepen } from "react-icons/si";
 import { useHeroHeight } from "../../hooks";
 import Location from "../../components/Location/Location";
@@ -86,9 +86,11 @@ export default function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
-            Turning ideas into interactive, responsive web apps using React &
-            modern frontend tools
+            Front-end developer with expertise in clean code, strong attention
+            to detail, and intuitive UI. Focused on delivering efficient,
+            polished, and interactive applications.
           </motion.p>
+          {/* start location */}
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -96,6 +98,19 @@ export default function Hero() {
           >
             <Location />
           </motion.div>
+          {/* end location */}
+          {/* start available label */}
+          <motion.div
+            className="availability-badge"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+          >
+            <FaCircle />
+            Available for work
+          </motion.div>
+          {/* end available label */}
+          {/* end btn */}
           <motion.div
             className="hero__resume"
             initial={{ y: 50, opacity: 0 }}
@@ -112,6 +127,7 @@ export default function Hero() {
               Resume
             </Button>
           </motion.div>
+          {/* end btn */}
         </motion.div>
         <motion.div
           className="hero__media"

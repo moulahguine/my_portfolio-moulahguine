@@ -1,0 +1,23 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+// Custom cursor styles
+.custom-cursor {
+  @include flex-center;
+  position: absolute;
+  z-index: 9998;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: $color-primary;
+  pointer-events: none;
+  @include card-shadow;
+
+  span {
+    color: $color-surface;
+    font-size: $font-size-12;
+    font-weight: $fw-bold;
+    text-transform: uppercase;
+    user-select: none;
+  }
+}

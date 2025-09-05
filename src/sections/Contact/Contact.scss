@@ -175,7 +175,7 @@
           }
         }
         div:not(.contact__footer-location) {
-          cursor: pointer;
+          cursor: none;
           transition: all 0.3s ease-in-out;
 
           &:active {

@@ -2,7 +2,7 @@
 @use "../../assets/styles/mixins" as *;
 
 .about {
-  @include surface-gradient;
+  background-color: $color-bg;
   padding: calc($space-40 + 2rem) 0 calc($space-40 + 9rem);
 
   .container {
@@ -11,7 +11,7 @@
     // Header Section
     .about__header {
       @include section-title;
-      margin-bottom: $space-40 + 2rem;
+      margin-bottom: $space-40 + 5rem;
     }
 
     // Main Content
@@ -24,15 +24,16 @@
       // Left Column - Profile Image
       .about__image {
         grid-column: span 1;
-        width: 500px;
+        width: 300px;
         aspect-ratio: 1 / 1;
-        border-radius: 23% 77% 20% 80% / 90% 19% 81% 10%;
+        border-radius: 50%;
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
         box-shadow: -55px 50px 0px rgba(45, 55, 72, 0.15);
 
         img {
+          transform: scale(1.2);
           object-fit: cover;
           position: absolute;
           width: 100%;
@@ -42,7 +43,7 @@
         @include sweep-hover($color-bg);
 
         &:hover {
-          box-shadow: -25px 25px 0px rgba(45, 55, 72, 0.2);
+          box-shadow: -25px -25px 0px rgba(45, 55, 72, 0.2);
           scale: 1.05;
         }
       }
@@ -92,7 +93,6 @@
       }
       // Quick Facts Grid
       .about__facts {
-        margin: 3rem 0 0;
         grid-column: span 2;
 
         .facts-grid {
@@ -157,25 +157,8 @@
               .fact-value {
                 font-size: $font-size-16;
                 color: $color-primary-500;
-                text-shadow: 0 0 1px #000;
               }
             }
-          }
-          .fact-card:nth-child(1) {
-            translate: -20% 40%;
-            rotate: 20deg;
-          }
-          .fact-card:nth-child(2) {
-            translate: -20% 20%;
-            rotate: 5deg;
-          }
-          .fact-card:nth-child(3) {
-            translate: -20% 20%;
-            rotate: 5deg;
-          }
-          .fact-card:nth-child(4) {
-            translate: -20% 20%;
-            rotate: 5deg;
           }
         }
       }
