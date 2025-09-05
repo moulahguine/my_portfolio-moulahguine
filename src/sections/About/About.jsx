@@ -53,11 +53,7 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
           >
-            <img
-              src={aboutImage}
-              alt="personality image in about section"
-              className={`image visible`}
-            />
+            <img src={aboutImage} alt="personality image in about section" />
           </motion.div>
           {/* Right Column - Information */}
           <div className="about__info">

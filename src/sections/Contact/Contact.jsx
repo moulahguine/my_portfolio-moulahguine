@@ -10,7 +10,6 @@ import {
   FaInstagram,
   FaTelegram,
   FaPhone,
-  FaCopy,
   FaRegCopy,
 } from "react-icons/fa";
 import "./Contact.scss";
@@ -191,7 +190,7 @@ function Contact() {
             Reach out on the platform that works best for you.
           </h3>
           <div className="contact__action-cards">
-            {quickActions.map((action, index) => (
+            {quickActions.map((action) => (
               <motion.a
                 key={action.label}
                 href={action.href}

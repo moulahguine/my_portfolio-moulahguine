@@ -18,7 +18,7 @@ export default function Header() {
 
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
+        const sectionHeight = section.offsnoetHeight;
         const sectionId = section.getAttribute("id");
 
         if (
