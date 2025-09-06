@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.72cb741b.css",
-    "main.js": "/static/js/main.3262a2b4.js",
+    "main.css": "/static/css/main.9ab72cca.css",
+    "main.js": "/static/js/main.5f28a8e5.js",
     "static/media/hero-img.webp": "/static/media/hero-img.c68f781d5304affce36e.webp",
-    "static/media/worldMap.png": "/static/media/worldMap.1314f47c10d9ed6fdf24.png",
     "static/media/whatsapp.jpg": "/static/media/whatsapp.fdf58d1fdc900ca751f4.jpg",
     "static/media/instagram.jpg": "/static/media/instagram.b0c99419b97b2dde7223.jpg",
     "static/media/telegram.jpg": "/static/media/telegram.17b82012505f8bdb8beb.jpg",
     "static/media/linkedin.png": "/static/media/linkedin.70ceeb56ca7ec96125ee.png",
+    "static/media/vscode.png": "/static/media/vscode.a61dc62c499ed3aeefdc.png",
     "static/media/about-section1.jpg": "/static/media/about-section1.76821de705dfd9bf263e.jpg",
     "static/media/turkey.jpg": "/static/media/turkey.c09bc08b814b4bba2ea0.jpg",
+    "static/media/cursor-dark.png": "/static/media/cursor-dark.37fec07dc4e72a6665a0.png",
     "static/media/morocco.jpg": "/static/media/morocco.41c28e740bd30680d625.jpg",
     "index.html": "/index.html",
-    "main.72cb741b.css.map": "/static/css/main.72cb741b.css.map",
-    "main.3262a2b4.js.map": "/static/js/main.3262a2b4.js.map"
+    "main.9ab72cca.css.map": "/static/css/main.9ab72cca.css.map",
+    "main.5f28a8e5.js.map": "/static/js/main.5f28a8e5.js.map"
   },
   "entrypoints": [
-    "static/css/main.72cb741b.css",
-    "static/js/main.3262a2b4.js"
+    "static/css/main.9ab72cca.css",
+    "static/js/main.5f28a8e5.js"
   ]
 }
