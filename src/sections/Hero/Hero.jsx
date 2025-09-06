@@ -2,7 +2,7 @@ import React from "react";
 import "./Hero.scss";
 import heroImage from "../../assets/images/hero-section/hero-img.webp";
 import { HiDownload } from "react-icons/hi";
-import { FaCircle, FaDotCircle, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaCircle, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiCodepen } from "react-icons/si";
 import { useHeroHeight } from "../../hooks";
 import Location from "../../components/Location/Location";

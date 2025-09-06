@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { skillCategories, skillColors } from "./skillsData";
 
 const CategoryModal = ({ isOpen, onClose, selectedCategory }) => {
@@ -6,8 +6,14 @@ const CategoryModal = ({ isOpen, onClose, selectedCategory }) => {
 
   const [selectedSkill, setSelectedSkill] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
-  const skillsListRef = useRef(null);
   const modalRef = useRef(null);
+
+  const handleClose = useCallback(() => {
+    setIsAnimating(false);
+    setTimeout(() => {
+      onClose();
+    }, 200); // Match animation duration
+  }, [onClose]);
 
   // Handle escape key press and focus management
   useEffect(() => {
@@ -73,14 +79,7 @@ const CategoryModal = ({ isOpen, onClose, selectedCategory }) => {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "unset";
     };
-  }, [isOpen, selectedCategory, selectedSkill]);
-
-  const handleClose = () => {
-    setIsAnimating(false);
-    setTimeout(() => {
-      onClose();
-    }, 200); // Match animation duration
-  };
+  }, [isOpen, selectedCategory, selectedSkill, handleClose]);
 
   // Handle modal animations
   useEffect(() => {
