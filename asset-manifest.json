@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.9ab72cca.css",
-    "main.js": "/static/js/main.4fab5673.js",
+    "main.css": "/static/css/main.4b58519d.css",
+    "main.js": "/static/js/main.b2ae585c.js",
     "static/media/hero-img.webp": "/static/media/hero-img.c68f781d5304affce36e.webp",
     "static/media/whatsapp.jpg": "/static/media/whatsapp.fdf58d1fdc900ca751f4.jpg",
     "static/media/instagram.jpg": "/static/media/instagram.b0c99419b97b2dde7223.jpg",
@@ -13,11 +13,11 @@
     "static/media/cursor-dark.png": "/static/media/cursor-dark.37fec07dc4e72a6665a0.png",
     "static/media/morocco.jpg": "/static/media/morocco.41c28e740bd30680d625.jpg",
     "index.html": "/index.html",
-    "main.9ab72cca.css.map": "/static/css/main.9ab72cca.css.map",
-    "main.4fab5673.js.map": "/static/js/main.4fab5673.js.map"
+    "main.4b58519d.css.map": "/static/css/main.4b58519d.css.map",
+    "main.b2ae585c.js.map": "/static/js/main.b2ae585c.js.map"
   },
   "entrypoints": [
-    "static/css/main.9ab72cca.css",
-    "static/js/main.4fab5673.js"
+    "static/css/main.4b58519d.css",
+    "static/js/main.b2ae585c.js"
   ]
 }
