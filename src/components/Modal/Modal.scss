@@ -1,0 +1,105 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+.modal {
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    @include flex-center;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.2s ease;
+    overflow: hidden;
+
+    &--animating {
+      opacity: 1;
+    }
+
+    &--closing {
+      opacity: 0;
+    }
+  }
+
+  &__container {
+    background-color: $color-bg;
+    border-radius: $space-8;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    width: 90%;
+    max-height: 90vh;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    transform: scale(0.95);
+    opacity: 0;
+
+    &--animating {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    &--closing {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+
+    // Size variants
+    &--small {
+      max-width: 448px;
+    }
+
+    &--medium {
+      max-width: 512px;
+    }
+
+    &--large {
+      max-width: 896px;
+    }
+
+    &--xlarge {
+      max-width: 1152px;
+    }
+  }
+
+  &__header {
+    @include flex-between;
+    padding: $space-24;
+    border-bottom: 1px solid #e5e7eb;
+
+    &-title {
+      font-size: $font-size-24;
+      font-weight: $fw-bold;
+      color: $color-text;
+      margin: 0;
+    }
+
+    &-close {
+      background: none;
+      border: none;
+      color: $color-primary;
+      padding: $space-8;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: $font-size-24;
+      @include flex-center;
+      width: 32px;
+      aspect-ratio: 1/1;
+      transition: all 0.2s ease;
+
+      &:hover {
+        scale: 1.05;
+        color: $color-primary-hover;
+      }
+    }
+  }
+
+  &__content {
+    padding: 0;
+
+    &--with-header {
+      padding: 0;
+    }
+
+    &--without-header {
+      padding: 24px;
+    }
+  }
+}

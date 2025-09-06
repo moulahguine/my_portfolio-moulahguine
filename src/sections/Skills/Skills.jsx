@@ -1,38 +1,30 @@
 import React, { useState } from "react";
 import { skillCategories, skillColors } from "./skillsData";
-import SkillModal from "./SkillModal";
-import CategoryModal from "./CategoryModal";
+import SkillsModal from "./SkillsModal";
 import "./Skills.scss";
+import HoverCursor from "../../components/HoverCursor/HoverCursor";
 
 function Skills() {
-  const [isSkillModalOpen, setIsSkillModalOpen] = useState(false);
-  const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedSkill, setSelectedSkill] = useState(null);
+  const [modalType, setModalType] = useState("category");
 
-  const handleSkillClick = (category, skill) => {
-    setSelectedCategory(category);
-    setSelectedSkill(skill);
-    setIsSkillModalOpen(true);
+  const handleSkillClick = (skill) => {
+    setSelectedCategory(skill);
+    setModalType("skill");
+    setIsModalOpen(true);
   };
 
   const handleCategoryClick = (category) => {
-    console.log("Category clicked:", category); // Debug log
-    console.log("Opening category modal for:", category.name); // Debug log
     setSelectedCategory(category);
-    setIsCategoryModalOpen(true);
-    console.log("Modal state set to true"); // Debug log
+    setModalType("category");
+    setIsModalOpen(true);
   };
 
-  const handleCloseSkillModal = () => {
-    setIsSkillModalOpen(false);
+  const handleCloseModal = () => {
     setSelectedCategory(null);
-    setSelectedSkill(null);
-  };
-
-  const handleCloseCategoryModal = () => {
-    setIsCategoryModalOpen(false);
-    setSelectedCategory(null);
+    setModalType("category");
+    setIsModalOpen(false);
   };
 
   return (
@@ -40,11 +32,13 @@ function Skills() {
       <div className="skills__header">
         <h2 className="skills__title">Skills</h2>
       </div>
+
       <div className="container">
         <div className="skills__content">
           {/* Render each category with its skills */}
           {skillCategories.map((category) => (
-            <div
+            <HoverCursor
+              content="click"
               key={category.id}
               className="category-section category-section--clickable"
               onClick={() => handleCategoryClick(category)}
@@ -76,8 +70,8 @@ function Skills() {
                       className={`skill-item`}
                       style={{ "--skill-color": skillColor }}
                       onClick={(e) => {
-                        e.stopPropagation(); // Prevent category click when clicking individual skill
-                        handleSkillClick(category, skill);
+                        e.stopPropagation();
+                        handleSkillClick(skill);
                       }}
                     >
                       <div className="skill-icon">
@@ -88,24 +82,17 @@ function Skills() {
                   );
                 })}
               </div>
-            </div>
+            </HoverCursor>
           ))}
         </div>
       </div>
 
-      {/* Individual Skill Modal */}
-      <SkillModal
-        isOpen={isSkillModalOpen}
-        onClose={handleCloseSkillModal}
+      {/* Skills Modal */}
+      <SkillsModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
         selectedCategory={selectedCategory}
-        selectedSkill={selectedSkill}
-      />
-
-      {/* Category Modal */}
-      <CategoryModal
-        isOpen={isCategoryModalOpen}
-        onClose={handleCloseCategoryModal}
-        selectedCategory={selectedCategory}
+        type={modalType}
       />
     </section>
   );

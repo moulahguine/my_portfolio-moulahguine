@@ -22,6 +22,7 @@
       gap: $space-24;
 
       .category-section {
+        cursor: none;
         width: auto;
         height: fit-content;
         border: solid 1px #000;
@@ -32,8 +33,6 @@
 
         // Clickable category section styles
         &--clickable {
-          cursor: pointer;
-
           &:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba($color-primary, 0.15);
@@ -66,31 +65,15 @@
           align-items: center;
           gap: $space-8;
 
-          // Animated underline effect
-          &::after {
-            content: "";
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: $color-primary;
-            transition: width 0.3s ease;
-          }
-
           .category-title__arrow {
             font-size: $font-size-16;
             color: $color-primary;
-            transition: transform $transition-base;
+            transition: all $transition-base;
           }
         }
 
-        &:hover .category-title::after {
-          width: 100%;
-        }
-
         &:hover .category-title__arrow {
-          transform: translateX(4px);
+          transform: translateX(2px);
         }
 
         .skills-grid {
@@ -102,13 +85,13 @@
             @include flex-column;
             justify-content: center;
             gap: $space-8;
-            width: 100px;
+            width: 90px;
             aspect-ratio: 1/1;
             border: 1px dashed $color-primary;
             transition: all $transition-base;
             padding: $space-4 $space-12;
             border-radius: $space-8;
-            cursor: pointer;
+            cursor: none;
 
             .skill-icon {
               @include flex-center;
@@ -141,8 +124,13 @@
           }
         }
 
-        &:hover .skills-grid .skill-item {
-          box-shadow: inset 0 0 15px var(--skill-color);
+        &:hover .skills-grid {
+          .skill-item {
+            border: none;
+            box-shadow:
+              0 0 15px var(--skill-color),
+              inset 0 0 15px var(--skill-color);
+          }
         }
       }
     }

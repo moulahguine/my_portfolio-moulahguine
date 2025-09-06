@@ -29,6 +29,7 @@ function HoverCursor({
   role,
   tabIndex,
   ariaLabel,
+  style,
 }) {
   const [isHovering, setIsHovering] = useState(false);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });

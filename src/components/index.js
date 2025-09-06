@@ -1,11 +1,14 @@
 // Button Component
-export { default as Button } from "./Button";
+export { default as Button } from "./Button/Button";
 
 // DotGrid Component
-export { default as DotGrid } from "./DotGrid";
+export { default as DotGrid } from "./DotGrid/DotGrid";
 
 // Header Component
-export { default as Header } from "./Header";
+export { default as Header } from "./Header/Header";
 
 // Location Component
-export { default as Location } from "./Location";
+export { default as Location } from "./Location/Location";
+
+// Modal Component
+export { default as Modal } from "./Modal";

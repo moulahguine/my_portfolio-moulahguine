@@ -23,7 +23,7 @@
 /* 64px */
 .about {
   background-color: #f8fafc;
-  padding: 4.5rem 0 11.5rem;
+  padding: 4.5rem 0 7.5rem;
 }
 .about .container {
   max-width: 1200px;
@@ -36,7 +36,7 @@
   color: #2d3748;
   text-align: center;
   margin-bottom: 2.5rem;
-  margin-bottom: 7.5rem;
+  margin-bottom: 2.5rem;
 }
 .about .container .about__main-content {
   display: grid;
