@@ -3,7 +3,7 @@
 
 .about {
   background-color: $color-bg;
-  padding: calc($space-40 + 2rem) 0 calc($space-40 + 9rem);
+  padding: calc($space-40 + 2rem) 0 calc($space-40 + 5rem);
 
   .container {
     @include container;
@@ -11,7 +11,7 @@
     // Header Section
     .about__header {
       @include section-title;
-      margin-bottom: $space-40 + 5rem;
+      margin-bottom: $space-40;
     }
 
     // Main Content
