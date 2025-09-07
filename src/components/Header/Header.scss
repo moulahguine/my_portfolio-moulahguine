@@ -5,16 +5,18 @@
   width: 100%;
   position: fixed;
   top: 1rem;
-  z-index: 1000;
+  z-index: 9999;
+  transition: all 0.3s ease;
 
   .container {
     @include container;
     @include flex-between;
+    @include glass-effect-light;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-radius: 3rem;
+    border-radius: $space-32;
     overflow: hidden;
-    @include glass-effect-light;
+    position: relative;
 
     .header__logo {
       .userName {
@@ -24,7 +26,7 @@
         font-weight: 700;
 
         .userName__m {
-          padding: 0 5px;
+          padding: 3px 5px;
           background: $color-primary;
           color: $color-surface;
           font-size: inherit;
@@ -35,6 +37,8 @@
     }
 
     .primary-nav {
+      transition: all 0.3s ease;
+
       .primary-nav__list {
         @include flex-center;
         column-gap: $space-8;
@@ -76,6 +80,60 @@
               }
             }
           }
+        }
+      }
+
+      &--centered {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .social-links {
+      opacity: 0;
+      display: none;
+      transform: translateX(20px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+
+      &--visible {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+
+      &__list {
+        @include flex-center;
+        column-gap: $space-16;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      &__item {
+        display: flex;
+      }
+
+      &__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        color: $color-text-muted;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        font-size: 18px;
+
+        &:hover {
+          color: $color-surface;
+          background: $color-primary;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
       }
     }

@@ -70,7 +70,7 @@
 
   .map-modal {
     @include flex-column;
-    @include glass-effect-light;
+    background-color: $color-surface-tertiary;
     border-radius: $space-16;
     max-width: 1200px;
     width: 92%;
@@ -130,7 +130,7 @@
             border: 1px solid $color-border;
             overflow: hidden;
             background: center / 200% no-repeat;
-            transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-out;
             filter: brightness(90%);
 
             &:hover:not(.soon) {
@@ -165,6 +165,27 @@
             height: 5px;
             background-color: $color-shadow-card;
             z-index: 1;
+          }
+        }
+        .location-card:first-of-type {
+          .location-line {
+            background-color: #008000;
+            &::after {
+              content: "\f00c"; /* check icon */
+              font-weight: 900; /* solid style */
+              font-family: "Font Awesome 6 Free"; /* make sure FA is loaded */
+              color: white;
+              @include flex-center;
+              font-size: $font-size-12;
+              width: 25px;
+              aspect-ratio: 1/1;
+              background-color: inherit;
+              border-radius: 50%;
+              position: absolute;
+              top: -10px;
+              left: 50%;
+              transform: translateX(-50%);
+            }
           }
         }
 
