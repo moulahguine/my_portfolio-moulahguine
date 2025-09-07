@@ -41,7 +41,7 @@ export default function Header() {
 
       // Check if scrolled past hero section
       if (heroSection) {
-        const heroHeight = heroSection.offsetHeight;
+        const heroHeight = heroSection.offsetHeight - 200;
         setIsScrolled(scrollPosition > heroHeight);
       }
 
