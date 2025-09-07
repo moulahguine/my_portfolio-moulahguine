@@ -84,6 +84,7 @@
   display: flex;
 }
 .site-header .container .primary-nav .primary-nav__list .primary-nav__item button {
+  cursor: pointer;
   background: none;
   border: none;
   position: relative;
