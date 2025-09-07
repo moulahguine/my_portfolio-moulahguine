@@ -48,7 +48,7 @@ export default function About() {
           {/* Left Column - Profile Image */}
           <motion.div
             className="about__image"
-            initial={{ x: -50, opacity: 0 }}
+            initial={{ x: -50, opacity: 1 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
@@ -100,11 +100,7 @@ export default function About() {
           >
             <div className="facts-grid">
               {quickFacts.map((fact, index) => (
-                <motion.div
-                  key={index}
-                  className="fact-card"
-                  whileHover={{ scale: 1.02, transition: 0.2 }}
-                >
+                <motion.div key={index} className="fact-card">
                   <div className="fact-icon">{fact.icon}</div>
                   <div className="fact-content">
                     <span className="fact-label">{fact.label}</span>

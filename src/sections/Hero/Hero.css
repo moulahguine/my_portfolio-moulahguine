@@ -74,7 +74,7 @@
   max-width: 500px;
 }
 .hero .container .hero__content .availability-badge {
-  color: #1a202c;
+  color: #4a5568;
   margin-bottom: 2.5rem;
   font-size: 0.875rem;
   display: flex;
@@ -83,10 +83,18 @@
   justify-content: start;
   gap: 0.5rem;
   padding-left: 0.25rem;
+  padding-top: 0.5rem;
 }
 .hero .container .hero__content .availability-badge svg {
   color: #38a169;
-  font-size: 0.75rem;
+  font-size: 8px;
+  opacity: 0.2;
+  animation: opacit 1s infinite alternate-reverse ease-in-out;
+}
+@keyframes opacit {
+  to {
+    opacity: 1;
+  }
 }
 .hero .container .hero__media {
   display: grid;

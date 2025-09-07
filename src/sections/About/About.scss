@@ -3,7 +3,7 @@
 
 .about {
   background-color: $color-bg;
-  padding: calc($space-40 + 2rem) 0 calc($space-40 + 5rem);
+  padding: calc($space-40 + 2rem) 0;
 
   .container {
     @include container;
@@ -24,14 +24,19 @@
       // Left Column - Profile Image
       .about__image {
         grid-column: span 1;
-        width: 300px;
+        width: 350px;
         aspect-ratio: 1 / 1;
         border-radius: 50%;
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
-        box-shadow: -55px 50px 0px rgba(45, 55, 72, 0.15);
-
+        box-shadow:
+          5px 5px 0px 0px #9c9c9c,
+          10px 10px 0px 0px #b3b3b3,
+          15px 15px 0px 0px #cbcbcb,
+          20px 20px 0px 0px #e1e1e1,
+          25px 25px 0px 0px #d0d0d034,
+          5px 5px 15px 5px rgba(255, 255, 255, 0);
         img {
           transform: scale(1.2);
           object-fit: cover;
@@ -43,8 +48,14 @@
         @include sweep-hover($color-bg);
 
         &:hover {
-          box-shadow: -25px -25px 0px rgba(45, 55, 72, 0.2);
           scale: 1.05;
+          box-shadow:
+            5px 5px 0px 0px #9c9c9c,
+            -25px 10px 0px 0px #b3b3b3,
+            -20px 15px 0px 0px #cbcbcb,
+            15px -20px 0px 0px #e1e1e1,
+            10px 25px 0px 0px #d0d0d034,
+            15px 5px 15px 5px rgba(255, 255, 255, 0);
         }
       }
 
@@ -93,69 +104,60 @@
       }
       // Quick Facts Grid
       .about__facts {
+        margin-top: $space-40;
         grid-column: span 2;
 
         .facts-grid {
           @include flex-center;
-          flex-wrap: wrap;
-          gap: $space-32;
-
+          align-items: start;
+          gap: $space-16;
           .fact-card {
-            @include flex-column;
-            align-items: center;
+            max-width: 280px;
+            @include flex-center;
             gap: $space-16;
-            @include interactive-card;
-            padding: calc($space-40 + 1rem) $space-16;
-            width: 260px;
-            aspect-ratio: 1 / 1;
-            border-radius: 16px;
             position: relative;
             overflow: hidden;
 
-            // Card corner design
-            &::before,
-            &::after {
-              content: "";
-              position: absolute;
-              width: 40px;
-              aspect-ratio: 1 / 1;
-              border-radius: 16px 0 16px 0;
-              z-index: 1;
-              @include primary-gradient;
-            }
-            &::before {
-              top: 0;
-              left: 0;
-            }
+            // // Card corner design
+            // &::before,
+            // &::after {
+            //   content: "";
+            //   position: absolute;
+            //   width: 40px;
+            //   aspect-ratio: 1 / 1;
+            //   border-radius: 16px 0 16px 0;
+            //   z-index: 1;
+            //   @include primary-gradient;
+            // }
+            // &::before {
+            //   top: 0;
+            //   left: 0;
+            // }
 
-            &::after {
-              bottom: 0;
-              right: 0;
-            }
+            // &::after {
+            //   bottom: 0;
+            //   right: 0;
+            // }
 
             .fact-icon {
-              position: absolute;
-              bottom: -85px;
-              left: 0;
-              font-size: 10rem;
-              opacity: 0.1;
-              color: $color-primary-hover;
+              font-size: $space-32;
+              color: $color-primary-500;
             }
 
             .fact-content {
               @include flex-column;
-              text-align: center;
-              gap: $space-12;
+
+              gap: $space-4;
               flex: 1;
 
               .fact-label {
-                font-size: $font-size-24;
+                font-size: $font-size-18;
                 color: $color-text;
                 font-weight: $fw-bold;
               }
 
               .fact-value {
-                font-size: $font-size-16;
+                font-size: $font-size-14;
                 color: $color-primary-500;
               }
             }
