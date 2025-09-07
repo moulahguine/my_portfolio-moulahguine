@@ -48,7 +48,7 @@ export default function Header() {
       // Active section detection
       const sections = document.querySelectorAll("section[id]");
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
+        const sectionTop = section.offsetTop - 100;
         const sectionHeight = section.offsetHeight;
         const sectionId = section.getAttribute("id");
 
