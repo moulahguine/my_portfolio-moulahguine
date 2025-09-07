@@ -58,6 +58,10 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+.hero .container .hero__content .hero__title small {
+  font-size: 1.125rem;
+  color: #718096;
+}
 .hero .container .hero__content .hero__subtitle {
   font-size: clamp(1.25rem, 3vw, 1.75rem);
   font-weight: 600;

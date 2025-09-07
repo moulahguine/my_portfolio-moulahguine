@@ -30,6 +30,10 @@
         span {
           @include text-gradient;
         }
+        small {
+          font-size: $font-size-18;
+          color: $color-text-light;
+        }
       }
 
       .hero__subtitle {

@@ -48,10 +48,17 @@
   position: relative;
 }
 .site-header .container .header__logo .userName {
+  background: none;
+  border: none;
   text-transform: uppercase;
   color: #1a202c;
   font-size: 1.2rem;
   font-weight: 700;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.site-header .container .header__logo .userName:hover {
+  color: #2d3748;
 }
 .site-header .container .header__logo .userName .userName__m {
   padding: 3px 5px;
@@ -76,7 +83,9 @@
 .site-header .container .primary-nav .primary-nav__list .primary-nav__item {
   display: flex;
 }
-.site-header .container .primary-nav .primary-nav__list .primary-nav__item a {
+.site-header .container .primary-nav .primary-nav__list .primary-nav__item button {
+  background: none;
+  border: none;
   position: relative;
   color: #4a5568;
   font-size: 1rem;
@@ -86,8 +95,9 @@
   border-radius: 50px;
   overflow: hidden;
   display: inline-block;
+  cursor: pointer;
 }
-.site-header .container .primary-nav .primary-nav__list .primary-nav__item a::before {
+.site-header .container .primary-nav .primary-nav__list .primary-nav__item button::before {
   content: "";
   position: absolute;
   top: 0;
@@ -99,10 +109,10 @@
   border-radius: inherit;
   z-index: -1;
 }
-.site-header .container .primary-nav .primary-nav__list .primary-nav__item a:hover, .site-header .container .primary-nav .primary-nav__list .primary-nav__item a.active {
+.site-header .container .primary-nav .primary-nav__list .primary-nav__item button:hover, .site-header .container .primary-nav .primary-nav__list .primary-nav__item button.active {
   color: #fefefe;
 }
-.site-header .container .primary-nav .primary-nav__list .primary-nav__item a:hover::before, .site-header .container .primary-nav .primary-nav__list .primary-nav__item a.active::before {
+.site-header .container .primary-nav .primary-nav__list .primary-nav__item button:hover::before, .site-header .container .primary-nav .primary-nav__list .primary-nav__item button.active::before {
   left: 0;
 }
 .site-header .container .primary-nav--centered {

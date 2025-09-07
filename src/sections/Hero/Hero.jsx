@@ -70,7 +70,8 @@ export default function Hero() {
             >
               &#128075;
             </motion.span>
-            , I&apos;m <span>Mohamed Oulahguine</span>
+            , I&apos;m <span>Mohamed Oulahguine</span>{" "}
+            <small>(o-laha-kiiin)</small>
           </motion.h1>
           <motion.h1
             className="hero__subtitle"

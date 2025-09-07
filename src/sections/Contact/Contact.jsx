@@ -161,7 +161,7 @@ function Contact() {
   }
 
   return (
-    <section id="contact" className="contact">
+    <section path="/contact" id="contact" className="contact">
       {/* Header Section */}
       <motion.div
         className="contact__header"

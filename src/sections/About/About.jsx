@@ -30,7 +30,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="about">
+    <section path="/about" id="about" className="about">
       <div className="container">
         {/* Header */}
         <motion.div

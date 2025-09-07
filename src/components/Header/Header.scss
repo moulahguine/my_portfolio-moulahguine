@@ -20,10 +20,18 @@
 
     .header__logo {
       .userName {
+        background: none;
+        border: none;
         text-transform: uppercase;
         color: $color-text;
         font-size: 1.2rem;
         font-weight: 700;
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $color-primary;
+        }
 
         .userName__m {
           padding: 3px 5px;
@@ -47,7 +55,9 @@
 
         .primary-nav__item {
           display: flex;
-          a {
+          button {
+            background: none;
+            border: none;
             position: relative;
             color: $color-text-muted;
             font-size: $font-size-16;
@@ -57,6 +67,7 @@
             border-radius: 50px;
             overflow: hidden;
             display: inline-block;
+            cursor: pointer;
 
             &::before {
               content: "";

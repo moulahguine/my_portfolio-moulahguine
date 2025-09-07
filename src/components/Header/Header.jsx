@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaCodepen } from "react-icons/fa";
 import "./Header.scss";
 
 export default function Header() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [activeSection, setActiveSection] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navigationItems = [
-    { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
-    { id: "projects", label: "Projects" },
-    { id: "contact", label: "Contact" },
+    { id: "about", label: "About", path: "/about" },
+    { id: "skills", label: "Skills", path: "/skills" },
+    { id: "projects", label: "Projects", path: "/projects" },
+    { id: "contact", label: "Contact", path: "/contact" },
   ];
 
   const socialLinks = [
@@ -45,27 +48,56 @@ export default function Header() {
         setIsScrolled(scrollPosition > heroHeight);
       }
 
-      // Active section detection
-      const sections = document.querySelectorAll("section[id]");
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute("id");
+      // Update URL based on scroll position
+      const sections = [
+        { id: "hero", path: "/" },
+        { id: "about", path: "/about" },
+        { id: "skills", path: "/skills" },
+        { id: "projects", path: "/projects" },
+        { id: "contact", path: "/contact" },
+      ];
 
-        if (
-          scrollPosition >= sectionTop &&
-          scrollPosition < sectionTop + sectionHeight
-        ) {
-          setActiveSection(sectionId);
+      const scrollOffset = window.scrollY + 200;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i].id);
+        if (section && scrollOffset >= section.offsetTop) {
+          if (location.pathname !== sections[i].path) {
+            navigate(sections[i].path, { replace: true });
+          }
+          setActiveSection(sections[i].id);
+          break;
         }
-      });
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [navigate, location.pathname]);
+
+  const handleNavigation = (path) => {
+    const pathToSection = {
+      "/": "hero",
+      "/about": "about",
+      "/skills": "skills",
+      "/projects": "projects",
+      "/contact": "contact",
+    };
+
+    const sectionId = pathToSection[path];
+    if (sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
+    navigate(path);
+  };
 
   const isActive = (sectionId) => activeSection === sectionId;
 
@@ -75,9 +107,13 @@ export default function Header() {
     >
       <div className="container">
         <div className="header__logo">
-          <a href="/" className="userName" aria-label="Go to home section">
+          <button
+            onClick={() => handleNavigation("/")}
+            className="userName"
+            aria-label="Go to home section"
+          >
             <span className="userName__m">m</span> oulahguine
-          </a>
+          </button>
         </div>
 
         <nav
@@ -87,12 +123,12 @@ export default function Header() {
           <ul className="primary-nav__list">
             {navigationItems.map((item) => (
               <li key={item.id} className="primary-nav__item">
-                <a
-                  href={`#${item.id}`}
+                <button
+                  onClick={() => handleNavigation(item.path)}
                   className={isActive(item.id) ? "active" : ""}
                 >
                   {item.label}
-                </a>
+                </button>
               </li>
             ))}
           </ul>

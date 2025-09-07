@@ -28,7 +28,7 @@ function Skills() {
   };
 
   return (
-    <section className="skills" id="skills">
+    <section className="skills" id="skills" path="/skills">
       <div className="skills__header">
         <h2 className="skills__title">Skills</h2>
       </div>

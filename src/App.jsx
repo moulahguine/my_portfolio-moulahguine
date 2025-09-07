@@ -10,12 +10,12 @@ import Contact from "./sections/Contact/Contact";
 
 export default function App() {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter>
       <Header />
       <main>
         <Routes>
           <Route
-            path="/"
+            path="/*"
             element={
               <>
                 <Hero />
