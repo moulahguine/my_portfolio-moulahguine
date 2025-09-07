@@ -54,9 +54,7 @@ function Contact() {
 
   const [formData, setFormData] = useState({
     name: "",
-    company: "",
     email: "",
-    website: "",
     message: "",
   });
   const [errors, setErrors] = useState({});
@@ -91,19 +89,10 @@ function Contact() {
       newErrors.name = "Name is required";
     }
 
-    if (!formData.company.trim()) {
-      newErrors.company = "Company name is required";
-    }
-
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
-    }
-
-    if (formData.website.trim() && !/^https?:\/\/.+/.test(formData.website)) {
-      newErrors.website =
-        "Please enter a valid website URL (starting with http:// or https://)";
     }
 
     if (!formData.message.trim()) {
@@ -132,6 +121,16 @@ function Contact() {
     }
   };
 
+  // Clear form inputs
+  const clearForm = () => {
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
+    setErrors({});
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -147,14 +146,16 @@ function Contact() {
   if (state.succeeded) {
     if (!showSuccess) {
       setShowSuccess(true);
+      clearForm();
       setFormResponse({
         type: "success",
         message: "Thank you! I'll reply within 24 hours.",
       });
+      // Auto-dismiss after 2 seconds
       setTimeout(() => {
         setShowSuccess(false);
         setFormResponse({ type: "", message: "" });
-      }, 5000);
+      }, 2000);
     }
   }
 
@@ -265,18 +266,6 @@ function Contact() {
 
               <div className="contact__form-group">
                 <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleInputChange}
-                  placeholder="Drop company name (optianl)"
-                  className={`contact__input ${errors.company ? "" : ""}`}
-                />
-              </div>
-
-              <div className="contact__form-group">
-                <input
                   type="email"
                   id="email"
                   name="email"
@@ -284,18 +273,6 @@ function Contact() {
                   onChange={handleInputChange}
                   placeholder="Where can I reply back?"
                   className={`contact__input ${errors.email ? "contact__input--error" : ""}`}
-                />
-              </div>
-
-              <div className="contact__form-group">
-                <input
-                  type="url"
-                  id="website"
-                  name="website"
-                  value={formData.website}
-                  onChange={handleInputChange}
-                  placeholder="Your website (optional)"
-                  className={`contact__input ${errors.website ? "contact__input--error" : ""}`}
                 />
               </div>
 
@@ -329,16 +306,6 @@ function Contact() {
               )}
             </motion.button>
 
-            {/* Form Response Message */}
-            {formResponse.message && (
-              <p
-                id="form-response"
-                className={`form__response form__response--${formResponse.type}`}
-              >
-                {formResponse.message}
-              </p>
-            )}
-
             {/* Formspree Validation Errors */}
             <ValidationError
               prefix="Email"
@@ -355,6 +322,20 @@ function Contact() {
           </form>
         </div>
       </div>
+
+      {/* Success/Error Notification - Bottom Right Corner */}
+      {formResponse.message && (
+        <motion.div
+          initial={{ opacity: 0, x: 100, scale: 0.8 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          exit={{ opacity: 0, x: 100, scale: 0.8 }}
+          className={`notification notification--${formResponse.type}`}
+        >
+          <div className="notification__content">
+            <div className="notification__message">{formResponse.message}</div>
+          </div>
+        </motion.div>
+      )}
     </section>
   );
 }

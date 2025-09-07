@@ -1,9 +1,6 @@
 // Button Component
 export { default as Button } from "./Button/Button";
 
-// DotGrid Component
-export { default as DotGrid } from "./DotGrid/DotGrid";
-
 // Header Component
 export { default as Header } from "./Header/Header";
 
