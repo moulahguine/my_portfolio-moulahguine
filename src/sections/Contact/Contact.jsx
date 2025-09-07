@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import instagram from "../../assets/images/contact-section/instagram.jpg";
 import telegram from "../../assets/images/contact-section/telegram.jpg";
@@ -13,62 +13,51 @@ import {
   FaRegCopy,
 } from "react-icons/fa";
 import "./Contact.scss";
-import React from "react";
-import { useForm, ValidationError } from "@formspree/react";
+import { useForm } from "@formspree/react";
 import { TfiEmail } from "react-icons/tfi";
 import { FaMapLocation } from "react-icons/fa6";
 import HoverCursor from "../../components/HoverCursor/HoverCursor";
 
 function Contact() {
-  // Quick action links - replace with your actual links
+  // Quick action links
   const quickActions = [
     {
       icon: FaInstagram,
       label: "Instagram",
       href: "https://instagram.com/moulahguine",
       color: "linear-gradient(to right,#833ab4,#fd1d1d,#fcb045)",
-      backGround: instagram,
+      background: instagram,
     },
     {
       icon: FaLinkedin,
       label: "LinkedIn",
       href: "https://linkedin.com/in/moulahguine",
       color: "#0077B5",
-      backGround: linkedin,
+      background: linkedin,
     },
     {
       icon: FaWhatsapp,
       label: "WhatsApp",
       href: "https://wa.me/5548826567",
       color: "#25D366",
-      backGround: whatsapp,
+      background: whatsapp,
     },
     {
       icon: FaTelegram,
-      label: "Telegran",
+      label: "Telegram",
       href: "https://t.me/moulahguine",
       color: "#0077B5",
-      backGround: telegram,
+      background: telegram,
     },
   ];
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [errors, setErrors] = useState({});
-  const [showSuccess, setShowSuccess] = useState(false);
   const [formResponse, setFormResponse] = useState({ type: "", message: "" });
   const [copyFeedback, setCopyFeedback] = useState({
     email: false,
     phone: false,
   });
 
-  // Enhanced form submission
-  const [state, handleSubmit] = useForm("myzdnqpd");
-
-  // Copy to clipboard function
+  // Clipboard copy
   const copyToClipboard = async (text, type) => {
     try {
       await navigator.clipboard.writeText(text);
@@ -81,95 +70,80 @@ function Contact() {
     }
   };
 
-  // Form validation
+  // Form state
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [state, handleSubmit] = useForm("myzdnqpd");
+
+  // Custom validation
   const validateForm = () => {
     const newErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    }
-
+    if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+      newErrors.email = "Please enter a valid email";
     }
-
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    }
+    if (!formData.message.trim()) newErrors.message = "Message is required";
 
     setErrors(newErrors);
-    console.log(Object.keys(newErrors).length === 0);
     return Object.keys(newErrors).length === 0;
   };
 
-  // Handle input changes
+  // Input change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Clear error when user starts typing
+    // clear error if typing
     if (errors[name]) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: "",
-      }));
+      setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
 
-  // Clear form inputs
-  const clearForm = () => {
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
-    setErrors({});
-  };
-
+  // Submit
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
-    // Submit to Formspree
+    if (!validateForm()) return;
     await handleSubmit(e);
   };
 
-  // Show success message
-  if (state.succeeded) {
-    if (!showSuccess) {
-      setShowSuccess(true);
+  // Reset form
+  const clearForm = () => {
+    setFormData({ name: "", email: "", message: "" });
+    setErrors({});
+  };
+
+  // Handle success/error from Formspree
+  useEffect(() => {
+    if (state.succeeded) {
       clearForm();
       setFormResponse({
         type: "success",
-        message: "Thank you! I'll reply within 24 hours.",
+        message: "Thank you! I'll reply soon.",
       });
-      // Auto-dismiss after 2 seconds
-      setTimeout(() => {
-        setShowSuccess(false);
+      const timer = setTimeout(() => {
         setFormResponse({ type: "", message: "" });
       }, 2000);
+      return () => clearTimeout(timer);
     }
-  }
 
-  // Show error message
-  if (state.errors && state.errors.length > 0 && !formResponse.message) {
-    setFormResponse({
-      type: "error",
-      message: "Something went wrong, please try again.",
-    });
-  }
+    if (state.errors && state.errors.length > 0) {
+      setFormResponse({
+        type: "error",
+        message: "Something went wrong, please try again.",
+      });
+    }
+  }, [state.succeeded, state.errors]);
 
   return (
     <section path="/contact" id="contact" className="contact">
-      {/* Header Section */}
+      {/* Header */}
       <motion.div
         className="contact__header"
         initial={{ opacity: 0, y: -50 }}
@@ -181,7 +155,7 @@ function Contact() {
       </motion.div>
 
       <div className="container">
-        {/* Quick Action Buttons */}
+        {/* Quick Actions */}
         <motion.div
           className="contact__quick-actions"
           initial={{ opacity: 0, y: 30 }}
@@ -202,7 +176,7 @@ function Contact() {
                 className="contact__action-card"
                 style={{
                   "--action-color": action.color,
-                  "--backGround": `url(${action.backGround})`,
+                  "--background": `url(${action.background})`,
                 }}
               >
                 <div className="contact__action-icon-bg">
@@ -211,12 +185,14 @@ function Contact() {
               </motion.a>
             ))}
           </div>
-          {/* Trust Signals Footer */}
+
+          {/* Footer */}
           <div className="contact__footer">
             <div className="contact__footer-location">
               <FaMapLocation />
               <p>Based in Turkey, available for remote and onsite roles.</p>
             </div>
+
             <HoverCursor
               content="copy"
               className="contact__footer-email"
@@ -226,9 +202,7 @@ function Contact() {
             >
               <TfiEmail />
               <p>
-                {copyFeedback.email
-                  ? " Copied!"
-                  : "mohamedoulahguine@gmail.com"}
+                {copyFeedback.email ? "Copied!" : "mohamedoulahguine@gmail.com"}
               </p>
               {!copyFeedback.email && <FaRegCopy />}
             </HoverCursor>
@@ -239,13 +213,13 @@ function Contact() {
               onClick={() => copyToClipboard("+90 554 882 65 67", "phone")}
             >
               <FaPhone />
-              <p>{copyFeedback.phone ? " Copied!" : "+90 554 882 65 67"}</p>
+              <p>{copyFeedback.phone ? "Copied!" : "+90 554 882 65 67"}</p>
               {!copyFeedback.phone && <FaRegCopy />}
             </HoverCursor>
           </div>
         </motion.div>
 
-        {/* Contact Form */}
+        {/* Form */}
         <div className="contact__form-section">
           <span className="contact__form-icon">
             <TfiEmail />
@@ -260,7 +234,9 @@ function Contact() {
                   value={formData.name}
                   onChange={handleInputChange}
                   placeholder="What should I call you?"
-                  className={`contact__input ${errors.name ? "contact__input--error" : ""}`}
+                  className={`contact__input ${
+                    errors.name ? "contact__input--error" : ""
+                  }`}
                 />
               </div>
 
@@ -272,7 +248,9 @@ function Contact() {
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="Where can I reply back?"
-                  className={`contact__input ${errors.email ? "contact__input--error" : ""}`}
+                  className={`contact__input ${
+                    errors.email ? "contact__input--error" : ""
+                  }`}
                 />
               </div>
 
@@ -283,7 +261,9 @@ function Contact() {
                   value={formData.message}
                   onChange={handleInputChange}
                   placeholder="Tell me about the role or project…"
-                  className={`contact__textarea ${errors.message ? "contact__textarea--error" : ""}`}
+                  className={`contact__textarea ${
+                    errors.message ? "contact__textarea--error" : ""
+                  }`}
                   rows="6"
                 />
               </div>
@@ -305,25 +285,11 @@ function Contact() {
                 "Send Message"
               )}
             </motion.button>
-
-            {/* Formspree Validation Errors */}
-            <ValidationError
-              prefix="Email"
-              field="email"
-              errors={state.errors}
-              className="contact__error"
-            />
-            <ValidationError
-              prefix="Message"
-              field="message"
-              errors={state.errors}
-              className="contact__error"
-            />
           </form>
         </div>
       </div>
 
-      {/* Success/Error Notification - Bottom Right Corner */}
+      {/* Notifications */}
       {formResponse.message && (
         <motion.div
           initial={{ opacity: 0, x: 100, scale: 0.8 }}
