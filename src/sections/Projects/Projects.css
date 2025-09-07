@@ -22,7 +22,7 @@
 /* 48px */
 /* 64px */
 .projects {
-  background: linear-gradient(135deg, #fefefe, rgba(45, 55, 72, 0.03));
+  background-color: #f8fafc;
   padding: 4.5rem 0 5.5rem;
 }
 .projects .projects__header {
@@ -43,7 +43,6 @@
   margin: 0 auto;
   padding: 0 2rem;
   position: relative;
-  height: 300vh;
 }
 .projects .container .loading {
   text-align: center;

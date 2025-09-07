@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { FaGithub, FaLinkedin, FaCodepen } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import "./Header.scss";
 
 export default function Header() {
@@ -9,32 +9,26 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const navigationItems = [
-    { id: "about", label: "About", path: "/about" },
-    { id: "skills", label: "Skills", path: "/skills" },
-    { id: "projects", label: "Projects", path: "/projects" },
-    { id: "contact", label: "Contact", path: "/contact" },
-  ];
-
   const socialLinks = [
     {
       id: "github",
       icon: FaGithub,
-      url: "https://github.com/yourusername",
+      url: "https://github.com/moulahguine",
       label: "GitHub",
     },
     {
       id: "linkedin",
       icon: FaLinkedin,
-      url: "https://linkedin.com/in/yourusername",
+      url: "https://linkedin.com/in/moulahguine",
       label: "LinkedIn",
     },
-    {
-      id: "codepen",
-      icon: FaCodepen,
-      url: "https://codepen.io/yourusername",
-      label: "CodePen",
-    },
+  ];
+
+  const navigationItems = [
+    { id: "about", label: "About", path: "/about" },
+    { id: "skills", label: "Skills", path: "/skills" },
+    { id: "projects", label: "Projects", path: "/projects" },
+    { id: "contact", label: "Contact", path: "/contact" },
   ];
 
   useEffect(() => {

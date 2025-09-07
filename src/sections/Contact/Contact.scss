@@ -3,13 +3,13 @@
 
 // Main contact section container
 .contact {
-  @include surface-gradient;
-  padding: calc($space-40 + 2rem) 0 calc($space-40 + 3rem);
+  background-color: $color-bg;
+  padding: calc($space-40 + 2rem) 0;
 
   // Header section
   .contact__header {
     @include section-title;
-    margin-bottom: $space-40 + 2rem;
+    margin-bottom: $space-40;
 
     .contact__title {
       @include section-header-style;
@@ -40,21 +40,16 @@
         @include body-text;
         color: $color-text-muted;
         font-size: $font-size-18;
-        margin-bottom: $space-40;
         text-transform: uppercase;
-        text-decoration: underline wavy;
         letter-spacing: 0.5px;
+        margin-bottom: $space-24;
       }
 
       .contact__action-cards {
         display: flex;
         align-items: center;
-        height: 100%;
         gap: $space-12;
         position: relative;
-        overflow: visible;
-        perspective: 100px;
-        transform-style: preserve-3d;
 
         .contact__action-card {
           @include flex-center;
@@ -69,6 +64,7 @@
           transition: all 0.3s ease-in-out;
 
           &:hover {
+            scale: 1.05;
             box-shadow: 0 0 20px var(--action-color);
             border: solid 2px var(--action-color);
             .contact__action-icon-bg {
@@ -103,9 +99,6 @@
         }
         // first card
         .contact__action-card:nth-child(1) {
-          transform: translateZ(18px) rotateX(0deg) rotateY(5deg)
-            translateX(50px);
-
           .contact__action-icon-bg {
             background: $color-primary-500;
           }
@@ -115,41 +108,9 @@
               0 0 5px #833ab4,
               0 0 10px #fd1d1d,
               0 0 15px #fcb045;
-            transform: translateZ(35px) rotateX(0deg) rotateY(0deg)
-              translateX(50px);
             .contact__action-icon-bg {
               background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
             }
-          }
-        }
-
-        // second card
-        .contact__action-card:nth-child(2) {
-          transform: translateZ(13px) rotateX(0deg) rotateY(5deg)
-            translateX(0px);
-          &:hover {
-            transform: translateZ(35px) rotateX(0deg) rotateY(0deg)
-              translateX(0px);
-          }
-        }
-
-        // third card
-        .contact__action-card:nth-child(3) {
-          transform: translateZ(16px) rotateX(0deg) rotateY(-5deg)
-            translateX(0px);
-          &:hover {
-            transform: translateZ(35px) rotateX(0deg) rotateY(0deg)
-              translateX(-50px);
-          }
-        }
-
-        // forth card
-        .contact__action-card:nth-child(4) {
-          transform: translateZ(18px) rotateX(0deg) rotateY(-3deg)
-            translateX(-50px);
-          &:hover {
-            transform: translateZ(35px) rotateX(0deg) rotateY(0deg)
-              translateX(-100px);
           }
         }
       }

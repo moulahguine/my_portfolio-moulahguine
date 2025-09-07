@@ -56,6 +56,7 @@ function Contact() {
     name: "",
     company: "",
     email: "",
+    website: "",
     message: "",
   });
   const [errors, setErrors] = useState({});
@@ -98,6 +99,11 @@ function Contact() {
       newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
+    }
+
+    if (formData.website.trim() && !/^https?:\/\/.+/.test(formData.website)) {
+      newErrors.website =
+        "Please enter a valid website URL (starting with http:// or https://)";
     }
 
     if (!formData.message.trim()) {
@@ -171,11 +177,6 @@ function Contact() {
         transition={{ duration: 0.8 }}
       >
         <h2 className="contact__title">contact me</h2>
-        <p className="contact__intro">
-          If you're looking for someone who builds fast, responsive apps, I'd be
-          glad to connect. Drop me a message here, and I'll get back to you
-          quickly.
-        </p>
       </motion.div>
 
       <div className="container">
@@ -269,8 +270,8 @@ function Contact() {
                   name="company"
                   value={formData.company}
                   onChange={handleInputChange}
-                  placeholder="Where do you work?"
-                  className={`contact__input ${errors.company ? "contact__input--error" : ""}`}
+                  placeholder="Drop company name (optianl)"
+                  className={`contact__input ${errors.company ? "" : ""}`}
                 />
               </div>
 
@@ -283,6 +284,18 @@ function Contact() {
                   onChange={handleInputChange}
                   placeholder="Where can I reply back?"
                   className={`contact__input ${errors.email ? "contact__input--error" : ""}`}
+                />
+              </div>
+
+              <div className="contact__form-group">
+                <input
+                  type="url"
+                  id="website"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleInputChange}
+                  placeholder="Your website (optional)"
+                  className={`contact__input ${errors.website ? "contact__input--error" : ""}`}
                 />
               </div>
 

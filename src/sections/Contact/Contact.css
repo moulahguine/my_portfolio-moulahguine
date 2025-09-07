@@ -22,8 +22,8 @@
 /* 48px */
 /* 64px */
 .contact {
-  background: linear-gradient(135deg, #fefefe, rgba(45, 55, 72, 0.03));
-  padding: 4.5rem 0 5.5rem;
+  background-color: #f8fafc;
+  padding: 4.5rem 0;
 }
 .contact .contact__header {
   font-size: 3rem;
@@ -31,7 +31,7 @@
   color: #2d3748;
   text-align: center;
   margin-bottom: 2.5rem;
-  margin-bottom: 4.5rem;
+  margin-bottom: 2.5rem;
 }
 .contact .contact__header .contact__title {
   font-size: 4rem;
@@ -66,21 +66,15 @@
   line-height: 1.75;
   color: #4a5568;
   font-size: 1.125rem;
-  margin-bottom: 2.5rem;
   text-transform: uppercase;
-  -webkit-text-decoration: underline wavy;
-          text-decoration: underline wavy;
   letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
 }
 .contact .container .contact__quick-actions .contact__action-cards {
   display: flex;
   align-items: center;
-  height: 100%;
   gap: 0.75rem;
   position: relative;
-  overflow: visible;
-  perspective: 100px;
-  transform-style: preserve-3d;
 }
 .contact .container .contact__quick-actions .contact__action-cards .contact__action-card {
   display: flex;
@@ -97,6 +91,7 @@
   transition: all 0.3s ease-in-out;
 }
 .contact .container .contact__quick-actions .contact__action-cards .contact__action-card:hover {
+  scale: 1.05;
   box-shadow: 0 0 20px var(--action-color);
   border: solid 2px var(--action-color);
 }
@@ -127,36 +122,14 @@
   font-size: 1.75rem;
   color: #fff;
 }
-.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(1) {
-  transform: translateZ(18px) rotateX(0deg) rotateY(5deg) translateX(50px);
-}
 .contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(1) .contact__action-icon-bg {
   background: #4a5568;
 }
 .contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(1):hover {
   box-shadow: 0 0 5px #833ab4, 0 0 10px #fd1d1d, 0 0 15px #fcb045;
-  transform: translateZ(35px) rotateX(0deg) rotateY(0deg) translateX(50px);
 }
 .contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(1):hover .contact__action-icon-bg {
   background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
-}
-.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(2) {
-  transform: translateZ(13px) rotateX(0deg) rotateY(5deg) translateX(0px);
-}
-.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(2):hover {
-  transform: translateZ(35px) rotateX(0deg) rotateY(0deg) translateX(0px);
-}
-.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(3) {
-  transform: translateZ(16px) rotateX(0deg) rotateY(-5deg) translateX(0px);
-}
-.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(3):hover {
-  transform: translateZ(35px) rotateX(0deg) rotateY(0deg) translateX(-50px);
-}
-.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(4) {
-  transform: translateZ(18px) rotateX(0deg) rotateY(-3deg) translateX(-50px);
-}
-.contact .container .contact__quick-actions .contact__action-cards .contact__action-card:nth-child(4):hover {
-  transform: translateZ(35px) rotateX(0deg) rotateY(0deg) translateX(-100px);
 }
 .contact .container .contact__quick-actions .contact__footer {
   margin-top: 2.5rem;
