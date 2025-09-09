@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaBars, FaTimes } from "react-icons/fa";
 import "./Header.scss";
+import "./_Header-responsive.scss";
 
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const [activeSection, setActiveSection] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const socialLinks = [
     {
@@ -91,16 +93,27 @@ export default function Header() {
       }
     }
     navigate(path);
+
+    // Close mobile menu after navigation
+    setIsMenuOpen(false);
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const isActive = (sectionId) => activeSection === sectionId;
 
   return (
     <header
-      className={`site-header ${isScrolled ? "site-header--scrolled" : ""}`}
+      className={`site-header ${isScrolled ? "site-header--scrolled" : ""}  ${isMenuOpen ? "site-header--mobile-open" : ""}`}
     >
-      <div className="container">
-        <div className="header__logo">
+      <div
+        className={`container ${isMenuOpen ? "container--mobile-open" : ""}`}
+      >
+        <div
+          className={`header__logo ${isMenuOpen ? "header__logo--mobile-open" : ""}`}
+        >
           <button
             onClick={() => handleNavigation("/")}
             className="userName"
@@ -111,7 +124,7 @@ export default function Header() {
         </div>
 
         <nav
-          className={`primary-nav ${isScrolled ? "primary-nav--centered" : ""}`}
+          className={`primary-nav ${isScrolled ? "primary-nav--centered" : ""} ${isMenuOpen ? "primary-nav--mobile-open" : ""}`}
           aria-label="Primary"
         >
           <ul className="primary-nav__list">
@@ -119,7 +132,7 @@ export default function Header() {
               <li key={item.id} className="primary-nav__item">
                 <button
                   onClick={() => handleNavigation(item.path)}
-                  className={isActive(item.id) ? "active" : ""}
+                  className={`${isActive(item.id) ? "active" : ""} ${isMenuOpen ? "item--mobile-open" : ""} `}
                 >
                   {item.label}
                 </button>
@@ -129,7 +142,7 @@ export default function Header() {
         </nav>
 
         <div
-          className={`social-links ${isScrolled ? "social-links--visible" : ""}`}
+          className={`social-links ${isScrolled ? "social-links--visible" : ""} ${isMenuOpen ? "social-links--mobile-open" : ""}`}
         >
           <ul className="social-links__list">
             {socialLinks.map((social) => {
@@ -150,6 +163,16 @@ export default function Header() {
             })}
           </ul>
         </div>
+
+        {/* Mobile Menu Toggle Button */}
+        <button
+          className={`mobile-toggle ${isMenuOpen ? "mobile-toggle--mobile-open" : ""}`}
+          onClick={toggleMenu}
+          aria-label="Toggle mobile menu"
+          aria-expanded={isMenuOpen}
+        >
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
       </div>
     </header>
   );

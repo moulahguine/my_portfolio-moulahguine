@@ -2,11 +2,10 @@
 @use "../../assets/styles/mixins" as *;
 
 .hero {
-  position: relative;
   @include grid-center;
+  position: relative;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
   background-color: $color-bg;
 
   .container {
@@ -14,15 +13,124 @@
     display: grid;
     grid-template-columns: 1fr 1fr 20px;
     align-items: center;
+    justify-content: space-between;
+    gap: $space-40;
     position: relative;
     z-index: 10;
+
+    // change column for container tablet screen
+    @media (max-width: $breakpoint-lg) {
+      grid-template-columns: 1fr 1fr;
+      padding: 0 1rem;
+      gap: 0;
+    }
+
+    // ===== change column for container mobile screen ====
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      justify-content: center;
+      width: 90%;
+
+      .hero__media-content {
+        order: 1;
+        @include flex-center;
+        gap: $space-24;
+        width: 100%;
+        margin-bottom: $space-24;
+
+        // image
+        .hero__media {
+          width: 150px;
+          border-radius: 50%;
+          animation: none;
+          border: 2px solid $color-primary;
+
+          .hero__image {
+            scale: 1.2;
+          }
+          &:hover {
+            border-radius: 50%;
+            scale: 1;
+          }
+        }
+
+        //title + subtitle
+        .hero__title {
+          font-size: clamp($font-size-18, 4vw, $font-size-32);
+          margin-bottom: $space-16;
+          .hiEmoji {
+            all: unset;
+            display: inline-block;
+          }
+
+          span {
+            @include text-gradient;
+          }
+
+          small {
+            font-size: clamp($font-size-12, 2vw, $font-size-16);
+            color: $color-text-light;
+          }
+          .hero__subtitle {
+            font-weight: $fw-semibold;
+            color: $color-text-muted;
+            margin-top: $space-12;
+            font-size: clamp($font-size-14, 3vw, $font-size-18);
+          }
+        }
+      }
+    }
+
+    // + change column for container mobile screen
+    @media (max-width: $breakpoint-sm) {
+      width: 100%;
+
+      .hero__media-content {
+        flex-direction: column;
+
+        // image
+        .hero__media {
+          width: clamp(250px, 4vw, 150px);
+
+          .hero__image {
+            scale: 1.05;
+          }
+        }
+
+        //title + subtitle
+        .hero__title {
+          align-content: start;
+          font-size: clamp($font-size-32, 4vw, $font-size-48);
+
+          small {
+            font-size: clamp($font-size-14, 4vw, $font-size-18);
+          }
+          .hero__subtitle {
+            font-size: clamp($font-size-18, 3vw, $font-size-32);
+          }
+        }
+      }
+    }
+
+    // ===================================================
+
+    // hero content
     .hero__content {
+      // change order for mobile layout
+      @media (max-width: $breakpoint-md) {
+        order: 2;
+        @include grid-center;
+      }
+
+      // title
       .hero__title {
         .hiEmoji {
           all: unset;
           display: inline-block;
         }
-        @include heading-1;
+        font-size: clamp($font-size-24, 4vw, $font-size-40);
+        font-weight: $fw-bold;
+        line-height: $line-height-tight;
         margin-bottom: $space-16;
         color: $color-text;
         text-shadow: 0 2px 4px $color-shadow;
@@ -31,28 +139,46 @@
           @include text-gradient;
         }
         small {
-          font-size: $font-size-18;
+          font-size: clamp($font-size-14, 2vw, $font-size-18);
           color: $color-text-light;
         }
       }
 
+      //subtitle
       .hero__subtitle {
-        @include heading-2;
+        font-size: clamp($font-size-18, 3vw, $font-size-32);
+        font-weight: $fw-semibold;
+        line-height: $line-height-tight;
         margin-bottom: $space-24;
         color: $color-text-muted;
         text-shadow: 0 1px 2px $color-shadow-light;
       }
 
+      // description
       .hero__description {
-        @include body-text;
+        font-size: clamp($font-size-12, 2vw, $font-size-18);
+        line-height: $line-height-relaxed;
         margin-bottom: $space-32;
         color: $color-text-light;
-        max-width: 500px;
+        max-width: 471px;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: clamp($font-size-12, 3vw, $font-size-18) !important;
+          margin-bottom: $space-24;
+        }
+
+        @media (max-width: $breakpoint-sm) {
+          font-size: clamp($font-size-14, 3vw, $font-size-18) !important;
+          margin-bottom: $space-24;
+          text-align: center;
+        }
       }
+
+      // avilability badge
       .availability-badge {
         color: $color-text-muted;
         margin-bottom: $space-40;
-        font-size: $font-size-14;
+        font-size: clamp($font-size-12, 1.5vw, $font-size-14);
         @include flex-center;
         justify-content: start;
         gap: $space-8;
@@ -71,8 +197,23 @@
           }
         }
       }
+
+      @media (max-width: $breakpoint-lg) {
+        .hero__resume {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+        }
+      }
+
+      @media (max-width: $breakpoint-md) {
+        .hero__resume {
+          justify-content: space-around;
+        }
+      }
     }
 
+    // hero media
     .hero__media {
       @include grid-center;
       width: 500px;
@@ -96,14 +237,35 @@
         box-shadow: 0 0 20px 5px rgba(45, 55, 72, 0.15);
         scale: 1.05;
       }
+
+      @media (max-width: $breakpoint-lg) {
+        width: clamp(18.75rem, 5.357rem + 35.714vw, 37.5rem);
+      }
+
+      // Keyframes for hero image border-radius animation
+      @keyframes morphing-border {
+        0%,
+        100% {
+          border-radius: 55% 44% 65% 37% / 52% 28% 73% 49%;
+        }
+        50% {
+          border-radius: 41% 59% 51% 49% / 47% 45% 55% 53%;
+        }
+      }
     }
 
+    // hero social
     .hero__social {
       @include slide-in-right(0.5s);
       @include flex-column;
       position: relative;
       z-index: 20;
       gap: $space-16;
+
+      @media (max-width: $breakpoint-lg) {
+        order: 3;
+        flex-direction: row;
+      }
 
       .social-link {
         @include flex-center;
@@ -116,11 +278,17 @@
         position: relative;
         overflow: hidden;
 
+        @media (max-width: $breakpoint-lg) {
+          flex-direction: row;
+          width: clamp(40px, 3vw, 50px);
+          height: clamp(40px, 3vh, 50px);
+        }
+
         @include sweep-hover($color-primary-500);
 
         svg {
           color: $color-text;
-          font-size: $space-24;
+          font-size: clamp($font-size-18, 2vw, $space-24);
         }
 
         &.github-link:hover svg {
@@ -139,17 +307,6 @@
   }
 }
 
-// Keyframes for hero image border-radius animation
-@keyframes morphing-border {
-  0%,
-  100% {
-    border-radius: 55% 44% 65% 37% / 52% 28% 73% 49%;
-  }
-  50% {
-    border-radius: 41% 59% 51% 49% / 47% 45% 55% 53%;
-  }
-}
-
 // Hero Image Modal Styles
 .hero-image-overlay {
   position: fixed;
@@ -158,13 +315,13 @@
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(5px);
   @include flex-center;
-  padding: $space-24;
+
   .hero-image-modal {
+    @include flex-center;
     position: relative;
     max-width: 800px;
     width: 90%;
     aspect-ratio: 1/1;
-    @include flex-center;
 
     &__close {
       position: absolute;
@@ -185,6 +342,16 @@
       &:hover {
         background: rgba(0, 0, 0, 0.8);
         transform: rotate(90deg);
+      }
+
+      @media (max-width: $breakpoint-md) {
+        font-size: 1rem;
+        width: 30px;
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        font-size: 0.6rem;
+        width: 20px;
       }
     }
 

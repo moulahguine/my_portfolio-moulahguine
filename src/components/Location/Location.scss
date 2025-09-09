@@ -10,8 +10,8 @@
   padding: $space-8 0;
   border-radius: $radius-lg;
   position: relative;
-  cursor: none;
   border: 1px solid transparent;
+  cursor: none;
 
   // underline effect
   &::after {
@@ -47,14 +47,20 @@
     @include flex-center;
     gap: $space-8;
     color: $color-text;
-    font-size: $font-size-14;
+    font-size: clamp($font-size-12, 1vw, $font-size-14);
     font-weight: $fw-medium;
     margin: 0;
+    @media (max-width: $breakpoint-sm) {
+      font-size: clamp(10px, 1vw, $font-size-12);
+    }
   }
 
   .location__icon {
     color: $color-text-muted;
     font-size: $font-size-18;
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-16;
+    }
   }
 }
 

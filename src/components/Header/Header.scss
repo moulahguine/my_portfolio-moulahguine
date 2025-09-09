@@ -4,7 +4,7 @@
 .site-header {
   width: 100%;
   position: fixed;
-  top: 1rem;
+  top: $space-16;
   z-index: 9999;
   transition: all 0.3s ease;
 
@@ -15,7 +15,6 @@
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: $space-32;
-    overflow: hidden;
     position: relative;
 
     .header__logo {

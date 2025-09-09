@@ -29,4 +29,15 @@
     background: $color-primary-hover;
     transform: translateY(0);
   }
+
+  @media (max-width: $breakpoint-lg) {
+    gap: $space-8;
+    padding: $space-12 $space-16;
+    font-size: $font-size-14;
+    font-weight: $fw-semibold;
+
+    svg {
+      transform: translateY(2px);
+    }
+  }
 }

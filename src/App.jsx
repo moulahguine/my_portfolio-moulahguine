@@ -19,16 +19,16 @@ export default function App() {
             element={
               <>
                 <Hero />
-                <About />
+                {/* <About />
                 <Skills />
                 <Projects />
-                <Contact />
+                <Contact /> */}
               </>
             }
           />
         </Routes>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

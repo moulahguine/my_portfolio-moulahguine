@@ -8,8 +8,12 @@ import { useHeroHeight } from "../../hooks";
 import Location from "../../components/Location/Location";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "../../components/Button/Button";
+import { useMediaQuery } from "react-responsive";
 
 export default function Hero() {
+  const isMobile = useMediaQuery({ maxWidth: 778 });
+  const isTablet = useMediaQuery({ maxWidth: 1130 });
+
   const heroHeight = useHeroHeight();
   const [isImageOpen, setIsImageOpen] = useState(false);
 
@@ -78,32 +82,44 @@ export default function Hero() {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <motion.h1
-            className="hero__title"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            Hi{" "}
-            <motion.span
-              className="hiEmoji"
-              initial={{ rotate: -20 }}
-              animate={{ rotate: [0, -20, 0, -20, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
-            >
-              &#128075;
-            </motion.span>
-            , I&apos;m <span>Mohamed Oulahguine</span>{" "}
-            <small>(o-laha-kiiin)</small>
-          </motion.h1>
-          <motion.h1
-            className="hero__subtitle"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            Frontend Developer
-          </motion.h1>
+          {!isMobile && (
+            <>
+              <motion.h1
+                className="hero__title"
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                Hi{" "}
+                <motion.span
+                  className="hiEmoji"
+                  initial={{ rotate: -20 }}
+                  animate={{ rotate: [0, -20, 0, -20, 0] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatDelay: 1,
+                  }}
+                >
+                  &#128075;
+                </motion.span>
+                , I&apos;m{" "}
+                <span>
+                  Mohamed <br />
+                  Oulahguine
+                </span>{" "}
+                <small>(o-laha-kiiin)</small>
+              </motion.h1>
+              <motion.h1
+                className="hero__subtitle"
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                Frontend Developer
+              </motion.h1>
+            </>
+          )}
           <motion.p
             className="hero__description"
             initial={{ y: 50, opacity: 0 }}
@@ -150,46 +166,116 @@ export default function Hero() {
             >
               Resume
             </Button>
+
+            {/* hero social */}
+            {isTablet && (
+              <motion.div
+                className="hero__social"
+                initial={{ y: 0, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 1 }}
+              >
+                {socialLinks.map(({ href, icon, label, delay, className }) => (
+                  <motion.a
+                    key={label}
+                    className={`social-link ${className}`}
+                    initial={{ x: 50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.2, delay, ease: "easeInOut" }}
+                    whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                  >
+                    {icon}
+                  </motion.a>
+                ))}
+              </motion.div>
+            )}
           </motion.div>
           {/* end btn */}
         </motion.div>
-        <motion.div
-          className="hero__media"
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <img
-            className="hero__image"
-            src={heroImage}
-            alt="Mohamed Oulahguine - Frontend Developer"
-            onClick={handleImageClick}
-            style={{ cursor: "pointer" }}
-          />
-        </motion.div>
-        <motion.div
-          className="hero__social"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.3 }}
-        >
-          {socialLinks.map(({ href, icon, label, delay, className }) => (
-            <motion.a
-              key={label}
-              className={`social-link ${className}`}
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.2, delay, ease: "easeInOut" }}
-              whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
+        <div className="hero__media-content">
+          {/* hero image */}
+          <motion.div
+            className="hero__media"
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <img
+              className="hero__image"
+              src={heroImage}
+              alt="Mohamed Oulahguine - Frontend Developer"
+              onClick={handleImageClick}
+              style={{ cursor: "pointer" }}
+            />
+          </motion.div>
+          {/* hero title */}
+          {isMobile && (
+            <motion.h1
+              className="hero__title"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
             >
-              {icon}
-            </motion.a>
-          ))}
-        </motion.div>
+              Hi{" "}
+              <motion.span
+                className="hiEmoji"
+                initial={{ rotate: -20 }}
+                animate={{ rotate: [0, -20, 0, -20, 0] }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatDelay: 1,
+                }}
+              >
+                &#128075;
+              </motion.span>
+              , I&apos;m{" "}
+              <span>
+                Mohamed <br /> Oulahguine
+              </span>{" "}
+              <small>(o-laha-kiiin)</small>
+              <motion.h1
+                className="hero__subtitle"
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                Frontend Developer
+              </motion.h1>
+            </motion.h1>
+          )}
+        </div>
+
+        {/* hero social */}
+        {!isTablet && (
+          <motion.div
+            className="hero__social"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.3 }}
+          >
+            {socialLinks.map(({ href, icon, label, delay, className }) => (
+              <motion.a
+                key={label}
+                className={`social-link ${className}`}
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.2, delay, ease: "easeInOut" }}
+                whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+              >
+                {icon}
+              </motion.a>
+            ))}
+          </motion.div>
+        )}
       </motion.div>
 
       {/* Custom Image Modal */}
