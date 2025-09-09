@@ -107,6 +107,13 @@
         transform: rotate(90deg) !important;
         box-shadow: 0 4px 12px $color-shadow;
       }
+
+      @media (max-width: $breakpoint-md) {
+        top: $space-16;
+        right: $space-16;
+        width: 22px;
+        font-size: 14px;
+      }
     }
 
     .map-content {
@@ -145,6 +152,9 @@
               box-shadow: 0 0 20px rgba(183, 0, 0, 0.4);
             }
           }
+          @media (max-width: $breakpoint-sm) {
+            display: none;
+          }
 
           .location-content {
             @include flex-center;
@@ -152,7 +162,7 @@
 
             span {
               color: $color-text-muted;
-              font-size: $font-size-16;
+              font-size: clamp($font-size-12, 2vw, $font-size-16);
               font-weight: $fw-semibold;
 
               small {
@@ -171,6 +181,9 @@
             height: 5px;
             background-color: $color-shadow-card;
             z-index: 1;
+            @media (max-width: $breakpoint-xl) {
+              display: none;
+            }
           }
         }
         .location-card:first-of-type {
