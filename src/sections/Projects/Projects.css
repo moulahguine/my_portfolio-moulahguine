@@ -30,13 +30,12 @@
   font-weight: 700;
   color: #2d3748;
   text-align: center;
-  margin-bottom: 2.5rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 4.5rem;
 }
-.projects .projects__header .projects__title {
-  font-size: 4rem;
-  font-weight: 700;
-  color: #2d3748;
+@media (max-width: 1130px) {
+  .projects .projects__header {
+    font-size: clamp(2rem, 4vw, 4rem);
+  }
 }
 .projects .container {
   max-width: 1200px;

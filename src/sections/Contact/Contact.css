@@ -30,22 +30,12 @@
   font-weight: 700;
   color: #2d3748;
   text-align: center;
-  margin-bottom: 2.5rem;
-  margin-bottom: 7.5rem;
+  margin-bottom: 4.5rem;
 }
-.contact .contact__header .contact__title {
-  font-size: 4rem;
-  font-weight: 700;
-  color: #2d3748;
-}
-.contact .contact__header .contact__intro {
-  font-size: clamp(1rem, 1.9vw, 1.125rem);
-  line-height: 1.75;
-  color: #4a5568;
-  font-size: 1rem;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
+@media (max-width: 1130px) {
+  .contact .contact__header {
+    font-size: clamp(2rem, 4vw, 4rem);
+  }
 }
 .contact .container {
   max-width: 1200px;
@@ -55,7 +45,15 @@
   justify-content: space-between;
   gap: 2.5rem;
 }
+@media (max-width: 1130px) {
+  .contact .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 .contact .container .contact__quick-actions {
+  order: 2;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -64,23 +62,30 @@
   font-size: clamp(1rem, 1.9vw, 1.125rem);
   line-height: 1.75;
   color: #4a5568;
-  font-size: 1.125rem;
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 1.5rem;
 }
 .contact .container .contact__quick-actions .contact__action-cards {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   position: relative;
 }
+@media (max-width: 778px) {
+  .contact .container .contact__quick-actions .contact__action-cards {
+    overflow: hidden;
+  }
+}
 .contact .container .contact__quick-actions .contact__action-cards .contact__action-card {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 0.5rem;
-  box-shadow: 0 0 20px #4a5568;
+  box-shadow: 0 0 5px #4a5568;
   border: solid 2px #4a5568;
   width: 150px;
   height: 250px;
@@ -88,6 +93,22 @@
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
+}
+@media (max-width: 778px) {
+  .contact .container .contact__quick-actions .contact__action-cards .contact__action-card {
+    transform: translateX(0%);
+    animation: scroll-left 4s linear infinite alternate-reverse;
+    box-shadow: 0 0 5px var(--action-color);
+    border: solid 2px var(--action-color);
+  }
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    } /* adjust distance */
+  }
 }
 .contact .container .contact__quick-actions .contact__action-cards .contact__action-card:hover {
   scale: 1.05;
@@ -116,6 +137,11 @@
   aspect-ratio: 1/1;
   border-radius: 50%;
   transition: inherit;
+}
+@media (max-width: 778px) {
+  .contact .container .contact__quick-actions .contact__action-cards .contact__action-card .contact__action-icon-bg {
+    background-color: var(--action-color);
+  }
 }
 .contact .container .contact__quick-actions .contact__action-cards .contact__action-card .contact__action-icon-bg .contact__action-icon {
   font-size: 1.75rem;
@@ -158,6 +184,7 @@
   transform: scale(0.98);
 }
 .contact .container .contact__form-section {
+  order: 1;
   max-width: 500px;
   width: 80%;
   max-height: 600px;

@@ -30,13 +30,12 @@
   font-weight: 700;
   color: #2d3748;
   text-align: center;
-  margin-bottom: 2.5rem;
   margin-bottom: 4.5rem;
 }
-.skills .skills__header .skills__title {
-  font-size: 4rem;
-  font-weight: 700;
-  color: #2d3748;
+@media (max-width: 1130px) {
+  .skills .skills__header {
+    font-size: clamp(2rem, 4vw, 4rem);
+  }
 }
 .skills .container {
   max-width: 1200px;
@@ -99,17 +98,20 @@
   transform: translateX(2px);
 }
 .skills .container .skills__content .category-section .skills-grid {
+  max-height: 300px;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 .skills .container .skills__content .category-section .skills-grid .skill-item {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
   width: 90px;
-  aspect-ratio: 1/1;
+  min-height: 90px;
   border: 1px dashed #2d3748;
   transition: all 300ms ease-in-out;
   padding: 0.25rem 0.75rem;

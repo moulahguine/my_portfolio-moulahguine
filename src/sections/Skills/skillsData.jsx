@@ -136,6 +136,18 @@ export const skillCategories = [
     ],
   },
   {
+    id: "testing",
+    name: "Testing",
+    skills: [
+      {
+        id: 19,
+        name: "Jest",
+        icon: SiJest,
+        blog: "Jest has become my go-to testing framework for JavaScript applications. I've learned to write comprehensive unit tests, integration tests, and snapshot tests. The powerful mocking capabilities, assertion library, and excellent React integration have made testing an integral part of my development workflow, ensuring code quality and preventing regressions.",
+      },
+    ],
+  },
+  {
     id: "frameworks",
     name: "Frameworks & Libraries",
     skills: [
@@ -171,18 +183,7 @@ export const skillCategories = [
       },
     ],
   },
-  {
-    id: "testing",
-    name: "Testing",
-    skills: [
-      {
-        id: 19,
-        name: "Jest",
-        icon: SiJest,
-        blog: "Jest has become my go-to testing framework for JavaScript applications. I've learned to write comprehensive unit tests, integration tests, and snapshot tests. The powerful mocking capabilities, assertion library, and excellent React integration have made testing an integral part of my development workflow, ensuring code quality and preventing regressions.",
-      },
-    ],
-  },
+
   {
     id: "tools",
     name: "Developer Tools",

@@ -225,6 +225,7 @@
       position: relative;
       @include sweep-hover($color-surface);
       animation: morphing-border 8s ease-in-out infinite;
+      margin-left: auto;
 
       .hero__image {
         z-index: 15;

@@ -8,11 +8,6 @@
 
   .projects__header {
     @include section-title;
-    margin-bottom: $space-40;
-
-    .projects__title {
-      @include section-header-style;
-    }
   }
 
   .container {
