@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaBars, FaTimes } from "react-icons/fa";
+import Logo from "../Logo/Logo";
 import "./Header.scss";
 import "./_Header-responsive.scss";
 
@@ -114,13 +115,13 @@ export default function Header() {
         <div
           className={`header__logo ${isMenuOpen ? "header__logo--mobile-open" : ""}`}
         >
-          <button
+          <Logo
             onClick={() => handleNavigation("/")}
             className="userName"
-            aria-label="Go to home section"
-          >
-            <span className="userName__m">m</span> oulahguine
-          </button>
+            ariaLabel="Go to home section"
+            text="oulahguine"
+            highlightChar="m"
+          />
         </div>
 
         <nav

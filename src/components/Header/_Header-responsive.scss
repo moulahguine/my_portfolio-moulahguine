@@ -76,7 +76,7 @@
         margin-bottom: $space-40;
         text-align: center;
 
-        .userName {
+        .logo {
           all: unset;
           font-size: $font-size-32 !important;
 
@@ -84,7 +84,7 @@
             color: $color-primary-hover;
           }
 
-          .userName__m {
+          .logo__highlight {
             color: $color-primary;
           }
         }

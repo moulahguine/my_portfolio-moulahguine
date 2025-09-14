@@ -3,7 +3,6 @@ import {
   FaJs,
   FaReact,
   FaGithub,
-  FaAccessibleIcon,
   FaCode,
   FaLaptopCode,
   FaPalette,
