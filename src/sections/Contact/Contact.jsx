@@ -11,6 +11,7 @@ import {
   FaTelegram,
   FaPhone,
   FaRegCopy,
+  FaPaperPlane,
 } from "react-icons/fa";
 import "./Contact.scss";
 import { useForm } from "@formspree/react";
@@ -142,7 +143,7 @@ function Contact() {
   }, [state.succeeded, state.errors]);
 
   return (
-    <section path="/contact" id="contact" className="contact">
+    <section id="contact" className="contact">
       {/* Header */}
       <motion.div
         className="contact__header"
@@ -221,9 +222,6 @@ function Contact() {
 
         {/* Form */}
         <div className="contact__form-section">
-          <span className="contact__form-icon">
-            <TfiEmail />
-          </span>
           <form className="contact__form" onSubmit={onSubmit}>
             <div className="contact__form-row">
               <div className="contact__form-group">
@@ -233,7 +231,7 @@ function Contact() {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  placeholder="What should I call you?"
+                  placeholder="Name"
                   className={`contact__input ${
                     errors.name ? "contact__input--error" : ""
                   }`}
@@ -247,7 +245,7 @@ function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  placeholder="Where can I reply back?"
+                  placeholder="Email"
                   className={`contact__input ${
                     errors.email ? "contact__input--error" : ""
                   }`}
@@ -260,7 +258,7 @@ function Contact() {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Tell me about the role or project…"
+                  placeholder="Message"
                   className={`contact__textarea ${
                     errors.message ? "contact__textarea--error" : ""
                   }`}
@@ -282,7 +280,10 @@ function Contact() {
                   Sending...
                 </span>
               ) : (
-                "Send Message"
+                <>
+                  Send Message
+                  <FaPaperPlane />
+                </>
               )}
             </motion.button>
           </form>

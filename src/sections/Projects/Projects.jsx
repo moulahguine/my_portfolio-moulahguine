@@ -94,7 +94,7 @@ function Projects() {
   ];
 
   return (
-    <section path="/projects" id="projects" className="projects">
+    <section id="projects" className="projects">
       {/* Header section with title and description */}
       <motion.div
         className="projects__header"

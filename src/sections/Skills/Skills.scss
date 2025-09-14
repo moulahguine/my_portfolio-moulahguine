@@ -14,88 +14,62 @@
     .skills__content {
       @include flex-center;
       flex-wrap: wrap;
-      gap: $space-24;
+      gap: $space-12;
 
       .category-section {
-        cursor: none;
-        width: auto;
-        height: fit-content;
-        border: solid 1px #000;
-        padding: $space-24 $space-16;
-        border-radius: $space-12;
+        border: 1px solid $color-primary;
         background-color: $color-bg;
+        cursor: auto;
+        height: fit-content;
+        padding: $space-16;
+        border-radius: $space-12;
         transition: all $transition-base;
-
-        // Clickable category section styles
-        &--clickable {
-          &:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba($color-primary, 0.15);
-            border-color: $color-primary;
-          }
-
-          &:focus {
-            outline: 2px solid $color-primary;
-            outline-offset: 2px;
-          }
-
-          &:active {
-            transform: translateY(0);
-          }
-        }
+        z-index: 15;
+        position: relative;
 
         .category-title {
           width: fit-content;
           font-size: $font-size-18;
-          font-weight: $fw-bold;
+          font-weight: $fw-medium;
           text-transform: uppercase;
           color: $color-text;
-          letter-spacing: 1px;
-          border-bottom: 1px solid transparent;
-          position: relative;
           transition: all $transition-base;
-          padding: 0 0 $space-4 0;
-          margin: 0 0 $space-8 0;
-          display: flex;
-          align-items: center;
-          gap: $space-8;
-
-          .category-title__arrow {
-            font-size: $font-size-16;
-            color: $color-primary;
-            transition: all $transition-base;
-          }
-        }
-
-        &:hover .category-title__arrow {
-          transform: translateX(2px);
+          margin-bottom: $space-32;
+          text-decoration: underline wavy 2px $color-primary-500;
         }
 
         .skills-grid {
-          max-height: 300px;
-          height: 100%;
           display: flex;
           flex-wrap: wrap;
-          gap: $space-8;
+          justify-content: center;
+          gap: $space-24;
 
           .skill-item {
-            flex-grow: 1;
+            background-color: $color-bg;
             @include flex-column;
             justify-content: center;
             gap: $space-8;
-            width: 90px;
-            min-height: 90px;
-            border: 1px dashed $color-primary;
-            transition: all $transition-base;
-            padding: $space-4 $space-12;
-            border-radius: $space-8;
+            width: 100px;
+            aspect-ratio: 1/1;
+            border-radius: 15px;
             cursor: none;
+            box-shadow:
+              0 0 5px var(--skill-color),
+              inset 0 0 15px var(--skill-color);
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+              border-radius: 50%;
+              scale: 1.19;
+              box-shadow:
+                0 0 15px var(--skill-color),
+                inset 0 0 15px var(--skill-color);
+            }
 
             .skill-icon {
               @include flex-center;
               color: var(--skill-color);
-              font-size: 2rem;
-              transition: all $transition-base;
+              font-size: $font-size-28;
 
               svg {
                 width: 100%;
@@ -104,30 +78,11 @@
             }
 
             .skill-name {
-              font-size: 10px;
+              font-size: 9px;
               color: $color-primary;
               text-align: center;
               text-transform: uppercase;
             }
-
-            &:hover {
-              transform: translateY(-2px);
-              box-shadow: 0 4px 12px rgba(var(--skill-color), 0.3);
-              border-color: var(--skill-color);
-            }
-
-            &:active {
-              transform: translateY(0);
-            }
-          }
-        }
-
-        &:hover .skills-grid {
-          .skill-item {
-            border: none;
-            box-shadow:
-              0 0 15px var(--skill-color),
-              inset 0 0 15px var(--skill-color);
           }
         }
       }

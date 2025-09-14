@@ -61,7 +61,7 @@ export default function About() {
   ];
 
   return (
-    <section path="/about" id="about" className="about">
+    <section id="about" className="about">
       <div className="container">
         {/* Header */}
         <motion.div

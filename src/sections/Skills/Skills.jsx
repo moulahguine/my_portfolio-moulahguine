@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { skillCategories, skillColors } from "./skillsData";
 import SkillsModal from "./SkillsModal";
 import "./Skills.scss";
@@ -15,12 +16,6 @@ function Skills() {
     setIsModalOpen(true);
   };
 
-  const handleCategoryClick = (category) => {
-    setSelectedCategory(category);
-    setModalType("category");
-    setIsModalOpen(true);
-  };
-
   const handleCloseModal = () => {
     setSelectedCategory(null);
     setModalType("category");
@@ -28,7 +23,7 @@ function Skills() {
   };
 
   return (
-    <section className="skills" id="skills" path="/skills">
+    <section className="skills" id="skills">
       <div className="skills__header">
         <h2 className="skills__title">Skills</h2>
       </div>
@@ -36,26 +31,28 @@ function Skills() {
       <div className="container">
         <div className="skills__content">
           {/* Render each category with its skills */}
-          {skillCategories.map((category) => (
-            <HoverCursor
-              content="click"
+          {skillCategories.map((category, index) => (
+            <motion.div
               key={category.id}
               className="category-section category-section--clickable"
-              onClick={() => handleCategoryClick(category)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  handleCategoryClick(category);
-                }
-              }}
               aria-label={`Open ${category.name} category details`}
+              initial={{
+                x: index % 2 === 0 ? -30 : 30,
+                opacity: 0,
+              }}
+              whileInView={{
+                x: 0,
+                opacity: 1,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.7,
+                delay: index * 0.1,
+              }}
             >
               {/* Category Title */}
               <div className="category-title">
                 {category.name.toUpperCase()}
-                <span className="category-title__arrow">→</span>
               </div>
 
               {/* Skills Grid for this category */}
@@ -65,7 +62,8 @@ function Skills() {
                   const skillColor = skillColors[skill.name] || "#6C757D";
 
                   return (
-                    <div
+                    <HoverCursor
+                      content="click"
                       key={skill.id}
                       className={`skill-item`}
                       style={{ "--skill-color": skillColor }}
@@ -78,11 +76,11 @@ function Skills() {
                         <IconComponent />
                       </div>
                       <span className="skill-name">{skill.name}</span>
-                    </div>
+                    </HoverCursor>
                   );
                 })}
               </div>
-            </HoverCursor>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -29,7 +29,7 @@
     @media (max-width: $breakpoint-md) {
       grid-template-columns: 1fr;
       justify-content: center;
-      width: 90%;
+      width: 100%;
 
       .hero__media-content {
         order: 1;
@@ -188,8 +188,8 @@
         svg {
           color: $color-success;
           font-size: 8px;
-          opacity: 0.2;
-          animation: opacit 1s infinite alternate-reverse ease-in-out;
+          opacity: 0.5;
+          animation: opacit 0.7s infinite alternate-reverse ease-in-out;
         }
         @keyframes opacit {
           to {
@@ -225,7 +225,10 @@
       position: relative;
       @include sweep-hover($color-surface);
       animation: morphing-border 8s ease-in-out infinite;
-      margin-left: auto;
+
+      @media (max-width: $breakpoint-lg) {
+        width: clamp(18.75rem, 5.357rem + 35.714vw, 37.5rem);
+      }
 
       .hero__image {
         z-index: 15;
@@ -237,10 +240,6 @@
         border-radius: 73% 27% 78% 22% / 32% 65% 35% 68%;
         box-shadow: 0 0 20px 5px rgba(45, 55, 72, 0.15);
         scale: 1.05;
-      }
-
-      @media (max-width: $breakpoint-lg) {
-        width: clamp(18.75rem, 5.357rem + 35.714vw, 37.5rem);
       }
 
       // Keyframes for hero image border-radius animation

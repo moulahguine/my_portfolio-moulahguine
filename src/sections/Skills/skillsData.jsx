@@ -83,7 +83,7 @@ export const skillColors = {
 export const skillCategories = [
   {
     id: "core",
-    name: "Core Web Technologies",
+    name: "Core Skills",
     skills: [
       {
         id: 1,
@@ -103,48 +103,18 @@ export const skillCategories = [
         icon: FaJs,
         blog: "JavaScript opened the door to interactive web development. Starting with ES5 fundamentals, I progressed through ES6+ features like arrow functions, destructuring, async/await, and modules. I've built everything from simple DOM manipulations to complex applications with modern JavaScript patterns, always focusing on clean, readable code.",
       },
-      {
-        id: 4,
-        name: "Accessibility",
-        icon: FaAccessibleIcon,
-        blog: "Accessibility isn't optional—it's essential. I've learned to build inclusive web experiences using ARIA attributes, semantic HTML, keyboard navigation, and screen reader compatibility. Understanding WCAG guidelines and implementing accessible design patterns ensures everyone can use the applications I create.",
-      },
-      {
-        id: 5,
-        name: "Responsive",
-        icon: FaLaptopCode,
-        blog: "Responsive design is about creating experiences that work seamlessly across all devices. I've mastered mobile-first design principles, flexible layouts, and media queries. From fluid typography to adaptive images, I ensure every project looks and functions perfectly on phones, tablets, and desktops.",
-      },
-    ],
-  },
-  {
-    id: "styling",
-    name: "Styling & UI",
-    skills: [
-      {
-        id: 12,
-        name: "TailwindCSS",
-        icon: SiTailwindcss,
-        blog: "TailwindCSS revolutionized my styling workflow. The utility-first approach allows me to build custom designs rapidly without leaving HTML. I love how it promotes consistency, reduces CSS bloat, and enables rapid prototyping. The responsive prefixes and state variants make complex layouts surprisingly simple to implement.",
-      },
-      {
-        id: 13,
-        name: "Sass",
-        icon: SiSass,
-        blog: "Sass brought organization and power to my CSS. Variables, mixins, nesting, and functions have made my stylesheets more maintainable and DRY. I've built scalable CSS architectures using Sass, creating reusable components and maintaining consistent design systems across large projects.",
-      },
-    ],
-  },
-  {
-    id: "testing",
-    name: "Testing",
-    skills: [
-      {
-        id: 19,
-        name: "Jest",
-        icon: SiJest,
-        blog: "Jest has become my go-to testing framework for JavaScript applications. I've learned to write comprehensive unit tests, integration tests, and snapshot tests. The powerful mocking capabilities, assertion library, and excellent React integration have made testing an integral part of my development workflow, ensuring code quality and preventing regressions.",
-      },
+      // {
+      //   id: 4,
+      //   name: "Accessibility",
+      //   icon: FaAccessibleIcon,
+      //   blog: "Accessibility isn't optional—it's essential. I've learned to build inclusive web experiences using ARIA attributes, semantic HTML, keyboard navigation, and screen reader compatibility. Understanding WCAG guidelines and implementing accessible design patterns ensures everyone can use the applications I create.",
+      // },
+      // {
+      //   id: 5,
+      //   name: "Responsive",
+      //   icon: FaLaptopCode,
+      //   blog: "Responsive design is about creating experiences that work seamlessly across all devices. I've mastered mobile-first design principles, flexible layouts, and media queries. From fluid typography to adaptive images, I ensure every project looks and functions perfectly on phones, tablets, and desktops.",
+      // },
     ],
   },
   {
@@ -183,7 +153,36 @@ export const skillCategories = [
       },
     ],
   },
-
+  {
+    id: "styling",
+    name: "Styling & UI",
+    skills: [
+      {
+        id: 12,
+        name: "TailwindCSS",
+        icon: SiTailwindcss,
+        blog: "TailwindCSS revolutionized my styling workflow. The utility-first approach allows me to build custom designs rapidly without leaving HTML. I love how it promotes consistency, reduces CSS bloat, and enables rapid prototyping. The responsive prefixes and state variants make complex layouts surprisingly simple to implement.",
+      },
+      {
+        id: 13,
+        name: "Sass",
+        icon: SiSass,
+        blog: "Sass brought organization and power to my CSS. Variables, mixins, nesting, and functions have made my stylesheets more maintainable and DRY. I've built scalable CSS architectures using Sass, creating reusable components and maintaining consistent design systems across large projects.",
+      },
+    ],
+  },
+  {
+    id: "testing",
+    name: "Testing",
+    skills: [
+      {
+        id: 19,
+        name: "Jest",
+        icon: SiJest,
+        blog: "Jest has become my go-to testing framework for JavaScript applications. I've learned to write comprehensive unit tests, integration tests, and snapshot tests. The powerful mocking capabilities, assertion library, and excellent React integration have made testing an integral part of my development workflow, ensuring code quality and preventing regressions.",
+      },
+    ],
+  },
   {
     id: "tools",
     name: "Developer Tools",

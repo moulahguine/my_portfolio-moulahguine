@@ -66,7 +66,7 @@ function HoverCursor({
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={{ position: "relative" }}
+      style={{ position: "relative", ...style }}
     >
       {children}
       <AnimatePresence>
