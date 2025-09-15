@@ -1,0 +1,130 @@
+/* 12px */
+/* 14px */
+/* 16px */
+/* 18px */
+/* 20px */
+/* 24px */
+/* 28px */
+/* 32px */
+/* 40px */
+/* 48px */
+/* 4px */
+/* 8px */
+/* 12px */
+/* 16px */
+/* 24px */
+/* 32px */
+/* 40px */
+/* 4px */
+/* 8px */
+/* 16px */
+/* 32px */
+/* 48px */
+/* 64px */
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  overflow: hidden;
+  transform: translateZ(0);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.background-box {
+  position: absolute;
+  border-radius: 1rem;
+  opacity: 0.1;
+  filter: blur(0.5px);
+  box-shadow: rgba(45, 55, 72, 0.06);
+  border: 1px solid rgba(45, 55, 72, 0.1);
+}
+.background-box.box-1 {
+  background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+  width: 80px;
+  height: 80px;
+}
+.background-box.box-2 {
+  background: linear-gradient(135deg, #4a5568 0%, #718096 100%);
+  width: 120px;
+  height: 120px;
+}
+.background-box.box-3 {
+  background: linear-gradient(135deg, #4a5568 0%, #4a5568 100%);
+  width: 100px;
+  height: 100px;
+}
+.background-box.box-4 {
+  background: linear-gradient(135deg, #718096 0%, #2d3748 100%);
+  width: 60px;
+  height: 60px;
+}
+
+@media (max-width: 1130px) {
+  .background-box {
+    opacity: 0.15;
+  }
+  .background-box.box-1 {
+    width: 70px;
+    height: 70px;
+  }
+  .background-box.box-2 {
+    width: 100px;
+    height: 100px;
+  }
+  .background-box.box-3 {
+    width: 85px;
+    height: 85px;
+  }
+  .background-box.box-4 {
+    width: 55px;
+    height: 55px;
+  }
+}
+@media (max-width: 778px) {
+  .background-box {
+    opacity: 0.12;
+    filter: blur(1px);
+  }
+  .background-box.box-1 {
+    width: 60px;
+    height: 60px;
+  }
+  .background-box.box-2 {
+    width: 80px;
+    height: 80px;
+  }
+  .background-box.box-3 {
+    width: 70px;
+    height: 70px;
+  }
+  .background-box.box-4 {
+    width: 50px;
+    height: 50px;
+  }
+}
+@media (max-width: 460px) {
+  .background-box {
+    opacity: 0.1;
+    filter: blur(1.5px);
+  }
+  .background-box.box-1 {
+    width: 40px;
+    height: 40px;
+  }
+  .background-box.box-2 {
+    width: 60px;
+    height: 60px;
+  }
+  .background-box.box-3 {
+    width: 50px;
+    height: 50px;
+  }
+  .background-box.box-4 {
+    width: 35px;
+    height: 35px;
+  }
+}/*# sourceMappingURL=Background.css.map */

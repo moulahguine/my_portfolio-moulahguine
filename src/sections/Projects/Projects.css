@@ -37,6 +37,16 @@
     font-size: clamp(2rem, 4vw, 4rem);
   }
 }
+.projects .projects__header .projects__subtitle {
+  font-size: clamp(0.75rem, 2.5vw, 1rem);
+  font-weight: 400;
+  color: #718096;
+  line-height: 1.75;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
 .projects .container {
   max-width: 1200px;
   margin: 0 auto;

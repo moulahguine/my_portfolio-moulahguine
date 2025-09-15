@@ -24,6 +24,17 @@
   line-height: $line-height-relaxed;
 }
 
+@mixin subtitle {
+  font-size: clamp($font-size-12, 2.5vw, $font-size-16);
+  font-weight: $fw-regular;
+  color: $color-text-light;
+  line-height: $line-height-relaxed;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
 // Flexbox
 @mixin flex-center {
   display: flex;

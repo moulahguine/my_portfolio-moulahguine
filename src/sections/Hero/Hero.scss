@@ -77,6 +77,13 @@
             margin-top: $space-12;
             font-size: clamp($font-size-14, 3vw, $font-size-18);
           }
+
+          .hero__tagline {
+            @include subtitle;
+            margin-top: $space-8;
+            text-align: left;
+            max-width: 500px;
+          }
         }
       }
     }

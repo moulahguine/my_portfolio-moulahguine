@@ -46,27 +46,6 @@
   border-radius: 2rem;
   position: relative;
 }
-.site-header .container .header__logo .userName {
-  background: none;
-  border: none;
-  text-transform: uppercase;
-  color: #1a202c;
-  font-size: 1.2rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-.site-header .container .header__logo .userName:hover {
-  color: #2d3748;
-}
-.site-header .container .header__logo .userName .userName__m {
-  padding: 3px 5px;
-  background: #2d3748;
-  color: #fefefe;
-  font-size: inherit;
-  border-radius: 4px;
-  box-shadow: 0 2px 12px rgba(45, 55, 72, 0.06);
-}
 .site-header .container .primary-nav {
   transition: all 0.3s ease;
 }

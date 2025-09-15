@@ -72,6 +72,7 @@ export default function About() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">About Me</h2>
+          <p className="about__subtitle">Who I Am & What I Build</p>
         </motion.div>
 
         {/* Main Content */}

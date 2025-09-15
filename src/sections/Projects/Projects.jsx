@@ -103,7 +103,8 @@ function Projects() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="projects__title">My Work</h2>
+        <h2 className="projects__title">Projects</h2>
+        <p className="projects__subtitle">Interfaces I Built From Scratch</p>
       </motion.div>
       <div className="container">
         {/* Map through projects to create stacked cards */}

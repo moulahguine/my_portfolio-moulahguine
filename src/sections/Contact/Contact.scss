@@ -8,6 +8,10 @@
   // Header section
   .contact__header {
     @include section-title;
+
+    .contact__subtitle {
+      @include subtitle;
+    }
   }
 
   .container {

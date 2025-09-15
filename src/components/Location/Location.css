@@ -146,6 +146,11 @@
   display: flex;
   flex-direction: column;
 }
+@media (max-width: 778px) {
+  .map-overlay .map-modal .map-content {
+    padding: 0.5rem;
+  }
+}
 .map-overlay .map-modal .map-content .locations {
   display: flex;
   align-items: center;

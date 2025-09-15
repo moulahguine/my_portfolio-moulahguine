@@ -119,6 +119,9 @@
     .map-content {
       padding: 48px 40px 40px;
       @include flex-column;
+      @media (max-width: $breakpoint-md) {
+        padding: $space-8;
+      }
 
       .locations {
         @include flex-between;

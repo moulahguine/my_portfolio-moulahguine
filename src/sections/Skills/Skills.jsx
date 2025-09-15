@@ -1,87 +1,87 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { skillCategories, skillColors } from "./skillsData";
+import { skillsRow1, skillsRow2, skillColors } from "./skillsData";
 import SkillsModal from "./SkillsModal";
 import "./Skills.scss";
-import HoverCursor from "../../components/HoverCursor/HoverCursor";
 
 function Skills() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [modalType, setModalType] = useState("category");
+  const [selectedSkill, setSelectedSkill] = useState(null);
 
   const handleSkillClick = (skill) => {
-    setSelectedCategory(skill);
-    setModalType("skill");
+    setSelectedSkill(skill);
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setSelectedCategory(null);
-    setModalType("category");
+    setSelectedSkill(null);
     setIsModalOpen(false);
   };
 
   return (
     <section className="skills" id="skills">
       <div className="skills__header">
-        <h2 className="skills__title">Skills</h2>
+        <h2 className="skills__title">Tech Stack</h2>
+        <p className="skills__subtitle">Technologies Behind My Interfaces</p>
       </div>
 
       <div className="container">
         <div className="skills__content">
-          {/* Render each category with its skills */}
-          {skillCategories.map((category, index) => (
-            <motion.div
-              key={category.id}
-              className="category-section category-section--clickable"
-              aria-label={`Open ${category.name} category details`}
-              initial={{
-                x: index % 2 === 0 ? -30 : 30,
-                opacity: 0,
-              }}
-              whileInView={{
-                x: 0,
-                opacity: 1,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.7,
-                delay: index * 0.1,
-              }}
-            >
-              {/* Category Title */}
-              <div className="category-title">
-                {category.name.toUpperCase()}
-              </div>
+          {/* First Row - Slides from left */}
+          <motion.div
+            className="skills__row"
+            initial={{ x: -150, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            {skillsRow1.map((skill, index) => {
+              const IconComponent = skill.icon;
+              const skillColor = skillColors[skill.name] || "#6C757D";
 
-              {/* Skills Grid for this category */}
-              <div className="skills-grid">
-                {category.skills.map((skill) => {
-                  const IconComponent = skill.icon;
-                  const skillColor = skillColors[skill.name] || "#6C757D";
+              return (
+                <div
+                  key={skill.id}
+                  className="skill-card"
+                  style={{ "--skill-color": skillColor }}
+                  onClick={() => handleSkillClick(skill)}
+                >
+                  <div className="skill-card__icon">
+                    <IconComponent />
+                  </div>
+                  <span className="skill-card__name">{skill.name}</span>
+                </div>
+              );
+            })}
+          </motion.div>
 
-                  return (
-                    <HoverCursor
-                      content="click"
-                      key={skill.id}
-                      className={`skill-item`}
-                      style={{ "--skill-color": skillColor }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleSkillClick(skill);
-                      }}
-                    >
-                      <div className="skill-icon">
-                        <IconComponent />
-                      </div>
-                      <span className="skill-name">{skill.name}</span>
-                    </HoverCursor>
-                  );
-                })}
-              </div>
-            </motion.div>
-          ))}
+          {/* Second Row - Slides from right */}
+          <motion.div
+            className="skills__row"
+            initial={{ x: 150, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          >
+            {skillsRow2.map((skill, index) => {
+              const IconComponent = skill.icon;
+              const skillColor = skillColors[skill.name] || "#6C757D";
+
+              return (
+                <div
+                  key={skill.id}
+                  className="skill-card"
+                  style={{ "--skill-color": skillColor }}
+                  onClick={() => handleSkillClick(skill)}
+                >
+                  <div className="skill-card__icon">
+                    <IconComponent />
+                  </div>
+                  <span className="skill-card__name">{skill.name}</span>
+                </div>
+              );
+            })}
+          </motion.div>
         </div>
       </div>
 
@@ -89,8 +89,7 @@ function Skills() {
       <SkillsModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
-        selectedCategory={selectedCategory}
-        type={modalType}
+        selectedSkill={selectedSkill}
       />
     </section>
   );

@@ -1,62 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from "../../../components";
-import { skillCategories, skillColors } from "../skillsData";
+import { skillsRow1, skillsRow2, skillColors } from "../skillsData";
 import "./SkillsModal.scss";
 
-function SkillsModal({ isOpen, onClose, selectedCategory, type = "category" }) {
+function SkillsModal({ isOpen, onClose, selectedSkill: initialSelectedSkill }) {
   const [selectedSkill, setSelectedSkill] = useState(null);
 
   // Set initial selected skill when modal opens
   useEffect(() => {
-    if (!isOpen || !selectedCategory) return;
-
-    if (type === "category") {
-      const categoryData = skillCategories.find(
-        (cat) => cat.id === selectedCategory.id
-      );
-
-      if (categoryData && categoryData.skills.length > 0) {
-        setSelectedSkill(categoryData.skills[0]);
-      }
-    }
-
-    if (type === "skill") {
-      // directly select the passed skill
-      setSelectedSkill(selectedCategory);
-    }
-  }, [isOpen, selectedCategory, type]);
+    if (!isOpen || !initialSelectedSkill) return;
+    setSelectedSkill(initialSelectedSkill);
+  }, [isOpen, initialSelectedSkill]);
 
   const handleSkillClick = (skill) => {
     setSelectedSkill(skill);
   };
 
-  if (!selectedCategory) return null;
+  if (!initialSelectedSkill) return null;
 
-  // Always resolve categoryData (works for both category & skill types)
-  const categoryData =
-    type === "category"
-      ? skillCategories.find((cat) => cat.id === selectedCategory.id)
-      : skillCategories.find((cat) =>
-          cat.skills.some((s) => s.id === selectedCategory.id)
-        );
-
-  if (!categoryData) return null;
+  // Combine all skills from both rows
+  const allSkills = [...skillsRow1, ...skillsRow2];
 
   return (
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title={categoryData.name}
+      title="Skills & Technologies"
       size="xlarge"
     >
       <div className="skills-modal__content">
         {/* Left Side - Skills List */}
         <div className="skills-modal__skills-panel">
-          <h3 className="skills-modal__skills-panel-title">
-            Skills in this category
-          </h3>
+          <h3 className="skills-modal__skills-panel-title">All Skills</h3>
           <div className="skills-modal__skills-panel-list">
-            {categoryData.skills.map((skill) => {
+            {allSkills.map((skill) => {
               const IconComponent = skill.icon;
               const skillColor = skillColors[skill.name] || "#6C757D";
               const isSelected = selectedSkill && skill.id === selectedSkill.id;

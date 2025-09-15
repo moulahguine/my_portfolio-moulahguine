@@ -153,6 +153,9 @@ function Contact() {
         transition={{ duration: 0.8 }}
       >
         <h2 className="contact__title">contact me</h2>
+        <p className="contact__subtitle">
+          Questions, Opportunities, Collaborations{" "}
+        </p>
       </motion.div>
 
       <div className="container">

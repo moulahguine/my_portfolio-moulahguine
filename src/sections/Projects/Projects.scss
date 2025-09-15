@@ -8,6 +8,10 @@
 
   .projects__header {
     @include section-title;
+
+    .projects__subtitle {
+      @include subtitle;
+    }
   }
 
   .container {

@@ -42,6 +42,16 @@
     font-size: clamp(2rem, 4vw, 4rem);
   }
 }
+.about .container .about__header .about__subtitle {
+  font-size: clamp(0.75rem, 2.5vw, 1rem);
+  font-weight: 400;
+  color: #718096;
+  line-height: 1.75;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
 .about .container .about__main-content {
   width: 100%;
   display: grid;
@@ -196,28 +206,33 @@
   }
 }
 .about .container .about__main-content .about__facts .facts-grid .fact-card {
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   background-color: #fefefe;
   border-radius: 1rem;
   box-shadow: -5px 5px 2px #eee;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 0.75rem;
   position: relative;
   overflow: hidden;
-  transform: rotate(5deg) scale(1);
-  animation: cardsWhite 4s infinite alternate-reverse;
+  transform: rotate(0deg) scale(1);
   transition: all 0.3s ease-in-out !important;
 }
-@keyframes cardsWhite {
-  100% {
-    transform: rotate(-5deg) scale(1);
+@media (max-width: 778px) {
+  .about .container .about__main-content .about__facts .facts-grid .fact-card {
+    animation: cardsWhite 4s infinite alternate-reverse;
   }
-}
-@keyframes cardsBlack {
-  100% {
-    transform: rotate(5deg) scale(1);
+  @keyframes cardsWhite {
+    100% {
+      transform: rotate(-5deg) scale(1);
+    }
+  }
+  @keyframes cardsBlack {
+    100% {
+      transform: rotate(5deg) scale(1);
+    }
   }
 }
 .about .container .about__main-content .about__facts .facts-grid .fact-card-container {
@@ -247,21 +262,8 @@
   font-size: 13px;
   color: #4a5568;
 }
-.about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(1) {
-  transform: rotate(5deg) scale(1);
-}
-.about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(2) {
-  transform: rotate(-5deg) scale(1);
-}
-.about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(3) {
-  transform: rotate(5deg) scale(1);
-}
-.about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(4) {
-  transform: rotate(-5deg) scale(1);
-}
 .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(2),
 .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(4) {
-  animation: cardsBlack 4s infinite alternate-reverse;
   background-color: #4a5568;
 }
 .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(2) .fact-icon,
@@ -280,6 +282,42 @@
 .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(2):hover,
 .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(4):hover {
   z-index: 1;
+}
+@media (max-width: 778px) {
+  .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(1) {
+    transform: rotate(5deg) scale(1);
+  }
+  .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(2) {
+    transform: rotate(-5deg) scale(1);
+  }
+  .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(3) {
+    transform: rotate(5deg) scale(1);
+  }
+  .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(4) {
+    transform: rotate(-5deg) scale(1);
+  }
+  .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(2),
+  .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(4) {
+    animation: cardsBlack 4s infinite alternate-reverse;
+    background-color: #4a5568;
+  }
+  .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(2) .fact-icon,
+  .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(4) .fact-icon {
+    color: #fefefe;
+  }
+  .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(2) .fact-content .fact-label,
+  .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(4) .fact-content .fact-label {
+    color: #fefefe;
+    font-weight: 700;
+  }
+  .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(2) .fact-content .fact-value,
+  .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(4) .fact-content .fact-value {
+    color: #e2e8f0;
+  }
+  .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(2):hover,
+  .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(4):hover {
+    z-index: 1;
+  }
 }
 .about .container .about__main-content .about__facts .facts-grid .fact-card:hover {
   scale: 1.1 !important;

@@ -11,6 +11,10 @@
     // Header Section
     .about__header {
       @include section-title;
+
+      .about__subtitle {
+        @include subtitle;
+      }
     }
 
     // Main Content
