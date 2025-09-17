@@ -3,263 +3,357 @@
 
 // Main contact section container
 .contact {
-  padding: calc($space-40 + 2rem) 0;
+  padding: calc($space-40 + 2rem) 0 calc($space-40 + 10rem);
+  background-color: $color-bg;
 
   // Header section
   .contact__header {
     @include section-title;
+    text-align: center;
 
     .contact__subtitle {
       @include subtitle;
+      max-width: 600px;
+      margin: 0 auto;
     }
   }
 
   .container {
     @include container;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: center;
-    gap: $space-16;
+    max-width: 1200px;
 
-    @media (max-width: $breakpoint-md) {
-      grid-template-columns: 1fr;
+    .contact__content {
+      display: flex;
+      justify-content: center;
+      width: auto;
+      margin: 0 auto;
+
+      // Contact Information Section
+      .contact__info {
+        @include flex-column;
+        gap: $space-24;
+
+        .contact__info-item {
+          @include flex-center;
+
+          .contact__info-content {
+            .location {
+              width: fit-content;
+              p,
+              svg {
+                transition: inherit;
+                font-size: 1.3rem;
+                color: $color-text-light;
+                &:hover {
+                  color: $color-primary-hover;
+                }
+              }
+            }
+
+            .contact__info-value {
+              @include flex-center;
+              gap: $space-8;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              font-size: $font-size-20;
+              color: $color-text-light;
+
+              &:hover {
+                color: $color-primary-hover;
+              }
+
+              svg {
+                font-size: inherit;
+                opacity: 0.7;
+              }
+            }
+          }
+        }
+
+        // Social Media Section
+        .contact__social {
+          margin-top: $space-16;
+          @include flex-center;
+          flex-direction: column;
+
+          .contact__social-label {
+            display: block;
+            font-size: $font-size-12;
+            font-weight: $fw-semibold;
+            color: $color-text-muted;
+            margin-bottom: $space-16;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+
+          .contact__social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: $space-8;
+
+            .contact__social-link {
+              @include flex-center;
+              width: 40px;
+              aspect-ratio: 1/1;
+              background: $color-surface-secondary;
+              border-radius: 50%;
+              color: $color-primary;
+              font-size: $font-size-20;
+              transition: all 0.3s ease;
+              border: 2px solid transparent;
+
+              &:hover {
+                color: var(--social-color);
+                background: var(--social-color);
+                color: $color-surface;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+              }
+            }
+          }
+        }
+      }
     }
+  }
 
-    // Quick actions section
-    .contact__quick-actions {
-      margin-top: $space-24;
-      order: 2;
-      @include flex-column;
-      gap: $space-24;
+  // Email Options Modal
+  .contact__email-options {
+    @include flex-column;
+    gap: $space-24;
+    text-align: center;
 
-      .contact__social-title {
-        @include body-text;
-        color: $color-text-muted;
-        font-size: clamp($font-size-12, 2.3vw, 1.063rem);
-        text-transform: uppercase;
-        letter-spacing: 0px;
+    .contact__email-info {
+      @include flex-center;
+      gap: $space-12;
+      padding: $space-24;
+      background: $color-surface;
+      border-radius: $radius-lg;
+      border: 1px solid $color-border;
+
+      .contact__email-icon {
+        font-size: $font-size-24;
+        color: $color-primary;
       }
 
-      .contact__action-cards {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        justify-content: center;
-        gap: $space-12;
-        position: relative;
+      .contact__email-address {
+        font-size: $font-size-18;
+        font-weight: $fw-semibold;
+        color: $color-text;
+      }
+    }
 
-        .contact__action-card {
-          @include flex-center;
-          border-radius: $radius-md;
-          width: 100%;
-          height: 150px;
-          background: var(--background) top / cover no-repeat;
-          position: relative;
-          overflow: hidden;
-          transition: all 0.3s ease-in-out;
-          box-shadow: 0 0 5px var(--action-color);
-          border: solid 2px var(--action-color);
+    .contact__email-actions {
+      @include flex-center;
+      gap: $space-16;
+      flex-wrap: wrap;
+
+      .contact__email-btn {
+        @include flex-center;
+        gap: $space-8;
+        padding: $space-16 $space-24;
+        border: none;
+        border-radius: $radius-md;
+        font-size: $font-size-16;
+        font-weight: $fw-semibold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 140px;
+
+        &--copy {
+          background: $color-surface-secondary;
+          color: $color-text;
+          border: 2px solid $color-border;
 
           &:hover {
-            scale: 1.05;
-          }
-
-          &::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0000008b;
-          }
-
-          .contact__action-icon-bg {
-            @include flex-center;
-            background-color: var(--action-color);
-            position: relative;
-            z-index: 2;
-            width: 50px;
-            aspect-ratio: 1/1;
-            border-radius: 50%;
-            transition: inherit;
-
-            .contact__action-icon {
-              font-size: $font-size-28;
-              color: #fff;
-            }
-          }
-        }
-        // first card
-        .contact__action-card:nth-child(1) {
-          box-shadow:
-            0 0 5px #833ab4,
-            0 0 10px #fd1d1d,
-            0 0 15px #fcb045;
-          .contact__action-icon-bg {
-            background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
-          }
-        }
-      }
-
-      // Contact footer
-      .contact__footer {
-        border-top: 1px solid rgba($color-primary, 0.1);
-        padding: $space-24 0;
-        div {
-          width: fit-content;
-          display: flex;
-          align-items: center;
-          gap: $space-16;
-
-          svg {
-            color: $color-primary;
-          }
-
-          p {
-            @include body-text;
-            padding: $space-16 0;
-            color: $color-text-muted;
-            font-size: $font-size-14;
-          }
-        }
-        div:not(.contact__footer-location) {
-          cursor: none;
-          transition: all 0.3s ease-in-out;
-
-          &:active {
-            transform: scale(0.98);
-          }
-        }
-      }
-    }
-
-    // Form section
-    .contact__form-section {
-      width: 100%;
-      order: 1;
-      background: transparent;
-      position: relative;
-      z-index: 50;
-
-      .contact__form {
-        @include flex-column;
-        width: inherit;
-        gap: $space-4;
-        padding: $space-40 $space-24 $space-16;
-        position: relative;
-        border-radius: $space-16;
-
-        .contact__form-row {
-          @include flex-column;
-          gap: $space-16;
-
-          .contact__form-group {
-            @include flex-column;
-            gap: $space-8;
-            position: relative;
-
-            .contact__textarea {
-              resize: none;
-              height: 330px;
-              line-height: $line-height-normal;
-            }
-
-            .contact__input,
-            .contact__textarea {
-              padding: $space-16;
-              background-color: $color-surface-secondary;
-              border-radius: 8px;
-              font-size: $font-size-16;
-              box-shadow: 0px 0px 0px 2px $color-text-lighter;
-              color: $color-primary;
-              transition: all 0.3s ease-in-out;
-              outline: none;
-              border: none;
-
-              &::placeholder {
-                color: $color-text-light;
-              }
-
-              &:focus,
-              &:focus-within {
-                background-color: $color-surface;
-              }
-
-              &--error {
-                background-color: rgba(231, 77, 60, 0.479);
-                border: 1px solid #e74c3c;
-                animation: shake 0.5s ease-in-out;
-              }
-            }
+            background: $color-primary;
+            color: $color-surface;
+            border-color: $color-primary;
           }
         }
 
-        .contact__submit-button {
-          @include button-primary;
-          width: 100%;
-          padding: $space-16 $space-24;
-          font-size: $font-size-16;
-          font-weight: $fw-bold;
-          margin-top: $space-24;
-          background: $color-primary-500;
-          border: none;
-          border-radius: $space-8;
-          color: $color-text-lighter;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-          @include flex-center;
-          gap: $space-8;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        &--form {
+          background: $color-primary;
+          color: $color-surface;
+          border: 2px solid $color-primary;
 
           &:hover {
             background: $color-primary-hover;
-          }
-
-          &:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-          }
-
-          .contact__submit-loading {
-            @include flex-center;
-            gap: $space-8;
-          }
-
-          .contact__spinner {
-            width: 16px;
-            height: 16px;
-            border: none;
-          }
-        }
-
-        // Success message
-        .contact__success-message {
-          display: flex;
-          align-items: center;
-          gap: $space-12;
-          padding: $space-24;
-          background: linear-gradient(
-            135deg,
-            rgba(56, 161, 105, 0.1),
-            rgba(56, 161, 105, 0.05)
-          );
-          color: $color-success;
-          border: 1px solid rgba(56, 161, 105, 0.2);
-          border-radius: $radius-lg;
-          font-weight: $fw-semibold;
-          font-size: $font-size-16;
-          margin-bottom: $space-24;
-          backdrop-filter: blur(10px);
-
-          .contact__success-icon {
-            font-size: $font-size-20;
-            color: $color-success;
+            border-color: $color-primary-hover;
           }
         }
       }
     }
+  }
+
+  // Contact Form Modal
+  .contact__form-modal {
+    position: relative;
+
+    .contact__form-close {
+      position: absolute;
+      top: -$space-8;
+      right: -$space-8;
+      @include flex-center;
+      width: 32px;
+      height: 32px;
+      background: $color-surface;
+      border: 2px solid $color-border;
+      border-radius: 50%;
+      color: $color-text;
+      font-size: $font-size-18;
+      font-weight: $fw-bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+
+      &:hover {
+        background: $color-danger;
+        color: $color-surface;
+        border-color: $color-danger;
+        transform: scale(1.1);
+      }
+    }
+
+    .contact__form {
+      @include flex-column;
+      gap: $space-24;
+
+      .contact__form-group {
+        @include flex-column;
+        gap: $space-8;
+
+        .contact__input,
+        .contact__textarea {
+          padding: $space-16;
+          background: $color-surface;
+          border: 2px solid $color-border;
+          border-radius: $radius-md;
+          font-size: $font-size-16;
+          color: $color-text;
+          transition: all 0.3s ease;
+          outline: none;
+          font-family: inherit;
+          width: 100%;
+
+          &::placeholder {
+            color: $color-text-muted;
+          }
+
+          &:focus {
+            border-color: $color-primary;
+            box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+          }
+
+          &--error {
+            border-color: $color-danger;
+            box-shadow: 0 0 0 3px rgba($color-danger, 0.1);
+          }
+        }
+
+        .contact__textarea {
+          resize: vertical;
+          min-height: 120px;
+          line-height: 1.6;
+        }
+
+        .contact__error {
+          color: $color-danger;
+          font-size: $font-size-12;
+          font-weight: $fw-medium;
+          margin-top: $space-4;
+        }
+      }
+
+      .contact__submit-button {
+        @include button-primary;
+        width: 100%;
+        padding: $space-16 $space-24;
+        font-size: $font-size-16;
+        font-weight: $fw-bold;
+        background: $color-primary;
+        border: none;
+        border-radius: $radius-md;
+        color: $color-surface;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        @include flex-center;
+        gap: $space-8;
+        box-shadow: 0 4px 12px rgba($color-primary, 0.3);
+
+        &:hover {
+          background: $color-primary-hover;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba($color-primary, 0.4);
+        }
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+          transform: none;
+        }
+
+        .contact__submit-loading {
+          @include flex-center;
+          gap: $space-8;
+        }
+
+        .contact__spinner {
+          width: 16px;
+          height: 16px;
+          border: 2px solid transparent;
+          border-top: 2px solid currentColor;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        }
+      }
+    }
+  }
+}
+
+// Mobile Responsive
+@media (max-width: $breakpoint-sm) {
+  .contact {
+    .container {
+      .contact__content {
+        .contact__info {
+          .contact__info-item {
+            .contact__info-content {
+              .contact__info-value {
+                flex-direction: column;
+                gap: $space-8;
+                text-align: center;
+              }
+            }
+          }
+
+          .contact__social {
+            .contact__social-links {
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .contact__email-options {
+    .contact__email-actions {
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffffff39;
+
+      .contact__email-btn {
+        width: 100%;
+        max-width: 200px;
+      }
+    }
+  }
+
+  .notification {
+    bottom: $space-16;
+    right: $space-16;
+    left: $space-16;
+    max-width: none;
   }
 }
 
@@ -293,15 +387,18 @@
   }
 }
 
+// Notifications
 .notification {
   position: fixed;
   bottom: $space-32;
   right: $space-32;
   z-index: 10000;
   width: fit-content;
-  border-radius: $space-12;
+  max-width: 400px;
+  border-radius: $radius-lg;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   overflow: hidden;
+  backdrop-filter: blur(10px);
 
   &--success {
     background: linear-gradient(135deg, $color-success, #059669);
@@ -321,7 +418,7 @@
 
   .notification__message {
     flex: 1;
-    font-size: $space-12;
+    font-size: $font-size-14;
     font-weight: $fw-semibold;
     line-height: 1.4;
   }

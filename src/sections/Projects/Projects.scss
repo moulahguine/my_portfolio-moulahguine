@@ -18,188 +18,239 @@
     @include container;
     position: relative;
 
-    // Loading state
-    .loading {
-      text-align: center;
-      padding: $space-40;
-      font-size: $font-size-18;
-      color: $color-text-muted;
+    // Projects grid
+    .projects__grid {
+      display: flex;
+      flex-direction: column;
+      gap: $space-40;
     }
+
     // Individual project card styling
     .project-card {
-      position: sticky;
-      top: calc($space-40 + 3rem);
-      margin-bottom: 50px;
-      border-radius: $radius-xl;
+      box-shadow: 0px 0px 4px 0px $color-text-lighter;
+      position: relative;
+      z-index: 15;
+      background: $color-bg;
+      border-radius: $radius-lg;
       overflow: hidden;
-      width: 100%;
-      height: 600px;
-      @include flex-column;
+      transition: all 0.3s ease;
 
-      .project-card__background {
-        position: absolute;
-        inset: 0;
-        z-index: 1;
+      .project-card__container {
+        height: 500px;
+        display: grid;
+        grid-template-columns: 1fr 350px;
 
-        img {
-          width: 100%;
-          aspect-ratio: 1/1;
-          object-fit: cover;
-          transition: transform $transition-base;
-        }
-
-        &:hover img {
-          transform: scale(1.05);
-        }
-      }
-
-      // Overlay for better text readability
-      .project-card__overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.7);
-        z-index: 2;
-      }
-
-      // Top Right Links
-      .project-card__top {
-        position: relative;
-        z-index: 10;
-        padding: $space-24;
-        width: 100%;
-        @include flex-between;
-
-        // Top Left Logo
-        .project-card__top-logo {
-          width: 100px;
+        // Media Section (Left Side)
+        .project-card__media-section {
+          height: inherit;
           position: relative;
+          overflow: hidden;
+          border-radius: 0 40px 40px 0;
+          box-shadow: 0 0 4px $color-primary;
 
-          // Logo
-          .project-card__logo {
-            width: 60px;
-            aspect-ratio: 1/1;
-            border-radius: 50%;
-            overflow: hidden;
-            background: $color-surface;
-          }
-          // GitHub Stats
-          .project-card__stats {
-            position: absolute;
-            top: 0;
-            left: 40%;
-            display: flex;
-            gap: $space-16;
-            padding: $space-4;
-            border-radius: $radius-lg;
-            background-color: $color-surface;
-            width: fit-content;
-            .project-card__stat {
-              color: $color-primary;
-              font-size: $font-size-12;
-              font-weight: $fw-bold;
-            }
-          }
-        }
-
-        .project-card__top-links {
-          display: flex;
-          gap: $space-16;
-          .project-card__link {
+          .project-card__media-container {
             position: relative;
-            z-index: 99;
-            color: $color-surface;
-            font-size: $font-size-20;
-            transform: scale(1);
-            transition: all 0.3s ease-in-out;
-            &:hover {
-              transform: scale(1.2);
+            width: 100%;
+            height: 100%;
+
+            .project-card__media {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              transition: all 0.3s ease;
+
+              &:hover {
+                transform: scale(1.02);
+              }
             }
           }
-        }
-      }
 
-      // Main content area of the card
-      .project-card__content {
-        position: relative;
-        height: 100%;
-        z-index: 10;
-        padding: $space-40;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        gap: $space-32;
-        // Left Side - Title
-        .project-card__left {
-          flex: 1;
-          width: 50%;
-          .project-card__title {
-            width: 100%;
-            font-size: $font-size-32 + 2.5rem;
-            font-weight: $fw-bold;
-            color: $color-surface;
-          }
-        }
-        // Right Side - Description and Technologies
-        .project-card__right {
-          flex: 1;
-          width: 50%;
-          height: 100%;
-          text-align: right;
-          position: relative;
-
-          // Project description
-          .project-card__description {
+          .project-card__media-controls {
             position: absolute;
-            top: 50%;
+            bottom: $space-24;
             left: 50%;
-            width: 100%;
-            transform: translate(-50%, -50%);
-            font-size: $font-size-16;
-            color: $color-text-lighter;
-            line-height: $line-height-relaxed;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: $space-16;
-            border-radius: $radius-md;
-          }
-          .project-card__technologies {
-            position: absolute;
-            bottom: 0;
-            right: 0;
+            transform: translateX(-50%);
             display: flex;
-            gap: $space-12;
-            flex-wrap: wrap;
-            justify-content: flex-end;
+            gap: $space-4;
+            padding: $space-8 $space-16;
+            background: $color-border-hover;
+            border-radius: 5px;
 
-            .project-card__tech-logo {
-              background: rgba(255, 255, 255, 0.1);
+            .project-card__media-btn {
+              @include flex-center;
+              width: 25px;
+              aspect-ratio: 1/1;
+              border: none;
+              border-radius: 50%;
+              background: $color-primary-500;
               color: $color-surface;
-              padding: $space-8 $space-16;
-              border-radius: $radius-md;
+              cursor: pointer;
+              transition: all 0.2s ease-in-out;
               font-size: $font-size-12;
-              font-weight: $fw-medium;
-              backdrop-filter: blur(10px);
-              border: 1px solid rgba(255, 255, 255, 0.2);
-              transition: all $transition-base;
 
               &:hover {
                 background: rgba(255, 255, 255, 0.2);
+                color: rgba(255, 255, 255, 1);
                 transform: translateY(-2px);
               }
-            }
 
-            .project-card__tech-name {
-              color: $color-surface;
+              &--active {
+                background: $color-primary;
+                transform: scale(1.1);
+
+                &:hover {
+                  background: $color-primary-500;
+                }
+              }
             }
           }
         }
+
+        // Details Section (Right Side)
+        .project-card__details {
+          height: inherit;
+          padding: $space-24;
+
+          .project-card__header {
+            @include flex-between;
+            margin-bottom: $space-24;
+
+            .project-card__logo {
+              width: 50px;
+              aspect-ratio: 1/1;
+              border-radius: $radius-lg;
+              overflow: hidden;
+              transition: all 0.2s ease;
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+              }
+              &:hover {
+                scale: 1.09;
+              }
+            }
+
+            .project-card__title-section {
+              margin-right: auto;
+              margin-left: $space-16;
+
+              .project-card__title {
+                font-size: $font-size-20;
+                font-weight: $fw-bold;
+                color: $color-text;
+                margin-bottom: $space-4;
+                line-height: 1.2;
+              }
+
+              .project-card__subtitle {
+                font-size: $font-size-14;
+                color: $color-text-light;
+                font-weight: $fw-medium;
+                word-spacing: -1px;
+              }
+            }
+          }
+
+          .project-card__content {
+            @include flex-column;
+            gap: $space-16;
+
+            .project-card__description {
+              color: $color-text-muted;
+              line-height: $line-height-relaxed;
+              font-size: $font-size-14;
+              word-spacing: -1px;
+            }
+
+            .project-card__role {
+              .project-card__role-list {
+                padding: 0;
+                margin: 0;
+
+                .project-card__role-item {
+                  list-style-type: circle;
+                  color: $color-text-muted;
+                  font-size: $font-size-12;
+                  margin-bottom: $space-4;
+                }
+              }
+            }
+
+            // Tech Stack Section
+            .project-card__tech-stack {
+              .project-card__tech-title {
+                font-size: $font-size-12;
+                text-transform: uppercase;
+                margin-bottom: $space-8;
+                word-spacing: -3px;
+                font-weight: $fw-semibold;
+                color: $color-text;
+              }
+
+              .project-card__technologies {
+                display: flex;
+                flex-wrap: wrap;
+                gap: $space-4;
+
+                .project-card__tech-item {
+                  @include flex-center;
+                  font-weight: $fw-medium;
+                  color: $color-text;
+                  transition: all 0.3s ease;
+                  border-radius: 50px;
+                  padding: $space-8 $space-12;
+
+                  &:hover {
+                    transform: translateY(-2px);
+                    background-color: rgba($color-primary, 0.15);
+                  }
+
+                  span {
+                    color: var(--colorTech);
+                    text-transform: capitalize;
+                    font-size: $font-size-12;
+                    font-weight: $fw-semibold;
+                    margin-left: $space-4;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .project-card__links {
+          position: absolute;
+          right: $space-24;
+          bottom: $space-24;
+          display: flex;
+          gap: $space-8;
+
+          .project-card__link {
+            @include flex-center;
+            gap: $space-4;
+            transition: all 0.3s ease;
+            color: $color-text;
+            padding: $space-4 $space-8;
+            border-radius: $radius-md;
+            border: 1px solid $color-text;
+
+            &:hover {
+              transform: scale(1.15);
+            }
+
+            span {
+              font-size: $font-size-12;
+            }
+          }
+
+          .project-card__link:nth-child(1) {
+            background-color: $color-text;
+            color: $color-surface;
+          }
+        }
       }
-    }
-    .project-card:nth-child(2) {
-      top: calc($space-40 + 7rem);
-    }
-    .project-card:nth-child(3) {
-      top: calc($space-40 + 11rem);
     }
   }
 }

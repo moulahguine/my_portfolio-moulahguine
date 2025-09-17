@@ -7,9 +7,11 @@ function Modal({
   title,
   children,
   size = "large",
+  showHeader = true,
   showCloseButton = true,
   closeOnOverlayClick = true,
   animationDuration = 200,
+  style,
 }) {
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -61,9 +63,10 @@ function Modal({
             : "modal__container--closing"
         }`}
         onClick={(e) => e.stopPropagation()}
+        style={{ ...style }}
       >
         {/* Modal Header */}
-        {(title || showCloseButton) && (
+        {showHeader && (title || showCloseButton) && (
           <div className="modal__header">
             {title && <h2 className="modal__header-title">{title}</h2>}
             {showCloseButton && (
@@ -81,7 +84,7 @@ function Modal({
         {/* Modal Content */}
         <div
           className={`modal__content ${
-            title || showCloseButton
+            showHeader && (title || showCloseButton)
               ? "modal__content--with-header"
               : "modal__content--without-header"
           }`}

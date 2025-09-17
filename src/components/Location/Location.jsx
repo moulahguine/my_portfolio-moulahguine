@@ -13,7 +13,7 @@ import HoverCursor from "../HoverCursor/HoverCursor";
 
 import "./Location.scss";
 
-export default function Location() {
+export default function Location(style) {
   const [isMapOpen, setIsMapOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -65,6 +65,7 @@ export default function Location() {
         role="button"
         tabIndex={0}
         ariaLabel="Click to view location journey on map"
+        style={{ ...style }}
       >
         <MdOutlineLocationOn className="location__icon" />
         <p>

@@ -1,54 +1,55 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import instagram from "../../assets/images/contact-section/instagram.jpg";
-import telegram from "../../assets/images/contact-section/telegram.jpg";
-import whatsapp from "../../assets/images/contact-section/whatsapp.jpg";
-import linkedin from "../../assets/images/contact-section/linkedin.png";
 import {
   FaLinkedin,
   FaWhatsapp,
   FaInstagram,
   FaTelegram,
-  FaPhone,
   FaRegCopy,
   FaPaperPlane,
+  FaGithub,
+  FaPhone,
+  FaHandPointer,
 } from "react-icons/fa";
 import "./Contact.scss";
 import { useForm } from "@formspree/react";
 import { TfiEmail } from "react-icons/tfi";
-import { FaMapLocation } from "react-icons/fa6";
 import HoverCursor from "../../components/HoverCursor/HoverCursor";
+import Location from "../../components/Location/Location";
+import Modal from "../../components/Modal/Modal";
 
 function Contact() {
-  // Quick action links
-  const quickActions = [
-    {
-      icon: FaInstagram,
-      label: "Instagram",
-      href: "https://instagram.com/moulahguine",
-      color: "linear-gradient(to right,#833ab4,#fd1d1d,#fcb045)",
-      background: instagram,
-    },
+  // Social media links
+  const socialLinks = [
     {
       icon: FaLinkedin,
       label: "LinkedIn",
       href: "https://linkedin.com/in/moulahguine",
       color: "#0077B5",
-      background: linkedin,
+    },
+    {
+      icon: FaGithub,
+      label: "GitHub",
+      href: "https://github.com/moulahguine",
+      color: "#333",
+    },
+    {
+      icon: FaInstagram,
+      label: "Instagram",
+      href: "https://instagram.com/moulahguine",
+      color: "#E4405F",
     },
     {
       icon: FaWhatsapp,
       label: "WhatsApp",
       href: "https://wa.me/5548826567",
       color: "#25D366",
-      background: whatsapp,
     },
     {
       icon: FaTelegram,
       label: "Telegram",
       href: "https://t.me/moulahguine",
-      color: "#0077B5",
-      background: telegram,
+      color: "#0088CC",
     },
   ];
 
@@ -57,6 +58,8 @@ function Contact() {
     email: false,
     phone: false,
   });
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
+  const [showFormInModal, setShowFormInModal] = useState(false);
 
   // Clipboard copy
   const copyToClipboard = async (text, type) => {
@@ -69,6 +72,21 @@ function Contact() {
     } catch (err) {
       console.error("Failed to copy text: ", err);
     }
+  };
+
+  // Handle email modal actions
+  const handleCopyEmail = () => {
+    copyToClipboard("mohamedoulahguine@gmail.com", "email");
+    setIsEmailModalOpen(false);
+  };
+
+  const handleOpenForm = () => {
+    setShowFormInModal(true);
+  };
+
+  const handleCloseEmailModal = () => {
+    setIsEmailModalOpen(false);
+    setShowFormInModal(false);
   };
 
   // Form state
@@ -152,81 +170,133 @@ function Contact() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="contact__title">contact me</h2>
+        <h2 className="contact__title">Get In Touch</h2>
         <p className="contact__subtitle">
-          Questions, Opportunities, Collaborations{" "}
+          Questions, Opportunities, Collaborations
         </p>
       </motion.div>
 
       <div className="container">
-        {/* Quick Actions */}
-        <motion.div
-          className="contact__quick-actions"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <h3 className="contact__social-title">
-            Reach out on the platform that works best for you.
-          </h3>
-          <div className="contact__action-cards">
-            {quickActions.map((action) => (
-              <motion.a
-                key={action.label}
-                href={action.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact__action-card"
-                style={{
-                  "--action-color": action.color,
-                  "--background": `url(${action.background})`,
-                }}
-              >
-                <div className="contact__action-icon-bg">
-                  <action.icon className="contact__action-icon" />
-                </div>
-              </motion.a>
-            ))}
-          </div>
-
-          {/* Footer */}
-          <div className="contact__footer">
-            <div className="contact__footer-location">
-              <FaMapLocation />
-              <p>Based in Turkey, available for remote and onsite roles.</p>
+        <div className="contact__content">
+          <motion.div
+            className="contact__info"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {/* Location */}
+            <div className="contact__info-item">
+              <div className="contact__info-content">
+                <Location />
+              </div>
             </div>
 
-            <HoverCursor
-              content="copy"
-              className="contact__footer-email"
-              onClick={() =>
-                copyToClipboard("mohamedoulahguine@gmail.com", "email")
-              }
-            >
-              <TfiEmail />
-              <p>
-                {copyFeedback.email ? "Copied!" : "mohamedoulahguine@gmail.com"}
-              </p>
-              {!copyFeedback.email && <FaRegCopy />}
-            </HoverCursor>
+            {/* Email */}
+            <div className="contact__info-item">
+              <div className="contact__info-content">
+                <HoverCursor
+                  content="click"
+                  className="contact__info-value"
+                  onClick={() => setIsEmailModalOpen(true)}
+                >
+                  <TfiEmail />
+                  <span>mohamedoulahguine@gmail.com</span>
+                  <FaHandPointer />
+                </HoverCursor>
+              </div>
+            </div>
 
-            <HoverCursor
-              content="copy"
-              className="contact__footer-number"
-              onClick={() => copyToClipboard("+90 554 882 65 67", "phone")}
-            >
-              <FaPhone />
-              <p>{copyFeedback.phone ? "Copied!" : "+90 554 882 65 67"}</p>
-              {!copyFeedback.phone && <FaRegCopy />}
-            </HoverCursor>
+            {/* Phone */}
+            <div className="contact__info-item">
+              <div className="contact__info-content">
+                <HoverCursor
+                  content="copy"
+                  className="contact__info-value"
+                  onClick={() => copyToClipboard("+90 554 882 65 67", "phone")}
+                >
+                  <FaPhone />
+                  <span>
+                    {copyFeedback.phone ? "Copied!" : "+90 554 882 65 67"}
+                  </span>
+                  {!copyFeedback.phone && <FaRegCopy />}
+                </HoverCursor>
+              </div>
+            </div>
+
+            {/* Social Media */}
+            <div className="contact__social">
+              <span className="contact__social-label">
+                You may also find me on these platforms!
+              </span>
+              <div className="contact__social-links">
+                {socialLinks.map((social) => (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact__social-link"
+                    style={{ "--social-color": social.color }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    title={social.label}
+                  >
+                    <social.icon />
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Email Options Modal */}
+      <Modal
+        isOpen={isEmailModalOpen}
+        onClose={handleCloseEmailModal}
+        title={showFormInModal ? "Send a Message" : "Email Options"}
+        size="small"
+        showHeader={false}
+        style={{
+          backgroundColor: "#ffffff39",
+          backdropFilter: "blur(50px)",
+          WebkitBackdropFilter: "blur(50px)",
+        }}
+      >
+        {!showFormInModal ? (
+          <div className="contact__email-options">
+            <div className="contact__email-actions">
+              <motion.button
+                className="contact__email-btn contact__email-btn--copy"
+                onClick={handleCopyEmail}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <FaRegCopy />
+                Copy Email
+              </motion.button>
+              <motion.button
+                className="contact__email-btn contact__email-btn--form"
+                onClick={handleOpenForm}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <FaPaperPlane />
+                Open Form
+              </motion.button>
+            </div>
           </div>
-        </motion.div>
-
-        {/* Form */}
-        <div className="contact__form-section">
-          <form className="contact__form" onSubmit={onSubmit}>
-            <div className="contact__form-row">
+        ) : (
+          <div className="contact__form-modal">
+            <button
+              className="contact__form-close"
+              onClick={handleCloseEmailModal}
+              aria-label="Close modal"
+            >
+              ×
+            </button>
+            <form className="contact__form" onSubmit={onSubmit}>
               <div className="contact__form-group">
                 <input
                   type="text"
@@ -234,11 +304,14 @@ function Contact() {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  placeholder="Name"
+                  placeholder="Your Name"
                   className={`contact__input ${
                     errors.name ? "contact__input--error" : ""
                   }`}
                 />
+                {errors.name && (
+                  <span className="contact__error">{errors.name}</span>
+                )}
               </div>
 
               <div className="contact__form-group">
@@ -248,11 +321,14 @@ function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  placeholder="Email"
+                  placeholder="Your Email"
                   className={`contact__input ${
                     errors.email ? "contact__input--error" : ""
                   }`}
                 />
+                {errors.email && (
+                  <span className="contact__error">{errors.email}</span>
+                )}
               </div>
 
               <div className="contact__form-group">
@@ -261,37 +337,40 @@ function Contact() {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Message"
+                  placeholder="Your Message"
                   className={`contact__textarea ${
                     errors.message ? "contact__textarea--error" : ""
                   }`}
-                  rows="6"
+                  rows="5"
                 />
+                {errors.message && (
+                  <span className="contact__error">{errors.message}</span>
+                )}
               </div>
-            </div>
 
-            <motion.button
-              type="submit"
-              className="contact__submit-button"
-              disabled={state.submitting}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {state.submitting ? (
-                <span className="contact__submit-loading">
-                  <div className="contact__spinner"></div>
-                  Sending...
-                </span>
-              ) : (
-                <>
-                  Send Message
-                  <FaPaperPlane />
-                </>
-              )}
-            </motion.button>
-          </form>
-        </div>
-      </div>
+              <motion.button
+                type="submit"
+                className="contact__submit-button"
+                disabled={state.submitting}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {state.submitting ? (
+                  <span className="contact__submit-loading">
+                    <div className="contact__spinner"></div>
+                    Sending...
+                  </span>
+                ) : (
+                  <>
+                    Send Message
+                    <FaPaperPlane />
+                  </>
+                )}
+              </motion.button>
+            </form>
+          </div>
+        )}
+      </Modal>
 
       {/* Notifications */}
       {formResponse.message && (

@@ -2,27 +2,85 @@
 @use "../../assets/styles/mixins" as *;
 
 .footer {
-  background-color: $color-primary-hover;
-  color: #c9d1d9;
-  padding: $space-24;
+  background: $color-primary-hover;
+  padding: $space-32 0;
 
   .footer__container {
     @include container;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
   }
 
   // Main Footer Row
   .footer__main {
-    @include flex-center;
-    // Copyright
-    .footer__copyright {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    gap: $space-24;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      gap: $space-24;
+      text-align: center;
+    }
+
+    // Left - Logo
+    .footer__logo {
+      .footer__logo-component {
+        font-size: $font-size-18;
+        color: $color-surface;
+      }
+    }
+
+    // Center - Build Info
+    .footer__build-info {
+      @include flex-column;
+      gap: $space-12;
+      align-items: center;
+
       p {
-        margin: 0;
-        font-size: 0.875rem;
+        font-size: $font-size-14;
         color: $color-text-lighter;
-        font-weight: 400;
+        font-weight: $fw-medium;
+
+        .footer__link {
+          color: $color-surface;
+          font-weight: $fw-semibold;
+          transition: all 0.3s ease;
+          border-bottom: 1px solid transparent;
+
+          &:hover {
+            color: $color-primary-500;
+            border-bottom-color: $color-primary-500;
+          }
+        }
+      }
+    }
+
+    // Right - Back to Top
+    .footer__back-to-top {
+      @include flex-center;
+      gap: $space-8;
+      padding: $space-12 $space-24;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      color: $color-surface;
+      font-size: $font-size-14;
+      font-weight: $fw-semibold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      justify-self: end;
+
+      @media (max-width: $breakpoint-md) {
+        justify-self: center;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+
+      svg {
+        font-size: inherit;
+        transition: transform 0.3s ease;
       }
     }
   }

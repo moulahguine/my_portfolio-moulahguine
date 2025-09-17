@@ -1,101 +1,62 @@
 import { motion } from "framer-motion";
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { useState } from "react";
+import {
+  FaExternalLinkAlt,
+  FaGithub,
+  FaLaptop,
+  FaPlayCircle,
+} from "react-icons/fa";
 import {
   SiReact,
-  SiNodedotjs,
-  SiMongodb,
-  SiSocketdotio,
-  SiTypescript,
-  SiPython,
-  SiDocker,
-  SiPostgresql,
-  SiRedis,
-  SiVuedotjs,
-  SiNextdotjs,
-  SiTailwindcss,
+  SiSass,
+  SiFramer,
+  SiReactrouter,
+  SiFormspree,
 } from "react-icons/si";
 import "./Projects.scss";
 
+// import porfolio media project
+import video from "../../assets/images/project-section/porfolio-card/fullRecord.mp4";
+import laptop from "../../assets/images/project-section/porfolio-card/laptop.png";
+import logo from "../../assets/images/project-section/porfolio-card/android-chrome-192x192.png";
+
 function Projects() {
-  // Local projects data object - replace with your actual project information
   const projectsData = [
     {
       id: 1,
-      title: "QuantumChat",
-      subtitle: "Next-gen messaging platform",
-      year: 2024,
-      category: "Web Application",
+      title: "OULAHGUINE",
+      subtitle: "Personal Frontend Developer Portfolio",
       description:
-        "A revolutionary quantum-encrypted chat application with AI-powered features. Built with cutting-edge technologies for maximum security and performance.",
+        "Built with React + SCSS to showcase work, design, and interaction. Mobile-first with smooth animations and polished UX.",
+      year: 2025,
+      logo: logo,
+      demoLink: "https://mohamedoulahguine.com",
+      githubLink: "https://github.com/moulahguine/my_portfolio-moulahguine",
+
+      role: [
+        "Designed UI from scratch",
+        "Created interactive dialogs",
+        "Optimized performance",
+        "Built responsive layouts",
+      ],
+
       technologies: [
         { name: "React", icon: SiReact, color: "#61DAFB" },
-        { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
-        { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-        { name: "Socket.io", icon: SiSocketdotio, color: "#010101" },
+        { name: "SCSS", icon: SiSass, color: "#CC6699" },
+        { name: "Framer Motion", icon: SiFramer, color: "#0055FF" },
+        { name: "React Router", icon: SiReactrouter, color: "#F05032" },
+        { name: "Formspree", icon: SiFormspree, color: "#FF6B6B" },
       ],
-      image:
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop&crop=center",
-      logo: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=60&h=60&fit=crop&crop=center",
-      demoLink: "https://quantumchat-demo.com",
-      githubLink: "https://github.com/moulahguine/QuantumChat",
-      stars: 247,
-      forks: 89,
-      language: "TypeScript",
-      topics: ["quantum", "ai", "security", "messaging"],
-    },
-    {
-      id: 2,
-      title: "NeuralPortfolio",
-      subtitle: "AI-powered portfolio builder",
-      year: 2024,
-      category: "Portfolio Website",
-      description:
-        "An intelligent portfolio website that adapts to visitor behavior using machine learning. Features dynamic content generation and personalized experiences.",
-      technologies: [
-        { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
-        { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-        { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
-        { name: "Python", icon: SiPython, color: "#3776AB" },
-      ],
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&crop=center",
-      logo: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=60&h=60&fit=crop&crop=center",
-      demoLink: "https://neuralportfolio.com",
-      githubLink: "https://github.com/moulahguine/NeuralPortfolio",
-      stars: 156,
-      forks: 34,
-      language: "TypeScript",
-      topics: ["ai", "ml", "portfolio", "nextjs"],
-    },
-    {
-      id: 3,
-      title: "TaskMaster Pro",
-      subtitle: "Enterprise task management",
-      year: 2024,
-      category: "Task Management App",
-      description:
-        "A comprehensive enterprise-grade task management solution with advanced analytics, team collaboration, and AI-powered task prioritization.",
-      technologies: [
-        { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
-        { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
-        { name: "Redis", icon: SiRedis, color: "#DC382D" },
-        { name: "Docker", icon: SiDocker, color: "#2496ED" },
-      ],
-      image:
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop&crop=center",
-      logo: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=60&h=60&fit=crop&crop=center",
-      demoLink: "https://taskmaster-pro.com",
-      githubLink: "https://github.com/moulahguine/TaskMasterPro",
-      stars: 89,
-      forks: 23,
-      language: "JavaScript",
-      topics: ["enterprise", "collaboration", "analytics", "ai"],
+
+      media: {
+        laptop: laptop,
+        video: video,
+      },
     },
   ];
 
   return (
     <section id="projects" className="projects">
-      {/* Header section with title and description */}
       <motion.div
         className="projects__header"
         initial={{ opacity: 0, y: -50 }}
@@ -107,88 +68,160 @@ function Projects() {
         <p className="projects__subtitle">Interfaces I Built From Scratch</p>
       </motion.div>
       <div className="container">
-        {/* Map through projects to create stacked cards */}
-        {projectsData.map((project, index) => (
-          <div key={project.id} className="project-card">
-            {/* Background Image/Video */}
-            <div className="project-card__background">
-              <img src={project.image} alt={project.title} />
-              {/* Overlay for better text readability */}
-              <div className="project-card__overlay"></div>
+        <div className="projects__grid">
+          {projectsData.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ProjectCard component for individual project display...
+
+function ProjectCard({ project, index }) {
+  const [activeMedia, setActiveMedia] = useState("video");
+  const mediaButtons = [
+    { key: "video", icon: FaPlayCircle, label: "Video Demo" },
+    { key: "laptop", icon: FaLaptop, label: "Laptop View" },
+  ];
+
+  const renderMedia = () => {
+    const mediaUrl = project.media[activeMedia];
+
+    if (activeMedia === "video") {
+      return (
+        <video
+          className="project-card__media video"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src={mediaUrl} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      );
+    }
+
+    return (
+      <img
+        className="project-card__media"
+        src={mediaUrl}
+        alt={`${project.title} ${activeMedia} view`}
+      />
+    );
+  };
+
+  return (
+    <motion.div
+      className="project-card"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.2 }}
+    >
+      <div className="project-card__container">
+        {/* Left Side */}
+        <div className="project-card__media-section">
+          <div className="project-card__media-container">{renderMedia()}</div>
+
+          {/* Media Control Buttons */}
+          <div className="project-card__media-controls">
+            {mediaButtons.map((button) => {
+              const IconComponent = button.icon;
+              return (
+                <button
+                  key={button.key}
+                  className={`project-card__media-btn ${
+                    activeMedia === button.key
+                      ? "project-card__media-btn--active"
+                      : ""
+                  }`}
+                  onClick={() => setActiveMedia(button.key)}
+                  aria-label={button.label}
+                  title={button.label}
+                >
+                  <IconComponent />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+        {/* Right Side  */}
+        <div className="project-card__details">
+          <div className="project-card__header">
+            <div className="project-card__logo">
+              <img src={project.logo} alt={`${project.title} logo`} />
+            </div>
+            <div className="project-card__title-section">
+              <h3 className="project-card__title">{project.title}</h3>
+              <p className="project-card__subtitle">{project.subtitle}</p>
+            </div>
+          </div>
+          <div className="project-card__content">
+            <p className="project-card__description">{project.description}</p>
+
+            {/* Role & Contribution Section */}
+            <div className="project-card__role">
+              <ul className="project-card__role-list">
+                {project.role.map((item, index) => (
+                  <li key={index} className="project-card__role-item">
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="project-card__top">
-              {/* Top Left Logo */}
-              <div className="project-card__top-logo">
-                <div className="project-card__logo">
-                  <img src={project.logo} alt={`${project.title} logo`} />
-                </div>
-
-                {/* GitHub Stats */}
-                <div className="project-card__stats">
-                  <span className="project-card__stat">⭐ {project.stars}</span>
-                </div>
-              </div>
-              {/* Top Right Links */}
-              <div className="project-card__top-links">
-                <a
-                  href={project.demoLink}
-                  className="project-card__link project-card__link--demo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="View Live Demo"
-                >
-                  <FaExternalLinkAlt />
-                </a>
-                <a
-                  href={project.githubLink}
-                  className="project-card__link project-card__link--github"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="View on GitHub"
-                >
-                  <FaGithub />
-                </a>
-              </div>
-            </div>
-
-            {/* Main Content */}
-            <div className="project-card__content">
-              {/* Left Side - Title and Category */}
-              <div className="project-card__left">
-                <h3 className="project-card__title">{project.title}</h3>
-              </div>
-
-              {/* Right Side - Description and Technologies */}
-              <div className="project-card__right">
-                <p className="project-card__description">
-                  {project.description}
-                </p>
-
-                {/* Technologies/Stack Icons */}
-                <div className="project-card__technologies">
-                  {project.technologies.map((tech, techIndex) => {
-                    const IconComponent = tech.icon;
-                    return (
-                      <div
-                        key={techIndex}
-                        className="project-card__tech-logo"
-                        title={tech.name}
-                      >
-                        <IconComponent
-                          style={{ color: tech.color }}
-                          size={20}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
+            {/* Tech Stack Section */}
+            <div className="project-card__tech-stack">
+              <h4 className="project-card__tech-title">Tech Stack :</h4>
+              <div className="project-card__technologies">
+                {project.technologies.map((tech, techIndex) => {
+                  const IconComponent = tech.icon;
+                  return (
+                    <div
+                      style={{ "--colorTech": tech.color }}
+                      key={techIndex}
+                      className="project-card__tech-item"
+                      title={tech.name}
+                    >
+                      <IconComponent style={{ color: tech.color }} size={20} />
+                      <span>{tech.name}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
-        ))}
+          <div className="project-card__links">
+            <a
+              href={project.demoLink}
+              className="project-card__link project-card__link demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View Live Demo"
+              title="🔗 Live Demo"
+            >
+              <FaExternalLinkAlt />
+              <span> visit</span>
+            </a>
+            <a
+              href={project.githubLink}
+              className="project-card__link project-card__link github"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View on GitHub"
+              title="💻 GitHub Repo"
+            >
+              <FaGithub />
+              <span>source</span>
+            </a>
+          </div>
+        </div>
       </div>
-    </section>
+    </motion.div>
   );
 }
 
