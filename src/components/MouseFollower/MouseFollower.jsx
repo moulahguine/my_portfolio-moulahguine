@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import "./MouseFollower.scss";
 
 const MouseFollower = ({
@@ -15,7 +15,7 @@ const MouseFollower = ({
   const animationRef = useRef();
 
   // Animation loop
-  const animate = () => {
+  const animate = useCallback(() => {
     const { x: targetX, y: targetY } = mousePos.current;
     const { x: currentX, y: currentY } = currentPos.current;
 
@@ -26,16 +26,19 @@ const MouseFollower = ({
     setPosition({ x: newX, y: newY });
 
     animationRef.current = requestAnimationFrame(animate);
-  };
+  }, [speed]);
 
   // Mouse move handler
-  const handleMouseMove = (e) => {
-    mousePos.current = {
-      x: e.clientX - size / 2,
-      y: e.clientY - size / 2,
-    };
-    if (!isVisible) setIsVisible(true);
-  };
+  const handleMouseMove = useCallback(
+    (e) => {
+      mousePos.current = {
+        x: e.clientX - size / 2,
+        y: e.clientY - size / 2,
+      };
+      if (!isVisible) setIsVisible(true);
+    },
+    [size, isVisible]
+  );
 
   // Setup
   useEffect(() => {
@@ -52,7 +55,7 @@ const MouseFollower = ({
       document.removeEventListener("mouseenter", () => setIsVisible(true));
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [enabled, speed, size]);
+  }, [enabled, animate, handleMouseMove]);
 
   if (!enabled) return null;
 
