@@ -49,13 +49,13 @@ function Modal({
   if (!isOpen) return null;
 
   return (
-    <div
+    <dialog
       className={`modal__overlay ${
         isAnimating ? "modal__overlay--animating" : "modal__overlay--closing"
       }`}
       onClick={handleOverlayClick}
     >
-      <div
+      <main
         tabIndex={-1}
         className={`modal__container modal__container--${size} ${
           isAnimating
@@ -67,7 +67,7 @@ function Modal({
       >
         {/* Modal Header */}
         {showHeader && (title || showCloseButton) && (
-          <div className="modal__header">
+          <header className="modal__header">
             {title && <h2 className="modal__header-title">{title}</h2>}
             {showCloseButton && (
               <button
@@ -78,7 +78,7 @@ function Modal({
                 ×
               </button>
             )}
-          </div>
+          </header>
         )}
 
         {/* Modal Content */}
@@ -91,8 +91,8 @@ function Modal({
         >
           {children}
         </div>
-      </div>
-    </div>
+      </main>
+    </dialog>
   );
 }
 

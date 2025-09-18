@@ -6,58 +6,14 @@ import {
   FaLaptop,
   FaPlayCircle,
 } from "react-icons/fa";
-import {
-  SiReact,
-  SiSass,
-  SiFramer,
-  SiReactrouter,
-  SiFormspree,
-} from "react-icons/si";
 import "./Projects.scss";
 
-// import porfolio media project
-import video from "../../assets/images/project-section/porfolio-card/fullRecord.mp4";
-import laptop from "../../assets/images/project-section/porfolio-card/laptop.png";
-import logo from "../../assets/images/project-section/porfolio-card/android-chrome-192x192.png";
+import projectsData from "./projectData";
 
 function Projects() {
-  const projectsData = [
-    {
-      id: 1,
-      title: "OULAHGUINE",
-      subtitle: "Personal Frontend Developer Portfolio",
-      description:
-        "Built with React + SCSS to showcase work, design, and interaction. Mobile-first with smooth animations and polished UX.",
-      year: 2025,
-      logo: logo,
-      demoLink: "https://mohamedoulahguine.com",
-      githubLink: "https://github.com/moulahguine/my_portfolio-moulahguine",
-
-      role: [
-        "Designed UI from scratch",
-        "Created interactive dialogs",
-        "Optimized performance",
-        "Built responsive layouts",
-      ],
-
-      technologies: [
-        { name: "React", icon: SiReact, color: "#61DAFB" },
-        { name: "SCSS", icon: SiSass, color: "#CC6699" },
-        { name: "Framer Motion", icon: SiFramer, color: "#0055FF" },
-        { name: "React Router", icon: SiReactrouter, color: "#F05032" },
-        { name: "Formspree", icon: SiFormspree, color: "#FF6B6B" },
-      ],
-
-      media: {
-        laptop: laptop,
-        video: video,
-      },
-    },
-  ];
-
   return (
     <section id="projects" className="projects">
-      <motion.div
+      <motion.header
         className="projects__header"
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -66,14 +22,14 @@ function Projects() {
       >
         <h2 className="projects__title">Projects</h2>
         <p className="projects__subtitle">Interfaces I Built From Scratch</p>
-      </motion.div>
-      <div className="container">
+      </motion.header>
+      <main className="container">
         <div className="projects__grid">
           {projectsData.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
-      </div>
+      </main>
     </section>
   );
 }
@@ -115,7 +71,7 @@ function ProjectCard({ project, index }) {
   };
 
   return (
-    <motion.div
+    <motion.section
       className="project-card"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -151,7 +107,7 @@ function ProjectCard({ project, index }) {
         </div>
         {/* Right Side  */}
         <div className="project-card__details">
-          <div className="project-card__header">
+          <header className="project-card__header">
             <div className="project-card__logo">
               <img src={project.logo} alt={`${project.title} logo`} />
             </div>
@@ -159,24 +115,12 @@ function ProjectCard({ project, index }) {
               <h3 className="project-card__title">{project.title}</h3>
               <p className="project-card__subtitle">{project.subtitle}</p>
             </div>
-          </div>
+          </header>
           <div className="project-card__content">
             <p className="project-card__description">{project.description}</p>
 
-            {/* Role & Contribution Section */}
-            <div className="project-card__role">
-              <ul className="project-card__role-list">
-                {project.role.map((item, index) => (
-                  <li key={index} className="project-card__role-item">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
             {/* Tech Stack Section */}
             <div className="project-card__tech-stack">
-              <h4 className="project-card__tech-title">Tech Stack :</h4>
               <div className="project-card__technologies">
                 {project.technologies.map((tech, techIndex) => {
                   const IconComponent = tech.icon;
@@ -221,7 +165,7 @@ function ProjectCard({ project, index }) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </motion.section>
   );
 }
 

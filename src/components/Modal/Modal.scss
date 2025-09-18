@@ -3,11 +3,13 @@
 
 .modal {
   &__overlay {
+    all: unset;
     position: fixed;
     inset: 0;
     z-index: 9999;
     @include flex-center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(45, 55, 72, 0.4);
+    backdrop-filter: blur(20px) saturate(180%);
     transition: opacity 0.2s ease;
     overflow: hidden;
 

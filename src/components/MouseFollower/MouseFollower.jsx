@@ -1,0 +1,73 @@
+import { useEffect, useRef, useState } from "react";
+import "./MouseFollower.scss";
+
+const MouseFollower = ({
+  size = 28,
+  color = "rgba(0,0,0,0.6)",
+  speed = 0.18,
+  zIndex = 9999,
+  enabled = true,
+}) => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isVisible, setIsVisible] = useState(false);
+  const mousePos = useRef({ x: 0, y: 0 });
+  const currentPos = useRef({ x: 0, y: 0 });
+  const animationRef = useRef();
+
+  // Animation loop
+  const animate = () => {
+    const { x: targetX, y: targetY } = mousePos.current;
+    const { x: currentX, y: currentY } = currentPos.current;
+
+    const newX = currentX + (targetX - currentX) * speed;
+    const newY = currentY + (targetY - currentY) * speed;
+
+    currentPos.current = { x: newX, y: newY };
+    setPosition({ x: newX, y: newY });
+
+    animationRef.current = requestAnimationFrame(animate);
+  };
+
+  // Mouse move handler
+  const handleMouseMove = (e) => {
+    mousePos.current = {
+      x: e.clientX - size / 2,
+      y: e.clientY - size / 2,
+    };
+    if (!isVisible) setIsVisible(true);
+  };
+
+  // Setup
+  useEffect(() => {
+    if (!enabled) return;
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", () => setIsVisible(false));
+    document.addEventListener("mouseenter", () => setIsVisible(true));
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseleave", () => setIsVisible(false));
+      document.removeEventListener("mouseenter", () => setIsVisible(true));
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
+  }, [enabled, speed, size]);
+
+  if (!enabled) return null;
+
+  return (
+    <div
+      className="mouse-follower"
+      style={{
+        "--size": `${size}px`,
+        "--color": color,
+        "--z-index": zIndex,
+        transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
+        opacity: isVisible ? 1 : 0,
+      }}
+    />
+  );
+};
+
+export default MouseFollower;

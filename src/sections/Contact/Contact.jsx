@@ -1,169 +1,41 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
-  FaLinkedin,
-  FaWhatsapp,
-  FaInstagram,
-  FaTelegram,
   FaRegCopy,
   FaPaperPlane,
-  FaGithub,
   FaPhone,
   FaHandPointer,
 } from "react-icons/fa";
 import "./Contact.scss";
-import { useForm } from "@formspree/react";
 import { TfiEmail } from "react-icons/tfi";
 import HoverCursor from "../../components/HoverCursor/HoverCursor";
 import Location from "../../components/Location/Location";
 import Modal from "../../components/Modal/Modal";
+import socialLinks from "./socialLinks";
+import { useContactForm } from "./useContactForm";
 
 function Contact() {
-  // Social media links
-  const socialLinks = [
-    {
-      icon: FaLinkedin,
-      label: "LinkedIn",
-      href: "https://linkedin.com/in/moulahguine",
-      color: "#0077B5",
-    },
-    {
-      icon: FaGithub,
-      label: "GitHub",
-      href: "https://github.com/moulahguine",
-      color: "#333",
-    },
-    {
-      icon: FaInstagram,
-      label: "Instagram",
-      href: "https://instagram.com/moulahguine",
-      color: "#E4405F",
-    },
-    {
-      icon: FaWhatsapp,
-      label: "WhatsApp",
-      href: "https://wa.me/5548826567",
-      color: "#25D366",
-    },
-    {
-      icon: FaTelegram,
-      label: "Telegram",
-      href: "https://t.me/moulahguine",
-      color: "#0088CC",
-    },
-  ];
-
-  const [formResponse, setFormResponse] = useState({ type: "", message: "" });
-  const [copyFeedback, setCopyFeedback] = useState({
-    email: false,
-    phone: false,
-  });
-  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
-  const [showFormInModal, setShowFormInModal] = useState(false);
-
-  // Clipboard copy
-  const copyToClipboard = async (text, type) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopyFeedback((prev) => ({ ...prev, [type]: true }));
-      setTimeout(() => {
-        setCopyFeedback((prev) => ({ ...prev, [type]: false }));
-      }, 1000);
-    } catch (err) {
-      console.error("Failed to copy text: ", err);
-    }
-  };
-
-  // Handle email modal actions
-  const handleCopyEmail = () => {
-    copyToClipboard("mohamedoulahguine@gmail.com", "email");
-    setIsEmailModalOpen(false);
-  };
-
-  const handleOpenForm = () => {
-    setShowFormInModal(true);
-  };
-
-  const handleCloseEmailModal = () => {
-    setIsEmailModalOpen(false);
-    setShowFormInModal(false);
-  };
-
-  // Form state
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const [errors, setErrors] = useState({});
-  const [state, handleSubmit] = useForm("myzdnqpd");
-
-  // Custom validation
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
-    }
-    if (!formData.message.trim()) newErrors.message = "Message is required";
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  // Input change
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-
-    // clear error if typing
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
-  };
-
-  // Submit
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-    await handleSubmit(e);
-  };
-
-  // Reset form
-  const clearForm = () => {
-    setFormData({ name: "", email: "", message: "" });
-    setErrors({});
-  };
-
-  // Handle success/error from Formspree
-  useEffect(() => {
-    if (state.succeeded) {
-      clearForm();
-      setFormResponse({
-        type: "success",
-        message: "Thank you! I'll reply soon.",
-      });
-      const timer = setTimeout(() => {
-        setFormResponse({ type: "", message: "" });
-      }, 2000);
-      return () => clearTimeout(timer);
-    }
-
-    if (state.errors && state.errors.length > 0) {
-      setFormResponse({
-        type: "error",
-        message: "Something went wrong, please try again.",
-      });
-    }
-  }, [state.succeeded, state.errors]);
+  const {
+    formData,
+    errors,
+    formResponse,
+    copyFeedback,
+    isEmailModalOpen,
+    showFormInModal,
+    state,
+    formKey,
+    handleInputChange,
+    onSubmit,
+    copyToClipboard,
+    handleCopyEmail,
+    handleOpenForm,
+    handleCloseEmailModal,
+    setIsEmailModalOpen,
+  } = useContactForm();
 
   return (
     <section id="contact" className="contact">
       {/* Header */}
-      <motion.div
+      <motion.header
         className="contact__header"
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -174,9 +46,9 @@ function Contact() {
         <p className="contact__subtitle">
           Questions, Opportunities, Collaborations
         </p>
-      </motion.div>
+      </motion.header>
 
-      <div className="container">
+      <main className="container">
         <div className="contact__content">
           <motion.div
             className="contact__info"
@@ -226,9 +98,7 @@ function Contact() {
 
             {/* Social Media */}
             <div className="contact__social">
-              <span className="contact__social-label">
-                You may also find me on these platforms!
-              </span>
+              <span className="contact__social-label">I’m also active on:</span>
               <div className="contact__social-links">
                 {socialLinks.map((social) => (
                   <motion.a
@@ -249,7 +119,7 @@ function Contact() {
             </div>
           </motion.div>
         </div>
-      </div>
+      </main>
 
       {/* Email Options Modal */}
       <Modal
@@ -259,9 +129,7 @@ function Contact() {
         size="small"
         showHeader={false}
         style={{
-          backgroundColor: "#ffffff39",
-          backdropFilter: "blur(50px)",
-          WebkitBackdropFilter: "blur(50px)",
+          background: "transparent !important",
         }}
       >
         {!showFormInModal ? (
@@ -296,7 +164,7 @@ function Contact() {
             >
               ×
             </button>
-            <form className="contact__form" onSubmit={onSubmit}>
+            <form key={formKey} className="contact__form" onSubmit={onSubmit}>
               <div className="contact__form-group">
                 <input
                   type="text"

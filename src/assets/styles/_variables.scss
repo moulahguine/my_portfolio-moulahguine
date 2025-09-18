@@ -1,22 +1,20 @@
 // ----------------------- TYPOGRAPHY -----------------------
-$base-font-size: 16px; // project base
-$font-size-12: 0.75rem; /* 12px */
-$font-size-14: 0.875rem; /* 14px */
-$font-size-16: 1rem; /* 16px */
-$font-size-18: 1.125rem; /* 18px */
-$font-size-20: 1.25rem; /* 20px */
-$font-size-24: 1.5rem; /* 24px */
-$font-size-28: 1.75rem; /* 28px */
-$font-size-32: 2rem; /* 32px */
-$font-size-40: 2.5rem; /* 40px */
-$font-size-48: 3rem; /* 48px */
+$base-font-size: 16px;
+$font-size-12: 0.75rem;
+$font-size-14: 0.875rem;
+$font-size-16: 1rem;
+$font-size-18: 1.125rem;
+$font-size-20: 1.25rem;
+$font-size-24: 1.5rem;
+$font-size-28: 1.75rem;
+$font-size-32: 2rem;
+$font-size-40: 2.5rem;
+$font-size-48: 3rem;
 
-// Line height
 $line-height-tight: 1.25;
 $line-height-normal: 1.5;
 $line-height-relaxed: 1.75;
 
-// Font weights
 $fw-regular: 400;
 $fw-medium: 500;
 $fw-semibold: 600;
@@ -24,55 +22,44 @@ $fw-bold: 700;
 
 // ----------------------- COLOR PALETTE (SOFT GRAYSCALE - MODERN & ELEGANT) -----------------------
 
-// Primary Identity (Soft Grays)
-$color-primary: #2d3748; // Rich dark gray - main brand color (not pure black)
-$color-primary-500: #4a5568; // Medium gray for accents
-$color-primary-hover: #1a202c; // Darker gray for hover states (not pure black)
-
-// Background Scale (Soft & Paper-like)
-$color-bg: #f8fafc; // Main background - very light gray (paper color)
-$color-surface: #fefefe; // Cards/surfaces - soft off-white (not pure white)
-$color-surface-secondary: #f1f5f9; // Secondary surfaces - light gray
-$color-surface-tertiary: #e2e8f0; // Tertiary surfaces - slightly darker gray
-
-// Text Scale (Rich & Readable)
-$color-text: #1a202c; // Primary text - rich dark gray (almost black, but soft)
-$color-text-muted: #4a5568; // Secondary text - medium gray
-$color-text-light: #718096; // Light text - lighter gray for captions
-$color-text-lighter: #a0aec0; // Very light text - hints and placeholders
-
-// Border Scale (Soft & Subtle)
-$color-border: #e2e8f0; // Subtle borders - soft gray (not harsh black)
-$color-border-light: #f1f5f9; // Light borders - very soft gray
-$color-border-hover: #cbd5e0; // Hover borders - slightly more visible
-
-// Semantic Colors (Soft Grayscale Variations)
-$color-success: #38a169; // Success - soft green-gray
-$color-warning: #d69e2e; // Warning - soft amber-gray
-$color-danger: #e53e3e; // Danger - soft red-gray
-
-// Shadows & Effects (Soft & Modern)
-$color-shadow: rgba(45, 55, 72, 0.08); // Soft gray shadow
-$color-shadow-hover: rgba(45, 55, 72, 0.12); // Hover shadow
-$color-shadow-light: rgba(45, 55, 72, 0.04); // Light shadow
-$color-shadow-card: rgba(45, 55, 72, 0.06); // Card shadow
+$color-primary: #2d3748;
+$color-primary-500: #4a5568;
+$color-primary-hover: #1a202c;
+$color-bg: #f8fafc;
+$color-surface: #fefefe;
+$color-surface-secondary: #f1f5f9;
+$color-surface-tertiary: #e2e8f0;
+$color-text: #1a202c;
+$color-text-muted: #4a5568;
+$color-text-light: #718096;
+$color-text-lighter: #a0aec0;
+$color-border: #e2e8f0;
+$color-border-light: #f1f5f9;
+$color-border-hover: #cbd5e0;
+$color-success: #38a169;
+$color-warning: #d69e2e;
+$color-danger: #e53e3e;
+$color-shadow: rgba(45, 55, 72, 0.08);
+$color-shadow-hover: rgba(45, 55, 72, 0.12);
+$color-shadow-light: rgba(45, 55, 72, 0.04);
+$color-shadow-card: rgba(45, 55, 72, 0.06);
 
 // ----------------------- SPACING (scale) -----------------------
-$space-4: 0.25rem; /* 4px */
-$space-8: 0.5rem; /* 8px */
-$space-12: 0.75rem; /* 12px */
-$space-16: 1rem; /* 16px */
-$space-24: 1.5rem; /* 24px */
-$space-32: 2rem; /* 32px */
-$space-40: 2.5rem; /* 40px */
+$space-4: 0.25rem;
+$space-8: 0.5rem;
+$space-12: 0.75rem;
+$space-16: 1rem;
+$space-24: 1.5rem;
+$space-32: 2rem;
+$space-40: 2.5rem;
 
 // ----------------------- RADIUS -----------------------
-$radius-sm: 0.25rem; /* 4px */
-$radius-md: 0.5rem; /* 8px */
-$radius-lg: 1rem; /* 16px */
-$radius-xl: 2rem; /* 32px */
-$radius-1xl: 3rem; /* 48px */
-$radius-2xl: 4rem; /* 64px */
+$radius-sm: 0.25rem;
+$radius-md: 0.5rem;
+$radius-lg: 1rem;
+$radius-xl: 2rem;
+$radius-1xl: 3rem;
+$radius-2xl: 4rem;
 
 // ----------------------- TRANSITIONS -----------------------
 $transition-fast: 150ms ease-in-out;

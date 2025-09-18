@@ -10,6 +10,7 @@
 
   .container {
     @include container;
+    padding: 0 clamp($space-32, 3vw, $space-40) !important;
     display: grid;
     grid-template-columns: 1fr 1fr 20px;
     align-items: center;
@@ -18,29 +19,29 @@
     position: relative;
     z-index: 10;
 
-    // change column for container tablet screen
+    // ===================================================
+
     @media (max-width: $breakpoint-lg) {
       grid-template-columns: 1fr 1fr;
-      padding: 0 1rem;
       gap: 0;
     }
 
-    // ===== change column for container mobile screen ====
     @media (max-width: $breakpoint-md) {
+      padding: $space-40;
       grid-template-columns: 1fr;
       justify-content: center;
-      width: 100%;
 
       .hero__media-content {
         order: 1;
         @include flex-center;
+        justify-content: start;
         gap: $space-24;
         width: 100%;
         margin-bottom: $space-24;
 
         // image
         .hero__media {
-          width: 150px;
+          width: clamp(160px, 1vw, 190px);
           border-radius: 50%;
           animation: none;
           border: 2px solid $color-primary;
@@ -56,8 +57,9 @@
 
         //title + subtitle
         .hero__title {
-          font-size: clamp($font-size-18, 4vw, $font-size-32);
+          font-size: clamp($font-size-24, 4vw, $font-size-32);
           margin-bottom: $space-16;
+
           .hiEmoji {
             all: unset;
             display: inline-block;
@@ -71,6 +73,7 @@
             font-size: clamp($font-size-12, 2vw, $font-size-16);
             color: $color-text-light;
           }
+
           .hero__subtitle {
             font-weight: $fw-semibold;
             color: $color-text-muted;
@@ -88,7 +91,6 @@
       }
     }
 
-    // + change column for container mobile screen
     @media (max-width: $breakpoint-sm) {
       width: 100%;
 
@@ -107,7 +109,7 @@
         //title + subtitle
         .hero__title {
           align-content: start;
-          font-size: clamp($font-size-32, 4vw, $font-size-48);
+          font-size: clamp($font-size-28, 4vw, $font-size-48);
 
           small {
             font-size: clamp($font-size-14, 4vw, $font-size-18);
@@ -123,10 +125,8 @@
 
     // hero content
     .hero__content {
-      // change order for mobile layout
       @media (max-width: $breakpoint-md) {
         order: 2;
-        @include grid-center;
       }
 
       // title
@@ -170,14 +170,8 @@
         max-width: 471px;
 
         @media (max-width: $breakpoint-md) {
-          font-size: clamp($font-size-12, 3vw, $font-size-18) !important;
-          margin-bottom: $space-24;
-        }
-
-        @media (max-width: $breakpoint-sm) {
           font-size: clamp($font-size-14, 3vw, $font-size-18) !important;
           margin-bottom: $space-24;
-          text-align: center;
         }
       }
 
@@ -209,13 +203,7 @@
         .hero__resume {
           display: flex;
           width: 100%;
-          justify-content: space-between;
-        }
-      }
-
-      @media (max-width: $breakpoint-md) {
-        .hero__resume {
-          justify-content: space-around;
+          gap: $space-16;
         }
       }
     }

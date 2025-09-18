@@ -1,0 +1,61 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+// Hero Image Modal Styles
+.hero-image-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  @include flex-center;
+
+  .hero-image-modal {
+    @include flex-center;
+    position: relative;
+    max-width: 800px;
+    width: 90%;
+    aspect-ratio: 1/1;
+
+    &__close {
+      position: absolute;
+      top: $space-16;
+      right: $space-16;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      width: 40px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      cursor: pointer;
+      @include flex-center;
+      transition: all 0.3s ease;
+      z-index: 10001;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.8);
+        transform: rotate(90deg);
+      }
+
+      @media (max-width: $breakpoint-md) {
+        font-size: 1rem;
+        width: 30px;
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        font-size: 0.6rem;
+        width: 20px;
+      }
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+  }
+}

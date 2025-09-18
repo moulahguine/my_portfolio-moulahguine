@@ -28,8 +28,7 @@
 
       @media (max-width: $breakpoint-md) {
         gap: $space-32;
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         align-items: center;
       }
 
@@ -107,6 +106,7 @@
             margin: 0;
 
             @media (max-width: $breakpoint-md) {
+              max-width: 550px;
               font-size: $font-size-16;
             }
           }
@@ -143,8 +143,12 @@
       }
       // Quick Facts Grid
       .about__facts {
+        rotate: -5deg;
         margin-top: $space-40;
         grid-column: span 2;
+        @media (max-width: $breakpoint-lg) {
+          rotate: 0deg;
+        }
 
         .facts-grid {
           width: 100%;
@@ -161,24 +165,28 @@
             gap: $space-40;
           }
 
-          @media (max-width: $breakpoint-md) {
+          @media (max-width: 657px) {
             grid-template-columns: repeat(1, 1fr);
             grid-template-rows: repeat(4, 1fr);
             gap: $space-16;
           }
 
           .fact-card {
-            z-index: 15;
             @include flex-center;
             width: 100%;
             background-color: $color-surface;
             border-radius: $space-16;
             box-shadow: -5px 5px 2px #eee;
             padding: $space-12;
-            position: relative;
             overflow: hidden;
             transform: rotate(0deg) scale(1);
             transition: all 0.3s ease-in-out !important;
+
+            &:hover {
+              translate: 5px 5px !important;
+              animation-play-state: paused;
+              z-index: 1;
+            }
 
             @media (max-width: $breakpoint-md) {
               animation: cardsWhite 4s infinite alternate-reverse;
@@ -284,15 +292,7 @@
             }
           }
 
-          .fact-card {
-            &:hover {
-              scale: 1.1 !important;
-              animation-play-state: paused;
-              z-index: 1;
-            }
-          }
-
-          @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
+          @media (min-width: 657px) and (max-width: $breakpoint-lg) {
             .fact-card:nth-child(4) {
               background-color: $color-surface;
               .fact-icon {

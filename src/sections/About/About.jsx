@@ -1,15 +1,10 @@
-import {
-  FaClock,
-  FaLaptopCode,
-  FaUsers,
-  FaCogs,
-  FaTimes,
-} from "react-icons/fa";
+import { FaClock, FaLaptopCode, FaUsers, FaCogs } from "react-icons/fa";
 import aboutImage from "../../assets/images/about-section/about-section1.jpg";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Button from "../../components/Button/Button";
+import ImageModal from "../../components/ImageModal/ImageModal";
 import "./About.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function About() {
   const [isImageOpen, setIsImageOpen] = useState(false);
@@ -22,19 +17,6 @@ export default function About() {
   const handleCloseModal = () => {
     setIsImageOpen(false);
   };
-
-  // Handle body scroll locking
-  useEffect(() => {
-    if (isImageOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isImageOpen]);
 
   const quickFacts = [
     {
@@ -149,40 +131,12 @@ export default function About() {
       </div>
 
       {/* Custom Image Modal */}
-      <AnimatePresence>
-        {isImageOpen && (
-          <motion.div
-            className="hero-image-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            onClick={handleCloseModal}
-          >
-            <motion.div
-              className="hero-image-modal"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.3 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                className="hero-image-modal__close"
-                onClick={handleCloseModal}
-                aria-label="Close image modal"
-              >
-                <FaTimes />
-              </button>
-              <img
-                src={aboutImage}
-                alt="Mohamed Oulahguine - Frontend Developer"
-                className="hero-image-modal__image"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <ImageModal
+        isOpen={isImageOpen}
+        onClose={handleCloseModal}
+        imageSrc={aboutImage}
+        imageAlt="Mohamed Oulahguine - Frontend Developer"
+      />
     </section>
   );
 }

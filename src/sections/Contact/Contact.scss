@@ -22,12 +22,9 @@
     @include container;
     max-width: 1200px;
 
-    .contact__content {
-      display: flex;
-      justify-content: center;
-      width: auto;
-      margin: 0 auto;
+    padding: clamp(10px, 1vw, $space-12);
 
+    .contact__content {
       // Contact Information Section
       .contact__info {
         @include flex-column;
@@ -39,10 +36,14 @@
           .contact__info-content {
             .location {
               width: fit-content;
+              p {
+                all: unset;
+              }
+
               p,
               svg {
                 transition: inherit;
-                font-size: 1.3rem;
+                font-size: clamp(0.3rem, 3vw, 1.2rem);
                 color: $color-text-light;
                 &:hover {
                   color: $color-primary-hover;
@@ -56,6 +57,7 @@
               cursor: pointer;
               transition: all 0.3s ease;
               font-size: $font-size-20;
+              font-size: clamp(0.8rem, 3vw, 1.3rem);
               color: $color-text-light;
 
               &:hover {
@@ -79,6 +81,8 @@
           .contact__social-label {
             display: block;
             font-size: $font-size-12;
+            font-size: clamp(0.7rem, 1vw, $font-size-12);
+
             font-weight: $fw-semibold;
             color: $color-text-muted;
             margin-bottom: $space-16;
@@ -188,16 +192,17 @@
   // Contact Form Modal
   .contact__form-modal {
     position: relative;
+    padding: $space-40 0 0;
 
     .contact__form-close {
+      @include flex-center;
       position: absolute;
       top: -$space-8;
       right: -$space-8;
-      @include flex-center;
       width: 32px;
-      height: 32px;
+      aspect-ratio: 1/1;
       background: $color-surface;
-      border: 2px solid $color-border;
+      border: none;
       border-radius: 50%;
       color: $color-text;
       font-size: $font-size-18;
@@ -207,9 +212,8 @@
       z-index: 10;
 
       &:hover {
-        background: $color-danger;
+        background: $color-primary;
         color: $color-surface;
-        border-color: $color-danger;
         transform: scale(1.1);
       }
     }
@@ -225,42 +229,40 @@
         .contact__input,
         .contact__textarea {
           padding: $space-16;
-          background: $color-surface;
-          border: 2px solid $color-border;
+          background: $color-surface-tertiary;
+          border: none;
+          outline: none;
           border-radius: $radius-md;
           font-size: $font-size-16;
           color: $color-text;
           transition: all 0.3s ease;
-          outline: none;
           font-family: inherit;
           width: 100%;
 
           &::placeholder {
+            font-size: $font-size-14;
             color: $color-text-muted;
           }
 
           &:focus {
-            border-color: $color-primary;
             box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
           }
 
           &--error {
-            border-color: $color-danger;
+            border: 1px solid $color-danger;
             box-shadow: 0 0 0 3px rgba($color-danger, 0.1);
+            animation: shake 0.5s 1 ease-in-out;
           }
         }
 
         .contact__textarea {
-          resize: vertical;
+          resize: none;
           min-height: 120px;
           line-height: 1.6;
         }
 
         .contact__error {
-          color: $color-danger;
-          font-size: $font-size-12;
-          font-weight: $fw-medium;
-          margin-top: $space-4;
+          display: none;
         }
       }
 
@@ -307,63 +309,6 @@
         }
       }
     }
-  }
-}
-
-// Mobile Responsive
-@media (max-width: $breakpoint-sm) {
-  .contact {
-    .container {
-      .contact__content {
-        .contact__info {
-          .contact__info-item {
-            .contact__info-content {
-              .contact__info-value {
-                flex-direction: column;
-                gap: $space-8;
-                text-align: center;
-              }
-            }
-          }
-
-          .contact__social {
-            .contact__social-links {
-              justify-content: center;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .contact__email-options {
-    .contact__email-actions {
-      flex-direction: column;
-      align-items: center;
-      background-color: #ffffff39;
-
-      .contact__email-btn {
-        width: 100%;
-        max-width: 200px;
-      }
-    }
-  }
-
-  .notification {
-    bottom: $space-16;
-    right: $space-16;
-    left: $space-16;
-    max-width: none;
-  }
-}
-
-// Animations
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
   }
 }
 

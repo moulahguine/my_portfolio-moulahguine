@@ -1,26 +1,3 @@
-/* 12px */
-/* 14px */
-/* 16px */
-/* 18px */
-/* 20px */
-/* 24px */
-/* 28px */
-/* 32px */
-/* 40px */
-/* 48px */
-/* 4px */
-/* 8px */
-/* 12px */
-/* 16px */
-/* 24px */
-/* 32px */
-/* 40px */
-/* 4px */
-/* 8px */
-/* 16px */
-/* 32px */
-/* 48px */
-/* 64px */
 .site-header {
   width: 100%;
   position: fixed;
@@ -111,29 +88,202 @@
   transform: translateX(0);
   pointer-events: auto;
 }
-.site-header .container .social-links .social-links__list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  -moz-column-gap: 0.25rem;
-       column-gap: 0.25rem;
+@media (max-width: 1023px) {
+  .site-header .container .social-links {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
 }
-.site-header .container .social-links .social-links__list .social-links__item {
-  display: flex;
+@media (min-width: 1024px) {
+  .site-header .container .social-links__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -moz-column-gap: 0.25rem;
+         column-gap: 0.25rem;
+  }
+  .site-header .container .social-links__list .social-links__item {
+    display: flex;
+  }
+  .site-header .container .social-links__list .social-links__item .social-links__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    aspect-ratio: 1/1;
+    color: #4a5568;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    font-size: 1.125rem;
+  }
+  .site-header .container .social-links__list .social-links__item .social-links__link:hover {
+    color: #fefefe;
+    background: #2d3748;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
 }
-.site-header .container .social-links .social-links__list .social-links__item .social-links__link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  aspect-ratio: 1/1;
-  color: #4a5568;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  font-size: 1.125rem;
+
+.mobile-toggle {
+  display: none;
+  border: none;
+  outline: none;
+  transition: all 300ms ease-in-out;
+  position: relative;
 }
-.site-header .container .social-links .social-links__list .social-links__item .social-links__link:hover {
-  color: #fefefe;
-  background: #2d3748;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+@media (max-width: 778px) {
+  .site-header--mobile-open {
+    all: unset;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #f8fafc;
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+  }
+  .site-header .container--mobile-open {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-top: 2.5rem;
+  }
+  .site-header .container .mobile-toggle {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    width: 30px;
+    aspect-ratio: 1/1;
+    border-radius: 0.5rem;
+    transition: all 300ms ease-in-out;
+  }
+  .site-header .container .mobile-toggle--mobile-open {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+  }
+  .site-header .container .mobile-toggle:hover {
+    background-color: #f1f5f9;
+  }
+  .site-header .container .mobile-toggle svg {
+    all: unset;
+    color: #1a202c;
+    font-size: 1.5rem;
+  }
+  .site-header .header__logo--mobile-open {
+    all: unset;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+  .site-header .header__logo--mobile-open .logo {
+    all: unset;
+    font-size: 2rem !important;
+  }
+  .site-header .header__logo--mobile-open .logo:hover {
+    color: #1a202c;
+  }
+  .site-header .header__logo--mobile-open .logo .logo__highlight {
+    color: #2d3748;
+  }
+  .site-header .primary-nav {
+    all: unset;
+    display: none;
+  }
+  .site-header .primary-nav--mobile-open {
+    width: 100%;
+    margin-bottom: 2rem;
+    display: block;
+  }
+  .site-header .primary-nav--mobile-open .primary-nav__list {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .site-header .primary-nav--mobile-open .primary-nav__item {
+    width: 300px;
+    text-align: center;
+  }
+  .site-header .primary-nav--mobile-open .primary-nav__item button {
+    width: 100%;
+    color: #1a202c;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: all 300ms ease-in-out;
+    background: none;
+    border: none;
+    padding: 0.75rem 0 !important;
+  }
+  .site-header .primary-nav--mobile-open .primary-nav__item button:hover {
+    background-color: #f1f5f9;
+    color: #2d3748;
+  }
+  .site-header .primary-nav--mobile-open .primary-nav__item button.active {
+    background-color: #2d3748;
+    color: #f8fafc;
+  }
+  .site-header .primary-nav::after {
+    content: "";
+    display: block;
+    width: 80%;
+    height: 1px;
+    background-color: #e2e8f0;
+    margin: 2rem auto;
+  }
+  .site-header .social-links--mobile-open {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .site-header .social-links--mobile-open .social-links__list {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  .site-header .social-links--mobile-open .social-links__item {
+    all: unset;
+  }
+  .site-header .social-links--mobile-open .social-links__link {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: #fefefe;
+    border-radius: 1rem;
+    color: #1a202c;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 2px 8px rgba(45, 55, 72, 0.04);
+  }
+  .site-header .social-links--mobile-open .social-links__link:hover {
+    background-color: #2d3748;
+    color: #f8fafc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 55, 72, 0.08);
+  }
 }/*# sourceMappingURL=Header.css.map */

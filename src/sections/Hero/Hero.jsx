@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from "react";
 import "./Hero.scss";
+import { useState } from "react";
 import heroImage from "../../assets/images/hero-section/hero-img.webp";
 import { HiDownload } from "react-icons/hi";
-import { FaCircle, FaGithub, FaLinkedin, FaTimes } from "react-icons/fa";
+import { FaCircle, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiCodepen } from "react-icons/si";
-import { useHeroHeight } from "../../hooks";
+import { useHeroHeight } from "./useHeroHeight";
 import Location from "../../components/Location/Location";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Button from "../../components/Button/Button";
+import ImageModal from "../../components/ImageModal/ImageModal";
 import { useMediaQuery } from "react-responsive";
 
 export default function Hero() {
+  const heroHeight = useHeroHeight();
+
   const isMobile = useMediaQuery({ maxWidth: 778 });
   const isTablet = useMediaQuery({ maxWidth: 1130 });
 
-  const heroHeight = useHeroHeight();
   const [isImageOpen, setIsImageOpen] = useState(false);
 
   const socialLinks = [
@@ -49,19 +51,6 @@ export default function Hero() {
   const handleCloseModal = () => {
     setIsImageOpen(false);
   };
-
-  // Handle body scroll locking
-  useEffect(() => {
-    if (isImageOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isImageOpen]);
 
   return (
     <section
@@ -279,40 +268,12 @@ export default function Hero() {
       </motion.div>
 
       {/* Custom Image Modal */}
-      <AnimatePresence>
-        {isImageOpen && (
-          <motion.div
-            className="hero-image-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            onClick={handleCloseModal}
-          >
-            <motion.div
-              className="hero-image-modal"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.3 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                className="hero-image-modal__close"
-                onClick={handleCloseModal}
-                aria-label="Close image modal"
-              >
-                <FaTimes />
-              </button>
-              <img
-                src={heroImage}
-                alt="Mohamed Oulahguine - Frontend Developer"
-                className="hero-image-modal__image"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <ImageModal
+        isOpen={isImageOpen}
+        onClose={handleCloseModal}
+        imageSrc={heroImage}
+        imageAlt="Mohamed Oulahguine - Frontend Developer"
+      />
     </section>
   );
 }

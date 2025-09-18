@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaBars, FaTimes } from "react-icons/fa";
 import Logo from "../Logo/Logo";
+import socialLinks from "../../sections/Contact/socialLinks";
 import "./Header.scss";
-import "./_Header-responsive.scss";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const socialLinks = [
+  const desktopSocialLinks = [
     {
       id: "github",
       icon: FaGithub,
@@ -37,12 +37,30 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const heroSection = document.getElementById("hero");
+      const contactSection = document.getElementById("contact");
       const scrollPosition = window.scrollY;
 
-      // Check if scrolled past hero section
-      if (heroSection) {
-        const heroHeight = heroSection.offsetHeight - 200;
-        setIsScrolled(scrollPosition > heroHeight);
+      if (window.innerWidth >= 1024) {
+        if (heroSection) {
+          const heroHeight = heroSection.offsetHeight - 200;
+
+          // Check if in the middle sections (between hero and contact)
+          if (contactSection) {
+            if (
+              scrollPosition > heroHeight &&
+              scrollPosition < contactSection.offsetTop - 400
+            ) {
+              setIsScrolled(true);
+            } else {
+              setIsScrolled(false);
+            }
+          } else {
+            setIsScrolled(scrollPosition > heroHeight);
+          }
+        }
+      } else {
+        // On mobile screens (max-width: 1023px), disable scroll-based toggling
+        setIsScrolled(false);
       }
 
       // Update URL based on scroll position
@@ -68,10 +86,23 @@ export default function Header() {
       }
     };
 
+    const handleResize = () => {
+      // Reset scroll state when screen size changes
+      if (window.innerWidth < 1024) {
+        setIsScrolled(false);
+      } else {
+        handleScroll();
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, [navigate, location.pathname]);
 
   const handleNavigation = (path) => {
@@ -142,11 +173,36 @@ export default function Header() {
           </ul>
         </nav>
 
+        {/* Mobile Social Links - Only show when mobile menu is open */}
+        {isMenuOpen && (
+          <div className="social-links social-links--mobile-open">
+            <ul className="social-links__list">
+              {socialLinks.map((social, index) => {
+                const IconComponent = social.icon;
+                return (
+                  <li key={index} className="social-links__item">
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-links__link"
+                      aria-label={social.label}
+                      style={{ color: social.color }}
+                    >
+                      <IconComponent />
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
+
         <div
-          className={`social-links ${isScrolled ? "social-links--visible" : ""} ${isMenuOpen ? "social-links--mobile-open" : ""}`}
+          className={`social-links ${isScrolled ? "social-links--visible" : ""}`}
         >
           <ul className="social-links__list">
-            {socialLinks.map((social) => {
+            {desktopSocialLinks.map((social) => {
               const IconComponent = social.icon;
               return (
                 <li key={social.id} className="social-links__item">

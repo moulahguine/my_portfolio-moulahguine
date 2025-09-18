@@ -13,6 +13,10 @@
   border: 1px solid transparent;
   cursor: none;
 
+  @media (max-width: $breakpoint-sm) {
+    gap: 3px;
+  }
+
   // underline effect
   &::after {
     content: "";
@@ -46,20 +50,24 @@
   p {
     @include flex-center;
     gap: $space-8;
-    color: $color-text;
-    font-size: clamp($font-size-12, 1vw, $font-size-14);
-    font-weight: $fw-medium;
-    margin: 0;
-    @media (max-width: $breakpoint-sm) {
-      font-size: clamp(10px, 1vw, $font-size-12);
+    color: $color-primary-500;
+    font-size: clamp($font-size-12, 1vw, $font-size-16);
+    @media (max-width: $breakpoint-md) {
+      font-size: clamp(13px, 1vw, $font-size-14);
+      gap: 2px;
     }
+    @media (max-width: $breakpoint-sm) {
+      font-size: 11px;
+    }
+    margin: 0;
+    word-spacing: -1px;
   }
 
   .location__icon {
     color: $color-text-muted;
     font-size: $font-size-18;
     @media (max-width: $breakpoint-md) {
-      font-size: $font-size-16;
+      font-size: inherit;
     }
   }
 }

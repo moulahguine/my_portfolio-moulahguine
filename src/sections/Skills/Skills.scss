@@ -38,7 +38,7 @@
           aspect-ratio: 1/1;
           background-color: $color-surface;
           border-radius: $space-16;
-          cursor: pointer;
+          cursor: default;
           transition: all 0.3s ease-in-out;
           position: relative;
           overflow: hidden;
@@ -50,7 +50,7 @@
             transform: translateY(-6px);
             box-shadow:
               inset 0 0 15px var(--skill-color),
-              0 15px 0 0 var(--skill-color);
+              0 0px 15px 0 var(--skill-color);
           }
 
           &:active {

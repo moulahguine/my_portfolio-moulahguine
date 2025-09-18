@@ -1,22 +1,22 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { motion } from "framer-motion";
 import { skillsRow1, skillsRow2, skillColors } from "./skillsData";
-import SkillsModal from "./SkillsModal";
+// import SkillsModal from "./SkillsModal";
 import "./Skills.scss";
 
 function Skills() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedSkill, setSelectedSkill] = useState(null);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [selectedSkill, setSelectedSkill] = useState(null);
 
-  const handleSkillClick = (skill) => {
-    setSelectedSkill(skill);
-    setIsModalOpen(true);
-  };
+  // const handleSkillClick = (skill) => {
+  //   setSelectedSkill(skill);
+  //   setIsModalOpen(true);
+  // };
 
-  const handleCloseModal = () => {
-    setSelectedSkill(null);
-    setIsModalOpen(false);
-  };
+  // const handleCloseModal = () => {
+  //   setSelectedSkill(null);
+  //   setIsModalOpen(false);
+  // };
 
   return (
     <section className="skills" id="skills">
@@ -44,7 +44,7 @@ function Skills() {
                   key={skill.id}
                   className="skill-card"
                   style={{ "--skill-color": skillColor }}
-                  onClick={() => handleSkillClick(skill)}
+                  // onClick={() => handleSkillClick(skill)}
                 >
                   <div className="skill-card__icon">
                     <IconComponent />
@@ -72,7 +72,7 @@ function Skills() {
                   key={skill.id}
                   className="skill-card"
                   style={{ "--skill-color": skillColor }}
-                  onClick={() => handleSkillClick(skill)}
+                  // onClick={() => handleSkillClick(skill)}
                 >
                   <div className="skill-card__icon">
                     <IconComponent />
@@ -86,11 +86,11 @@ function Skills() {
       </div>
 
       {/* Skills Modal */}
-      <SkillsModal
+      {/* <SkillsModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         selectedSkill={selectedSkill}
-      />
+      /> */}
     </section>
   );
 }

@@ -1,26 +1,3 @@
-/* 12px */
-/* 14px */
-/* 16px */
-/* 18px */
-/* 20px */
-/* 24px */
-/* 28px */
-/* 32px */
-/* 40px */
-/* 48px */
-/* 4px */
-/* 8px */
-/* 12px */
-/* 16px */
-/* 24px */
-/* 32px */
-/* 40px */
-/* 4px */
-/* 8px */
-/* 16px */
-/* 32px */
-/* 48px */
-/* 64px */
 .about {
   background-color: #f8fafc;
   padding: 4.5rem 0;
@@ -147,6 +124,7 @@
 }
 @media (max-width: 778px) {
   .about .container .about__main-content .about__info .about__intro p {
+    max-width: 550px;
     font-size: 1rem;
   }
 }
@@ -179,8 +157,14 @@
   box-shadow: 0 8px 25px rgba(45, 55, 72, 0.12);
 }
 .about .container .about__main-content .about__facts {
+  rotate: -5deg;
   margin-top: 2.5rem;
   grid-column: span 2;
+}
+@media (max-width: 1130px) {
+  .about .container .about__main-content .about__facts {
+    rotate: 0deg;
+  }
 }
 .about .container .about__main-content .about__facts .facts-grid {
   width: 100%;
@@ -198,7 +182,7 @@
     gap: 2.5rem;
   }
 }
-@media (max-width: 778px) {
+@media (max-width: 657px) {
   .about .container .about__main-content .about__facts .facts-grid {
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(4, 1fr);
@@ -206,7 +190,6 @@
   }
 }
 .about .container .about__main-content .about__facts .facts-grid .fact-card {
-  z-index: 15;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -215,10 +198,14 @@
   border-radius: 1rem;
   box-shadow: -5px 5px 2px #eee;
   padding: 0.75rem;
-  position: relative;
   overflow: hidden;
   transform: rotate(0deg) scale(1);
   transition: all 0.3s ease-in-out !important;
+}
+.about .container .about__main-content .about__facts .facts-grid .fact-card:hover {
+  translate: 5px 5px !important;
+  animation-play-state: paused;
+  z-index: 1;
 }
 @media (max-width: 778px) {
   .about .container .about__main-content .about__facts .facts-grid .fact-card {
@@ -319,12 +306,7 @@
     z-index: 1;
   }
 }
-.about .container .about__main-content .about__facts .facts-grid .fact-card:hover {
-  scale: 1.1 !important;
-  animation-play-state: paused;
-  z-index: 1;
-}
-@media (min-width: 778px) and (max-width: 1130px) {
+@media (min-width: 657px) and (max-width: 1130px) {
   .about .container .about__main-content .about__facts .facts-grid .fact-card:nth-child(4) {
     background-color: #fefefe;
   }
