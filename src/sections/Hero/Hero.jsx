@@ -78,7 +78,7 @@ export default function Hero() {
                 </span>{" "}
                 <small>(o-laha-kiiin)</small>
               </h1>
-              <h1 className="hero__subtitle">Frontend Developer</h1>
+              <p className="hero__subtitle">Frontend Developer</p>
             </>
           )}
           <p className="hero__description">

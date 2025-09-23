@@ -10,20 +10,38 @@ import {
   SiMui,
 } from "react-icons/si";
 
-import Cursor from "../../assets/images/skill-section/cursor/cursor-dark.png";
-import VsCode from "../../assets/images/skill-section/vscode/vscode.png";
-import css from "../../assets/images/skill-section/css/css.svg.png";
+import Cursor from "../../assets/images/skill-section/cursor/cursor-dark.webp";
+import VsCode from "../../assets/images/skill-section/vscode/vscode.webp";
+import css from "../../assets/images/skill-section/css/css.webp";
 
 const CursorIcon = () => (
-  <img src={Cursor} alt="Cursor AI" style={{ width: 40, aspectRatio: 1 / 1 }} />
+  <img
+    src={Cursor}
+    alt="Cursor AI"
+    loading="lazy"
+    decoding="async"
+    style={{ width: 40, aspectRatio: 1 / 1 }}
+  />
 );
 
 const VscodeIcon = () => (
-  <img src={VsCode} alt="Cursor AI" style={{ width: 40, aspectRatio: 1 / 1 }} />
+  <img
+    src={VsCode}
+    alt="vs code logo"
+    loading="lazy"
+    decoding="async"
+    style={{ width: 40, aspectRatio: 1 / 1 }}
+  />
 );
 
 const cssIcon = () => (
-  <img src={css} alt="Cursor AI" style={{ width: 40, aspectRatio: 1 / 1 }} />
+  <img
+    src={css}
+    alt="css4 logo"
+    loading="lazy"
+    decoding="async"
+    style={{ width: 40, aspectRatio: 1 / 1 }}
+  />
 );
 
 // ======================

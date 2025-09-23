@@ -98,10 +98,6 @@
 
     // Desktop social links - only show on desktop/laptop (min-width: 1024px)
     @media (min-width: 1024px) {
-      .social-links {
-        // Desktop social links behavior
-      }
-
       .social-links__list {
         @include flex-center;
         column-gap: $space-4;
@@ -155,6 +151,7 @@
     }
 
     .container {
+      padding: $space-12 $space-16;
       &--mobile-open {
         all: unset;
         @include flex-column;
