@@ -6,8 +6,6 @@ import { MdOutlineLocationOn } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 import ReactCountryFlag from "react-country-flag";
 
-import moroccoImage from "../../assets/images/hero-section/location/morocco.jpg";
-import turkeyImage from "../../assets/images/hero-section/location/turkey.jpg";
 import InteractiveMap from "./InteractiveMap";
 import HoverCursor from "../HoverCursor/HoverCursor";
 
@@ -28,27 +26,6 @@ export default function Location(style) {
   const closeMap = () => {
     setIsMapOpen(false);
   };
-
-  const locations = [
-    {
-      id: 1,
-      name: "Morocco",
-      subtitle: "Origin",
-      image: moroccoImage,
-    },
-    {
-      id: 2,
-      name: "Istanbul, Türkiye",
-      subtitle: "Current",
-      image: turkeyImage,
-    },
-    {
-      id: 3,
-      name: " soon",
-      subtitle: "",
-      image: "",
-    },
-  ];
 
   return (
     <>
@@ -103,25 +80,6 @@ export default function Location(style) {
                     </button>
                     {/* header location */}
                     <div className="map-content">
-                      <div className="locations">
-                        {locations.map((loc) => (
-                          <div key={loc.id} className="location-card">
-                            <img
-                              className={`location-item ${loc.name} `}
-                              src={loc.image}
-                              alt="?"
-                            />
-                            <div className="location-content">
-                              <span>
-                                {loc.name} <br />
-                                <small>{loc.subtitle}</small>
-                              </span>
-                            </div>
-                            <span className="location-line"></span>
-                          </div>
-                        ))}
-                      </div>
-
                       {/* show map */}
                       <div className="map-container">
                         <InteractiveMap />

@@ -27,10 +27,12 @@ function InteractiveMap() {
   const istanbul = useMemo(() => [41.0082, 28.9784], []);
   const rabat = useMemo(() => [34.0209, -6.8416], []);
 
-  // Flag-based marker icons
-  const istanbulIcon = L.divIcon({
-    className: "custom-marker istanbul-marker",
-    html: `
+  // Flag-based marker icons - memoized to prevent recreation on every render
+  const istanbulIcon = useMemo(
+    () =>
+      L.divIcon({
+        className: "custom-marker istanbul-marker",
+        html: `
       <div style="
         width: 50px;
         height: 50px;
@@ -58,13 +60,17 @@ function InteractiveMap() {
         ">current</div>
       </div>
     `,
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-  });
+        iconSize: [50, 50],
+        iconAnchor: [25, 25],
+      }),
+    []
+  );
 
-  const rabatIcon = L.divIcon({
-    className: "custom-marker rabat-marker",
-    html: `
+  const rabatIcon = useMemo(
+    () =>
+      L.divIcon({
+        className: "custom-marker rabat-marker",
+        html: `
       <div style="
         width: 50px;
         height: 50px;
@@ -92,16 +98,18 @@ function InteractiveMap() {
         ">origin</div>
       </div>
     `,
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-  });
+        iconSize: [50, 50],
+        iconAnchor: [25, 25],
+      }),
+    []
+  );
 
   return (
     <div className="interactive-map-container">
       <MapContainer
         center={mapCenter}
         zoom={4}
-        style={{ height: "400px", width: "100%" }}
+        style={{ height: "100%", width: "100%" }}
         ref={mapRef}
         zoomControl={true}
         scrollWheelZoom={true}

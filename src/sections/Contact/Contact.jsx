@@ -33,30 +33,24 @@ function Contact() {
   } = useContactForm();
 
   return (
-    <section id="contact" className="contact">
-      {/* Header */}
-      <motion.header
-        className="contact__header"
-        initial={{ opacity: 0, y: -50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
+    <motion.section
+      id="contact"
+      className="contact"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <header className="contact__header">
         <h2 className="contact__title">Get In Touch</h2>
         <p className="contact__subtitle">
           Questions, Opportunities, Collaborations
         </p>
-      </motion.header>
+      </header>
 
       <main className="container">
         <div className="contact__content">
-          <motion.div
-            className="contact__info"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+          <div className="contact__info">
             {/* Location */}
             <div className="contact__info-item">
               <div className="contact__info-content">
@@ -101,23 +95,21 @@ function Contact() {
               <span className="contact__social-label">I’m also active on:</span>
               <div className="contact__social-links">
                 {socialLinks.map((social) => (
-                  <motion.a
+                  <a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="contact__social-link"
                     style={{ "--social-color": social.color }}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
                     title={social.label}
                   >
                     <social.icon />
-                  </motion.a>
+                  </a>
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </main>
 
@@ -135,24 +127,20 @@ function Contact() {
         {!showFormInModal ? (
           <div className="contact__email-options">
             <div className="contact__email-actions">
-              <motion.button
+              <button
                 className="contact__email-btn contact__email-btn--copy"
                 onClick={handleCopyEmail}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
               >
                 <FaRegCopy />
                 Copy Email
-              </motion.button>
-              <motion.button
+              </button>
+              <button
                 className="contact__email-btn contact__email-btn--form"
                 onClick={handleOpenForm}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
               >
                 <FaPaperPlane />
                 Open Form
-              </motion.button>
+              </button>
             </div>
           </div>
         ) : (
@@ -216,12 +204,10 @@ function Contact() {
                 )}
               </div>
 
-              <motion.button
+              <button
                 type="submit"
                 className="contact__submit-button"
                 disabled={state.submitting}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
               >
                 {state.submitting ? (
                   <span className="contact__submit-loading">
@@ -234,7 +220,7 @@ function Contact() {
                     <FaPaperPlane />
                   </>
                 )}
-              </motion.button>
+              </button>
             </form>
           </div>
         )}
@@ -242,18 +228,13 @@ function Contact() {
 
       {/* Notifications */}
       {formResponse.message && (
-        <motion.div
-          initial={{ opacity: 0, x: 100, scale: 0.8 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
-          exit={{ opacity: 0, x: 100, scale: 0.8 }}
-          className={`notification notification--${formResponse.type}`}
-        >
+        <div className={`notification notification--${formResponse.type}`}>
           <div className="notification__content">
             <div className="notification__message">{formResponse.message}</div>
           </div>
-        </motion.div>
+        </div>
       )}
-    </section>
+    </motion.section>
   );
 }
 

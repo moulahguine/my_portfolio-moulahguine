@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaBars, FaTimes } from "react-icons/fa";
 import Logo from "../Logo/Logo";
@@ -34,67 +34,66 @@ export default function Header() {
     { id: "contact", label: "Contact", path: "/contact" },
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroSection = document.getElementById("hero");
-      const contactSection = document.getElementById("contact");
-      const scrollPosition = window.scrollY;
+  const handleScroll = useCallback(() => {
+    const heroSection = document.getElementById("hero");
+    const contactSection = document.getElementById("contact");
+    const scrollPosition = window.scrollY;
 
-      if (window.innerWidth >= 1024) {
-        if (heroSection) {
-          const heroHeight = heroSection.offsetHeight - 200;
+    if (window.innerWidth >= 1024) {
+      if (heroSection) {
+        const heroHeight = heroSection.offsetHeight - 200;
 
-          // Check if in the middle sections (between hero and contact)
-          if (contactSection) {
-            if (
-              scrollPosition > heroHeight &&
-              scrollPosition < contactSection.offsetTop - 400
-            ) {
-              setIsScrolled(true);
-            } else {
-              setIsScrolled(false);
-            }
+        // Check if in the middle sections (between hero and contact)
+        if (contactSection) {
+          if (
+            scrollPosition > heroHeight &&
+            scrollPosition < contactSection.offsetTop - 400
+          ) {
+            setIsScrolled(true);
           } else {
-            setIsScrolled(scrollPosition > heroHeight);
+            setIsScrolled(false);
           }
-        }
-      } else {
-        // On mobile screens (max-width: 1023px), disable scroll-based toggling
-        setIsScrolled(false);
-      }
-
-      // Update URL based on scroll position
-      const sections = [
-        { id: "hero", path: "/" },
-        { id: "about", path: "/about" },
-        { id: "skills", path: "/skills" },
-        { id: "projects", path: "/projects" },
-        { id: "contact", path: "/contact" },
-      ];
-
-      const scrollOffset = window.scrollY + 200;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i].id);
-        if (section && scrollOffset >= section.offsetTop) {
-          if (location.pathname !== sections[i].path) {
-            navigate(sections[i].path, { replace: true });
-          }
-          setActiveSection(sections[i].id);
-          break;
+        } else {
+          setIsScrolled(scrollPosition > heroHeight);
         }
       }
-    };
+    } else {
+      // On mobile screens (max-width: 1023px), disable scroll-based toggling
+      setIsScrolled(false);
+    }
 
-    const handleResize = () => {
-      // Reset scroll state when screen size changes
-      if (window.innerWidth < 1024) {
-        setIsScrolled(false);
-      } else {
-        handleScroll();
+    // Update URL based on scroll position
+    const sections = [
+      { id: "hero", path: "/" },
+      { id: "about", path: "/about" },
+      { id: "skills", path: "/skills" },
+      { id: "projects", path: "/projects" },
+      { id: "contact", path: "/contact" },
+    ];
+
+    const scrollOffset = window.scrollY + 200;
+
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(sections[i].id);
+      if (section && scrollOffset >= section.offsetTop) {
+        if (location.pathname !== sections[i].path) {
+          navigate(sections[i].path, { replace: true });
+        }
+        setActiveSection(sections[i].id);
+        break;
       }
-    };
+    }
+  }, [navigate, location.pathname]);
 
+  const handleResize = useCallback(() => {
+    if (window.innerWidth < 1024) {
+      setIsScrolled(false);
+    } else {
+      handleScroll();
+    }
+  }, [handleScroll]);
+
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
     handleScroll();
@@ -103,7 +102,7 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
     };
-  }, [navigate, location.pathname]);
+  }, [handleScroll, handleResize]);
 
   const handleNavigation = (path) => {
     const pathToSection = {

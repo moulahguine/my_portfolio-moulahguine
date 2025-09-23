@@ -1,22 +1,24 @@
 import { motion } from "framer-motion";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { useCallback } from "react";
 import "./Projects.scss";
 
 import projectsData from "./projectData";
 
 function Projects() {
   return (
-    <section id="projects" className="projects">
-      <motion.header
-        className="projects__header"
-        initial={{ opacity: 0, y: -50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
+    <motion.section
+      id="projects"
+      className="projects"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <header className="projects__header">
         <h2 className="projects__title">Projects</h2>
         <p className="projects__subtitle">Interfaces I Built From Scratch</p>
-      </motion.header>
+      </header>
       <main className="container">
         <div className="projects__grid">
           {projectsData.map((project, index) => (
@@ -24,31 +26,27 @@ function Projects() {
           ))}
         </div>
       </main>
-    </section>
+    </motion.section>
   );
 }
 
 // ProjectCard component for individual project display...
 
 function ProjectCard({ project, index }) {
-  const renderMedia = () => {
+  const renderMedia = useCallback(() => {
     return (
       <img
         className="project-card__media"
         src={project.media.laptop}
         alt={`${project.title} laptop view`}
+        loading="lazy"
+        decoding="async"
       />
     );
-  };
+  }, [project.media.laptop, project.title]);
 
   return (
-    <motion.section
-      className="project-card"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.2 }}
-    >
+    <section className="project-card">
       <main className="project-card__container">
         <div className="project-card__media-section">
           <div className="project-card__media-container">{renderMedia()}</div>
@@ -61,7 +59,6 @@ function ProjectCard({ project, index }) {
           <div className="project-card__content">
             <p className="project-card__description">{project.description}</p>
 
-            {/* Tech Stack Section */}
             <div className="project-card__tech-stack">
               <div className="project-card__technologies">
                 {project.technologies.map((tech, techIndex) => {
@@ -108,7 +105,7 @@ function ProjectCard({ project, index }) {
           </div>
         </div>
       </main>
-    </motion.section>
+    </section>
   );
 }
 

@@ -84,11 +84,12 @@
 
   .map-modal {
     @include flex-column;
+
     background-color: $color-surface-tertiary;
     border-radius: $space-16;
     max-width: 1200px;
     width: 92%;
-    max-height: 90vh;
+    height: 90vh;
     padding: 0;
     overflow: hidden;
     position: relative;
@@ -104,10 +105,10 @@
       border-radius: 50%;
       width: 44px;
       aspect-ratio: 1/1;
-      font-size: 20px;
+      font-size: $font-size-24;
       border: none;
       outline: none;
-      z-index: 10;
+      z-index: 1500;
       cursor: pointer;
       transition: all 0.3s ease-out;
 
@@ -115,135 +116,21 @@
         transform: rotate(90deg) !important;
         box-shadow: 0 4px 12px $color-shadow;
       }
-
-      @media (max-width: $breakpoint-md) {
-        top: $space-16;
-        right: $space-16;
-        width: 22px;
-        font-size: 14px;
-      }
     }
 
     .map-content {
       padding: 48px 40px 40px;
+      height: inherit;
       @include flex-column;
       @media (max-width: $breakpoint-md) {
         padding: $space-8;
-      }
-
-      .locations {
-        @include flex-between;
-        margin-bottom: 48px;
-        gap: 24px;
-        padding: 0 20px;
-
-        .location-card {
-          @include flex-column;
-          align-items: center;
-          flex: 1;
-          gap: 1rem;
-          position: relative;
-
-          .location-item {
-            background-color: rgba(183, 183, 183, 0.699) !important;
-            position: relative;
-            z-index: 2;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 1px solid $color-border;
-            overflow: hidden;
-            background: center / 200% no-repeat;
-            transition: all 0.3s ease-out;
-            filter: brightness(90%);
-
-            &:hover:not(.soon) {
-              filter: brightness(100%);
-              transform: scale(1.09);
-              box-shadow: 0 0 20px rgba(183, 0, 0, 0.4);
-            }
-          }
-          @media (max-width: $breakpoint-sm) {
-            display: none;
-          }
-
-          .location-content {
-            @include flex-center;
-            text-align: center;
-
-            span {
-              color: $color-text-muted;
-              font-size: clamp($font-size-12, 2vw, $font-size-16);
-              font-weight: $fw-semibold;
-
-              small {
-                font-size: $font-size-12;
-                font-weight: $fw-regular;
-              }
-            }
-          }
-
-          .location-line {
-            position: absolute;
-            top: 25%;
-            transform: translateY(-25%);
-            left: 210px;
-            width: 300px;
-            height: 5px;
-            background-color: $color-shadow-card;
-            z-index: 1;
-            @media (max-width: $breakpoint-xl) {
-              display: none;
-            }
-          }
-        }
-        .location-card:first-of-type {
-          .location-line {
-            background-color: #008000;
-            &::after {
-              content: "\f00c"; /* check icon */
-              font-weight: 900; /* solid style */
-              font-family: "Font Awesome 6 Free"; /* make sure FA is loaded */
-              color: white;
-              @include flex-center;
-              font-size: $font-size-12;
-              width: 25px;
-              aspect-ratio: 1/1;
-              background-color: inherit;
-              border-radius: 50%;
-              position: absolute;
-              top: -10px;
-              left: 50%;
-              transform: translateX(-50%);
-            }
-          }
-        }
-
-        .location-card:last-of-type {
-          .location-line,
-          .location-item {
-            display: none;
-          }
-          .location-content {
-            position: relative;
-            background-color: $color-primary-500;
-            width: 80px;
-            aspect-ratio: 1/1;
-            border-radius: 50%;
-            top: -25px;
-
-            span {
-              color: $color-surface;
-            }
-          }
-        }
       }
 
       .map-container {
         position: relative;
         border-radius: $space-24;
         background: $color-shadow;
-        min-height: 400px;
+        height: inherit;
         overflow: hidden;
 
         .interactive-map-container {

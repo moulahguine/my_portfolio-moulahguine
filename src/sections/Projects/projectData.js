@@ -1,7 +1,7 @@
 import { SiReact, SiSass, SiFramer, SiReactrouter } from "react-icons/si";
 
 // import porfolio media project
-import laptop from "../../assets/images/project-section/porfolio-card/laptop.png";
+import laptop from "../../assets/images/project-section/porfolio-card/laptop.webp";
 
 const projectsData = [
   {

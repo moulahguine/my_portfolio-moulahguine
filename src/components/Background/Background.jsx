@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 import "./Background.scss";
 
 const Background = () => {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const [activeSection, setActiveSection] = useState("hero");
   const [scrollY, setScrollY] = useState(0);
 
@@ -33,7 +35,8 @@ const Background = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Animation variants for each section with parallax effect
+  if (isMobile) return null;
+
   const getBoxVariants = (boxIndex) => {
     const parallaxFactor = 0.05;
     const parallaxOffset = scrollY * parallaxFactor;

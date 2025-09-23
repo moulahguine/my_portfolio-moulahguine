@@ -1,87 +1,79 @@
 import { FaClock, FaLaptopCode, FaUsers, FaCogs } from "react-icons/fa";
-import aboutImage from "../../assets/images/about-section/about-section1.jpg";
+import aboutImage from "../../assets/images/about-section/about-section1.webp";
 import { motion } from "framer-motion";
 import Button from "../../components/Button/Button";
 import ImageModal from "../../components/ImageModal/ImageModal";
 import "./About.scss";
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 
 export default function About() {
   const [isImageOpen, setIsImageOpen] = useState(false);
 
   // Modal handlers
-  const handleImageClick = () => {
+  const handleImageClick = useCallback(() => {
     setIsImageOpen(true);
-  };
+  }, []);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setIsImageOpen(false);
-  };
+  }, []);
 
-  const quickFacts = [
-    {
-      icon: <FaCogs />,
-      label: "How I Work ",
-      value: "JavaScript-first • Jest tests • Code reviews • performance ",
-    },
-    {
-      icon: <FaClock />,
-      label: "Experience",
-      value: "3+ years in Frontend Development (React ecosystem)",
-    },
-    {
-      icon: <FaLaptopCode />,
-      label: "Projects",
-      value: "Freelance & client delivery dashboards, e-commerce platforms",
-    },
-    {
-      icon: <FaUsers />,
-      label: "Collaboration",
-      value:
-        "Translate Figma to components • Work with designers & backend engineers",
-    },
-  ];
+  const quickFacts = useMemo(
+    () => [
+      {
+        icon: <FaCogs />,
+        label: "How I Work ",
+        value: "JavaScript-first • Jest tests • Code reviews • performance ",
+      },
+      {
+        icon: <FaClock />,
+        label: "Experience",
+        value: "3+ years in Frontend Development (React ecosystem)",
+      },
+      {
+        icon: <FaLaptopCode />,
+        label: "Projects",
+        value: "Freelance & client delivery dashboards, e-commerce platforms",
+      },
+      {
+        icon: <FaUsers />,
+        label: "Collaboration",
+        value:
+          "Translate Figma to components • Work with designers & backend engineers",
+      },
+    ],
+    []
+  );
 
   return (
-    <section id="about" className="about">
+    <motion.section
+      id="about"
+      className="about"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       <div className="container">
-        {/* Header */}
-        <motion.div
-          className="about__header"
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="about__header">
           <h2 className="section-title">About Me</h2>
           <p className="about__subtitle">Who I Am & What I Build</p>
-        </motion.div>
+        </div>
 
-        {/* Main Content */}
         <div className="about__main-content">
-          {/* Left Column - Profile Image */}
-          <motion.div
-            className="about__image"
-            initial={{ x: -50, opacity: 1 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3 }}
-            onClick={handleImageClick}
-          >
-            <img src={aboutImage} alt="personality img about section" />
-          </motion.div>
-          {/* Right Column - Information */}
+          <div className="about__image" onClick={handleImageClick}>
+            <img
+              src={aboutImage}
+              alt="personality img about section"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
           <div className="about__info">
-            {/* Intro Paragraph */}
-            <motion.div
-              className="about__intro"
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
+            <div className="about__intro">
               <p>
-                I’m a Frontend Developer with 3+ years of experience delivering
+                I'm a Frontend Developer with 3+ years of experience delivering
                 SPAs, dashboards, and e-commerce platforms. I focus on
                 performance, clean state management, and accessible interfaces
                 that feel fast on any device.
@@ -95,27 +87,21 @@ export default function About() {
                 collaborations where I can contribute to impactful projects.{" "}
                 <br />
               </p>
-            </motion.div>
+            </div>
             <div className="about__btn">
-              <Button href="#contact" className="hire__me">
+              <Button href="/contact" className="hire__me">
                 Hire Me
               </Button>
-              <Button href="#projects" className="show__projects">
+              <Button href="/projects" className="show__projects">
                 See My Work
               </Button>
             </div>
           </div>
-          {/* Quick Facts Grid */}
-          <motion.div
-            className="about__facts"
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: 0.3 }}
-          >
+
+          <div className="about__facts">
             <div className="facts-grid">
               {quickFacts.map((fact, index) => (
-                <motion.div key={index} className="fact-card">
+                <div key={index} className="fact-card">
                   <div className="fact-card-container">
                     <div className="fact-icon">{fact.icon}</div>
                     <div className="fact-content">
@@ -123,20 +109,19 @@ export default function About() {
                       <span className="fact-value">{fact.value}</span>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
-      {/* Custom Image Modal */}
       <ImageModal
         isOpen={isImageOpen}
         onClose={handleCloseModal}
         imageSrc={aboutImage}
         imageAlt="Mohamed Oulahguine - Frontend Developer"
       />
-    </section>
+    </motion.section>
   );
 }
