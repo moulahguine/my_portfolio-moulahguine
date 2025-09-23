@@ -15,15 +15,15 @@ import VsCode from "../../assets/images/skill-section/vscode/vscode.png";
 import css from "../../assets/images/skill-section/css/css.svg.png";
 
 const CursorIcon = () => (
-  <img src={Cursor} alt="Cursor AI" style={{ width: 30, height: 30 }} />
+  <img src={Cursor} alt="Cursor AI" style={{ width: 40, aspectRatio: 1 / 1 }} />
 );
 
 const VscodeIcon = () => (
-  <img src={VsCode} alt="Cursor AI" style={{ width: 30, height: 30 }} />
+  <img src={VsCode} alt="Cursor AI" style={{ width: 40, aspectRatio: 1 / 1 }} />
 );
 
 const cssIcon = () => (
-  <img src={css} alt="Cursor AI" style={{ width: 30, height: 30 }} />
+  <img src={css} alt="Cursor AI" style={{ width: 40, aspectRatio: 1 / 1 }} />
 );
 
 // ======================

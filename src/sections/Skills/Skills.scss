@@ -9,6 +9,10 @@
   .skills__header {
     @include section-title;
 
+    @media (max-width: $breakpoint-sm) {
+      margin-bottom: 2rem;
+    }
+
     .skills__subtitle {
       @include subtitle;
     }
@@ -19,35 +23,32 @@
 
     .skills__content {
       @include flex-column;
-      gap: $space-32;
-      max-width: 1200px;
-      margin: 0 auto;
+      overflow-x: hidden;
+      margin-inline: 15px;
 
       .skills__row {
         @include flex-center;
         flex-wrap: wrap;
-        gap: $space-24;
+        gap: $space-16;
         padding: $space-16 0;
 
         .skill-card {
-          @include flex-column;
-          align-items: center;
-          justify-content: center;
-          gap: $space-12;
-          width: 120px;
+          width: clamp(90px, 8vw, 120px);
           aspect-ratio: 1/1;
-          background-color: $color-surface;
-          border-radius: $space-16;
+          @include flex-column;
+          justify-content: center;
+          gap: clamp($space-8, 1vw, $space-12);
           cursor: default;
+          background-color: $color-surface;
+          border-radius: $space-12;
           transition: all 0.3s ease-in-out;
           position: relative;
-          overflow: hidden;
           border: 1px solid var(--skill-color);
           z-index: 15;
           box-shadow: inset 0 0 15px var(--skill-color);
 
           &:hover {
-            transform: translateY(-6px);
+            transform: translateY(-5px);
             box-shadow:
               inset 0 0 15px var(--skill-color),
               0 0px 15px 0 var(--skill-color);
@@ -59,110 +60,29 @@
 
           .skill-card__icon {
             @include flex-center;
-            font-size: $font-size-40;
+            font-size: clamp($font-size-32, 3vw, $font-size-40);
             color: var(--skill-color);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 2;
-            position: relative;
 
             svg {
-              width: 100%;
-              height: 100%;
-              max-width: 48px;
-              max-height: 48px;
+              max-width: clamp(32px, 4vw, 48px);
+              max-height: clamp(32px, 4vw, 48px);
             }
 
             img {
-              width: 48px;
-              height: 48px;
+              width: clamp(32px, 4vw, 48px);
+              height: clamp(32px, 4vw, 48px);
               object-fit: contain;
             }
           }
 
           .skill-card__name {
-            font-size: $font-size-14;
-            font-weight: $fw-medium;
-            color: $color-text;
+            font-size: clamp(11px, 1.5vw, $font-size-14);
+            font-weight: $fw-bold;
+            color: rgb($color-primary-500, 0.8);
             text-align: center;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 2;
-            position: relative;
             line-height: 1.2;
-          }
-        }
-      }
-    }
-  }
-
-  // Responsive Design
-  @media (max-width: $breakpoint-md) {
-    padding: calc($space-32 + 1rem) 0;
-
-    .skills__header {
-      margin-bottom: $space-32;
-
-      .skills__subtitle {
-        font-size: $font-size-16;
-        padding: 0 $space-16;
-      }
-    }
-
-    .container {
-      .skills__content {
-        gap: $space-24;
-
-        .skills__row {
-          gap: $space-16;
-          padding: $space-12 0;
-
-          .skill-card {
-            width: 100px;
-            height: 100px;
-            gap: $space-8;
-
-            .skill-card__icon {
-              font-size: 2rem;
-
-              svg,
-              img {
-                max-width: 40px;
-                max-height: 40px;
-              }
-            }
-
-            .skill-card__name {
-              font-size: $font-size-12;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  @media (max-width: $breakpoint-sm) {
-    .container {
-      .skills__content {
-        .skills__row {
-          gap: $space-12;
-
-          .skill-card {
-            width: 80px;
-            height: 80px;
-            gap: $space-8;
-
-            .skill-card__icon {
-              font-size: 1.75rem;
-
-              svg,
-              img {
-                max-width: 32px;
-                max-height: 32px;
-              }
-            }
-
-            .skill-card__name {
-              font-size: 10px;
-            }
           }
         }
       }
