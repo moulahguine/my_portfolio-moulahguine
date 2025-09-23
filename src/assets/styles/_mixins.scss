@@ -118,6 +118,9 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 $space-32;
+  @media (max-width: $breakpoint-md) {
+    padding: 0 $space-16;
+  }
 }
 
 // Text gradient

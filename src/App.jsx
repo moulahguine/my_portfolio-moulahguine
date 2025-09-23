@@ -32,7 +32,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
-      <MouseFollower size={15} color="#2d3748" speed={0.3} enabled={true} />
+      {/* <MouseFollower size={15} color="#2d3748" speed={0.3} enabled={true} /> */}
     </BrowserRouter>
   );
 }

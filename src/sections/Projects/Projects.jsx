@@ -1,11 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import {
-  FaExternalLinkAlt,
-  FaGithub,
-  FaLaptop,
-  FaPlayCircle,
-} from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import "./Projects.scss";
 
 import projectsData from "./projectData";
@@ -37,35 +31,12 @@ function Projects() {
 // ProjectCard component for individual project display...
 
 function ProjectCard({ project, index }) {
-  const [activeMedia, setActiveMedia] = useState("video");
-  const mediaButtons = [
-    { key: "video", icon: FaPlayCircle, label: "Video Demo" },
-    { key: "laptop", icon: FaLaptop, label: "Laptop View" },
-  ];
-
   const renderMedia = () => {
-    const mediaUrl = project.media[activeMedia];
-
-    if (activeMedia === "video") {
-      return (
-        <video
-          className="project-card__media video"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source src={mediaUrl} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      );
-    }
-
     return (
       <img
         className="project-card__media"
-        src={mediaUrl}
-        alt={`${project.title} ${activeMedia} view`}
+        src={project.media.laptop}
+        alt={`${project.title} laptop view`}
       />
     );
   };
@@ -78,43 +49,14 @@ function ProjectCard({ project, index }) {
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
     >
-      <div className="project-card__container">
-        {/* Left Side */}
+      <main className="project-card__container">
         <div className="project-card__media-section">
           <div className="project-card__media-container">{renderMedia()}</div>
-
-          {/* Media Control Buttons */}
-          <div className="project-card__media-controls">
-            {mediaButtons.map((button) => {
-              const IconComponent = button.icon;
-              return (
-                <button
-                  key={button.key}
-                  className={`project-card__media-btn ${
-                    activeMedia === button.key
-                      ? "project-card__media-btn--active"
-                      : ""
-                  }`}
-                  onClick={() => setActiveMedia(button.key)}
-                  aria-label={button.label}
-                  title={button.label}
-                >
-                  <IconComponent />
-                </button>
-              );
-            })}
-          </div>
         </div>
-        {/* Right Side  */}
+
         <div className="project-card__details">
           <header className="project-card__header">
-            <div className="project-card__logo">
-              <img src={project.logo} alt={`${project.title} logo`} />
-            </div>
-            <div className="project-card__title-section">
-              <h3 className="project-card__title">{project.title}</h3>
-              <p className="project-card__subtitle">{project.subtitle}</p>
-            </div>
+            <p className="project-card__title">{project.subtitle}</p>
           </header>
           <div className="project-card__content">
             <p className="project-card__description">{project.description}</p>
@@ -131,7 +73,7 @@ function ProjectCard({ project, index }) {
                       className="project-card__tech-item"
                       title={tech.name}
                     >
-                      <IconComponent style={{ color: tech.color }} size={20} />
+                      <IconComponent style={{ color: tech.color }} size={15} />
                       <span>{tech.name}</span>
                     </div>
                   );
@@ -139,6 +81,7 @@ function ProjectCard({ project, index }) {
               </div>
             </div>
           </div>
+
           <div className="project-card__links">
             <a
               href={project.demoLink}
@@ -164,7 +107,7 @@ function ProjectCard({ project, index }) {
             </a>
           </div>
         </div>
-      </div>
+      </main>
     </motion.section>
   );
 }

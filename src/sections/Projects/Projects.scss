@@ -18,21 +18,21 @@
     @include container;
     position: relative;
 
-    @media (max-width: $breakpoint-sm) {
-      padding: 0 10px;
-    }
-
     // Projects grid
     .projects__grid {
-      display: flex;
-      flex-direction: column;
-      gap: $space-40;
+      @include grid-center;
+      grid-template-columns: 1fr 1fr;
+      gap: $space-24;
+
+      @media (max-width: $breakpoint-md) {
+        grid-template-columns: 1fr;
+      }
     }
 
     // Individual project card styling
     .project-card {
-      height: inherit;
-      box-shadow: 0px 0px 4px 0px $color-text-lighter;
+      border: solid 1px $color-border;
+      width: 100%;
       position: relative;
       overflow: hidden;
       z-index: 15;
@@ -41,29 +41,14 @@
       transition: all 0.3s ease;
 
       .project-card__container {
-        height: clamp(500px, 100%, 850px);
-        display: grid;
-        grid-template-columns: 1fr 350px;
+        @include flex-column;
 
-        @media (max-width: $breakpoint-2md) {
-          grid-template-columns: 1fr 200px;
-        }
-
-        @media (max-width: $breakpoint-md) {
-          grid-template-columns: 1fr;
-        }
-
-        // Media Section (Left Side)
+        // Media Section
         .project-card__media-section {
           position: relative;
           overflow: hidden;
-          border-radius: 0 40px 40px 0;
-          box-shadow: 0 0 4px $color-primary;
-
-          @media (max-width: $breakpoint-md) {
-            height: 350px;
-            border-radius: 0 0 20px 20px;
-          }
+          width: inherit;
+          height: 450px;
 
           .project-card__media-container {
             position: relative;
@@ -74,16 +59,12 @@
               width: 100%;
               height: 100%;
               object-fit: cover;
-              object-position: top;
+              object-position: center;
               transition: all 0.3s ease;
 
               &:hover {
-                transform: scale(1.02);
+                scale: 1.1;
               }
-
-              // @media (max-width: $breakpoint-md) {
-              //   object-fit: cover;
-              // }
             }
           }
 
@@ -97,10 +78,6 @@
             padding: $space-8 $space-16;
             background: $color-border-hover;
             border-radius: 5px;
-
-            @media (max-width: $breakpoint-md) {
-              padding: $space-8 $space-12;
-            }
 
             .project-card__media-btn {
               @include flex-center;
@@ -136,54 +113,18 @@
           }
         }
 
-        // Details Section (Right Side)
+        // Details Section
         .project-card__details {
-          height: inherit;
           padding: clamp($space-12, 1vw, $space-24);
 
           .project-card__header {
-            @include flex-between;
-            margin-bottom: $space-24;
+            margin-bottom: $space-12;
 
-            @media (max-width: $breakpoint-2md) {
-              align-items: start;
-            }
-
-            .project-card__logo {
-              width: 50px;
-              aspect-ratio: 1/1;
-              border-radius: $radius-lg;
-              overflow: hidden;
-              transition: all 0.2s ease;
-
-              img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-              }
-              &:hover {
-                scale: 1.09;
-              }
-            }
-
-            .project-card__title-section {
-              margin-right: auto;
-              margin-left: $space-16;
-
-              .project-card__title {
-                font-size: clamp($font-size-16, 1vw, $font-size-20);
-                font-weight: $fw-bold;
-                color: $color-text;
-                margin-bottom: $space-4;
-                line-height: 1.2;
-              }
-
-              .project-card__subtitle {
-                font-size: clamp($font-size-12, 1vw, $font-size-14);
-                color: $color-text-light;
-                font-weight: $fw-medium;
-                word-spacing: -1px;
-              }
+            .project-card__title {
+              font-size: clamp($font-size-12, 1vw, $font-size-14);
+              color: $color-text-light;
+              font-weight: $fw-medium;
+              word-spacing: -1px;
             }
           }
 
@@ -193,22 +134,12 @@
 
             .project-card__description {
               color: $color-text-muted;
-              line-height: $line-height-relaxed;
-              font-size: $font-size-14;
-              font-size: clamp($font-size-12, 1vw, $font-size-16);
+              line-height: 1.5;
+              font-size: clamp($font-size-12, 1vw, $font-size-14);
             }
 
             // Tech Stack Section
             .project-card__tech-stack {
-              .project-card__tech-title {
-                font-size: $font-size-12;
-                text-transform: uppercase;
-                margin-bottom: $space-8;
-                word-spacing: -3px;
-                font-weight: $fw-semibold;
-                color: $color-text;
-              }
-
               .project-card__technologies {
                 display: flex;
                 flex-wrap: wrap;
@@ -217,80 +148,70 @@
                 .project-card__tech-item {
                   @include flex-center;
                   font-weight: $fw-medium;
-                  color: $color-text;
                   transition: all 0.3s ease;
-                  border-radius: 50px;
+                  border-radius: 15px;
                   padding: $space-8 $space-12;
+                  background-color: rgb($color-text-lighter, 0.3);
+                  color: $color-text-muted;
+                  gap: $space-4;
 
                   &:hover {
-                    scale: 1.3;
+                    color: $color-bg;
+                    background-color: var(--colorTech);
+                    scale: 1.1;
                   }
 
+                  svg {
+                    color: inherit !important;
+                  }
                   span {
-                    color: var(--colorTech);
+                    color: inherit;
                     text-transform: capitalize;
-                    font-size: $font-size-12;
-                    font-weight: $fw-semibold;
-                    margin-left: $space-4;
-
-                    @media (max-width: $breakpoint-2md) {
-                      display: none;
-                    }
+                    font-size: 11px;
                   }
-
-                  @media (max-width: $breakpoint-2md) {
-                    padding: 0;
-                    width: 35px;
-                    aspect-ratio: 1/1;
-                    box-shadow: inset 0 0 5px var(--colorTech);
-                  }
-                }
-
-                @media (max-width: $breakpoint-md) {
-                  margin-bottom: $space-40;
                 }
               }
             }
           }
         }
 
+        // links github + demo
         .project-card__links {
-          position: absolute;
-          right: $space-24;
-          bottom: $space-24;
           display: flex;
-          gap: $space-8;
+          justify-content: end;
 
           .project-card__link {
             @include flex-center;
+            width: 40px;
+            height: 40px;
             gap: $space-4;
-            transition: all 0.3s ease;
-            color: $color-text;
-            padding: $space-4 $space-8;
-            border-radius: $radius-md;
-            border: 1px solid $color-text;
+            color: $color-text-muted;
+            transition: all 0.3s ease-in-out;
 
-            &:hover {
-              transform: scale(1.15);
+            &:hover,
+            &:active {
+              color: $color-text;
+              width: 80px;
+
+              span {
+                opacity: 1;
+                transform: translateX(0);
+                font-size: clamp($font-size-14, 1vw, $font-size-18);
+                font-weight: $fw-semibold;
+              }
             }
 
             span {
-              font-size: clamp($font-size-12, 1vw, $font-size-14);
+              opacity: 0;
+              transform: translateX(-10px);
+              transition: all 0.3s ease-in-out;
+              font-size: 0;
+              white-space: nowrap;
             }
 
             svg {
-              font-size: clamp($font-size-12, 1vw, $font-size-14);
+              font-size: $font-size-20;
             }
-          }
-
-          .project-card__link:nth-child(1) {
-            background-color: $color-text;
-            color: $color-surface;
-          }
-
-          @media (max-width: $breakpoint-2md) {
-            right: $space-12;
-            bottom: $space-12;
           }
         }
       }
