@@ -41,6 +41,8 @@ const ImageModal = ({ isOpen, onClose, imageSrc, imageAlt }) => {
               src={imageSrc}
               alt={imageAlt}
               className="hero-image-modal__image"
+              loading="lazy"
+              decoding="async"
             />
           </motion.div>
         </motion.div>

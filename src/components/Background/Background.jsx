@@ -5,11 +5,14 @@ import "./Background.scss";
 
 const Background = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
+  const prefersReducedMotion = useMediaQuery({
+    query: "(prefers-reduced-motion: reduce)",
+  });
 
   // Use shared scroll manager
   const { scrollY, activeSection } = useScrollManager();
 
-  if (isMobile) return null;
+  if (isMobile || prefersReducedMotion) return null;
 
   const getBoxVariants = (boxIndex) => {
     const parallaxFactor = 0.05;

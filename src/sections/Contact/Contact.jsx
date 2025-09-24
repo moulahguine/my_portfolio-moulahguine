@@ -152,6 +152,9 @@ function Contact() {
             />
             <form key={formKey} className="contact__form" onSubmit={onSubmit}>
               <div className="contact__form-group">
+                <label htmlFor="name" className="contact__label">
+                  Your Name
+                </label>
                 <input
                   type="text"
                   id="name"
@@ -162,13 +165,21 @@ function Contact() {
                   className={`contact__input ${
                     errors.name ? "contact__input--error" : ""
                   }`}
+                  aria-describedby={errors.name ? "name-error" : undefined}
+                  aria-invalid={!!errors.name}
+                  required
                 />
                 {errors.name && (
-                  <span className="contact__error">{errors.name}</span>
+                  <span id="name-error" className="contact__error" role="alert">
+                    {errors.name}
+                  </span>
                 )}
               </div>
 
               <div className="contact__form-group">
+                <label htmlFor="email" className="contact__label">
+                  Your Email
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -179,13 +190,25 @@ function Contact() {
                   className={`contact__input ${
                     errors.email ? "contact__input--error" : ""
                   }`}
+                  aria-describedby={errors.email ? "email-error" : undefined}
+                  aria-invalid={!!errors.email}
+                  required
                 />
                 {errors.email && (
-                  <span className="contact__error">{errors.email}</span>
+                  <span
+                    id="email-error"
+                    className="contact__error"
+                    role="alert"
+                  >
+                    {errors.email}
+                  </span>
                 )}
               </div>
 
               <div className="contact__form-group">
+                <label htmlFor="message" className="contact__label">
+                  Your Message
+                </label>
                 <textarea
                   id="message"
                   name="message"
@@ -196,9 +219,20 @@ function Contact() {
                     errors.message ? "contact__textarea--error" : ""
                   }`}
                   rows="5"
+                  aria-describedby={
+                    errors.message ? "message-error" : undefined
+                  }
+                  aria-invalid={!!errors.message}
+                  required
                 />
                 {errors.message && (
-                  <span className="contact__error">{errors.message}</span>
+                  <span
+                    id="message-error"
+                    className="contact__error"
+                    role="alert"
+                  >
+                    {errors.message}
+                  </span>
                 )}
               </div>
 
@@ -226,7 +260,12 @@ function Contact() {
 
       {/* Notifications */}
       {formResponse.message && (
-        <div className={`notification notification--${formResponse.type}`}>
+        <div
+          className={`notification notification--${formResponse.type}`}
+          role="alert"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           <div className="notification__content">
             <div className="notification__message">{formResponse.message}</div>
           </div>

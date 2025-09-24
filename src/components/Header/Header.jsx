@@ -110,8 +110,10 @@ export default function Header() {
         </div>
 
         <nav
+          id="primary-navigation"
           className={`primary-nav ${isScrolled ? "primary-nav--centered" : ""} ${isMenuOpen ? "primary-nav--mobile-open" : ""}`}
-          aria-label="Primary"
+          aria-label="Primary navigation"
+          role="navigation"
         >
           <ul className="primary-nav__list">
             {navigationItems.map((item) => (

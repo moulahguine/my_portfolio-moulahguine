@@ -1,4 +1,8 @@
 /* Global styles for footer positioning */
+@use "./assets/styles/variables" as *;
+@use "./assets/styles/mixins" as *;
+@use "./assets/styles/skip-links" as *;
+
 html,
 body {
   height: 100%;
@@ -15,4 +19,3 @@ body {
 main {
   flex: 1;
 }
-
