@@ -47,8 +47,21 @@ export default function Location(style) {
       >
         <MdOutlineLocationOn className="location__icon" />
         <p>
-          Living in Istanbul, Türkiye <ReactCountryFlag svg countryCode="tr" />
-          (originally from Morocco <ReactCountryFlag svg countryCode="ma" />)
+          Living in Istanbul, Türkiye{" "}
+          <ReactCountryFlag
+            svg
+            countryCode="tr"
+            title="Turkey flag"
+            aria-label="Turkey flag"
+          />
+          (originally from Morocco{" "}
+          <ReactCountryFlag
+            svg
+            countryCode="ma"
+            title="Morocco flag"
+            aria-label="Morocco flag"
+          />
+          )
         </p>
       </HoverCursor>
 

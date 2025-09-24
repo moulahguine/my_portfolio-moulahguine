@@ -45,7 +45,7 @@ function InteractiveMap() {
         font-size: 24px;
         position: relative;
       ">
-        🇹🇷
+        <span role="img" aria-label="Turkey flag">🇹🇷</span>
         <div style="
           position: absolute;
           top: -10px;
@@ -83,7 +83,7 @@ function InteractiveMap() {
         font-size: 24px;
         position: relative;
       ">
-        🇲🇦
+        <span role="img" aria-label="Morocco flag">🇲🇦</span>
         <div style="
           position: absolute;
           top: -10px;

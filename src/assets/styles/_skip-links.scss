@@ -8,17 +8,28 @@
   left: 6px;
   background: $color-primary;
   color: $color-surface;
-  padding: 8px 16px;
+  padding: 12px 20px;
   text-decoration: none;
   border-radius: 4px;
   font-weight: $fw-bold;
   z-index: 10000;
   transition: top 0.3s ease;
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
 
   &:focus {
     top: 6px;
     outline: 2px solid $color-surface;
     outline-offset: 2px;
+  }
+
+  // Ensure proper spacing between multiple skip links
+  &:not(:last-child) {
+    margin-bottom: 8px;
   }
 
   &:hover {
