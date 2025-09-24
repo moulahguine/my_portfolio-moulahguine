@@ -1,14 +1,17 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
-import Hero from "./sections/Hero/Hero";
-import About from "./sections/About/About";
-import Skills from "./sections/Skills/Skills";
-import Projects from "./sections/Projects/Projects";
-import Contact from "./sections/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import Background from "./components/Background/Background";
 import MouseFollower from "./components/MouseFollower/MouseFollower";
+import SkeletonLoader from "./components/SkeletonLoader/SkeletonLoader";
+
+// Lazy load sections for code splitting
+const Hero = lazy(() => import("./sections/Hero/Hero"));
+const About = lazy(() => import("./sections/About/About"));
+const Skills = lazy(() => import("./sections/Skills/Skills"));
+const Projects = lazy(() => import("./sections/Projects/Projects"));
+const Contact = lazy(() => import("./sections/Contact/Contact"));
 
 export default function App() {
   return (
@@ -21,11 +24,21 @@ export default function App() {
             path="/*"
             element={
               <>
-                <Hero />
-                <About />
-                <Skills />
-                <Projects />
-                <Contact />
+                <Suspense fallback={<SkeletonLoader type="hero" />}>
+                  <Hero />
+                </Suspense>
+                <Suspense fallback={<SkeletonLoader type="about" />}>
+                  <About />
+                </Suspense>
+                <Suspense fallback={<SkeletonLoader type="skills" />}>
+                  <Skills />
+                </Suspense>
+                <Suspense fallback={<SkeletonLoader type="projects" />}>
+                  <Projects />
+                </Suspense>
+                <Suspense fallback={<SkeletonLoader type="contact" />}>
+                  <Contact />
+                </Suspense>
               </>
             }
           />

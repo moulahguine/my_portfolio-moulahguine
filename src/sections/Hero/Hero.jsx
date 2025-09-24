@@ -1,5 +1,5 @@
 import "./Hero.scss";
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, Suspense, lazy } from "react";
 import heroImage from "../../assets/images/hero-section/hero-img.webp";
 import { HiDownload } from "react-icons/hi";
 import { FaCircle, FaGithub, FaLinkedin } from "react-icons/fa";
@@ -8,8 +8,10 @@ import { useHeroHeight } from "./useHeroHeight";
 import Location from "../../components/Location/Location";
 import { motion } from "framer-motion";
 import Button from "../../components/Button/Button";
-import ImageModal from "../../components/ImageModal/ImageModal";
 import { useMediaQuery } from "react-responsive";
+
+// Lazy load ImageModal
+const ImageModal = lazy(() => import("../../components/ImageModal/ImageModal"));
 
 export default function Hero() {
   const heroHeight = useHeroHeight();
@@ -170,12 +172,18 @@ export default function Hero() {
         )}
       </div>
 
-      <ImageModal
-        isOpen={isImageOpen}
-        onClose={handleCloseModal}
-        imageSrc={heroImage}
-        imageAlt="Mohamed Oulahguine - Frontend Developer"
-      />
+      {isImageOpen && (
+        <Suspense
+          fallback={<div style={{ display: "none" }}>Loading modal...</div>}
+        >
+          <ImageModal
+            isOpen={isImageOpen}
+            onClose={handleCloseModal}
+            imageSrc={heroImage}
+            imageAlt="Mohamed Oulahguine - Frontend Developer"
+          />
+        </Suspense>
+      )}
     </motion.section>
   );
 }

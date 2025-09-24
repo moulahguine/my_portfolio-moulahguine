@@ -2,9 +2,11 @@ import { FaClock, FaLaptopCode, FaUsers, FaCogs } from "react-icons/fa";
 import aboutImage from "../../assets/images/about-section/about-section1.webp";
 import { motion } from "framer-motion";
 import Button from "../../components/Button/Button";
-import ImageModal from "../../components/ImageModal/ImageModal";
 import "./About.scss";
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, Suspense, lazy } from "react";
+
+// Lazy load ImageModal
+const ImageModal = lazy(() => import("../../components/ImageModal/ImageModal"));
 
 export default function About() {
   const [isImageOpen, setIsImageOpen] = useState(false);
@@ -118,12 +120,18 @@ export default function About() {
         </div>
       </div>
 
-      <ImageModal
-        isOpen={isImageOpen}
-        onClose={handleCloseModal}
-        imageSrc={aboutImage}
-        imageAlt="Mohamed Oulahguine - Frontend Developer"
-      />
+      {isImageOpen && (
+        <Suspense
+          fallback={<div style={{ display: "none" }}>Loading modal...</div>}
+        >
+          <ImageModal
+            isOpen={isImageOpen}
+            onClose={handleCloseModal}
+            imageSrc={aboutImage}
+            imageAlt="Mohamed Oulahguine - Frontend Developer"
+          />
+        </Suspense>
+      )}
     </motion.section>
   );
 }
