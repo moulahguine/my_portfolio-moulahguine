@@ -52,7 +52,9 @@ function Skills() {
     >
       <div className="skills__header">
         <h2 className="skills__title">Tech Stack</h2>
-        <p className="skills__subtitle">Technologies Behind My Interfaces</p>
+        <p className="skills__subtitle">
+          React, JavaScript & Modern Technologies Behind My Interfaces
+        </p>
       </div>
 
       <div className="container">

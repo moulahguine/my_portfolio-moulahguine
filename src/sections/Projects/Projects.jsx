@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import {
+  ExternalLinkIcon,
+  GithubIcon,
+} from "../../components/Icons/CustomIcons";
 import { useCallback } from "react";
 import "./Projects.scss";
 
@@ -33,17 +36,23 @@ function Projects() {
 // ProjectCard component for individual project display...
 
 function ProjectCard({ project, index }) {
+  const handleImageClick = useCallback(() => {
+    window.open(project.demoLink, "_blank", "noopener,noreferrer");
+  }, [project.demoLink]);
+
   const renderMedia = useCallback(() => {
     return (
       <img
         className="project-card__media"
-        src={project.media.laptop}
-        alt={`${project.title} laptop view`}
+        src={project.media.image}
+        alt={`${project.subtitle} - Frontend Development Project Screenshot`}
         loading="lazy"
         decoding="async"
+        onClick={handleImageClick}
+        style={{ cursor: "pointer" }}
       />
     );
-  }, [project.media.laptop, project.title]);
+  }, [project.media.image, project.title, handleImageClick]);
 
   return (
     <section className="project-card">
@@ -88,7 +97,7 @@ function ProjectCard({ project, index }) {
               aria-label="View Live Demo"
               title="🔗 Live Demo"
             >
-              <FaExternalLinkAlt />
+              <ExternalLinkIcon />
               <span> visit</span>
             </a>
             <a
@@ -99,7 +108,7 @@ function ProjectCard({ project, index }) {
               aria-label="View on GitHub"
               title="💻 GitHub Repo"
             >
-              <FaGithub />
+              <GithubIcon />
               <span>source</span>
             </a>
           </div>

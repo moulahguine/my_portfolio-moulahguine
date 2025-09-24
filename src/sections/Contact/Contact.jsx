@@ -10,6 +10,7 @@ import { TfiEmail } from "react-icons/tfi";
 import HoverCursor from "../../components/HoverCursor/HoverCursor";
 import Location from "../../components/Location/Location";
 import Modal from "../../components/Modal/Modal";
+import CloseButton from "../../components/CloseButton/CloseButton";
 import socialLinks from "./socialLinks";
 import { useContactForm } from "./useContactForm";
 
@@ -42,7 +43,7 @@ function Contact() {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <header className="contact__header">
-        <h2 className="contact__title">Get In Touch</h2>
+        <h1 className="contact__title">Get In Touch</h1>
         <p className="contact__subtitle">
           Questions, Opportunities, Collaborations
         </p>
@@ -145,13 +146,10 @@ function Contact() {
           </div>
         ) : (
           <div className="contact__form-modal">
-            <button
-              className="contact__form-close"
+            <CloseButton
               onClick={handleCloseEmailModal}
-              aria-label="Close modal"
-            >
-              ×
-            </button>
+              ariaLabel="Close modal"
+            />
             <form key={formKey} className="contact__form" onSubmit={onSubmit}>
               <div className="contact__form-group">
                 <input

@@ -1,16 +1,18 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaBars, FaTimes } from "react-icons/fa";
 import Logo from "../Logo/Logo";
 import socialLinks from "../../sections/Contact/socialLinks";
+import { useScrollManager } from "../../hooks/useScrollManager";
 import "./Header.scss";
 
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [activeSection, setActiveSection] = useState("");
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Use shared scroll manager
+  const { activeSection, isScrolled } = useScrollManager();
 
   const desktopSocialLinks = [
     {
@@ -34,35 +36,8 @@ export default function Header() {
     { id: "contact", label: "Contact", path: "/contact" },
   ];
 
-  const handleScroll = useCallback(() => {
-    const heroSection = document.getElementById("hero");
-    const contactSection = document.getElementById("contact");
-    const scrollPosition = window.scrollY;
-
-    if (window.innerWidth >= 1024) {
-      if (heroSection) {
-        const heroHeight = heroSection.offsetHeight - 200;
-
-        // Check if in the middle sections (between hero and contact)
-        if (contactSection) {
-          if (
-            scrollPosition > heroHeight &&
-            scrollPosition < contactSection.offsetTop - 400
-          ) {
-            setIsScrolled(true);
-          } else {
-            setIsScrolled(false);
-          }
-        } else {
-          setIsScrolled(scrollPosition > heroHeight);
-        }
-      }
-    } else {
-      // On mobile screens (max-width: 1023px), disable scroll-based toggling
-      setIsScrolled(false);
-    }
-
-    // Update URL based on scroll position
+  // Handle URL updates based on active section
+  const updateUrlFromScroll = useCallback(() => {
     const sections = [
       { id: "hero", path: "/" },
       { id: "about", path: "/about" },
@@ -71,38 +46,18 @@ export default function Header() {
       { id: "contact", path: "/contact" },
     ];
 
-    const scrollOffset = window.scrollY + 200;
-
-    for (let i = sections.length - 1; i >= 0; i--) {
-      const section = document.getElementById(sections[i].id);
-      if (section && scrollOffset >= section.offsetTop) {
-        if (location.pathname !== sections[i].path) {
-          navigate(sections[i].path, { replace: true });
-        }
-        setActiveSection(sections[i].id);
-        break;
-      }
+    const currentSection = sections.find(
+      (section) => section.id === activeSection
+    );
+    if (currentSection && location.pathname !== currentSection.path) {
+      navigate(currentSection.path, { replace: true });
     }
-  }, [navigate, location.pathname]);
+  }, [activeSection, navigate, location.pathname]);
 
-  const handleResize = useCallback(() => {
-    if (window.innerWidth < 1024) {
-      setIsScrolled(false);
-    } else {
-      handleScroll();
-    }
-  }, [handleScroll]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleResize);
-    handleScroll();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [handleScroll, handleResize]);
+  // Update URL when active section changes
+  React.useEffect(() => {
+    updateUrlFromScroll();
+  }, [updateUrlFromScroll]);
 
   const handleNavigation = (path) => {
     const pathToSection = {

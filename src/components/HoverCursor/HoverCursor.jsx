@@ -54,6 +54,17 @@ function HoverCursor({
     setIsHovering(false);
   };
 
+  // Touch events for mobile
+  const handleTouchStart = () => {
+    setIsHovering(true);
+  };
+
+  const handleTouchEnd = () => {
+    setTimeout(() => {
+      setIsHovering(false);
+    }, 1000);
+  };
+
   return (
     <div
       ref={locationRef}
@@ -66,6 +77,8 @@ function HoverCursor({
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
       style={{ position: "relative", ...style }}
     >
       {children}

@@ -1,0 +1,39 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+.close-button {
+  @include flex-center;
+  position: absolute;
+  top: $space-16;
+  right: $space-16;
+  width: 40px;
+  aspect-ratio: 1/1;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: $font-size-18;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:focus {
+    outline: 2px solid rgba($color-primary-500, 0.5);
+    outline-offset: 2px;
+  }
+
+  // Icon styling
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}

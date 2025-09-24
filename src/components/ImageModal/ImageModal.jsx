@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { FaTimes } from "react-icons/fa";
 import { useEffect } from "react";
+import CloseButton from "../CloseButton/CloseButton";
 import "./ImageModal.scss";
 
 const ImageModal = ({ isOpen, onClose, imageSrc, imageAlt }) => {
@@ -36,13 +36,7 @@ const ImageModal = ({ isOpen, onClose, imageSrc, imageAlt }) => {
             transition={{ duration: 0.3 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              className="hero-image-modal__close"
-              onClick={onClose}
-              aria-label="Close image modal"
-            >
-              <FaTimes />
-            </button>
+            <CloseButton onClick={onClose} ariaLabel="Close image modal" />
             <img
               src={imageSrc}
               alt={imageAlt}

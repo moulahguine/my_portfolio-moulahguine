@@ -8,7 +8,7 @@ import Projects from "./sections/Projects/Projects";
 import Contact from "./sections/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import Background from "./components/Background/Background";
-// import MouseFollower from "./components/MouseFollower/MouseFollower";
+import MouseFollower from "./components/MouseFollower/MouseFollower";
 
 export default function App() {
   return (
@@ -32,7 +32,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
-      {/* <MouseFollower size={15} color="#2d3748" speed={0.3} enabled={true} /> */}
+      <MouseFollower size={15} color="#2d3748" speed={0.3} enabled={true} />
     </BrowserRouter>
   );
 }

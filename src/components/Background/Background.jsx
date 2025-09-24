@@ -1,39 +1,13 @@
-import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
+import { useScrollManager } from "../../hooks/useScrollManager";
 import "./Background.scss";
 
 const Background = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
-  const [activeSection, setActiveSection] = useState("hero");
-  const [scrollY, setScrollY] = useState(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["hero", "about", "skills", "projects", "contact"];
-      const scrollPosition = window.scrollY + window.innerHeight;
-      setScrollY(window.scrollY);
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          const elementTop = rect.top + window.scrollY;
-          const elementBottom = elementTop + rect.height;
-
-          if (scrollPosition >= elementTop && scrollPosition <= elementBottom) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial call
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Use shared scroll manager
+  const { scrollY, activeSection } = useScrollManager();
 
   if (isMobile) return null;
 

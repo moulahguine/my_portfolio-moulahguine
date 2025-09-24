@@ -4,7 +4,8 @@
   left: 0;
   width: var(--size);
   height: var(--size);
-  background: var(--color);
+  background: transparent;
+  border: solid 1px var(--color);
   border-radius: 50%;
   pointer-events: none;
   z-index: var(--z-index);

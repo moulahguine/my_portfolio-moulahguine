@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useMediaQuery } from "react-responsive";
 import "./MouseFollower.scss";
 
 const MouseFollower = ({
@@ -8,6 +9,7 @@ const MouseFollower = ({
   zIndex = 9999,
   enabled = true,
 }) => {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
   const mousePos = useRef({ x: 0, y: 0 });
@@ -42,7 +44,7 @@ const MouseFollower = ({
 
   // Setup
   useEffect(() => {
-    if (!enabled) return;
+    if (!enabled || isMobile) return;
 
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseleave", () => setIsVisible(false));
@@ -55,9 +57,10 @@ const MouseFollower = ({
       document.removeEventListener("mouseenter", () => setIsVisible(true));
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [enabled, animate, handleMouseMove]);
+  }, [enabled, isMobile, animate, handleMouseMove]);
 
-  if (!enabled) return null;
+  // Disable on mobile for performance
+  if (isMobile || !enabled) return null;
 
   return (
     <div

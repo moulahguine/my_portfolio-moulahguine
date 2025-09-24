@@ -131,7 +131,7 @@ export default function Hero() {
             <img
               className="hero__image"
               src={heroImage}
-              alt="Mohamed Oulahguine - Frontend Developer"
+              alt="Mohamed Oulahguine - Professional Frontend Developer Portrait"
               onClick={handleImageClick}
               style={{ cursor: "pointer" }}
               loading="eager"

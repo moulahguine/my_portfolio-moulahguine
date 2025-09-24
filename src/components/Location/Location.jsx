@@ -1,15 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { MdOutlineLocationOn } from "react-icons/md";
-import { IoClose } from "react-icons/io5";
 import ReactCountryFlag from "react-country-flag";
-
-import InteractiveMap from "./InteractiveMap";
+import CloseButton from "../CloseButton/CloseButton";
 import HoverCursor from "../HoverCursor/HoverCursor";
 
 import "./Location.scss";
+
+// Lazy load the heavy map component
+const InteractiveMap = lazy(() => import("./InteractiveMap"));
 
 export default function Location(style) {
   const [isMapOpen, setIsMapOpen] = useState(false);
@@ -75,14 +76,18 @@ export default function Location(style) {
                     transition={{ duration: 0.3, ease: "easeOut" }}
                   >
                     {/* close icon */}
-                    <button className="map-close" onClick={closeMap}>
-                      <IoClose />
-                    </button>
+                    <CloseButton onClick={closeMap} ariaLabel="Close map" />
                     {/* header location */}
                     <div className="map-content">
                       {/* show map */}
                       <div className="map-container">
-                        <InteractiveMap />
+                        <Suspense
+                          fallback={
+                            <div className="map-loading">Loading map...</div>
+                          }
+                        >
+                          <InteractiveMap />
+                        </Suspense>
                       </div>
                     </div>
                   </motion.div>

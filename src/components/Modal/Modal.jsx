@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
+import CloseButton from "../CloseButton/CloseButton";
 import "./Modal.scss";
 
 function Modal({
@@ -70,13 +71,7 @@ function Modal({
           <header className="modal__header">
             {title && <h2 className="modal__header-title">{title}</h2>}
             {showCloseButton && (
-              <button
-                onClick={handleClose}
-                className="modal__header-close"
-                aria-label="Close modal"
-              >
-                ×
-              </button>
+              <CloseButton onClick={handleClose} ariaLabel="Close modal" />
             )}
           </header>
         )}

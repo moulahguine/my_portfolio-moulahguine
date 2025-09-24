@@ -57,14 +57,16 @@ export default function About() {
       <div className="container">
         <div className="about__header">
           <h2 className="section-title">About Me</h2>
-          <p className="about__subtitle">Who I Am & What I Build</p>
+          <p className="about__subtitle">
+            Who I Am & What I Build as a React Developer
+          </p>
         </div>
 
         <div className="about__main-content">
           <div className="about__image" onClick={handleImageClick}>
             <img
               src={aboutImage}
-              alt="personality img about section"
+              alt="Mohamed Oulahguine - Frontend Developer About Section Professional Photo"
               loading="lazy"
               decoding="async"
             />
