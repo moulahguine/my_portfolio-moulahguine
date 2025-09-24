@@ -28,7 +28,6 @@ export const useScrollManager = () => {
   const [activeSection, setActiveSection] = useState("hero");
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const scrollTimeoutRef = useRef(null);
   const throttledHandlerRef = useRef(null);
 
   const handleScroll = useCallback(() => {
@@ -68,9 +67,6 @@ export const useScrollManager = () => {
 
     return () => {
       window.removeEventListener("scroll", throttledHandlerRef.current);
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
     };
   }, [handleScroll]);
 

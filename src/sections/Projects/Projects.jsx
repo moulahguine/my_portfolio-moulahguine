@@ -52,7 +52,7 @@ function ProjectCard({ project, index }) {
         style={{ cursor: "pointer" }}
       />
     );
-  }, [project.media.image, project.title, handleImageClick]);
+  }, [project.media.image, project.subtitle, handleImageClick]);
 
   return (
     <section className="project-card">
