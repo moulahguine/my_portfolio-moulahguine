@@ -13,13 +13,6 @@ import MouseFollower from "./components/MouseFollower/MouseFollower";
 export default function App() {
   return (
     <BrowserRouter>
-      <a href="#main-content" className="skip-link">
-        Skip to main content
-      </a>
-      <a href="#primary-navigation" className="skip-link">
-        Skip to navigation
-      </a>
-
       <Background />
       <Header />
       <main id="main-content">

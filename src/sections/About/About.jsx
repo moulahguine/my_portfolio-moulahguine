@@ -66,7 +66,7 @@ export default function About() {
           <div className="about__image" onClick={handleImageClick}>
             <img
               src={aboutImage}
-              alt="Mohamed Oulahguine - Frontend Developer About Section Professional img"
+              alt="Mohamed Oulahguine - Frontend Developer About Section Professional"
               loading="lazy"
               decoding="async"
             />
