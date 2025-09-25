@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import CloseButton from "../CloseButton/CloseButton";
+import { useScrollLock } from "../../hooks/useScrollLock";
 import "./Modal.scss";
 
 function Modal({
@@ -16,6 +17,9 @@ function Modal({
 }) {
   const [isAnimating, setIsAnimating] = useState(false);
 
+  // Use centralized scroll lock
+  useScrollLock(isOpen);
+
   const handleClose = useCallback(() => {
     setIsAnimating(false);
     setTimeout(() => {
@@ -23,22 +27,13 @@ function Modal({
     }, animationDuration);
   }, [onClose, animationDuration]);
 
-  // Handle modal animations and body scroll locking
-  useEffect(() => {
+  // Handle modal animations
+  React.useEffect(() => {
     if (isOpen) {
       setIsAnimating(true);
-      // Prevent body scroll when modal is open
-      document.body.style.overflow = "hidden";
     } else {
       setIsAnimating(false);
-      // Restore body scroll when modal is closed
-      document.body.style.overflow = "unset";
     }
-
-    // Cleanup function to restore scroll when component unmounts
-    return () => {
-      document.body.style.overflow = "unset";
-    };
   }, [isOpen]);
 
   const handleOverlayClick = (e) => {

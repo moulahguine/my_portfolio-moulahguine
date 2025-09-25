@@ -1,0 +1,108 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+.social-links {
+  display: none;
+  transition: all 0.3s ease;
+
+  &--mobile {
+    display: block !important;
+  }
+
+  &--visible {
+    display: block;
+  }
+
+  &--contact {
+    display: block;
+
+    .social-links__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $space-8;
+    }
+
+    .social-links__link {
+      width: 30px;
+      aspect-ratio: 1/1;
+      background: $color-surface-secondary;
+      border-radius: 50%;
+      color: $color-primary;
+      font-size: $font-size-18;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+
+      &:hover {
+        color: var(--color);
+        background: var(--color);
+        color: $color-surface;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+
+  &__list {
+    @include flex-center;
+    gap: $space-4;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__link {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    color: $color-text-muted;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    font-size: $font-size-18;
+
+    &:hover {
+      color: $color-surface;
+      background: $color-primary;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+// Mobile styles
+@media (max-width: $breakpoint-md) {
+  .social-links {
+    &--mobile {
+      @include flex-center;
+      gap: $space-24;
+
+      .social-links__list {
+        @include flex-center;
+        flex-wrap: wrap;
+        gap: $space-4;
+      }
+
+      .social-links__link {
+        width: 2rem;
+        height: 2rem;
+        background-color: transparent;
+        color: $color-text !important;
+        border-radius: 50%;
+        font-size: $font-size-16;
+        cursor: pointer;
+        transition: all $transition-base;
+        border: 1px solid $color-border-light;
+        box-shadow: 0 2px 8px $color-shadow-light;
+
+        &:hover {
+          background-color: var(--color) !important;
+          color: $color-surface !important;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px $color-shadow;
+        }
+      }
+    }
+  }
+}

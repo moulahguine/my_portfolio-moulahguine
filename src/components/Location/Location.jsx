@@ -6,6 +6,7 @@ import { MdOutlineLocationOn } from "react-icons/md";
 import ReactCountryFlag from "react-country-flag";
 import CloseButton from "../CloseButton/CloseButton";
 import HoverCursor from "../HoverCursor/HoverCursor";
+import { useScrollLock } from "../../hooks/useScrollLock";
 
 import "./Location.scss";
 
@@ -15,6 +16,9 @@ const InteractiveMap = lazy(() => import("./InteractiveMap"));
 export default function Location(style) {
   const [isMapOpen, setIsMapOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  // Use centralized scroll lock
+  useScrollLock(isMapOpen);
 
   useEffect(() => {
     setMounted(true);

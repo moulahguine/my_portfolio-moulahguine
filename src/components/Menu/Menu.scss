@@ -1,0 +1,34 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+.menu {
+  position: fixed;
+  top: -500%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  @include flex-center;
+  transition:
+    top 0.9s,
+    opacity 0.5s ease-in-out;
+  padding-top: 80px;
+  visibility: hidden;
+  opacity: 0.5;
+
+  &--visible {
+    top: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__content {
+    @include flex-column;
+    justify-content: space-between;
+    align-items: center;
+    gap: $space-32;
+    width: 100%;
+    max-width: 400px;
+    height: inherit;
+    animation: fadeInUp 0.5s ease-out 0.1s both;
+  }
+}

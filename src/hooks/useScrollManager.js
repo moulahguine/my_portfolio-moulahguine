@@ -27,10 +27,14 @@ export const useScrollManager = () => {
   const [scrollY, setScrollY] = useState(0);
   const [activeSection, setActiveSection] = useState("hero");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrollLocked, setIsScrollLocked] = useState(false);
 
   const throttledHandlerRef = useRef(null);
 
   const handleScroll = useCallback(() => {
+    // Skip scroll handling when locked
+    if (isScrollLocked) return;
+
     const currentScrollY = window.scrollY;
     setScrollY(currentScrollY);
 
@@ -39,7 +43,7 @@ export const useScrollManager = () => {
 
     // Update active section
     const sections = ["hero", "about", "skills", "projects", "contact"];
-    const scrollPosition = currentScrollY + window.innerHeight;
+    const scrollPosition = currentScrollY + 370;
 
     for (const section of sections) {
       const element = document.getElementById(section);
@@ -54,7 +58,7 @@ export const useScrollManager = () => {
         }
       }
     }
-  }, []);
+  }, [isScrollLocked]);
 
   useEffect(() => {
     // Create throttled handler once
@@ -70,9 +74,34 @@ export const useScrollManager = () => {
     };
   }, [handleScroll]);
 
+  // Add scroll lock functions
+  const lockScroll = useCallback(() => {
+    setIsScrollLocked(true);
+    document.body.style.overflow = "hidden";
+  }, []);
+
+  const unlockScroll = useCallback(() => {
+    setIsScrollLocked(false);
+    document.body.style.overflow = "unset";
+  }, []);
+
+  // Navigation handler for smooth scrolling to sections
+  const handleNavigate = useCallback((sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    // Update URL hash
+    window.history.replaceState(null, null, `#${sectionId}`);
+  }, []);
+
   return {
     scrollY,
     activeSection,
     isScrolled,
+    isScrollLocked,
+    lockScroll,
+    unlockScroll,
+    handleNavigate,
   };
 };

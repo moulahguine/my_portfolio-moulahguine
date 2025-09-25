@@ -1,21 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect } from "react";
 import CloseButton from "../CloseButton/CloseButton";
+import { useScrollLock } from "../../hooks/useScrollLock";
 import "./ImageModal.scss";
 
 const ImageModal = ({ isOpen, onClose, imageSrc, imageAlt }) => {
-  // Handle body scroll locking
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
+  // Use centralized scroll lock
+  useScrollLock(isOpen);
 
   return (
     <AnimatePresence>

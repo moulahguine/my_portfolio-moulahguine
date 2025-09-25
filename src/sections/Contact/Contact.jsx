@@ -11,7 +11,7 @@ import HoverCursor from "../../components/HoverCursor/HoverCursor";
 import Location from "../../components/Location/Location";
 import Modal from "../../components/Modal/Modal";
 import CloseButton from "../../components/CloseButton/CloseButton";
-import socialLinks from "./socialLinks";
+import { SocialLinks } from "../../components/SocialLinks";
 import { useContactForm } from "./useContactForm";
 
 function Contact() {
@@ -93,22 +93,11 @@ function Contact() {
 
             {/* Social Media */}
             <div className="contact__social">
-              <span className="contact__social-label">I’m also active on:</span>
-              <div className="contact__social-links">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="contact__social-link"
-                    style={{ "--social-color": social.color }}
-                    title={social.label}
-                  >
-                    <social.icon />
-                  </a>
-                ))}
-              </div>
+              <span className="contact__social-label">I'm also active on:</span>
+              <SocialLinks
+                variant="contact"
+                className="contact__social-links"
+              />
             </div>
           </div>
         </div>

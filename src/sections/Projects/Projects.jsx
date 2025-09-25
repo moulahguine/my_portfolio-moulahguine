@@ -35,7 +35,7 @@ function Projects() {
 
 // ProjectCard component for individual project display...
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project }) {
   const handleImageClick = useCallback(() => {
     window.open(project.demoLink, "_blank", "noopener,noreferrer");
   }, [project.demoLink]);
