@@ -27,98 +27,13 @@
     }
 
     @media (max-width: $breakpoint-md) {
+      position: relative; // Change from absolute to relative
+      width: 100%;
+      height: 100vh;
       padding: $space-40;
       grid-template-columns: 1fr;
       justify-content: center;
-
-      .hero__media-content {
-        order: 1;
-        @include flex-center;
-        justify-content: start;
-        gap: $space-24;
-        width: 100%;
-        margin-bottom: $space-24;
-
-        // image
-        .hero__media {
-          width: clamp(160px, 1vw, 190px);
-          border-radius: 50%;
-          animation: none;
-          border: 2px solid $color-primary;
-
-          .hero__image {
-            scale: 1.2;
-          }
-          &:hover {
-            border-radius: 50%;
-            scale: 1;
-          }
-        }
-
-        //title + subtitle
-        .hero__title {
-          font-size: clamp($font-size-24, 4vw, $font-size-32);
-          margin-bottom: $space-16;
-
-          .hiEmoji {
-            all: unset;
-            display: inline-block;
-          }
-
-          span {
-            @include text-gradient;
-          }
-
-          small {
-            font-size: clamp($font-size-12, 2vw, $font-size-16);
-            color: $color-text-light;
-          }
-
-          .hero__subtitle {
-            font-weight: $fw-semibold;
-            color: $color-text-muted;
-            margin-top: $space-12;
-            font-size: clamp($font-size-14, 3vw, $font-size-18);
-          }
-
-          .hero__tagline {
-            @include subtitle;
-            margin-top: $space-8;
-            text-align: left;
-            max-width: 500px;
-          }
-        }
-      }
-    }
-
-    @media (max-width: $breakpoint-sm) {
-      width: 100%;
-
-      .hero__media-content {
-        flex-direction: column;
-
-        // image
-        .hero__media {
-          width: clamp(250px, 4vw, 150px);
-
-          .hero__image {
-            scale: 1.05;
-          }
-        }
-
-        //title + subtitle
-        .hero__title {
-          align-content: start;
-          font-size: clamp($font-size-28, 4vw, $font-size-48);
-
-          small {
-            font-size: clamp($font-size-14, 4vw, $font-size-18);
-          }
-          .hero__subtitle {
-            font-size: clamp($font-size-18, 3vw, $font-size-32);
-          }
-        }
-      }
+      background-color: red;
     }
 
     // ===================================================
@@ -126,7 +41,18 @@
     // hero content
     .hero__content {
       @media (max-width: $breakpoint-md) {
-        order: 2;
+        z-index: 1555;
+        position: absolute;
+        left: 50px;
+        bottom: 10px;
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       }
 
       // title
@@ -237,6 +163,42 @@
         scale: 1.05;
       }
 
+      @media (max-width: $breakpoint-md) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100vh;
+        border-radius: 0;
+        border: none;
+        z-index: 1000;
+        animation: none;
+        @include sweep-hover($color-surface, 0s, none);
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 70%;
+          z-index: 50;
+          background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        &:hover {
+          animation-play-state: paused;
+          border-radius: 0;
+          box-shadow: none;
+          scale: 1;
+        }
+      }
+
       // Keyframes for hero image border-radius animation
       @keyframes morphing-border {
         0%,
@@ -298,65 +260,6 @@
           color: #000;
         }
       }
-    }
-  }
-}
-
-// Hero Image Modal Styles
-.hero-image-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(5px);
-  @include flex-center;
-
-  .hero-image-modal {
-    @include flex-center;
-    position: relative;
-    max-width: 800px;
-    width: 90%;
-    aspect-ratio: 1/1;
-
-    &__close {
-      position: absolute;
-      top: $space-16;
-      right: $space-16;
-      background: rgba(0, 0, 0, 0.5);
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      width: 40px;
-      aspect-ratio: 1/1;
-      border-radius: 50%;
-      cursor: pointer;
-      @include flex-center;
-      transition: all 0.3s ease;
-      z-index: 10001;
-
-      &:hover {
-        background: rgba(0, 0, 0, 0.8);
-        transform: rotate(90deg);
-      }
-
-      @media (max-width: $breakpoint-md) {
-        font-size: 1rem;
-        width: 30px;
-      }
-
-      @media (max-width: $breakpoint-sm) {
-        font-size: 0.6rem;
-        width: 20px;
-      }
-    }
-
-    &__image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 15px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
     }
   }
 }

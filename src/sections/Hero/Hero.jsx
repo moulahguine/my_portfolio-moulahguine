@@ -16,7 +16,6 @@ const ImageModal = lazy(() => import("../../components/ImageModal/ImageModal"));
 export default function Hero() {
   const heroHeight = useHeroHeight();
 
-  const isMobile = useMediaQuery({ maxWidth: 778 });
   const isTablet = useMediaQuery({ maxWidth: 1130 });
 
   const [isImageOpen, setIsImageOpen] = useState(false);
@@ -27,21 +26,19 @@ export default function Hero() {
         href: "https://github.com/moulahguine",
         icon: <FaGithub />,
         label: "GitHub Profile",
-        delay: 0.9,
+
         className: "github-link",
       },
       {
         href: "https://linkedin.com/in/moulahguine",
         icon: <FaLinkedin />,
         label: "LinkedIn Profile",
-        delay: 1.0,
         className: "linkedin-link",
       },
       {
         href: "https://codepen.io/moulahguine",
         icon: <SiCodepen />,
         label: "CodePen Profile",
-        delay: 1.1,
         className: "codepen-link",
       },
     ],
@@ -70,19 +67,16 @@ export default function Hero() {
     >
       <div className="container">
         <div className="hero__content">
-          {!isMobile && (
-            <>
-              <h1 className="hero__title">
-                Hi <span className="hiEmoji">&#128075;</span>, I&apos;m{" "}
-                <span>
-                  Mohamed <br />
-                  Oulahguine
-                </span>{" "}
-                <small>(o-laha-kiiin)</small>
-              </h1>
-              <p className="hero__subtitle">Frontend Developer</p>
-            </>
-          )}
+          <h1 className="hero__title">
+            Hi <span className="hiEmoji">&#128075;</span>, I&apos;m{" "}
+            <span>
+              Mohamed <br />
+              Oulahguine
+            </span>{" "}
+            <small>(o-laha-kiiin)</small>
+          </h1>
+          <p className="hero__subtitle">Frontend Developer</p>
+
           <p className="hero__description">
             Front-end developer with expertise in clean code, strong attention
             to detail, and intuitive UI. Focused on delivering efficient,
@@ -128,30 +122,17 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero__media-content">
-          <div className="hero__media">
-            <img
-              className="hero__image"
-              src={heroImage}
-              alt="Mohamed Oulahguine - Professional Frontend Developer Portrait"
-              onClick={handleImageClick}
-              style={{ cursor: "pointer" }}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-            />
-          </div>
-
-          {isMobile && (
-            <h1 className="hero__title">
-              Hi <span className="hiEmoji">&#128075;</span>, I&apos;m{" "}
-              <span>
-                Mohamed <br /> Oulahguine
-              </span>{" "}
-              <small>(o-laha-kiiin)</small>
-              <h2 className="hero__subtitle">Frontend Developer</h2>
-            </h1>
-          )}
+        <div className="hero__media">
+          <img
+            className="hero__image"
+            src={heroImage}
+            alt="Mohamed Oulahguine - Professional Frontend Developer Portrait"
+            onClick={handleImageClick}
+            style={{ cursor: "pointer" }}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
         </div>
 
         {!isTablet && (
