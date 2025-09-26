@@ -23,9 +23,9 @@
 
   &__content {
     @include flex-column;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
-    gap: $space-32;
+    gap: 0;
     width: 100%;
     max-width: 400px;
     height: inherit;

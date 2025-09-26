@@ -31,3 +31,10 @@ img {
   max-width: 100%;
   display: block;
 }
+
+@media (max-width: $breakpoint-md) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+}

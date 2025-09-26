@@ -41,3 +41,13 @@
     }
   }
 }
+
+@media (max-width: $breakpoint-md) {
+  .hero__resume {
+    .resume-btn {
+      padding: $space-8 0;
+      width: 70%;
+      justify-content: center;
+    }
+  }
+}

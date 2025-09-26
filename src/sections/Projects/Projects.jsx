@@ -1,9 +1,9 @@
+import React, { useCallback } from "react";
 import { motion } from "framer-motion";
 import {
   ExternalLinkIcon,
   GithubIcon,
 } from "../../components/Icons/CustomIcons";
-import { useCallback } from "react";
 import "./Projects.scss";
 
 import projectsData from "./projectData";
@@ -34,31 +34,29 @@ function Projects() {
 }
 
 // ProjectCard component for individual project display...
-
-function ProjectCard({ project }) {
+const ProjectCard = React.memo(function ProjectCard({ project, index }) {
   const handleImageClick = useCallback(() => {
     window.open(project.demoLink, "_blank", "noopener,noreferrer");
   }, [project.demoLink]);
-
-  const renderMedia = useCallback(() => {
-    return (
-      <img
-        className="project-card__media"
-        src={project.media.image}
-        alt={`${project.subtitle} - Frontend Development Project Screenshot`}
-        loading="lazy"
-        decoding="async"
-        onClick={handleImageClick}
-        style={{ cursor: "pointer" }}
-      />
-    );
-  }, [project.media.image, project.subtitle, handleImageClick]);
 
   return (
     <section className="project-card">
       <main className="project-card__container">
         <div className="project-card__media-section">
-          <div className="project-card__media-container">{renderMedia()}</div>
+          <div className="project-card__media-container">
+            <img
+              className="project-card__media"
+              src={project.media.image}
+              alt={`${project.subtitle} - Frontend Development Project Screenshot`}
+              loading="lazy"
+              decoding="async"
+              onClick={handleImageClick}
+              style={{ cursor: "pointer" }}
+              width="1200"
+              height="800"
+              fetchPriority={index < 2 ? "high" : "low"}
+            />
+          </div>
         </div>
 
         <div className="project-card__details">
@@ -116,6 +114,6 @@ function ProjectCard({ project }) {
       </main>
     </section>
   );
-}
+});
 
 export default Projects;

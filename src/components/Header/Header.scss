@@ -19,6 +19,7 @@
     @media (max-width: $breakpoint-md) {
       background-color: transparent;
       border: none;
+      backdrop-filter: blur(0);
     }
   }
 
@@ -58,14 +59,17 @@
 @media (max-width: $breakpoint-md) {
   .header {
     top: 0;
-    height: 15px;
+    height: 0px;
     background-color: $color-primary-500;
 
     &__container {
       border-radius: 0;
       padding: $space-8 $space-16;
       position: relative;
-      z-index: 10001;
+      z-index: 10000;
+      background-color: transparent;
+      border-radius: 0;
+      box-shadow: none;
     }
 
     // Show mobile toggle button
@@ -96,8 +100,6 @@
       z-index: $z-modal;
 
       .header__container {
-        position: relative;
-        z-index: 10001;
         background-color: transparent;
         border-radius: 0;
         box-shadow: none;

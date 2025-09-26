@@ -18,6 +18,7 @@
     gap: $space-40;
     position: relative;
     z-index: 10;
+    overflow-x: hidden;
 
     // ===================================================
 
@@ -47,16 +48,14 @@
         width: 90%;
         max-width: 500px;
         text-align: center;
+        word-spacing: -1px;
         transform: translateX(-50%);
-        background: rgba(255, 255, 255, 0);
-        backdrop-filter: blur(10px);
-        padding: $space-32 $space-12;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-
-        .mobile-rotate {
-          rotate: -2deg;
-        }
+        backdrop-filter: blur(30px);
+        padding: $space-24 $space-12 $space-12;
+        border-radius: $space-24;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+        @include flex-column;
+        align-items: center;
       }
 
       // title
@@ -71,6 +70,20 @@
         .hiEmoji {
           all: unset;
           display: inline-block;
+
+          animation: sayHi 2s infinite alternate-reverse ease;
+        }
+
+        @keyframes sayHi {
+          50% {
+            rotate: 10deg;
+            scale: 1;
+          }
+
+          100% {
+            rotate: -10deg;
+            scale: 1.1;
+          }
         }
 
         span {
@@ -84,6 +97,7 @@
 
         @media (max-width: $breakpoint-md) {
           font-size: clamp($font-size-28, 4vw, $font-size-32);
+          margin-bottom: $space-12;
         }
       }
 
@@ -95,6 +109,9 @@
         margin-bottom: $space-24;
         color: $color-text-muted;
         text-shadow: 0 1px 2px $color-shadow-light;
+        @media (max-width: $breakpoint-md) {
+          margin-bottom: $space-12;
+        }
       }
 
       // description
@@ -107,7 +124,7 @@
 
         @media (max-width: $breakpoint-md) {
           font-size: clamp($font-size-14, 3vw, $font-size-18) !important;
-          margin-bottom: $space-16;
+          margin-bottom: $space-12;
         }
       }
 
@@ -126,12 +143,17 @@
           color: $color-success;
           font-size: 8px;
           opacity: 0.5;
-          animation: opacit 0.7s infinite alternate-reverse ease-in-out;
+          animation: opacit 0.6s infinite alternate-reverse ease-in-out;
         }
         @keyframes opacit {
           to {
             opacity: 1;
           }
+        }
+
+        @media (max-width: $breakpoint-md) {
+          margin-bottom: $space-8;
+          padding-top: 0;
         }
       }
 
@@ -140,6 +162,14 @@
           display: flex;
           width: 100%;
           gap: $space-16;
+        }
+      }
+
+      @media (max-width: $breakpoint-md) {
+        .hero__resume {
+          @include flex-center;
+          flex-direction: column-reverse;
+          gap: $space-8;
         }
       }
     }
@@ -165,7 +195,6 @@
         width: inherit;
         height: inherit;
         object-fit: cover;
-        z-index: 15;
         position: absolute;
       }
 
@@ -205,11 +234,6 @@
           box-shadow: none;
           scale: 1;
         }
-
-        .hero__image {
-          width: inherit;
-          // object-fit: cover;
-        }
       }
 
       // Keyframes for hero image border-radius animation
@@ -237,6 +261,10 @@
         flex-direction: row;
       }
 
+      @media (max-width: $breakpoint-md) {
+        gap: 4px;
+      }
+
       .social-link {
         @include flex-center;
         @include glass-effect-light;
@@ -252,6 +280,17 @@
           flex-direction: row;
           width: clamp(40px, 3vw, 50px);
           height: clamp(40px, 3vh, 50px);
+        }
+
+        @media (max-width: $breakpoint-md) {
+          background-color: transparent;
+          box-shadow: none;
+          border: none;
+          flex-direction: row;
+          width: 30px;
+          svg {
+            font-size: $font-size-16 !important;
+          }
         }
 
         @include sweep-hover($color-primary-500);
