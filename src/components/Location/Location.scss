@@ -77,7 +77,7 @@
   position: fixed;
   inset: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   background: rgba(45, 55, 72, 0.4);
   backdrop-filter: blur(20px) saturate(180%);
   z-index: 9999;
@@ -89,7 +89,7 @@
     border-radius: $space-16;
     max-width: 1200px;
     width: 92%;
-    height: 90vh;
+    height: 90dvh;
     padding: 0;
     overflow: hidden;
     position: relative;
