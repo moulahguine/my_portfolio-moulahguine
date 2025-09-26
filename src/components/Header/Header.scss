@@ -16,6 +16,10 @@
     border-radius: $space-32;
     position: relative;
     transition: all 0.3s ease;
+    @media (max-width: $breakpoint-md) {
+      background-color: transparent;
+      border: none;
+    }
   }
 
   &__logo {
@@ -87,7 +91,7 @@
     &--menu-open {
       position: fixed;
       inset: 0;
-      height: 100vh;
+      height: 100dvh;
       background-color: $color-bg;
       z-index: $z-modal;
 
