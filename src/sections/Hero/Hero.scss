@@ -30,7 +30,7 @@
       position: relative; // Change from absolute to relative
       width: 100%;
       height: 100vh;
-      padding: $space-40;
+      padding: 0 !important;
       grid-template-columns: 1fr;
       justify-content: center;
     }
@@ -53,6 +53,11 @@
         padding: $space-32 $space-12;
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        rotate: -2deg;
+        transition: all 0.3s ease;
+        &:hover {
+          rotate: 0deg;
+        }
       }
 
       // title
@@ -170,7 +175,7 @@
       }
 
       @media (max-width: $breakpoint-md) {
-        position: absolute;
+        position: relative;
         top: -100px;
         left: 0;
         width: 100% !important;

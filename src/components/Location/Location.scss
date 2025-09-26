@@ -94,36 +94,12 @@
     overflow: hidden;
     position: relative;
 
-    // close icon
-    .map-close {
-      @include flex-center;
-      position: absolute;
-      top: $space-24;
-      right: $space-24;
-      background: $color-bg;
-      color: $color-text-muted;
-      border-radius: 50%;
-      width: 44px;
-      aspect-ratio: 1/1;
-      font-size: $font-size-24;
-      border: none;
-      outline: none;
-      z-index: 1500;
-      cursor: pointer;
-      transition: all 0.3s ease-out;
-
-      &:hover {
-        transform: rotate(90deg) !important;
-        box-shadow: 0 4px 12px $color-shadow;
-      }
-    }
-
     .map-content {
       padding: 48px 40px 40px;
       height: inherit;
       @include flex-column;
       @media (max-width: $breakpoint-md) {
-        padding: $space-8;
+        padding: 60px $space-12 $space-8;
       }
 
       .map-container {
