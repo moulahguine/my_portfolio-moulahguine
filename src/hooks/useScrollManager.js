@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 
 // Throttle function to limit scroll event frequency
 const throttle = (func, delay) => {
@@ -31,6 +32,9 @@ export const useScrollManager = () => {
 
   const throttledHandlerRef = useRef(null);
 
+  // Detect mobile for performance optimization
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
   const handleScroll = useCallback(() => {
     // Skip scroll handling when locked
     if (isScrollLocked) return;
@@ -41,7 +45,10 @@ export const useScrollManager = () => {
     // Update scrolled state for header
     setIsScrolled(currentScrollY > 50);
 
-    // Update active section
+    // On mobile, skip complex section detection for better performance
+    if (isMobile) return;
+
+    // Update active section (desktop only)
     const sections = ["hero", "about", "skills", "projects", "contact"];
     const scrollPosition = currentScrollY + 370;
 
@@ -58,11 +65,12 @@ export const useScrollManager = () => {
         }
       }
     }
-  }, [isScrollLocked]);
+  }, [isScrollLocked, isMobile]);
 
   useEffect(() => {
-    // Create throttled handler once
-    throttledHandlerRef.current = throttle(handleScroll, 16);
+    // Create throttled handler with different delays for mobile vs desktop
+    const throttleDelay = isMobile ? 32 : 16; // Less frequent updates on mobile
+    throttledHandlerRef.current = throttle(handleScroll, throttleDelay);
 
     window.addEventListener("scroll", throttledHandlerRef.current, {
       passive: true,
@@ -72,7 +80,7 @@ export const useScrollManager = () => {
     return () => {
       window.removeEventListener("scroll", throttledHandlerRef.current);
     };
-  }, [handleScroll]);
+  }, [handleScroll, isMobile]);
 
   // Add scroll lock functions
   const lockScroll = useCallback(() => {

@@ -6,8 +6,10 @@ import Background from "./components/Background/Background";
 import MouseFollower from "./components/MouseFollower/MouseFollower";
 import SkeletonLoader from "./components/SkeletonLoader/SkeletonLoader";
 
-// Lazy load sections for code splitting
-const Hero = lazy(() => import("./sections/Hero/Hero"));
+// Import Hero directly (no lazy loading for critical above-the-fold content)
+import Hero from "./sections/Hero/Hero";
+
+// Lazy load other sections for code splitting
 const About = lazy(() => import("./sections/About/About"));
 const Skills = lazy(() => import("./sections/Skills/Skills"));
 const Projects = lazy(() => import("./sections/Projects/Projects"));
@@ -24,9 +26,8 @@ export default function App() {
             path="/*"
             element={
               <>
-                <Suspense fallback={<SkeletonLoader type="hero" />}>
-                  <Hero />
-                </Suspense>
+                {/* Hero loads immediately - no Suspense needed */}
+                <Hero />
                 <Suspense fallback={<SkeletonLoader type="about" />}>
                   <About />
                 </Suspense>

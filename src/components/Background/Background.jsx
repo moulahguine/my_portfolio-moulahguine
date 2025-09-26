@@ -12,7 +12,14 @@ const Background = () => {
   // Use shared scroll manager
   const { scrollY, activeSection } = useScrollManager();
 
-  if (isMobile || prefersReducedMotion) return null;
+  // For mobile, return a simple background instead of null
+  if (isMobile || prefersReducedMotion) {
+    return (
+      <div className="background-container background-mobile">
+        <div className="background-mobile-gradient"></div>
+      </div>
+    );
+  }
 
   const getBoxVariants = (boxIndex) => {
     const parallaxFactor = 0.05;

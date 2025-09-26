@@ -20,6 +20,8 @@ body {
   color: $color-text;
   @include soft-gradient;
   min-height: 100vh;
+  // Prevent white flash during loading
+  background-color: $color-bg;
 }
 
 a {
