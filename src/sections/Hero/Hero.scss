@@ -49,14 +49,13 @@
         text-align: center;
         transform: translateX(-50%);
         background: rgba(255, 255, 255, 0);
-        backdrop-filter: blur(50px);
+        backdrop-filter: blur(10px);
         padding: $space-32 $space-12;
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        rotate: -2deg;
-        transition: all 0.3s ease;
-        &:hover {
-          rotate: 0deg;
+
+        .mobile-rotate {
+          rotate: -2deg;
         }
       }
 
@@ -163,6 +162,9 @@
       }
 
       .hero__image {
+        width: inherit;
+        height: inherit;
+        object-fit: cover;
         z-index: 15;
         position: absolute;
       }
@@ -178,11 +180,11 @@
         position: relative;
         top: -100px;
         left: 0;
-        width: 100% !important;
-        height: 100vh;
+        width: 100dvw;
+        height: 100dvh;
         border-radius: 0;
         border: none;
-        z-index: 1000;
+        z-index: 500;
         animation: none;
         @include sweep-hover($color-surface, 0s, none);
 
@@ -197,16 +199,16 @@
           background: linear-gradient(to bottom, transparent, $color-bg);
         }
 
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
         &:hover {
           animation-play-state: paused;
           border-radius: 0;
           box-shadow: none;
           scale: 1;
+        }
+
+        .hero__image {
+          width: inherit;
+          // object-fit: cover;
         }
       }
 

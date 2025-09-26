@@ -67,58 +67,60 @@ export default function Hero() {
     >
       <div className="container">
         <div className="hero__content">
-          <h1 className="hero__title">
-            Hi <span className="hiEmoji">&#128075;</span>, I&apos;m{" "}
-            <span>
-              Mohamed <br />
-              Oulahguine
-            </span>{" "}
-            <small>(o-laha-kiiin)</small>
-          </h1>
-          <p className="hero__subtitle">Frontend Developer</p>
+          <div className="mobile-rotate">
+            <h1 className="hero__title">
+              Hi <span className="hiEmoji">&#128075;</span>, I&apos;m{" "}
+              <span>
+                Mohamed <br />
+                Oulahguine
+              </span>{" "}
+              <small>(o-laha-kiiin)</small>
+            </h1>
+            <p className="hero__subtitle">Frontend Developer</p>
 
-          <p className="hero__description">
-            Front-end developer with expertise in clean code, strong attention
-            to detail, and intuitive UI. Focused on delivering efficient,
-            polished, and interactive applications.
-          </p>
+            <p className="hero__description">
+              Front-end developer with expertise in clean code, strong attention
+              to detail, and intuitive UI. Focused on delivering efficient,
+              polished, and interactive applications.
+            </p>
 
-          <div>
-            <Location />
-          </div>
+            <div>
+              <Location />
+            </div>
 
-          <div className="availability-badge">
-            <FaCircle />
-            Available for work
-          </div>
+            <div className="availability-badge">
+              <FaCircle />
+              Available for work
+            </div>
 
-          <div className="hero__resume">
-            <Button
-              href="/resume.pdf"
-              download
-              icon={<HiDownload />}
-              iconPosition="left"
-              className="resume-btn"
-            >
-              Resume
-            </Button>
+            <div className="hero__resume">
+              <Button
+                href="/resume.pdf"
+                download
+                icon={<HiDownload />}
+                iconPosition="left"
+                className="resume-btn"
+              >
+                Resume
+              </Button>
 
-            {isTablet && (
-              <div className="hero__social">
-                {socialLinks.map(({ href, icon, label, className }) => (
-                  <a
-                    key={label}
-                    className={`social-link ${className}`}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                  >
-                    {icon}
-                  </a>
-                ))}
-              </div>
-            )}
+              {isTablet && (
+                <div className="hero__social">
+                  {socialLinks.map(({ href, icon, label, className }) => (
+                    <a
+                      key={label}
+                      className={`social-link ${className}`}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                    >
+                      {icon}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
@@ -130,7 +132,6 @@ export default function Hero() {
             onClick={handleImageClick}
             style={{ cursor: "pointer" }}
             loading="eager"
-            fetchPriority="high"
             decoding="async"
           />
         </div>

@@ -71,6 +71,8 @@ export default function About() {
               alt="Mohamed Oulahguine - Frontend Developer About Section Professional"
               loading="lazy"
               decoding="async"
+              width="350"
+              height="350"
             />
           </div>
 
