@@ -1,8 +1,6 @@
-import { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Background from "./components/Background/Background";
 import MouseFollower from "./components/MouseFollower/MouseFollower";
-import SkeletonLoader from "./components/SkeletonLoader/SkeletonLoader";
 
 import Header from "./components/Header/Header";
 import Hero from "./sections/Hero/Hero";
@@ -22,13 +20,13 @@ export default function App() {
           <Route
             path="/*"
             element={
-              <Suspense fallback={<SkeletonLoader type="hero" />}>
+              <>
                 <Hero />
                 <About />
                 <Skills />
                 <Projects />
                 <Contact />
-              </Suspense>
+              </>
             }
           />
         </Routes>

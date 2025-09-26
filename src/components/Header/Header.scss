@@ -19,7 +19,6 @@
     @media (max-width: $breakpoint-md) {
       background-color: transparent;
       border: none;
-      backdrop-filter: blur(0);
     }
   }
 
@@ -67,9 +66,7 @@
       padding: $space-8 $space-16;
       position: relative;
       z-index: 10000;
-      background-color: transparent;
       border-radius: 0;
-      box-shadow: none;
     }
 
     // Show mobile toggle button
@@ -100,9 +97,7 @@
       z-index: $z-modal;
 
       .header__container {
-        background-color: transparent;
         border-radius: 0;
-        box-shadow: none;
       }
     }
   }
