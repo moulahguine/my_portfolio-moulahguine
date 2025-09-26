@@ -1,3 +1,5 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
 // Mobile background styles
 .background-mobile {
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
@@ -27,9 +29,6 @@
     opacity: 0.8;
   }
 }
-
-@use "../../assets/styles/variables" as *;
-@use "../../assets/styles/mixins" as *;
 
 .background-container {
   position: fixed;
