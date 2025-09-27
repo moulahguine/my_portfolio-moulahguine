@@ -1,6 +1,8 @@
 import "./Hero.scss";
 import { useState, useMemo, useCallback, Suspense, lazy } from "react";
 import heroImage from "../../assets/images/hero-section/hero-img.webp";
+import heroImage600 from "../../assets/images/hero-section/hero-img_600.webp";
+import heroImage800 from "../../assets/images/hero-section/hero-img_800.webp";
 import { HiDownload } from "react-icons/hi";
 import { FaCircle, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiCodepen } from "react-icons/si";
@@ -192,6 +194,8 @@ export default function Hero() {
             <img
               className="hero__image"
               src={heroImage}
+              srcSet={` ${heroImage600} 600w, ${heroImage800} 800w`}
+              sizes="(max-width: 778px) 100vw, (max-width: 1130px) 50vw, 500px"
               alt="Mohamed Oulahguine - Professional Frontend Developer Portrait"
               onClick={handleImageClick}
               style={{ cursor: "pointer" }}

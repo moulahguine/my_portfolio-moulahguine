@@ -47,6 +47,8 @@ const ProjectCard = React.memo(function ProjectCard({ project, index }) {
             <img
               className="project-card__media"
               src={project.media.image}
+              srcSet={project.media.srcSet}
+              sizes={project.media.sizes}
               alt={`${project.subtitle} - Frontend Development Project Screenshot`}
               loading="lazy"
               decoding="async"

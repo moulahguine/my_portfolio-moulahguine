@@ -1,5 +1,9 @@
 import { FaClock, FaLaptopCode, FaUsers, FaCogs } from "react-icons/fa";
 import aboutImage from "../../assets/images/about-section/about-section1.webp";
+import aboutImage200 from "../../assets/images/about-section/about-section1_200.webp";
+import aboutImage300 from "../../assets/images/about-section/about-section1_300.webp";
+import aboutImage400 from "../../assets/images/about-section/about-section1_400.webp";
+import aboutImage500 from "../../assets/images/about-section/about-section1_500.webp";
 import { motion } from "framer-motion";
 import Button from "../../components/Button/Button";
 import "./About.scss";
@@ -77,6 +81,8 @@ export default function About() {
             >
               <img
                 src={aboutImage}
+                srcSet={`${aboutImage200} 200w, ${aboutImage300} 300w, ${aboutImage400} 400w, ${aboutImage500} 500w`}
+                sizes="(max-width: 778px) 100vw, 350px"
                 alt="Mohamed Oulahguine - Frontend Developer About Section Professional"
                 loading="lazy"
                 decoding="async"
