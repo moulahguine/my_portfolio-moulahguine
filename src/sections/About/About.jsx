@@ -6,6 +6,8 @@ import aboutImage400 from "../../assets/images/about-section/about-section1_400.
 import aboutImage500 from "../../assets/images/about-section/about-section1_500.webp";
 import { motion } from "framer-motion";
 import Button from "../../components/Button/Button";
+import InteractiveText from "../../components/InteractiveText/InteractiveText";
+import projectsData from "../Projects/projectData";
 import "./About.scss";
 import { useState, useMemo, useCallback, Suspense, lazy } from "react";
 
@@ -14,6 +16,13 @@ const ImageModal = lazy(() => import("../../components/ImageModal/ImageModal"));
 
 export default function About() {
   const [isImageOpen, setIsImageOpen] = useState(false);
+
+  // Project mapping for interactive text
+  const projectMapping = {
+    spas: projectsData[3],
+    dashboards: projectsData[0],
+    ecommerce: projectsData[1],
+  };
 
   // Modal handlers
   const handleImageClick = useCallback(() => {
@@ -102,9 +111,23 @@ export default function About() {
               <div className="about__intro">
                 <p>
                   I'm a Frontend Developer with 3+ years of experience
-                  delivering SPAs, dashboards, and e-commerce platforms. I focus
-                  on performance, clean state management, and accessible
-                  interfaces that feel fast on any device.
+                  delivering{" "}
+                  <InteractiveText
+                    text="SPAs"
+                    projectData={projectMapping.spas}
+                  />
+                  ,{" "}
+                  <InteractiveText
+                    text="dashboards"
+                    projectData={projectMapping.dashboards}
+                  />
+                  , and{" "}
+                  <InteractiveText
+                    text="e-commerce "
+                    projectData={projectMapping.ecommerce}
+                  />
+                  platforms . I focus on performance, clean state management,
+                  and accessible interfaces that feel fast on any device.
                   <br />
                   <br /> I work closely with designers and backend engineers,
                   turning Figma designs into components, write maintainable

@@ -36,30 +36,18 @@
       .about__image {
         cursor: pointer;
         grid-column: span 1;
-        width: 350px;
+        width: 500px;
         aspect-ratio: 1 / 1;
-        border-radius: 50%;
+        border-radius: 55% 44% 65% 37% / 52% 28% 73% 49%;
+        border: 3px solid $color-primary;
         transition: all 0.3s ease;
         position: relative;
+        @include sweep-hover($color-surface);
+        animation: morphing-border 8s ease-in-out infinite;
         overflow: hidden;
-        margin-left: auto;
-        box-shadow:
-          -25px 10px 0px 0px #b3b3b3,
-          20px 20px 0px 0px #ededed,
-          15px -20px 0px 0px #e1e1e1;
-        animation: boxShadow 2s infinite alternate-reverse;
-
-        @keyframes boxShadow {
-          100% {
-            box-shadow:
-              25px 10px 0px 0px #b3b3b3,
-              15px -20px 0px 0px #ededed,
-              -20px 20px 0px 0px #e1e1e1;
-          }
-        }
 
         @media (max-width: $breakpoint-lg) {
-          width: clamp(16.375rem, 22.371vw, 21.875rem);
+          width: clamp(18.75rem, 5.357rem + 35.714vw, 37.5rem);
         }
 
         @media (max-width: $breakpoint-md) {
@@ -67,30 +55,30 @@
         }
 
         img {
-          transform: scale(1.2);
+          width: inherit;
+          height: inherit;
           object-fit: cover;
           position: absolute;
-          width: 100%;
-          aspect-ratio: 1 / 1;
         }
 
-        @include sweep-hover($color-bg);
-
         &:hover {
-          scale: 1.05;
           animation-play-state: paused;
+          border-radius: 73% 27% 78% 22% / 32% 65% 35% 68%;
+          box-shadow: 0 0 20px 5px rgba(45, 55, 72, 0.15);
+          scale: 1.05;
         }
       }
 
       // Right Column
       .about__info {
+        margin: auto 0;
         grid-column: span 1;
         @include flex-column;
         gap: $space-40;
 
         // Intro Paragraph
         .about__intro {
-          width: clamp(20rem, 50vw, 42rem); // from 320px to 672px
+          width: clamp(20rem, 45vw, 40rem); // from 320px to 672px
 
           @media (max-width: $breakpoint-md) {
             width: 95%;
@@ -113,12 +101,9 @@
         }
 
         .about__btn {
+          width: 100%;
           display: flex;
           gap: $space-16;
-
-          @media (max-width: $breakpoint-md) {
-            display: none;
-          }
 
           .show__projects {
             background-color: transparent;
@@ -132,6 +117,8 @@
             }
           }
           .hire__me {
+            @include flex-center;
+            width: 50%;
             background-color: $color-primary;
             @include primary-shadow;
             &:hover {
@@ -143,12 +130,7 @@
       }
       // Quick Facts Grid
       .about__facts {
-        rotate: -5deg;
-        margin-top: $space-40;
         grid-column: span 2;
-        @media (max-width: $breakpoint-lg) {
-          rotate: 0deg;
-        }
 
         .facts-grid {
           width: 100%;
@@ -162,10 +144,10 @@
           @media (max-width: $breakpoint-lg) {
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: repeat(2, 1fr);
-            gap: $space-40;
+            gap: $space-24;
           }
 
-          @media (max-width: 657px) {
+          @media (max-width: 480px) {
             grid-template-columns: repeat(1, 1fr);
             grid-template-rows: repeat(4, 1fr);
             gap: $space-16;
@@ -174,41 +156,16 @@
           .fact-card {
             @include flex-center;
             width: 100%;
-            background-color: $color-surface;
-            border-radius: $space-16;
-            box-shadow: -5px 5px 2px #eee;
-            padding: $space-12;
             overflow: hidden;
-            transform: rotate(0deg) scale(1);
             transition: all 0.3s ease-in-out !important;
 
-            &:hover {
-              translate: 5px 5px !important;
-              animation-play-state: paused;
-              z-index: 1;
-            }
-
-            @media (max-width: $breakpoint-md) {
-              animation: cardsWhite 4s infinite alternate-reverse;
-              @keyframes cardsWhite {
-                100% {
-                  transform: rotate(-5deg) scale(1);
-                }
-              }
-              @keyframes cardsBlack {
-                100% {
-                  transform: rotate(5deg) scale(1);
-                }
-              }
-            }
-
             &-container {
-              padding: 0 $space-12;
               @include flex-center;
+              padding: 0 $space-12;
               gap: $space-16;
               width: 270px;
               .fact-icon {
-                font-size: $space-32;
+                font-size: $font-size-40;
                 color: $color-primary-500;
               }
 
@@ -219,7 +176,7 @@
 
                 .fact-label {
                   font-size: $font-size-18;
-                  color: $color-text;
+                  color: $color-primary-500;
                   font-weight: $fw-bold;
                 }
 
@@ -227,110 +184,6 @@
                   font-size: 13px;
                   color: $color-primary-500;
                 }
-              }
-            }
-          }
-
-          .fact-card:nth-child(2),
-          .fact-card:nth-child(4) {
-            background-color: $color-primary-500;
-            .fact-icon {
-              color: $color-surface;
-            }
-
-            .fact-content {
-              .fact-label {
-                color: $color-surface;
-                font-weight: $fw-bold;
-              }
-
-              .fact-value {
-                color: $color-surface-tertiary;
-              }
-            }
-            &:hover {
-              z-index: 1;
-            }
-          }
-
-          @media (max-width: $breakpoint-md) {
-            .fact-card:nth-child(1) {
-              transform: rotate(5deg) scale(1);
-            }
-            .fact-card:nth-child(2) {
-              transform: rotate(-5deg) scale(1);
-            }
-            .fact-card:nth-child(3) {
-              transform: rotate(5deg) scale(1);
-            }
-            .fact-card:nth-child(4) {
-              transform: rotate(-5deg) scale(1);
-            }
-
-            .fact-card:nth-child(2),
-            .fact-card:nth-child(4) {
-              animation: cardsBlack 4s infinite alternate-reverse;
-
-              background-color: $color-primary-500;
-              .fact-icon {
-                color: $color-surface;
-              }
-
-              .fact-content {
-                .fact-label {
-                  color: $color-surface;
-                  font-weight: $fw-bold;
-                }
-
-                .fact-value {
-                  color: $color-surface-tertiary;
-                }
-              }
-              &:hover {
-                z-index: 1;
-              }
-            }
-          }
-
-          @media (min-width: 657px) and (max-width: $breakpoint-lg) {
-            .fact-card:nth-child(4) {
-              background-color: $color-surface;
-              .fact-icon {
-                color: $color-primary-500;
-              }
-
-              .fact-content {
-                .fact-label {
-                  color: $color-text;
-                }
-
-                .fact-value {
-                  color: $color-primary-500;
-                }
-              }
-              &:hover {
-                transform: rotate(-5deg) translateX(-100px) scale(1.5);
-                z-index: 1;
-              }
-            }
-            .fact-card:nth-child(3) {
-              background-color: $color-primary-500;
-              .fact-icon {
-                color: $color-surface;
-              }
-
-              .fact-content {
-                .fact-label {
-                  color: $color-surface;
-                }
-
-                .fact-value {
-                  color: $color-surface-tertiary;
-                }
-              }
-              &:hover {
-                transform: rotate(-5deg) translateX(-100px) scale(1.5);
-                z-index: 1;
               }
             }
           }
