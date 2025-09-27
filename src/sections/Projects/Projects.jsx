@@ -51,6 +51,7 @@ const ProjectCard = React.memo(function ProjectCard({ project, index }) {
               loading="lazy"
               decoding="async"
               onClick={handleImageClick}
+              onContextMenu={(e) => e.preventDefault()}
               style={{ cursor: "pointer" }}
               width="1200"
               height="800"

@@ -5,7 +5,7 @@
   position: fixed;
   width: 100%;
   top: $space-16;
-  z-index: 9999;
+  z-index: 1000;
   transition: all 0.3s ease;
 
   &__container {
@@ -65,7 +65,6 @@
       border-radius: 0;
       padding: $space-8 $space-16;
       position: relative;
-      z-index: 10000;
       border-radius: 0;
     }
 

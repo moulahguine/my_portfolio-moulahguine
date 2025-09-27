@@ -11,7 +11,7 @@ const ImageModal = ({ isOpen, onClose, imageSrc, imageAlt }) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="hero-image-overlay"
+          className="image-overlay"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -19,20 +19,22 @@ const ImageModal = ({ isOpen, onClose, imageSrc, imageAlt }) => {
           onClick={onClose}
         >
           <motion.div
-            className="hero-image-modal"
+            className="image-modal"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3 }}
             onClick={(e) => e.stopPropagation()}
+            style={{ position: "relative" }}
           >
             <CloseButton onClick={onClose} ariaLabel="Close image modal" />
             <img
               src={imageSrc}
               alt={imageAlt}
-              className="hero-image-modal__image"
+              className="image-modal__image"
               loading="lazy"
               decoding="async"
+              onContextMenu={(e) => e.preventDefault()}
             />
           </motion.div>
         </motion.div>

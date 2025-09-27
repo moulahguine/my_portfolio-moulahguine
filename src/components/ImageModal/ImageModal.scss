@@ -1,17 +1,15 @@
 @use "../../assets/styles/variables" as *;
 @use "../../assets/styles/mixins" as *;
 
-// Hero Image Modal Styles
-.hero-image-overlay {
+.image-overlay {
   position: fixed;
   inset: 0;
-  z-index: 10000;
   background-color: rgba(0, 0, 0, 0.209);
   backdrop-filter: blur(20px);
   @include flex-center;
+  z-index: 999999;
 
-  .hero-image-modal,
-  .about__image {
+  .image-modal {
     @include flex-center;
     position: relative;
     max-width: 800px;

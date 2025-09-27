@@ -47,9 +47,6 @@
         .project-card__media-section {
           overflow: hidden;
           width: inherit;
-          @media (max-width: $breakpoint-md) {
-            height: 450px;
-          }
 
           .project-card__media-container {
             width: inherit;

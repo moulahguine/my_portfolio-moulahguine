@@ -4,7 +4,7 @@
 .about {
   background-color: $color-bg;
   padding: calc($space-40 + 2rem) 0;
-
+  overflow: hidden;
   .container {
     @include container;
 

@@ -17,6 +17,7 @@ export default function Hero() {
   const heroHeight = useHeroHeight();
 
   const isTablet = useMediaQuery({ maxWidth: 1130 });
+  const isMobile = useMediaQuery({ maxWidth: 768 });
 
   const [isImageOpen, setIsImageOpen] = useState(false);
 
@@ -55,103 +56,181 @@ export default function Hero() {
   }, []);
 
   return (
-    <motion.section
-      style={{ height: `${heroHeight}px` }}
-      id="hero"
-      className="hero"
-      aria-label="Hero"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
-      <div className="container">
-        <div className="hero__content">
-          <h1 className="hero__title">
-            Hi <span className="hiEmoji">&#128075;</span>, I&apos;m{" "}
-            <span>
-              Mohamed <br />
-              Oulahguine
-            </span>{" "}
-            <small>(o-laha-kiiin)</small>
-          </h1>
-          <p className="hero__subtitle">Frontend Developer</p>
-
-          <p className="hero__description">
-            Front-end developer with expertise in clean code, strong attention
-            to detail, and intuitive UI. Focused on delivering efficient,
-            polished, and interactive applications.
-          </p>
-
-          <div>
-            <Location />
-          </div>
-
-          <div className="availability-badge">
-            <FaCircle />
-            Available for work
-          </div>
-
-          <div className="hero__resume">
-            <Button
-              href="/resume.pdf"
-              download
-              icon={<HiDownload />}
-              iconPosition="left"
-              className="resume-btn"
+    <>
+      <motion.section
+        style={{ height: `${heroHeight}px` }}
+        id="hero"
+        className="hero"
+        aria-label="Hero"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="container">
+          <motion.div
+            className="hero__content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, ease: "easeOut", delay: 0.2 }}
+            drag={isMobile}
+            dragConstraints={{
+              left: -270,
+              right: -180,
+              top: -330,
+              bottom: -50,
+            }}
+            dragElastic={0.2}
+            whileTap={isMobile ? { scale: 0.95 } : {}}
+            dragMomentum={false}
+          >
+            <motion.h1
+              className="hero__title"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
             >
-              Resume
-            </Button>
+              Hi <span className="hiEmoji">&#128075;</span>, I&apos;m{" "}
+              <span>
+                Mohamed <br />
+                Oulahguine
+              </span>{" "}
+              <small>(o-laha-kiiin)</small>
+            </motion.h1>
+            <motion.p
+              className="hero__subtitle"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
+            >
+              Frontend Developer
+            </motion.p>
 
-            {isTablet && (
-              <div className="hero__social">
-                {socialLinks.map(({ href, icon, label, className }) => (
-                  <a
-                    key={label}
-                    className={`social-link ${className}`}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                  >
-                    {icon}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
+            <motion.p
+              className="hero__description"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.8 }}
+            >
+              Front-end developer with expertise in clean code, strong attention
+              to detail, and intuitive UI. Focused on delivering efficient,
+              polished, and interactive applications.
+            </motion.p>
 
-        <div className="hero__media">
-          <img
-            className="hero__image"
-            src={heroImage}
-            alt="Mohamed Oulahguine - Professional Frontend Developer Portrait"
-            onClick={handleImageClick}
-            style={{ cursor: "pointer" }}
-            loading="eager"
-            decoding="async"
-          />
-        </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 1.0 }}
+            >
+              <Location />
+            </motion.div>
 
-        {!isTablet && (
-          <div className="hero__social">
-            {socialLinks.map(({ href, icon, label, className }) => (
-              <a
-                key={label}
-                className={`social-link ${className}`}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
+            <motion.div
+              className="availability-badge"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 1.2 }}
+            >
+              <FaCircle />
+              Available for work
+            </motion.div>
+
+            <motion.div
+              className="hero__resume"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 1.4 }}
+            >
+              <Button
+                href="/resume.pdf"
+                download
+                icon={<HiDownload />}
+                iconPosition="left"
+                className="resume-btn"
               >
-                {icon}
-              </a>
-            ))}
-          </div>
-        )}
-      </div>
+                Resume
+              </Button>
 
+              {isTablet && (
+                <motion.div
+                  className="hero__social"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 1.6 }}
+                >
+                  {socialLinks.map(
+                    ({ href, icon, label, className }, index) => (
+                      <motion.a
+                        key={label}
+                        className={`social-link ${className}`}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={label}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.5,
+                          ease: "easeOut",
+                          delay: 1.8 + index * 0.1,
+                        }}
+                      >
+                        {icon}
+                      </motion.a>
+                    )
+                  )}
+                </motion.div>
+              )}
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="hero__media"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+          >
+            <img
+              className="hero__image"
+              src={heroImage}
+              alt="Mohamed Oulahguine - Professional Frontend Developer Portrait"
+              onClick={handleImageClick}
+              style={{ cursor: "pointer" }}
+              loading="eager"
+              decoding="async"
+              onContextMenu={(e) => e.preventDefault()}
+            />
+          </motion.div>
+
+          {!isTablet && (
+            <motion.div
+              className="hero__social"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 1.6 }}
+            >
+              {socialLinks.map(({ href, icon, label, className }, index) => (
+                <motion.a
+                  key={label}
+                  className={`social-link ${className}`}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "easeOut",
+                    delay: 1.8 + index * 0.1,
+                  }}
+                >
+                  {icon}
+                </motion.a>
+              ))}
+            </motion.div>
+          )}
+        </div>
+      </motion.section>
       {isImageOpen && (
         <Suspense
           fallback={<div style={{ display: "none" }}>Loading modal...</div>}
@@ -164,6 +243,6 @@ export default function Hero() {
           />
         </Suspense>
       )}
-    </motion.section>
+    </>
   );
 }

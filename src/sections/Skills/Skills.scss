@@ -5,6 +5,7 @@
   background-color: $color-bg;
   padding: calc($space-40 + 2rem) 0;
   position: relative;
+  overflow: hidden;
 
   .skills__header {
     @include section-title;
@@ -20,6 +21,7 @@
 
   .container {
     @include container;
+    overflow: visible;
 
     .skills__content {
       @include flex-column;

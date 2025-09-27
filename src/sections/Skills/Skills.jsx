@@ -1,6 +1,5 @@
 // import { useState } from "react";
 import { motion } from "framer-motion";
-import { useMemo } from "react";
 import { skillsRow1, skillsRow2, skillColors } from "./skillsData";
 // import SkillsModal from "./SkillsModal";
 import "./Skills.scss";
@@ -19,37 +18,8 @@ function Skills() {
   //   setIsModalOpen(false);
   // };
 
-  // Memoize skill rendering logic to prevent unnecessary re-renders
-  const renderSkillCard = useMemo(
-    () => (skill) => {
-      const IconComponent = skill.icon;
-      const skillColor = skillColors[skill.name] || "#6C757D";
-
-      return (
-        <div
-          key={skill.id}
-          className="skill-card"
-          style={{ "--skill-color": skillColor }}
-        >
-          <div className="skill-card__icon">
-            <IconComponent />
-          </div>
-          <span className="skill-card__name">{skill.name}</span>
-        </div>
-      );
-    },
-    []
-  );
-
   return (
-    <motion.section
-      className="skills"
-      id="skills"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
+    <section className="skills" id="skills">
       <div className="skills__header">
         <h2 className="skills__title">Tech Stack</h2>
         <p className="skills__subtitle">
@@ -59,12 +29,70 @@ function Skills() {
 
       <div className="container">
         <div className="skills__content">
-          <div className="skills__row">{skillsRow1.map(renderSkillCard)}</div>
+          <motion.div
+            className="skills__row"
+            initial={{ x: -50 }}
+            whileInView={{ x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+          >
+            {skillsRow1.map((skill, index) => (
+              <motion.div
+                key={skill.id}
+                className="skill-card"
+                style={{
+                  "--skill-color": skillColors[skill.name] || "#6C757D",
+                }}
+                initial={{ x: -30 }}
+                whileInView={{ x: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut",
+                  delay: 0.4 + index * 0.1,
+                }}
+              >
+                <div className="skill-card__icon">
+                  <skill.icon />
+                </div>
+                <span className="skill-card__name">{skill.name}</span>
+              </motion.div>
+            ))}
+          </motion.div>
 
-          <div className="skills__row">{skillsRow2.map(renderSkillCard)}</div>
+          <motion.div
+            className="skills__row"
+            initial={{ x: 50 }}
+            whileInView={{ x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
+          >
+            {skillsRow2.map((skill, index) => (
+              <motion.div
+                key={skill.id}
+                className="skill-card"
+                style={{
+                  "--skill-color": skillColors[skill.name] || "#6C757D",
+                }}
+                initial={{ x: 30 }}
+                whileInView={{ x: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut",
+                  delay: 0.6 + index * 0.1,
+                }}
+              >
+                <div className="skill-card__icon">
+                  <skill.icon />
+                </div>
+                <span className="skill-card__name">{skill.name}</span>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
 

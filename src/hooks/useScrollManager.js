@@ -41,11 +41,9 @@ export const useScrollManager = () => {
     // Update scrolled state for header
     setIsScrolled(currentScrollY > 50);
 
-    // Update active section with mobile-friendly detection
+    // Update active section
     const sections = ["hero", "about", "skills", "projects", "contact"];
-    const isMobile = window.innerWidth <= 778; // Match your breakpoint-md
-    const offset = isMobile ? 100 : 370; // Smaller offset for mobile
-    const scrollPosition = currentScrollY + offset;
+    const scrollPosition = currentScrollY + 370;
 
     for (const section of sections) {
       const element = document.getElementById(section);
@@ -54,13 +52,7 @@ export const useScrollManager = () => {
         const elementTop = rect.top + currentScrollY;
         const elementBottom = elementTop + rect.height;
 
-        // More lenient detection for mobile
-        const threshold = isMobile ? 50 : 100;
-
-        if (
-          scrollPosition >= elementTop - threshold &&
-          scrollPosition <= elementBottom + threshold
-        ) {
+        if (scrollPosition >= elementTop && scrollPosition <= elementBottom) {
           setActiveSection(section);
           break;
         }
@@ -72,25 +64,13 @@ export const useScrollManager = () => {
     // Create throttled handler once
     throttledHandlerRef.current = throttle(handleScroll, 16);
 
-    // Add scroll listener with better mobile support
     window.addEventListener("scroll", throttledHandlerRef.current, {
       passive: true,
     });
-
-    // Also listen for touch events on mobile for better responsiveness
-    if (window.innerWidth <= 778) {
-      window.addEventListener("touchmove", throttledHandlerRef.current, {
-        passive: true,
-      });
-    }
-
     handleScroll(); // Initial call
 
     return () => {
       window.removeEventListener("scroll", throttledHandlerRef.current);
-      if (window.innerWidth <= 778) {
-        window.removeEventListener("touchmove", throttledHandlerRef.current);
-      }
     };
   }, [handleScroll]);
 
@@ -109,12 +89,7 @@ export const useScrollManager = () => {
   const handleNavigate = useCallback((sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      // Use different scroll behavior for mobile
-      const isMobile = window.innerWidth <= 778;
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: isMobile ? "center" : "start",
-      });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     // Update URL hash
     window.history.replaceState(null, null, `#${sectionId}`);

@@ -37,4 +37,18 @@ img {
     -webkit-tap-highlight-color: transparent;
     user-select: none;
   }
+
+  /* Fix mobile re-rendering/flashing issue */
+  section {
+    will-change: auto;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* Prevent sections from disappearing on mobile */
+  main#main-content {
+    position: relative;
+    z-index: 1;
+  }
 }

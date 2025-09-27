@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { motion } from "framer-motion";
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
 import { SocialLinks } from "../SocialLinks";
@@ -13,6 +14,10 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 778);
   const { isScrolled, activeSection, handleNavigate } = useScrollManager();
+
+  // Touch gesture handling
+  const touchStartY = useRef(0);
+  const touchEndY = useRef(0);
   // ****************************
   // ****************************
 
@@ -50,6 +55,32 @@ export default function Header() {
   };
 
   // ****************************
+  // Touch gesture handlers for mobile menu
+  // ****************************
+
+  const handleTouchStart = (e) => {
+    if (!isMobile || !isMenuOpen) return;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isMobile || !isMenuOpen) return;
+    touchEndY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = () => {
+    if (!isMobile || !isMenuOpen) return;
+
+    const swipeDistance = touchStartY.current - touchEndY.current;
+    const minSwipeDistance = 50; // Minimum distance for a valid swipe
+
+    // If user swiped up (startY > endY) and distance is sufficient
+    if (swipeDistance > minSwipeDistance) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  // ****************************
   // ****************************
 
   const shouldShowSocialLinks =
@@ -59,8 +90,11 @@ export default function Header() {
   // ****************************
 
   return (
-    <header
+    <motion.header
       className={`header ${isScrolled ? "header--scrolled" : ""} ${isMenuOpen ? "header--menu-open" : ""}`}
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
     >
       <div className="header__container">
         {/* Logo */}
@@ -109,8 +143,12 @@ export default function Header() {
           activeSection={activeSection}
           onNavigate={handleNavigateWithMenuClose}
           isVisible={isMenuOpen}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onClose={() => setIsMenuOpen(false)}
         />
       )}
-    </header>
+    </motion.header>
   );
 }

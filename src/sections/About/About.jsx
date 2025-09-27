@@ -48,80 +48,113 @@ export default function About() {
   );
 
   return (
-    <motion.section
-      id="about"
-      className="about"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
-      <div className="container">
-        <div className="about__header">
-          <h2 className="section-title">About Me</h2>
-          <p className="about__subtitle">
-            Who I Am & What I Build as a React Developer
-          </p>
-        </div>
-
-        <div className="about__main-content">
-          <div className="about__image" onClick={handleImageClick}>
-            <img
-              src={aboutImage}
-              alt="Mohamed Oulahguine - Frontend Developer About Section Professional"
-              loading="lazy"
-              decoding="async"
-              width="350"
-              height="350"
-            />
+    <>
+      <motion.section
+        id="about"
+        className="about"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="container">
+          <div className="about__header">
+            <h2 className="section-title">About Me</h2>
+            <p className="about__subtitle">
+              Who I Am & What I Build as a React Developer
+            </p>
           </div>
 
-          <div className="about__info">
-            <div className="about__intro">
-              <p>
-                I'm a Frontend Developer with 3+ years of experience delivering
-                SPAs, dashboards, and e-commerce platforms. I focus on
-                performance, clean state management, and accessible interfaces
-                that feel fast on any device.
-                <br />
-                <br /> I work closely with designers and backend engineers,
-                turning Figma designs into components, write maintainable code,
-                and review PRs to keep quality high
-                <br />
-                <br />
-                I'm actively seeking Frontend Development opportunities and
-                collaborations where I can contribute to impactful projects.{" "}
-                <br />
-              </p>
-            </div>
-            <div className="about__btn">
-              <Button href="/contact" className="hire__me">
-                Hire Me
-              </Button>
-              <Button href="/projects" className="show__projects">
-                See My Work
-              </Button>
-            </div>
-          </div>
+          <div className="about__main-content">
+            <motion.div
+              className="about__image"
+              onClick={handleImageClick}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              style={{ position: "relative" }}
+            >
+              <img
+                src={aboutImage}
+                alt="Mohamed Oulahguine - Frontend Developer About Section Professional"
+                loading="lazy"
+                decoding="async"
+                width="350"
+                height="350"
+                onContextMenu={(e) => e.preventDefault()}
+              />
+            </motion.div>
 
-          <div className="about__facts">
-            <div className="facts-grid">
-              {quickFacts.map((fact, index) => (
-                <div key={index} className="fact-card">
-                  <div className="fact-card-container">
-                    <div className="fact-icon">{fact.icon}</div>
-                    <div className="fact-content">
-                      <span className="fact-label">{fact.label}</span>
-                      <span className="fact-value">{fact.value}</span>
+            <motion.div
+              className="about__info"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+            >
+              <div className="about__intro">
+                <p>
+                  I'm a Frontend Developer with 3+ years of experience
+                  delivering SPAs, dashboards, and e-commerce platforms. I focus
+                  on performance, clean state management, and accessible
+                  interfaces that feel fast on any device.
+                  <br />
+                  <br /> I work closely with designers and backend engineers,
+                  turning Figma designs into components, write maintainable
+                  code, and review PRs to keep quality high
+                  <br />
+                  <br />
+                  I'm actively seeking Frontend Development opportunities and
+                  collaborations where I can contribute to impactful projects.{" "}
+                  <br />
+                </p>
+              </div>
+              <div className="about__btn">
+                <Button href="/contact" className="hire__me">
+                  Hire Me
+                </Button>
+                <Button href="/projects" className="show__projects">
+                  See My Work
+                </Button>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="about__facts"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
+            >
+              <div className="facts-grid">
+                {quickFacts.map((fact, index) => (
+                  <motion.div
+                    key={index}
+                    className="fact-card"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.5,
+                      ease: "easeOut",
+                      delay: 0.6 + index * 0.1,
+                    }}
+                  >
+                    <div className="fact-card-container">
+                      <div className="fact-icon">{fact.icon}</div>
+                      <div className="fact-content">
+                        <span className="fact-label">{fact.label}</span>
+                        <span className="fact-value">{fact.value}</span>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
-      </div>
-
+      </motion.section>
       {isImageOpen && (
         <Suspense
           fallback={<div style={{ display: "none" }}>Loading modal...</div>}
@@ -134,6 +167,6 @@ export default function About() {
           />
         </Suspense>
       )}
-    </motion.section>
+    </>
   );
 }
