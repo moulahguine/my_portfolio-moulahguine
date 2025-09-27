@@ -141,7 +141,11 @@ function Contact() {
             />
             <form key={formKey} className="contact__form" onSubmit={onSubmit}>
               <div className="contact__form-group">
-                <label htmlFor="name" className="contact__label">
+                <label
+                  style={{ display: "none" }}
+                  htmlFor="name"
+                  className="contact__label"
+                >
                   Your Name
                 </label>
                 <input
@@ -166,7 +170,11 @@ function Contact() {
               </div>
 
               <div className="contact__form-group">
-                <label htmlFor="email" className="contact__label">
+                <label
+                  style={{ display: "none" }}
+                  htmlFor="email"
+                  className="contact__label"
+                >
                   Your Email
                 </label>
                 <input
@@ -195,7 +203,11 @@ function Contact() {
               </div>
 
               <div className="contact__form-group">
-                <label htmlFor="message" className="contact__label">
+                <label
+                  style={{ display: "none" }}
+                  htmlFor="message"
+                  className="contact__label"
+                >
                   Your Message
                 </label>
                 <textarea

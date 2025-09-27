@@ -193,6 +193,10 @@
   .contact__form-modal {
     position: relative;
     padding: $space-40 0 0;
+    .close-button {
+      top: -10px;
+      right: -5px;
+    }
 
     .contact__form-close {
       @include flex-center;
@@ -340,20 +344,12 @@
   z-index: 10000;
   width: fit-content;
   max-width: 400px;
-  border-radius: $radius-lg;
+  border-radius: 10px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   backdrop-filter: blur(10px);
-
-  &--success {
-    background: linear-gradient(135deg, $color-success, #059669);
-    color: white;
-  }
-
-  &--error {
-    background: linear-gradient(135deg, $color-danger, #dc2626);
-    color: white;
-  }
+  background-color: $color-primary-500;
+  color: $color-surface;
 
   .notification__content {
     @include flex-center;
