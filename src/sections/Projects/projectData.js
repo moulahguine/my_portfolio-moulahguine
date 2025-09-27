@@ -32,7 +32,7 @@ import modern1200 from "../../assets/images/project-section/modern/modern_1200.w
 const projectsData = [
   {
     id: 1,
-
+    color: "#b4c7c1",
     subtitle: "Personal Frontend Developer Portfolio",
     description:
       "Built with React + SCSS to showcase work, design, and interaction. Mobile-first with smooth animations and polished UX.",
@@ -71,7 +71,7 @@ const projectsData = [
   },
   {
     id: 2,
-
+    color: "#9f9f9f",
     subtitle: "Personal Frontend Developer Portfolio",
     description:
       "Built with React + SCSS to showcase work, design, and interaction. Mobile-first with smooth animations and polished UX.",
@@ -110,7 +110,7 @@ const projectsData = [
   },
   {
     id: 3,
-
+    color: "#f1f1f1",
     subtitle: "Personal Frontend Developer Portfolio",
     description:
       "Built with React + SCSS to showcase work, design, and interaction. Mobile-first with smooth animations and polished UX.",
@@ -149,7 +149,7 @@ const projectsData = [
   },
   {
     id: 4,
-
+    color: "#f2f1f2",
     subtitle: "Personal Frontend Developer Portfolio",
     description:
       "Built with React + SCSS to showcase work, design, and interaction. Mobile-first with smooth animations and polished UX.",

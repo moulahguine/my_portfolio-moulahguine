@@ -40,6 +40,8 @@
       border-radius: $radius-lg;
       transition: all 0.3s ease;
 
+      box-shadow: 0 0 15px 5px var(--project-color);
+
       .project-card__container {
         @include flex-column;
 

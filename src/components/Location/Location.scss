@@ -113,7 +113,6 @@
           width: inherit;
           height: inherit;
 
-          // Leaflet map container styles
           .leaflet-container {
             border-radius: 20px;
             height: inherit;
@@ -121,7 +120,6 @@
             background: #f8fafc;
           }
 
-          // Leaflet attribution styling - Hide the attribution
           .leaflet-control-attribution {
             display: none !important;
           }
@@ -129,4 +127,9 @@
       }
     }
   }
+}
+
+.map-loading {
+  @include flex-center;
+  height: inherit;
 }

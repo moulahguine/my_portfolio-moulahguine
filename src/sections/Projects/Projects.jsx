@@ -40,7 +40,10 @@ const ProjectCard = React.memo(function ProjectCard({ project, index }) {
   }, [project.demoLink]);
 
   return (
-    <section className="project-card">
+    <section
+      className="project-card"
+      style={{ "--project-color": project.color }}
+    >
       <main className="project-card__container">
         <div className="project-card__media-section">
           <div className="project-card__media-container">
