@@ -11,20 +11,46 @@ const InteractiveText = ({ text, projectData, className = "" }) => {
     setIsHovered(true);
     const rect = e.target.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const isMobile = viewportWidth <= 778;
 
-    // Calculate position with viewport boundaries
     let x = rect.left + rect.width / 2;
     let y = rect.top - 10;
 
-    if (x < 150) x = 150;
-    if (x > viewportWidth - 150) x = viewportWidth - 150;
-    if (y < 100) y = rect.bottom + 10;
+    if (isMobile) {
+      if (x < 125) x = 125;
+      if (x > viewportWidth - 125) x = viewportWidth - 200;
+
+      y = rect.bottom + 10;
+
+      if (y > viewportHeight - 200) {
+        y = rect.top - 200;
+      }
+    } else {
+      if (x < 150) x = 150;
+      if (x > viewportWidth - 150) x = viewportWidth - 150;
+      if (y < 100) y = rect.bottom + 10;
+    }
 
     setPreviewPosition({ x, y });
   };
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+  };
+
+  const handleTouchStart = (e) => {
+    if (window.innerWidth <= 778) {
+      handleMouseEnter(e);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (window.innerWidth <= 778) {
+      setTimeout(() => {
+        setIsHovered(false);
+      }, 2000);
+    }
   };
 
   const handleClick = () => {
@@ -47,6 +73,8 @@ const InteractiveText = ({ text, projectData, className = "" }) => {
         className={`interactive-text ${className}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         tabIndex={0}

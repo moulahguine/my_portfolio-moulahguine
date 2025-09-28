@@ -38,7 +38,6 @@
 .interactive-preview {
   .preview-content {
     max-width: 300px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
 
     .preview-image {
       width: 100%;
@@ -55,9 +54,24 @@
     .preview-content {
       max-width: 250px;
       padding: $space-12;
+      margin: 0 auto;
 
       .preview-image {
         height: 120px;
+      }
+    }
+  }
+}
+
+// Extra small screens
+@media (max-width: 480px) {
+  .interactive-preview {
+    .preview-content {
+      max-width: 200px;
+      padding: $space-8;
+
+      .preview-image {
+        height: 100px;
       }
     }
   }
