@@ -91,8 +91,7 @@ export const useScrollManager = () => {
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    // Update URL hash
-    window.history.replaceState(null, null, `#${sectionId}`);
+    // Don't update URL hash - keep it clean
   }, []);
 
   return {

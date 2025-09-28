@@ -37,26 +37,18 @@ function Skills() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
           >
             {skillsRow1.map((skill, index) => (
-              <motion.div
+              <div
                 key={skill.id}
                 className="skill-card"
                 style={{
                   "--skill-color": skillColors[skill.name] || "#6C757D",
-                }}
-                initial={{ x: -30 }}
-                whileInView={{ x: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.5,
-                  ease: "easeOut",
-                  delay: 0.4 + index * 0.1,
                 }}
               >
                 <div className="skill-card__icon">
                   <skill.icon />
                 </div>
                 <span className="skill-card__name">{skill.name}</span>
-              </motion.div>
+              </div>
             ))}
           </motion.div>
 
@@ -68,26 +60,18 @@ function Skills() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
           >
             {skillsRow2.map((skill, index) => (
-              <motion.div
+              <div
                 key={skill.id}
                 className="skill-card"
                 style={{
                   "--skill-color": skillColors[skill.name] || "#6C757D",
-                }}
-                initial={{ x: 30 }}
-                whileInView={{ x: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.5,
-                  ease: "easeOut",
-                  delay: 0.6 + index * 0.1,
                 }}
               >
                 <div className="skill-card__icon">
                   <skill.icon />
                 </div>
                 <span className="skill-card__name">{skill.name}</span>
-              </motion.div>
+              </div>
             ))}
           </motion.div>
         </div>

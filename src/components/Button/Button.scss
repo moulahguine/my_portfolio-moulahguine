@@ -22,7 +22,6 @@
   &:hover {
     background: $color-primary-hover;
     @include primary-shadow-hover;
-    transform: translateY(-2px);
   }
 
   &:active {

@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import "./Button.scss";
 
 function Button({
@@ -29,24 +30,39 @@ function Button({
     </>
   );
 
-  // If href is provided, render as anchor tag
   if (href) {
-    return (
-      <a
-        href={href}
-        download={download}
-        target={target}
-        rel={rel}
-        className={`${buttonClasses} btn__href`}
-        onClick={onClick}
-        {...props}
-      >
-        {content}
-      </a>
-    );
+    // Check if it's an internal route (starts with /) or external link
+    const isInternalRoute = href.startsWith("/") && !href.startsWith("#");
+
+    if (isInternalRoute && !download && !target) {
+      // Use React Router Link for internal navigation
+      return (
+        <Link
+          to={href}
+          className={`${buttonClasses} btn__href`}
+          onClick={onClick}
+          {...props}
+        >
+          {content}
+        </Link>
+      );
+    } else {
+      return (
+        <a
+          href={href}
+          download={download}
+          target={target}
+          rel={rel}
+          className={`${buttonClasses} btn__href`}
+          onClick={onClick}
+          {...props}
+        >
+          {content}
+        </a>
+      );
+    }
   }
 
-  // Otherwise render as button
   return (
     <button
       type="button"

@@ -143,7 +143,7 @@ export default function About() {
                 <Button href="/contact" className="hire__me">
                   Hire Me
                 </Button>
-                <Button href="/projects" className="show__projects">
+                <Button href="#projects" className="show__projects">
                   See My Work
                 </Button>
               </div>
