@@ -1,7 +1,7 @@
 import { technologies } from "../../components/technologies/technologies";
 
 // import porfolio media project
-import porfolio from "../../assets/images/project-section/portfolio/porfolio.webp";
+import porfolio from "../../assets/images/project-section/porfolio/porfolio.webp";
 import porfolio400 from "../../assets/images/project-section/porfolio/porfolio_400.webp";
 import porfolio600 from "../../assets/images/project-section/porfolio/porfolio_600.webp";
 import porfolio800 from "../../assets/images/project-section/porfolio/porfolio_800.webp";
