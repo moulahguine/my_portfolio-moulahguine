@@ -1,6 +1,8 @@
 # Mohamed Oulahguine - Frontend Developer Portfolio
 
-This is my personal portfolio website where I showcase my projects, skills, and experience as a frontend developer. It’s built with React, SCSS, and Framer Motion to highlight both my technical abilities and design approach, while giving visitors a clear view of the kind of work I can create.
+This is my personal portfolio website where I showcase my projects, skills, and experience as a frontend developer. It's built with React, SCSS, and Framer Motion to highlight both my technical abilities and design approach, while giving visitors a clear view of the kind of work I can create.
+
+![Portfolio Preview](./src/assets/images/project-section/porfolio/porfolio.webp)
 
 ## Live Demo
 
