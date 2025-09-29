@@ -19,7 +19,7 @@ export default function Hero() {
   const heroHeight = useHeroHeight();
 
   const isTablet = useMediaQuery({ maxWidth: 1130 });
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 778 });
 
   const [isImageOpen, setIsImageOpen] = useState(false);
 
@@ -60,7 +60,7 @@ export default function Hero() {
   return (
     <>
       <motion.section
-        style={{ height: `${heroHeight}px` }}
+        style={{ height: !isMobile ? `${heroHeight}px` : "100vh" }}
         id="hero"
         className="hero"
         aria-label="Hero"

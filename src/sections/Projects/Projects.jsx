@@ -25,7 +25,19 @@ function Projects() {
       <main className="container">
         <div className="projects__grid">
           {projectsData.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 40, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.5,
+                ease: "easeOut",
+                delay: index * 0.08,
+              }}
+            >
+              <ProjectCard project={project} index={index} />
+            </motion.div>
           ))}
         </div>
       </main>

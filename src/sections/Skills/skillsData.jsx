@@ -35,10 +35,22 @@ export const skillsRow1 = [
     blog: "JavaScript opened the door to interactive web development. Starting with ES5 fundamentals, I progressed through ES6+ features like arrow functions, destructuring, async/await, and modules. I've built everything from simple DOM manipulations to complex applications with modern JavaScript patterns, always focusing on clean, readable code.",
   },
   {
+    id: 19,
+    name: "TypeScript",
+    icon: technologies.TypeScript.icon,
+    blog: "TypeScript adds static typing to JavaScript for safer, scalable code. I use it to improve maintainability and developer experience.",
+  },
+  {
     id: 5,
     name: "React",
     icon: technologies.React.icon,
     blog: "React changed everything about how I think about building user interfaces. The component-based architecture, virtual DOM, and unidirectional data flow have made complex applications manageable. I've built everything from simple components to full-scale applications, always focusing on performance optimization and clean code patterns.",
+  },
+  {
+    id: 18,
+    name: "NextJS",
+    icon: technologies.NextJS.icon,
+    blog: "Next.js brings SSR/SSG, file-based routing, API routes, and great DX. I use it for SEO-friendly, production-ready React apps.",
   },
   {
     id: 6,
@@ -46,28 +58,9 @@ export const skillsRow1 = [
     icon: technologies.TailwindCSS.icon,
     blog: "TailwindCSS revolutionized my styling workflow. The utility-first approach allows me to build custom designs rapidly without leaving HTML. I love how it promotes consistency, reduces CSS bloat, and enables rapid prototyping. The responsive prefixes and state variants make complex layouts surprisingly simple to implement.",
   },
-
-  {
-    id: 7,
-    name: "Redux",
-    icon: technologies.Redux.icon,
-    blog: "Redux taught me the power of predictable state management. Understanding actions, reducers, and the store pattern has helped me build scalable applications with complex state requirements. I've implemented Redux Toolkit for modern Redux development, making state management both powerful and developer-friendly.",
-  },
-  {
-    id: 8,
-    name: "Jest",
-    icon: technologies.Jest.icon,
-    blog: "Jest has become my go-to testing framework for JavaScript applications. I've learned to write comprehensive unit tests, integration tests, and snapshot tests. The powerful mocking capabilities, assertion library, and excellent React integration have made testing an integral part of my development workflow, ensuring code quality and preventing regressions.",
-  },
 ];
 
 export const skillsRow2 = [
-  {
-    id: 9,
-    name: "Vite",
-    icon: technologies.Vite.icon,
-    blog: "Vite has revolutionized my development experience with its lightning-fast build times and hot module replacement. The modern ES modules approach and excellent plugin ecosystem have made it my preferred build tool for React projects. The development server is incredibly fast, making the development cycle much more enjoyable.",
-  },
   {
     id: 10,
     name: "Framer",
@@ -87,6 +80,34 @@ export const skillsRow2 = [
     blog: "Material-UI provided me with a comprehensive design system and component library. I've learned to customize themes, create consistent interfaces, and leverage the extensive component ecosystem. The theming system allows me to maintain brand consistency while benefiting from Google's Material Design principles.",
   },
 
+  {
+    id: 17,
+    name: "React Router",
+    icon: technologies["React Router"].icon,
+    blog: "React Router enables intuitive client-side routing with nested routes and data APIs. I use it for clean, accessible navigation and route-based code splitting.",
+  },
+
+  {
+    id: 7,
+    name: "Redux",
+    icon: technologies.Redux.icon,
+    blog: "Redux taught me the power of predictable state management. Understanding actions, reducers, and the store pattern has helped me build scalable applications with complex state requirements. I've implemented Redux Toolkit for modern Redux development, making state management both powerful and developer-friendly.",
+  },
+  {
+    id: 8,
+    name: "Jest",
+    icon: technologies.Jest.icon,
+    blog: "Jest has become my go-to testing framework for JavaScript applications. I've learned to write comprehensive unit tests, integration tests, and snapshot tests. The powerful mocking capabilities, assertion library, and excellent React integration have made testing an integral part of my development workflow, ensuring code quality and preventing regressions.",
+  },
+];
+
+export const skillsRow3 = [
+  {
+    id: 9,
+    name: "Vite",
+    icon: technologies.Vite.icon,
+    blog: "Vite has revolutionized my development experience with its lightning-fast build times and hot module replacement. The modern ES modules approach and excellent plugin ecosystem have made it my preferred build tool for React projects. The development server is incredibly fast, making the development cycle much more enjoyable.",
+  },
   {
     id: 13,
     name: "Git",

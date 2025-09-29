@@ -15,6 +15,14 @@ import { SocialLinks } from "../../components/SocialLinks";
 import { useContactForm } from "./useContactForm";
 
 function Contact() {
+  const lineVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut", delay: i * 0.12 },
+    }),
+  };
   const {
     formData,
     errors,
@@ -53,14 +61,28 @@ function Contact() {
         <div className="contact__content">
           <div className="contact__info">
             {/* Location */}
-            <div className="contact__info-item">
+            <motion.div
+              className="contact__info-item"
+              variants={lineVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              custom={0}
+            >
               <div className="contact__info-content">
                 <Location />
               </div>
-            </div>
+            </motion.div>
 
             {/* Email */}
-            <div className="contact__info-item">
+            <motion.div
+              className="contact__info-item"
+              variants={lineVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              custom={1}
+            >
               <div className="contact__info-content">
                 <HoverCursor
                   content="click"
@@ -72,10 +94,17 @@ function Contact() {
                   <FaHandPointer />
                 </HoverCursor>
               </div>
-            </div>
+            </motion.div>
 
             {/* Phone */}
-            <div className="contact__info-item">
+            <motion.div
+              className="contact__info-item"
+              variants={lineVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              custom={2}
+            >
               <div className="contact__info-content">
                 <HoverCursor
                   content="copy"
@@ -89,16 +118,23 @@ function Contact() {
                   {!copyFeedback.phone && <FaRegCopy />}
                 </HoverCursor>
               </div>
-            </div>
+            </motion.div>
 
             {/* Social Media */}
-            <div className="contact__social">
+            <motion.div
+              className="contact__social"
+              variants={lineVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              custom={3}
+            >
               <span className="contact__social-label">I'm also active on:</span>
               <SocialLinks
                 variant="contact"
                 className="contact__social-links"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </main>

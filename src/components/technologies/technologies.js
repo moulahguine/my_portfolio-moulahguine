@@ -1,5 +1,12 @@
 // All technology icons and colors in one place
-import { FaHtml5, FaJs, FaReact, FaGithub, FaGitAlt } from "react-icons/fa";
+import {
+  FaHtml5,
+  FaJs,
+  FaReact,
+  FaGithub,
+  FaGitAlt,
+  FaTypo3,
+} from "react-icons/fa";
 import {
   SiSass,
   SiFramer,
@@ -10,6 +17,8 @@ import {
   SiReactquery,
   SiMui,
   SiReactrouter,
+  SiNextdotjs,
+  SiTypescript,
 } from "react-icons/si";
 
 import Cursor from "../../assets/images/skill-section/cursor/cursor-dark.webp";
@@ -52,8 +61,9 @@ export const technologies = {
   HTML: { icon: FaHtml5, color: "#E34F26" },
   CSS: { icon: cssIcon, color: "#66309a" },
   JavaScript: { icon: FaJs, color: "#F7DF1E" },
+  TypeScript: { icon: SiTypescript, color: "#007FFF" },
   React: { icon: FaReact, color: "#61DAFB" },
-  NextJS: { icon: FaReact, color: "#000000" },
+  NextJS: { icon: SiNextdotjs, color: "#000000" },
   Redux: { icon: SiRedux, color: "#764ABC" },
   Framer: { icon: SiFramer, color: "#0055FF" },
   "Framer Motion": { icon: SiFramer, color: "#0055FF" },
