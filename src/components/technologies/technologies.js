@@ -1,12 +1,5 @@
 // All technology icons and colors in one place
-import {
-  FaHtml5,
-  FaJs,
-  FaReact,
-  FaGithub,
-  FaGitAlt,
-  FaTypo3,
-} from "react-icons/fa";
+import { FaHtml5, FaJs, FaReact, FaGithub, FaGitAlt } from "react-icons/fa";
 import {
   SiSass,
   SiFramer,
