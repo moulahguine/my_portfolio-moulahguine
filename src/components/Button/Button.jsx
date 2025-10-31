@@ -1,5 +1,7 @@
+"use client";
+
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import "./Button.scss";
 
 function Button({
@@ -35,10 +37,10 @@ function Button({
     const isInternalRoute = href.startsWith("/") && !href.startsWith("#");
 
     if (isInternalRoute && !download && !target) {
-      // Use React Router Link for internal navigation
+      // Use Next.js Link for internal navigation
       return (
         <Link
-          to={href}
+          href={href}
           className={`${buttonClasses} btn__href`}
           onClick={onClick}
           {...props}

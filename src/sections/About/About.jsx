@@ -1,3 +1,5 @@
+"use client";
+
 import { FaClock, FaLaptopCode, FaUsers, FaCogs } from "react-icons/fa";
 import aboutImage from "../../assets/images/about-section/about-section1.webp";
 import aboutImage200 from "../../assets/images/about-section/about-section1_200.webp";
@@ -10,6 +12,7 @@ import InteractiveText from "../../components/InteractiveText/InteractiveText";
 import projectsData from "../Projects/projectData";
 import "./About.scss";
 import { useState, useMemo, useCallback, Suspense, lazy } from "react";
+import Image from "next/image";
 
 // Lazy load ImageModal
 const ImageModal = lazy(() => import("../../components/ImageModal/ImageModal"));
@@ -88,17 +91,23 @@ export default function About() {
               transition={{ duration: 0.7, ease: "easeOut" }}
               style={{ position: "relative" }}
             >
-              <img
+              {/* <Image
                 src={aboutImage}
                 srcSet={`${aboutImage200} 200w, ${aboutImage300} 300w, ${aboutImage400} 400w, ${aboutImage500} 500w`}
                 sizes="(max-width: 778px) 100vw, 350px"
                 alt="Mohamed Oulahguine - Frontend Developer About Section Professional"
-                loading="lazy"
-                decoding="async"
-                width="350"
-                height="350"
+                width={350}
+                height={350}
                 onContextMenu={(e) => e.preventDefault()}
-              />
+              /> */}
+
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/fjnSwBp0aWg"
+                title="YouTube video player"
+                allowfullscreen
+              ></iframe>
             </motion.div>
 
             <motion.div

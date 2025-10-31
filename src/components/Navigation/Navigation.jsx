@@ -1,5 +1,7 @@
+"use client";
+
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { usePathname, useRouter } from "next/navigation";
 import { navigationItems } from "./navigationData";
 import "./Navigation.scss";
 
@@ -9,11 +11,11 @@ export default function Navigation({
   isMenuOpen,
   onNavigate,
 }) {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
+  const router = useRouter();
 
   const handleNavigation = (item) => {
-    if (location.pathname === "/") {
+    if (pathname === "/") {
       // On home page - scroll to section
       if (item.scrollTo) {
         const element = document.getElementById(item.scrollTo);
@@ -27,7 +29,7 @@ export default function Navigation({
     } else {
       // On other pages - navigate to home page first, then scroll
       if (item.scrollTo) {
-        navigate("/");
+        router.push("/");
         // Wait for navigation to complete, then scroll
         setTimeout(() => {
           const element = document.getElementById(item.scrollTo);
@@ -36,7 +38,7 @@ export default function Navigation({
           }
         }, 100);
       } else {
-        navigate(item.path);
+        router.push(item.path);
       }
     }
   };
@@ -50,10 +52,10 @@ export default function Navigation({
         {navigationItems.map((item) => {
           let isActive = false;
 
-          if (location.pathname === "/") {
+          if (pathname === "/") {
             isActive = activeSection === item.id;
           } else {
-            isActive = location.pathname === item.path;
+            isActive = pathname === item.path;
           }
 
           return (

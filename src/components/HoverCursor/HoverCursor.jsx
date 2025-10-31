@@ -1,3 +1,5 @@
+"use client";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 import "./HoverCursor.scss";

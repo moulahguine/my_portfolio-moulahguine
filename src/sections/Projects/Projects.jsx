@@ -1,4 +1,7 @@
-import React, { useCallback } from "react";
+"use client";
+
+import React, { useCallback, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ExternalLinkIcon,
@@ -51,6 +54,11 @@ const ProjectCard = React.memo(function ProjectCard({ project, index }) {
     window.open(project.demoLink, "_blank", "noopener,noreferrer");
   }, [project.demoLink]);
 
+  const [isExpanded, setIsExpanded] = useState(false);
+  const words = (project.description || "").trim().split(" ");
+  const shortText = words.slice(0, 17).join(" ");
+  const hasMore = words.length > 17;
+
   return (
     <section
       className="project-card"
@@ -59,20 +67,17 @@ const ProjectCard = React.memo(function ProjectCard({ project, index }) {
       <main className="project-card__container">
         <div className="project-card__media-section">
           <div className="project-card__media-container">
-            <img
+            <Image
               className="project-card__media"
               src={project.media.image}
-              srcSet={project.media.srcSet}
-              sizes={project.media.sizes}
               alt={`${project.subtitle} - Frontend Development Project Screenshot`}
-              loading="lazy"
-              decoding="async"
+              sizes={project.media.sizes}
               onClick={handleImageClick}
               onContextMenu={(e) => e.preventDefault()}
               style={{ cursor: "pointer" }}
-              width="1200"
-              height="800"
-              fetchPriority={index < 2 ? "high" : "low"}
+              width={1200}
+              height={800}
+              priority={index < 2}
             />
           </div>
         </div>
@@ -82,7 +87,27 @@ const ProjectCard = React.memo(function ProjectCard({ project, index }) {
             <p className="project-card__title">{project.subtitle}</p>
           </header>
           <div className="project-card__content">
-            <p className="project-card__description">{project.description}</p>
+            <p className="project-card__description">
+              {isExpanded ? project.description : shortText}
+              {!isExpanded && hasMore ? "..." : ""}
+              {hasMore && (
+                <button
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    outline: "none",
+                    color: "#718096",
+                    cursor: "pointer",
+                  }}
+                  type="button"
+                  className="project-card__toggle"
+                  aria-expanded={isExpanded}
+                  onClick={() => setIsExpanded((v) => !v)}
+                >
+                  {isExpanded ? "Show Less" : "Show More"}
+                </button>
+              )}
+            </p>
 
             <div className="project-card__tech-stack">
               <div className="project-card__technologies">

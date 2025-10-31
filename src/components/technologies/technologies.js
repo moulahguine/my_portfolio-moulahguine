@@ -12,47 +12,50 @@ import {
   SiReactrouter,
   SiNextdotjs,
   SiTypescript,
+  SiCss3,
 } from "react-icons/si";
 
 import Cursor from "../../assets/images/skill-section/cursor/cursor-dark.webp";
 import VsCode from "../../assets/images/skill-section/vscode/vscode.webp";
 import css from "../../assets/images/skill-section/css/css.webp";
+import Image from "next/image";
 
 // Custom icon components for images
 const CursorIcon = () => (
-  <img
+  <Image
     src={Cursor}
     alt="Cursor AI"
-    loading="lazy"
-    decoding="async"
-    style={{ width: 40, aspectRatio: 1 / 1 }}
+    width={40}
+    height={40}
+    style={{ width: 40, height: 40 }}
   />
 );
 
 const VscodeIcon = () => (
-  <img
+  <Image
     src={VsCode}
     alt="vs code logo"
-    loading="lazy"
-    decoding="async"
-    style={{ width: 40, aspectRatio: 1 / 1 }}
+    width={40}
+    height={40}
+    style={{ width: 40, height: 40 }}
   />
 );
 
 const cssIcon = () => (
-  <img
+  <Image
     src={css}
     alt="css logo"
-    loading="lazy"
-    decoding="async"
-    style={{ width: 40, aspectRatio: 1 / 1 }}
+    width={40}
+    height={40}
+    style={{ width: 40, height: 40 }}
   />
 );
 
 // Technology definitions with icons and colors
 export const technologies = {
   HTML: { icon: FaHtml5, color: "#E34F26" },
-  CSS: { icon: cssIcon, color: "#66309a" },
+  CSS3: { icon: SiCss3, color: "#66309a" },
+  CSS4: { icon: cssIcon, color: "#66309a" },
   JavaScript: { icon: FaJs, color: "#F7DF1E" },
   TypeScript: { icon: SiTypescript, color: "#007FFF" },
   React: { icon: FaReact, color: "#61DAFB" },

@@ -23,6 +23,7 @@
       @include grid-center;
       grid-template-columns: 1fr 1fr;
       gap: $space-24;
+      align-items: stretch;
 
       @media (max-width: $breakpoint-md) {
         grid-template-columns: 1fr;
@@ -39,9 +40,8 @@
       background: $color-bg;
       border-radius: $radius-lg;
       transition: all 0.3s ease;
-
       box-shadow: 0 0 15px 5px var(--project-color);
-
+      flex: 1;
       .project-card__container {
         @include flex-column;
 

@@ -1,4 +1,7 @@
+"use client";
+
 import React, { useState, useRef } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import "./InteractiveText.scss";
 
@@ -101,13 +104,17 @@ const InteractiveText = ({ text, projectData, className = "" }) => {
               pointerEvents: "none",
             }}
           >
-            <div className="preview-content">
-              <img
+            <div
+              className="preview-content"
+              style={{ position: "relative", width: 250, height: 160 }}
+            >
+              <Image
                 src={projectData.media.image}
                 alt={projectData.subtitle}
-                className="preview-image"
-                loading="lazy"
-                decoding="async"
+                fill
+                sizes="250px"
+                style={{ objectFit: "cover", borderRadius: 8 }}
+                priority={false}
               />
             </div>
           </motion.div>

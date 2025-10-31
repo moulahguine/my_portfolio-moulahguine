@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import Hero from "../../sections/Hero/Hero";
@@ -15,11 +17,10 @@ const HomePage = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
     >
-      <Hero />
-      <About />
+      {/* <About />
       <Skills />
       <Projects />
-      <Contact />
+      <Contact /> */}
     </motion.main>
   );
 };

@@ -1,4 +1,7 @@
+"use client";
+
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import CloseButton from "../CloseButton/CloseButton";
 import { useScrollLock } from "../../hooks/useScrollLock";
 import "./ImageModal.scss";
@@ -28,14 +31,19 @@ const ImageModal = ({ isOpen, onClose, imageSrc, imageAlt }) => {
             style={{ position: "relative" }}
           >
             <CloseButton onClick={onClose} ariaLabel="Close image modal" />
-            <img
-              src={imageSrc}
-              alt={imageAlt}
+            <div
               className="image-modal__image"
-              loading="lazy"
-              decoding="async"
-              onContextMenu={(e) => e.preventDefault()}
-            />
+              style={{ position: "relative", width: "100%", height: "100%" }}
+            >
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                fill
+                sizes="(max-width: 778px) 100vw, 80vw"
+                priority={false}
+                onContextMenu={(e) => e.preventDefault()}
+              />
+            </div>
           </motion.div>
         </motion.div>
       )}
