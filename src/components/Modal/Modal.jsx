@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useCallback } from "react";
 import CloseButton from "../CloseButton/CloseButton";
 import { useScrollLock } from "../../hooks/useScrollLock";

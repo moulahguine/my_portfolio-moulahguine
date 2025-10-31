@@ -6,23 +6,12 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <!-- HomePage sections are part of home -->
   <url>
-    <loc>https://mohamedoulahguine.com/about</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://mohamedoulahguine.com/skills</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://mohamedoulahguine.com/projects</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://mohamedoulahguine.com/homePage</loc>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mohamedoulahguine.com/contact</loc>

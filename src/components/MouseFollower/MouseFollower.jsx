@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useMediaQuery } from "react-responsive";
 import "./MouseFollower.scss";

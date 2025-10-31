@@ -1,3 +1,5 @@
+"use client";
+
 // import { useState } from "react";
 import { motion } from "framer-motion";
 import { skillsRow1, skillsRow2, skillsRow3, skillColors } from "./skillsData";
@@ -41,7 +43,7 @@ function Skills() {
                 key={skill.id}
                 className="skill-card"
                 style={{
-                  "--skill-color": skillColors[skill.name] || "#6C757D",
+                  "--skill-color": skillColors[skill.name] || "#66309a",
                 }}
               >
                 <div className="skill-card__icon">

@@ -34,16 +34,18 @@
 
       // Left Column - Profile Image
       .about__image {
+        border-radius: 25px;
+        background-color: red;
         cursor: pointer;
         grid-column: span 1;
-        width: 500px;
-        aspect-ratio: 1 / 1;
-        border-radius: 55% 44% 65% 37% / 52% 28% 73% 49%;
-        border: 3px solid $color-primary;
+        width: 600px;
+        // aspect-ratio: 1 / 1;
+        // border-radius: 55% 44% 65% 37% / 52% 28% 73% 49%;
+        // border: 3px solid $color-primary;
         transition: all 0.3s ease;
         position: relative;
         @include sweep-hover($color-surface);
-        animation: morphing-border 8s ease-in-out infinite;
+        // animation: morphing-border 8s ease-in-out infinite;
         overflow: hidden;
 
         @media (max-width: $breakpoint-lg) {
@@ -61,12 +63,19 @@
           position: absolute;
         }
 
-        &:hover {
-          animation-play-state: paused;
-          border-radius: 73% 27% 78% 22% / 32% 65% 35% 68%;
-          box-shadow: 0 0 20px 5px rgba(45, 55, 72, 0.15);
-          scale: 1.05;
+        iframe {
+          border: none;
+          outline: none;
+          width: 600px;
+          height: 400px;
         }
+
+        // &:hover {
+        //   animation-play-state: paused;
+        //   border-radius: 73% 27% 78% 22% / 32% 65% 35% 68%;
+        //   box-shadow: 0 0 20px 5px rgba(45, 55, 72, 0.15);
+        //   scale: 1.05;
+        // }
       }
 
       // Right Column

@@ -1,0 +1,26 @@
+/* Global styles for footer positioning */
+@use "../assets/styles/variables" as *;
+@use "../assets/styles/mixins" as *;
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #aed2c9;
+  background: linear-gradient(
+    0deg,
+    rgba(174, 210, 201, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}

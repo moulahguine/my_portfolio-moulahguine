@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import { useScrollManager } from "../../hooks/useScrollManager";

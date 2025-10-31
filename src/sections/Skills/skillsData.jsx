@@ -19,7 +19,7 @@ export const skillsRow1 = [
   {
     id: 2,
     name: "CSS",
-    icon: technologies.CSS.icon,
+    icon: technologies.CSS4.icon,
     blog: "CSS transformed how I approach web design. From basic styling to advanced techniques like Flexbox, Grid, and CSS animations, I've mastered the art of creating beautiful, responsive interfaces. I particularly enjoy working with CSS custom properties (variables) and modern layout techniques that make designs both flexible and maintainable.",
   },
   {
