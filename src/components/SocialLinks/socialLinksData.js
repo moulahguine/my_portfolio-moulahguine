@@ -5,6 +5,7 @@ import {
   FaTelegram,
   FaGithub,
 } from "react-icons/fa";
+import { SiUpwork } from "react-icons/si";
 
 // Social media links
 const socialLinks = [
@@ -19,6 +20,12 @@ const socialLinks = [
     label: "GitHub",
     href: "https://github.com/moulahguine",
     color: "#333",
+  },
+  {
+    icon: SiUpwork,
+    label: "upwork",
+    href: "https://upwork.com/freelancers/moulahguine",
+    color: "#4fab4a",
   },
   {
     icon: FaInstagram,

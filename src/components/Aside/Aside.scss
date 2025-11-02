@@ -1,0 +1,122 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+.aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 100dvh;
+  border-radius: 0 $radius-xl $radius-xl 0;
+  background-color: rgb($color-gray-300, 0.5);
+  backdrop-filter: blur(10px);
+  .container {
+    width: inherit;
+    height: inherit;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50% 50%;
+    padding: 0.7rem;
+
+    .aside__profile {
+      width: 100%;
+      position: relative;
+
+      .aside__media {
+        border-radius: $radius-xl;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        clip-path: path(
+          "M 0,150 A 20,20 0,0,1 20,130 L 40,130 A 20,20 0,0,0 60,110 L 60,20 A 20,20 0,0,1 80,0 L 380,0 L 380,450 L 0,450 Z"
+        );
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: inherit;
+          height: 45%;
+          backdrop-filter: blur(50px);
+          transform: scale(1.2);
+          z-index: 1;
+          mask-image: linear-gradient(to top, #eee 50%, transparent);
+        }
+
+        .aside__image {
+          width: inherit;
+          height: inherit;
+          object-fit: cover;
+          scale: 1.2;
+        }
+      }
+      .aside__info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        .aside__title {
+          color: $color-gray-900;
+          margin: 0 0 0 $space-16;
+          font-size: $font-size-28;
+          font-family:
+            "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+          font-weight: $fw-regular;
+          @include flex-center;
+          justify-content: start;
+          gap: $space-4;
+        }
+
+        .aside__subtitle {
+          color: $color-gray-700;
+          margin: 0 0 $space-16 $space-16;
+          font-size: $font-size-14;
+          word-spacing: -1px;
+          width: 80%;
+        }
+      }
+      .aside__social {
+        position: absolute;
+        top: 5px;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        width: 15%;
+        a {
+          @include flex-center;
+          width: 35px;
+          aspect-ratio: 1/1;
+          background-color: $color-gray-700;
+          color: #eee;
+          font-size: 19px;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+          opacity: 0.9;
+          &:hover {
+            background-color: var(--social-color);
+            scale: 1.1;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .aside__details {
+      padding: $space-8;
+      .aside__content {
+        height: 100%;
+        .aside__description {
+          color: $color-gray-700;
+          font-weight: $fw-medium;
+          font-size: $font-size-16;
+        }
+      }
+    }
+  }
+}

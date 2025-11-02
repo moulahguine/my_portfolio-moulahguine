@@ -15,10 +15,7 @@ html {
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
   line-height: $line-height-normal;
-  color: $color-text;
-  @include soft-gradient;
   min-height: 100vh;
 }
 

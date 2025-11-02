@@ -15,15 +15,16 @@
 //   return heroHeight;
 // };
 
-import { useState, useEffect } from "react";
+// =============================
+// import { useState, useEffect } from "react";
 
-export const useHeroHeight = () => {
-  const [heroHeight, setHeroHeight] = useState(null);
+// export const useHeroHeight = () => {
+//   const [heroHeight, setHeroHeight] = useState(null);
 
-  useEffect(() => {
-    // Capture height once on mount
-    setHeroHeight(window.innerHeight);
-  }, []);
+//   useEffect(() => {
+//     // Capture height once on mount
+//     setHeroHeight(window.innerHeight);
+//   }, []);
 
-  return heroHeight;
-};
+//   return heroHeight;
+// };

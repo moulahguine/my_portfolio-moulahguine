@@ -51,7 +51,7 @@
     @include flex-center;
     gap: $space-8;
     color: $color-primary-500;
-    font-size: clamp($font-size-12, 1vw, $font-size-16);
+    font-size: clamp(10px, 1vw, $font-size-12);
     @media (max-width: $breakpoint-md) {
       font-size: clamp(13px, 1vw, $font-size-14);
       gap: 2px;
