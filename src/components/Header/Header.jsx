@@ -5,7 +5,6 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
-import { SocialLinks } from "../SocialLinks";
 import { Menu } from "../Menu";
 import { useScrollLock } from "../../hooks/useScrollLock";
 import { useScrollManager } from "../../hooks/useScrollManager";
@@ -115,15 +114,6 @@ export default function Header() {
             isScrolled={isScrolled}
             isMenuOpen={false}
             onNavigate={handleNavigateWithMenuClose}
-          />
-        )}
-
-        {/* Desktop Social Links - Only show on About, Skills, Projects when menu is closed */}
-        {!isMenuOpen && shouldShowSocialLinks && (
-          <SocialLinks
-            variant="desktop"
-            filter={["github", "linkedin"]}
-            className="header__social"
           />
         )}
 

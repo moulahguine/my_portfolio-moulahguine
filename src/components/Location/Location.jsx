@@ -11,6 +11,7 @@ import HoverCursor from "../HoverCursor/HoverCursor";
 import { useScrollLock } from "../../hooks/useScrollLock";
 
 import "./Location.scss";
+import { GrLocationPin } from "react-icons/gr";
 
 // Lazy load the heavy map component
 const InteractiveMap = lazy(() => import("./InteractiveMap"));
@@ -25,6 +26,20 @@ export default function Location(style) {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Istanbul time that updates every minute
+  const [istanbulNow, setIstanbulNow] = useState(new Date());
+  useEffect(() => {
+    const id = setInterval(() => setIstanbulNow(new Date()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const istanbulTimeText = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Istanbul",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  }).format(istanbulNow);
 
   const openMap = () => {
     setIsMapOpen(true);
@@ -51,23 +66,11 @@ export default function Location(style) {
         ariaLabel="Click to view location journey on map"
         style={{ ...style }}
       >
-        <MdOutlineLocationOn className="location__icon" />
         <p>
-          Living in Istanbul, Türkiye{" "}
-          <ReactCountryFlag
-            svg
-            countryCode="tr"
-            title="Turkey flag"
-            aria-label="Turkey flag"
-          />
-          (originally from Morocco{" "}
-          <ReactCountryFlag
-            svg
-            countryCode="ma"
-            title="Morocco flag"
-            aria-label="Morocco flag"
-          />
-          )
+          Istanbul, Türkiye{" "}
+          <b className="location__time" aria-label="Current time in Istanbul">
+            | {istanbulTimeText}
+          </b>
         </p>
       </HoverCursor>
 

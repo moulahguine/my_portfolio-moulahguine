@@ -115,7 +115,7 @@
 
 // Container
 @mixin container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 $space-32;
   @media (max-width: $breakpoint-md) {

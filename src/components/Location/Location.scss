@@ -2,20 +2,11 @@
 @use "../../assets/styles/mixins" as *;
 
 .location {
-  @include flex-center;
-  gap: $space-8;
-  @include fade-in-up(0.9s);
   transition: all 0.3s ease-in-out;
   width: fit-content;
-  padding: $space-8 0;
-  border-radius: $radius-lg;
   position: relative;
   border: 1px solid transparent;
   cursor: none;
-
-  @media (max-width: $breakpoint-sm) {
-    gap: 3px;
-  }
 
   // underline effect
   &::after {
@@ -33,11 +24,6 @@
   &:hover {
     transform: translateY(-2px);
 
-    .location__icon {
-      color: $color-primary;
-      transform: scale(1.1);
-    }
-
     p {
       color: $color-primary;
     }
@@ -48,26 +34,13 @@
   }
 
   p {
-    @include flex-center;
-    gap: $space-8;
-    color: $color-primary-500;
-    font-size: clamp(10px, 1vw, $font-size-12);
-    @media (max-width: $breakpoint-md) {
-      font-size: clamp(13px, 1vw, $font-size-14);
-      gap: 2px;
-    }
-    @media (max-width: $breakpoint-sm) {
-      font-size: 11px;
-    }
-    margin: 0;
-    word-spacing: -1px;
-  }
+    color: $color-gray-500;
+    font-size: $font-size-14;
+    font-family: Georgia, "Times New Roman", Times, serif;
 
-  .location__icon {
-    color: $color-text-muted;
-    font-size: $font-size-18;
     @media (max-width: $breakpoint-md) {
-      font-size: inherit;
+      font-size: 9px;
+      color: rgb($color-gray-500, 0.6);
     }
   }
 }

@@ -106,7 +106,7 @@ export default function About() {
                 height="315"
                 src="https://www.youtube.com/embed/fjnSwBp0aWg"
                 title="YouTube video player"
-                allowfullscreen
+                allowFullScreen
               ></iframe>
             </motion.div>
 

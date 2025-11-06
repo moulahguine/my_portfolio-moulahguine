@@ -1,355 +1,258 @@
 @use "../../assets/styles/variables" as *;
 @use "../../assets/styles/mixins" as *;
-
+// HERO SECTION - START
 .hero {
-  width: 400px;
+  @include flex-center;
+  width: 100%;
   height: 100dvh;
-  position: fixed;
-  top: 0;
+  background-color: $color-white;
 
-  // @media (max-width: $breakpoint-md) {
-  //   height: 100dvh;
-  // }
-
+  // HERO CONTAINER - START (centers content, sets height)
   .container {
-    display: flex;
-    flex-direction: column;
+    @include container;
     position: relative;
-    z-index: 10;
-    width: inherit;
-    height: inherit;
-    background-color: #eee;
-    border-radius: 0 50px 50px 0;
+    height: 700px;
+    @media (max-width: $breakpoint-md) {
+      height: 88dvh;
+    }
 
-    // ===================================================
+    // HERO INFO (desktop) - START
+    .hero__info {
+      padding: $space-8;
+      width: fit-content;
+      position: absolute;
+      left: 52%;
+      z-index: 25;
+      @include flex-column;
 
-    // @media (max-width: $breakpoint-lg) {
-    //   grid-template-columns: 1fr 1fr;
-    //   gap: 0;
-    // }
-
-    // @media (max-width: $breakpoint-md) {
-    //   position: relative;
-    //   overflow-x: hidden;
-    //   width: 100%;
-    //   height: auto;
-    //   min-height: 100dvh;
-    //   padding: 0 !important;
-    //   grid-template-columns: 1fr;
-    //   justify-content: center;
-    // }
-
-    // ===================================================
-
-    // hero content
-    .hero__content {
-      // @media (max-width: $breakpoint-md) {
-      //   z-index: 1555;
-      //   position: absolute;
-      //   left: 50%;
-      //   bottom: 10px;
-      //   width: 90%;
-      //   max-width: 500px;
-      //   text-align: center;
-      //   word-spacing: -1px;
-      //   transform: translateX(-50%);
-      //   background-color: rgb(white, 0.6);
-      //   backdrop-filter: blur(20px);
-      //   padding: $space-24 $space-12 $space-12;
-      //   border-radius: $space-24;
-      //   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-      //   @include flex-column;
-      //   align-items: center;
-      //   scale: 0.9;
-      //   cursor: grab;
-      // }
-
-      // title
       .hero__title {
-        font-size: clamp($font-size-24, 4vw, $font-size-40);
+        color: $color-gray-700-hover;
+        font-size: clamp(1.9rem, 1.2vw + 1rem, 3rem);
         font-weight: $fw-bold;
-        line-height: $line-height-tight;
-        margin-bottom: $space-16;
-        color: $color-text;
-        text-shadow: 0 2px 4px $color-shadow;
+        @include flex-center;
+        justify-content: start;
+        gap: $space-4;
+      }
 
-        .hiEmoji {
-          all: unset;
-          display: inline-block;
+      .hero__subtitle {
+        color: $color-gray-700;
+        font-size: clamp(1rem, 1.2vw + 1rem, 2rem);
+        font-weight: $fw-regular;
+        text-align: center;
+        display: flex;
+        align-items: center;
+      }
 
-          animation: sayHi 2s infinite alternate-reverse ease;
-        }
+      @media (max-width: $breakpoint-md) {
+        display: none;
+      }
+    }
+    // HERO INFO (desktop) - END
 
-        @keyframes sayHi {
-          50% {
-            rotate: 10deg;
-            scale: 1;
-          }
+    // HERO CONTENT GRID - START (2-column layout on desktop)
+    .content {
+      width: inherit;
+      height: inherit;
+      background-color: $color-gray-100;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      align-items: center;
+      padding: clamp(1rem, 2vw, 3rem);
+      border-radius: $radius-xl;
+      clip-path: url(#heroContainerShape);
 
-          100% {
-            rotate: -10deg;
-            scale: 1.1;
-          }
-        }
+      @media (max-width: $breakpoint-md) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        clip-path: url(#customShape);
+      }
 
-        span {
-          @include text-gradient;
-        }
-
-        small {
-          font-size: clamp($font-size-14, 2vw, $font-size-18);
-          color: $color-text-light;
-        }
+      // HERO PROFILE - START (left column media container)
+      .hero__profile {
+        width: 100%;
+        height: 100%;
+        overflow-y: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
 
         @media (max-width: $breakpoint-md) {
-          font-size: clamp($font-size-28, 4vw, $font-size-32);
-          margin-bottom: $space-12;
-        }
-      }
-
-      // //subtitle
-      // .hero__subtitle {
-      //   font-size: clamp($font-size-18, 3vw, $font-size-32);
-      //   font-weight: $fw-semibold;
-      //   line-height: $line-height-tight;
-      //   margin-bottom: $space-24;
-      //   color: $color-text-muted;
-      //   text-shadow: 0 1px 2px $color-shadow-light;
-      //   @media (max-width: $breakpoint-md) {
-      //     margin-bottom: $space-12;
-      //   }
-      // }
-
-      // // description
-      // .hero__description {
-      //   font-size: clamp($font-size-12, 2vw, $font-size-18);
-      //   line-height: $line-height-relaxed;
-      //   margin-bottom: $space-32;
-      //   color: $color-text-light;
-      //   max-width: 471px;
-
-      //   @media (max-width: $breakpoint-md) {
-      //     font-size: clamp($font-size-14, 3vw, $font-size-18) !important;
-      //     margin-bottom: $space-12;
-      //   }
-      // }
-
-      // // avilability badge
-      // .availability-badge {
-      //   color: $color-text-muted;
-      //   margin-bottom: $space-40;
-      //   font-size: clamp($font-size-12, 1.5vw, $font-size-14);
-      //   @include flex-center;
-      //   justify-content: start;
-      //   gap: $space-8;
-      //   padding-left: $space-4;
-      //   padding-top: $space-8;
-
-      //   svg {
-      //     color: $color-success;
-      //     font-size: 8px;
-      //     opacity: 0.5;
-      //     animation: opacit 0.6s infinite alternate-reverse ease-in-out;
-      //   }
-      //   @keyframes opacit {
-      //     to {
-      //       opacity: 1;
-      //     }
-      //   }
-
-      //   @media (max-width: $breakpoint-md) {
-      //     margin-bottom: $space-8;
-      //     padding-top: 0;
-      //   }
-      // }
-
-      // @media (max-width: $breakpoint-lg) {
-      //   .hero__resume {
-      //     display: flex;
-      //     width: 100%;
-      //     gap: $space-16;
-      //   }
-      // }
-
-      // @media (max-width: $breakpoint-md) {
-      //   .hero__resume {
-      //     @include flex-center;
-      //     flex-direction: column-reverse;
-      //     gap: $space-8;
-      //   }
-      // }
-    }
-
-    .Aside__bar {
-      // hero media
-      .hero__media {
-        margin: 10px;
-        width: inherit - 20px;
-        height: 450px;
-        overflow: hidden !important;
-        transition: all 0.3s ease;
-        position: relative;
-        clip-path: path(
-          "M 0,80 A 30,30 0,0,1 20,60 L 160,60 A 30,30 0,0,0 180,40 L 180,20 A 30,30 0,0,1 200,0 L 400,0 L 400,450 L 0,450  Z"
-        );
-        border-radius: 50px;
-
-        &::after {
-          content: "";
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          border-radius: 50px !important;
-          height: 50%; /* adjust depth */
-          backdrop-filter: blur(7px); /* the real blur */
-          transform: scale(1.2); /* avoid cut edges */
-          z-index: 1;
-          overflow: hidden;
-
-          mask-image: linear-gradient(to top, #eee 50%, transparent);
-          -webkit-mask-image: linear-gradient(to top, #eee 50%, transparent);
+          overflow: visible;
         }
 
-        // @include sweep-hover($color-surface);
-
-        // @media (max-width: $breakpoint-lg) {
-        //   width: clamp(18.75rem, 5.357rem + 35.714vw, 37.5rem);
-        // }
-
-        .hero__image {
-          // border-radius: 50px;
-          width: 100%;
+        // HERO MEDIA - START (image wrapper + clipping)
+        .hero__media {
+          width: inherit;
           height: inherit;
-          object-fit: cover;
-          position: absolute;
+          position: relative;
+          overflow: hidden;
+          border-radius: $radius-xl;
+          clip-path: url(#heroImageShape);
+
+          @media (max-width: $breakpoint-md) {
+            --img_size: clamp(2rem, 6.25rem, 5.5rem);
+            border-radius: 50%;
+            width: var(--img_size);
+            height: var(--img_size);
+            clip-path: none;
+          }
+          .hero__image {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+            object-position: top;
+            scale: 1.6;
+          }
         }
+        // HERO MEDIA - END
 
-        // &:hover {
-        //   animation-play-state: paused;
-        //   border-radius: 73% 27% 78% 22% / 32% 65% 35% 68%;
-        //   box-shadow: 0 0 20px 5px rgba(45, 55, 72, 0.15);
-        //   scale: 1.05;
-        // }
+        // HERO INFO (mobile) - START
+        .hero__info-mobile {
+          display: none;
+          @media (max-width: $breakpoint-md) {
+            display: block;
+            padding: $space-8;
 
-        // @media (max-width: $breakpoint-md) {
-        //   position: relative;
-        //   top: -100px;
-        //   left: 0;
-        //   width: 100vw;
-        //   height: 100dvh;
-        //   border-radius: 0;
-        //   border: none;
-        //   z-index: 500;
-        //   animation: none;
-        //   @include sweep-hover($color-surface, 0s, none);
+            .hero__title-mobile {
+              color: $color-gray-700;
+              font-size: clamp(1rem, 1.5vw + 0.66rem, 2rem);
+              font-weight: $fw-regular;
+              @include flex-center;
+              justify-content: start;
+              gap: $space-4;
+              svg {
+                width: 15px;
+              }
+            }
+            .hero__subtitle-mobile {
+              max-width: 14rem;
+              font-size: clamp(0.65rem, 1vw + 0.35rem, 0.875rem);
+              word-spacing: -1px;
+              color: $color-gray-500;
+            }
+          }
+        }
+        // HERO INFO (mobile) - END
 
-        //   &::after {
-        //     content: "";
-        //     position: absolute;
-        //     bottom: 0;
-        //     left: 0;
-        //     width: 100%;
-        //     height: 50%;
-        //     z-index: 50;
-        //     background: linear-gradient(to bottom, transparent, $color-bg);
-        //     pointer-events: none;
-        //   }
-
-        //   &:hover {
-        //     animation-play-state: paused;
-        //     border-radius: 0;
-        //     box-shadow: none;
-        //     scale: 1;
-        //   }
-        //   opacity: 1 !important;
-        //   transform: none !important;
-        //   transition: none !important;
-        // }
-
-        // // Keyframes for hero image border-radius animation
-        // @keyframes morphing-border {
-        //   0%,
-        //   100% {
-        //     border-radius: 55% 44% 65% 37% / 52% 28% 73% 49%;
-        //   }
-        //   50% {
-        //     border-radius: 41% 59% 51% 49% / 47% 45% 55% 53%;
-        //   }
-        // }
+        // styles for social links moved to SocialLinksHero/SocialLinksHero.scss
       }
+      // HERO PROFILE - END
 
-      .info__me {
-        background-color: red;
+      // HERO DETAILS - START (right column textual content)
+      .hero__details {
+        height: 100%;
+        padding: $space-8;
+        position: relative;
+
+        // HERO CONTENT INNER - START
+        .hero__content {
+          @include flex-center;
+          flex-direction: column;
+          height: inherit;
+          position: relative;
+
+          // HERO DESCRIPTION - START
+          .hero__description {
+            color: $color-gray-700-hover;
+
+            font-size: clamp(1.5rem, 1vw, 3rem);
+            line-height: 1.7;
+            word-spacing: -1.5px;
+            margin-left: $space-16;
+
+            @media (max-width: $breakpoint-md) {
+              text-align: center;
+              font-size: clamp(1.25rem, 1.5vw + 0.8rem, 1.875rem);
+            }
+            svg {
+              color: $color-gray-600;
+              width: 35px;
+              font-size: 15px;
+              @media (max-width: $breakpoint-md) {
+                width: $font-size-24;
+              }
+            }
+            svg:last-of-type {
+              rotate: 180deg;
+            }
+          }
+          // HERO DESCRIPTION - END
+
+          // HERO RESUME BUTTON - START
+          .hero__resume {
+            --widthBTN: 200px;
+            --heightBTN: 80px;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            @include flex-between;
+            gap: $space-4;
+            width: var(--widthBTN);
+            height: var(--heightBTN);
+            background-color: $color-gray-900;
+            color: $color-white;
+            padding: $space-4 $space-4 $space-4 $space-24;
+            border-radius: $radius-2xl;
+            background-clip: padding-box;
+            overflow: hidden;
+            font-size: $font-size-24;
+            transition: all 0.6s ease-in;
+
+            @media (max-width: $breakpoint-md) {
+              width: 130px;
+              height: 50px;
+              font-size: $font-size-16;
+              bottom: -10px;
+              right: -10px;
+            }
+
+            .label__resume {
+              position: relative;
+              z-index: 2;
+            }
+            .download__icon {
+              --size: 150px;
+              @include flex-center;
+              background-color: $color-white;
+              width: 70px;
+              aspect-ratio: 1/1;
+              font-size: $font-size-24;
+              border-radius: 50%;
+              color: $color-black;
+              transition: all 0.5s ease-in-out;
+              svg {
+                transition: inherit;
+              }
+            }
+
+            &:hover {
+              color: $color-gray-900;
+              border: 1px solid $color-gray-900-border;
+              .download__icon {
+                color: $color-black;
+                width: var(--widthBTN);
+                height: calc(var(--heightBTN) + 40px);
+                position: absolute;
+                right: 0;
+                z-index: 1;
+
+                svg {
+                  margin-left: auto;
+                  margin-right: $space-32;
+                  scale: 1.5;
+                }
+              }
+            }
+          }
+          // HERO RESUME BUTTON - END
+        }
+        // HERO CONTENT INNER - END
       }
+      // HERO DETAILS - END
     }
-
-    // hero social
-    // .hero__social {
-    //   display: none;
-    //   @include slide-in-right(0.5s);
-    //   @include flex-column;
-    //   position: relative;
-    //   z-index: 20;
-    //   gap: $space-16;
-
-    //   @media (max-width: $breakpoint-lg) {
-    //     order: 3;
-    //     flex-direction: row;
-    //   }
-
-    //   @media (max-width: $breakpoint-md) {
-    //     gap: 4px;
-    //   }
-
-    //   .social-link {
-    //     @include flex-center;
-    //     @include glass-effect-light;
-    //     @include card-shadow;
-    //     width: 50px;
-    //     aspect-ratio: 1 / 1;
-    //     border-radius: 50%;
-    //     cursor: pointer;
-    //     position: relative;
-    //     overflow: hidden;
-
-    //     @media (max-width: $breakpoint-lg) {
-    //       flex-direction: row;
-    //       width: clamp(40px, 3vw, 50px);
-    //       height: clamp(40px, 3dvh, 50px);
-    //     }
-
-    //     @media (max-width: $breakpoint-md) {
-    //       background-color: transparent;
-    //       box-shadow: none;
-    //       border: none;
-    //       flex-direction: row;
-    //       width: 30px;
-    //       height: 30px;
-    //       svg {
-    //         font-size: $font-size-16 !important;
-    //       }
-    //     }
-
-    //     @include sweep-hover($color-primary-500);
-
-    //     svg {
-    //       color: $color-text;
-    //       font-size: clamp($font-size-18, 2vw, $space-24);
-    //     }
-
-    //     &.github-link:hover svg {
-    //       color: $color-text;
-    //     }
-
-    //     &.linkedin-link:hover svg {
-    //       color: #0077b5;
-    //     }
-
-    //     &.codepen-link:hover svg {
-    //       color: #000;
-    //     }
-    //   }
-    // }
+    // HERO CONTENT GRID - END
   }
+  // HERO CONTAINER - END
 }
+// HERO SECTION - END

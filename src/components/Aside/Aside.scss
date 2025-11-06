@@ -2,11 +2,11 @@
 @use "../../assets/styles/mixins" as *;
 
 .aside {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 400px;
-  height: 100dvh;
+  height: 900px;
   border-radius: 0 $radius-xl $radius-xl 0;
   background-color: rgb($color-gray-300, 0.5);
   backdrop-filter: blur(10px);
@@ -16,20 +16,28 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 50% 50%;
-    padding: 0.7rem;
+    padding: $space-12;
 
     .aside__profile {
       width: 100%;
       position: relative;
 
       .aside__media {
-        border-radius: $radius-xl;
-        overflow: hidden;
+        position: relative;
         width: 100%;
         height: 100%;
-        position: relative;
-        clip-path: path(
-          "M 0,150 A 20,20 0,0,1 20,130 L 40,130 A 20,20 0,0,0 60,110 L 60,20 A 20,20 0,0,1 80,0 L 380,0 L 380,450 L 0,450 Z"
+        overflow: hidden;
+        border-radius: $radius-xl;
+        clip-path: polygon(
+          0px 140px,
+          10px 130px,
+          50px 130px,
+          60px 120px,
+          60px 10px,
+          70px 0,
+          100% 0,
+          100% 100%,
+          0 100%
         );
 
         &::after {
@@ -51,15 +59,43 @@
           object-fit: cover;
           scale: 1.2;
         }
+
+        .curve {
+          position: absolute;
+          top: 0px;
+          left: 59px;
+          z-index: 15;
+          width: 20px;
+          aspect-ratio: 1/1;
+          background-color: rgb($color-gray-300, 0.5);
+          backdrop-filter: blur(10px);
+          clip-path: path("M 0 0 L 20 0  A 20,20 0,0,0 0 20 Z");
+        }
+
+        .curve:nth-child(2) {
+          top: 119px;
+          left: 49px;
+          width: 11px;
+          clip-path: path("M 0 0 L 10 0  A 10,10 0,0,1 0 10 Z");
+        }
+
+        .curve:last-of-type {
+          top: 129px;
+          left: 0px;
+          clip-path: path("M 0 0 L 20 0  A 20,20 0,0,0 0 20 Z");
+        }
       }
       .aside__info {
+        width: 100%;
         position: absolute;
-        bottom: 0;
+        bottom: $space-16;
         left: 0;
         z-index: 2;
+        @include flex-column;
+        align-items: center;
+
         .aside__title {
           color: $color-gray-900;
-          margin: 0 0 0 $space-16;
           font-size: $font-size-28;
           font-family:
             "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -72,10 +108,11 @@
 
         .aside__subtitle {
           color: $color-gray-700;
-          margin: 0 0 $space-16 $space-16;
-          font-size: $font-size-14;
-          word-spacing: -1px;
-          width: 80%;
+          font-size: $font-size-16;
+          font-weight: $fw-semibold;
+          text-align: center;
+          display: flex;
+          align-items: center;
         }
       }
       .aside__social {
@@ -111,10 +148,119 @@
       padding: $space-8;
       .aside__content {
         height: 100%;
+        position: relative;
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        .aside__statis {
+          display: flex;
+          justify-content: space-evenly;
+          gap: 15px;
+          padding: $space-16 $space-24;
+          color: $color-white;
+          .aside__statisItem {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+        }
         .aside__description {
-          color: $color-gray-700;
-          font-weight: $fw-medium;
-          font-size: $font-size-16;
+          color: $color-gray-700-hover;
+          font-size: $font-size-14;
+          line-height: 1.7;
+          word-spacing: -1.5px;
+          svg {
+            color: $color-gray-600;
+            padding-left: 5px;
+            width: 25px;
+          }
+        }
+        .asdie__myStack {
+          margin-top: $space-16;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px;
+          .asdie__myStackItem,
+          .aside__actions {
+            text-transform: capitalize;
+            background-color: $color-gray-200;
+            color: $color-gray-500;
+            padding: $space-8 $space-12;
+            font-size: $font-size-12;
+            border-radius: $radius-lg;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.3s ease-in-out;
+            cursor: default;
+            svg {
+              font-size: 14px;
+              color: $color-gray-600;
+            }
+            &:hover {
+              background-color: var(--skill-color);
+              color: white;
+              svg {
+                color: inherit;
+              }
+            }
+          }
+
+          .aside__actions:hover {
+            background-color: $color-gray-500;
+            scale: 1.05;
+          }
+        }
+        .aside__resume {
+          @include flex-between;
+          gap: 5px;
+          width: 150px;
+          height: 50px;
+          padding: $space-4 $space-4 $space-4 $space-24;
+          // border-radius: $radius-2xl;
+          border-radius: 25px;
+          background-clip: padding-box;
+          background-color: $color-gray-900;
+          color: $color-white;
+          position: relative;
+          align-self: flex-end;
+          justify-self: flex-end;
+          overflow: hidden;
+          font-size: 18px;
+          .label__resume {
+            position: relative;
+            z-index: 2;
+          }
+          .download__icon {
+            --size: 150px;
+            @include flex-center;
+            background-color: $color-white;
+            width: 40px;
+            height: 40px;
+            font-size: 15px;
+            border-radius: 50%;
+            color: $color-black;
+            transition: all 0.5s ease-in-out;
+          }
+
+          transition: all 0.6s ease-in;
+
+          &:hover {
+            color: $color-gray-900;
+            border: 1px solid $color-gray-900-border;
+            .download__icon {
+              color: $color-black;
+              width: var(--size);
+              height: 79px;
+              position: absolute;
+              right: 0;
+              z-index: 1;
+
+              svg {
+                margin-left: auto;
+                margin-right: 15px;
+              }
+            }
+          }
         }
       }
     }

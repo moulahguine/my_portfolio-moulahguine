@@ -2,7 +2,7 @@
 
 // import { useState } from "react";
 import { motion } from "framer-motion";
-import { skillsRow1, skillsRow2, skillsRow3, skillColors } from "./skillsData";
+import { skills } from "./skillsData";
 // import SkillsModal from "./SkillsModal";
 import "./Skills.scss";
 
@@ -38,22 +38,22 @@ function Skills() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
           >
-            {skillsRow1.map((skill, index) => (
+            {skills.map((skill) => (
               <div
                 key={skill.id}
                 className="skill-card"
-                style={{
-                  "--skill-color": skillColors[skill.name] || "#66309a",
-                }}
+                style={
+                  {
+                    //   "--skill-color": skillColors[skill.name] || "#66309a",
+                  }
+                }
               >
-                <div className="skill-card__icon">
-                  <skill.icon />
-                </div>
+                <div className="skill-card__icon">{/* <skill.icon /> */}</div>
                 <span className="skill-card__name">{skill.name}</span>
               </div>
             ))}
           </motion.div>
-
+          {/* 
           <motion.div
             className="skills__row"
             initial={{ x: 50 }}
@@ -98,7 +98,7 @@ function Skills() {
                 <span className="skill-card__name">{skill.name}</span>
               </div>
             ))}
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>
