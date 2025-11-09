@@ -1,5 +1,5 @@
 import "./HomePage.scss";
-import Hero from "../../sections/Hero/Hero";
+import HeroClientWrapper from "../../sections/Hero/HeroClientWrapper";
 import About from "../../sections/About/About";
 import Skills from "../../sections/Skills/Skills";
 import Projects from "../../sections/Projects/Projects";
@@ -9,11 +9,11 @@ import * as motion from "motion/react-client";
 const HomePage = () => {
   return (
     <main className="home-page">
-      <Hero />
+      <HeroClientWrapper />
       <About />
       <Skills />
-      <Projects />
-      <Contact />
+      {/* <Projects />
+      <Contact /> */}
     </main>
   );
 };

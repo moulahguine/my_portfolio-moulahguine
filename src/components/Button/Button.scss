@@ -3,50 +3,94 @@
 
 .btn {
   @include flex-center;
-  @include sweep-hover($color-surface);
-  cursor: pointer;
-  background: $color-primary;
-  justify-content: flex-start;
-  color: $color-surface;
-  gap: $space-16;
-  width: fit-content;
   position: relative;
+  cursor: pointer;
   overflow: hidden;
-  padding: $space-16 $space-24;
-  border-radius: 2rem;
-  font-size: $font-size-16;
-  font-weight: $fw-bold;
-  @include primary-shadow;
-  transition: all $transition-base;
-
-  &:hover {
-    background: $color-primary-hover;
-    @include primary-shadow-hover;
-  }
-
-  &:active {
-    background: $color-primary-hover;
-    transform: translateY(0);
-  }
+  border: none;
+  text-decoration: none;
+  outline: none;
+  user-select: none;
 
   @media (max-width: $breakpoint-lg) {
-    gap: $space-8;
-    padding: $space-12 $space-16;
-    font-size: $font-size-14;
-    font-weight: $fw-semibold;
-
     svg {
       transform: translateY(2px);
     }
   }
 }
 
-@media (max-width: $breakpoint-md) {
-  .hero__resume {
-    .resume-btn {
-      padding: $space-8 0;
-      width: 70%;
-      justify-content: center;
+.btn {
+  --widthBTN: 200px;
+  --heightBTN: 80px;
+
+  border-radius: $radius-2xl;
+  background-clip: padding-box;
+  overflow: hidden;
+  font-size: $font-size-24;
+  transition: all 0.6s ease-in;
+  background-color: $color-gray-900;
+  color: $color-white;
+  &:has(:is(.button_lable, .button_icon)) {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    width: clamp(var(--widthBTN) + 60px, 1vw, 370px);
+    height: var(--heightBTN);
+    gap: $space-4;
+    padding: $space-4 $space-4 $space-4 $space-24;
+  }
+  &:has(.button_icon--only),
+  .button_icon {
+    border: solid 1px $color-gray-900;
+    @include flex-center;
+    background-color: $color-white;
+    width: 70px;
+    height: 70px;
+    font-size: $font-size-24;
+    border-radius: 50%;
+    color: $color-black;
+    transition: all 0.5s ease-in-out;
+    position: absolute;
+    right: 5px;
+
+    svg {
+      transition: inherit;
+    }
+  }
+
+  &:hover {
+    color: $color-gray-900;
+    border: 1px solid $color-gray-900-border;
+    position: relative;
+    z-index: 5;
+
+    .button_icon {
+      color: $color-black;
+      width: clamp(var(--widthBTN) + 70px, 1vw, 370px);
+      height: calc(var(--heightBTN) + 100px);
+      z-index: -1;
+      right: -5px;
+
+      svg {
+        margin-left: auto;
+        margin-right: $space-32;
+        scale: 1.5;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    --widthBTN: 150px;
+    --heightBTN: 80px;
+    font-size: $font-size-20;
+
+    &:hover {
+      .btn__icon,
+      .button_icon,
+      .button_icon--only {
+        svg {
+          margin-right: $space-16;
+          scale: 1;
+        }
+      }
     }
   }
 }

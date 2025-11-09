@@ -1,5 +1,3 @@
-"use client";
-
 import PropTypes from "prop-types";
 import Link from "next/link";
 import "./Button.scss";
@@ -13,72 +11,111 @@ function Button({
   onClick,
   className = "",
   icon,
-  iconPosition = "left",
+  iconPosition = "right",
+  ariaLabel,
   ...props
 }) {
-  // Build button classes
-  const buttonClasses = `btn ${className}`.trim();
+  const hasText = Boolean(children);
+  const hasIcon = Boolean(icon);
 
-  // Build button content (with optional icon)
-  const content = (
+  const variantClass =
+    hasText && hasIcon
+      ? "btn--label-icon"
+      : hasText
+        ? "btn--label-only"
+        : "btn--icon-only";
+
+  const baseClasses = ["btn", variantClass, className]
+    .filter(Boolean)
+    .join(" ")
+    .trim();
+
+  const label_icon = (
     <>
-      {icon && iconPosition === "left" && (
-        <span className="btn__icon btn__icon--left">{icon}</span>
-      )}
-      <span className="btn__text">{children}</span>
-      {icon && iconPosition === "right" && (
-        <span className="btn__icon btn__icon--right">{icon}</span>
+      {hasText && hasIcon && (
+        <>
+          <p className={`button_lable`}>{children}</p>
+          <span
+            className={[
+              "button_icon",
+              iconPosition === "right"
+                ? "button_icon--right"
+                : "button_icon--left",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            {icon}
+          </span>
+        </>
       )}
     </>
   );
 
-  if (href) {
-    // Check if it's an internal route (starts with /) or external link
-    const isInternalRoute = href.startsWith("/") && !href.startsWith("#");
+  const labelButton = (
+    <>{hasText && <p className={`button_label--only`}>{children}</p>}</>
+  );
 
-    if (isInternalRoute && !download && !target) {
-      // Use Next.js Link for internal navigation
-      return (
-        <Link
-          href={href}
-          className={`${buttonClasses} btn__href`}
-          onClick={onClick}
-          {...props}
+  const labelIcon = (
+    <>
+      {hasIcon && (
+        <span
+          className={[
+            "button_icon--only",
+            iconPosition === "right"
+              ? "button_icon--right"
+              : "button_icon--left",
+          ]
+            .filter(Boolean)
+            .join(" ")}
         >
+          {icon}
+        </span>
+      )}
+    </>
+  );
+
+  const content =
+    hasText && hasIcon ? label_icon : hasText ? labelButton : labelIcon;
+
+  const commonProps = {
+    className: baseClasses,
+    onClick,
+    "aria-label": !hasText && hasIcon ? ariaLabel || "Button" : undefined,
+    ...props,
+  };
+
+  if (href) {
+    const isInternalRoute = href.startsWith("/") && !href.startsWith("#");
+    if (isInternalRoute && !download && !target) {
+      return (
+        <Link href={href} {...commonProps}>
           {content}
         </Link>
       );
-    } else {
-      return (
-        <a
-          href={href}
-          download={download}
-          target={target}
-          rel={rel}
-          className={`${buttonClasses} btn__href`}
-          onClick={onClick}
-          {...props}
-        >
-          {content}
-        </a>
-      );
     }
+    return (
+      <a
+        href={href}
+        download={download}
+        target={target}
+        rel={rel}
+        {...commonProps}
+      >
+        {content}
+      </a>
+    );
   }
 
   return (
-    <button
-      type="button"
-      className={`${buttonClasses} btn`}
-      onClick={onClick}
-      {...props}
-    >
+    <button type="button" {...commonProps}>
       {content}
     </button>
   );
 }
 
 Button.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   href: PropTypes.string,
   download: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   target: PropTypes.string,
@@ -87,6 +124,7 @@ Button.propTypes = {
   className: PropTypes.string,
   icon: PropTypes.node,
   iconPosition: PropTypes.oneOf(["left", "right"]),
+  ariaLabel: PropTypes.string,
 };
 
 export default Button;

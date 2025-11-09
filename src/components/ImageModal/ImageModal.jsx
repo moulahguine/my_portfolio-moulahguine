@@ -4,13 +4,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import CloseButton from "../CloseButton/CloseButton";
 import { useScrollLock } from "../../hooks/useScrollLock";
+import { createPortal } from "react-dom";
+import { useEffect, useState } from "react";
 import "./ImageModal.scss";
 
 const ImageModal = ({ isOpen, onClose, imageSrc, imageAlt }) => {
   // Use centralized scroll lock
   useScrollLock(isOpen);
 
-  return (
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const overlay = (
     <AnimatePresence>
       {isOpen && (
         <motion.div
@@ -49,6 +54,9 @@ const ImageModal = ({ isOpen, onClose, imageSrc, imageAlt }) => {
       )}
     </AnimatePresence>
   );
+
+  if (!mounted) return null;
+  return createPortal(overlay, document.body);
 };
 
 export default ImageModal;

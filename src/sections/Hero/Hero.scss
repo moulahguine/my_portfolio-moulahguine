@@ -7,31 +7,31 @@
   height: 100dvh;
   background-color: $color-white;
 
-  // HERO CONTAINER - START (centers content, sets height)
+  // HERO CONTAINER - START
   .container {
     @include container;
+    padding: 0 !important;
     position: relative;
     height: 700px;
     @media (max-width: $breakpoint-md) {
-      height: 88dvh;
+      height: 85dvh;
     }
 
     // HERO INFO (desktop) - START
     .hero__info {
+      @include flex-column;
       padding: $space-8;
       width: fit-content;
       position: absolute;
       left: 52%;
-      z-index: 25;
-      @include flex-column;
 
       .hero__title {
-        color: $color-gray-700-hover;
-        font-size: clamp(1.9rem, 1.2vw + 1rem, 3rem);
-        font-weight: $fw-bold;
         @include flex-center;
         justify-content: start;
         gap: $space-4;
+        color: $color-gray-700;
+        font-size: clamp(1.9rem, 1.2vw + 1rem, 3rem);
+        font-weight: $fw-bold;
       }
 
       .hero__subtitle {
@@ -49,7 +49,7 @@
     }
     // HERO INFO (desktop) - END
 
-    // HERO CONTENT GRID - START (2-column layout on desktop)
+    // HERO CONTENT GRID - START
     .content {
       width: inherit;
       height: inherit;
@@ -61,6 +61,7 @@
       padding: clamp(1rem, 2vw, 3rem);
       border-radius: $radius-xl;
       clip-path: url(#heroContainerShape);
+      overflow: hidden;
 
       @media (max-width: $breakpoint-md) {
         grid-template-columns: 1fr;
@@ -80,32 +81,6 @@
         @media (max-width: $breakpoint-md) {
           overflow: visible;
         }
-
-        // HERO MEDIA - START (image wrapper + clipping)
-        .hero__media {
-          width: inherit;
-          height: inherit;
-          position: relative;
-          overflow: hidden;
-          border-radius: $radius-xl;
-          clip-path: url(#heroImageShape);
-
-          @media (max-width: $breakpoint-md) {
-            --img_size: clamp(2rem, 6.25rem, 5.5rem);
-            border-radius: 50%;
-            width: var(--img_size);
-            height: var(--img_size);
-            clip-path: none;
-          }
-          .hero__image {
-            width: inherit;
-            height: inherit;
-            object-fit: cover;
-            object-position: top;
-            scale: 1.6;
-          }
-        }
-        // HERO MEDIA - END
 
         // HERO INFO (mobile) - START
         .hero__info-mobile {
@@ -134,12 +109,10 @@
           }
         }
         // HERO INFO (mobile) - END
-
-        // styles for social links moved to SocialLinksHero/SocialLinksHero.scss
       }
       // HERO PROFILE - END
 
-      // HERO DETAILS - START (right column textual content)
+      // HERO DETAILS - START
       .hero__details {
         height: 100%;
         padding: $space-8;
@@ -155,8 +128,7 @@
           // HERO DESCRIPTION - START
           .hero__description {
             color: $color-gray-700-hover;
-
-            font-size: clamp(1.5rem, 1vw, 3rem);
+            font-size: clamp(1.5rem, 1vw, 2rem);
             line-height: 1.7;
             word-spacing: -1.5px;
             margin-left: $space-16;
@@ -181,69 +153,9 @@
 
           // HERO RESUME BUTTON - START
           .hero__resume {
-            --widthBTN: 200px;
-            --heightBTN: 80px;
             position: absolute;
             right: 0;
             bottom: 0;
-            @include flex-between;
-            gap: $space-4;
-            width: var(--widthBTN);
-            height: var(--heightBTN);
-            background-color: $color-gray-900;
-            color: $color-white;
-            padding: $space-4 $space-4 $space-4 $space-24;
-            border-radius: $radius-2xl;
-            background-clip: padding-box;
-            overflow: hidden;
-            font-size: $font-size-24;
-            transition: all 0.6s ease-in;
-
-            @media (max-width: $breakpoint-md) {
-              width: 130px;
-              height: 50px;
-              font-size: $font-size-16;
-              bottom: -10px;
-              right: -10px;
-            }
-
-            .label__resume {
-              position: relative;
-              z-index: 2;
-            }
-            .download__icon {
-              --size: 150px;
-              @include flex-center;
-              background-color: $color-white;
-              width: 70px;
-              aspect-ratio: 1/1;
-              font-size: $font-size-24;
-              border-radius: 50%;
-              color: $color-black;
-              transition: all 0.5s ease-in-out;
-              svg {
-                transition: inherit;
-              }
-            }
-
-            &:hover {
-              color: $color-gray-900;
-              border: 1px solid $color-gray-900-border;
-              .download__icon {
-                color: $color-black;
-                width: var(--widthBTN);
-                height: calc(var(--heightBTN) + 40px);
-                position: absolute;
-                right: 0;
-                z-index: 1;
-
-                svg {
-                  margin-left: auto;
-                  margin-right: $space-32;
-                  scale: 1.5;
-                }
-              }
-            }
           }
           // HERO RESUME BUTTON - END
         }

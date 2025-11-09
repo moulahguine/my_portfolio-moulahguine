@@ -7,16 +7,14 @@ import { MdArrowOutward } from "react-icons/md";
 import Location from "@/components/Location/Location";
 import VerifiedBadge from "@/components/icons/VerifiedBadge";
 // SVG clip paths used for shaping containers and media
-import HeroClipPaths from "./HeroClipPaths";
+import ClipPathUnits from "@/components/clipPathUnits/clipPathUnits";
 // Social links cluster (mobile/desktop variants handled by props/styles)
 import SocialLinksHero from "./SocialLinksHero/SocialLinksHero";
-// Next.js Image and responsive sources for the main hero image
-import Image from "next/image";
-import heroImage from "@/assets/images/hero-section/hero-img.webp";
-import heroImage600 from "@/assets/images/hero-section/hero-img_600.webp";
-import heroImage800 from "@/assets/images/hero-section/hero-img_800.webp";
+// Extracted media block component
+import HeroMedia from "./HeroMedia/HeroMedia";
+import Button from "@/components/Button/Button";
 
-export default function Hero() {
+export default function Hero({ height }) {
   const containerFade = {
     hidden: { opacity: 0, y: 24 },
     visible: {
@@ -54,6 +52,7 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
         variants={containerFade}
+        style={height ? { height: `${height}px` } : undefined}
       >
         {/* HERO CONTAINER - START */}
         <main className="container">
@@ -95,26 +94,7 @@ export default function Hero() {
             {/* HERO PROFILE - START */}
             <motion.div className="hero__profile" variants={staggerParent}>
               {/* HERO MEDIA - START */}
-              <motion.figure
-                className="hero__media"
-                initial={{ scale: 0.5, opacity: 0, filter: "blur(15px)" }}
-                animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
-                transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
-                style={{ transformOrigin: "50% 50%" }}
-              >
-                <Image
-                  className="hero__image"
-                  src={heroImage}
-                  srcSet={` ${heroImage600} 600w, ${heroImage800} 800w`}
-                  sizes="(max-width: 778px) 100vw, (max-width: 1130px) 50vw, 500px"
-                  alt="Portrait of Mohamed Oulahguine, Frontend Developer"
-                  loading="eager"
-                  decoding="async"
-                />
-                <figcaption className="sr-only">
-                  Portrait of Mohamed Oulahguine
-                </figcaption>
-              </motion.figure>
+              <HeroMedia />
               {/* HERO MEDIA - END */}
 
               {/* HERO INFO (mobile) - START */}
@@ -199,25 +179,18 @@ export default function Hero() {
                   {/* HERO DESCRIPTION - END */}
                 </motion.p>
 
-                <motion.a
-                  href="/resume.pdf"
-                  download
-                  aria-label="Download resume as PDF"
-                  className="hero__resume"
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {/* HERO RESUME BUTTON - START */}
-                  <span className="label__resume">Resume</span>
-                  <motion.span
-                    className="download__icon"
-                    initial={{ x: -100, rotate: 0 }}
-                    animate={{ x: 0, rotate: 360 }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                <div className="hero__resume">
+                  <Button
+                    href="/resume.pdf"
+                    download
+                    ariaLabel="Download resume as PDF"
+                    icon={<MdArrowOutward />}
+                    iconPosition="right"
+                    className="resume-btn"
                   >
-                    <MdArrowOutward />
-                  </motion.span>
-                  {/* HERO RESUME BUTTON - END */}
-                </motion.a>
+                    Resume
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
@@ -226,21 +199,9 @@ export default function Hero() {
         </main>
         {/* HERO CONTAINER - END */}
         {/* HERO CLIP PATHS (SVG defs) */}
-        <HeroClipPaths />
+        <ClipPathUnits />
       </motion.section>
       {/* HERO SECTION - END */}
-      {isImageOpen && (
-        <Suspense
-          fallback={<div style={{ display: "none" }}>Loading modal...</div>}
-        >
-          <ImageModal
-            isOpen={isImageOpen}
-            onClose={handleCloseModal}
-            imageSrc={aboutImage}
-            imageAlt="Mohamed Oulahguine - Frontend Developer"
-          />
-        </Suspense>
-      )}
     </>
   );
 }
