@@ -99,10 +99,8 @@ export default function About() {
                     className={`fact-card fact-card--${pos}`}
                   >
                     <header className="fact-card__header">
-                      <h3 className="fact-card__title">
-                        <span className="fact-card__icon">{fact.icon}</span>
-                        {fact.label}
-                      </h3>
+                      <span className="fact-card__icon">{fact.icon}</span>
+                      <h3 className="fact-card__title">{fact.label}</h3>
                     </header>
                     <p className="fact-card__text">{fact.value}</p>
                   </article>
