@@ -18,78 +18,41 @@
     .skills__content {
       padding: $space-16 0;
       position: relative;
-      overflow: hidden;
-
-      // before and after
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba($color-primary, 0.08) 0%,
-          transparent 70%
-        );
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      // before and after positions
-      &::before {
-        top: -40px;
-        left: -20px;
-      }
-
-      &::after {
-        bottom: -50px;
-        right: -10px;
-      }
-      position: relative;
       z-index: 1;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: clamp(1rem, 3vw, 1.5rem);
+      gap: $space-16;
+
       // skill card
       .skill-card {
+        cursor: pointer;
         @include flex-column;
         align-items: center;
-        padding: 1rem;
+        padding: $space-32;
         border-radius: $radius-sm;
-        border: 1px solid rgba($color-border, 0.8);
-        background: linear-gradient(
-          180deg,
-          rgba($surface-0, 0.9) 0%,
-          rgba($surface-1, 0.8) 90%
-        );
-        box-shadow: $shadow-md;
-        transition:
-          transform $transition-base,
-          border-color $transition-base,
-          box-shadow $transition-base;
-
+        box-shadow: 0 0 0 2px var(--skill-color);
+        background-color: $white;
+        transition: all 0.3s ease-in-out;
         // hover effect
         &:hover {
-          transform: translateY(-6px);
-          border-color: rgba($color-primary-500, 0.35);
-          box-shadow: $shadow-lg;
+          transform: translateY(-5px) scale(1.02) rotate(-2deg);
         }
         // icon
         .skill-card__icon {
           @include flex-center;
+
           // skill icon
           .skill-icon {
-            font-size: 2rem;
+            font-size: $font-size-32;
           }
         }
 
         // name
         .skill-card__name {
           // name style
+          margin-top: auto;
           font-weight: $fw-semibold;
-          color: $gray-600;
+          color: $gray-700;
           font-size: $font-size-16;
           text-align: center;
         }
