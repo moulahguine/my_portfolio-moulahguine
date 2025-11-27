@@ -1,12 +1,10 @@
-import "./About.scss";
-import Button from "@/components/Button/Button";
 import IntroVideo from "./IntroVideo";
-import { PiGithubLogoBold } from "react-icons/pi";
 import { LuRocket } from "react-icons/lu";
 import { FaRegLightbulb } from "react-icons/fa";
 import { FiPenTool } from "react-icons/fi";
 import { TbCode } from "react-icons/tb";
 import * as motion from "motion/react-client";
+import "./About.scss";
 
 export default function About() {
   const quickFacts = [
@@ -78,6 +76,7 @@ export default function About() {
               {/* end content about me */}
             </section>
             {/* end content section */}
+
             {/* start video section */}
             <section className="about__intro-video">
               <IntroVideo />
@@ -88,11 +87,11 @@ export default function About() {
             <section className="about__facts">
               {quickFacts.map((fact, index) => (
                 <article key={index} className="fact-card">
-                  <div className="fact-card__icon">{fact.icon}</div>
                   <div className="fact-card__content">
+                    <div className="fact-card__icon">{fact.icon}</div>
                     <p className="fact-card__label">{fact.label}</p>
-                    <p className="fact-card__text">{fact.value}</p>
                   </div>
+                  <p className="fact-card__text">{fact.value}</p>
                 </article>
               ))}
             </section>
@@ -107,25 +106,4 @@ export default function About() {
       {/* end about section */}
     </div>
   );
-}
-
-{
-  /* <p className="about__intro">
-                Interfaces shaped with clarity, balance, and strong attention to
-                detail. Smooth interaction, reliable performance, and layouts
-                that feel intuitive on every device. A focus on structure and
-                refinement, where every element supports the experience.
-              </p> */
-}
-
-{
-  /* <div className="about__btn">
-  <Button
-    icon={<PiGithubLogoBold />}
-    href="#projects"
-    className="show__projects"
-  >
-    See My Work
-  </Button>
-</div>; */
 }
