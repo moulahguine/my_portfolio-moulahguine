@@ -13,6 +13,7 @@ function Button({
   icon,
   iconPosition = "right",
   ariaLabel,
+  style,
   ...props
 }) {
   const hasText = Boolean(children);

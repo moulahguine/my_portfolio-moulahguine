@@ -1,14 +1,34 @@
-import {
-  technologies,
-  skillColors,
-} from "../../components/technologies/technologies";
+// Server-safe technology + skill metadata (no React components/functions)
 
-// Re-export skillColors for backward compatibility
-export { skillColors };
+export const technologies = {
+  HTML: { icon: "FaHtml5", color: "#E34F26" },
+  CSS3: { icon: "SiCss3", color: "#66309a" },
+  CSS4: { icon: "CssAssetIcon", color: "#66309a" },
+  JavaScript: { icon: "FaJs", color: "#F7DF1E" },
+  TypeScript: { icon: "SiTypescript", color: "#007FFF" },
+  React: { icon: "FaReact", color: "#61DAFB" },
+  NextJS: { icon: "SiNextdotjs", color: "#000000" },
+  Redux: { icon: "SiRedux", color: "#764ABC" },
+  Framer: { icon: "SiFramer", color: "#0055FF" },
+  "Framer Motion": { icon: "SiFramer", color: "#0055FF" },
+  TailwindCSS: { icon: "SiTailwindcss", color: "#06B6D4" },
+  Sass: { icon: "SiSass", color: "#CC6699" },
+  SCSS: { icon: "SiSass", color: "#CC6699" },
+  MUI: { icon: "SiMui", color: "#007FFF" },
+  Jest: { icon: "SiJest", color: "#C21325" },
+  Git: { icon: "FaGitAlt", color: "#F05032" },
+  GitHub: { icon: "FaGithub", color: "#181717" },
+  Vite: { icon: "SiVite", color: "#646CFF" },
+  "VS Code": { icon: "VsCodeIcon", color: "#007ACC" },
+  Figma: { icon: "FaHtml5", color: "#F24E1E" }, // placeholder
+  REST: { icon: "FaHtml5", color: "#FF6B6B" }, // placeholder
+  Accessibility: { icon: "FaHtml5", color: "#4CAF50" }, // placeholder
+  Responsive: { icon: "FaHtml5", color: "#9C27B0" }, // placeholder
+  ReactQuery: { icon: "SiReactquery", color: "#FF4154" },
+  "Cursor AI": { icon: "CursorIcon", color: "#424242" },
+  "React Router": { icon: "SiReactrouter", color: "#F05032" },
+};
 
-// ======================
-// Skills for Two Rows
-// ======================
 export const skills = [
   {
     id: 1,
@@ -87,15 +107,13 @@ export const skills = [
     color: technologies.MUI.color,
     blog: "Material-UI provided me with a comprehensive design system and component library. I've learned to customize themes, create consistent interfaces, and leverage the extensive component ecosystem. The theming system allows me to maintain brand consistency while benefiting from Google's Material Design principles.",
   },
-
   {
     id: 17,
     name: "React Router",
-    icon: technologies["React Router"],
+    icon: technologies["React Router"].icon,
     color: technologies["React Router"].color,
     blog: "React Router enables intuitive client-side routing with nested routes and data APIs. I use it for clean, accessible navigation and route-based code splitting.",
   },
-
   {
     id: 7,
     name: "Redux",
@@ -134,15 +152,22 @@ export const skills = [
   {
     id: 15,
     name: "Cursor AI",
-    icon: technologies["Cursor AI"],
+    icon: technologies["Cursor AI"].icon,
     color: technologies["Cursor AI"].color,
     blog: "Cursor AI has transformed how I write code. This AI-powered editor helps me write better code faster, debug issues more effectively, and learn new patterns and best practices. It's like having a senior developer pair programming with me, offering suggestions and helping me think through complex problems.",
   },
   {
     id: 16,
     name: "VS Code",
-    icon: technologies["VS Code"],
+    icon: technologies["VS Code"].icon,
     color: technologies["VS Code"].color,
     blog: "VS Code is my primary development environment. I've customized it with extensions, themes, and settings that optimize my productivity. The integrated terminal, debugging tools, and extensive extension ecosystem make it a powerful IDE for any type of development work.",
   },
 ];
+
+export const skillColors = skills.reduce((acc, skill) => {
+  acc[skill.name] = skill.color;
+  return acc;
+}, {});
+
+export default skills;

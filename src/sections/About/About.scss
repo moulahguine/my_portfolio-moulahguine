@@ -3,149 +3,111 @@
 
 .about {
   width: 100%;
-  background-color: $color-white;
-  padding: 0 0 $space-32;
 
   .container {
     @include container;
-    padding-right: 0;
-    overflow: hidden;
-    background-color: $color-gray-100;
-    display: grid;
-    grid-template-columns: 1fr 50%;
-    justify-content: space-between;
-    height: 900px;
-    border-radius: $radius-xl;
 
-    .content {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: auto 1fr;
-      .about__header {
-        width: 100%;
-        position: relative;
-
-        .about__title {
-          color: $color-gray-300;
-          font-size: clamp(90px, 9vw, 150px);
-          font-family:
-            Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-        }
-        .about__subtitle {
-          position: absolute;
-          top: 77%;
-          left: 1%;
-          transform: translateY(-77%);
-          color: $color-gray-500;
-          font-size: clamp($font-size-14, 1.5vw, $font-size-20);
-          font-weight: $fw-semibold;
-          word-spacing: -2.5px;
-          width: 100%;
-        }
-      }
-      .about__info {
-        position: relative;
-
-        .about__intro {
-          width: 100%;
-          p {
-            line-height: 1.7;
-            width: 90%;
-            font-size: clamp($font-size-14, 1.5vw, $font-size-18);
-            font-weight: $fw-medium;
-            color: $color-gray-600;
-          }
-        }
-        .about__btn {
-          display: flex;
-          gap: 5px;
-          position: absolute;
-          align-items: center;
-          right: $space-24;
-          bottom: $space-24;
-        }
-      }
+    .about__header {
+      @include header_section;
     }
 
-    .about__intro-video {
-      width: 100%;
-      height: 900px;
-      // overflow: hidden;
-      border-radius: $radius-1xl;
-      position: relative;
-      @include flex-center;
+    .about__content {
+      margin: 15px 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr auto;
+      gap: 15px;
 
-      .myvideo_intro {
-        width: 400px;
-        height: 600px;
-        object-fit: cover;
+      .about__me {
+        .about__info {
+          p {
+            text-indent: 0.7rem;
+            font-size: 0.878rem;
+            font-weight: 100;
+            line-height: 1.6;
+          }
+        }
       }
-      /* Decorative ring behind video */
-      .facts-ring {
-        position: absolute;
-        inset: 0;
-        display: grid;
-        place-items: center;
-        pointer-events: none;
-        z-index: 10;
-        .facts-ring__circle {
-          width: clamp(280px, 46vw, 560px);
-          height: clamp(280px, 46vw, 560px);
-          border-radius: 50%;
-          border: 2px solid rgb($color-gray-300, 0.35);
+
+      .about__facts {
+        grid-area: 2 / span 2;
+        display: flex;
+        gap: 0.5rem;
+
+        .fact-card {
+          @include glass-effect-surface;
+          border-radius: $radius-lg;
+          padding: 1.5rem;
+          border: 1px solid rgba($color-primary-500, 0.35);
+          min-height: 180px;
+          display: flex;
+          flex-direction: column;
+          gap: $space-16;
           position: relative;
-        }
-      }
-      /* Cards around video */
-      .facts-cards {
-        position: absolute;
-        inset: 0;
-        z-index: 20;
-        pointer-events: none;
-      }
-      .fact-card {
-        position: absolute;
-        max-width: clamp(150px, 32vw, 239px);
-        background: $color-white;
-        border-radius: $radius-lg;
-        box-shadow: 0 6px 28px rgba(0, 0, 0, 0.08);
-        padding: $space-16 $space-24;
-        pointer-events: auto;
-      }
-      .fact-card__header {
-        @include flex-center;
-        justify-content: start;
-        gap: $space-4;
-        .fact-card__title {
-          font-size: clamp($font-size-12, 1.6vw, $font-size-16);
-          font-weight: $fw-bold;
-          color: $color-gray-600;
-        }
-        .fact-card__icon {
-          color: $color-gray-500;
+          overflow: hidden;
+          transition: all 0.3s ease-in-out;
+
+          &:hover {
+            box-shadow: $shadow-lg;
+            border-radius: 25px;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+              circle at top right,
+              rgba($color-primary, 0.08),
+              transparent 55%
+            );
+            pointer-events: none;
+          }
+
+          .fact-card__icon {
+            width: 54px;
+            height: 54px;
+            border-radius: $radius-lg;
+            @include flex-center;
+            font-size: 1.6rem;
+            color: $color-primary;
+            background: rgba($color-primary, 0.08);
+            border: 1px solid rgba($color-border, 0.7);
+          }
+
+          .fact-card__content {
+            display: flex;
+            flex-direction: column;
+            gap: $space-8;
+          }
+
+          .fact-card__label {
+            text-transform: uppercase;
+            letter-spacing: 0.001em;
+            font-size: $font-size-14;
+            color: $color-text-muted;
+            font-weight: $fw-semibold;
+          }
+
+          .fact-card__text {
+            color: $color-text;
+            font-size: 13px;
+            line-height: 1.5;
+            // font-weight: $fw-medium;
+          }
         }
       }
 
-      .fact-card__text {
-        font-size: clamp(0.75rem, 1.3vw, $font-size-14);
-        color: $color-gray-500;
-        line-height: 1.6;
-      }
-      .fact-card--tl {
-        top: 10%;
-        left: 7%;
-      }
-      .fact-card--tr {
-        top: 15%;
-        right: 3%;
-      }
-      .fact-card--br {
-        bottom: 10%;
-        right: 10%;
-      }
-      .fact-card--bl {
-        bottom: 25%;
-        left: 7%;
+      .about__intro-video {
+        border-radius: 15px;
+        box-shadow: 0px 0 100px 0 $gray-400;
+        border: solid 1px red;
+        z-index: -1;
+        .myvideo_intro {
+          width: 350px;
+          height: 430px;
+          object-fit: cover;
+        }
       }
     }
   }

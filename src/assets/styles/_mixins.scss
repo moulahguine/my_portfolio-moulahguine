@@ -115,7 +115,7 @@
 
 // Container
 @mixin container {
-  max-width: 1400px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 $space-32;
   @media (max-width: $breakpoint-md) {
@@ -310,4 +310,15 @@
   @media (max-width: $breakpoint-lg) {
     font-size: clamp($font-size-32, 4vw, $font-size-48 + 1rem);
   }
+}
+
+@mixin header_section {
+  width: fit-content;
+  font-size: 10px;
+  font-weight: 100;
+  color: $gray-500;
+  background-color: $gray-200;
+  border-radius: 5px;
+  padding: 4px 8px;
+  cursor: default;
 }

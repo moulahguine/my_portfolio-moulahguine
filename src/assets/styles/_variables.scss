@@ -124,6 +124,63 @@ $shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
 $shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
 $shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
 
+// ==================================
+
+// — Core —
+$black: #0f0f10;
+$white: #ffffff;
+
+// — Neutral Grays —
+$gray-950: #111113;
+$gray-900: #1a1b1d;
+$gray-800: #242527;
+$gray-700: #2f3033;
+$gray-600: #515256;
+$gray-500: #6f7074;
+$gray-400: #a6a7a9;
+$gray-300: #d2d3d5;
+$gray-200: #e6e7e9;
+$gray-100: #f3f3f4;
+$gray-50: #fafafa;
+
+// — Surfaces (Cards + Sections) —
+$surface-0: $white;
+$surface-1: #fafafa; // soft section
+$surface-2: #f2f2f2; // card bg
+$surface-3: #e9e9e9; // deeper card
+$surface-hover: #efefef;
+
+// — Text —
+$text-primary: $gray-900;
+$text-secondary: $gray-600;
+$text-muted: $gray-500;
+
+// — Borders —
+$border-light: $gray-200;
+$border: $gray-300;
+
+// — Accent (Subtle Blue Hint) —
+$accent: #3a6ff8;
+$accent-hover: darken(#3a6ff8, 5%);
+
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
+$shadow-md: 0 2px 6px rgba(0, 0, 0, 0.05);
+$shadow-lg: 0 4px 14px rgba(0, 0, 0, 0.06);
+$shadow-card: 0 8px 24px rgba(0, 0, 0, 0.06);
+
+$green-900: #4f5a3d;
+$green-700: #6e7b5b;
+$green-500: #7a8765; // main background
+$green-300: #9caa82; // hoodie
+$green-200: #c0cfad;
+$green-100: #e8f0d9;
+
+$skin-900: #a97c52;
+$skin-700: #d6a97d;
+$skin-500: #f0cfa0;
+$skin-300: #f7deba;
+$skin-100: #fceed4;
+
 // ----------------------- SPACING (scale) -----------------------
 $space-4: 0.25rem;
 $space-8: 0.5rem;

@@ -8,13 +8,13 @@ import * as motion from "motion/react-client";
 
 const HomePage = () => {
   return (
-    <main className="home-page">
+    <div className="home-page">
       <HeroClientWrapper />
       <About />
       <Skills />
-      {/* <Projects />
-      <Contact /> */}
-    </main>
+      <Projects />
+      <Contact />
+    </div>
   );
 };
 

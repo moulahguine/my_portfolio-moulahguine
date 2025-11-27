@@ -11,7 +11,7 @@
 .videoModal__frame {
   cursor: pointer;
   position: relative;
-  border-radius: $radius-1xl;
+  border-radius: 16px;
   will-change: transform, width, height;
   width: fit-content;
   height: 100%;
@@ -52,14 +52,25 @@
     height: auto;
     border-radius: 14px;
     object-fit: cover;
+    border-radius: 0 !important;
+    object-fit: contain !important;
+    transform: scale(1) !important;
   }
 }
 
 /* Larger mode (optional extra zoom) */
 .videoModal__frame.is-open.is-large {
-  > * {
-    max-width: min(96vw, 1440px);
-    max-height: min(92vh, 900px);
+  padding: 0 !important;
+
+  > *,
+  > video,
+  > .myvideo_intro {
+    max-width: min(96vw, 1440px) !important;
+    max-height: min(92vh, 850px) !important;
+    width: 100%;
+    border-radius: 0 !important;
+    object-fit: cover !important;
+    // transform: scale(1) !important;
   }
 }
 

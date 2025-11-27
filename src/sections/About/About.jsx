@@ -1,12 +1,12 @@
 import "./About.scss";
 import Button from "@/components/Button/Button";
 import IntroVideo from "./IntroVideo";
-import ClipPathUnits from "@/components/clipPathUnits/clipPathUnits";
 import { PiGithubLogoBold } from "react-icons/pi";
 import { LuRocket } from "react-icons/lu";
 import { FaRegLightbulb } from "react-icons/fa";
 import { FiPenTool } from "react-icons/fi";
 import { TbCode } from "react-icons/tb";
+import * as motion from "motion/react-client";
 
 export default function About() {
   const quickFacts = [
@@ -34,19 +34,23 @@ export default function About() {
   ];
 
   return (
-    <>
-      <ClipPathUnits />
+    <div>
+      {/* start about section */}
+
       <section id="about" className="about">
+        {/* start main container */}
+
         <div className="container">
-          <main className="content">
-            <header className="about__header">
-              <h2 className="about__title">About Me</h2>
-              <p className="about__subtitle">
-                Who I Am & What I Build as a Developer
-              </p>
-            </header>
-            <div className="about__info">
-              <div className="about__intro">
+          {/* start main header for section */}
+          <header className="about__header header__section">About Me</header>
+          {/* end main header for section */}
+
+          {/* start main container for section */}
+          <main className="about__content">
+            {/* start content section */}
+            <section className="about__me">
+              {/* start content about me */}
+              <div className="about__info">
                 <p>
                   I build modern frontends with React and Next.js, focusing on
                   performance, clean architecture, and UI quality. My work
@@ -63,53 +67,65 @@ export default function About() {
                   <br />
                   <br />
                   Most of my recent work involves Next.js (App Router),
-                  TypeScript, Tailwind, and Framer Motion. I enjoy improving
-                  loading speed, preventing unnecessary re-renders, and creating
-                  motion that supports the UX instead of distracting from it.{" "}
-                  <br />
+                  TypeScript, Tailwind, and Framer I enjoy improving loading
+                  speed, preventing unnecessary re-renders, and creating motion
+                  that supports the UX instead of distracting from it. <br />
                   <br />
                   Right now, I’m looking for a frontend role where clean code,
                   collaboration, and shipping reliable UI matter.
                 </p>
               </div>
+              {/* end content about me */}
+            </section>
+            {/* end content section */}
+            {/* start video section */}
+            <section className="about__intro-video">
+              <IntroVideo />
+            </section>
+            {/* end video section */}
 
-              <div className="about__btn">
-                <Button
-                  icon={<PiGithubLogoBold />}
-                  href="#projects"
-                  className="show__projects"
-                >
-                  See My Work
-                </Button>
-              </div>
-            </div>
-          </main>
-          <aside className="about__intro-video">
-            <IntroVideo />
-            <div className="facts-ring" aria-hidden="true">
-              <span className="facts-ring__circle"></span>
-            </div>
-            <div className="facts-cards">
-              {quickFacts.map((fact, index) => {
-                const positions = ["tl", "tr", "br", "bl"];
-                const pos = positions[index] || "tl";
-                return (
-                  <article
-                    key={index}
-                    className={`fact-card fact-card--${pos}`}
-                  >
-                    <header className="fact-card__header">
-                      <span className="fact-card__icon">{fact.icon}</span>
-                      <h3 className="fact-card__title">{fact.label}</h3>
-                    </header>
+            {/* start fact crads */}
+            <section className="about__facts">
+              {quickFacts.map((fact, index) => (
+                <article key={index} className="fact-card">
+                  <div className="fact-card__icon">{fact.icon}</div>
+                  <div className="fact-card__content">
+                    <p className="fact-card__label">{fact.label}</p>
                     <p className="fact-card__text">{fact.value}</p>
-                  </article>
-                );
-              })}
-            </div>
-          </aside>
+                  </div>
+                </article>
+              ))}
+            </section>
+            {/* end fact crads */}
+          </main>
+          {/* end main container for section */}
         </div>
+
+        {/* end main container */}
       </section>
-    </>
+
+      {/* end about section */}
+    </div>
   );
+}
+
+{
+  /* <p className="about__intro">
+                Interfaces shaped with clarity, balance, and strong attention to
+                detail. Smooth interaction, reliable performance, and layouts
+                that feel intuitive on every device. A focus on structure and
+                refinement, where every element supports the experience.
+              </p> */
+}
+
+{
+  /* <div className="about__btn">
+  <Button
+    icon={<PiGithubLogoBold />}
+    href="#projects"
+    className="show__projects"
+  >
+    See My Work
+  </Button>
+</div>; */
 }

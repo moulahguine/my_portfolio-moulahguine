@@ -6,96 +6,13 @@
   width: 100%;
   top: 0;
   z-index: 1000;
-  transition: all 0.3s ease;
 
-  &__container {
+  background-color: rgb($white, 0.8);
+  // filter: blur(15px);
+
+  .header__container {
     @include container;
     @include flex-between;
-    padding: 20px;
     position: relative;
-    transition: all 0.3s ease;
-    @media (max-width: $breakpoint-md) {
-      background-color: transparent;
-      border: none;
-    }
-  }
-
-  &__logo {
-    transition: all 0.3s ease;
-  }
-
-  &__social {
-    display: none;
-    transition: all 0.3s ease;
-
-    // Show on desktop screens only
-    @media (min-width: $breakpoint-md) {
-      display: block;
-    }
-  }
-
-  &__toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: all $transition-base;
-  }
-
-  &--menu-open {
-    background-color: $color-bg;
-    z-index: $z-modal;
-    position: fixed;
-    top: $space-16;
-    left: 0;
-    right: 0;
-  }
-}
-
-// Mobile styles
-@media (max-width: $breakpoint-md) {
-  .header {
-    top: 0;
-    height: 0px;
-    background-color: $color-primary-500;
-
-    &__container {
-      border-radius: 0;
-      padding: $space-8 $space-16;
-      position: relative;
-      border-radius: 0;
-    }
-
-    // Show mobile toggle button
-    &__toggle {
-      @include flex-center;
-      width: 40px;
-      aspect-ratio: 1/1;
-      border-radius: 50%;
-      transition: all $transition-base;
-
-      &:hover {
-        background-color: $color-surface-secondary;
-      }
-
-      svg {
-        color: $color-text;
-        font-size: $font-size-20;
-      }
-    }
-    transition: all 0.9s ease-in-out;
-
-    // Menu open state
-    &--menu-open {
-      position: fixed;
-      inset: 0;
-      height: 100dvh;
-      background-color: $color-bg;
-      z-index: $z-modal;
-
-      .header__container {
-        border-radius: 0;
-      }
-    }
   }
 }

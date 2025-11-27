@@ -1,11 +1,16 @@
 // import "./Aside.scss";
 // import Image from "next/image";
-// //
+// import { MdArrowOutward } from "react-icons/md";
+// import asideImage from "@/assets/images/hero-section/hero-img.webp";
+// import asideImage600 from "@/assets/images/hero-section/hero-img_600.webp";
+// import asideImage800 from "@/assets/images/hero-section/hero-img_800.webp";
+
+// import AsideInlineMap from "./InlineMap";
 
 // async function aside() {
 //   return (
 //     <aside className="aside" aria-labelledby="aside-heading">
-//       <main className="container">
+//       <div className="container">
 //         <section className="aside__profile">
 //           <figure className="aside__media">
 //             <Image
@@ -16,14 +21,21 @@
 //               alt="Portrait of Mohamed Oulahguine, Frontend Developer"
 //               loading="eager"
 //               decoding="async"
+//               width={200}
 //             />
-//             <span className="curve"></span>
-//             <span className="curve"></span>
-//             <span className="curve"></span>
+
 //             <figcaption className="sr-only">
 //               Portrait of Mohamed Oulahguine
 //             </figcaption>
 //           </figure>
+
+//           <div
+//             className="aside__map"
+//             aria-label="Map showing Istanbul and Rabat"
+//           >
+//             <AsideInlineMap />
+//           </div>
+
 //           <div className="aside__info">
 //             <h2 id="aside-heading" className="aside__title">
 //               Mohamed Oulahguine
@@ -65,29 +77,6 @@
 //               </svg>
 //             </h2>
 //             <p className="aside__subtitle">Frontend Developer</p>
-//             <div className="aside__location">
-//               <address className="aside__locationText">
-//                 <Location />
-//               </address>
-//             </div>
-//           </div>
-//           <div className="aside__social">
-//             {socialLinks
-//               .filter(({ label }) =>
-//                 ["LinkedIn", "GitHub", "upwork"].includes(label)
-//               )
-//               .map(({ href, label, color, icon: Icon }) => (
-//                 <a
-//                   key={label}
-//                   href={href}
-//                   target="_blank"
-//                   rel="noopener noreferrer"
-//                   aria-label={label}
-//                   style={{ "--social-color": color }}
-//                 >
-//                   <Icon aria-hidden="true" />
-//                 </a>
-//               ))}
 //           </div>
 //         </section>
 //         <section className="aside__details" aria-label="About">
@@ -117,45 +106,6 @@
 //               </svg>
 //             </p>
 
-//             <div className="asdie__myStack">
-//               {[...skills]
-//                 .filter(({ name }) =>
-//                   [
-//                     "NextJS",
-//                     "React",
-//                     "TypeScript",
-//                     "TailwindCSS",
-//                     "Sass",
-//                     "Framer",
-//                     "MUI",
-//                     "Redux",
-//                     "Jest",
-//                     "Vite",
-//                   ].includes(name)
-//                 )
-//                 .map(({ id, name, icon: Icon, color }) => (
-//                   <div
-//                     key={name}
-//                     className="asdie__myStackItem"
-//                     title={name}
-//                     style={{ "--skill-color": color }}
-//                   >
-//                     {Icon ? <Icon aria-hidden="true" /> : null}
-//                     <span className="asdie__myStackLabel">{name}</span>
-//                   </div>
-//                 ))}
-//               <div className="aside__actions">
-//                 <a
-//                   href="#skills"
-//                   className="aside__viewSkillsBtn"
-//                   role="button"
-//                   aria-label="View all skills"
-//                 >
-//                   more...{" "}
-//                 </a>
-//               </div>
-//             </div>
-
 //             <a
 //               href="/resume.pdf"
 //               download
@@ -169,7 +119,7 @@
 //             </a>
 //           </div>
 //         </section>
-//       </main>
+//       </div>
 //     </aside>
 //   );
 // }

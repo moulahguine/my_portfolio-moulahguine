@@ -3,24 +3,14 @@
 
 // Main contact section container
 .contact {
-  padding: calc($space-40 + 2rem) 0 calc($space-40 + 10rem);
-  background-color: $color-bg;
-
-  // Header section
-  .contact__header {
-    @include section-title;
-    text-align: center;
-
-    .contact__subtitle {
-      @include subtitle;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-  }
+  width: 100%;
 
   .container {
+    // Header section
+    .contact__header {
+      @include header_section;
+    }
     @include container;
-    max-width: 1200px;
 
     padding: clamp(10px, 1vw, $space-12);
 

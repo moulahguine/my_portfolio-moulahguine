@@ -2,92 +2,100 @@
 @use "../../assets/styles/mixins" as *;
 
 .skills {
-  background-color: $color-bg;
-  padding: calc($space-40 + 2rem) 0;
-  position: relative;
-  overflow: hidden;
-
-  .skills__header {
-    @include section-title;
-
-    @media (max-width: $breakpoint-sm) {
-      margin-bottom: 2rem;
-    }
-
-    .skills__subtitle {
-      @include subtitle;
-    }
-  }
+  width: 100%;
 
   .container {
     @include container;
-    overflow: visible;
+  }
+
+  .skills__header {
+    @include header_section;
+  }
+
+  .skills__content {
+    padding: 15px 0;
+    position: relative;
+    overflow: hidden;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba($color-primary, 0.08) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    &::before {
+      top: -40px;
+      left: -20px;
+    }
+
+    &::after {
+      bottom: -50px;
+      right: -10px;
+    }
+  }
+
+  .skills__row {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .skill-card {
+    @include flex-column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: $radius-sm;
+    border: 1px solid rgba($color-border, 0.8);
+    background: linear-gradient(
+      180deg,
+      rgba($surface-0, 0.9) 0%,
+      rgba($surface-1, 0.8) 90%
+    );
+    box-shadow: $shadow-md;
+    transition:
+      transform $transition-base,
+      border-color $transition-base,
+      box-shadow $transition-base;
+
+    &:hover {
+      transform: translateY(-6px);
+      border-color: rgba($color-primary-500, 0.35);
+      box-shadow: $shadow-lg;
+    }
+  }
+
+  .skill-card__icon {
+    @include flex-center;
+
+    .skill-icon {
+      font-size: 2rem;
+    }
+  }
+
+  .skill-card__name {
+    font-weight: $fw-semibold;
+    color: $gray-600;
+    font-size: $font-size-16;
+    text-align: center;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding: clamp(3rem, 10vw, 5rem) 0;
 
     .skills__content {
-      @include flex-column;
-      overflow-x: hidden;
-      margin-inline: 15px;
-
-      .skills__row {
-        @include flex-center;
-        flex-wrap: wrap;
-        gap: $space-16;
-        padding: $space-16 0;
-
-        .skill-card {
-          width: clamp(90px, 8vw, 120px);
-          aspect-ratio: 1/1;
-          @include flex-column;
-          justify-content: center;
-          gap: clamp($space-8, 1vw, $space-12);
-          cursor: default;
-          background-color: $color-surface;
-          border-radius: $space-12;
-          transition: all 0.3s ease-in-out;
-          position: relative;
-          border: 1px solid var(--skill-color);
-          z-index: 15;
-          box-shadow: inset 0 0 15px var(--skill-color);
-
-          &:hover {
-            transform: translateY(-5px);
-            box-shadow:
-              inset 0 0 15px var(--skill-color),
-              0 0px 15px 0 var(--skill-color);
-          }
-
-          &:active {
-            transform: translateY(-4px);
-          }
-
-          .skill-card__icon {
-            @include flex-center;
-            font-size: clamp($font-size-32, 3vw, $font-size-40);
-            color: var(--skill-color);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-            svg {
-              max-width: clamp(32px, 4vw, 48px);
-              max-height: clamp(32px, 4vw, 48px);
-            }
-
-            img {
-              width: clamp(32px, 4vw, 48px);
-              height: clamp(32px, 4vw, 48px);
-              object-fit: contain;
-            }
-          }
-
-          .skill-card__name {
-            font-size: clamp(11px, 1.5vw, $font-size-14);
-            font-weight: $fw-bold;
-            color: rgb($color-primary-500, 0.8);
-            text-align: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            line-height: 1.2;
-          }
-        }
-      }
+      border-radius: $radius-xl;
     }
   }
 }

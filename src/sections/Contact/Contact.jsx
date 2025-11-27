@@ -52,14 +52,11 @@ function Contact() {
       viewport={{ once: true }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <header className="contact__header">
-        <h1 className="contact__title">Get In Touch</h1>
-        <p className="contact__subtitle">
-          Questions, Opportunities, Collaborations
-        </p>
-      </header>
-
       <main className="container">
+        <header className="contact__header">
+          <h1 className="contact__title header__title">Get In Touch</h1>
+          <span className="contact__subtitle header__line"></span>
+        </header>
         <div className="contact__content">
           <div className="contact__info">
             {/* Location */}

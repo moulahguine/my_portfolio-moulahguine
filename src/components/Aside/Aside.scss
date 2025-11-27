@@ -2,267 +2,40 @@
 @use "../../assets/styles/mixins" as *;
 
 .aside {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 400px;
-  height: 900px;
-  border-radius: 0 $radius-xl $radius-xl 0;
-  background-color: rgb($color-gray-300, 0.5);
-  backdrop-filter: blur(10px);
-  .container {
-    width: inherit;
-    height: inherit;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 50% 50%;
-    padding: $space-12;
+  .aside__map {
+    flex: 1;
+    border-radius: $radius-xl;
+    background: $color-gray-200;
+    box-shadow: 0 25px 65px rgba($color-black, 0.15);
+    overflow: hidden;
+    padding: $space-8;
+    height: 500px;
 
-    .aside__profile {
+    .interactive-map-container {
       width: 100%;
-      position: relative;
+      height: 100%;
 
-      .aside__media {
-        position: relative;
+      .leaflet-container {
         width: 100%;
         height: 100%;
-        overflow: hidden;
-        border-radius: $radius-xl;
-        clip-path: polygon(
-          0px 140px,
-          10px 130px,
-          50px 130px,
-          60px 120px,
-          60px 10px,
-          70px 0,
-          100% 0,
-          100% 100%,
-          0 100%
-        );
-
-        &::after {
-          content: "";
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: inherit;
-          height: 45%;
-          backdrop-filter: blur(50px);
-          transform: scale(1.2);
-          z-index: 1;
-          mask-image: linear-gradient(to top, #eee 50%, transparent);
-        }
-
-        .aside__image {
-          width: inherit;
-          height: inherit;
-          object-fit: cover;
-          scale: 1.2;
-        }
-
-        .curve {
-          position: absolute;
-          top: 0px;
-          left: 59px;
-          z-index: 15;
-          width: 20px;
-          aspect-ratio: 1/1;
-          background-color: rgb($color-gray-300, 0.5);
-          backdrop-filter: blur(10px);
-          clip-path: path("M 0 0 L 20 0  A 20,20 0,0,0 0 20 Z");
-        }
-
-        .curve:nth-child(2) {
-          top: 119px;
-          left: 49px;
-          width: 11px;
-          clip-path: path("M 0 0 L 10 0  A 10,10 0,0,1 0 10 Z");
-        }
-
-        .curve:last-of-type {
-          top: 129px;
-          left: 0px;
-          clip-path: path("M 0 0 L 20 0  A 20,20 0,0,0 0 20 Z");
-        }
+        border-radius: $radius-lg;
+        background: #f8fafc;
       }
-      .aside__info {
-        width: 100%;
-        position: absolute;
-        bottom: $space-16;
-        left: 0;
-        z-index: 2;
-        @include flex-column;
-        align-items: center;
 
-        .aside__title {
-          color: $color-gray-900;
-          font-size: $font-size-28;
-          font-family:
-            "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-          font-weight: $fw-regular;
-          @include flex-center;
-          justify-content: start;
-          gap: $space-4;
-        }
-
-        .aside__subtitle {
-          color: $color-gray-700;
-          font-size: $font-size-16;
-          font-weight: $fw-semibold;
-          text-align: center;
-          display: flex;
-          align-items: center;
-        }
-      }
-      .aside__social {
-        position: absolute;
-        top: 5px;
-        left: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-        width: 15%;
-        a {
-          @include flex-center;
-          width: 35px;
-          aspect-ratio: 1/1;
-          background-color: $color-gray-700;
-          color: #eee;
-          font-size: 19px;
-          border-radius: 50%;
-          cursor: pointer;
-          transition: all 0.3s ease-in-out;
-          opacity: 0.9;
-          &:hover {
-            background-color: var(--social-color);
-            scale: 1.1;
-            opacity: 1;
-          }
-        }
+      .leaflet-control-attribution {
+        display: none !important;
       }
     }
+  }
 
-    .aside__details {
-      padding: $space-8;
-      .aside__content {
-        height: 100%;
-        position: relative;
-        display: grid;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
-        .aside__statis {
-          display: flex;
-          justify-content: space-evenly;
-          gap: 15px;
-          padding: $space-16 $space-24;
-          color: $color-white;
-          .aside__statisItem {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
-        }
-        .aside__description {
-          color: $color-gray-700-hover;
-          font-size: $font-size-14;
-          line-height: 1.7;
-          word-spacing: -1.5px;
-          svg {
-            color: $color-gray-600;
-            padding-left: 5px;
-            width: 25px;
-          }
-        }
-        .asdie__myStack {
-          margin-top: $space-16;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 5px;
-          .asdie__myStackItem,
-          .aside__actions {
-            text-transform: capitalize;
-            background-color: $color-gray-200;
-            color: $color-gray-500;
-            padding: $space-8 $space-12;
-            font-size: $font-size-12;
-            border-radius: $radius-lg;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            transition: all 0.3s ease-in-out;
-            cursor: default;
-            svg {
-              font-size: 14px;
-              color: $color-gray-600;
-            }
-            &:hover {
-              background-color: var(--skill-color);
-              color: white;
-              svg {
-                color: inherit;
-              }
-            }
-          }
-
-          .aside__actions:hover {
-            background-color: $color-gray-500;
-            scale: 1.05;
-          }
-        }
-        .aside__resume {
-          @include flex-between;
-          gap: 5px;
-          width: 150px;
-          height: 50px;
-          padding: $space-4 $space-4 $space-4 $space-24;
-          // border-radius: $radius-2xl;
-          border-radius: 25px;
-          background-clip: padding-box;
-          background-color: $color-gray-900;
-          color: $color-white;
-          position: relative;
-          align-self: flex-end;
-          justify-self: flex-end;
-          overflow: hidden;
-          font-size: 18px;
-          .label__resume {
-            position: relative;
-            z-index: 2;
-          }
-          .download__icon {
-            --size: 150px;
-            @include flex-center;
-            background-color: $color-white;
-            width: 40px;
-            height: 40px;
-            font-size: 15px;
-            border-radius: 50%;
-            color: $color-black;
-            transition: all 0.5s ease-in-out;
-          }
-
-          transition: all 0.6s ease-in;
-
-          &:hover {
-            color: $color-gray-900;
-            border: 1px solid $color-gray-900-border;
-            .download__icon {
-              color: $color-black;
-              width: var(--size);
-              height: 79px;
-              position: absolute;
-              right: 0;
-              z-index: 1;
-
-              svg {
-                margin-left: auto;
-                margin-right: 15px;
-              }
-            }
-          }
-        }
-      }
-    }
+  .aside__mapLoading {
+    @include flex-center;
+    width: 100%;
+    height: 100%;
+    border-radius: $radius-xl;
+    background: rgba($color-gray-200, 0.6);
+    color: $color-gray-600;
+    font-size: $font-size-14;
+    letter-spacing: 0.5px;
   }
 }

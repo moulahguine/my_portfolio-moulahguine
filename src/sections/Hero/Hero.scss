@@ -2,169 +2,205 @@
 @use "../../assets/styles/mixins" as *;
 // HERO SECTION - START
 .hero {
-  @include flex-center;
   width: 100%;
-  height: 100dvh;
-  background-color: $color-white;
+  margin-top: 80px;
 
-  // HERO CONTAINER - START
   .container {
     @include container;
-    padding: 0 !important;
-    position: relative;
-    height: 700px;
-    @media (max-width: $breakpoint-md) {
-      height: 85dvh;
-    }
 
-    // HERO INFO (desktop) - START
-    .hero__info {
-      @include flex-column;
-      padding: $space-8;
-      width: fit-content;
-      position: absolute;
-      left: 52%;
-
-      .hero__title {
-        @include flex-center;
-        justify-content: start;
-        gap: $space-4;
-        color: $color-gray-700;
-        font-size: clamp(1.9rem, 1.2vw + 1rem, 3rem);
-        font-weight: $fw-bold;
-      }
-
-      .hero__subtitle {
-        color: $color-gray-700;
-        font-size: clamp(1rem, 1.2vw + 1rem, 2rem);
-        font-weight: $fw-regular;
-        text-align: center;
-        display: flex;
-        align-items: center;
-      }
-
-      @media (max-width: $breakpoint-md) {
-        display: none;
-      }
-    }
-    // HERO INFO (desktop) - END
-
-    // HERO CONTENT GRID - START
-    .content {
-      width: inherit;
-      height: inherit;
-      background-color: $color-gray-100;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr;
-      align-items: center;
-      padding: clamp(1rem, 2vw, 3rem);
-      border-radius: $radius-xl;
-      clip-path: url(#heroContainerShape);
+    .hero__map {
+      width: 100%;
+      height: 250px;
+      background-color: transparent;
+      position: relative;
+      z-index: 5;
       overflow: hidden;
 
-      @media (max-width: $breakpoint-md) {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
-        clip-path: url(#customShape);
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 7%;
+        z-index: 5;
+        box-shadow: inset 0px -10px 5px 0px $white;
+        border-radius: 0 0 $radius-lg;
+        background-color: transparent;
       }
 
-      // HERO PROFILE - START (left column media container)
-      .hero__profile {
+      .interactive-map-container {
         width: 100%;
         height: 100%;
-        overflow-y: hidden;
         position: relative;
-        display: flex;
-        align-items: center;
+        z-index: 4;
 
-        @media (max-width: $breakpoint-md) {
-          overflow: visible;
+        .leaflet-container {
+          width: 100%;
+          height: 100%;
+          border-radius: $radius-lg;
+          background: #f8fafc;
         }
 
-        // HERO INFO (mobile) - START
-        .hero__info-mobile {
-          display: none;
-          @media (max-width: $breakpoint-md) {
-            display: block;
-            padding: $space-8;
-
-            .hero__title-mobile {
-              color: $color-gray-700;
-              font-size: clamp(1rem, 1.5vw + 0.66rem, 2rem);
-              font-weight: $fw-regular;
-              @include flex-center;
-              justify-content: start;
-              gap: $space-4;
-              svg {
-                width: 15px;
-              }
-            }
-            .hero__subtitle-mobile {
-              max-width: 14rem;
-              font-size: clamp(0.65rem, 1vw + 0.35rem, 0.875rem);
-              word-spacing: -1px;
-              color: $color-gray-500;
-            }
-          }
+        .leaflet-control-attribution {
+          display: none !important;
         }
-        // HERO INFO (mobile) - END
       }
-      // HERO PROFILE - END
-
-      // HERO DETAILS - START
-      .hero__details {
-        height: 100%;
-        padding: $space-8;
-        position: relative;
-
-        // HERO CONTENT INNER - START
-        .hero__content {
-          @include flex-center;
-          flex-direction: column;
-          height: inherit;
-          position: relative;
-
-          // HERO DESCRIPTION - START
-          .hero__description {
-            color: $color-gray-700-hover;
-            font-size: clamp(1.5rem, 1vw, 2rem);
-            line-height: 1.7;
-            word-spacing: -1.5px;
-            margin-left: $space-16;
-
-            @media (max-width: $breakpoint-md) {
-              text-align: center;
-              font-size: clamp(1.25rem, 1.5vw + 0.8rem, 1.875rem);
-            }
-            svg {
-              color: $color-gray-600;
-              width: 35px;
-              font-size: 15px;
-              @media (max-width: $breakpoint-md) {
-                width: $font-size-24;
-              }
-            }
-            svg:last-of-type {
-              rotate: 180deg;
-            }
-          }
-          // HERO DESCRIPTION - END
-
-          // HERO RESUME BUTTON - START
-          .hero__resume {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-          }
-          // HERO RESUME BUTTON - END
-        }
-        // HERO CONTENT INNER - END
-      }
-      // HERO DETAILS - END
     }
-    // HERO CONTENT GRID - END
+
+    .hero__profile {
+      padding-right: $space-16;
+      display: flex;
+
+      .hero__media {
+        margin-top: -70px;
+        margin-left: calc($space-32 - 2px);
+        --square-size: 150px;
+        width: var(--square-size);
+        aspect-ratio: 1/1;
+        // height: var(--square-size);
+        border-radius: 50%;
+        overflow: hidden;
+        border: $space-4 solid $white;
+        position: relative;
+        z-index: 155;
+        cursor: pointer;
+        @include sweep-hover($white);
+
+        .hero__image {
+          object-fit: contain;
+          object-position: top;
+          width: 100%;
+          height: 100%;
+          scale: 1.9;
+          transition: all 0.3s ease-in-out;
+        }
+        &:hover .hero__image {
+          scale: 2;
+        }
+      }
+
+      .hero__info {
+        margin-left: $space-8;
+        max-width: 350px;
+        @include flex-column;
+        gap: $space-4;
+
+        .hero__title {
+          display: flex;
+          align-items: center;
+          gap: $space-4;
+          font-size: $font-size-18;
+          color: $gray-700;
+          .verified-badge {
+            width: $space-16;
+            height: $space-16;
+          }
+        }
+
+        .hero__subtitle {
+          font-size: $font-size-12;
+          color: $gray-600;
+        }
+      }
+
+      .hero__cta {
+        @include flex-center;
+        margin-left: auto;
+        gap: $space-8;
+
+        .hero__social {
+          display: flex;
+          gap: inherit;
+
+          .hero__social-link {
+            @include flex-center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 1px solid rgba($gray-200, 0.8);
+            background: $gray-200;
+            color: $gray-700;
+            font-size: $font-size-16;
+            transition: all 0.2s ease-in;
+
+            &:hover,
+            &:focus-visible {
+              background-color: var(--link-color);
+              color: $gray-100;
+              border-color: transparent;
+              scale: 1.17;
+            }
+          }
+        }
+
+        .resume-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: $space-8;
+          padding: $space-4 $space-4 $space-4 $space-16;
+          width: 115px;
+          height: 35px;
+          border-radius: $radius-2xl;
+          background-color: $gray-800;
+          border: 1px solid $gray-800;
+          text-decoration: none;
+          color: $white;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.2s ease-in;
+
+          .resume__title {
+            color: $gray-100;
+            font-size: $font-size-12;
+            font-weight: $fw-semibold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+          }
+
+          .resume__icon {
+            background: $white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            @include flex-center;
+            transition: inherit;
+
+            svg {
+              color: $gray-900;
+              font-size: $font-size-16;
+              transition: inherit;
+            }
+          }
+
+          &:hover,
+          &:focus-within {
+            position: relative;
+            scale: 0.95;
+            .resume__icon {
+              position: absolute;
+              top: 0;
+              right: 0;
+              height: 100%;
+              width: 100%;
+              border-radius: initial;
+              justify-content: flex-end;
+              z-index: 1;
+              svg {
+                transform: translate(-14px, -2px);
+              }
+            }
+
+            .resume__title {
+              position: relative;
+              color: $gray-800;
+              z-index: 2;
+            }
+          }
+        }
+      }
+    }
   }
-  // HERO CONTAINER - END
 }
 // HERO SECTION - END

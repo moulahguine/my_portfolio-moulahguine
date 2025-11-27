@@ -7,6 +7,7 @@ import {
   ExternalLinkIcon,
   GithubIcon,
 } from "../../components/Icons/CustomIcons";
+import SkillIcon from "../Skills/SkillIcon";
 import "./Projects.scss";
 
 import projectsData from "./projectData";
@@ -21,11 +22,11 @@ function Projects() {
       viewport={{ once: true }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <header className="projects__header">
-        <h2 className="projects__title">Projects</h2>
-        <p className="projects__subtitle">Interfaces I Built From Scratch</p>
-      </header>
       <main className="container">
+        <header className="projects__header">
+          <h2 className="projects__title header__title">Projects</h2>
+          <span className="projects__subtitle header__line"></span>
+        </header>
         <div className="projects__grid">
           {projectsData.map((project, index) => (
             <motion.div
@@ -111,20 +112,23 @@ const ProjectCard = React.memo(function ProjectCard({ project, index }) {
 
             <div className="project-card__tech-stack">
               <div className="project-card__technologies">
-                {project.technologies.map((tech, techIndex) => {
-                  const IconComponent = tech.icon;
-                  return (
-                    <div
-                      style={{ "--colorTech": tech.color }}
-                      key={techIndex}
-                      className="project-card__tech-item"
+                {project.technologies.map((tech, techIndex) => (
+                  <div
+                    style={{ "--colorTech": tech.color }}
+                    key={techIndex}
+                    className="project-card__tech-item"
+                    title={tech.name}
+                  >
+                    <SkillIcon
+                      icon={tech.icon}
+                      color={tech.color}
+                      size={18}
                       title={tech.name}
-                    >
-                      <IconComponent style={{ color: tech.color }} size={15} />
-                      <span>{tech.name}</span>
-                    </div>
-                  );
-                })}
+                      className="project-card__tech-icon"
+                    />
+                    <span>{tech.name}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

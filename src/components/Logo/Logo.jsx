@@ -1,24 +1,13 @@
-import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import logoImage from "../../assets/images/logo/logo.svg";
 import "./Logo.scss";
 
-const Logo = ({
-  onClick,
-  className = "",
-  ariaLabel = "Go to home section",
-  text = "m oulahguine",
-  highlightChar = "m",
-  style,
-}) => {
+const Logo = () => {
   return (
-    <button
-      onClick={onClick}
-      className={`logo ${className}`}
-      aria-label={ariaLabel}
-      style={{ ...style }}
-    >
-      <span className="logo__highlight">{highlightChar}</span>
-      {text.replace(highlightChar, "").trim()}
-    </button>
+    <Link className="logo" href={"/"}>
+      <Image src={logoImage} alt="Go to home section" width={70} height={70} />
+    </Link>
   );
 };
 

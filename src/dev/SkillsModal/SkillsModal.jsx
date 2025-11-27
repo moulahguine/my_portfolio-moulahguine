@@ -1,6 +1,9 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { Modal } from "../../../components";
-import { skillsRow1, skillsRow2, skillColors } from "../skillsData";
+import SkillIcon from "../../sections/Skills/SkillIcon";
+import { skills, skillColors } from "../../sections/Skills/skill-data";
 import "./SkillsModal.scss";
 
 function SkillsModal({ isOpen, onClose, selectedSkill: initialSelectedSkill }) {
@@ -18,8 +21,7 @@ function SkillsModal({ isOpen, onClose, selectedSkill: initialSelectedSkill }) {
 
   if (!initialSelectedSkill) return null;
 
-  // Combine all skills from both rows
-  const allSkills = [...skillsRow1, ...skillsRow2];
+  const allSkills = skills;
 
   return (
     <Modal
@@ -34,7 +36,6 @@ function SkillsModal({ isOpen, onClose, selectedSkill: initialSelectedSkill }) {
           <h3 className="skills-modal__skills-panel-title">All Skills</h3>
           <div className="skills-modal__skills-panel-list">
             {allSkills.map((skill) => {
-              const IconComponent = skill.icon;
               const skillColor = skillColors[skill.name] || "#6C757D";
               const isSelected = selectedSkill && skill.id === selectedSkill.id;
 
@@ -48,8 +49,11 @@ function SkillsModal({ isOpen, onClose, selectedSkill: initialSelectedSkill }) {
                   style={{ "--skill-color": skillColor }}
                 >
                   <div className="skills-modal__skill-item-icon">
-                    <IconComponent
-                      style={{ color: skillColor, fontSize: "20px" }}
+                    <SkillIcon
+                      icon={skill.icon}
+                      color={skillColor}
+                      size={20}
+                      title={skill.name}
                     />
                   </div>
                   <span className="skills-modal__skill-name">{skill.name}</span>
@@ -70,17 +74,12 @@ function SkillsModal({ isOpen, onClose, selectedSkill: initialSelectedSkill }) {
                     backgroundColor: `${skillColors[selectedSkill.name]}20`,
                   }}
                 >
-                  {(() => {
-                    const IconComponent = selectedSkill.icon;
-                    return (
-                      <IconComponent
-                        style={{
-                          color: skillColors[selectedSkill.name],
-                          fontSize: "28px",
-                        }}
-                      />
-                    );
-                  })()}
+                  <SkillIcon
+                    icon={selectedSkill.icon}
+                    color={skillColors[selectedSkill.name]}
+                    size={28}
+                    title={selectedSkill.name}
+                  />
                 </div>
                 <div className="skills-modal__skill-header-content">
                   <h3>{selectedSkill.name}</h3>
