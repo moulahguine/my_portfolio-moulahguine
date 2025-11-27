@@ -5,11 +5,11 @@
 .projects {
   width: 100%;
 
-  .projects__header {
-    @include header_section;
-  }
-
   .container {
+    .projects__header {
+      @include header_section;
+    }
+
     @include container;
     position: relative;
     // Projects grid
@@ -37,127 +37,119 @@
       transition: all 0.3s ease;
       box-shadow: 0 0 15px 5px var(--project-color);
       flex: 1;
-      .project-card__container {
-        @include flex-column;
+      @include flex-column;
 
-        // Media Section
-        .project-card__media-section {
-          overflow: hidden;
+      // Media Section
+      .project-card__media {
+        overflow: hidden;
+        width: inherit;
+
+        .project-card__mediaImg {
           width: inherit;
+          height: inherit;
+          object-fit: cover;
+          object-position: center;
+          transition: all 0.3s ease;
 
-          .project-card__media-container {
-            width: inherit;
-            height: 100%;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
 
-            .project-card__media {
-              width: inherit;
-              height: inherit;
-              object-fit: cover;
-              object-position: center;
+      // Details Section
+      .project-card__details {
+        padding: clamp($space-12, 1vw, $space-24);
+
+        .project-card__header {
+          margin-bottom: $space-12;
+
+          .project-card__title {
+            font-size: clamp($font-size-12, 1vw, $font-size-14);
+            color: $color-text-light;
+            font-weight: $fw-medium;
+            word-spacing: -1px;
+          }
+        }
+
+        .project-card__content {
+          @include flex-column;
+          gap: $space-16;
+
+          .project-card__description {
+            color: $color-text-muted;
+            line-height: 1.5;
+            font-size: clamp($font-size-12, 1vw, $font-size-14);
+          }
+
+          // Tech Stack Section
+
+          .project-card__technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: $space-4;
+
+            .project-card__tech-item {
+              @include flex-center;
+              font-weight: $fw-medium;
               transition: all 0.3s ease;
+              border-radius: 15px;
+              padding: $space-8 $space-12;
+              background-color: rgb($color-text-lighter, 0.3);
+              color: $color-text-muted;
+              gap: $space-4;
 
               &:hover {
-                transform: scale(1.1);
+                color: $color-bg;
+                background-color: var(--colorTech);
+                scale: 1.1;
               }
-            }
-          }
-        }
 
-        // Details Section
-        .project-card__details {
-          padding: clamp($space-12, 1vw, $space-24);
-
-          .project-card__header {
-            margin-bottom: $space-12;
-
-            .project-card__title {
-              font-size: clamp($font-size-12, 1vw, $font-size-14);
-              color: $color-text-light;
-              font-weight: $fw-medium;
-              word-spacing: -1px;
-            }
-          }
-
-          .project-card__content {
-            @include flex-column;
-            gap: $space-16;
-
-            .project-card__description {
-              color: $color-text-muted;
-              line-height: 1.5;
-              font-size: clamp($font-size-12, 1vw, $font-size-14);
-            }
-
-            // Tech Stack Section
-            .project-card__tech-stack {
-              .project-card__technologies {
-                display: flex;
-                flex-wrap: wrap;
-                gap: $space-4;
-
-                .project-card__tech-item {
-                  @include flex-center;
-                  font-weight: $fw-medium;
-                  transition: all 0.3s ease;
-                  border-radius: 15px;
-                  padding: $space-8 $space-12;
-                  background-color: rgb($color-text-lighter, 0.3);
-                  color: $color-text-muted;
-                  gap: $space-4;
-
-                  &:hover {
-                    color: $color-bg;
-                    background-color: var(--colorTech);
-                    scale: 1.1;
-                  }
-
-                  svg {
-                    color: inherit !important;
-                  }
-                  span {
-                    color: inherit;
-                    text-transform: capitalize;
-                    font-size: 11px;
-                  }
-                }
+              svg {
+                color: inherit !important;
               }
-            }
-          }
-        }
-
-        // links github + demo
-        .project-card__links {
-          display: flex;
-          justify-content: end;
-
-          .project-card__link {
-            @include flex-center;
-            width: 40px;
-            height: 40px;
-            gap: $space-4;
-            color: $color-text-muted;
-            transition: all 0.3s ease-in-out;
-
-            &:hover,
-            &:active {
-              color: $color-text;
-              width: 80px;
-
               span {
-                opacity: 1;
-                transform: translateX(0);
-                font-size: clamp($font-size-14, 1vw, $font-size-18);
-                font-weight: $fw-semibold;
+                color: inherit;
+                text-transform: capitalize;
+                font-size: 11px;
               }
             }
+          }
+        }
+      }
+
+      // links github + demo
+      .project-card__links {
+        display: flex;
+        justify-content: end;
+
+        .project-card__link {
+          @include flex-center;
+          width: 40px;
+          height: 40px;
+          gap: $space-4;
+          color: $color-text-muted;
+          transition: all 0.3s ease-in-out;
+
+          &:hover,
+          &:active {
+            color: $color-text;
+            width: 80px;
 
             span {
-              opacity: 0;
-              transform: translateX(-10px);
-              transition: all 0.3s ease-in-out;
-              font-size: 0;
-              white-space: nowrap;
+              opacity: 1;
+              transform: translateX(0);
+              font-size: clamp($font-size-14, 1vw, $font-size-18);
+              font-weight: $fw-semibold;
             }
+          }
+
+          span {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease-in-out;
+            font-size: 0;
+            white-space: nowrap;
           }
         }
       }
