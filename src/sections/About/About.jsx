@@ -84,7 +84,7 @@ export default function About() {
             {/* end video section */}
 
             {/* start fact crads */}
-            <section className="about__facts">
+            {/* <section className="about__facts">
               {quickFacts.map((fact, index) => (
                 <article key={index} className="fact-card">
                   <div className="fact-card__content">
@@ -94,7 +94,7 @@ export default function About() {
                   <p className="fact-card__text">{fact.value}</p>
                 </article>
               ))}
-            </section>
+            </section> */}
             {/* end fact crads */}
           </main>
           {/* end main container for section */}

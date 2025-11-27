@@ -1,101 +1,101 @@
 @use "../../assets/styles/variables" as *;
 @use "../../assets/styles/mixins" as *;
 
+// start skills section
 .skills {
   width: 100%;
 
+  // main container
   .container {
     @include container;
-  }
 
-  .skills__header {
-    @include header_section;
-  }
-
-  .skills__content {
-    padding: 15px 0;
-    position: relative;
-    overflow: hidden;
-
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle,
-        rgba($color-primary, 0.08) 0%,
-        transparent 70%
-      );
-      pointer-events: none;
-      z-index: 0;
+    // header
+    .skills__header {
+      @include header_section;
     }
 
-    &::before {
-      top: -40px;
-      left: -20px;
-    }
-
-    &::after {
-      bottom: -50px;
-      right: -10px;
-    }
-  }
-
-  .skills__row {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: clamp(1rem, 3vw, 1.5rem);
-  }
-
-  .skill-card {
-    @include flex-column;
-    align-items: center;
-    padding: 1rem;
-    border-radius: $radius-sm;
-    border: 1px solid rgba($color-border, 0.8);
-    background: linear-gradient(
-      180deg,
-      rgba($surface-0, 0.9) 0%,
-      rgba($surface-1, 0.8) 90%
-    );
-    box-shadow: $shadow-md;
-    transition:
-      transform $transition-base,
-      border-color $transition-base,
-      box-shadow $transition-base;
-
-    &:hover {
-      transform: translateY(-6px);
-      border-color: rgba($color-primary-500, 0.35);
-      box-shadow: $shadow-lg;
-    }
-  }
-
-  .skill-card__icon {
-    @include flex-center;
-
-    .skill-icon {
-      font-size: 2rem;
-    }
-  }
-
-  .skill-card__name {
-    font-weight: $fw-semibold;
-    color: $gray-600;
-    font-size: $font-size-16;
-    text-align: center;
-  }
-
-  @media (max-width: $breakpoint-md) {
-    padding: clamp(3rem, 10vw, 5rem) 0;
-
+    // content
     .skills__content {
-      border-radius: $radius-xl;
+      padding: $space-16 0;
+      position: relative;
+      overflow: hidden;
+
+      // before and after
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba($color-primary, 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      // before and after positions
+      &::before {
+        top: -40px;
+        left: -20px;
+      }
+
+      &::after {
+        bottom: -50px;
+        right: -10px;
+      }
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: clamp(1rem, 3vw, 1.5rem);
+      // skill card
+      .skill-card {
+        @include flex-column;
+        align-items: center;
+        padding: 1rem;
+        border-radius: $radius-sm;
+        border: 1px solid rgba($color-border, 0.8);
+        background: linear-gradient(
+          180deg,
+          rgba($surface-0, 0.9) 0%,
+          rgba($surface-1, 0.8) 90%
+        );
+        box-shadow: $shadow-md;
+        transition:
+          transform $transition-base,
+          border-color $transition-base,
+          box-shadow $transition-base;
+
+        // hover effect
+        &:hover {
+          transform: translateY(-6px);
+          border-color: rgba($color-primary-500, 0.35);
+          box-shadow: $shadow-lg;
+        }
+        // icon
+        .skill-card__icon {
+          @include flex-center;
+          // skill icon
+          .skill-icon {
+            font-size: 2rem;
+          }
+        }
+
+        // name
+        .skill-card__name {
+          // name style
+          font-weight: $fw-semibold;
+          color: $gray-600;
+          font-size: $font-size-16;
+          text-align: center;
+        }
+      }
     }
   }
 }
+
+// end skills section

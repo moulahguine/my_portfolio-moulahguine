@@ -4,31 +4,44 @@ import "./Skills.scss";
 
 function Skills() {
   return (
+    // start skills section
     <section className="skills" id="skills">
+      {/* main container */}
       <div className="container">
-        <div className="skills__header header__section">
-          <h2 className="skills__title header__title">Tech Stack</h2>
-          <span className="skills__subtitle header__line"></span>
-        </div>
+        {/* header */}
+        <header className="skills__header">Tech Stack</header>
+        {/* content */}
         <div className="skills__content">
-          <div className="skills__row">
-            {skills.map((skill) => (
-              <div key={skill.id} className="skill-card">
-                <div className="skill-card__icon">
-                  <SkillIcon
-                    icon={skill.icon}
-                    color={skill.color}
-                    size={36}
-                    title={skill.name}
-                  />
-                </div>
-                <span className="skill-card__name">{skill.name}</span>
+          {/* skills */}
+          {skills.map((skill) => (
+            // skill card
+            <div
+              key={skill.id}
+              className="skill-card"
+              style={{ "--skill-color": skill.color }}
+            >
+              {/* icon */}
+              <div className="skill-card__icon">
+                {/* skill icon */}
+                <SkillIcon
+                  icon={skill.icon}
+                  color={skill.color}
+                  size={36}
+                  title={skill.name}
+                />
               </div>
-            ))}
-          </div>
+              {/* name */}
+              <span className="skill-card__name">{skill.name}</span>
+            </div>
+            // end skill card
+          ))}
+          {/* end skills */}
         </div>
+        {/* end content */}
       </div>
+      {/* end main container */}
     </section>
+    // end skills section
   );
 }
 

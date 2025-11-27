@@ -6,12 +6,13 @@
   width: 100%;
   top: 0;
   z-index: 1000;
-
-  background-color: rgb($white, 0.8);
-  // filter: blur(15px);
-
+  background-color: $white;
+  box-shadow: 0 -4px 5px 0 $gray-800;
   .header__container {
-    @include container;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+
     @include flex-between;
     position: relative;
   }
