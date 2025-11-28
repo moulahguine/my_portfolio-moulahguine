@@ -14,10 +14,9 @@ function Projects() {
     <section id="projects" className="projects">
       <div className="container">
         <header className="projects__header">
-          <header className="projects__header">
-            <h2>Recent projects</h2>
-          </header>
+          <h2>Recent projects</h2>
         </header>
+
         <div className="projects__grid">
           {projectsData.map((project, index) => (
             <article
@@ -42,23 +41,22 @@ function ProjectCard({ project, index }) {
           className="project-card__mediaImg"
           src={project.media.image}
           alt={`${project.subtitle} - Frontend Development Project Screenshot`}
-          sizes={project.media.sizes}
-          // onClick={handleImageClick}
-          // onContextMenu={(e) => e.preventDefault()}
-          style={{ cursor: "pointer" }}
           width={1200}
           height={800}
           priority={index < 2}
+          style={{ cursor: "pointer" }}
+          // onClick={handleImageClick}
+          // onContextMenu={(e) => e.preventDefault()}
         />
+
         <figcaption className="sr-only">
           {project.subtitle} – Project preview screenshot
         </figcaption>
       </figure>
 
       <div className="project-card__details">
-        <header className="project-card__header">
-          <h2 className="project-card__title">{project.subtitle}</h2>
-        </header>
+        <h3 className="project-card__title">{project.subtitle}</h3>
+
         <div className="project-card__content">
           <p className="project-card__description">{project.description}</p>
 
@@ -77,7 +75,7 @@ function ProjectCard({ project, index }) {
                   title={tech.name}
                   className="project-card__tech-icon"
                 />
-                <h3>{tech.name}</h3>
+                <span className="project-card__tech-name">{tech.name}</span>
               </span>
             ))}
           </div>
@@ -95,6 +93,7 @@ function ProjectCard({ project, index }) {
             <ExternalLinkIcon />
             <span> visit</span>
           </a>
+
           <a
             href={project.githubLink}
             className="project-card__link github"
