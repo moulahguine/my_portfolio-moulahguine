@@ -1,4 +1,4 @@
-import AsideInlineMap from "./InlineMap";
+import InlineMap from "./InlineMap";
 import HeroMedia from "./HeroMedia";
 import VerifiedBadge from "@/components/icons/VerifiedBadge";
 import socialLinks from "@/components/SocialLinks/socialLinksData";
@@ -19,7 +19,7 @@ export default function Hero() {
         {/* section for location start */}
 
         <div className="hero__map" aria-label="Map showing Istanbul and Rabat">
-          <AsideInlineMap />
+          <InlineMap />
         </div>
 
         {/* section for location end */}

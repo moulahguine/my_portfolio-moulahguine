@@ -3,9 +3,10 @@
 import * as motion from "motion/react-client";
 import Image from "next/image";
 import heroImage from "@/assets/images/hero-section/hero-img.webp";
-import ImageModal from "@/components/ImageModal/ImageModal";
+import Modal from "@/components/Modal/Modal";
+import { ImageViewer } from "@/components/ModalContent";
 
-import { Suspense, useState } from "react";
+import { useState } from "react";
 
 export default function HeroMedia({ classFigure, classImage }) {
   const [isImageOpen, setIsImageOpen] = useState(false);
@@ -27,18 +28,17 @@ export default function HeroMedia({ classFigure, classImage }) {
         </figcaption>
       </figure>
 
-      {isImageOpen && (
-        <Suspense
-          fallback={<div style={{ display: "none" }}>Loading modal...</div>}
-        >
-          <ImageModal
-            isOpen={isImageOpen}
-            onClose={handleCloseModal}
-            imageSrc={heroImage}
-            imageAlt="Mohamed Oulahguine - Frontend Developer"
-          />
-        </Suspense>
-      )}
+      <Modal
+        isOpen={isImageOpen}
+        onClose={handleCloseModal}
+        size="large"
+        closeOnOverlayClick={true}
+      >
+        <ImageViewer
+          src={heroImage}
+          alt="Mohamed Oulahguine - Frontend Developer"
+        />
+      </Modal>
     </>
   );
 }

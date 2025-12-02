@@ -1,0 +1,37 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+.videoViewer {
+  position: relative;
+}
+
+.videoViewer__frame {
+  cursor: pointer;
+  position: relative;
+  border-radius: 16px;
+  will-change: transform, width, height;
+  width: fit-content;
+  height: 100%;
+  overflow: hidden;
+
+  > video,
+  > img,
+  > .myvideo_intro {
+    display: block;
+    width: 100%;
+    height: inherit;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+}
+
+.videoViewer__overlayClose {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 1002;
+}
+
+.videoViewer__close {
+  transform: translateZ(0);
+}

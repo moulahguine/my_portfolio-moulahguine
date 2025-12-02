@@ -1,36 +1,38 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { createPortal } from "react-dom";
+
 import CloseButton from "../CloseButton/CloseButton";
-import { useScrollLock } from "../../hooks/useScrollLock";
+import useScrollLock, {
+  useScrollLock as useScrollLockNamed,
+} from "../../hooks/useScrollLock";
 import "./Modal.scss";
 
-function Modal({
+export default function Modal({
   isOpen,
   onClose,
-  title,
   children,
+  title,
   size = "large",
   showHeader = true,
   showCloseButton = true,
   closeOnOverlayClick = true,
   animationDuration = 200,
   style,
+  layoutId,
 }) {
+  const [mounted, setMounted] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  // Use centralized scroll lock
   useScrollLock(isOpen);
+  useScrollLockNamed?.(isOpen);
 
-  const handleClose = useCallback(() => {
-    setIsAnimating(false);
-    setTimeout(() => {
-      onClose();
-    }, animationDuration);
-  }, [onClose, animationDuration]);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  // Handle modal animations
-  React.useEffect(() => {
+  useEffect(() => {
     if (isOpen) {
       setIsAnimating(true);
     } else {
@@ -38,54 +40,68 @@ function Modal({
     }
   }, [isOpen]);
 
+  const handleClose = useCallback(() => {
+    setIsAnimating(false);
+    setTimeout(() => {
+      onClose?.();
+    }, animationDuration);
+  }, [onClose, animationDuration]);
+
   const handleOverlayClick = (e) => {
-    if (closeOnOverlayClick && e.target === e.currentTarget) {
+    if (!closeOnOverlayClick) return;
+    if (e.target === e.currentTarget) {
       handleClose();
     }
   };
 
-  if (!isOpen) return null;
+  if (!mounted || !isOpen) return null;
 
-  return (
-    <dialog
-      className={`modal__overlay ${
-        isAnimating ? "modal__overlay--animating" : "modal__overlay--closing"
-      }`}
-      onClick={handleOverlayClick}
-    >
-      <main
-        tabIndex={-1}
-        className={`modal__container modal__container--${size} ${
-          isAnimating
-            ? "modal__container--animating"
-            : "modal__container--closing"
-        }`}
-        onClick={(e) => e.stopPropagation()}
-        style={{ ...style }}
-      >
-        {/* Modal Header */}
-        {showHeader && (title || showCloseButton) && (
-          <header className="modal__header">
-            {title && <h2 className="modal__header-title">{title}</h2>}
-            {showCloseButton && (
-              <CloseButton onClick={handleClose} ariaLabel="Close modal" />
-            )}
-          </header>
-        )}
-
-        {/* Modal Content */}
-        <div
-          className={`modal__content ${
-            showHeader && (title || showCloseButton)
-              ? "modal__content--with-header"
-              : "modal__content--without-header"
+  const modalContent = (
+    <>
+      {isOpen && (
+        <dialog
+          className={`modal__overlay ${
+            isAnimating
+              ? "modal__overlay--animating"
+              : "modal__overlay--closing"
           }`}
+          onClick={handleOverlayClick}
         >
-          {children}
-        </div>
-      </main>
-    </dialog>
-  );
-}
+          <main
+            layout={!!layoutId}
+            layoutId={layoutId}
+            tabIndex={-1}
+            className={`modal__container modal__container--${size} ${
+              isAnimating
+                ? "modal__container--animating"
+                : "modal__container--closing"
+            }`}
+            onClick={(e) => e.stopPropagation()}
+            style={{ ...style }}
+          >
+            {showHeader && (title || showCloseButton) && (
+              <header className="modal__header">
+                {title && <h2 className="modal__header-title">{title}</h2>}
+                {showCloseButton && (
+                  <CloseButton onClick={handleClose} ariaLabel="Close modal" />
+                )}
+              </header>
+            )}
 
-export default Modal;
+            <div
+              className={`modal__content ${
+                showHeader && (title || showCloseButton)
+                  ? "modal__content--with-header"
+                  : "modal__content--without-header"
+              }`}
+            >
+              {children}
+            </div>
+          </main>
+        </dialog>
+      )}
+    </>
+  );
+
+  return createPortal(modalContent, document.body);
+}

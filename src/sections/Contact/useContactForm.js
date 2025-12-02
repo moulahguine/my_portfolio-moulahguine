@@ -1,3 +1,5 @@
+"use client";
+
 import { useFormLogic } from "./useFormLogic";
 import { useContactUI } from "./useContactUI";
 

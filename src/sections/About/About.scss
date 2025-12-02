@@ -24,70 +24,12 @@
         z-index: 3;
 
         .about__info {
-          p {
-            text-indent: $space-12;
-            font-size: $font-size-14;
-            font-weight: 100;
-            line-height: 1.6;
-          }
+          text-indent: $space-12;
+          font-size: $font-size-14;
+          font-weight: 100;
+          line-height: 1.6;
         }
       }
-
-      // .about__facts {
-      //   grid-area: 2 / span 2;
-      //   display: flex;
-      //   gap: $space-8;
-      //   position: relative;
-      //   z-index: 2;
-
-      //   .fact-card {
-      //     background: linear-gradient(135deg, $white, $gray-200);
-      //     border-radius: $radius-lg;
-      //     padding: $space-16;
-      //     border: 1px solid rgba($gray-400, 0.35);
-      //     min-height: 180px;
-      //     @include flex-column;
-      //     gap: $space-16;
-      //     position: relative;
-      //     overflow: hidden;
-      //     transition: all 0.3s ease-in-out;
-
-      //     &:hover {
-      //       transform: translateY(-1px);
-      //       box-shadow: $shadow-lg;
-      //     }
-
-      //     .fact-card__content {
-      //       @include flex-center;
-      //       justify-content: start;
-      //       gap: $space-8;
-      //       .fact-card__icon {
-      //         @include flex-center;
-      //         width: 54px;
-      //         height: 54px;
-      //         font-size: $font-size-20;
-      //         border-radius: $radius-lg;
-      //         color: $gray-800;
-      //         background: $gray-200;
-      //       }
-
-      //       .fact-card__label {
-      //         width: fit-content;
-      //         text-transform: uppercase;
-      //         letter-spacing: -1px;
-      //         font-size: $font-size-14;
-      //         color: $gray-800;
-      //         font-weight: $fw-semibold;
-      //       }
-      //     }
-
-      //     .fact-card__text {
-      //       color: $gray-950;
-      //       font-size: calc($font-size-16 - 3px);
-      //       line-height: 1.7;
-      //     }
-      //   }
-      // }
 
       .about__intro-video {
         border-radius: $radius-lg;

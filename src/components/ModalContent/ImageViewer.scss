@@ -1,29 +1,24 @@
 @use "../../assets/styles/variables" as *;
 @use "../../assets/styles/mixins" as *;
 
-.image-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.209);
-  backdrop-filter: blur(20px);
+.imageViewer {
   @include flex-center;
-  z-index: 999999;
 
-  .image-modal {
-    @include flex-center;
+  &__frame {
     position: relative;
     max-width: 800px;
     width: 90%;
     aspect-ratio: 1/1;
     border-radius: 15px;
     overflow: hidden;
+    background-color: $gray-300;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 
-    &__image,
     img {
       width: 100%;
+      height: 100%;
       border-radius: 15px;
       object-fit: cover;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease;
     }
   }

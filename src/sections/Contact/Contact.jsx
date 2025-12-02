@@ -1,30 +1,22 @@
 "use client";
-
-import { motion } from "framer-motion";
 import {
   FaRegCopy,
   FaPaperPlane,
   FaPhone,
   FaHandPointer,
 } from "react-icons/fa";
-import "./Contact.scss";
-import { TfiEmail } from "react-icons/tfi";
-import HoverCursor from "../../components/HoverCursor/HoverCursor";
-import Location from "../../components/Location/Location";
+
 import Modal from "../../components/Modal/Modal";
 import CloseButton from "../../components/CloseButton/CloseButton";
-import { SocialLinks } from "../../components/SocialLinks";
+
+import { TfiEmail } from "react-icons/tfi";
 import { useContactForm } from "./useContactForm";
+import HoverCursor from "../../components/HoverCursor/HoverCursor";
+import Location from "../../components/Location/Location";
+import { SocialLinks } from "../../components/SocialLinks";
+import "./Contact.scss";
 
 function Contact() {
-  const lineVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i = 0) => ({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut", delay: i * 0.12 },
-    }),
-  };
   const {
     formData,
     errors,
@@ -44,44 +36,20 @@ function Contact() {
   } = useContactForm();
 
   return (
-    <motion.section
-      id="contact"
-      className="contact"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
-      <main className="container">
-        <header className="contact__header">
-          <h1 className="contact__title header__title">Get In Touch</h1>
-          <span className="contact__subtitle header__line"></span>
-        </header>
+    <section id="contact" className="contact">
+      <div className="container">
+        <header className="contact__header">Get In Touch</header>
         <div className="contact__content">
           <div className="contact__info">
             {/* Location */}
-            <motion.div
-              className="contact__info-item"
-              variants={lineVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              custom={0}
-            >
+            <div className="contact__info-item">
               <div className="contact__info-content">
                 <Location />
               </div>
-            </motion.div>
+            </div>
 
             {/* Email */}
-            <motion.div
-              className="contact__info-item"
-              variants={lineVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              custom={1}
-            >
+            <div className="contact__info-item">
               <div className="contact__info-content">
                 <HoverCursor
                   content="click"
@@ -93,17 +61,10 @@ function Contact() {
                   <FaHandPointer />
                 </HoverCursor>
               </div>
-            </motion.div>
+            </div>
 
             {/* Phone */}
-            <motion.div
-              className="contact__info-item"
-              variants={lineVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              custom={2}
-            >
+            <div className="contact__info-item">
               <div className="contact__info-content">
                 <HoverCursor
                   content="copy"
@@ -117,26 +78,16 @@ function Contact() {
                   {!copyFeedback.phone && <FaRegCopy />}
                 </HoverCursor>
               </div>
-            </motion.div>
+            </div>
 
             {/* Social Media */}
-            <motion.div
-              className="contact__social"
-              variants={lineVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              custom={3}
-            >
+            <div className="contact__social">
               <span className="contact__social-label">I'm also active on:</span>
-              <SocialLinks
-                variant="contact"
-                className="contact__social-links"
-              />
-            </motion.div>
+              <SocialLinks className="contact__social-links" />
+            </div>
           </div>
         </div>
-      </main>
+      </div>
 
       {/* Email Options Modal */}
       <Modal
@@ -307,7 +258,7 @@ function Contact() {
           </div>
         </div>
       )}
-    </motion.section>
+    </section>
   );
 }
 

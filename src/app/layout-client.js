@@ -5,7 +5,7 @@ export default function LayoutClient({ children }) {
     <>
       <Header />
       <main id="main-content">{children}</main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

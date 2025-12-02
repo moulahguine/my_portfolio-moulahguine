@@ -1,36 +1,8 @@
 import IntroVideo from "./IntroVideo";
-import { LuRocket } from "react-icons/lu";
-import { FaRegLightbulb } from "react-icons/fa";
-import { FiPenTool } from "react-icons/fi";
-import { TbCode } from "react-icons/tb";
 import * as motion from "motion/react-client";
 import "./About.scss";
 
 export default function About() {
-  const quickFacts = [
-    {
-      icon: <LuRocket />,
-      label: "delivery",
-      value: "testing • optimization • deployment • long-term maintanability ",
-    },
-    {
-      icon: <FaRegLightbulb />,
-      label: "strategy",
-      value: "clear project goals • user flow planning • technical direction",
-    },
-    {
-      icon: <TbCode />,
-      label: "frontend development",
-      value:
-        "NextJs • TypeScript • React • Architecture • integrations • performance",
-    },
-    {
-      icon: <FiPenTool />,
-      label: "UI/UX design",
-      value: "Structure • layout • responsice behavior • interaction planning",
-    },
-  ];
-
   return (
     <div>
       {/* start about section */}
@@ -40,39 +12,39 @@ export default function About() {
 
         <div className="container">
           {/* start main header for section */}
-          <header className="about__header header__section">About Me</header>
+          <h1 className="about__header header__section">About Me</h1>
           {/* end main header for section */}
 
           {/* start main container for section */}
-          <main className="about__content">
+          <article className="about__content">
             {/* start content section */}
             <section className="about__me">
               {/* start content about me */}
-              <div className="about__info">
-                <p>
-                  I build modern frontends with React and Next.js, focusing on
-                  performance, clean architecture, and UI quality. My work
-                  usually starts with a Figma file and ends as a fast,
-                  predictable interface that behaves well across devices.
-                  <br />
-                  <br />
-                  I care about the details that make apps feel solid also
-                  component structure, rendering patterns, accessibility, and
-                  avoiding the small problems that turn into technical debt. I’m
-                  comfortable working with designers and backend teams,
-                  translating ideas into reusable components and solving the
-                  issues that appear between design and implementation.
-                  <br />
-                  <br />
-                  Most of my recent work involves Next.js (App Router),
-                  TypeScript, Tailwind, and Framer I enjoy improving loading
-                  speed, preventing unnecessary re-renders, and creating motion
-                  that supports the UX instead of distracting from it. <br />
-                  <br />
-                  Right now, I’m looking for a frontend role where clean code,
-                  collaboration, and shipping reliable UI matter.
-                </p>
-              </div>
+
+              <p className="about__info">
+                I build modern frontends with React and Next.js, focusing on
+                performance, clean architecture, and UI quality. My work usually
+                starts with a Figma file and ends as a fast, predictable
+                interface that behaves well across devices.
+                <br />
+                <br />
+                I care about the details that make apps feel solid also
+                component structure, rendering patterns, accessibility, and
+                avoiding the small problems that turn into technical debt. I’m
+                comfortable working with designers and backend teams,
+                translating ideas into reusable components and solving the
+                issues that appear between design and implementation.
+                <br />
+                <br />
+                Most of my recent work involves Next.js (App Router),
+                TypeScript, Tailwind, and Framer I enjoy improving loading
+                speed, preventing unnecessary re-renders, and creating motion
+                that supports the UX instead of distracting from it. <br />
+                <br />
+                Right now, I’m looking for a frontend role where clean code,
+                collaboration, and shipping reliable UI matter.
+              </p>
+
               {/* end content about me */}
             </section>
             {/* end content section */}
@@ -82,21 +54,7 @@ export default function About() {
               <IntroVideo />
             </section>
             {/* end video section */}
-
-            {/* start fact crads */}
-            {/* <section className="about__facts">
-              {quickFacts.map((fact, index) => (
-                <article key={index} className="fact-card">
-                  <div className="fact-card__content">
-                    <div className="fact-card__icon">{fact.icon}</div>
-                    <p className="fact-card__label">{fact.label}</p>
-                  </div>
-                  <p className="fact-card__text">{fact.value}</p>
-                </article>
-              ))}
-            </section> */}
-            {/* end fact crads */}
-          </main>
+          </article>
           {/* end main container for section */}
         </div>
 
