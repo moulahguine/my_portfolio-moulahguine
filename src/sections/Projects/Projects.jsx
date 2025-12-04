@@ -13,9 +13,7 @@ function Projects() {
   return (
     <section id="projects" className="projects">
       <div className="container">
-        <header className="projects__header">
-          <h2>Recent projects</h2>
-        </header>
+        <h2 className="projects__header">Recent projects</h2>
 
         <div className="projects__grid">
           {projectsData.map((project, index) => (

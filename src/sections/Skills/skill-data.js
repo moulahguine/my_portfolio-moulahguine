@@ -1,5 +1,3 @@
-// Server-safe technology + skill metadata (no React components/functions)
-
 export const technologies = {
   HTML: { icon: "FaHtml5", color: "#E34F26" },
   CSS3: { icon: "SiCss3", color: "#66309a" },
@@ -20,10 +18,10 @@ export const technologies = {
   GitHub: { icon: "FaGithub", color: "#181717" },
   Vite: { icon: "SiVite", color: "#646CFF" },
   "VS Code": { icon: "VsCodeIcon", color: "#007ACC" },
-  Figma: { icon: "FaHtml5", color: "#F24E1E" }, // placeholder
-  REST: { icon: "FaHtml5", color: "#FF6B6B" }, // placeholder
-  Accessibility: { icon: "FaHtml5", color: "#4CAF50" }, // placeholder
-  Responsive: { icon: "FaHtml5", color: "#9C27B0" }, // placeholder
+  Figma: { icon: "FaHtml5", color: "#F24E1E" },
+  REST: { icon: "FaHtml5", color: "#FF6B6B" },
+  Accessibility: { icon: "FaHtml5", color: "#4CAF50" },
+  Responsive: { icon: "FaHtml5", color: "#9C27B0" },
   ReactQuery: { icon: "SiReactquery", color: "#FF4154" },
   "Cursor AI": { icon: "CursorIcon", color: "#424242" },
   "React Router": { icon: "SiReactrouter", color: "#F05032" },

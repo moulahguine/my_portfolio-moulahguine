@@ -4,7 +4,7 @@ import "./About.scss";
 
 export default function About() {
   return (
-    <div>
+    <>
       {/* start about section */}
 
       <section id="about" className="about">
@@ -62,6 +62,6 @@ export default function About() {
       </section>
 
       {/* end about section */}
-    </div>
+    </>
   );
 }

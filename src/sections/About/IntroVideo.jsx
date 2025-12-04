@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Modal from "@/components/Modal/Modal";
 import { VideoViewer } from "@/components/ModalContent";
+import { CiPlay1 } from "react-icons/ci";
 
 export default function IntroVideo() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,21 +14,23 @@ export default function IntroVideo() {
   return (
     <>
       {/* Inline preview */}
-      <button
-        type="button"
-        className="introVideo__trigger"
+      <div
+        className="video__container"
         onClick={handleOpen}
         aria-label="Play introduction video"
       >
-        <video
-          className="myvideo_intro"
+        <VideoViewer
+          className="myvideo"
           src="https://res.cloudinary.com/dauiexg9k/video/upload/v1730982387/backgroundHero_ytckhd.mp4"
-          muted
-          loop
-          playsInline
-          preload="none"
+          layoutId="intro-video"
+          isOpen={false}
+          autoplayInline={!isOpen}
+          onRequestClose={handleClose}
         />
-      </button>
+        <span className="playIcon">
+          <CiPlay1 />
+        </span>
+      </div>
 
       {/* Fullscreen modal viewer */}
       <Modal

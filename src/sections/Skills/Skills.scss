@@ -20,7 +20,7 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: $space-16;
 
       // skill card
@@ -28,8 +28,8 @@
         cursor: pointer;
         @include flex-column;
         align-items: center;
-        padding: $space-32;
-        border-radius: $radius-sm;
+        padding: $space-32 $space-16;
+        border-radius: $radius-lg;
         box-shadow: 0 0 0 2px var(--skill-color);
         background-color: $white;
         transition: all 0.3s ease-in-out;

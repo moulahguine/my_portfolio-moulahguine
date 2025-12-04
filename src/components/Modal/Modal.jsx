@@ -42,15 +42,13 @@ export default function Modal({
 
   // start use callback
   const handleClose = useCallback(() => {
-    setIsAnimating(false);
     setTimeout(() => {
       onClose?.();
     }, animationDuration);
   }, [onClose, animationDuration]);
 
   const handleOverlayClick = (e) => {
-    if (!closeOnOverlayClick) return;
-    if (e.target === e.currentTarget) {
+    if (closeOnOverlayClick && e.target === e.currentTarget) {
       handleClose();
     }
   };
@@ -68,7 +66,7 @@ export default function Modal({
     >
       {/* start modal overlay */}
       {isOpen && (
-        <dialog className={`modal__overlay `} onClick={handleOverlayClick}>
+        <div className={`modal__overlay `} onClick={handleOverlayClick}>
           {/* start modal container */}
           <div
             layout={!!layoutId}
@@ -109,7 +107,7 @@ export default function Modal({
             {/* end modal content */}
           </div>
           {/* end modal container */}
-        </dialog>
+        </div>
       )}
       {/* end modal overlay */}
     </RemoveScroll>
