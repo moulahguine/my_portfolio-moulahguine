@@ -15,7 +15,6 @@
   overflow: hidden;
 
   > video,
-  > img,
   > .myvideo_intro {
     display: block;
     width: 100%;
@@ -24,16 +23,3 @@
     object-fit: cover;
   }
 }
-
-.videoViewer__overlayClose {
-  position: fixed;
-  top: 14px;
-  right: 14px;
-  z-index: 1002;
-}
-
-.videoViewer__close {
-  transform: translateZ(0);
-}
-
-

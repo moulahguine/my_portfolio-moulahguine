@@ -1,107 +1,84 @@
 @use "../../assets/styles/variables" as *;
 @use "../../assets/styles/mixins" as *;
 
-.modal {
-  &__overlay {
-    all: unset;
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    @include flex-center;
-    background: rgba(45, 55, 72, 0.4);
-    backdrop-filter: blur(20px) saturate(180%);
-    transition: opacity 0.2s ease;
-    overflow: hidden;
+// start modal overlay
+.modal__overlay {
+  all: unset;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  @include flex-center;
+  background: rgb($gray-600, 0.5);
+  backdrop-filter: blur(10px) saturate(100%);
+  transition: opacity 0.2s ease;
+  overflow: hidden;
 
-    &--animating {
-      opacity: 1;
-    }
-
-    &--closing {
-      opacity: 0;
-    }
-  }
-
-  &__container {
-    background-color: $color-bg;
-    border-radius: $space-8;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  // start modal container
+  .modal__container {
+    position: relative;
+    background-color: $gray-200;
+    border-radius: $radius-lg;
+    box-shadow: 0 0px 50px 0px rgb($gray-800, 0.8);
     width: 90%;
-    max-height: 90vh;
+    max-height: 90dvh;
     overflow: hidden;
     transition: all 0.2s ease;
     transform: scale(0.95);
     opacity: 0;
 
-    &--animating {
+    // start animating
+    &.animating {
       transform: scale(1);
       opacity: 1;
     }
 
-    &--closing {
+    // start closing
+    &.closing {
       transform: scale(0.95);
       opacity: 0;
     }
 
     // Size variants
-    &--small {
+    &.small {
       max-width: 448px;
     }
 
-    &--medium {
+    &.medium {
       max-width: 512px;
     }
 
-    &--large {
+    &.large {
       max-width: 896px;
     }
 
-    &--xlarge {
+    &.xlarge {
       max-width: 1152px;
     }
-  }
 
-  &__header {
-    @include flex-between;
-    padding: $space-24;
-    border-bottom: 1px solid #e5e7eb;
+    // start modal header
+    .modal__header {
+      @include flex-between;
+      padding: $space-24;
+      border-bottom: 1px solid #e5e7eb;
 
-    &-title {
-      font-size: $font-size-24;
-      font-weight: $fw-bold;
-      color: $color-text;
-      margin: 0;
-    }
-
-    &-close {
-      background: none;
-      border: none;
-      color: $color-primary;
-      padding: $space-8;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: $font-size-24;
-      @include flex-center;
-      width: 32px;
-      aspect-ratio: 1/1;
-      transition: all 0.2s ease;
-
-      &:hover {
-        scale: 1.05;
-        color: $color-primary-hover;
+      &-title {
+        font-size: $font-size-24;
+        font-weight: $fw-bold;
+        color: $color-text;
+        margin: 0;
       }
     }
-  }
 
-  &__content {
-    padding: 0;
-
-    &--with-header {
+    // start modal content
+    .modal__content {
       padding: 0;
-    }
 
-    &--without-header {
-      padding: 24px;
+      .modal__content-close {
+        position: absolute;
+        top: $space-16;
+        right: $space-16;
+        z-index: 1001;
+      }
     }
   }
 }

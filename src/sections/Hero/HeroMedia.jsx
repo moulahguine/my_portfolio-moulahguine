@@ -33,6 +33,7 @@ export default function HeroMedia({ classFigure, classImage }) {
         size="large"
         closeOnOverlayClick={true}
         allowPinchZoom
+        showHeader={false}
       >
         <ImageViewer
           src={heroImage}

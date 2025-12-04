@@ -3,7 +3,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { RemoveScroll } from "react-remove-scroll";
-
 import CloseButton from "../CloseButton/CloseButton";
 import "./Modal.scss";
 
@@ -22,9 +21,12 @@ export default function Modal({
   removeScrollBar = true,
   allowPinchZoom = false,
 }) {
+  // start state
   const [mounted, setMounted] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  // end state
 
+  // start use effect
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -36,7 +38,9 @@ export default function Modal({
       setIsAnimating(false);
     }
   }, [isOpen]);
+  // end use effect
 
+  // start use callback
   const handleClose = useCallback(() => {
     setIsAnimating(false);
     setTimeout(() => {
@@ -50,36 +54,33 @@ export default function Modal({
       handleClose();
     }
   };
+  // end use callback
 
+  // start return
   if (!mounted || !isOpen) return null;
 
   const modalContent = (
+    // start remove scroll
     <RemoveScroll
       enabled={isOpen}
       removeScrollBar={removeScrollBar}
       allowPinchZoom={allowPinchZoom}
     >
+      {/* start modal overlay */}
       {isOpen && (
-        <dialog
-          className={`modal__overlay ${
-            isAnimating
-              ? "modal__overlay--animating"
-              : "modal__overlay--closing"
-          }`}
-          onClick={handleOverlayClick}
-        >
+        <dialog className={`modal__overlay `} onClick={handleOverlayClick}>
+          {/* start modal container */}
           <div
             layout={!!layoutId}
             layoutId={layoutId}
             tabIndex={-1}
-            className={`modal__container modal__container--${size} ${
-              isAnimating
-                ? "modal__container--animating"
-                : "modal__container--closing"
+            className={`modal__container ${size} ${
+              isAnimating ? "animating" : "closing"
             }`}
             onClick={(e) => e.stopPropagation()}
             style={{ ...style }}
           >
+            {/* start modal header */}
             {showHeader && (title || showCloseButton) && (
               <header className="modal__header">
                 {title && <h2 className="modal__header-title">{title}</h2>}
@@ -88,21 +89,34 @@ export default function Modal({
                 )}
               </header>
             )}
-
+            {/* end modal header */}
+            {/* start modal content */}
             <div
               className={`modal__content ${
                 showHeader && (title || showCloseButton)
-                  ? "modal__content--with-header"
-                  : "modal__content--without-header"
+                  ? "with-header"
+                  : "without-header"
               }`}
             >
+              {/* If no header, show close button inside content */}
+              {!showHeader && showCloseButton && (
+                <div className="modal__content-close">
+                  <CloseButton onClick={handleClose} ariaLabel="Close modal" />
+                </div>
+              )}
               {children}
             </div>
+            {/* end modal content */}
           </div>
+          {/* end modal container */}
         </dialog>
       )}
+      {/* end modal overlay */}
     </RemoveScroll>
+    // end remove scroll
   );
-
+  // end return
+  // start create portal
   return createPortal(modalContent, document.body);
+  // end create portal
 }
