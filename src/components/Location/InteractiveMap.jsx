@@ -15,7 +15,7 @@ L.Icon.Default.mergeOptions({
 
 function InteractiveMap() {
   // Center point between Turkey and Morocco to show both countries
-  const mapCenter = useMemo(() => [37.5, 30], []);
+  const mapCenter = useMemo(() => [40, 20], []);
 
   // Coordinates
   const istanbul = useMemo(() => [41.0082, 28.9784], []);
@@ -37,7 +37,7 @@ function InteractiveMap() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
           subdomains="abcd"
-          maxZoom={20}
+          maxZoom={30}
         />
 
         {/* Location Dots for Istanbul and Morocco */}

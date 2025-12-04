@@ -5,7 +5,6 @@ import Image from "next/image";
 import heroImage from "@/assets/images/hero-section/hero-img.webp";
 import Modal from "@/components/Modal/Modal";
 import { ImageViewer } from "@/components/ModalContent";
-
 import { useState } from "react";
 
 export default function HeroMedia({ classFigure, classImage }) {
@@ -33,6 +32,7 @@ export default function HeroMedia({ classFigure, classImage }) {
         onClose={handleCloseModal}
         size="large"
         closeOnOverlayClick={true}
+        allowPinchZoom
       >
         <ImageViewer
           src={heroImage}

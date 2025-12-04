@@ -2,11 +2,9 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { createPortal } from "react-dom";
+import { RemoveScroll } from "react-remove-scroll";
 
 import CloseButton from "../CloseButton/CloseButton";
-import useScrollLock, {
-  useScrollLock as useScrollLockNamed,
-} from "../../hooks/useScrollLock";
 import "./Modal.scss";
 
 export default function Modal({
@@ -21,12 +19,11 @@ export default function Modal({
   animationDuration = 200,
   style,
   layoutId,
+  removeScrollBar = true,
+  allowPinchZoom = false,
 }) {
   const [mounted, setMounted] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-
-  useScrollLock(isOpen);
-  useScrollLockNamed?.(isOpen);
 
   useEffect(() => {
     setMounted(true);
@@ -57,7 +54,11 @@ export default function Modal({
   if (!mounted || !isOpen) return null;
 
   const modalContent = (
-    <>
+    <RemoveScroll
+      enabled={isOpen}
+      removeScrollBar={removeScrollBar}
+      allowPinchZoom={allowPinchZoom}
+    >
       {isOpen && (
         <dialog
           className={`modal__overlay ${
@@ -67,7 +68,7 @@ export default function Modal({
           }`}
           onClick={handleOverlayClick}
         >
-          <main
+          <div
             layout={!!layoutId}
             layoutId={layoutId}
             tabIndex={-1}
@@ -97,10 +98,10 @@ export default function Modal({
             >
               {children}
             </div>
-          </main>
+          </div>
         </dialog>
       )}
-    </>
+    </RemoveScroll>
   );
 
   return createPortal(modalContent, document.body);

@@ -30,7 +30,7 @@ export default function IntroVideo() {
       </button>
 
       {/* Fullscreen modal viewer */}
-      <Modal isOpen={isOpen} onClose={handleClose} size="large">
+      <Modal isOpen={isOpen} onClose={handleClose} size="large" allowPinchZoom>
         <VideoViewer
           src="https://res.cloudinary.com/dauiexg9k/video/upload/v1730982387/backgroundHero_ytckhd.mp4"
           layoutId="intro-video"

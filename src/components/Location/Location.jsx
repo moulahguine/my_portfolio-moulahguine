@@ -3,12 +3,12 @@
 import { useState, useEffect, lazy, Suspense } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { RemoveScroll } from "react-remove-scroll";
 
 import { MdOutlineLocationOn } from "react-icons/md";
 import ReactCountryFlag from "react-country-flag";
 import CloseButton from "../CloseButton/CloseButton";
 import HoverCursor from "../HoverCursor/HoverCursor";
-import { useScrollLock } from "../../hooks/useScrollLock";
 
 import "./Location.scss";
 import { GrLocationPin } from "react-icons/gr";
@@ -19,9 +19,6 @@ const InteractiveMap = lazy(() => import("./InteractiveMap"));
 export default function Location(style) {
   const [isMapOpen, setIsMapOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-
-  // Use centralized scroll lock
-  useScrollLock(isMapOpen);
 
   useEffect(() => {
     setMounted(true);
@@ -79,41 +76,47 @@ export default function Location(style) {
           <>
             <AnimatePresence>
               {isMapOpen && (
-                <motion.div
-                  key="map-overlay"
-                  className="map-overlay"
-                  onClick={closeMap}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
+                <RemoveScroll
+                  enabled={isMapOpen}
+                  removeScrollBar={false}
+                  allowPinchZoom
                 >
                   <motion.div
-                    key="map-modal"
-                    className="map-modal"
-                    onClick={(e) => e.stopPropagation()}
-                    initial={{ scale: 0.8, opacity: 0, y: 50 }}
-                    animate={{ scale: 1, opacity: 1, y: 0 }}
-                    exit={{ scale: 0.8, opacity: 0, y: 50 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    key="map-overlay"
+                    className="map-overlay"
+                    onClick={closeMap}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    {/* close icon */}
-                    <CloseButton onClick={closeMap} ariaLabel="Close map" />
-                    {/* header location */}
-                    <div className="map-content">
-                      {/* show map */}
-                      <div className="map-container">
-                        <Suspense
-                          fallback={
-                            <div className="map-loading">Loading map...</div>
-                          }
-                        >
-                          <InteractiveMap />
-                        </Suspense>
+                    <motion.div
+                      key="map-modal"
+                      className="map-modal"
+                      onClick={(e) => e.stopPropagation()}
+                      initial={{ scale: 0.8, opacity: 0, y: 50 }}
+                      animate={{ scale: 1, opacity: 1, y: 0 }}
+                      exit={{ scale: 0.8, opacity: 0, y: 50 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                    >
+                      {/* close icon */}
+                      <CloseButton onClick={closeMap} ariaLabel="Close map" />
+                      {/* header location */}
+                      <div className="map-content">
+                        {/* show map */}
+                        <div className="map-container">
+                          <Suspense
+                            fallback={
+                              <div className="map-loading">Loading map...</div>
+                            }
+                          >
+                            <InteractiveMap />
+                          </Suspense>
+                        </div>
                       </div>
-                    </div>
+                    </motion.div>
                   </motion.div>
-                </motion.div>
+                </RemoveScroll>
               )}
             </AnimatePresence>
           </>,
