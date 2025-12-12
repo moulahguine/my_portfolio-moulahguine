@@ -41,7 +41,6 @@ export default function VideoViewer({
   return (
     <div className="videoViewer">
       <div
-        layout
         layoutId={layoutId}
         className={`videoViewer__frame ${isOpen ? "is-open" : ""}`}
       >
@@ -58,5 +57,3 @@ export default function VideoViewer({
     </div>
   );
 }
-
-

@@ -2,18 +2,13 @@
 @use "../../assets/styles/mixins" as *;
 
 .header {
-  position: fixed;
   width: 100%;
-  top: 0;
-  z-index: 1000;
   background-color: $white;
-  box-shadow: 0 -4px 5px 0 $gray-800;
   .header__container {
+    @include flex-between;
     max-width: 900px;
+    position: relative;
     margin: 0 auto;
     padding: 0;
-
-    @include flex-between;
-    position: relative;
   }
 }

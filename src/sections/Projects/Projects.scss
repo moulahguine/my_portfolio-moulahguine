@@ -23,133 +23,43 @@
         grid-template-columns: 1fr;
       }
       padding: $space-16 0;
+    }
+    // 88888888888888888888888888888888888888
+    // CTA Button
+    .projects__cta {
+      @include flex-center;
+      margin-top: $space-32;
+      padding-top: $space-32;
+      border-top: 1px solid $color-border;
 
-      // Individual project card styling
-      .project-card {
-        @include flex-column;
-        border: solid 1px $color-border;
-        width: 100%;
-        max-height: 600px;
-        min-height: 550px;
-        overflow: hidden;
-        z-index: 15;
-        background: $white;
-        border-radius: $radius-lg;
-        transition: all 0.3s ease;
-        box-shadow: 0 0 7px 3px var(--project-color);
-        position: relative;
+      @media (max-width: $breakpoint-md) {
+        margin-top: $space-24;
+        padding-top: $space-24;
+      }
+    }
 
-        // Media Section
-        .project-card__media {
-          overflow: hidden;
-          width: inherit;
+    .projects__button {
+      @include flex-center;
+      gap: $space-8;
+      padding: $space-12 $space-32;
+      background-color: $color-primary;
+      color: $white;
+      border-radius: $radius-lg;
+      font-size: $font-size-16;
+      font-weight: $fw-semibold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid $color-primary;
 
-          .project-card__mediaImg {
-            width: inherit;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: all 0.3s ease;
+      &:hover {
+        background-color: transparent;
+        color: $color-primary;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba($color-primary, 0.3);
+      }
 
-            &:hover {
-              transform: scale(1.1);
-            }
-          }
-        }
-
-        // Details Section
-        .project-card__details {
-          padding: clamp($space-12, 1vw, $space-24);
-
-          .project-card__title {
-            margin-bottom: $space-12;
-            font-size: clamp($font-size-12, 1vw, $font-size-14);
-            color: $gray-600;
-            font-weight: $fw-semibold;
-          }
-
-          .project-card__content {
-            @include flex-column;
-            gap: $space-16;
-
-            .project-card__description {
-              color: $gray-500;
-              line-height: 1.5;
-              font-size: clamp($font-size-12, 1vw, $font-size-14);
-            }
-
-            // Tech Stack Section
-
-            .project-card__technologies {
-              display: flex;
-              flex-wrap: wrap;
-              gap: $space-4;
-
-              .project-card__tech-item {
-                @include flex-center;
-                transition: all 0.3s ease;
-                border-radius: $radius-md;
-                padding: $space-8;
-                background-color: $gray-200;
-                color: $gray-600;
-                gap: $space-4;
-
-                &:hover {
-                  scale: 1.05;
-                  background-color: var(--colorTech);
-                  color: $white;
-                }
-
-                svg {
-                  color: inherit !important;
-                }
-                span {
-                  color: inherit;
-                  font-weight: $fw-medium;
-                  text-transform: capitalize;
-                  font-size: $font-size-12;
-                }
-              }
-            }
-          }
-        }
-
-        // links github + demo
-        .project-card__links {
-          position: absolute;
-          bottom: $space-12;
-          right: $space-12;
-          display: flex;
-          .project-card__link {
-            @include flex-center;
-            width: 40px;
-            height: 40px;
-            gap: $space-4;
-            color: $gray-800;
-            transition: all 0.3s ease-in-out;
-
-            &:hover,
-            &:active {
-              color: $color-text;
-              width: 80px;
-
-              span {
-                opacity: 1;
-                transform: translateX(0);
-                font-size: clamp($font-size-14, 1vw, $font-size-18);
-                font-weight: $fw-semibold;
-              }
-            }
-
-            span {
-              opacity: 0;
-              transform: translateX(-10px);
-              transition: all 0.3s ease-in-out;
-              font-size: 0;
-              white-space: nowrap;
-            }
-          }
-        }
+      &:active {
+        transform: translateY(0);
       }
     }
   }

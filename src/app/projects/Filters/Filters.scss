@@ -1,0 +1,41 @@
+@use "../../../assets/styles/variables" as *;
+@use "../../../assets/styles/mixins" as *;
+
+.projects-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-12;
+  justify-content: center;
+  margin-bottom: $space-32;
+
+  @media (max-width: $breakpoint-md) {
+    gap: $space-8;
+    margin-bottom: $space-24;
+  }
+
+  &__button {
+    padding: $space-8 $space-16;
+    border: 1px solid $color-border;
+    background: $white;
+    color: $gray-600;
+    border-radius: $radius-lg;
+    font-size: $font-size-14;
+    font-weight: $fw-medium;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    &:hover {
+      border-color: $color-primary;
+      color: $color-primary;
+      transform: translateY(-2px);
+    }
+
+    &.active {
+      background: $color-primary;
+      color: $white;
+      border-color: $color-primary;
+      box-shadow: 0 2px 8px rgba($color-primary, 0.3);
+    }
+  }
+}

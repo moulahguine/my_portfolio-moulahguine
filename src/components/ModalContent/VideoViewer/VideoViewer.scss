@@ -10,16 +10,15 @@
   position: relative;
   border-radius: 16px;
   will-change: transform, width, height;
-  width: fit-content;
-  height: 100%;
   overflow: hidden;
 
   > video,
   > .myvideo_intro {
     display: block;
     width: 100%;
-    height: inherit;
+    height: 100%;
     border-radius: 12px;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center center;
   }
 }
