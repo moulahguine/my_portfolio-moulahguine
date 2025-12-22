@@ -1,5 +1,6 @@
 import { metadata as siteMetadata } from "./metadata";
-import LayoutClient from "./layout-client";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 import "../assets/styles/main.scss";
 import "./layout.scss";
 
@@ -72,7 +73,9 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <LayoutClient>{children}</LayoutClient>
+        <Header />
+        <main id="main-content">{children}</main>
+        <Footer />
       </body>
     </html>
   );

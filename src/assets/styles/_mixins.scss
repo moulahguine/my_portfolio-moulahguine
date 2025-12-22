@@ -115,9 +115,10 @@
 
 // Container
 @mixin container {
-  max-width: 900px;
+  max-width: 767px;
   margin: 0 auto;
   padding: $space-32 0;
+
   @media (max-width: $breakpoint-md) {
     padding: 0 $space-16;
   }
@@ -321,4 +322,43 @@
   border-radius: 5px;
   padding: 4px 8px;
   cursor: default;
+}
+@mixin next-button-style {
+  @include flex-center;
+  gap: $space-8;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $gray-700;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  svg {
+    all: unset;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover {
+    color: $gray-700;
+
+    &::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    svg {
+      transform: translateX(-3px);
+      rotate: 45deg;
+      color: inherit !important;
+    }
+  }
 }

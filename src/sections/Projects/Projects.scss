@@ -6,61 +6,49 @@
   width: 100%;
 
   .container {
-    .projects__header {
-      @include header_section;
-    }
-
     @include container;
+
+    .projects__header-container {
+      @include flex-between;
+      padding: 0 0 15px 0;
+
+      .projects__header {
+        @include header_section;
+      }
+
+      .projects__button {
+        color: $gray-600;
+        font-size: $font-size-14;
+        font-weight: $fw-semibold;
+        @include next-button-style;
+      }
+    }
 
     // Projects grid
     .projects__grid {
-      @include grid-center;
-      grid-template-columns: 1fr 1fr;
-      gap: $space-24;
-      align-items: stretch;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
 
       @media (max-width: $breakpoint-md) {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      @media (max-width: $breakpoint-sm) {
         grid-template-columns: 1fr;
-      }
-      padding: $space-16 0;
-    }
-    // 88888888888888888888888888888888888888
-    // CTA Button
-    .projects__cta {
-      @include flex-center;
-      margin-top: $space-32;
-      padding-top: $space-32;
-      border-top: 1px solid $color-border;
-
-      @media (max-width: $breakpoint-md) {
-        margin-top: $space-24;
-        padding-top: $space-24;
+        gap: 1rem;
       }
     }
+  }
+}
 
-    .projects__button {
-      @include flex-center;
-      gap: $space-8;
-      padding: $space-12 $space-32;
-      background-color: $color-primary;
-      color: $white;
-      border-radius: $radius-lg;
-      font-size: $font-size-16;
-      font-weight: $fw-semibold;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border: 2px solid $color-primary;
-
-      &:hover {
-        background-color: transparent;
-        color: $color-primary;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba($color-primary, 0.3);
-      }
-
-      &:active {
-        transform: translateY(0);
-      }
-    }
+.project-card {
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
   }
 }

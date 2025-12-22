@@ -6,9 +6,8 @@
   background-color: $white;
   .header__container {
     @include flex-between;
-    max-width: 900px;
+    @include container;
     position: relative;
-    margin: 0 auto;
     padding: 0;
   }
 }

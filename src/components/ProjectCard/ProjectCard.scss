@@ -1,0 +1,142 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+// Individual project card styling
+.project-card {
+  @include flex-column;
+  width: 370px;
+  --height: 380px;
+  height: var(--height);
+  position: relative;
+  z-index: 15;
+  overflow: hidden;
+  background: $white;
+  border-radius: $radius-md;
+  transition: all 0.3s ease;
+  border: solid 1px $color-border;
+
+  // Hover effect for the card
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(175deg, var(--project-color) 0%, $white 30%);
+    z-index: 0;
+    transition: all 0.2s ease-in-out;
+  }
+
+  // Expand height on hover
+  &:hover::before {
+    height: 100%;
+  }
+
+  // Media Section
+  .project-card__media {
+    overflow: hidden;
+    width: calc(100% - 40px);
+    height: calc((var(--height) / 2) - 20px);
+    background-color: $white;
+    border-radius: $radius-md $radius-md 0 0;
+    margin: 20px auto 0;
+    transition: all 0.3s ease;
+
+    // Image styling
+    .project-card__mediaImg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      scale: 1.2;
+    }
+  }
+
+  // Scale image on card hover
+  &:hover .project-card__media {
+    scale: 1.06;
+  }
+
+  // Details Section
+  .project-card__details {
+    padding: clamp($space-8, 1vw, $space-16);
+
+    // Title styling
+    .project-card__title {
+      @include next-button-style;
+      justify-content: flex-start;
+      width: fit-content;
+      font-size: clamp($font-size-12, 1vw, $font-size-14);
+      color: $gray-600;
+      font-weight: $fw-semibold;
+      margin-bottom: $space-8;
+    }
+
+    // Content Section
+    .project-card__content {
+      position: relative;
+      z-index: 10;
+      @include flex-column;
+      gap: $space-12;
+
+      // Description styling
+      .project-card__description {
+        color: $gray-500;
+        line-height: 1.5;
+        font-size: clamp(11px, 1vw, $font-size-12);
+      }
+
+      // Technologies List
+      .project-card__technologies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $space-4;
+
+        // Tech Item
+        .project-card__tech-item {
+          @include flex-center;
+          align-items: center;
+          gap: $space-4;
+          border-radius: $radius-sm;
+          padding: 4px 8px;
+          color: $gray-500;
+          transition: all 0.3s ease;
+          background-color: $gray-100;
+
+          &:hover {
+            color: $white;
+            background-color: var(--colorTech);
+          }
+
+          svg {
+            color: inherit !important;
+            width: 12px;
+          }
+
+          span {
+            color: inherit;
+            font-weight: $fw-medium;
+            text-transform: capitalize;
+            font-size: $font-size-12;
+          }
+        }
+      }
+    }
+  }
+
+  // Title hover effect
+  &:hover .project-card__details .project-card__title {
+    color: $gray-700;
+
+    &::after {
+      display: none;
+    }
+
+    svg {
+      transform: translateX(-3px);
+      rotate: 45deg;
+      color: inherit !important;
+    }
+  }
+}

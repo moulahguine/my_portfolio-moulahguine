@@ -1,5 +1,5 @@
 import SkillIcon from "./SkillIcon";
-import { skills } from "@/data/skillsData";
+import { skills } from "./skill-data";
 import "./Skills.scss";
 
 function Skills() {

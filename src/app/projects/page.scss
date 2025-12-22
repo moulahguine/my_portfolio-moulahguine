@@ -3,63 +3,30 @@
 
 .projects-page {
   width: 100%;
-  min-height: 100vh;
-  padding: $space-32 0;
-
-  @media (max-width: $breakpoint-md) {
-    padding: $space-32 0;
-  }
+  min-height: calc(100vh - 260px);
+  overflow: hidden;
 
   .container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 $space-32;
+    @include container;
+    min-height: inherit;
 
-    @media (max-width: $breakpoint-md) {
-      padding: 0 $space-16;
-    }
-  }
-
-  &__header {
-    text-align: center;
-    margin-bottom: $space-32;
-
-    @media (max-width: $breakpoint-md) {
-      margin-bottom: $space-32;
-    }
-  }
-
-  &__title {
-    @include heading-1;
-    color: $color-text;
-    margin-bottom: $space-16;
-  }
-
-  &__subtitle {
-    @include subtitle;
-    color: $color-text-muted;
-    font-size: clamp($font-size-14, 2vw, $font-size-18);
-  }
-
-  // Override grid for full page - 3 columns desktop, 2 tablet, 1 mobile
-  .projects__grid--full {
-    grid-template-columns: repeat(3, 1fr);
-    gap: $space-24;
-
-    @media (max-width: 1024px) {
-      grid-template-columns: repeat(2, 1fr);
+    .projects-page__header {
+      @include header_section;
     }
 
-    @media (max-width: $breakpoint-md) {
-      grid-template-columns: 1fr;
+    .projects__empty {
+      @include flex-center;
+      min-height: inherit;
+      color: $color-text-muted;
+      font-size: $font-size-18;
     }
-  }
 
-  .projects__empty {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: $space-32;
-    color: $color-text-muted;
-    font-size: $font-size-18;
+    // Projects Grid
+    .projects__grid {
+      @include flex-center;
+      flex-wrap: wrap;
+      gap: $space-24;
+      padding: $space-16 0;
+    }
   }
 }

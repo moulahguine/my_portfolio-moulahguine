@@ -1,20 +1,19 @@
-import { technologies } from "@/data/skillsData";
+import { technologies } from "@/sections/Skills/skill-data";
 
 // Project media assets
-import porfolio from "@/assets/images/project-section/porfolio/porfolio.webp";
-import ecommerce from "@/assets/images/project-section/ecommerce/ecommerce.webp";
+import porfolio from "@/assets/images/project-section/porfolio/portfolio.png";
+import ecommerce from "@/assets/images/project-section/ecommerce/ecommerce.png";
 import clinic from "@/assets/images/project-section/clinic/clinic.webp";
 import Moder from "@/assets/images/project-section/modern/modern.webp";
 
 // Single source of truth for all project metadata
-// NOTE: Keep this structure stable – routing, filters and UI depend on it.
 const projectsData = [
   {
     id: 1,
     slug: "personal-frontend-portfolio",
     title: "Personal Frontend Developer Portfolio",
     description:
-      "Built with React + SCSS to showcase work, design, and interaction. Mobile-first with smooth animations and polished UX.",
+      "How I turn UI ideas into smooth, real interactions. Built to show how I think, not just what I know.",
     year: 2024,
     featured: true,
 
@@ -51,9 +50,9 @@ const projectsData = [
   {
     id: 2,
     slug: "fashion-shop-ecommerce",
-    title: "Fashion Shop  E-Commerce Website",
+    title: "Fashion Shop  E-Commerce Website",
     description:
-      "Mastered dynamic product management and interactive UI behaviors. Overcame obstacles in responsive grids, mobile navigation, and performance tuning to create a seamless shopping experience.",
+      "From browsing to buying, every interaction is intentional. Built to handle real product behavior.",
     year: 2023,
     featured: true,
 
@@ -100,7 +99,7 @@ const projectsData = [
     description:
       "Refined my approach to building complex dashboards. Addressed challenges in displaying structured data, creating responsive cards, and improving accessibility for better usability.",
     year: 2023,
-    featured: true,
+    featured: false,
 
     color: "#f1f1f1",
 

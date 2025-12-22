@@ -5,7 +5,7 @@ import "./VideoViewer.scss";
 
 export default function VideoViewer({
   src,
-  layoutId = "video-modal",
+  // layoutId = "video-modal",
   className = "myvideo_intro",
   autoplayInline = true,
   loop = true,
@@ -41,7 +41,7 @@ export default function VideoViewer({
   return (
     <div className="videoViewer">
       <div
-        layoutId={layoutId}
+        // layoutId={layoutId}
         className={`videoViewer__frame ${isOpen ? "is-open" : ""}`}
       >
         <video

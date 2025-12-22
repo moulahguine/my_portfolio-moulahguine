@@ -1,0 +1,153 @@
+@use "../../../assets/styles/variables" as *;
+@use "../../../assets/styles/mixins" as *;
+
+// One-column, calm case study layout
+.case-study {
+  background-color: $gray-50;
+  min-height: 100vh;
+  padding: 80px 0;
+
+  &__container {
+    @include container;
+    max-width: 880px;
+    background: transparent;
+  }
+
+  .case-study__breadcrumb {
+    color: $color-text-muted;
+    font-size: $font-size-14;
+    margin-bottom: $space-24;
+    display: flex;
+    gap: $space-8;
+    align-items: center;
+
+    a {
+      color: $color-text-muted;
+      text-decoration: none;
+    }
+    .sep {
+      opacity: 0.5;
+    }
+    .current {
+      color: $color-text;
+      font-weight: $fw-medium;
+    }
+  }
+
+  &__header {
+    margin-bottom: $space-40;
+  }
+
+  &__title {
+    @include heading-1;
+    margin: 0 0 $space-12 0;
+    line-height: 1.08;
+  }
+
+  &__subtitle {
+    color: $color-text-muted;
+    margin: 0 0 $space-16 0;
+    font-size: $font-size-16;
+    max-width: 70ch;
+  }
+
+  &__chips {
+    display: flex;
+    gap: $space-8;
+    flex-wrap: wrap;
+    margin-top: $space-12;
+  }
+
+  .chip {
+    background: rgba($color-text, 0.06);
+    color: $color-text;
+    padding: $space-8 $space-12;
+    border-radius: 999px;
+    font-size: $font-size-14;
+  }
+
+  &__visual {
+    margin: $space-32 0;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    display: block;
+
+    .visual__img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: $radius-lg;
+    }
+    .visual__caption {
+      margin-top: $space-12;
+      color: $color-text-muted;
+      font-size: $font-size-14;
+    }
+  }
+
+  &__signals {
+    margin: $space-32 0;
+  }
+
+  .signals__title {
+    @include heading-3;
+    margin-bottom: $space-12;
+  }
+
+  .signals__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $space-12;
+  }
+
+  .signals__item {
+    background: rgba($color-text, 0.04);
+    color: $color-text;
+    padding: $space-12 $space-16;
+    border-radius: $radius-md;
+    font-weight: $fw-medium;
+    font-size: $font-size-14;
+  }
+
+  &__actions {
+    margin-top: $space-32;
+    display: flex;
+    gap: $space-12;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: $space-12 $space-16;
+    border-radius: $radius-lg;
+    text-decoration: none;
+    font-weight: $fw-semibold;
+    font-size: $font-size-16;
+    display: inline-flex;
+    align-items: center;
+    gap: $space-8;
+  }
+
+  .btn--primary {
+    background: linear-gradient(
+      180deg,
+      rgba($color-primary, 0.12),
+      rgba($color-primary, 0.06)
+    );
+    color: $color-primary;
+  }
+
+  .btn--secondary {
+    background: rgba($color-text, 0.04);
+    color: $color-text;
+  }
+
+  .back-link {
+    color: $color-text-muted;
+    text-decoration: none;
+    font-size: $font-size-14;
+  }
+}

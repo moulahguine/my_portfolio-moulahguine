@@ -1,0 +1,54 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+// links github + demo
+.project-card__links {
+  position: absolute;
+  bottom: $space-12;
+  right: $space-12;
+  display: flex;
+
+  // Individual link styling
+  .project-card__link {
+    @include flex-center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    gap: $space-4;
+    color: $gray-800;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+    // Link text styling
+    span {
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.3s ease-in-out;
+      font-size: 0;
+      white-space: nowrap;
+    }
+
+    // Link hover effect
+    &:hover,
+    &:active {
+      color: $color-text;
+      width: 80px;
+
+      // Link text styling
+      span {
+        opacity: 1;
+        transform: translateX(0);
+        font-size: clamp($font-size-12, 1vw, $font-size-14);
+        font-weight: $fw-semibold;
+        text-transform: capitalize;
+      }
+
+      // Icon styling
+      svg {
+        width: clamp(14px, 1vw, 18px);
+      }
+    }
+  }
+}
