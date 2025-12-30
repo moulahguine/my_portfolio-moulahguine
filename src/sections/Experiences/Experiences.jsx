@@ -13,30 +13,26 @@ import { GoArrowUpRight } from "react-icons/go";
 import "./Experiences.scss";
 
 function Experiences({ mode = "full" }) {
-  const [activeTab, setActiveTab] = useState("work");
+  const [activeTab, setActiveTab] = useState("education");
 
   const isPreview = mode === "preview";
 
-  // Get experiences based on mode
   const currentExperiences = getExperiences(
     activeTab,
     isPreview ? PREVIEW_LIMIT : null
   );
 
-  // Get total count for "View all" button
   const totalCount = experienceData[activeTab]?.length || 0;
   const hasMore = isPreview && totalCount > PREVIEW_LIMIT;
 
-  // Check if ANY tab has more items (for header "View All" link)
   const hasAnyMore =
     isPreview &&
     experienceTabs.some(
       (tab) => (experienceData[tab.id]?.length || 0) > PREVIEW_LIMIT
     );
 
-  // Get current tab label for button text
   const currentTabLabel =
-    experienceTabs.find((t) => t.id === activeTab)?.label || "";
+    experienceTabs.find((tab) => tab.id === activeTab)?.label || "";
 
   const activeIndex = experienceTabs.findIndex((tab) => tab.id === activeTab);
 
@@ -103,11 +99,11 @@ function Experiences({ mode = "full" }) {
           )}
         </div>
 
-        {/* View All Button (preview mode only, when more items exist) */}
+        {/* View All Button */}
         {hasMore && (
           <div className="experiences__footer">
             <Link href="/experiences" className="experiences__view-all-btn">
-              View all {currentTabLabel} ({totalCount})
+              View all {currentTabLabel} ({totalCount - PREVIEW_LIMIT} more)
               <GoArrowUpRight size={18} />
             </Link>
           </div>
