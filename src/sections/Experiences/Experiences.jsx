@@ -1,21 +1,58 @@
 "use client";
 
 import { useState } from "react";
-import { experienceData, experienceTabs } from "@/data/experienceData";
+import Link from "next/link";
+import {
+  experienceTabs,
+  getExperiences,
+  PREVIEW_LIMIT,
+  experienceData,
+} from "@/data/experienceData";
 import ExperienceCard from "./ExperienceCard";
+import { GoArrowUpRight } from "react-icons/go";
 import "./Experiences.scss";
 
-function Experiences() {
+function Experiences({ mode = "full" }) {
   const [activeTab, setActiveTab] = useState("work");
 
-  const currentExperiences = experienceData[activeTab] || [];
+  const isPreview = mode === "preview";
+
+  // Get experiences based on mode
+  const currentExperiences = getExperiences(
+    activeTab,
+    isPreview ? PREVIEW_LIMIT : null
+  );
+
+  // Get total count for "View all" button
+  const totalCount = experienceData[activeTab]?.length || 0;
+  const hasMore = isPreview && totalCount > PREVIEW_LIMIT;
+
+  // Check if ANY tab has more items (for header "View All" link)
+  const hasAnyMore =
+    isPreview &&
+    experienceTabs.some(
+      (tab) => (experienceData[tab.id]?.length || 0) > PREVIEW_LIMIT
+    );
+
+  // Get current tab label for button text
+  const currentTabLabel =
+    experienceTabs.find((t) => t.id === activeTab)?.label || "";
+
   const activeIndex = experienceTabs.findIndex((tab) => tab.id === activeTab);
 
   return (
     <section id="experiences" className="experiences">
       <div className="container">
         {/* Section Header */}
-        <h1 className="experiences__header">Experience</h1>
+        <div className="experiences__header-container">
+          <h1 className="experiences__header">Experience</h1>
+          {hasAnyMore && (
+            <Link href="/experiences" className="experiences__view-all-link">
+              View All
+              <GoArrowUpRight size={18} />
+            </Link>
+          )}
+        </div>
 
         {/* Tabs */}
         <div
@@ -65,6 +102,16 @@ function Experiences() {
             <p className="experiences__empty">No experiences to display. 🙄</p>
           )}
         </div>
+
+        {/* View All Button (preview mode only, when more items exist) */}
+        {hasMore && (
+          <div className="experiences__footer">
+            <Link href="/experiences" className="experiences__view-all-btn">
+              View all {currentTabLabel} ({totalCount})
+              <GoArrowUpRight size={18} />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

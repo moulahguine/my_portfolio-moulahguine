@@ -7,9 +7,23 @@
   .container {
     @include container;
 
+    // Header container with "View All" link
+    .experiences__header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     // Section header
     .experiences__header {
       @include header_section;
+    }
+
+    // View all link (top right, preview mode)
+    .experiences__view-all-link {
+      @include next-button-style;
+      font-size: $font-size-14;
+      color: $gray-500;
     }
 
     // Tabs container
@@ -65,7 +79,7 @@
     .experiences__timeline {
       @include flex-column;
       padding: $space-8 0;
-      min-height: 400px;
+      min-height: 350px;
     }
 
     // Empty state
@@ -75,7 +89,28 @@
       text-align: center;
       color: $gray-500;
       font-size: $font-size-14;
-      min-height: 400px;
+      min-height: 350px;
+    }
+
+    // Footer with View All button
+    .experiences__footer {
+      display: flex;
+      justify-content: center;
+      padding: $space-16 0;
+    }
+
+    .experiences__view-all-btn {
+      @include next-button-style;
+      font-size: $font-size-14;
+      color: $gray-600;
+      padding: $space-8 $space-16;
+      border-radius: $radius-md;
+      background-color: $gray-100;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background-color: $gray-200;
+      }
     }
   }
 }
