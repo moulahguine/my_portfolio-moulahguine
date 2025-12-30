@@ -14,7 +14,6 @@ export default function ProjectCard({ project, index = 0 }) {
           alt={`${project.title} - Frontend Development Project Screenshot`}
           width={1200}
           height={800}
-          priority={index < 2}
         />
 
         <figcaption className="sr-only">

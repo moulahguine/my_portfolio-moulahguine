@@ -3,6 +3,8 @@ import { skills } from "./skill-data";
 import "./Skills.scss";
 
 function Skills() {
+  const skillsShown = skills.filter((skill) => skill.showOnHome).slice(0, 10);
+
   return (
     // start skills section
     <section className="skills" id="skills">
@@ -13,7 +15,7 @@ function Skills() {
         {/* content */}
         <div className="skills__content">
           {/* skills */}
-          {skills.map((skill) => (
+          {skillsShown.map((skill) => (
             // skill card
             <div
               key={skill.id}
@@ -26,7 +28,7 @@ function Skills() {
                 <SkillIcon
                   icon={skill.icon}
                   color={skill.color}
-                  size={36}
+                  size={30}
                   title={skill.name}
                 />
               </div>

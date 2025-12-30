@@ -9,12 +9,12 @@
   width: 50px !important;
   height: 50px !important;
   border-radius: 50%;
-  background: $color-primary;
+  // background: $color-primary;
   pointer-events: none;
-  @include card-shadow;
+  // @include card-shadow;
 
   span {
-    color: $color-surface;
+    // color: $color-su,rface;
     font-size: $font-size-12;
     font-weight: $fw-bold;
     text-transform: uppercase;

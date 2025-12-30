@@ -12,48 +12,24 @@ export default function About() {
 
         <div className="container">
           {/* start main header for section */}
-          <h1 className="about__header header__section">About Me</h1>
+          <h1 className="about__header header__section">How I Work</h1>
           {/* end main header for section */}
 
           {/* start main container for section */}
           <article className="about__content">
-            {/* start content section */}
-            <section className="about__me">
-              {/* start content about me */}
+            {/* start content about me */}
 
-              <p className="about__info">
-                I build modern frontends with React and Next.js, focusing on
-                performance, clean architecture, and UI quality. My work usually
-                starts with a Figma file and ends as a fast, predictable
-                interface that behaves well across devices.
-                <br />
-                <br />
-                I care about the details that make apps feel solid also
-                component structure, rendering patterns, accessibility, and
-                avoiding the small problems that turn into technical debt. I’m
-                comfortable working with designers and backend teams,
-                translating ideas into reusable components and solving the
-                issues that appear between design and implementation.
-                <br />
-                <br />
-                Most of my recent work involves Next.js (App Router),
-                TypeScript, Tailwind, and Framer I enjoy improving loading
-                speed, preventing unnecessary re-renders, and creating motion
-                that supports the UX instead of distracting from it. <br />
-                <br />
-                Right now, I’m looking for a frontend role where clean code,
-                collaboration, and shipping reliable UI matter.
-              </p>
+            <p className="about__info">
+              I focus on building interfaces that feel fast, predictable, and
+              easy to use. I care about the details that usually cause problems
+              later, like component structure, rendering behavior, and
+              accessibility. I work comfortably with designers and backend teams
+              to turn ideas into clear, reusable UI. Most of my recent work uses
+              Next.js (App Router), TypeScript, Tailwind, and Framer Motion,
+              with an emphasis on performance and purposeful motion.
+            </p>
 
-              {/* end content about me */}
-            </section>
-            {/* end content section */}
-
-            {/* start video section */}
-            <section className="about__intro-video">
-              <IntroVideo />
-            </section>
-            {/* end video section */}
+            {/* end content about me */}
           </article>
           {/* end main container for section */}
         </div>
@@ -65,3 +41,26 @@ export default function About() {
     </>
   );
 }
+
+// <p className="about__info">
+//   I build modern frontends with React and Next.js, focusing on performance,
+//   clean architecture, and UI quality. My work usually starts with a Figma
+//   file and ends as a fast, predictable interface that behaves well across
+//   devices.
+//   <br />
+//   <br />
+//   I care about the details that make apps feel solid also component
+//   structure, rendering patterns, accessibility, and avoiding the small
+//   problems that turn into technical debt. I’m comfortable working with
+//   designers and backend teams, translating ideas into reusable components
+//   and solving the issues that appear between design and implementation.
+//   <br />
+//   <br />
+//   Most of my recent work involves Next.js (App Router), TypeScript,
+//   Tailwind, and Framer I enjoy improving loading speed, preventing
+//   unnecessary re-renders, and creating motion that supports the UX instead
+//   of distracting from it. <br />
+//   <br />
+//   Right now, I’m looking for a frontend role where clean code,
+//   collaboration, and shipping reliable UI matter.
+// </p>;

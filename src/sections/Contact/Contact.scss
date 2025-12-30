@@ -74,7 +74,7 @@
         // Social Media Section
         .contact__social {
           margin-top: $space-16;
-          @include flex-center;
+
           flex-direction: column;
 
           .contact__social-label {
@@ -95,7 +95,6 @@
             gap: $space-8;
 
             .contact__social-link {
-              @include flex-center;
               width: 40px;
               aspect-ratio: 1/1;
               background: $color-surface-secondary;
@@ -121,12 +120,10 @@
 
   // Email Options Modal
   .contact__email-options {
-    @include flex-column;
     gap: $space-24;
     text-align: center;
 
     .contact__email-info {
-      @include flex-center;
       gap: $space-12;
       padding: $space-24;
       background: $color-surface;
@@ -146,12 +143,10 @@
     }
 
     .contact__email-actions {
-      @include flex-center;
       gap: $space-16;
       flex-wrap: wrap;
 
       .contact__email-btn {
-        @include flex-center;
         gap: $space-8;
         padding: $space-16 $space-24;
         border: none;
@@ -198,7 +193,6 @@
     }
 
     .contact__form-close {
-      @include flex-center;
       position: absolute;
       top: -$space-8;
       right: -$space-8;
@@ -222,11 +216,9 @@
     }
 
     .contact__form {
-      @include flex-column;
       gap: $space-24;
 
       .contact__form-group {
-        @include flex-column;
         gap: $space-8;
 
         .contact__input,
@@ -270,7 +262,6 @@
       }
 
       .contact__submit-button {
-        @include button-primary;
         width: 100%;
         padding: $space-16 $space-24;
         font-size: $font-size-16;

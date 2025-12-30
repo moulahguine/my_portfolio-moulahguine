@@ -3,11 +3,10 @@
 // HERO SECTION - START
 .hero {
   width: 100%;
-  // margin-top: 80px;
+  margin-top: 50px;
 
   .container {
     @include container;
-    padding-top: 0;
 
     .hero__map {
       width: 100%;
@@ -68,11 +67,11 @@
       display: flex;
 
       .hero__media {
-        margin-top: -70px;
-        margin-left: calc($space-32 - 2px);
         --square-size: 150px;
         width: var(--square-size);
-        aspect-ratio: 1/1;
+        height: var(--square-size);
+        margin-top: -70px;
+        margin-left: calc($space-32 - 2px);
         border-radius: 50%;
         overflow: hidden;
         border: $space-4 solid $white;
@@ -81,17 +80,18 @@
         cursor: pointer;
         @include sweep-hover($white);
         background-color: $gray-100;
+
         .hero__image {
-          object-fit: contain;
+          object-fit: cover;
           object-position: top;
-          width: 100%;
-          height: 100%;
-          scale: 1.9;
+          width: inherit;
+          height: inherit;
+          scale: 1.8;
           transition: all 0.3s ease-in-out;
         }
-        &:hover .hero__image {
-          scale: 2;
-        }
+
+        user-select: none;
+        -webkit-user-drag: none;
       }
 
       .hero__info {
@@ -115,6 +115,9 @@
         .hero__subtitle {
           font-size: $font-size-12;
           color: $gray-600;
+          span {
+            color: $gray-500;
+          }
         }
       }
 
@@ -122,31 +125,6 @@
         @include flex-center;
         margin-left: auto;
         gap: $space-8;
-
-        .hero__social {
-          display: flex;
-          gap: inherit;
-
-          .hero__social-link {
-            @include flex-center;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            border: 1px solid rgba($gray-200, 0.8);
-            background: $gray-200;
-            color: $gray-700;
-            font-size: $font-size-16;
-            transition: all 0.2s ease-in;
-
-            &:hover,
-            &:focus-visible {
-              background-color: var(--link-color);
-              color: $gray-100;
-              border-color: transparent;
-              scale: 1.17;
-            }
-          }
-        }
 
         .resume-btn {
           display: inline-flex;
@@ -156,9 +134,9 @@
           padding: $space-8 $space-4 $space-8 $space-16;
           width: 115px;
           height: 40px;
-          border-radius: $radius-2xl;
-          background-color: $gray-800;
-          border: 1px solid $gray-800;
+          border-radius: $radius-md;
+          background-color: $gray-700;
+          border: 1px solid $gray-600;
           text-decoration: none;
           color: $white;
           position: relative;
@@ -171,18 +149,20 @@
             font-weight: $fw-semibold;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            transition: inherit;
+            transition-delay: 0.4s !important;
           }
 
           .resume__icon {
+            @include flex-center;
             background: $white;
             width: 28px;
             height: 28px;
-            border-radius: 50%;
-            @include flex-center;
+            border-radius: $radius-md;
             transition: inherit;
 
             svg {
-              color: $gray-900;
+              color: $gray-700;
               font-size: $font-size-16;
               transition: inherit;
             }
@@ -190,25 +170,15 @@
 
           &:hover,
           &:focus-within {
-            position: relative;
-            scale: 0.95;
             .resume__icon {
-              position: absolute;
-              top: 0;
-              right: 0;
-              height: 100%;
-              width: 100%;
-              border-radius: initial;
-              justify-content: flex-end;
-              z-index: 1;
+              scale: 7;
               svg {
-                transform: translate(-14px, -2px);
+                scale: 0.2;
               }
             }
 
             .resume__title {
-              position: relative;
-              color: $gray-800;
+              color: $gray-700;
               z-index: 2;
             }
           }
@@ -218,3 +188,60 @@
   }
 }
 // HERO SECTION - END
+.social_carousel_btn {
+  --hero-social-btn-size: 40px;
+
+  width: var(--hero-social-btn-size);
+  height: var(--hero-social-btn-size);
+  border-radius: 50%;
+  border: none;
+  background-color: $white;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+
+  /* EMBLA (carousel) */
+  .container {
+    display: flex;
+    height: 100%;
+    opacity: 0; // hidden by default
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+
+    .item {
+      @include flex-center;
+      flex: 0 0 var(--hero-social-btn-size);
+      height: 100%;
+      color: $gray-700;
+    }
+  }
+
+  /* DEFAULT ICON */
+  .hover_icon {
+    position: absolute;
+    inset: 0;
+    @include flex-center;
+    color: $gray-700;
+    background-color: $white;
+
+    opacity: 1; // visible by default
+    transform: scale(1);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  /* HOVER STATE */
+  &:hover {
+    .container {
+      opacity: 1; // show carousel
+      pointer-events: auto;
+    }
+
+    .hover_icon {
+      opacity: 0; // hide static icon
+      transform: scale(0.85);
+    }
+  }
+}

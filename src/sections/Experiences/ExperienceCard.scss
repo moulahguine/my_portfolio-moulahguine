@@ -1,0 +1,169 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+.experience-card {
+  display: flex;
+  gap: $space-16;
+  position: relative;
+
+  // Timeline elements
+  .experience-card__timeline {
+    @include flex-column;
+    align-items: center;
+    padding-top: $space-4;
+    min-width: 20px;
+
+    .experience-card__dot {
+      width: 10px;
+      height: 10px;
+      background-color: $gray-300;
+      border-radius: 50%;
+      border: 2px solid $white;
+      box-shadow: 0 0 0 2px $gray-200;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .experience-card__line {
+      width: 2px;
+      flex: 1;
+      background-color: $gray-200;
+      margin-top: $space-4;
+    }
+  }
+
+  // Card content wrapper
+  .experience-card__content {
+    flex: 1;
+    min-width: 0;
+    margin-bottom: $space-24;
+
+    // Header section
+    .experience-card__header {
+      display: flex;
+      gap: $space-12;
+      align-items: flex-start;
+
+      // Company logo/initials
+      .experience-card__logo {
+        width: 40px;
+        height: 40px;
+        border-radius: $radius-md;
+        background-color: $gray-100;
+        border: 1px solid $gray-200;
+        @include flex-center;
+        flex-shrink: 0;
+        overflow: hidden;
+
+        .experience-card__logo-img {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover;
+        }
+
+        .experience-card__initials {
+          font-size: $font-size-16;
+          font-weight: $fw-semibold;
+          color: $gray-500;
+        }
+      }
+      // Info section
+      .experience-card__info {
+        flex: 1;
+        min-width: 0;
+
+        .experience-card__title-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          gap: $space-8;
+          flex-wrap: wrap;
+
+          .experience-card__company {
+            font-size: $font-size-14;
+            font-weight: $fw-semibold;
+            color: $gray-900;
+
+            .experience-card__link {
+              transition: color 0.3s ease-in-out;
+              display: inline-flex;
+              align-items: center;
+              gap: $space-4;
+
+              &:hover {
+                color: $gray-600;
+              }
+            }
+          }
+
+          .experience-card__date {
+            font-size: $font-size-12;
+            color: $gray-500;
+            white-space: nowrap;
+          }
+        }
+        .experience-card__role {
+          font-size: $font-size-14;
+          color: $gray-600;
+          margin: $space-4 0 0;
+          font-weight: $fw-regular;
+        }
+
+        .experience-card__meta {
+          display: flex;
+          align-items: center;
+          gap: $space-8;
+          margin-top: $space-4;
+          flex-wrap: wrap;
+          .experience-card__type {
+            display: inline-block;
+            font-size: $font-size-12;
+            color: $gray-500;
+            background-color: $gray-100;
+            padding: 2px $space-8;
+            border-radius: $radius-sm;
+          }
+
+          .experience-card__location {
+            display: inline-block;
+            font-size: $font-size-12;
+            color: $gray-500;
+          }
+        }
+      }
+    }
+    // Description list
+    .experience-card__description {
+      margin: $space-12 0 0;
+      padding-left: $space-16;
+
+      li {
+        list-style: disc;
+        font-size: $font-size-14;
+        color: $gray-600;
+        line-height: 1.6;
+        margin-bottom: $space-4;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+    // Technologies
+    .experience-card__technologies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $space-8;
+      margin-top: $space-12;
+
+      .experience-card__tech {
+        font-size: $font-size-12;
+        color: $gray-600;
+        background-color: $gray-100;
+        padding: $space-4 $space-8;
+        border-radius: $radius-sm;
+        border: 1px solid $gray-200;
+      }
+    }
+  }
+}

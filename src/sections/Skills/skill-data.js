@@ -34,6 +34,7 @@ export const skills = [
     icon: technologies.HTML.icon,
     color: technologies.HTML.color,
     blog: "HTML is the foundation of every web page. I learned HTML through building semantic, accessible websites. Understanding the importance of proper document structure, semantic elements like <header>, <main>, <section>, and accessibility attributes has been crucial. I've built numerous projects focusing on clean, semantic markup that works across all browsers and devices.",
+    showOnHome: false,
   },
   {
     id: 2,
@@ -41,6 +42,7 @@ export const skills = [
     icon: technologies.CSS4.icon,
     color: technologies.CSS4.color,
     blog: "CSS transformed how I approach web design. From basic styling to advanced techniques like Flexbox, Grid, and CSS animations, I've mastered the art of creating beautiful, responsive interfaces. I particularly enjoy working with CSS custom properties (variables) and modern layout techniques that make designs both flexible and maintainable.",
+    showOnHome: false,
   },
   {
     id: 3,
@@ -48,6 +50,7 @@ export const skills = [
     icon: technologies.Sass.icon,
     color: technologies.Sass.color,
     blog: "Sass brought organization and power to my CSS. Variables, mixins, nesting, and functions have made my stylesheets more maintainable and DRY. I've built scalable CSS architectures using Sass, creating reusable components and maintaining consistent design systems across large projects.",
+    showOnHome: true,
   },
   {
     id: 4,
@@ -55,6 +58,7 @@ export const skills = [
     icon: technologies.JavaScript.icon,
     color: technologies.JavaScript.color,
     blog: "JavaScript opened the door to interactive web development. Starting with ES5 fundamentals, I progressed through ES6+ features like arrow functions, destructuring, async/await, and modules. I've built everything from simple DOM manipulations to complex applications with modern JavaScript patterns, always focusing on clean, readable code.",
+    showOnHome: true,
   },
   {
     id: 19,
@@ -62,6 +66,7 @@ export const skills = [
     icon: technologies.TypeScript.icon,
     color: technologies.TypeScript.color,
     blog: "TypeScript adds static typing to JavaScript for safer, scalable code. I use it to improve maintainability and developer experience.",
+    showOnHome: true,
   },
   {
     id: 5,
@@ -69,6 +74,7 @@ export const skills = [
     icon: technologies.React.icon,
     color: technologies.React.color,
     blog: "React changed everything about how I think about building user interfaces. The component-based architecture, virtual DOM, and unidirectional data flow have made complex applications manageable. I've built everything from simple components to full-scale applications, always focusing on performance optimization and clean code patterns.",
+    showOnHome: true,
   },
   {
     id: 18,
@@ -76,6 +82,7 @@ export const skills = [
     icon: technologies.NextJS.icon,
     color: technologies.NextJS.color,
     blog: "Next.js brings SSR/SSG, file-based routing, API routes, and great DX. I use it for SEO-friendly, production-ready React apps.",
+    showOnHome: true,
   },
   {
     id: 6,
@@ -83,6 +90,7 @@ export const skills = [
     icon: technologies.TailwindCSS.icon,
     color: technologies.TailwindCSS.color,
     blog: "TailwindCSS revolutionized my styling workflow. The utility-first approach allows me to build custom designs rapidly without leaving HTML. I love how it promotes consistency, reduces CSS bloat, and enables rapid prototyping. The responsive prefixes and state variants make complex layouts surprisingly simple to implement.",
+    showOnHome: true,
   },
   {
     id: 10,
@@ -90,6 +98,7 @@ export const skills = [
     icon: technologies.Framer.icon,
     color: technologies.Framer.color,
     blog: "Framer Motion brought my designs to life with smooth animations and transitions. I've learned to create engaging user experiences through gesture-based interactions, page transitions, and micro-animations. The declarative API makes complex animations surprisingly simple to implement and maintain.",
+    showOnHome: true,
   },
   {
     id: 11,
@@ -97,6 +106,7 @@ export const skills = [
     icon: technologies.ReactQuery.icon,
     color: technologies.ReactQuery.color,
     blog: "React Query (TanStack Query) transformed how I handle server state. The powerful caching, background updates, and optimistic updates have made data fetching both efficient and user-friendly. I've implemented complex data synchronization patterns that keep users informed and applications responsive.",
+    showOnHome: true,
   },
   {
     id: 12,
@@ -104,6 +114,7 @@ export const skills = [
     icon: technologies.MUI.icon,
     color: technologies.MUI.color,
     blog: "Material-UI provided me with a comprehensive design system and component library. I've learned to customize themes, create consistent interfaces, and leverage the extensive component ecosystem. The theming system allows me to maintain brand consistency while benefiting from Google's Material Design principles.",
+    showOnHome: true,
   },
   {
     id: 17,
@@ -111,6 +122,7 @@ export const skills = [
     icon: technologies["React Router"].icon,
     color: technologies["React Router"].color,
     blog: "React Router enables intuitive client-side routing with nested routes and data APIs. I use it for clean, accessible navigation and route-based code splitting.",
+    showOnHome: false,
   },
   {
     id: 7,
@@ -118,6 +130,7 @@ export const skills = [
     icon: technologies.Redux.icon,
     color: technologies.Redux.color,
     blog: "Redux taught me the power of predictable state management. Understanding actions, reducers, and the store pattern has helped me build scalable applications with complex state requirements. I've implemented Redux Toolkit for modern Redux development, making state management both powerful and developer-friendly.",
+    showOnHome: false,
   },
   {
     id: 8,
@@ -125,6 +138,7 @@ export const skills = [
     icon: technologies.Jest.icon,
     color: technologies.Jest.color,
     blog: "Jest has become my go-to testing framework for JavaScript applications. I've learned to write comprehensive unit tests, integration tests, and snapshot tests. The powerful mocking capabilities, assertion library, and excellent React integration have made testing an integral part of my development workflow, ensuring code quality and preventing regressions.",
+    showOnHome: true,
   },
   {
     id: 9,
@@ -132,6 +146,7 @@ export const skills = [
     icon: technologies.Vite.icon,
     color: technologies.Vite.color,
     blog: "Vite has revolutionized my development experience with its lightning-fast build times and hot module replacement. The modern ES modules approach and excellent plugin ecosystem have made it my preferred build tool for React projects. The development server is incredibly fast, making the development cycle much more enjoyable.",
+    showOnHome: false,
   },
   {
     id: 13,
@@ -139,6 +154,7 @@ export const skills = [
     icon: technologies.Git.icon,
     color: technologies.Git.color,
     blog: "Git is the backbone of modern development workflows. I've mastered version control concepts, branching strategies, and collaborative development practices. Understanding Git's distributed nature and powerful features like rebasing, cherry-picking, and conflict resolution has made me an effective team member and project maintainer.",
+    showOnHome: false,
   },
   {
     id: 14,
@@ -146,6 +162,7 @@ export const skills = [
     icon: technologies.GitHub.icon,
     color: technologies.GitHub.color,
     blog: "GitHub extends Git with powerful collaboration features. I've learned to manage repositories, create pull requests, use GitHub Actions for CI/CD, and leverage the platform's project management tools. GitHub has become central to my workflow for code hosting, collaboration, and open-source contributions.",
+    showOnHome: false,
   },
   {
     id: 15,
@@ -153,6 +170,7 @@ export const skills = [
     icon: technologies["Cursor AI"].icon,
     color: technologies["Cursor AI"].color,
     blog: "Cursor AI has transformed how I write code. This AI-powered editor helps me write better code faster, debug issues more effectively, and learn new patterns and best practices. It's like having a senior developer pair programming with me, offering suggestions and helping me think through complex problems.",
+    showOnHome: false,
   },
   {
     id: 16,
@@ -160,6 +178,7 @@ export const skills = [
     icon: technologies["VS Code"].icon,
     color: technologies["VS Code"].color,
     blog: "VS Code is my primary development environment. I've customized it with extensions, themes, and settings that optimize my productivity. The integrated terminal, debugging tools, and extensive extension ecosystem make it a powerful IDE for any type of development work.",
+    showOnHome: false,
   },
 ];
 

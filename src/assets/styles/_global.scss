@@ -55,3 +55,8 @@ img {
     z-index: 1;
   }
 }
+
+::selection {
+  background: $gray-800;
+  color: $white;
+}

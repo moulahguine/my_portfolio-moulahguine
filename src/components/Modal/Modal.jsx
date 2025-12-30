@@ -69,8 +69,6 @@ export default function Modal({
         <div className={`modal__overlay `} onClick={handleOverlayClick}>
           {/* start modal container */}
           <div
-            layout={!!layoutId}
-            layoutId={layoutId}
             tabIndex={-1}
             className={`modal__container ${size} ${
               isAnimating ? "animating" : "closing"

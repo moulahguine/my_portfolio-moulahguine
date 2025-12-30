@@ -6,7 +6,7 @@
   all: unset;
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 999999;
   @include flex-center;
   background: rgb($gray-600, 0.5);
   backdrop-filter: blur(10px) saturate(100%);
@@ -88,7 +88,7 @@
     .modal__content {
       flex: 1;
       padding: 0;
-      overflow-y: auto;
+      overflow-y: hidden;
 
       .modal__content-close {
         position: absolute;

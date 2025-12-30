@@ -21,6 +21,7 @@ export default function HeroMedia({ classFigure, classImage }) {
           decoding="async"
           onClick={() => setIsImageOpen(true)}
           height={400}
+          priority
         />
         <figcaption className="sr-only">
           Portrait of Mohamed Oulahguine
@@ -38,6 +39,7 @@ export default function HeroMedia({ classFigure, classImage }) {
         <ImageViewer
           src={heroImage}
           alt="Mohamed Oulahguine - Frontend Developer"
+          style={{ scale: "1.2", objectPosition: "center" }}
         />
       </Modal>
     </>

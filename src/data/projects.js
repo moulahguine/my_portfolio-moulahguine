@@ -1,8 +1,8 @@
 import { technologies } from "@/sections/Skills/skill-data";
 
 // Project media assets
-import porfolio from "@/assets/images/project-section/porfolio/portfolio.png";
-import ecommerce from "@/assets/images/project-section/ecommerce/ecommerce.png";
+import porfolio from "@/assets/images/project-section/porfolio/porfolio.webp";
+import ecommerce from "@/assets/images/project-section/ecommerce/ecommerce.webp";
 import clinic from "@/assets/images/project-section/clinic/clinic.webp";
 import Moder from "@/assets/images/project-section/modern/modern.webp";
 

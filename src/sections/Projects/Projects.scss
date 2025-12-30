@@ -10,7 +10,7 @@
 
     .projects__header-container {
       @include flex-between;
-      padding: 0 0 15px 0;
+      padding: 0 0 $space-16 0;
 
       .projects__header {
         @include header_section;
@@ -28,17 +28,16 @@
     .projects__grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-
+      gap: $space-8;
+      margin-top: $space-16;
       @media (max-width: $breakpoint-md) {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
+        gap: $space-24;
       }
 
       @media (max-width: $breakpoint-sm) {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: $space-16;
       }
     }
   }

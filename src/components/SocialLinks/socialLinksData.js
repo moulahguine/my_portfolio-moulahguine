@@ -1,16 +1,11 @@
-import {
-  FaLinkedin,
-  FaWhatsapp,
-  FaInstagram,
-  FaTelegram,
-  FaGithub,
-} from "react-icons/fa";
+import { FaWhatsapp, FaInstagram, FaTelegram, FaGithub } from "react-icons/fa";
 import { SiUpwork } from "react-icons/si";
+import { SlSocialLinkedin } from "react-icons/sl";
 
 // Social media links
 const socialLinks = [
   {
-    icon: FaLinkedin,
+    icon: SlSocialLinkedin,
     label: "LinkedIn",
     href: "https://linkedin.com/in/moulahguine",
     color: "#0077B5",

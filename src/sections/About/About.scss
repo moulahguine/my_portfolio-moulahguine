@@ -12,93 +12,21 @@
     }
 
     .about__content {
-      margin: $space-16 0;
+      margin: $space-16 0 0;
       display: grid;
       grid-template-columns: 1fr auto;
       grid-template-columns: 1fr auto;
       gap: $space-16;
 
-      .about__me {
-        width: 90%;
+      .about__info {
+        text-indent: $space-8;
+        font-size: $font-size-14;
+        font-weight: 100;
+        line-height: 1.7;
+        width: 100%;
         position: relative;
         z-index: 3;
-
-        .about__info {
-          text-indent: $space-12;
-          font-size: $font-size-14;
-          font-weight: 100;
-          line-height: 1.6;
-        }
-      }
-
-      .video__container {
-        border-radius: $radius-lg;
-        position: relative;
-        width: 350px;
-        height: 430px;
-        background-color: $gray-400;
-
-        .myvideo {
-          width: 100%;
-          height: 430px;
-          object-fit: cover;
-          position: relative;
-        }
-
-        &::before {
-          background-color: $gray-200;
-
-          rotate: -5deg;
-          z-index: -1;
-          scale: 1.05;
-          transition: all 0.3s ease-in-out;
-        }
-        &:hover::before {
-          background-color: $gray-300;
-          rotate: 5deg;
-        }
-
-        &::after {
-          background-color: rgb($gray-900, 0.6);
-          z-index: 10;
-          pointer-events: none;
-        }
-
-        &::before,
-        &::after {
-          content: "";
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          top: 0;
-          left: 0;
-          border-radius: inherit;
-        }
-
-        .playIcon {
-          @include flex-center;
-          width: 55px;
-          aspect-ratio: 1/1;
-          border-radius: 50%;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-size: $font-size-32;
-          color: $white;
-          background-color: $gray-800;
-          z-index: 15;
-          transition: all 0.3s ease-in-out;
-          cursor: pointer;
-        }
-        &:hover .playIcon {
-          scale: 1.1;
-          background-color: $gray-900;
-        }
-
-        &:focus-within .playIcon {
-          width: 50px;
-        }
+        color: $gray-700;
       }
     }
   }

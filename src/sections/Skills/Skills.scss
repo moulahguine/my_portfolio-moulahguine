@@ -28,22 +28,30 @@
         cursor: pointer;
         @include flex-column;
         align-items: center;
-        padding: $space-32 $space-16;
-        border-radius: $radius-lg;
-        box-shadow: 0 0 0 2px var(--skill-color);
+        padding: $space-24 $space-8;
+        border-radius: $radius-md;
+        border: solid 1px $gray-300;
         background-color: $white;
         transition: all 0.3s ease-in-out;
-        // hover effect
-        &:hover {
-          transform: translateY(-5px) scale(1.02) rotate(-2deg);
-        }
+        width: 130px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
         // icon
         .skill-card__icon {
           @include flex-center;
+          position: relative;
+          transition: inherit;
 
           // skill icon
-          .skill-icon {
-            font-size: $font-size-32;
+          svg {
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            font-size: $font-size-28;
+            color: $gray-600 !important;
+            z-index: 2;
           }
         }
 
@@ -51,10 +59,24 @@
         .skill-card__name {
           // name style
           margin-top: auto;
-          font-weight: $fw-semibold;
-          color: $gray-700;
-          font-size: $font-size-16;
+          font-weight: $fw-regular;
+          color: $gray-600;
+          font-size: $font-size-14;
           text-align: center;
+        }
+
+        // hover effect
+        &:hover {
+          .skill-card__icon {
+            filter: drop-shadow(0 0 15px var(--skill-color));
+            svg {
+              outline: none !important;
+              border: none !important;
+              box-shadow: none !important;
+              margin-top: -8px;
+              color: var(--skill-color) !important;
+            }
+          }
         }
       }
     }

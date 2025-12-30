@@ -2,7 +2,6 @@
 @use "../../assets/styles/mixins" as *;
 
 .social-links {
-  display: none;
   transition: all 0.3s ease;
 
   &--mobile {

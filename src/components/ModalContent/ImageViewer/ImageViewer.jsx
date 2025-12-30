@@ -9,6 +9,7 @@ export default function ImageViewer({
   fill = true,
   sizes = "(max-width: 778px) 100vw, 80vw",
   className = "",
+  style,
 }) {
   return (
     <div className={`imageViewer ${className}`}>
@@ -18,8 +19,8 @@ export default function ImageViewer({
           alt={alt}
           fill={fill}
           sizes={sizes}
-          priority={false}
           onContextMenu={(e) => e.preventDefault()}
+          style={{ ...style }}
         />
       </div>
     </div>
