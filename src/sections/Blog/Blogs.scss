@@ -1,0 +1,47 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+.blogs {
+  width: 100%;
+
+  .container {
+    @include container;
+
+    // Header container with "View more" link
+    .blogs__header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $space-24;
+    }
+
+    // Section header
+    .blogs__header {
+      @include header_section;
+      margin: 0;
+    }
+
+    // View more link
+    .blogs__view-all-link {
+      @include next-button-style;
+      font-size: $font-size-14;
+      color: $color-gray-500;
+    }
+
+    // Blog list - vertical stack
+    .blogs__list {
+      @include flex-column;
+      gap: $space-12;
+    }
+
+    // Empty state
+    .blogs__empty {
+      @include flex-column;
+      justify-content: center;
+      text-align: center;
+      color: $color-gray-500;
+      font-size: $font-size-14;
+      padding: $space-40 0;
+    }
+  }
+}

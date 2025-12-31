@@ -3,46 +3,10 @@ import atlasUniversityLogo from "@/assets/images/expreriences-section/education/
 
 export const experienceData = {
   // Work experience entries
-  work: [
-    // {
-    //   id: "work-1",
-    //   company: "Your Company Name",
-    //   role: "Frontend Developer",
-    //   type: "Full-time",
-    //   location: "Istanbul, Turkey",
-    //   startDate: "Jan 2024",
-    //   endDate: "Present",
-    //   logo: null, // Optional: import company logo
-    //   description: [
-    //     "Developed and maintained responsive web applications using React and Next.js",
-    //     "Collaborated with design team to implement pixel-perfect UI components",
-    //     "Optimized application performance, achieving 40% improvement in load times",
-    //   ],
-    //   technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-    //   link: null, // Optional: company website
-    // },
-  ],
+  work: [],
 
   // Freelance experience entries
-  freelance: [
-    // {
-    //   id: "freelance-1",
-    //   company: "Client Project",
-    //   role: "Frontend Developer",
-    //   type: "Contract",
-    //   location: "Remote",
-    //   startDate: "Mar 2024",
-    //   endDate: "May 2024",
-    //   logo: null,
-    //   description: [
-    //     "Designed and developed a modern portfolio website for a creative agency",
-    //     "Implemented smooth animations using Framer Motion",
-    //     "Delivered responsive design across all device sizes",
-    //   ],
-    //   technologies: ["Next.js", "Framer Motion", "SCSS"],
-    //   link: null,
-    // },
-  ],
+  freelance: [],
 
   // Education experience entries
   education: [

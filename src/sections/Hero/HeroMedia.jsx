@@ -2,7 +2,7 @@
 
 import * as motion from "motion/react-client";
 import Image from "next/image";
-import heroImage from "@/assets/images/hero-section/hero-img.webp";
+import heroImage from "@/assets/images/hero-section/hero-img.png";
 import Modal from "@/components/Modal/Modal";
 import { ImageViewer } from "@/components/ModalContent";
 import { useState } from "react";
