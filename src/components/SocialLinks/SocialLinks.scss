@@ -24,9 +24,9 @@
     .social-links__link {
       width: 30px;
       height: 30px;
-      background: $color-surface-secondary;
+      background: $gray-400;
       border-radius: 50%;
-      color: $color-primary;
+      color: $gray-700;
       font-size: $font-size-18;
       transition: all 0.3s ease;
       border: 2px solid transparent;
@@ -34,7 +34,7 @@
       &:hover {
         color: var(--color);
         background: var(--color);
-        color: $color-surface;
+        color: $gray-200;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       }
@@ -57,14 +57,14 @@
     @include flex-center;
     width: 40px;
     height: 40px;
-    color: $color-text-muted;
+    color: $gray-500;
     border-radius: 50%;
     transition: all 0.3s ease;
     font-size: $font-size-18;
 
     &:hover {
-      color: $color-surface;
-      background: $color-primary;
+      color: $gray-200;
+      background: $gray-700;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
   }
@@ -87,19 +87,19 @@
         width: 2rem;
         height: 2rem;
         background-color: transparent;
-        color: $color-text !important;
+        color: $gray-500 !important;
         border-radius: 50%;
         font-size: $font-size-16;
         cursor: pointer;
         transition: all $transition-base;
-        border: 1px solid $color-border-light;
-        box-shadow: 0 2px 8px $color-shadow-light;
+        border: 1px solid $gray-400;
+        box-shadow: 0 2px 8px $gray-200;
 
         &:hover {
           background-color: var(--color) !important;
-          color: $color-surface !important;
+          color: $gray-200 !important;
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px $color-shadow;
+          box-shadow: 0 4px 12px $gray-200;
         }
       }
     }

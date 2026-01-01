@@ -13,7 +13,7 @@
   background: $white;
   border-radius: $radius-md;
   transition: all 0.3s ease;
-  border: solid 1px $color-border;
+  border: solid 1px $gray-400;
   padding: clamp($space-8, 1vw, $space-16);
 
   // Hover effect for the card

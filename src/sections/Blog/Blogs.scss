@@ -1,47 +1,47 @@
 @use "../../assets/styles/variables" as *;
 @use "../../assets/styles/mixins" as *;
 
+// Main blogs section container
 .blogs {
   width: 100%;
 
+  // Container for blogs content
   .container {
     @include container;
 
-    // Header container with "View more" link
+    // Header container
     .blogs__header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flex-between;
       margin-bottom: $space-24;
+
+      // Section header
+      .blogs__header {
+        @include header_section;
+        margin: 0;
+      }
+
+      // View more link
+      .blogs__view-all-link {
+        @include next-button-style;
+        font-size: $font-size-14;
+        color: $color-gray-500;
+      }
     }
 
-    // Section header
-    .blogs__header {
-      @include header_section;
-      margin: 0;
-    }
-
-    // View more link
-    .blogs__view-all-link {
-      @include next-button-style;
-      font-size: $font-size-14;
-      color: $color-gray-500;
-    }
-
-    // Blog list - vertical stack
+    // Blog list
     .blogs__list {
       @include flex-column;
       gap: $space-12;
-    }
 
-    // Empty state
-    .blogs__empty {
-      @include flex-column;
-      justify-content: center;
-      text-align: center;
-      color: $color-gray-500;
-      font-size: $font-size-14;
-      padding: $space-40 0;
+      // Empty state
+      .blogs__empty {
+        @include flex-column;
+        justify-content: center;
+        text-align: center;
+        color: $color-gray-500;
+        font-size: $font-size-14;
+        padding: $space-40 0;
+      }
     }
   }
 }

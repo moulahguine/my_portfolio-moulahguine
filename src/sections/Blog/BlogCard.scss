@@ -2,29 +2,24 @@
 @use "../../assets/styles/mixins" as *;
 
 .blog-card {
-  display: block;
-  text-decoration: none;
   padding: $space-16 $space-20;
-  background-color: $color-white;
-  border: 1px solid $color-gray-200;
-  border-radius: $radius-md;
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+  background-color: $white;
 
+  border-radius: $radius-md;
+  transition: all 0.3s ease-in-out;
   &:hover {
-    border-color: $color-gray-300;
-    box-shadow: 0 4px 12px $color-shadow;
+    border-color: $gray-300;
+    box-shadow: 0 4px 12px $gray-200;
   }
 
   // Card content
-  &__content {
+  .blog-card__content {
     @include flex-column;
     gap: $space-8;
   }
 
   // Title
-  &__title {
+  .blog-card__title {
     font-size: $font-size-16;
     font-weight: $fw-semibold;
     color: $color-gray-900;
@@ -38,7 +33,7 @@
   }
 
   // Description - max 2 lines
-  &__description {
+  .blog-card__description {
     font-size: $font-size-14;
     color: $color-gray-500;
     line-height: $line-height-normal;
@@ -51,7 +46,7 @@
   }
 
   // Meta row
-  &__meta {
+  .blog-card__meta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -61,14 +56,14 @@
   }
 
   // Tags container
-  &__tags {
+  .blog-card__tags {
     display: flex;
     flex-wrap: wrap;
     gap: $space-8;
   }
 
   // Individual tag pill
-  &__tag {
+  .blog-card__tag {
     padding: $space-4 $space-8;
     font-size: $font-size-12;
     font-weight: $fw-medium;
@@ -79,15 +74,15 @@
   }
 
   // Date and read time container
-  &__info {
+  .blog-card__info {
     display: flex;
     align-items: center;
     gap: $space-12;
   }
 
   // Date
-  &__date,
-  &__read-time {
+  .blog-card__date,
+  .blog-card__read-time {
     display: flex;
     align-items: center;
     gap: $space-4;
@@ -106,12 +101,12 @@
   .blog-card {
     padding: $space-12 $space-16;
 
-    &__meta {
+    .blog-card__meta {
       flex-direction: column;
       align-items: flex-start;
     }
 
-    &__info {
+    .blog-card__info {
       margin-top: $space-4;
     }
   }

@@ -18,7 +18,7 @@
   z-index: 10;
 
   &:hover {
-    background: rgba(0, 0, 0, 0.7);
+    background: red;
     transform: scale(1.1);
   }
 
@@ -27,7 +27,7 @@
   }
 
   &:focus {
-    outline: 2px solid rgba($color-primary-500, 0.5);
+    outline: 2px solid rgba($gray-500, 0.5);
     outline-offset: 2px;
   }
 

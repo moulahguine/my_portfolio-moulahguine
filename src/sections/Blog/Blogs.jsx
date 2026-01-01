@@ -2,9 +2,8 @@ import Link from "next/link";
 import { getRecentPosts, blogsData } from "@/data/blogsData";
 import BlogCard from "./BlogCard";
 import { GoArrowUpRight } from "react-icons/go";
-import "./Blogs.scss";
-
 const PREVIEW_LIMIT = 3;
+import "./Blogs.scss";
 
 function Blogs({ mode = "full" }) {
   const isPreview = mode === "preview";

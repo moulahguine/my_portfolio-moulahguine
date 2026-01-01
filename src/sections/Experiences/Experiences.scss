@@ -9,9 +9,7 @@
 
     // Header container with "View All" link
     .experiences__header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flex-between;
     }
 
     // Section header
@@ -29,8 +27,7 @@
     // Tabs container
     .experiences__tabs {
       position: relative;
-      display: flex;
-      align-items: center;
+      @include flex-between;
       justify-content: space-around;
       gap: $space-4;
       margin: $space-16 0;
@@ -79,7 +76,6 @@
     .experiences__timeline {
       @include flex-column;
       padding: $space-8 0;
-      min-height: 350px;
     }
 
     // Empty state
@@ -89,7 +85,6 @@
       text-align: center;
       color: $gray-500;
       font-size: $font-size-14;
-      min-height: 350px;
     }
 
     // Footer with View All button

@@ -43,9 +43,9 @@
               svg {
                 transition: inherit;
                 font-size: clamp(0.3rem, 3vw, 1.2rem);
-                color: $color-text-light;
+                color: $gray-400;
                 &:hover {
-                  color: $color-primary-hover;
+                  color: $gray-500;
                 }
               }
             }
@@ -57,10 +57,10 @@
               transition: all 0.3s ease;
               font-size: $font-size-20;
               font-size: clamp(0.8rem, 3vw, 1.3rem);
-              color: $color-text-light;
+              color: $gray-400;
 
               &:hover {
-                color: $color-primary-hover;
+                color: $gray-500;
               }
 
               svg {
@@ -83,7 +83,7 @@
             font-size: clamp(0.7rem, 1vw, $font-size-12);
 
             font-weight: $fw-semibold;
-            color: $color-text-muted;
+            color: $gray-500;
             margin-bottom: $space-16;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -97,9 +97,9 @@
             .contact__social-link {
               width: 40px;
               aspect-ratio: 1/1;
-              background: $color-surface-secondary;
+              background: $gray-200;
               border-radius: 50%;
-              color: $color-primary;
+              color: $gray-500;
               font-size: $font-size-20;
               transition: all 0.3s ease;
               border: 2px solid transparent;
@@ -107,7 +107,7 @@
               &:hover {
                 color: var(--social-color);
                 background: var(--social-color);
-                color: $color-surface;
+                color: $gray-200;
                 transform: translateY(-2px);
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
               }
@@ -126,19 +126,19 @@
     .contact__email-info {
       gap: $space-12;
       padding: $space-24;
-      background: $color-surface;
+      background: $gray-200;
       border-radius: $radius-lg;
-      border: 1px solid $color-border;
+      border: 1px solid $gray-300;
 
       .contact__email-icon {
         font-size: $font-size-24;
-        color: $color-primary;
+        color: $gray-500;
       }
 
       .contact__email-address {
         font-size: $font-size-18;
         font-weight: $fw-semibold;
-        color: $color-text;
+        color: $gray-700;
       }
     }
 
@@ -158,25 +158,25 @@
         min-width: 140px;
 
         &--copy {
-          background: $color-surface-secondary;
-          color: $color-text;
-          border: 2px solid $color-border;
+          background: $gray-200;
+          color: $gray-700;
+          border: 2px solid $gray-300;
 
           &:hover {
-            background: $color-primary;
-            color: $color-surface;
-            border-color: $color-primary;
+            background: $gray-700;
+            color: $gray-200;
+            border-color: $gray-700;
           }
         }
 
         &--form {
-          background: $color-primary;
-          color: $color-surface;
-          border: 2px solid $color-primary;
+          background: $gray-700;
+          color: $gray-200;
+          border: 2px solid $gray-700;
 
           &:hover {
-            background: $color-primary-hover;
-            border-color: $color-primary-hover;
+            background: $gray-500;
+            border-color: $gray-500;
           }
         }
       }
@@ -198,10 +198,10 @@
       right: -$space-8;
       width: 32px;
       aspect-ratio: 1/1;
-      background: $color-surface;
+      background: $gray-200;
       border: none;
       border-radius: 50%;
-      color: $color-text;
+      color: $gray-700;
       font-size: $font-size-18;
       font-weight: $fw-bold;
       cursor: pointer;
@@ -209,8 +209,8 @@
       z-index: 10;
 
       &:hover {
-        background: $color-primary;
-        color: $color-surface;
+        background: $gray-500;
+        color: $gray-200;
         transform: scale(1.1);
       }
     }
@@ -224,23 +224,23 @@
         .contact__input,
         .contact__textarea {
           padding: $space-16;
-          background: $color-surface-tertiary;
+          background: $gray-100;
           border: none;
           outline: none;
           border-radius: $radius-md;
           font-size: $font-size-16;
-          color: $color-text;
+          color: $gray-700;
           transition: all 0.3s ease;
           font-family: inherit;
           width: 100%;
 
           &::placeholder {
             font-size: $font-size-14;
-            color: $color-text-muted;
+            color: $gray-500;
           }
 
           &:focus {
-            box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+            box-shadow: 0 0 0 3px rgba($gray-700, 0.1);
           }
 
           &--error {
@@ -266,20 +266,20 @@
         padding: $space-16 $space-24;
         font-size: $font-size-16;
         font-weight: $fw-bold;
-        background: $color-primary;
+        background: $gray-700;
         border: none;
         border-radius: $radius-md;
-        color: $color-surface;
+        color: $gray-200;
         cursor: pointer;
         transition: all 0.3s ease;
         @include flex-center;
         gap: $space-8;
-        box-shadow: 0 4px 12px rgba($color-primary, 0.3);
+        box-shadow: 0 4px 12px rgba($gray-700, 0.3);
 
         &:hover {
-          background: $color-primary-hover;
+          background: $gray-500;
           transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba($color-primary, 0.4);
+          box-shadow: 0 6px 16px rgba($gray-700, 0.4);
         }
 
         &:disabled {
@@ -338,8 +338,8 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   backdrop-filter: blur(10px);
-  background-color: $color-primary-500;
-  color: $color-surface;
+  background-color: $gray-700;
+  color: $gray-200;
 
   .notification__content {
     @include flex-center;

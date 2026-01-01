@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, lazy, Suspense } from "react";
-import HoverCursor from "../HoverCursor/HoverCursor";
 import Modal from "../Modal/Modal";
 import "./Location.scss";
 
@@ -35,7 +34,7 @@ export default function Location() {
 
   return (
     <>
-      <HoverCursor
+      <div
         content="view"
         className="location"
         onClick={openMap}
@@ -49,7 +48,7 @@ export default function Location() {
             | {istanbulTimeText}
           </b>
         </p>
-      </HoverCursor>
+      </div>
 
       <Modal
         isOpen={isMapOpen}

@@ -8,10 +8,8 @@ import {
 
 import Modal from "../../components/Modal/Modal";
 import CloseButton from "../../components/CloseButton/CloseButton";
-
 import { TfiEmail } from "react-icons/tfi";
 import { useContactForm } from "./useContactForm";
-import HoverCursor from "../../components/HoverCursor/HoverCursor";
 import Location from "../../components/Location/Location";
 import { SocialLinks } from "../../components/SocialLinks";
 import "./Contact.scss";
@@ -51,7 +49,7 @@ function Contact() {
             {/* Email */}
             <div className="contact__info-item">
               <div className="contact__info-content">
-                <HoverCursor
+                <div
                   content="click"
                   className="contact__info-value"
                   onClick={() => setIsEmailModalOpen(true)}
@@ -59,14 +57,14 @@ function Contact() {
                   <TfiEmail />
                   <span>mohamedoulahguine@gmail.com</span>
                   <FaHandPointer />
-                </HoverCursor>
+                </div>
               </div>
             </div>
 
             {/* Phone */}
             <div className="contact__info-item">
               <div className="contact__info-content">
-                <HoverCursor
+                <div
                   content="copy"
                   className="contact__info-value"
                   onClick={() => copyToClipboard("+90 554 882 65 67", "phone")}
@@ -76,7 +74,7 @@ function Contact() {
                     {copyFeedback.phone ? "Copied!" : "+90 554 882 65 67"}
                   </span>
                   {!copyFeedback.phone && <FaRegCopy />}
-                </HoverCursor>
+                </div>
               </div>
             </div>
 
