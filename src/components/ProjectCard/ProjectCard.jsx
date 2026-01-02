@@ -1,5 +1,5 @@
 import Image from "next/image";
-import SkillIcon from "@/sections/Skills/SkillIcon";
+import SkillIcon from "@/data/skillsData";
 import ProjectLinks from "./ProjectLinks";
 import { GoArrowUpRight } from "react-icons/go";
 import "./ProjectCard.scss";

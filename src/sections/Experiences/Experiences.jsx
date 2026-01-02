@@ -8,7 +8,7 @@ import {
   PREVIEW_LIMIT,
   experienceData,
 } from "@/data/experienceData";
-import ExperienceCard from "./ExperienceCard";
+import ExperienceCard from "@/components/ExperienceCard/ExperienceCard";
 import { GoArrowUpRight } from "react-icons/go";
 import "./Experiences.scss";
 

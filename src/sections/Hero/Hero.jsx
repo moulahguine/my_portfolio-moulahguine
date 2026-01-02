@@ -1,6 +1,6 @@
-import InlineMap from "./InlineMap";
-import HeroMedia from "./HeroMedia";
-import ConnectLinks from "./ConnectLinks";
+import InlineMap from "./ui/InlineMap";
+import HeroMedia from "./ui/HeroMedia";
+import ConnectLinks from "./ui/ConnectLinks";
 import VerifiedBadge from "@/components/icons/VerifiedBadge";
 import { GoDownload } from "react-icons/go";
 import * as motion from "motion/react-client";

@@ -3,8 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import heroImage from "@/assets/images/hero-section/hero-img.png";
-import Modal from "@/components/Modal/Modal";
-import { ImageViewer } from "@/components/ModalContent";
+import { Modal, ImageViewer } from "@/components";
 import { BsArrowsFullscreen } from "react-icons/bs";
 import * as motion from "motion/react-client";
 

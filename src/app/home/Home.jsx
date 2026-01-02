@@ -5,7 +5,6 @@ import Skills from "../../sections/Skills/Skills";
 import Experiences from "../../sections/Experiences/Experiences";
 import Projects from "../../sections/Projects/Projects";
 import Blogs from "../../sections/Blog/Blogs";
-import Contact from "../../sections/Contact/Contact";
 import * as motion from "motion/react-client";
 
 const HomePage = () => {
@@ -17,7 +16,6 @@ const HomePage = () => {
       <Projects />
       <Experiences mode="preview" />
       <Blogs mode="preview" />
-      {/* <Contact /> */}
     </div>
   );
 };

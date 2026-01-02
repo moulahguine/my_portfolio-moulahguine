@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Modal from "@/components/Modal/Modal";
-import { VideoViewer } from "@/components/ModalContent";
+import { Modal, VideoViewer } from "@/components";
 import { CiPlay1 } from "react-icons/ci";
 
 export default function IntroVideo() {

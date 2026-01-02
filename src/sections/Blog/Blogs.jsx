@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getRecentPosts, blogsData } from "@/data/blogsData";
-import BlogCard from "./BlogCard";
+import BlogCard from "@/components/BlogCard/BlogCard";
 import { GoArrowUpRight } from "react-icons/go";
 const PREVIEW_LIMIT = 3;
 import "./Blogs.scss";

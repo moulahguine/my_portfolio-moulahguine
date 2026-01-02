@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Modal from "@/components/Modal/Modal";
-import { DefaultContent } from "@/components/ModalContent";
-import socialLinks from "@/components/SocialLinks/socialLinksData";
+import { Modal, DefaultContent } from "@/components";
+import socialLinksData from "@/data/socialLinksData";
 import { FiShare2 } from "react-icons/fi";
 
 export default function ConnectLinks() {
@@ -31,7 +30,7 @@ export default function ConnectLinks() {
       >
         <DefaultContent>
           <div className="social-links-grid">
-            {socialLinks.map((social) => {
+            {socialLinksData.map((social) => {
               const Icon = social.icon;
               return (
                 <a

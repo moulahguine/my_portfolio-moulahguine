@@ -1,4 +1,4 @@
-import { technologies } from "@/sections/Skills/skill-data";
+import { technologies } from "@/data/skillsData";
 
 // Project media assets
 import porfolio from "@/assets/images/project-section/porfolio/porfolio.webp";

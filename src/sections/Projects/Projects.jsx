@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getFeaturedProjects } from "@/lib/projects";
-import ProjectCard from "@/components/ProjectCard";
+import { ProjectCard } from "@/components";
 import { GoArrowUpRight } from "react-icons/go";
 import "./Projects.scss";
 

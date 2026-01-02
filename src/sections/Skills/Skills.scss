@@ -25,7 +25,7 @@
 
       // skill card
       .skill-card {
-        cursor: pointer;
+        // cursor: pointer;
         @include flex-column;
         align-items: center;
         padding: $space-24 $space-8;
