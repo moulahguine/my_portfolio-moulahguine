@@ -44,15 +44,9 @@ export default function Hero() {
               Frontend Developer | Nextjs & TypeScript | Tailwind CSS{" "}
             </p>
             <div className="hero__rotating-text">
-              <span className="hero__rotating-item hero__rotating-item--state">
-                Open to Opportunities
-              </span>
-              <span className="hero__rotating-item hero__rotating-item--location">
-                📍 Istanbul / Türkiye
-              </span>
-              <span className="hero__rotating-item hero__rotating-item--username">
-                @moulahguine
-              </span>
+              <span className="item state">Available for Hire</span>
+              <span className="item location">Istanbul / Türkiye</span>
+              <span className="item username">@moulahguine</span>
             </div>
           </div>
 

@@ -156,7 +156,7 @@
           height: 20px;
           overflow: hidden;
 
-          .hero__rotating-item {
+          .item {
             position: absolute;
             left: 0;
             top: 0;
@@ -166,23 +166,18 @@
             transform: translateY(100%);
             animation: rotateText 6s infinite;
 
-            &--state {
+            &.state {
               color: $gray-500;
               font-weight: $fw-medium;
               animation-delay: 0s;
-
-              &::before {
-                content: "🟢 ";
-                font-size: 8px;
-              }
             }
 
-            &--location {
+            &.location {
               color: $gray-600;
               animation-delay: 2s;
             }
 
-            &--username {
+            &.username {
               color: $gray-500;
               animation-delay: 4s;
             }
@@ -336,60 +331,6 @@
   }
 }
 
-.info-carousel {
-  overflow: hidden;
-  height: 20px;
-  width: fit-content;
-
-  &__container {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  &__slide {
-    flex: 0 0 100%;
-    min-height: 0;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    font-size: $font-size-12;
-    white-space: nowrap;
-  }
-
-  &__state {
-    color: $gray-500;
-    font-weight: $fw-medium;
-
-    &::before {
-      content: "🟢";
-      margin-right: $space-4;
-      font-size: 8px;
-    }
-  }
-
-  &__location {
-    color: $gray-600;
-
-    &::before {
-      content: "📍";
-      margin-right: $space-4;
-    }
-  }
-
-  &__username {
-    color: $gray-500;
-
-    &::before {
-      content: "";
-      margin-right: 0;
-    }
-  }
-}
-
-// CSS-only rotating text animation
 @keyframes rotateText {
   0%,
   5% {
