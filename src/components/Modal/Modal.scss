@@ -18,9 +18,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: $gray-200;
+    background-color: $gray-100;
     border-radius: $radius-lg;
-    box-shadow: 0 0px 50px 0px rgb($gray-800, 0.8);
+    box-shadow: 0 0px 40px 0px rgb($gray-500, 0.8);
     width: 90%;
     height: 80dvh;
     max-height: 90dvh;
@@ -74,7 +74,6 @@
     .modal__header {
       @include flex-between;
       padding: $space-24;
-      border-bottom: 1px solid #e5e7eb;
 
       &-title {
         font-size: $font-size-24;

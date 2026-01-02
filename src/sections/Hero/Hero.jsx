@@ -1,7 +1,7 @@
 import InlineMap from "./InlineMap";
 import HeroMedia from "./HeroMedia";
+import ConnectLinks from "./ConnectLinks";
 import VerifiedBadge from "@/components/icons/VerifiedBadge";
-import SocialLinks from "./SocialLinks";
 import { GoDownload } from "react-icons/go";
 import * as motion from "motion/react-client";
 import "./Hero.scss";
@@ -42,8 +42,18 @@ export default function Hero() {
             </h1>
             <p className="hero__subtitle">
               Frontend Developer | Nextjs & TypeScript | Tailwind CSS{" "}
-              <span className="myState"> Open to Opportunities</span>
             </p>
+            <div className="hero__rotating-text">
+              <span className="hero__rotating-item hero__rotating-item--state">
+                Open to Opportunities
+              </span>
+              <span className="hero__rotating-item hero__rotating-item--location">
+                📍 Istanbul / Türkiye
+              </span>
+              <span className="hero__rotating-item hero__rotating-item--username">
+                @moulahguine
+              </span>
+            </div>
           </div>
 
           {/* hero Name and Role end */}
@@ -51,7 +61,6 @@ export default function Hero() {
           {/* hero resume button start */}
 
           <div className="hero__cta">
-            <SocialLinks />
             <a
               className="resume-btn"
               aria-label="Download resume as PDF"
@@ -63,6 +72,8 @@ export default function Hero() {
                 <GoDownload />
               </span>
             </a>
+
+            <ConnectLinks />
           </div>
 
           {/* hero resume button end */}

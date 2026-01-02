@@ -14,7 +14,7 @@
   }
 
   .case-study__breadcrumb {
-    color: $color-text-muted;
+    color: $gray-500;
     font-size: $font-size-14;
     margin-bottom: $space-24;
     display: flex;
@@ -22,14 +22,14 @@
     align-items: center;
 
     a {
-      color: $color-text-muted;
+      color: $gray-500;
       text-decoration: none;
     }
     .sep {
       opacity: 0.5;
     }
     .current {
-      color: $color-text;
+      color: $gray-700;
       font-weight: $fw-medium;
     }
   }
@@ -45,7 +45,7 @@
   }
 
   &__subtitle {
-    color: $color-text-muted;
+    color: $gray-500;
     margin: 0 0 $space-16 0;
     font-size: $font-size-16;
     max-width: 70ch;
@@ -59,8 +59,8 @@
   }
 
   .chip {
-    background: rgba($color-text, 0.06);
-    color: $color-text;
+    background: rgba($gray-700, 0.06);
+    color: $gray-700;
     padding: $space-8 $space-12;
     border-radius: 999px;
     font-size: $font-size-14;
@@ -80,7 +80,7 @@
     }
     .visual__caption {
       margin-top: $space-12;
-      color: $color-text-muted;
+      color: $gray-500;
       font-size: $font-size-14;
     }
   }
@@ -104,8 +104,8 @@
   }
 
   .signals__item {
-    background: rgba($color-text, 0.04);
-    color: $color-text;
+    background: rgba($gray-700, 0.04);
+    color: $gray-700;
     padding: $space-12 $space-16;
     border-radius: $radius-md;
     font-weight: $fw-medium;
@@ -134,19 +134,19 @@
   .btn--primary {
     background: linear-gradient(
       180deg,
-      rgba($color-primary, 0.12),
-      rgba($color-primary, 0.06)
+      rgba($gray-500, 0.12),
+      rgba($gray-500, 0.06)
     );
-    color: $color-primary;
+    color: $gray-500;
   }
 
   .btn--secondary {
-    background: rgba($color-text, 0.04);
-    color: $color-text;
+    background: rgba($gray-700, 0.04);
+    color: $gray-700;
   }
 
   .back-link {
-    color: $color-text-muted;
+    color: $gray-500;
     text-decoration: none;
     font-size: $font-size-14;
   }

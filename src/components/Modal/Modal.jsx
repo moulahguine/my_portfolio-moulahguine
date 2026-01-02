@@ -17,7 +17,6 @@ export default function Modal({
   closeOnOverlayClick = true,
   animationDuration = 200,
   style,
-  layoutId,
   removeScrollBar = true,
   allowPinchZoom = false,
 }) {

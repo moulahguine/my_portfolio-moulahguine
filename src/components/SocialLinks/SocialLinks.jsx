@@ -26,7 +26,8 @@ export default function SocialLinks({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-links__link"
-                aria-label={social.label}
+                aria-label={`${social.label} (opens in new tab)`}
+                title={social.label}
                 style={{ "--color": social.color }}
               >
                 <IconComponent />

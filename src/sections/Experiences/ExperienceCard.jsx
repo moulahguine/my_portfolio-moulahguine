@@ -63,7 +63,8 @@ function ExperienceCard({ experience, isLast }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="experience-card__link"
-                    aria-label={`Visit ${company} website`}
+                    aria-label={`Visit ${company} website (opens in new tab)`}
+                    title={`Visit ${company} website`}
                   >
                     {company}
                     <FiExternalLink size={14} />

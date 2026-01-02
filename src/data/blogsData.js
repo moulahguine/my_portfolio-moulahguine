@@ -9,16 +9,6 @@ export const blogsData = [
     publishDate: "2025-12-25",
     readTime: 6,
   },
-  {
-    id: "blog-2",
-    slug: "about-my-first-homelab",
-    title: "Christmas Special: About My First Homelab",
-    description:
-      "This is the story of how cloud storage pricing pushed me into building a quiet, always-on homelab that now runs everything I care about.",
-    tags: ["Homelab", "Self-hosting", "Fly.io"],
-    publishDate: "2025-12-25",
-    readTime: 6,
-  },
 ];
 
 export function getRecentPosts(limit = 3) {

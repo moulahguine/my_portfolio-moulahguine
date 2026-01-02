@@ -1,5 +1,4 @@
-import PropTypes from "prop-types";
-import { TimesIcon } from "../Icons/CustomIcons";
+import { FiX } from "react-icons/fi";
 import "./CloseButton.scss";
 
 const CloseButton = ({
@@ -16,15 +15,9 @@ const CloseButton = ({
       aria-label={ariaLabel}
       {...props}
     >
-      <TimesIcon />
+      <FiX size={20} />
     </button>
   );
-};
-
-CloseButton.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  ariaLabel: PropTypes.string,
-  className: PropTypes.string,
 };
 
 export default CloseButton;

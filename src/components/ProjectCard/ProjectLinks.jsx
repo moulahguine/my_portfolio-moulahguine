@@ -1,6 +1,7 @@
 "use client";
 
-import { ExternalLinkIcon, GithubIcon } from "@/components/Icons/CustomIcons";
+import { FiExternalLink } from "react-icons/fi";
+import { FaGithub } from "react-icons/fa";
 import "./ProjectLinks.scss";
 
 export default function ProjectLinks({ demoLink, githubLink }) {
@@ -18,7 +19,7 @@ export default function ProjectLinks({ demoLink, githubLink }) {
         aria-label="View Live Demo"
         title="🔗 Live Demo"
       >
-        <ExternalLinkIcon />
+        <FiExternalLink size={20} />
         <span>visit</span>
       </button>
 
@@ -28,7 +29,7 @@ export default function ProjectLinks({ demoLink, githubLink }) {
         aria-label="View on GitHub"
         title="💻 GitHub Repo"
       >
-        <GithubIcon />
+        <FaGithub size={20} />
         <span>source</span>
       </button>
     </div>
