@@ -76,6 +76,7 @@
     .experiences__timeline {
       @include flex-column;
       padding: $space-8 0;
+      min-height: 310px;
     }
 
     // Empty state

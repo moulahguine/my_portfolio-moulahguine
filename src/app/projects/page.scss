@@ -2,13 +2,11 @@
 @use "../../assets/styles/mixins" as *;
 
 .projects-page {
-  width: 100%;
-  min-height: calc(100vh - 260px);
-  overflow: hidden;
+  @include section;
 
   .container {
     @include container;
-    min-height: inherit;
+    top: 55px;
 
     .projects-page__header {
       @include header_section;
@@ -23,8 +21,8 @@
 
     // Projects Grid
     .projects__grid {
-      @include flex-center;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: $space-24;
       padding: $space-16 0;
     }

@@ -1,5 +1,5 @@
-import { getAllProjects } from "@/lib/projects";
 import Link from "next/link";
+import { getAllProjects } from "@/lib/projects";
 import { ProjectCard } from "@/components";
 import "./page.scss";
 
@@ -9,7 +9,7 @@ export default function Projects() {
   return (
     <div className="projects-page">
       <div className="container">
-        <h3 className="projects-page__header">My Projects</h3>
+        <h3 className="projects-page__header">All Projects</h3>
 
         {/* Projects Grid (inlined from ProjectsClient) */}
         {allProjects.length === 0 ? (

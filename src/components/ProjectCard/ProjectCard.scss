@@ -39,7 +39,7 @@
     overflow: hidden;
     width: 100%;
     height: calc((var(--height) / 2) - 20px);
-    background-color: $gray-300;
+    background-color: $gray-100;
     border-radius: $radius-md;
     transition: all 0.3s ease;
 
@@ -95,7 +95,6 @@
       // Technologies List
       .project-card__technologies {
         display: flex;
-        flex-wrap: wrap;
         gap: $space-4;
 
         // Tech Item
@@ -105,7 +104,7 @@
           align-items: center;
           gap: $space-4;
           border-radius: $radius-sm;
-          padding: 4px 8px;
+          padding: $space-4 $space-8;
           color: $gray-500;
           transition: all 0.3s ease;
           background-color: $gray-100;
@@ -130,6 +129,7 @@
 
         // More technologies link
         .project-card__tech-more {
+          font-size: $font-size-14;
           &:hover {
             color: $white;
             background-color: $gray-700;

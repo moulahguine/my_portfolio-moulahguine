@@ -5,7 +5,7 @@ import ProjectLinks from "./ProjectLinks";
 import { GoArrowUpRight } from "react-icons/go";
 import "./ProjectCard.scss";
 
-export default function ProjectCard({ project, index = 0 }) {
+export default function ProjectCard({ project }) {
   const maxTechsToShow = 3;
   const visibleTechs = project.technologies.slice(0, maxTechsToShow);
   const remainingCount = project.technologies.length - maxTechsToShow;
@@ -37,10 +37,10 @@ export default function ProjectCard({ project, index = 0 }) {
           <p className="project-card__description">{project.description}</p>
 
           <div className="project-card__technologies">
-            {visibleTechs.map((tech, techIndex) => (
+            {visibleTechs.map((tech, index) => (
               <span
                 style={{ "--colorTech": tech.color }}
-                key={techIndex}
+                key={index}
                 className="project-card__tech-item"
                 title={tech.name}
               >

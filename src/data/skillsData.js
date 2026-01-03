@@ -1,14 +1,6 @@
-import Image from "next/image";
+import { FaGithub, FaGitAlt, FaHtml5, FaJs, FaReact } from "react-icons/fa";
 import {
-  FaGithub,
-  FaGitAlt,
-  FaHtml5,
-  FaJs,
-  FaReact,
-  FaRegQuestionCircle,
-} from "react-icons/fa";
-import {
-  SiCss3,
+  SiCsswizardry,
   SiFramer,
   SiJest,
   SiMui,
@@ -21,27 +13,8 @@ import {
   SiTypescript,
   SiVite,
 } from "react-icons/si";
-
-import CursorImage from "@/assets/images/skill-section/cursor/cursor-dark.webp";
-import VsCodeImage from "@/assets/images/skill-section/vscode/vscode.webp";
-import CssImage from "@/assets/images/skill-section/css/css.webp";
-
-// Image icon factory
-const imageIconFactory =
-  (src, alt) =>
-  ({ size = 32 }) => (
-    <Image
-      src={src}
-      alt={alt}
-      width={size}
-      height={size}
-      style={{ width: size, height: size }}
-    />
-  );
-
-const CursorIcon = imageIconFactory(CursorImage, "Cursor AI");
-const VsCodeIcon = imageIconFactory(VsCodeImage, "VS Code");
-const CssAssetIcon = imageIconFactory(CssImage, "CSS");
+import { VscVscodeInsiders } from "react-icons/vsc";
+import { BsEmojiDizzy } from "react-icons/bs";
 
 // Icon map
 export const iconMap = {
@@ -50,7 +23,7 @@ export const iconMap = {
   FaHtml5,
   FaJs,
   FaReact,
-  SiCss3,
+  SiCsswizardry,
   SiFramer,
   SiJest,
   SiMui,
@@ -62,25 +35,18 @@ export const iconMap = {
   SiTailwindcss,
   SiTypescript,
   SiVite,
-  CursorIcon,
-  VsCodeIcon,
-  CssAssetIcon,
+  VscVscodeInsiders,
 };
 
-const IMAGE_ICON_KEYS = new Set(["CursorIcon", "VsCodeIcon", "CssAssetIcon"]);
-const DEFAULT_ICON = FaRegQuestionCircle;
+const DEFAULT_ICON = BsEmojiDizzy;
 
 // SkillIcon component
 function SkillIcon({ icon, color = "#6C757D", size = 28, title, className }) {
   const IconComponent = iconMap[icon] ?? DEFAULT_ICON;
-  const isImageIcon = IMAGE_ICON_KEYS.has(icon);
 
-  const iconElement = isImageIcon ? (
-    <IconComponent size={size} />
-  ) : (
+  const iconElement = (
     <IconComponent size={size} color={color} style={{ color }} />
   );
-
   const mergedClassName = ["skill-icon", className].filter(Boolean).join(" ");
 
   return (
@@ -94,32 +60,42 @@ export default SkillIcon;
 
 // Technologies mapping
 export const technologies = {
-  HTML: { icon: "FaHtml5", color: "#E34F26" },
-  CSS3: { icon: "SiCss3", color: "#66309a" },
-  CSS4: { icon: "CssAssetIcon", color: "#66309a" },
-  JavaScript: { icon: "FaJs", color: "#F7DF1E" },
-  TypeScript: { icon: "SiTypescript", color: "#007FFF" },
-  React: { icon: "FaReact", color: "#61DAFB" },
-  NextJS: { icon: "SiNextdotjs", color: "#000000" },
-  Redux: { icon: "SiRedux", color: "#764ABC" },
-  Framer: { icon: "SiFramer", color: "#0055FF" },
-  "Framer Motion": { icon: "SiFramer", color: "#0055FF" },
-  TailwindCSS: { icon: "SiTailwindcss", color: "#06B6D4" },
-  Sass: { icon: "SiSass", color: "#CC6699" },
-  SCSS: { icon: "SiSass", color: "#CC6699" },
-  MUI: { icon: "SiMui", color: "#007FFF" },
-  Jest: { icon: "SiJest", color: "#C21325" },
-  Git: { icon: "FaGitAlt", color: "#F05032" },
-  GitHub: { icon: "FaGithub", color: "#181717" },
-  Vite: { icon: "SiVite", color: "#646CFF" },
-  "VS Code": { icon: "VsCodeIcon", color: "#007ACC" },
-  Figma: { icon: "FaHtml5", color: "#F24E1E" },
-  REST: { icon: "FaHtml5", color: "#FF6B6B" },
-  Accessibility: { icon: "FaHtml5", color: "#4CAF50" },
-  Responsive: { icon: "FaHtml5", color: "#9C27B0" },
-  ReactQuery: { icon: "SiReactquery", color: "#FF4154" },
-  "Cursor AI": { icon: "CursorIcon", color: "#424242" },
-  "React Router": { icon: "SiReactrouter", color: "#F05032" },
+  HTML: { name: "HTML", icon: "FaHtml5", color: "#E34F26" },
+  CSS4: { name: "CSS4", icon: "SiCsswizardry", color: "#66309a" },
+  JavaScript: { name: "JavaScript", icon: "FaJs", color: "#F7DF1E" },
+  TypeScript: { name: "TypeScript", icon: "SiTypescript", color: "#007FFF" },
+  React: { name: "React", icon: "FaReact", color: "#61DAFB" },
+  NextJS: { name: "Next.js", icon: "SiNextdotjs", color: "#000000" },
+  Redux: { name: "Redux", icon: "SiRedux", color: "#764ABC" },
+  Framer: { name: "Framer", icon: "SiFramer", color: "#0055FF" },
+  "Framer Motion": {
+    name: "Framer Motion",
+    icon: "SiFramer",
+    color: "#0055FF",
+  },
+  TailwindCSS: {
+    name: "Tailwind CSS",
+    icon: "SiTailwindcss",
+    color: "#06B6D4",
+  },
+  Sass: { name: "Sass", icon: "SiSass", color: "#CC6699" },
+  SCSS: { name: "SCSS", icon: "SiSass", color: "#CC6699" },
+  MUI: { name: "MUI", icon: "SiMui", color: "#007FFF" },
+  Jest: { name: "Jest", icon: "SiJest", color: "#C21325" },
+  Git: { name: "Git", icon: "FaGitAlt", color: "#F05032" },
+  GitHub: { name: "GitHub", icon: "FaGithub", color: "#181717" },
+  Vite: { name: "Vite", icon: "SiVite", color: "#646CFF" },
+  "VS Code": { name: "VS Code", icon: "VscVscodeInsiders", color: "#007ACC" },
+  Figma: { name: "Figma", icon: "FaHtml5", color: "#F24E1E" },
+  REST: { name: "REST API", icon: "FaHtml5", color: "#FF6B6B" },
+  Accessibility: { name: "Accessibility", icon: "FaHtml5", color: "#4CAF50" },
+  Responsive: { name: "Responsive", icon: "FaHtml5", color: "#9C27B0" },
+  ReactQuery: { name: "React Query", icon: "SiReactquery", color: "#FF4154" },
+  "React Router": {
+    name: "React Router",
+    icon: "SiReactrouter",
+    color: "#F05032",
+  },
 };
 
 // Skills data
@@ -130,15 +106,15 @@ export const skills = [
     icon: technologies.HTML.icon,
     color: technologies.HTML.color,
     blog: "HTML is the foundation of every web page. I learned HTML through building semantic, accessible websites. Understanding the importance of proper document structure, semantic elements like <header>, <main>, <section>, and accessibility attributes has been crucial. I've built numerous projects focusing on clean, semantic markup that works across all browsers and devices.",
-    showOnHome: false,
+    showOnHome: true,
   },
   {
     id: 2,
-    name: "CSS",
+    name: "CSS4",
     icon: technologies.CSS4.icon,
     color: technologies.CSS4.color,
     blog: "CSS transformed how I approach web design. From basic styling to advanced techniques like Flexbox, Grid, and CSS animations, I've mastered the art of creating beautiful, responsive interfaces. I particularly enjoy working with CSS custom properties (variables) and modern layout techniques that make designs both flexible and maintainable.",
-    showOnHome: false,
+    showOnHome: true,
   },
   {
     id: 3,
@@ -218,7 +194,7 @@ export const skills = [
     icon: technologies["React Router"].icon,
     color: technologies["React Router"].color,
     blog: "React Router enables intuitive client-side routing with nested routes and data APIs. I use it for clean, accessible navigation and route-based code splitting.",
-    showOnHome: false,
+    showOnHome: true,
   },
   {
     id: 7,
@@ -226,7 +202,7 @@ export const skills = [
     icon: technologies.Redux.icon,
     color: technologies.Redux.color,
     blog: "Redux taught me the power of predictable state management. Understanding actions, reducers, and the store pattern has helped me build scalable applications with complex state requirements. I've implemented Redux Toolkit for modern Redux development, making state management both powerful and developer-friendly.",
-    showOnHome: false,
+    showOnHome: true,
   },
   {
     id: 8,
@@ -242,7 +218,7 @@ export const skills = [
     icon: technologies.Vite.icon,
     color: technologies.Vite.color,
     blog: "Vite has revolutionized my development experience with its lightning-fast build times and hot module replacement. The modern ES modules approach and excellent plugin ecosystem have made it my preferred build tool for React projects. The development server is incredibly fast, making the development cycle much more enjoyable.",
-    showOnHome: false,
+    showOnHome: true,
   },
   {
     id: 13,
@@ -250,7 +226,7 @@ export const skills = [
     icon: technologies.Git.icon,
     color: technologies.Git.color,
     blog: "Git is the backbone of modern development workflows. I've mastered version control concepts, branching strategies, and collaborative development practices. Understanding Git's distributed nature and powerful features like rebasing, cherry-picking, and conflict resolution has made me an effective team member and project maintainer.",
-    showOnHome: false,
+    showOnHome: true,
   },
   {
     id: 14,
@@ -258,15 +234,7 @@ export const skills = [
     icon: technologies.GitHub.icon,
     color: technologies.GitHub.color,
     blog: "GitHub extends Git with powerful collaboration features. I've learned to manage repositories, create pull requests, use GitHub Actions for CI/CD, and leverage the platform's project management tools. GitHub has become central to my workflow for code hosting, collaboration, and open-source contributions.",
-    showOnHome: false,
-  },
-  {
-    id: 15,
-    name: "Cursor AI",
-    icon: technologies["Cursor AI"].icon,
-    color: technologies["Cursor AI"].color,
-    blog: "Cursor AI has transformed how I write code. This AI-powered editor helps me write better code faster, debug issues more effectively, and learn new patterns and best practices. It's like having a senior developer pair programming with me, offering suggestions and helping me think through complex problems.",
-    showOnHome: false,
+    showOnHome: true,
   },
   {
     id: 16,
@@ -274,7 +242,7 @@ export const skills = [
     icon: technologies["VS Code"].icon,
     color: technologies["VS Code"].color,
     blog: "VS Code is my primary development environment. I've customized it with extensions, themes, and settings that optimize my productivity. The integrated terminal, debugging tools, and extensive extension ecosystem make it a powerful IDE for any type of development work.",
-    showOnHome: false,
+    showOnHome: true,
   },
 ];
 

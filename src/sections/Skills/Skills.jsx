@@ -1,29 +1,23 @@
 import SkillIcon, { skills } from "@/data/skillsData";
+import SkillsToggle from "./SkillsToggle";
 import "./Skills.scss";
 
 function Skills() {
-  const skillsShown = skills.filter((skill) => skill.showOnHome).slice(0, 10);
+  const skillsShown = skills.filter((skill) => skill.showOnHome);
 
   return (
-    // start skills section
     <section className="skills" id="skills">
-      {/* main container */}
       <div className="container">
-        {/* header */}
         <header className="skills__header">Tech Stack</header>
-        {/* content */}
-        <div className="skills__content">
-          {/* skills */}
+
+        <SkillsToggle>
           {skillsShown.map((skill) => (
-            // skill card
             <div
               key={skill.id}
               className="skill-card"
               style={{ "--skill-color": skill.color }}
             >
-              {/* icon */}
               <div className="skill-card__icon">
-                {/* skill icon */}
                 <SkillIcon
                   icon={skill.icon}
                   color={skill.color}
@@ -31,18 +25,12 @@ function Skills() {
                   title={skill.name}
                 />
               </div>
-              {/* name */}
               <span className="skill-card__name">{skill.name}</span>
             </div>
-            // end skill card
           ))}
-          {/* end skills */}
-        </div>
-        {/* end content */}
+        </SkillsToggle>
       </div>
-      {/* end main container */}
     </section>
-    // end skills section
   );
 }
 

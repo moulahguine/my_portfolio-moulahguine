@@ -24,20 +24,20 @@ const projectsData = [
 
     technologies: [
       {
-        techKey: "NextJS",
-        name: "Next.js",
+        techKey: technologies.NextJS.name,
+        name: technologies.NextJS.name,
         icon: technologies.NextJS.icon,
         color: technologies.NextJS.color,
       },
       {
-        techKey: "SCSS",
-        name: "SCSS",
+        techKey: technologies.SCSS.name,
+        name: technologies.SCSS.name,
         icon: technologies.SCSS.icon,
         color: technologies.SCSS.color,
       },
       {
-        techKey: "Framer Motion",
-        name: "Framer Motion",
+        techKey: technologies["Framer Motion"].name,
+        name: technologies["Framer Motion"].name,
         icon: technologies["Framer Motion"].icon,
         color: technologies["Framer Motion"].color,
       },
@@ -63,26 +63,26 @@ const projectsData = [
 
     technologies: [
       {
-        techKey: "React",
-        name: "React",
+        techKey: technologies.React.name,
+        name: technologies.React.name,
         icon: technologies.React.icon,
         color: technologies.React.color,
       },
       {
-        techKey: "TailwindCSS",
-        name: "Tailwind CSS",
+        techKey: technologies.TailwindCSS.name,
+        name: technologies.TailwindCSS.name,
         icon: technologies.TailwindCSS.icon,
         color: technologies.TailwindCSS.color,
       },
       {
-        techKey: "Vite",
-        name: "Vite",
+        techKey: technologies.Vite.name,
+        name: technologies.Vite.name,
         icon: technologies.Vite.icon,
         color: technologies.Vite.color,
       },
       {
-        techKey: "JavaScript",
-        name: "JavaScript",
+        techKey: technologies.JavaScript.name,
+        name: technologies.JavaScript.name,
         icon: technologies.JavaScript.icon,
         color: technologies.JavaScript.color,
       },
@@ -108,26 +108,26 @@ const projectsData = [
 
     technologies: [
       {
-        techKey: "React",
-        name: "React",
+        techKey: technologies.React.name,
+        name: technologies.React.name,
         icon: technologies.React.icon,
         color: technologies.React.color,
       },
       {
-        techKey: "MUI",
-        name: "Material UI",
+        techKey: technologies.MUI.name,
+        name: technologies.MUI.name,
         icon: technologies.MUI.icon,
         color: technologies.MUI.color,
       },
       {
-        techKey: "TailwindCSS",
-        name: "Tailwind CSS",
+        techKey: technologies.TailwindCSS.name,
+        name: technologies.TailwindCSS.name,
         icon: technologies.TailwindCSS.icon,
         color: technologies.TailwindCSS.color,
       },
       {
-        techKey: "Vite",
-        name: "Vite",
+        techKey: technologies.Vite.name,
+        name: technologies.Vite.name,
         icon: technologies.Vite.icon,
         color: technologies.Vite.color,
       },
@@ -153,20 +153,20 @@ const projectsData = [
 
     technologies: [
       {
-        techKey: "HTML",
-        name: "HTML",
+        techKey: technologies.HTML.name,
+        name: technologies.HTML.name,
         icon: technologies.HTML.icon,
         color: technologies.HTML.color,
       },
       {
-        techKey: "CSS3",
-        name: "CSS",
-        icon: technologies.CSS3.icon,
-        color: technologies.CSS3.color,
+        techKey: technologies.CSS4.name,
+        name: technologies.CSS4.name,
+        icon: technologies.CSS4.icon,
+        color: technologies.CSS4.color,
       },
       {
-        techKey: "JavaScript",
-        name: "JavaScript",
+        techKey: technologies.JavaScript.name,
+        name: technologies.JavaScript.name,
         icon: technologies.JavaScript.icon,
         color: technologies.JavaScript.color,
       },

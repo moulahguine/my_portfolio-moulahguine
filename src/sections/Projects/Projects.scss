@@ -26,8 +26,10 @@
 
     // Projects grid
     .projects__grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
       gap: $space-8;
       margin-top: $space-16;
     }
