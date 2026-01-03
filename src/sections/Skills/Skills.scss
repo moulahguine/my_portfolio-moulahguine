@@ -3,7 +3,7 @@
 
 // start skills section
 .skills {
-  width: 100%;
+  @include section;
 
   // main container
   .container {

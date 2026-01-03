@@ -2,7 +2,7 @@
 @use "../../assets/styles/mixins" as *;
 
 .experiences {
-  width: 100%;
+  @include section;
 
   .container {
     @include container;

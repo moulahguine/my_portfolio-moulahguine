@@ -3,7 +3,7 @@
 
 // Main blogs section container
 .blogs {
-  width: 100%;
+  @include section;
 
   // Container for blogs content
   .container {

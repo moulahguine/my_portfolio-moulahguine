@@ -64,6 +64,11 @@
   }
 }
 
+@mixin section {
+  width: 100%;
+  background-color: $white;
+}
+
 // Hover effects
 @mixin hover-scale($scale: 1.05) {
   transition: transform $transition-base ease;

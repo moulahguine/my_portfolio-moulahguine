@@ -2,7 +2,7 @@
 @use "../../assets/styles/mixins" as *;
 // HERO SECTION - START
 .hero {
-  width: 100%;
+  @include section;
   margin-top: 50px;
 
   .container {

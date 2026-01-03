@@ -1,10 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
 import SkillIcon from "@/data/skillsData";
 import ProjectLinks from "./ProjectLinks";
 import { GoArrowUpRight } from "react-icons/go";
 import "./ProjectCard.scss";
 
 export default function ProjectCard({ project, index = 0 }) {
+  const maxTechsToShow = 3;
+  const visibleTechs = project.technologies.slice(0, maxTechsToShow);
+  const remainingCount = project.technologies.length - maxTechsToShow;
+
   return (
     <>
       <figure className="project-card__media">
@@ -32,7 +37,7 @@ export default function ProjectCard({ project, index = 0 }) {
           <p className="project-card__description">{project.description}</p>
 
           <div className="project-card__technologies">
-            {project.technologies.map((tech, techIndex) => (
+            {visibleTechs.map((tech, techIndex) => (
               <span
                 style={{ "--colorTech": tech.color }}
                 key={techIndex}
@@ -49,6 +54,15 @@ export default function ProjectCard({ project, index = 0 }) {
                 <span className="project-card__tech-name">{tech.name}</span>
               </span>
             ))}
+            {remainingCount > 0 && (
+              <Link
+                href={`/projects/${project.slug}`}
+                className="project-card__tech-more"
+                title={`View all ${project.technologies.length} technologies`}
+              >
+                +{remainingCount} more
+              </Link>
+            )}
           </div>
         </div>
 

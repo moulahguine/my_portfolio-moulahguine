@@ -17,7 +17,7 @@
     .projects__empty {
       @include flex-center;
       min-height: inherit;
-      color: $color-text-muted;
+      color: $gray-400;
       font-size: $font-size-18;
     }
 

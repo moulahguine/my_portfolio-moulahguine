@@ -3,7 +3,7 @@
 
 // Main projects section container
 .projects {
-  width: 100%;
+  @include section;
 
   .container {
     @include container;
@@ -30,24 +30,6 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: $space-8;
       margin-top: $space-16;
-      @media (max-width: $breakpoint-md) {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: $space-24;
-      }
-
-      @media (max-width: $breakpoint-sm) {
-        grid-template-columns: 1fr;
-        gap: $space-16;
-      }
     }
-  }
-}
-
-.project-card {
-  &__link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    height: 100%;
   }
 }
