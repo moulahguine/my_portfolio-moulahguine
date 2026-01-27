@@ -1,0 +1,10 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+.show-more-btn {
+  @include next-button-style;
+  font-size: $font-size-12;
+  font-weight: $fw-medium;
+  color: $gray-600;
+  text-transform: capitalize;
+}

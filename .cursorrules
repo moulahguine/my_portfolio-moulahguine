@@ -1,0 +1,331 @@
+# Portfolio Project - Cursor Rules
+
+## Project Overview
+This is a Next.js 16 portfolio website for Mohamed Oulahguine, a Frontend Developer. The project uses React 19, SCSS for styling, and Motion (Framer Motion) for animations. It's configured as a static export for deployment.
+
+## Tech Stack
+- **Framework**: Next.js 16 (App Router)
+- **React**: 19.1.1
+- **Styling**: SCSS/Sass
+- **Animations**: Motion (motion/react-client) - Framer Motion v12
+- **Icons**: react-icons (v5.5.0)
+- **Maps**: react-leaflet (v5.0.0) with leaflet
+- **Forms**: @formspree/react (v3.0.0)
+- **Build**: Static export (output: "export")
+- **Deployment**: gh-pages (distDir: "build")
+
+## Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── layout.jsx         # Root layout with Header/Footer
+│   ├── page.jsx           # Home page route
+│   ├── metadata.js        # Site metadata configuration
+│   ├── home/              # Home page component
+│   ├── projects/          # Projects pages
+│   │   ├── page.jsx       # Projects listing
+│   │   └── [slug]/        # Dynamic project detail pages
+│   ├── experiences/       # Experiences page
+│   ├── blogs/             # Blogs page
+│   └── not-found/         # 404 page
+├── components/            # Reusable UI components
+│   ├── index.js          # Component exports (barrel file)
+│   ├── Animate/          # FadeIn animation wrapper
+│   ├── Header/           # Site header
+│   ├── Footer/           # Site footer
+│   ├── Navigation/       # Navigation menu
+│   ├── ProjectCard/      # Project card component
+│   ├── ExperienceCard/   # Experience card component
+│   ├── BlogCard/         # Blog card component
+│   ├── Modal/            # Modal component
+│   ├── ModalContent/     # Modal content variants
+│   ├── Location/         # Location/Map component
+│   ├── ShowMoreButton/   # "Show more" button component
+│   └── Icons/            # Custom icon components
+├── sections/             # Main page sections
+│   ├── Hero/             # Hero section
+│   ├── About/            # About section
+│   ├── Skills/           # Skills section
+│   ├── Projects/         # Projects section
+│   ├── Experiences/      # Experiences section
+│   └── Blog/             # Blog section
+├── data/                 # Static data files
+│   ├── projectsData.js   # Projects data
+│   ├── experienceData.js # Experience data
+│   ├── skillsData.js     # Skills/technologies data
+│   ├── socialLinksData.js # Social media links
+│   └── blogsData.js      # Blog posts data
+├── lib/                  # Utility functions
+│   └── projects.js       # Project data helpers
+└── assets/               # Static assets
+    ├── styles/           # Global styles
+    │   ├── main.scss     # Main style entry (imports all)
+    │   ├── _variables.scss # SCSS variables
+    │   ├── _mixins.scss  # SCSS mixins
+    │   └── _global.scss  # Global styles/reset
+    ├── images/           # Image assets (WebP format)
+    └── fonts/            # Font files
+```
+
+## File Naming Conventions
+- **Components**: PascalCase (e.g., `ProjectCard.jsx`, `FadeIn.jsx`)
+- **Pages**: lowercase with `.jsx` (e.g., `page.jsx`, `layout.jsx`)
+- **Styles**: Component name + `.scss` (e.g., `ProjectCard.scss`, `Projects.scss`)
+- **Data files**: camelCase + `Data.js` (e.g., `projectsData.js`, `skillsData.js`)
+- **Utilities**: camelCase (e.g., `projects.js`)
+
+## Import Patterns
+
+### Path Aliases
+- Use `@/` prefix for src directory imports (configured in jsconfig.json)
+- Example: `import { ProjectCard } from "@/components"`
+- Example: `import projectsData from "@/data/projectsData"`
+
+### Component Imports
+- Use barrel exports from `@/components` when available
+- Example: `import { FadeIn, ProjectCard, ShowMoreButton } from "@/components"`
+- For specific components: `import Header from "@/components/Header/Header"`
+
+### Next.js Imports
+- Use `next/link` for internal navigation
+- Use `next/image` for optimized images
+- Use `next/navigation` for routing utilities (notFound, etc.)
+
+### Motion/Animation
+- Import from `motion/react-client`: `import * as motion from "motion/react-client"`
+- Use `motion[as]` pattern for dynamic tags: `const MotionTag = motion[as] || motion.div`
+
+## Styling Guidelines
+
+### SCSS Architecture
+- **Variables**: Defined in `src/assets/styles/_variables.scss`
+- **Mixins**: Defined in `src/assets/styles/_mixins.scss`
+- **Global**: Reset and base styles in `src/assets/styles/_global.scss`
+- **Component Styles**: Each component has its own `.scss` file in the same directory
+
+### SCSS Variables Available
+- **Typography**: `$font-size-*` (10, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48)
+- **Line Heights**: `$line-height-tight`, `$line-height-normal`, `$line-height-relaxed`
+- **Font Weights**: `$fw-regular` (400), `$fw-medium` (500), `$fw-semibold` (600), `$fw-bold` (700)
+- **Colors**: `$black`, `$white`, `$gray-*` (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950)
+- **Spacing**: `$space-*` (4, 8, 12, 16, 18, 20, 24, 32, 40)
+- **Radius**: `$radius-sm`, `$radius-md`, `$radius-lg`, `$radius-xl`, `$radius-1xl`, `$radius-2xl`
+- **Breakpoints**: `$breakpoint-sm` (460px), `$breakpoint-md` (778px), `$breakpoint-2md` (970px), `$breakpoint-lg` (1130px), `$breakpoint-xl` (1280px)
+
+### SCSS Mixins Available
+- `@include flex-center` - Flexbox center alignment
+- `@include flex-between` - Flexbox space-between
+- `@include flex-column` - Flex column direction
+- `@include container` - Max-width container (740px) with padding
+- `@include page` - Page layout with min-height
+- `@include section` - Section styling (white background)
+- `@include section-title` - Large section title styling
+- `@include header_section` - Small section header badge style
+- `@include next-button-style` - Button with underline hover effect
+
+### BEM Naming Convention
+- Use BEM (Block Element Modifier) for CSS classes
+- Block: Component name (e.g., `project-card`)
+- Element: `__element` (e.g., `project-card__title`)
+- Modifier: `--modifier` (e.g., `project-card--featured`)
+
+### Component Style Structure
+```scss
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+.component-name {
+  // Component styles
+  .component-name__element {
+    // Element styles
+  }
+}
+```
+
+## Component Patterns
+
+### Section Components
+- Sections are in `src/sections/` directory
+- Each section has its own `.jsx` and `.scss` file
+- Use `FadeIn` wrapper for animations
+- Use `container` class/mixin for content width
+- Example structure:
+```jsx
+<FadeIn id="section-id" className="section-name" as="section" delay={0.3}>
+  <div className="container">
+    {/* Section content */}
+  </div>
+</FadeIn>
+```
+
+### FadeIn Component Usage
+- Wrapper component for scroll animations
+- Props: `id`, `className`, `as` (HTML tag), `delay`, `duration`, `direction`, `distance`, `once`
+- Default: `as="div"`, `delay=0`, `duration=0.5`, `direction="up"`, `distance=30`, `once=true`
+- Uses Motion library for animations
+
+### Page Components
+- Next.js pages in `src/app/` directory
+- Use `page.jsx` for route pages
+- Use `layout.jsx` for layout wrappers
+- Dynamic routes: `[slug]/page.jsx`
+- Generate static params: `generateStaticParams()` function
+- Generate metadata: `generateMetadata()` function
+
+### Data Patterns
+
+#### Projects Data Structure
+```javascript
+{
+  id: number,
+  slug: string,
+  title: string,
+  description: string,
+  year: number,
+  featured: boolean,
+  color: string, // Hex color for project theme
+  demoLink: string,
+  githubLink: string,
+  technologies: [
+    {
+      techKey: string,
+      name: string,
+      icon: string, // Icon key from skillsData
+      color: string
+    }
+  ],
+  media: {
+    image: ImageImport,
+    blurDataURL?: string,
+    caption?: string
+  }
+}
+```
+
+#### Experience Data Structure
+```javascript
+{
+  id: string,
+  company: string,
+  role: string,
+  type: string,
+  location: string,
+  startDate: string,
+  endDate: string,
+  logo: ImageImport,
+  description: string[],
+  technologies: string[],
+  link: string
+}
+```
+
+#### Skills Data
+- Technologies defined in `src/data/skillsData.js`
+- Export: `technologies` object with name, icon, color
+- Export: `skills` array with id, name, icon, color, showOnHome
+- Export: `SkillIcon` component for rendering icons
+- Icons use react-icons library
+
+## Next.js Specific Patterns
+
+### Image Optimization
+- Use `next/image` component
+- Provide `width` and `height` props
+- Use `sizes` prop for responsive images
+- Use `loading="lazy"` for below-fold images
+- Use `priority` for above-fold images
+- Support `blurDataURL` for placeholder
+
+### Routing
+- App Router structure (Next.js 13+)
+- File-based routing in `src/app/`
+- Dynamic routes: `[slug]/page.jsx`
+- Use `Link` from `next/link` for client-side navigation
+- Use `notFound()` from `next/navigation` for 404 handling
+
+### Static Generation
+- Project uses static export (`output: "export"`)
+- Generate static params for dynamic routes
+- Pre-render all pages at build time
+- No server-side features (API routes, etc.)
+
+## Component Export Pattern
+- Barrel export file: `src/components/index.js`
+- Export all reusable components from one file
+- Import pattern: `import { Component1, Component2 } from "@/components"`
+
+## Animation Guidelines
+- Use `FadeIn` component for section animations
+- Motion library for complex animations
+- Respect `prefers-reduced-motion` (handled by Motion)
+- Use CSS transitions for simple hover effects
+- Animation delays: 0, 0.3, 0.5 seconds typically
+
+## Accessibility Guidelines
+- Use semantic HTML (`<section>`, `<article>`, `<nav>`, etc.)
+- Include ARIA labels where needed
+- Use `sr-only` class for screen-reader-only content
+- Skip links for main content
+- Proper heading hierarchy (h1 → h2 → h3)
+- Alt text for all images
+- Keyboard navigation support
+
+## Performance Considerations
+- Static export for fast loading
+- Image optimization with Next.js Image
+- Lazy loading for images below fold
+- Code splitting via Next.js automatic splitting
+- WebP images for better compression
+- Minimal dependencies
+
+## Development Commands
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run predeploy` - Build before deployment
+- `npm run deploy` - Deploy to gh-pages
+
+## Key Libraries Usage
+
+### Motion (Framer Motion)
+- Import: `import * as motion from "motion/react-client"`
+- Use for scroll animations, page transitions
+- Client component required (use "use client" if needed)
+
+### React Icons
+- Import from specific icon sets: `react-icons/fa`, `react-icons/si`, etc.
+- Use in components with size and color props
+
+### Next.js Image
+- Always use `next/image` instead of `<img>`
+- Provides automatic optimization
+- Requires width/height or fill prop
+
+## Common Patterns
+
+### Project Card Pattern
+- Uses `ProjectCard` component
+- Wrapped in `Link` for navigation
+- Uses `FadeIn` for animation
+- Displays: image, title, description, technologies, links
+
+### Section Header Pattern
+- Header container with title and "Show More" button
+- Uses `projects__header-container` class
+- Uses `flex-between` mixin
+- "Show More" button links to full page
+
+### Container Pattern
+- Max-width: 740px
+- Centered with auto margins
+- Padding: `$space-32` top/bottom
+- Responsive padding on mobile
+
+## Notes
+- Font family: "Shadows Into Light" (cursive) - set in global styles
+- Color scheme: Primarily grayscale with accent colors per project
+- Mobile-first responsive design
+- All images should be WebP format when possible
+- Use CSS custom properties for dynamic colors (e.g., `--project-color`)
+- Form handling: Uses Formspree for contact forms

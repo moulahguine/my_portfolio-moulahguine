@@ -1,0 +1,6 @@
+@use "../../assets/styles/variables" as *;
+@use "../../assets/styles/mixins" as *;
+
+.blogs-page {
+  @include page;
+}
