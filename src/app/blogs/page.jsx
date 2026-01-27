@@ -1,5 +1,4 @@
 import Blogs from "@/sections/Blog/Blogs";
-import "./page.scss";
 
 export const metadata = {
   title: "Blog | Mohamed Oulahguine - Frontend Developer",
