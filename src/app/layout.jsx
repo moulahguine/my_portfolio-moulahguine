@@ -72,7 +72,14 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body>
+      <body
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100dvh",
+          justifyContent: "space-between",
+        }}
+      >
         <Header />
         <main id="main-content">{children}</main>
         <Footer />

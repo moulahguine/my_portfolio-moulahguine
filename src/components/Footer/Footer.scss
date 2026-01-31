@@ -2,9 +2,8 @@
 @use "../../assets/styles/mixins" as *;
 
 .footer {
-  background: $color-white;
+  background: $white;
   border-top: 1px solid $color-gray-200;
-  padding: $space-16 0;
 
   .footer__container {
     @include container;

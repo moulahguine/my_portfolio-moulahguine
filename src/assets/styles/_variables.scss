@@ -21,6 +21,42 @@ $fw-medium: 500;
 $fw-semibold: 600;
 $fw-bold: 700;
 
+// ----------------------- SPACING (scale) -----------------------
+$space-4: 0.25rem;
+$space-8: 0.5rem;
+$space-12: 0.75rem;
+$space-16: 1rem;
+$space-18: 1.125rem;
+$space-20: 1.25rem;
+$space-24: 1.5rem;
+$space-32: 2rem;
+$space-40: 2.5rem;
+
+// ----------------------- RADIUS -----------------------
+$radius-sm: 0.25rem;
+$radius-md: 0.5rem;
+$radius-lg: 1rem;
+$radius-xl: 2rem;
+$radius-1xl: 3rem;
+$radius-2xl: 4rem;
+
+// ----------------------- TRANSITIONS -----------------------
+$transition-fast: 150ms ease-in-out;
+$transition-base: 300ms ease-in-out;
+$transition-slow: 500ms ease-in-out;
+
+// ----------------------- BREAKPOINTS -----------------------
+$breakpoint-sm: 460px;
+$breakpoint-md: 778px;
+$breakpoint-2md: 970px;
+$breakpoint-lg: 1130px;
+$breakpoint-xl: 1280px;
+
+// ----------------------- Z-INDEX -----------------------
+$z-dropdown: 1000;
+$z-header: 900;
+$z-modal: 1100;
+
 // Core
 $color-black: #111213;
 $color-black-hover: #1a1b1c;
@@ -157,39 +193,3 @@ $skin-700: #d6a97d;
 $skin-500: #f0cfa0;
 $skin-300: #f7deba;
 $skin-100: #fceed4;
-
-// ----------------------- SPACING (scale) -----------------------
-$space-4: 0.25rem;
-$space-8: 0.5rem;
-$space-12: 0.75rem;
-$space-16: 1rem;
-$space-18: 1.125rem;
-$space-20: 1.25rem;
-$space-24: 1.5rem;
-$space-32: 2rem;
-$space-40: 2.5rem;
-
-// ----------------------- RADIUS -----------------------
-$radius-sm: 0.25rem;
-$radius-md: 0.5rem;
-$radius-lg: 1rem;
-$radius-xl: 2rem;
-$radius-1xl: 3rem;
-$radius-2xl: 4rem;
-
-// ----------------------- TRANSITIONS -----------------------
-$transition-fast: 150ms ease-in-out;
-$transition-base: 300ms ease-in-out;
-$transition-slow: 500ms ease-in-out;
-
-// ----------------------- BREAKPOINTS -----------------------
-$breakpoint-sm: 460px;
-$breakpoint-md: 778px;
-$breakpoint-2md: 970px;
-$breakpoint-lg: 1130px;
-$breakpoint-xl: 1280px;
-
-// ----------------------- Z-INDEX -----------------------
-$z-dropdown: 1000;
-$z-header: 900;
-$z-modal: 1100;
