@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import * as motion from "motion/react-client";
+import { motion } from "framer-motion";
 import "./Navigation.scss";
 
 const NAVIGATION_ITEMS = [
@@ -17,9 +17,18 @@ function normalizePath(path) {
   return path.toLowerCase().replace(/\/+$/, "") || "/";
 }
 
+function isActivePath(current, target) {
+  if (target === "/") return current === "/";
+  return current === target || current.startsWith(target + "/");
+}
+
+const deepChild = {
+  rest: { y: 0, color: "inherit" },
+  hover: { y: "-52%", color: "#242527" },
+};
+
 export default function Navigation() {
-  const rawPathname = usePathname();
-  const pathname = normalizePath(rawPathname ?? "");
+  const pathname = normalizePath(usePathname());
 
   return (
     <motion.nav
@@ -35,23 +44,25 @@ export default function Navigation() {
       >
         {NAVIGATION_ITEMS.map((item) => {
           const itemPath = normalizePath(item.path);
-          const isActive = pathname === itemPath;
+          const isActive = isActivePath(pathname, itemPath);
 
           return (
-            <li key={item.id} className="nav__item">
+            <motion.li
+              key={item.id}
+              className="nav__item"
+              initial="rest"
+              animate="rest"
+              whileHover="hover"
+            >
               <Link
-                href={item.path}
-                className={`nav__link${isActive ? " nav__link--active" : ""}`}
+                href={itemPath}
+                className={`nav__link ${isActive ? "active" : ""}`}
                 aria-current={isActive ? "page" : undefined}
               >
                 <span className="nav__link__inner">
                   <motion.span
                     className="nav__link__slide"
-                    initial={{ y: 0 }}
-                    whileHover={{
-                      y: "-52%",
-                      color: "#242527",
-                    }}
+                    variants={deepChild}
                     transition={{
                       duration: 0.3,
                       ease: [0.25, 0.1, 0.25, 1],
@@ -64,7 +75,7 @@ export default function Navigation() {
                   </motion.span>
                 </span>
               </Link>
-            </li>
+            </motion.li>
           );
         })}
       </motion.ul>

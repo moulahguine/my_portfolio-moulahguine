@@ -28,64 +28,48 @@
   }
 
   .nav__list {
-    @include flex-center;
-    width: fit-content;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    @include flex-between;
     gap: $space-4;
-  }
+    width: fit-content;
 
-  .nav__item {
-    position: relative;
-    display: flex;
-  }
-
-  .nav__link {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: $space-8 $space-12;
-    color: $text-muted;
-    font-size: $font-size-14;
-    font-family: "Shadows Into Light", cursive;
-    text-decoration: none;
-    border-radius: $radius-lg;
-    transition:
-      background-color $transition-base,
-      color $transition-base;
-
-    // Wrapper for slide-up text (one line visible)
-    .nav__link__inner {
-      display: inline-block;
-      overflow: hidden;
-      height: 1.25em;
-      line-height: 1.25;
-    }
-
-    // Motion slide: two stacked labels, slides up on hover
-    .nav__link__slide {
+    .nav__item {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      will-change: transform;
-    }
 
-    .nav__link__text {
-      padding: $space-8 $space-12;
-      flex-shrink: 0;
-      height: 1.25em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      white-space: nowrap;
-    }
+      .nav__link {
+        color: $gray-500;
+        font-size: $font-size-14;
+        padding: $space-8 $space-12;
 
-    &.nav__link--active {
-      color: $gray-800;
-      font-weight: $fw-semibold;
-      text-decoration: underline curve;
+        .nav__link__inner {
+          display: inline-block;
+          overflow: hidden;
+          height: 1.25em;
+          line-height: 1.25;
+
+          .nav__link__slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            will-change: transform;
+          }
+        }
+
+        .nav__link__text {
+          padding: $space-8 $space-12;
+          flex-shrink: 0;
+          height: 1.25em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          white-space: nowrap;
+        }
+
+        &.active {
+          color: $gray-800;
+          font-weight: $fw-semibold;
+          text-decoration: underline curve;
+        }
+      }
     }
   }
 }
