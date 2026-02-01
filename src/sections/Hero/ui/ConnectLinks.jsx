@@ -3,24 +3,29 @@
 import { useState } from "react";
 import { Modal, DefaultContent } from "@/components";
 import socialLinksData from "@/data/socialLinksData";
-import { FiShare2 } from "react-icons/fi";
+import { RxPerson } from "react-icons/rx";
 
-export default function ConnectLinks() {
+export default function ConnectLinks({ renderTrigger }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const open = () => setIsModalOpen(true);
 
   return (
     <>
-      <button
-        className="social-trigger-btn"
-        onClick={() => setIsModalOpen(true)}
-        aria-label="Open social links"
-        type="button"
-        title="Open social links"
-      >
-        <span className="social__icon" aria-hidden="true">
-          <FiShare2 size={18} />
-        </span>
-      </button>
+      {renderTrigger
+        ? renderTrigger({ open })
+        : (
+          <button
+            className="social-trigger-btn"
+            onClick={open}
+            aria-label="Open social links"
+            type="button"
+            title="Open social links"
+          >
+            <span className="social__icon" aria-hidden="true">
+              <RxPerson size={18} />
+            </span>
+          </button>
+        )}
 
       <Modal
         isOpen={isModalOpen}

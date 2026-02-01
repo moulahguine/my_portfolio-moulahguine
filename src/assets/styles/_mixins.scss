@@ -55,14 +55,10 @@
 
 // Container
 @mixin container {
-  max-width: 740px;
+  max-width: 767px;
   margin: 0 auto;
   padding: $space-32 0;
   position: relative;
-
-  @media (max-width: $breakpoint-md) {
-    padding: 0 $space-16;
-  }
 }
 
 @mixin section {

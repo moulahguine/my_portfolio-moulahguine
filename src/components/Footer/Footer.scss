@@ -3,7 +3,7 @@
 
 .footer {
   background: $white;
-  border-top: 1px solid $color-gray-200;
+  border-top: 1px solid $gray-200;
 
   .footer__container {
     @include container;
@@ -31,21 +31,21 @@
 
   .footer__copyright {
     font-size: $font-size-14;
-    color: $color-gray-500;
+    color: $gray-500;
   }
 
   .footer__divider {
-    color: $color-gray-300;
+    color: $gray-300;
   }
 
   .footer__link {
     font-size: $font-size-14;
-    color: $color-gray-500;
+    color: $gray-500;
     text-decoration: none;
     transition: color 0.2s ease;
 
     &:hover {
-      color: $color-gray-900;
+      color: $gray-900;
     }
   }
 
@@ -60,12 +60,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $color-gray-500;
+    color: $gray-500;
     font-size: $font-size-20;
     transition: color 0.2s ease;
 
     &:hover {
-      color: $color-gray-900;
+      color: $gray-900;
     }
   }
 }

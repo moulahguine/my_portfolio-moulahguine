@@ -3,10 +3,13 @@
 // HERO SECTION - START
 .hero {
   @include section;
-  margin-top: 50px;
+  margin-top: 80px;
 
   .container {
     @include container;
+    box-shadow: 0 0 $space-8 $gray-200;
+    border-radius: $radius-lg;
+    padding-top: 0;
 
     .hero__map {
       width: 100%;
@@ -63,129 +66,109 @@
     }
 
     .hero__profile {
-      padding-right: $space-16;
       display: flex;
+      align-items: center;
+      padding-right: $space-16;
 
-      .hero__media {
-        --square-size: 150px;
-        width: var(--square-size);
-        height: var(--square-size);
-        margin-top: -70px;
-        margin-left: calc($space-32 - 2px);
-        border-radius: 50%;
-        overflow: hidden;
-        border: $space-4 solid $white;
-        position: relative;
-        z-index: 155;
-        cursor: pointer;
-        background-color: $gray-100;
+      .hero__profile-content {
+        @include flex-between;
+        width: fit-content;
+        padding-left: $space-32;
 
-        .hero__image {
-          object-fit: cover;
-          object-position: top;
-          width: 100%;
-          height: 100%;
-          scale: 1.5;
-          transition: all 0.3s ease-in-out;
-        }
-
-        .hero__media-overlay {
-          @include flex-center;
-          position: absolute;
-          left: 0;
-          bottom: -30px;
-          background-color: rgba($gray-900, 0.2);
-          opacity: 1;
-          transition: all 0.5s ease-in-out;
-          width: 100%;
-          height: 0%;
-
-          svg {
-            color: $gray-100;
-            transition: all 0.3s ease-in-out;
-            transition-delay: 0.6s;
-            &:hover {
-              scale: 1.2;
-            }
-          }
-        }
-
-        &:hover {
-          .hero__media-overlay {
-            bottom: 0;
-            height: 100%;
-
-            svg {
-              scale: 1.2;
-            }
-          }
-        }
-
-        user-select: none;
-        -webkit-user-drag: none;
-      }
-
-      .hero__info {
-        margin-left: $space-8;
-        max-width: 350px;
-        @include flex-column;
-        gap: $space-4;
-
-        .hero__title {
-          display: flex;
-          align-items: center;
-          gap: $space-4;
-          font-size: $font-size-18;
-          color: $gray-700;
-          .verified-badge {
-            width: $space-16;
-            height: $space-16;
-          }
-          .hero__username {
-            font-size: $font-size-12;
-            color: $gray-400;
-            font-weight: $fw-medium;
-          }
-        }
-
-        .hero__subtitle {
-          font-size: $font-size-12;
-          color: $gray-600;
-          span {
-            color: $gray-500;
-          }
-        }
-
-        .hero__rotating-text {
-          position: relative;
-          height: 20px;
+        .hero__media {
+          --square-size: 150px;
+          width: var(--square-size);
+          height: var(--square-size);
+          margin-top: -70px;
+          margin-left: $space-12;
+          border-radius: 50%;
           overflow: hidden;
+          border: $space-4 solid $white;
+          position: relative;
+          z-index: 155;
+          cursor: pointer;
+          background-color: $gray-100;
 
-          .item {
+          .hero__image {
+            object-fit: cover;
+            object-position: top;
+            width: 100%;
+            height: 100%;
+            transform: scale(1.5);
+            transition: all 0.3s ease-in-out;
+          }
+
+          .hero__media-overlay {
+            @include flex-center;
             position: absolute;
             left: 0;
-            top: 0;
-            font-size: $font-size-12;
-            white-space: nowrap;
-            opacity: 0;
-            transform: translateY(100%);
-            animation: rotateText 6s infinite;
+            bottom: -30px;
+            background-color: rgba($gray-900, 0.2);
+            opacity: 1;
+            transition: all 0.5s ease-in-out;
+            width: 100%;
+            height: 0%;
 
-            &.state {
-              color: $gray-500;
+            svg {
+              color: $gray-100;
+              transition: all 0.3s ease-in-out;
+              transition-delay: 0.6s;
+              &:hover {
+                scale: 1.2;
+              }
+            }
+          }
+
+          &:hover {
+            .hero__media-overlay {
+              bottom: 0;
+              height: 100%;
+
+              svg {
+                scale: 1.2;
+              }
+            }
+          }
+
+          user-select: none;
+          -webkit-user-drag: none;
+        }
+
+        .hero__info {
+          @include flex-column;
+          gap: $space-4;
+          // padding-top: $space-12;
+          padding-left: $space-12;
+
+          .hero__title {
+            display: flex;
+            align-items: center;
+            gap: $space-4;
+            font-size: $font-size-18;
+            color: $gray-700;
+            .verified-badge {
+              width: $space-16;
+              height: $space-16;
+            }
+            .hero__username {
+              font-size: $font-size-12;
+              color: $gray-400;
               font-weight: $fw-medium;
-              animation-delay: 0s;
             }
+          }
 
-            &.location {
-              color: $gray-600;
-              animation-delay: 2s;
-            }
-
-            &.username {
+          .hero__subtitle {
+            font-size: $font-size-12;
+            color: $gray-600;
+            span {
               color: $gray-500;
-              animation-delay: 4s;
             }
+          }
+
+          .hero__location {
+            font-size: $font-size-12;
+            color: $gray-500;
+            font-weight: $fw-medium;
           }
         }
       }
@@ -193,104 +176,14 @@
       .hero__cta {
         @include flex-center;
         margin-left: auto;
+        margin-top: $space-4;
         gap: $space-8;
-
-        .resume-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: $space-8;
-          padding: $space-8 $space-4 $space-8 $space-16;
-          width: 115px;
-          height: 40px;
-          border-radius: $radius-md;
-          background-color: $gray-700;
-          border: 1px solid $gray-600;
-          text-decoration: none;
-          color: $white;
-          position: relative;
-          overflow: hidden;
-          transition: all 0.2s ease-in;
-
-          .resume__title {
-            color: $gray-100;
-            font-size: $font-size-12;
-            font-weight: $fw-semibold;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: inherit;
-            transition-delay: 0.4s !important;
-          }
-
-          .resume__icon {
-            @include flex-center;
-            background: $white;
-            width: 28px;
-            height: 28px;
-            border-radius: inherit;
-            transition: inherit;
-
-            svg {
-              color: $gray-700;
-              font-size: $font-size-16;
-              transition: inherit;
-            }
-          }
-
-          &:hover,
-          &:focus-within {
-            .resume__icon {
-              scale: 7;
-              svg {
-                scale: 0.2;
-              }
-            }
-
-            .resume__title {
-              color: $gray-700;
-              z-index: 2;
-            }
-          }
-        }
-
-        .social-trigger-btn {
-          @include flex-center;
-          width: 40px;
-          height: 40px;
-          border-radius: $radius-md;
-          background-color: $white;
-          border: 1px solid $gray-700;
-          cursor: pointer;
-          transition: all 0.2s ease-in;
-          overflow: hidden;
-          &:hover {
-            background-color: $gray-700;
-          }
-          .social__icon {
-            @include flex-center;
-            transition: inherit;
-
-            svg {
-              color: $gray-700;
-              transition: inherit;
-            }
-          }
-
-          &:hover,
-          &:focus-within {
-            .social__icon {
-              svg {
-                color: $white;
-              }
-            }
-          }
-        }
       }
     }
   }
 }
 
-// Social links grid inside modal
+// // Social links grid inside modal
 .social-links-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -336,20 +229,92 @@
   }
 }
 
-@keyframes rotateText {
-  0%,
-  5% {
-    opacity: 0;
-    transform: translateY(100%);
+// Share portfolio modal (Instagram-style)
+.share-portfolio-modal {
+  padding: $space-24;
+}
+
+.share-portfolio-modal__content {
+  @include flex-column;
+  align-items: center;
+  gap: $space-20;
+  text-align: center;
+}
+
+.share-portfolio-modal__username {
+  font-family: "Shadows Into Light", cursive;
+  font-size: $font-size-24;
+  font-weight: $fw-regular;
+  color: $gray-700;
+  margin: 0;
+  line-height: $line-height-normal;
+}
+
+.share-portfolio-modal__qr {
+  @include flex-center;
+  padding: $space-12;
+  background-color: $white;
+  border-radius: $radius-md;
+  box-shadow: 0 0 1px $gray-300;
+
+  svg {
+    display: block;
   }
-  10%,
-  30% {
-    opacity: 1;
-    transform: translateY(0);
+}
+
+.share-portfolio-modal__label {
+  font-size: $font-size-14;
+  font-weight: $fw-medium;
+  color: $gray-600;
+  margin: 0;
+}
+
+.share-portfolio-modal__social {
+  @include flex-center;
+  gap: $space-12;
+  flex-wrap: wrap;
+}
+
+.share-portfolio-modal__social-link {
+  @include flex-center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: $gray-100;
+  color: $gray-600;
+  border: 1px solid $gray-300;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background-color: var(--share-color, $gray-200);
+    color: $white;
+    border-color: var(--share-color, $gray-300);
+    transform: translateY(-2px);
   }
-  35%,
-  100% {
-    opacity: 0;
-    transform: translateY(-100%);
+}
+
+.share-portfolio-modal__copy-btn {
+  width: 100%;
+  max-width: 200px;
+  padding: $space-12 $space-16;
+  border-radius: $radius-2xl;
+  border: none;
+  outline: none;
+  background-color: $gray-200;
+  color: $gray-800;
+  font-size: $font-size-14;
+  font-weight: $fw-medium;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background-color: $gray-300;
+    color: $gray-900;
   }
 }
