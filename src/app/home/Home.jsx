@@ -12,7 +12,8 @@ const HomePage = () => {
       <Hero />
       <About />
       <Skills />
-      {/* <Projects /> */}
+      <Projects />
+
       {/* <Experiences mode="preview" /> */}
       {/* <Blogs mode="preview" /> */}
     </div>
