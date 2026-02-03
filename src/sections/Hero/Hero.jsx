@@ -26,7 +26,7 @@ export default function Hero() {
                   height={25}
                 />
               </h1>
-              <p className="hero__subtitle">
+              <p className="hero__role">
                 Frontend Developer | Nextjs & TypeScript
               </p>
               <div className="hero__location">

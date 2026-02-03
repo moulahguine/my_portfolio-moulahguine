@@ -3,9 +3,6 @@
 
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   width: 100%;
   padding: $space-16 0 0;
   background-color: transparent;
@@ -20,5 +17,22 @@
     padding: $space-4 $space-8;
     box-shadow: 0 0 1px $gray-300;
     overflow: hidden;
+
+    @media (max-width: $breakpoint-md) {
+      border-radius: 0;
+      padding: 0;
+      height: 60px;
+    }
+  }
+  @media (min-width: $breakpoint-md) {
+    top: 0;
+    left: 0;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    display: flex !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    padding: 0 !important;
   }
 }

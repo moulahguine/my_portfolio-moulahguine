@@ -59,6 +59,12 @@
   margin: 0 auto;
   padding: $space-32 0;
   position: relative;
+
+  @media (max-width: $breakpoint-md) {
+    width: 100%;
+    max-width: 100%;
+    // padding: $space-20 0;
+  }
 }
 
 @mixin section {
@@ -127,10 +133,10 @@
 
 @mixin header_section {
   width: fit-content;
-  font-size: $font-size-12;
+  font-size: clamp($font-size-10, 1.5vw, $font-size-12);
   font-weight: 100;
-  color: $gray-500;
-  background-color: $gray-200;
+  color: $gray-400;
+  background-color: $gray-100;
   border-radius: 5px;
   padding: 4px 8px;
   cursor: default;
@@ -139,6 +145,7 @@
   -ms-user-select: none;
   user-select: none;
 }
+
 @mixin next-button-style {
   @include flex-center;
   gap: $space-8;

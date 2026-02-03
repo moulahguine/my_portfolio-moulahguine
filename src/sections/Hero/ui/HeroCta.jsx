@@ -1,6 +1,6 @@
 "use client";
 // Hooks
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // Components
 import ConnectLinks from "./ConnectLinks";
 import SharePortfolio from "./SharePortfolio";
@@ -18,6 +18,20 @@ const springFast = { type: "spring", stiffness: 500, damping: 35 };
 const EXPANDED_RESUME = "resume";
 const EXPANDED_CONNECT = "connect";
 const EXPANDED_SHARE = "share";
+
+const BREAKPOINT_MD = 778;
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${BREAKPOINT_MD}px)`);
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return isMobile;
+}
 
 // Hero Button
 function HeroButton({
@@ -107,6 +121,8 @@ function HeroButton({
 // Hero CTA
 export default function HeroCta() {
   const [expandedId, setExpandedId] = useState(EXPANDED_RESUME);
+  const isMobile = useIsMobile();
+  const showAllLabels = isMobile;
 
   return (
     // Hero CTA Group
@@ -124,7 +140,7 @@ export default function HeroCta() {
         icon={FaRegFileAlt}
         label="Resume"
         variant="resume"
-        isExpanded={expandedId === EXPANDED_RESUME}
+        isExpanded={showAllLabels || expandedId === EXPANDED_RESUME}
         onMouseEnter={() => setExpandedId(EXPANDED_RESUME)}
         ariaLabel="Download my resume (PDF)"
         title="Download my  resume"
@@ -138,7 +154,7 @@ export default function HeroCta() {
             icon={RxPerson}
             label="Social links"
             variant="light"
-            isExpanded={expandedId === EXPANDED_CONNECT}
+            isExpanded={showAllLabels || expandedId === EXPANDED_CONNECT}
             onMouseEnter={() => setExpandedId(EXPANDED_CONNECT)}
             onClick={open}
             ariaLabel="Open social links"
@@ -154,7 +170,7 @@ export default function HeroCta() {
             icon={PiShareFatLight}
             label="Share"
             variant="light"
-            isExpanded={expandedId === EXPANDED_SHARE}
+            isExpanded={showAllLabels || expandedId === EXPANDED_SHARE}
             onMouseEnter={() => setExpandedId(EXPANDED_SHARE)}
             onClick={open}
             ariaLabel="Share my portfolio"

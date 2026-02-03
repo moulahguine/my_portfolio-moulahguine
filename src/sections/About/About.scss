@@ -22,6 +22,12 @@
         line-height: 1.8;
         width: 100%;
         color: $gray-800;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-12;
+          word-spacing: 2px;
+          word-wrap: nowrap;
+        }
       }
     }
   }

@@ -3,7 +3,6 @@
 import { useState, useCallback, useRef } from "react";
 import { Modal, DefaultContent } from "@/components";
 import { QRCodeSVG } from "qrcode.react";
-import heroImage from "@/assets/images/hero-section/hero-img.png";
 import { PiShareFatLight } from "react-icons/pi";
 import { toPng } from "html-to-image";
 
@@ -40,8 +39,8 @@ export default function SharePortfolio({ renderTrigger }) {
 
   const qrImageSrc =
     typeof window !== "undefined"
-      ? `${window.location.origin}${heroImage.src}`
-      : heroImage.src;
+      ? `${window.location.origin}/favicon/android-chrome-512x512.png`
+      : "/favicon/androi";
 
   const open = () => setIsModalOpen(true);
 
@@ -75,13 +74,13 @@ export default function SharePortfolio({ renderTrigger }) {
           <div ref={cardRef} className="qr">
             <QRCodeSVG
               value={CANONICAL_URL}
-              size={300}
+              size={250}
               level="H"
               marginSize={0}
               imageSettings={{
                 src: qrImageSrc,
-                height: 40,
-                width: 40,
+                height: 50,
+                width: 50,
                 excavate: true,
               }}
               aria-label="QR code to portfolio"

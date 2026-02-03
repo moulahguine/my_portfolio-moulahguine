@@ -112,6 +112,11 @@
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: $space-16;
 
+      @media (max-width: $breakpoint-md) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: $space-8;
+      }
+
       // skill card
       .skill-card {
         // cursor: pointer;
@@ -128,6 +133,10 @@
         -ms-user-select: none;
         user-select: none;
 
+        @media (max-width: $breakpoint-md) {
+          width: auto;
+        }
+
         // icon
         .skill-card__icon {
           @include flex-center;
@@ -138,7 +147,6 @@
           svg {
             position: relative;
             transition: all 0.3s ease-in-out;
-            font-size: $font-size-28;
             color: $gray-600 !important;
             z-index: 2;
           }
@@ -152,6 +160,10 @@
           color: $gray-600;
           font-size: $font-size-14;
           text-align: center;
+
+          @media (max-width: $breakpoint-md) {
+            font-size: $font-size-12;
+          }
         }
 
         // hover effect

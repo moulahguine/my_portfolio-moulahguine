@@ -75,6 +75,10 @@
       @include flex-between;
       padding: $space-24;
 
+      @media (max-width: $breakpoint-md) {
+        padding: $space-12 $space-8 $space-8 $space-24;
+      }
+
       &-title {
         font-size: $font-size-24;
         font-weight: $fw-bold;
@@ -94,6 +98,11 @@
         top: $space-16;
         right: $space-16;
         z-index: 1001;
+
+        @media (max-width: $breakpoint-md) {
+          top: $space-8;
+          right: $space-8;
+        }
       }
     }
   }

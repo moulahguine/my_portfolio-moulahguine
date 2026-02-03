@@ -12,9 +12,9 @@ const HomePage = () => {
       <Hero />
       <About />
       <Skills />
-      <Projects />
-      <Experiences mode="preview" />
-      <Blogs mode="preview" />
+      {/* <Projects /> */}
+      {/* <Experiences mode="preview" /> */}
+      {/* <Blogs mode="preview" /> */}
     </div>
   );
 };

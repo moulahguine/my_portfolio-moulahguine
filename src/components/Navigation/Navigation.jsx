@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import { HiOutlineHome, HiOutlineFolder, HiOutlineBriefcase, HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
 import "./Navigation.scss";
 
 const NAVIGATION_ITEMS = [
-  { id: "home", label: "Home", path: "/" },
-  { id: "projects", label: "Projects", path: "/projects" },
-  { id: "experiences", label: "Experiences", path: "/experiences" },
-  { id: "blogs", label: "Blogs", path: "/blogs" },
+  { id: "home", label: "Home", path: "/", icon: HiOutlineHome },
+  { id: "projects", label: "Projects", path: "/projects", icon: HiOutlineFolder },
+  { id: "experiences", label: "Experiences", path: "/experiences", icon: HiOutlineBriefcase },
+  { id: "blogs", label: "Blogs", path: "/blogs", icon: HiOutlineChatBubbleLeftRight },
 ];
 
 function normalizePath(path) {
@@ -46,6 +47,7 @@ export default function Navigation() {
           const itemPath = normalizePath(item.path);
           const isActive = isActivePath(pathname, itemPath);
 
+          const Icon = item.icon;
           return (
             <motion.li
               key={item.id}
@@ -59,6 +61,7 @@ export default function Navigation() {
                 className={`nav__link ${isActive ? "active" : ""}`}
                 aria-current={isActive ? "page" : undefined}
               >
+                {Icon && <span className="nav__icon" aria-hidden="true"><Icon size={22} /></span>}
                 <span className="nav__link__inner">
                   <motion.span
                     className="nav__link__slide"

@@ -1,15 +1,23 @@
 @use "../../assets/styles/variables" as *;
 @use "../../assets/styles/mixins" as *;
+
 // HERO SECTION - START
 .hero {
   @include section;
   margin-top: 80px;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: $breakpoint-md) {
+    margin-top: $space-8;
+  }
 
   .container {
     @include container;
     box-shadow: 0 0 $space-8 $gray-200;
     border-radius: $radius-lg;
     padding-top: 0;
+    overflow: hidden;
 
     .hero__map {
       width: 100%;
@@ -18,7 +26,11 @@
       position: relative;
       z-index: 5;
       overflow: hidden;
-      border-radius: $radius-lg;
+      border-radius: $radius-lg $radius-lg 0 0;
+
+      @media (max-width: $breakpoint-md) {
+        height: clamp(200px, 30vw, 400px);
+      }
 
       &::after {
         content: "";
@@ -29,7 +41,7 @@
         height: 30%;
         z-index: 5;
         background: linear-gradient(to top, $white 0%, transparent 100%);
-        border-radius: 0 0 $radius-lg $radius-lg;
+        border-radius: inherit;
         pointer-events: none;
       }
 
@@ -42,7 +54,6 @@
         .leaflet-container {
           width: 100%;
           height: 100%;
-          border-radius: $radius-lg;
           background: #f8fafc;
         }
 
@@ -67,12 +78,24 @@
 
     .hero__profile {
       @include flex-between;
+      gap: $space-8;
       padding: $space-16;
+
+      @media (max-width: $breakpoint-md) {
+        flex-direction: column;
+        gap: $space-32;
+      }
 
       .hero__profile-content {
         @include flex-between;
         width: fit-content;
         padding-left: $space-32;
+
+        @media (max-width: $breakpoint-md) {
+          flex-direction: column;
+          width: 100%;
+          padding-left: 0;
+        }
 
         .hero__media {
           --square-size: 150px;
@@ -88,6 +111,11 @@
           cursor: pointer;
           background-color: $gray-100;
 
+          @media (max-width: $breakpoint-md) {
+            --square-size: clamp(200px, 18vw, 300px);
+            margin-top: clamp(-50px, -10vw, -70px);
+          }
+
           .hero__image {
             object-fit: cover;
             object-position: top;
@@ -99,30 +127,26 @@
 
           .hero__media-overlay {
             @include flex-center;
+            width: 100%;
+            height: 100%;
             position: absolute;
             left: 0;
-            bottom: -30px;
+            top: 0;
             background-color: rgba($gray-900, 0.2);
             opacity: 1;
+            opacity: 0;
             transition: all 0.5s ease-in-out;
-            width: 100%;
-            height: 0%;
 
             svg {
               color: $gray-100;
               transition: all 0.3s ease-in-out;
               transition-delay: 0.6s;
-              &:hover {
-                scale: 1.2;
-              }
             }
           }
 
           &:hover {
             .hero__media-overlay {
-              bottom: 0;
-              height: 100%;
-
+              opacity: 1;
               svg {
                 scale: 1.2;
               }
@@ -136,7 +160,6 @@
         .hero__info {
           @include flex-column;
           gap: $space-4;
-          // padding-top: $space-12;
           padding-left: $space-12;
 
           .hero__title {
@@ -145,20 +168,18 @@
             gap: $space-4;
             font-size: $font-size-18;
             color: $gray-700;
+            text-wrap: nowrap;
+
             .verified-badge {
-              width: $space-16;
-              height: $space-16;
-            }
-            .hero__username {
-              font-size: $font-size-12;
-              color: $gray-400;
-              font-weight: $fw-medium;
+              width: clamp($space-16, 1.2vw, $space-20);
+              height: clamp($space-16, 1.2vw, $space-20);
             }
           }
 
-          .hero__subtitle {
+          .hero__role {
             font-size: $font-size-12;
             color: $gray-600;
+
             span {
               color: $gray-500;
             }
@@ -169,13 +190,30 @@
             color: $gray-500;
             font-weight: $fw-medium;
           }
+
+          @media (max-width: $breakpoint-md) {
+            .hero__title {
+              justify-content: center;
+              font-size: clamp($font-size-20, 2.2vw, $font-size-28);
+            }
+
+            .hero__role,
+            .hero__location {
+              text-align: center;
+            }
+          }
         }
       }
 
+      // buttons group
       .hero__cta {
         @include flex-center;
         gap: $space-8;
       }
+    }
+
+    @media (max-width: $breakpoint-md) {
+      height: 100%;
     }
   }
 }
@@ -186,6 +224,10 @@
   grid-template-columns: repeat(4, 1fr);
   gap: $space-12;
   padding: $space-8;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
   .social-link-item {
     @include flex-column;
@@ -218,7 +260,7 @@
     }
 
     .social-link-label {
-      font-size: $font-size-12;
+      font-size: clamp($font-size-10, 1.4vw, $font-size-12);
       font-weight: $fw-medium;
       color: $gray-600;
       transition: color 0.2s ease;
@@ -231,9 +273,14 @@
   @include flex-column;
   align-items: center;
   gap: $space-20;
-  padding: $space-40 $space-24 $space-24 $space-24;
+  padding: calc($space-40 + $space-24) $space-24 $space-24 $space-24;
   border-radius: $radius-lg;
   overflow: hidden;
+
+  @media (max-width: $breakpoint-md) {
+    padding-top: $space-40 + $space-16;
+    gap: $space-8;
+  }
 
   // qr code
   .qr {
@@ -251,14 +298,14 @@
   // download button
   .download-btn {
     width: 100%;
-    max-width: 200px;
+    max-width: clamp(160px, 40vw, 200px);
     padding: $space-12 $space-16;
     border-radius: $radius-xl;
     border: none;
     outline: none;
     background-color: $gray-800;
     color: $gray-100;
-    font-size: $font-size-14;
+    font-size: clamp($font-size-12, 1.5vw, $font-size-14);
     font-weight: $fw-semibold;
     cursor: pointer;
     box-shadow: 0 0 1px $gray-700;
@@ -294,7 +341,7 @@
     }
 
     .hero-cta-btn__label {
-      font-size: $font-size-12;
+      font-size: clamp($font-size-10, 1.4vw, $font-size-12);
       font-weight: $fw-semibold;
       text-transform: uppercase;
     }
@@ -309,7 +356,7 @@
     }
 
     .hero-cta-btn__label {
-      font-size: $font-size-14;
+      font-size: clamp($font-size-12, 1.5vw, $font-size-14);
       font-weight: $fw-semibold;
     }
   }
