@@ -152,6 +152,10 @@
   transition: all 0.3s ease-in-out;
   position: relative;
 
+  @media (max-width: $breakpoint-md) {
+    gap: $space-4;
+  }
+
   &::after {
     content: "";
     position: absolute;
@@ -163,11 +167,19 @@
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.3s ease-in-out;
+
+    @media (max-width: $breakpoint-md) {
+      bottom: -2px;
+    }
   }
 
   svg {
     all: unset;
     transition: all 0.3s ease-in-out;
+
+    @media (max-width: $breakpoint-md) {
+      scale: 0.8;
+    }
   }
 
   &:hover {

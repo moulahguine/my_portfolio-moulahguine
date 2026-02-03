@@ -13,9 +13,8 @@ const HomePage = () => {
       <About />
       <Skills />
       <Projects />
-
-      {/* <Experiences mode="preview" /> */}
-      {/* <Blogs mode="preview" /> */}
+      <Experiences mode="preview" />
+      <Blogs mode="preview" />
     </div>
   );
 };

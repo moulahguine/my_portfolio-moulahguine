@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import SkillIcon from "@/data/skillsData";
 import ProjectLinks from "./ProjectLinks";
 import { GoArrowUpRight } from "react-icons/go";
@@ -55,13 +54,12 @@ export default function ProjectCard({ project }) {
               </span>
             ))}
             {remainingCount > 0 && (
-              <Link
-                href={`/projects/${project.slug}`}
+              <span
                 className="project-card__tech-more"
                 title={`View all ${project.technologies.length} technologies`}
               >
                 +{remainingCount} more
-              </Link>
+              </span>
             )}
           </div>
         </div>

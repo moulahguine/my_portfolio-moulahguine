@@ -4,7 +4,8 @@
 // Individual project card styling
 .project-card {
   @include flex-column;
-  width: 360px;
+  max-width: 370px;
+  width: 100%;
   --height: 380px;
   height: var(--height);
   position: relative;
@@ -13,7 +14,7 @@
   background: $white;
   border-radius: $radius-md;
   transition: all 0.3s ease;
-  border: solid 1px $gray-300;
+  box-shadow: 0 0 $space-4 $gray-300;
   padding: clamp($space-8, 1vw, $space-16);
 
   // Hover effect for the card
@@ -43,6 +44,10 @@
     border-radius: $radius-md;
     transition: all 0.3s ease;
 
+    @media (max-width: $breakpoint-md) {
+      height: calc((var(--height) / 2));
+    }
+
     // Image styling
     .project-card__mediaImg {
       width: 100%;
@@ -66,10 +71,14 @@
       @include next-button-style;
       justify-content: flex-start;
       width: fit-content;
-      font-size: clamp($font-size-14, 1vw, 0.938rem);
+      font-size: $font-size-14;
       color: $gray-600;
       font-weight: $fw-semibold;
       margin-bottom: $space-8;
+
+      @media (max-width: $breakpoint-md) {
+        font-size: $font-size-12 + px;
+      }
     }
 
     // Content Section
@@ -90,6 +99,11 @@
         line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-12;
+          word-spacing: 1;
+        }
       }
 
       // Technologies List
@@ -125,14 +139,29 @@
             text-transform: capitalize;
             font-size: $font-size-12;
           }
+
+          @media (max-width: $breakpoint-md) {
+            padding: $space-4 $space-4;
+
+            span {
+              font-size: $font-size-10;
+            }
+          }
         }
 
-        // More technologies link
+        // More technologies (button, no <a> tag)
         .project-card__tech-more {
           font-size: $font-size-14;
+          border: none;
+          cursor: pointer;
+          font: inherit;
           &:hover {
             color: $white;
             background-color: $gray-700;
+          }
+
+          @media (max-width: $breakpoint-md) {
+            font-size: $font-size-12;
           }
         }
       }

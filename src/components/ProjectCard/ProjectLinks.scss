@@ -17,7 +17,7 @@
     width: 40px;
     height: 40px;
     gap: $space-4;
-    color: $gray-800;
+    color: $gray-500;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
 
@@ -33,7 +33,7 @@
     // Link hover effect
     &:hover,
     &:active {
-      color: $gray-500;
+      color: $gray-800;
       width: 80px;
 
       // Link text styling

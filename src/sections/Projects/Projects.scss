@@ -21,15 +21,18 @@
         font-size: $font-size-14;
         font-weight: $fw-semibold;
         @include next-button-style;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-12;
+        }
       }
     }
 
     // Projects grid
     .projects__grid {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-
+      flex-wrap: wrap;
       gap: $space-8;
       margin-top: $space-16;
     }
