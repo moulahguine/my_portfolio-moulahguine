@@ -1,6 +1,6 @@
 import InlineMap from "./ui/InlineMap";
 import HeroMedia from "./ui/HeroMedia";
-import HeroCtaGroup from "./ui/HeroCtaGroup";
+import HeroCta from "./ui/HeroCta";
 import VerifiedBadge from "@/components/Icons/VerifiedBadge";
 import { PiMapPinLight } from "react-icons/pi";
 import "./Hero.scss";
@@ -14,7 +14,6 @@ export default function Hero() {
         </div>
 
         <div className="hero__profile">
-          {/* hero profile content  */}
           <div className="hero__profile-content">
             <HeroMedia classImage="hero__image" classFigure="hero__media" />
 
@@ -36,8 +35,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* hero profile cta  */}
-          <HeroCtaGroup />
+          <HeroCta />
         </div>
       </div>
     </section>

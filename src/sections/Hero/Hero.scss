@@ -66,9 +66,8 @@
     }
 
     .hero__profile {
-      display: flex;
-      align-items: center;
-      padding-right: $space-16;
+      @include flex-between;
+      padding: $space-16;
 
       .hero__profile-content {
         @include flex-between;
@@ -175,8 +174,6 @@
 
       .hero__cta {
         @include flex-center;
-        margin-left: auto;
-        margin-top: $space-4;
         gap: $space-8;
       }
     }
@@ -229,92 +226,101 @@
   }
 }
 
-// Share portfolio modal (Instagram-style)
+// Share portfolio modal
 .share-portfolio-modal {
-  padding: $space-24;
-}
-
-.share-portfolio-modal__content {
   @include flex-column;
   align-items: center;
   gap: $space-20;
-  text-align: center;
+  padding: $space-40 $space-24 $space-24 $space-24;
+  border-radius: $radius-lg;
+  overflow: hidden;
+
+  // qr code
+  .qr {
+    @include flex-center;
+    padding: $space-12;
+    background-color: $white;
+    border-radius: $radius-md;
+    box-shadow: 0 0 1px $gray-300;
+
+    svg {
+      display: block;
+    }
+  }
+
+  // download button
+  .download-btn {
+    width: 100%;
+    max-width: 200px;
+    padding: $space-12 $space-16;
+    border-radius: $radius-xl;
+    border: none;
+    outline: none;
+    background-color: $gray-800;
+    color: $gray-100;
+    font-size: $font-size-14;
+    font-weight: $fw-semibold;
+    cursor: pointer;
+    box-shadow: 0 0 1px $gray-700;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $gray-200;
+      color: $gray-800;
+    }
+  }
 }
 
-.share-portfolio-modal__username {
-  font-family: "Shadows Into Light", cursive;
-  font-size: $font-size-24;
-  font-weight: $fw-regular;
-  color: $gray-700;
-  margin: 0;
-  line-height: $line-height-normal;
-}
-
-.share-portfolio-modal__qr {
+// Hero CTA Button
+.hero-cta-btn {
   @include flex-center;
+  gap: $space-4;
   padding: $space-12;
-  background-color: $white;
   border-radius: $radius-md;
-  box-shadow: 0 0 1px $gray-300;
-
-  svg {
-    display: block;
-  }
-}
-
-.share-portfolio-modal__label {
-  font-size: $font-size-14;
-  font-weight: $fw-medium;
-  color: $gray-600;
-  margin: 0;
-}
-
-.share-portfolio-modal__social {
-  @include flex-center;
-  gap: $space-12;
-  flex-wrap: wrap;
-}
-
-.share-portfolio-modal__social-link {
-  @include flex-center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background-color: $gray-100;
-  color: $gray-600;
-  border: 1px solid $gray-300;
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
-
-  &:hover {
-    background-color: var(--share-color, $gray-200);
-    color: $white;
-    border-color: var(--share-color, $gray-300);
-    transform: translateY(-2px);
-  }
-}
-
-.share-portfolio-modal__copy-btn {
-  width: 100%;
-  max-width: 200px;
-  padding: $space-12 $space-16;
-  border-radius: $radius-2xl;
+  cursor: pointer;
   border: none;
   outline: none;
-  background-color: $gray-200;
-  color: $gray-800;
-  font-size: $font-size-14;
-  font-weight: $fw-medium;
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
+  text-decoration: none;
+  box-shadow: 0 0 1px $gray-700;
+  overflow: hidden;
 
-  &:hover {
-    background-color: $gray-300;
-    color: $gray-900;
+  &--resume {
+    background-color: $gray-700;
+    color: $gray-100;
+
+    .hero-cta-btn__icon svg,
+    .hero-cta-btn__label {
+      color: $gray-100;
+    }
+
+    .hero-cta-btn__label {
+      font-size: $font-size-12;
+      font-weight: $fw-semibold;
+      text-transform: uppercase;
+    }
+  }
+
+  &--light {
+    background-color: $white;
+
+    .hero-cta-btn__icon svg,
+    .hero-cta-btn__label {
+      color: $gray-500;
+    }
+
+    .hero-cta-btn__label {
+      font-size: $font-size-14;
+      font-weight: $fw-semibold;
+    }
+  }
+
+  .hero-cta-btn__icon {
+    @include flex-center;
+    flex-shrink: 0;
+  }
+
+  .hero-cta-btn__label {
+    display: inline-block;
+    overflow: hidden;
   }
 }

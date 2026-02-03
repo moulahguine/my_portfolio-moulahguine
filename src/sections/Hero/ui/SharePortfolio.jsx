@@ -1,28 +1,40 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { Modal, DefaultContent } from "@/components";
 import { QRCodeSVG } from "qrcode.react";
 import heroImage from "@/assets/images/hero-section/hero-img.png";
 import { PiShareFatLight } from "react-icons/pi";
-import VerifiedBadge from "@/components/Icons/VerifiedBadge";
+import { toPng } from "html-to-image";
 
-const PORTFOLIO_USERNAME = "Mohamed Oulahguine";
 const CANONICAL_URL = "https://mohamedoulahguine.com";
 
 export default function SharePortfolio({ renderTrigger }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [downloaded, setDownloaded] = useState(false);
+  const cardRef = useRef(null);
 
-  const handleCopyLink = useCallback(async () => {
-    const url =
-      typeof window !== "undefined" ? window.location.href : CANONICAL_URL;
+  const handleDownload = useCallback(async () => {
+    if (!cardRef.current) return;
     try {
-      await navigator.clipboard.writeText(url);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      setCopied(false);
+      const dataUrl = await toPng(cardRef.current, {
+        pixelRatio: 2,
+        cacheBust: true,
+        backgroundColor: "#f3f3f4", // fallback if card background is transparent
+        skipFonts: true,
+        filter: (node) => node.tagName?.toLowerCase() !== "image",
+      });
+      const a = document.createElement("a");
+      a.href = dataUrl;
+      a.download = "share-portfolio.png";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setDownloaded(true);
+      setTimeout(() => setDownloaded(false), 2000);
+    } catch (err) {
+      console.error("Download failed:", err);
+      setDownloaded(false);
     }
   }, []);
 
@@ -59,41 +71,31 @@ export default function SharePortfolio({ renderTrigger }) {
         showHeader={false}
       >
         <DefaultContent className="share-portfolio-modal">
-          <div className="share-portfolio-modal__content">
-            <h1 className="share-portfolio-modal__username">
-              {PORTFOLIO_USERNAME}
-              <VerifiedBadge
-                className="verified-badge"
-                width={25}
-                height={25}
-              />
-            </h1>
-            <div className="share-portfolio-modal__qr">
-              <QRCodeSVG
-                value={CANONICAL_URL}
-                size={300}
-                level="H"
-                marginSize={0}
-                imageSettings={{
-                  src: qrImageSrc,
-                  height: 40,
-                  width: 40,
-                  excavate: true,
-                }}
-                aria-label="QR code to portfolio"
-              />
-            </div>
-            <p className="share-portfolio-modal__label">Share portfolio</p>
-
-            <button
-              type="button"
-              className="share-portfolio-modal__copy-btn"
-              onClick={handleCopyLink}
-              aria-label={copied ? "Link copied" : "Copy link"}
-            >
-              {copied ? "Copied!" : "Copy link"}
-            </button>
+          {/* <div ref={cardRef} className="modal__screenshot"> */}
+          <div ref={cardRef} className="qr">
+            <QRCodeSVG
+              value={CANONICAL_URL}
+              size={300}
+              level="H"
+              marginSize={0}
+              imageSettings={{
+                src: qrImageSrc,
+                height: 40,
+                width: 40,
+                excavate: true,
+              }}
+              aria-label="QR code to portfolio"
+            />
           </div>
+          <button
+            type="button"
+            className="download-btn"
+            onClick={handleDownload}
+            aria-label={downloaded ? "Downloaded" : "Download card"}
+          >
+            {downloaded ? "Downloaded!" : "Download"}
+          </button>
+          {/* </div> */}
         </DefaultContent>
       </Modal>
     </>
