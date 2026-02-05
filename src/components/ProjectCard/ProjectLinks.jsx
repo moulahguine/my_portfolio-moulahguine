@@ -20,7 +20,7 @@ export default function ProjectLinks({ demoLink, githubLink }) {
         title="🔗 Live Demo"
       >
         <FiExternalLink size={20} />
-        <span>visit</span>
+        <span>Demo</span>
       </button>
 
       <button
