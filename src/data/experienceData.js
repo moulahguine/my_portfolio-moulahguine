@@ -1,5 +1,10 @@
 // Import logos
 import atlasUniversityLogo from "@/assets/images/expreriences-section/education/logo.jpg";
+import { PiBagSimpleThin } from "react-icons/pi";
+import { PiCertificateThin } from "react-icons/pi";
+import { HiOutlineLanguage } from "react-icons/hi2";
+import { PiGraduationCapThin } from "react-icons/pi";
+import { PiCoffeeThin } from "react-icons/pi";
 
 export const experienceData = {
   // Work experience entries
@@ -40,9 +45,11 @@ export const experienceData = {
 
 // Tab configuration
 export const experienceTabs = [
-  { id: "education", label: "Education" },
-  { id: "freelance", label: "Freelance" },
-  { id: "work", label: "Employment" },
+  { id: "education", label: "Education", icon: PiGraduationCapThin },
+  { id: "freelance", label: "Freelance", icon: PiCoffeeThin },
+  { id: "work", label: "Employment", icon: PiBagSimpleThin },
+  { id: "certifications", label: "Certifications", icon: PiCertificateThin },
+  { id: "languages", label: "Languages", icon: HiOutlineLanguage },
 ];
 
 function parseExperienceDate(dateStr) {

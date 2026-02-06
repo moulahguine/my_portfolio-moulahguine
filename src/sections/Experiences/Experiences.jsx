@@ -74,7 +74,8 @@ function Experiences({ mode = "full" }) {
               className={`experiences__tab ${activeTab === tab.id ? "active" : ""}`}
               onClick={() => setActiveTab(tab.id)}
             >
-              {tab.label}
+              <tab.icon size={18} />
+              <span className="label">{tab.label}</span>
             </button>
           ))}
         </div>

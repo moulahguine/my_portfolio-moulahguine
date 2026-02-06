@@ -11,11 +11,11 @@
     @include flex-column;
     align-items: center;
     padding-top: $space-4;
-    min-width: 20px;
+    min-width: clamp(10px, 2vw, 20px);
 
     .experience-card__dot {
-      width: 10px;
-      height: 10px;
+      width: clamp(8px, 2vw, 10px);
+      height: clamp(8px, 2vw, 10px);
       background-color: $gray-300;
       border-radius: 50%;
       border: 2px solid $white;
@@ -25,7 +25,7 @@
     }
 
     .experience-card__line {
-      width: 2px;
+      width: clamp(1px, 0.5vw, 2px);
       flex: 1;
       background-color: $gray-200;
       margin-top: $space-4;
@@ -36,18 +36,18 @@
   .experience-card__content {
     flex: 1;
     min-width: 0;
-    margin-bottom: $space-24;
+    margin-bottom: clamp($space-16, 2vw, $space-24);
 
     // Header section
     .experience-card__header {
       display: flex;
-      gap: $space-12;
+      gap: clamp($space-8, 2vw, $space-12);
       align-items: flex-start;
 
       // Company logo/initials
       .experience-card__logo {
-        width: 40px;
-        height: 40px;
+        width: clamp(30px, 2vw, 40px);
+        height: clamp(30px, 2vw, 40px);
         border-radius: $radius-md;
         background-color: $gray-100;
         border: 1px solid $gray-200;
@@ -62,7 +62,7 @@
         }
 
         .experience-card__initials {
-          font-size: $font-size-16;
+          font-size: clamp($font-size-12, 2vw, $font-size-16);
           font-weight: $fw-semibold;
           color: $gray-500;
         }
@@ -76,11 +76,11 @@
           display: flex;
           justify-content: space-between;
           align-items: baseline;
-          gap: $space-8;
+          gap: clamp($space-4, 2vw, $space-8);
           flex-wrap: wrap;
 
           .experience-card__company {
-            font-size: $font-size-14;
+            font-size: clamp($font-size-12, 2vw, $font-size-14);
             font-weight: $fw-semibold;
             color: $gray-900;
 
@@ -88,7 +88,7 @@
               transition: color 0.3s ease-in-out;
               display: inline-flex;
               align-items: center;
-              gap: $space-4;
+              gap: clamp($space-4, 2vw, $space-8);
 
               &:hover {
                 color: $gray-600;
@@ -97,36 +97,36 @@
           }
 
           .experience-card__date {
-            font-size: $font-size-12;
+            font-size: clamp($font-size-10, 2vw, $font-size-12);
             color: $gray-500;
             white-space: nowrap;
           }
         }
         .experience-card__role {
-          font-size: $font-size-14;
+          font-size: clamp($font-size-12, 2vw, $font-size-14);
           color: $gray-600;
-          margin: $space-4 0 0;
+          margin: clamp($space-4, 2vw, $space-8) 0 0;
           font-weight: $fw-regular;
         }
 
         .experience-card__meta {
           display: flex;
           align-items: center;
-          gap: $space-8;
-          margin-top: $space-4;
+          gap: clamp($space-4, 2vw, $space-8);
+          margin-top: clamp($space-4, 2vw, $space-8);
           flex-wrap: wrap;
           .experience-card__type {
             display: inline-block;
-            font-size: $font-size-12;
+            font-size: clamp($font-size-10, 2vw, $font-size-12);
             color: $gray-500;
             background-color: $gray-100;
-            padding: 2px $space-8;
+            padding: clamp(1px, 0.5vw, 2px) clamp($space-4, 2vw, $space-8);
             border-radius: $radius-sm;
           }
 
           .experience-card__location {
             display: inline-block;
-            font-size: $font-size-12;
+            font-size: clamp($font-size-10, 2vw, $font-size-12);
             color: $gray-500;
           }
         }
@@ -134,33 +134,34 @@
     }
     // Description list
     .experience-card__description {
-      margin: $space-12 0 0;
-      padding-left: $space-16;
+      margin: clamp($space-8, 2vw, $space-12) 0 0;
+      padding-left: clamp($space-8, 2vw, $space-16);
 
       li {
         list-style: disc;
-        font-size: $font-size-14;
+        font-size: clamp($font-size-12, 2vw, $font-size-14);
         color: $gray-600;
         line-height: 1.6;
-        margin-bottom: $space-4;
+        margin-bottom: clamp($space-4, 2vw, $space-8);
 
         &:last-child {
           margin-bottom: 0;
         }
       }
     }
+
     // Technologies
     .experience-card__technologies {
       display: flex;
       flex-wrap: wrap;
-      gap: $space-8;
-      margin-top: $space-12;
+      gap: clamp($space-4, 2vw, $space-8);
+      margin-top: clamp($space-8, 2vw, $space-12);
 
       .experience-card__tech {
-        font-size: $font-size-12;
+        font-size: clamp($font-size-10, 2vw, $font-size-12);
         color: $gray-600;
         background-color: $gray-100;
-        padding: $space-4 $space-8;
+        padding: clamp($space-4, 2vw, $space-8);
         border-radius: $radius-sm;
         border: 1px solid $gray-200;
       }

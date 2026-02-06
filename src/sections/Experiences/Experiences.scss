@@ -26,11 +26,11 @@
 
     // Tabs container
     .experiences__tabs {
-      position: relative;
       @include flex-between;
       justify-content: space-around;
-      gap: $space-4;
-      margin: $space-16 0;
+      position: relative;
+      gap: clamp($space-4, 2vw, $space-8);
+      margin: clamp($space-8, 2vw, $space-16) 0;
       padding: $space-4;
       background-color: $gray-100;
       border-radius: $radius-md;
@@ -41,21 +41,27 @@
         position: absolute;
         top: $space-4;
         left: $space-4;
-        width: calc((100% - #{$space-8}) / 3);
+        width: calc((100% - #{$space-8}) / 5);
         height: calc(100% - #{$space-8});
         background-color: $white;
         border-radius: $radius-md;
         transition: transform 0.3s ease-in-out;
         z-index: 0;
+
+        @media (max-width: $breakpoint-md) {
+          display: none;
+        }
       }
 
       // Individual tab button
       .experiences__tab {
+        @include flex-center;
+        gap: clamp($space-4, 2vw, $space-8);
         position: relative;
         z-index: 1;
         flex: 1 0 auto;
-        padding: $space-8 0;
-        font-size: $font-size-14;
+        padding: clamp($space-4, 2vw, $space-8) 0;
+        font-size: clamp($font-size-12, 2vw, $font-size-14);
         font-weight: $fw-medium;
         color: $gray-400;
         background: transparent;
@@ -65,9 +71,47 @@
         transition: color 0.3s ease-in-out;
         white-space: nowrap;
 
-        &:hover,
+        svg {
+          color: inherit !important;
+          transition: all 0.3s ease-in-out !important;
+        }
+
         &.active {
-          color: $gray-800;
+          color: $gray-700;
+          font-weight: $fw-semibold;
+
+          svg {
+            transition: all 0.3s ease-in-out;
+            color: inherit !important;
+            transform: scale(1.1);
+          }
+        }
+        @media (max-width: $breakpoint-md) {
+          .label {
+            width: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+          }
+
+          svg {
+            margin: 0 $space-12;
+            scale: 1.1;
+          }
+
+          &.active {
+            flex: 1 1 100%;
+            background-color: $white;
+
+            .label {
+              width: auto;
+              opacity: 1;
+            }
+
+            svg {
+              margin: 0;
+            }
+          }
         }
       }
     }
@@ -75,8 +119,8 @@
     // Timeline container
     .experiences__timeline {
       @include flex-column;
-      padding: $space-8 0;
-      min-height: 310px;
+      padding: clamp($space-8, 2vw, $space-12) 0;
+      min-height: clamp(200px, 20vw, 310px);
     }
 
     // Empty state
@@ -85,21 +129,21 @@
       justify-content: center;
       text-align: center;
       color: $gray-500;
-      font-size: $font-size-14;
+      font-size: clamp($font-size-12, 2vw, $font-size-14);
     }
 
     // Footer with View All button
     .experiences__footer {
       display: flex;
       justify-content: center;
-      padding: $space-16 0;
+      padding: clamp($space-16, 2vw, $space-24) 0;
     }
 
     .experiences__view-all-btn {
       @include next-button-style;
-      font-size: $font-size-14;
+      font-size: clamp($font-size-12, 2vw, $font-size-14);
       color: $gray-600;
-      padding: $space-8 $space-16;
+      padding: clamp($space-8, 2vw, $space-12) clamp($space-16, 2vw, $space-24);
       border-radius: $radius-md;
       background-color: $gray-100;
       transition: all 0.3s ease-in-out;
