@@ -3,7 +3,7 @@ import { FiExternalLink } from "react-icons/fi";
 import "./ExperienceCard.scss";
 import Link from "next/link";
 
-function ExperienceCard({ experience, isLast }) {
+function ExperienceCard({ experience, section, isLast }) {
   const {
     company,
     role,
@@ -21,7 +21,7 @@ function ExperienceCard({ experience, isLast }) {
 
   return (
     <article
-      className={`experience-card ${isLast ? "experience-card--last" : ""}`}
+      className={`experience-card ${section ? `experience-card--${section}` : ""} ${isLast ? "experience-card--last" : ""}`}
     >
       {/* Timeline indicator */}
       <div className="experience-card__timeline">

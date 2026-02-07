@@ -41,7 +41,7 @@
         position: absolute;
         top: $space-4;
         left: $space-4;
-        width: calc((100% - #{$space-8}) / 5);
+        width: calc((100% - #{$space-8}) / var(--tab-count, 5));
         height: calc(100% - #{$space-8});
         background-color: $white;
         border-radius: $radius-md;
@@ -116,11 +116,49 @@
       }
     }
 
+    .experiences__timeline-wrapper {
+      overflow: hidden;
+    }
+
     // Timeline container
     .experiences__timeline {
       @include flex-column;
-      padding: clamp($space-8, 2vw, $space-12) 0;
-      min-height: clamp(200px, 20vw, 310px);
+      padding: $space-8 0;
+    }
+
+    // Languages list
+    .experiences__languages {
+      @include flex-column;
+      gap: 0;
+
+      .experiences__language {
+        display: flex;
+        align-items: center;
+        padding: $space-16 $space-8;
+        border-bottom: 1px solid $gray-200;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .experiences__language-name {
+          flex: 1;
+          font-size: clamp($font-size-14, 2vw, $font-size-16);
+          font-weight: $fw-medium;
+          color: $gray-700;
+        }
+
+        .experiences__language-level {
+          font-size: clamp($font-size-12, 2vw, $font-size-14);
+          color: $gray-500;
+          margin-right: $space-16;
+        }
+
+        .experiences__language-flag {
+          font-size: clamp($font-size-18, 3vw, $font-size-24);
+          line-height: 1;
+        }
+      }
     }
 
     // Empty state

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "motion/react";
 import {
   experienceTabs,
   getExperiences,
@@ -11,6 +12,8 @@ import {
 import ExperienceCard from "@/components/ExperienceCard/ExperienceCard";
 import { GoArrowUpRight } from "react-icons/go";
 import "./Experiences.scss";
+
+const spring = { type: "spring", stiffness: 300, damping: 30 };
 
 function Experiences({ mode = "full" }) {
   const [activeTab, setActiveTab] = useState("education");
@@ -27,14 +30,19 @@ function Experiences({ mode = "full" }) {
 
   const hasAnyMore =
     isPreview &&
-    experienceTabs.some(
+    visibleTabs.some(
       (tab) => (experienceData[tab.id]?.length || 0) > PREVIEW_LIMIT
     );
 
   const currentTabLabel =
     experienceTabs.find((tab) => tab.id === activeTab)?.label || "";
 
-  const activeIndex = experienceTabs.findIndex((tab) => tab.id === activeTab);
+  // Only show tabs that have data
+  const visibleTabs = experienceTabs.filter(
+    (tab) => (experienceData[tab.id]?.length || 0) > 0
+  );
+
+  const activeIndex = visibleTabs.findIndex((tab) => tab.id === activeTab);
 
   return (
     <section id="experiences" className="experiences">
@@ -60,12 +68,13 @@ function Experiences({ mode = "full" }) {
           <span
             className="experiences__indicator"
             style={{
+              "--tab-count": visibleTabs.length,
               transform: `translateX(${activeIndex * 100}%)`,
             }}
             aria-hidden="true"
           />
 
-          {experienceTabs.map((tab) => (
+          {visibleTabs.map((tab) => (
             <button
               key={tab.id}
               role="tab"
@@ -81,24 +90,61 @@ function Experiences({ mode = "full" }) {
         </div>
 
         {/* Timeline Content */}
-        <div
-          id={`panel-${activeTab}`}
-          role="tabpanel"
-          aria-labelledby={activeTab}
-          className="experiences__timeline"
+        <motion.div
+          layout
+          transition={spring}
+          className="experiences__timeline-wrapper"
         >
-          {currentExperiences.length > 0 ? (
-            currentExperiences.map((experience, index) => (
-              <ExperienceCard
-                key={experience.id}
-                experience={experience}
-                isLast={index === currentExperiences.length - 1}
-              />
-            ))
-          ) : (
-            <p className="experiences__empty">No experiences to display. 🙄</p>
-          )}
-        </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              id={`panel-${activeTab}`}
+              role="tabpanel"
+              aria-labelledby={activeTab}
+              className="experiences__timeline"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+            >
+              {currentExperiences.length > 0 ? (
+                activeTab === "languages" ? (
+                  <ul className="experiences__languages">
+                    {currentExperiences.map((lang) => (
+                      <li key={lang.id} className="experiences__language">
+                        <span className="experiences__language-name">
+                          {lang.name}
+                        </span>
+                        <span className="experiences__language-level">
+                          {lang.level}
+                        </span>
+                        <span
+                          className="experiences__language-flag"
+                          aria-label={`${lang.name} flag`}
+                        >
+                          {lang.flag}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  currentExperiences.map((experience, index) => (
+                    <ExperienceCard
+                      key={experience.id}
+                      experience={experience}
+                      section={activeTab}
+                      isLast={index === currentExperiences.length - 1}
+                    />
+                  ))
+                )
+              ) : (
+                <p className="experiences__empty">
+                  No experiences to display. 🙄
+                </p>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
 
         {/* View All Button */}
         {hasMore && (

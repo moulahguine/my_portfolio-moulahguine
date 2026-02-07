@@ -154,16 +154,16 @@
     .experience-card__technologies {
       display: flex;
       flex-wrap: wrap;
-      gap: clamp($space-4, 2vw, $space-8);
+      gap: $space-4;
       margin-top: clamp($space-8, 2vw, $space-12);
 
       .experience-card__tech {
-        font-size: clamp($font-size-10, 2vw, $font-size-12);
+        font-size: clamp($font-size-10, 1vw, $font-size-12);
         color: $gray-600;
-        background-color: $gray-100;
+        background-color: rgb($gray-50, 0.5);
         padding: clamp($space-4, 2vw, $space-8);
-        border-radius: $radius-sm;
-        border: 1px solid $gray-200;
+        border-radius: $radius-lg;
+        border: 0.5px solid $gray-200;
       }
     }
   }
