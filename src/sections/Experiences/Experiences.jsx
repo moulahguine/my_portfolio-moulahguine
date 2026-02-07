@@ -28,6 +28,11 @@ function Experiences({ mode = "full" }) {
   const totalCount = experienceData[activeTab]?.length || 0;
   const hasMore = isPreview && totalCount > PREVIEW_LIMIT;
 
+  // Only show tabs that have data
+  const visibleTabs = experienceTabs.filter(
+    (tab) => (experienceData[tab.id]?.length || 0) > 0
+  );
+
   const hasAnyMore =
     isPreview &&
     visibleTabs.some(
@@ -36,11 +41,6 @@ function Experiences({ mode = "full" }) {
 
   const currentTabLabel =
     experienceTabs.find((tab) => tab.id === activeTab)?.label || "";
-
-  // Only show tabs that have data
-  const visibleTabs = experienceTabs.filter(
-    (tab) => (experienceData[tab.id]?.length || 0) > 0
-  );
 
   const activeIndex = visibleTabs.findIndex((tab) => tab.id === activeTab);
 
