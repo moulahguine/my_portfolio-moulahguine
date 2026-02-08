@@ -20,8 +20,6 @@
     // View all link (top right, preview mode)
     .experiences__view-all-link {
       @include next-button-style;
-      font-size: $font-size-14;
-      color: $gray-500;
     }
 
     // Tabs container
@@ -41,7 +39,7 @@
         position: absolute;
         top: $space-4;
         left: $space-4;
-        width: calc((100% - #{$space-8}) / var(--tab-count, 5));
+        width: calc((100% - #{$space-8}) / var(--tab-count));
         height: calc(100% - #{$space-8});
         background-color: $white;
         border-radius: $radius-md;

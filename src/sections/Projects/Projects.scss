@@ -17,14 +17,7 @@
       }
 
       .projects__button {
-        color: $gray-600;
-        font-size: $font-size-14;
-        font-weight: $fw-semibold;
         @include next-button-style;
-
-        @media (max-width: $breakpoint-md) {
-          font-size: $font-size-12;
-        }
       }
     }
 

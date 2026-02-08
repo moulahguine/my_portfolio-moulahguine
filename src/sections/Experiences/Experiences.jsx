@@ -117,6 +117,7 @@ function Experiences({ mode = "full" }) {
                       key={experience.id}
                       experience={experience}
                       section={activeTab}
+                      isPreview={isPreview}
                       isLast={index === currentExperiences.length - 1}
                     />
                   ))

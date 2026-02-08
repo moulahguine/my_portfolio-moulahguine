@@ -14,7 +14,7 @@ function Projects() {
           <h2 className="projects__header">Recent projects</h2>
           <Link href="/projects" className="projects__button">
             View More Projects
-            <GoArrowUpRight size={20} />
+            <GoArrowUpRight size={18} />
           </Link>
         </div>
 

@@ -150,6 +150,28 @@
       }
     }
 
+    // Clamped description (preview mode)
+    .experience-card__description--clamped {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .experience-card__read-more {
+      display: inline-block;
+      margin-top: $space-4;
+      color: $gray-400;
+      font-size: clamp($font-size-10, 1.5vw, $font-size-12);
+      font-weight: $fw-medium;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $gray-700;
+      }
+    }
+
     // Technologies
     .experience-card__technologies {
       display: flex;
@@ -157,13 +179,21 @@
       gap: $space-4;
       margin-top: clamp($space-8, 2vw, $space-12);
 
-      .experience-card__tech {
+      .tech-item {
         font-size: clamp($font-size-10, 1vw, $font-size-12);
         color: $gray-600;
         background-color: rgb($gray-50, 0.5);
         padding: clamp($space-4, 2vw, $space-8);
         border-radius: $radius-lg;
         border: 0.5px solid $gray-200;
+        white-space: nowrap;
+      }
+
+      .tech-item.more {
+        color: $gray-500;
+        font-weight: $fw-medium;
+        background-color: $gray-100;
+        border-color: $gray-300;
       }
     }
   }

@@ -3,7 +3,10 @@ import { FiExternalLink } from "react-icons/fi";
 import "./ExperienceCard.scss";
 import Link from "next/link";
 
-function ExperienceCard({ experience, section, isLast }) {
+const PREVIEW_MAX_TECHS = 4;
+const PREVIEW_MAX_DESCRIPTION_LINES = 5;
+
+function ExperienceCard({ experience, section, isPreview, isLast }) {
   const {
     company,
     role,
@@ -88,23 +91,43 @@ function ExperienceCard({ experience, section, isLast }) {
 
         {/* Description */}
         {description && description.length > 0 && (
-          <ul className="experience-card__description">
+          <ul
+            className={`experience-card__description ${isPreview ? "experience-card__description--clamped" : ""}`}
+          >
             {description.map((item, index) => (
               <li key={index}>{item}</li>
             ))}
           </ul>
         )}
+        {isPreview && description && description.length > 3 && (
+          <Link href="/experiences" className="experience-card__read-more">
+            read more
+          </Link>
+        )}
 
         {/* Technologies */}
-        {technologies && technologies.length > 0 && (
-          <div className="experience-card__technologies">
-            {technologies.map((tech, index) => (
-              <span key={index} className="experience-card__tech">
-                {tech}
-              </span>
-            ))}
-          </div>
-        )}
+        {technologies &&
+          technologies.length > 0 &&
+          (() => {
+            const maxTechs = isPreview
+              ? PREVIEW_MAX_TECHS
+              : technologies.length;
+            const visibleTechs = technologies.slice(0, maxTechs);
+            const hiddenCount = technologies.length - maxTechs;
+
+            return (
+              <div className="experience-card__technologies">
+                {visibleTechs.map((tech, index) => (
+                  <span key={index} className="tech-item">
+                    {tech}
+                  </span>
+                ))}
+                {hiddenCount > 0 && (
+                  <span className="tech-item more">+{hiddenCount} more</span>
+                )}
+              </div>
+            );
+          })()}
       </div>
     </article>
   );
