@@ -103,17 +103,10 @@ function Experiences({ mode = "full" }) {
                   <ul className="experiences__languages">
                     {currentExperiences.map((lang) => (
                       <li key={lang.id} className="experiences__language">
-                        <span className="experiences__language-name">
-                          {lang.name}
-                        </span>
-                        <span className="experiences__language-level">
-                          {lang.level}
-                        </span>
-                        <span
-                          className="experiences__language-flag"
-                          aria-label={`${lang.name} flag`}
-                        >
-                          {lang.flag}
+                        <span className="name">{lang.name}</span>
+                        <span className="level">{lang.level}</span>
+                        <span className="flag" aria-label={`${lang.name} flag`}>
+                          <lang.flag title={lang.name} />
                         </span>
                       </li>
                     ))}
@@ -133,7 +126,7 @@ function Experiences({ mode = "full" }) {
                   <div className="content">
                     <motion.p
                       className="text"
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0.5, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
@@ -142,7 +135,7 @@ function Experiences({ mode = "full" }) {
                     </motion.p>
                     <motion.button
                       className="button"
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0.5, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       whileHover={{ scale: 1.05 }}
@@ -162,8 +155,8 @@ function Experiences({ mode = "full" }) {
                     <Image
                       src={hireMeAvatar}
                       alt="Developer avatar"
-                      width={1000}
-                      height={1000}
+                      width={700}
+                      height={700}
                       priority
                     />
                   </motion.div>

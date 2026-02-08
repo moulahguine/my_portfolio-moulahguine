@@ -44,6 +44,7 @@ function ExperienceCard({ experience, section, isLast }) {
                 width={40}
                 height={40}
                 className="experience-card__logo-img"
+                placeholder="blur"
                 priority
               />
             ) : (

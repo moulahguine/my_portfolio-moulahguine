@@ -18,6 +18,9 @@ import { HiOutlineLanguage } from "react-icons/hi2";
 import { PiGraduationCapThin } from "react-icons/pi";
 import { PiCoffeeThin } from "react-icons/pi";
 
+// Flags
+import { MA, GB, TR } from "country-flag-icons/react/3x2";
+
 // Experience data
 export const experienceData = {
   // Education
@@ -220,25 +223,25 @@ export const experienceData = {
       id: "lang-1",
       name: "Arabic",
       level: "Native",
-      flag: "🇲🇦",
+      flag: MA,
     },
     {
       id: "lang-2",
       name: "Berber (Amazigh)",
       level: "Native",
-      flag: "🇲🇦",
+      flag: MA,
     },
     {
       id: "lang-3",
       name: "English",
       level: "Fluent",
-      flag: "🌍",
+      flag: GB,
     },
     {
       id: "lang-4",
       name: "Turkish",
       level: "Intermediate",
-      flag: "🇹🇷",
+      flag: TR,
     },
   ],
 };
