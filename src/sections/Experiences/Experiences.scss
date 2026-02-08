@@ -161,6 +161,78 @@
       }
     }
 
+    // Hire me card (work empty state)
+    .experiences__hire-me {
+      background-color: $gray-50;
+      border-radius: $radius-lg;
+      padding: clamp($space-16, 2vw, $space-24) clamp($space-24, 2vw, $space-32);
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 400px;
+
+      .content {
+        position: absolute;
+        top: clamp($space-16, 2vw, $space-24);
+        left: clamp($space-24, 2vw, $space-32);
+        width: auto;
+        z-index: 1;
+
+        .text {
+          font-size: clamp($font-size-32, 2vw, $font-size-40);
+          font-weight: $fw-bold;
+          line-height: $line-height-tight;
+          min-width: 180px;
+          max-width: 400px;
+          width: 100%;
+          word-wrap: normal;
+          text-shadow: 0 0 1px $white;
+          -webkit-text-stroke: 1px $gray-900;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .button {
+          @include flex-center;
+          gap: $space-4;
+          outline: none;
+          border: 2px solid $gray-50;
+          background-color: $gray-700;
+          color: $white;
+          padding: clamp($space-4, 2vw, $space-8)
+            clamp($space-18, 2vw, $space-24);
+
+          margin-top: clamp($space-24, 2vw, $space-32);
+          text-transform: capitalize;
+          border-radius: $radius-lg;
+          cursor: pointer;
+          font-size: clamp($font-size-20, 2vw, $font-size-24);
+          transition: all 0.3s ease-in-out;
+          &:hover {
+            background-color: $gray-800;
+          }
+        }
+      }
+
+      .avatar {
+        position: absolute;
+        bottom: clamp($space-8, 2vw, $space-16);
+        right: clamp($space-8, 2vw, $space-16);
+        width: 400px;
+        height: inherit;
+
+        @media (max-width: $breakpoint-sm) {
+          width: 300px;
+          height: 300px;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+
     // Empty state
     .experiences__empty {
       @include flex-column;
@@ -168,27 +240,7 @@
       text-align: center;
       color: $gray-500;
       font-size: clamp($font-size-12, 2vw, $font-size-14);
-    }
-
-    // Footer with View All button
-    .experiences__footer {
-      display: flex;
-      justify-content: center;
-      padding: clamp($space-16, 2vw, $space-24) 0;
-    }
-
-    .experiences__view-all-btn {
-      @include next-button-style;
-      font-size: clamp($font-size-12, 2vw, $font-size-14);
-      color: $gray-600;
-      padding: clamp($space-8, 2vw, $space-12) clamp($space-16, 2vw, $space-24);
-      border-radius: $radius-md;
-      background-color: $gray-100;
-      transition: all 0.3s ease-in-out;
-
-      &:hover {
-        background-color: $gray-200;
-      }
+      padding: $space-32 0;
     }
   }
 }

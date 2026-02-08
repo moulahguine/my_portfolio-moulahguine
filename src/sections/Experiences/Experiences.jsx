@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -11,7 +12,9 @@ import {
 } from "@/data/experienceData";
 import ExperienceCard from "@/components/ExperienceCard/ExperienceCard";
 import { GoArrowUpRight } from "react-icons/go";
+import hireMeAvatar from "@/assets/images/expreriences-section/work/hire-me-avatar.png";
 import "./Experiences.scss";
+import { RiSendPlaneLine } from "react-icons/ri";
 
 function Experiences({ mode = "full" }) {
   const isPreview = mode === "preview";
@@ -125,9 +128,49 @@ function Experiences({ mode = "full" }) {
                     />
                   ))
                 )
+              ) : activeTab === "work" ? (
+                <div className="experiences__hire-me">
+                  <div className="content">
+                    <motion.p
+                      className="text"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      Actively moving into a full-time frontend position.
+                    </motion.p>
+                    <motion.button
+                      className="button"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.97 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <span>hire me</span>
+                      <RiSendPlaneLine size={20} />
+                    </motion.button>
+                  </div>
+                  <motion.div
+                    className="avatar"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                  >
+                    <Image
+                      src={hireMeAvatar}
+                      alt="Developer avatar"
+                      width={1000}
+                      height={1000}
+                      priority
+                    />
+                  </motion.div>
+                </div>
               ) : (
                 <p className="experiences__empty">
-                  No {currentTabLabel} to display. 🙄
+                  No {currentTabLabel} to display.
                 </p>
               )}
             </motion.div>
