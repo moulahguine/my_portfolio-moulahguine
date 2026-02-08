@@ -173,8 +173,10 @@
 
       .content {
         position: absolute;
-        top: clamp($space-16, 2vw, $space-24);
-        left: clamp($space-24, 2vw, $space-32);
+        top: 0;
+        left: 0;
+        padding: clamp($space-16, 2vw, $space-24)
+          clamp($space-24, 2vw, $space-32);
         width: auto;
         z-index: 1;
 
