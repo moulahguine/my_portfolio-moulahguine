@@ -13,36 +13,24 @@ import ExperienceCard from "@/components/ExperienceCard/ExperienceCard";
 import { GoArrowUpRight } from "react-icons/go";
 import "./Experiences.scss";
 
-const spring = { type: "spring", stiffness: 300, damping: 30 };
-
 function Experiences({ mode = "full" }) {
-  const [activeTab, setActiveTab] = useState("education");
-
   const isPreview = mode === "preview";
+  const [activeTab, setActiveTab] = useState("education");
+  const spring = { type: "spring", stiffness: 300, damping: 30 };
 
   const currentExperiences = getExperiences(
     activeTab,
-    isPreview ? PREVIEW_LIMIT : null
+    isPreview && activeTab !== "languages" ? PREVIEW_LIMIT : null
   );
 
   const totalCount = experienceData[activeTab]?.length || 0;
-  const hasMore = isPreview && totalCount > PREVIEW_LIMIT;
-
-  // Only show tabs that have data
-  const visibleTabs = experienceTabs.filter(
-    (tab) => (experienceData[tab.id]?.length || 0) > 0
-  );
-
-  const hasAnyMore =
-    isPreview &&
-    visibleTabs.some(
-      (tab) => (experienceData[tab.id]?.length || 0) > PREVIEW_LIMIT
-    );
+  const hasMore =
+    isPreview && activeTab !== "languages" && totalCount > PREVIEW_LIMIT;
 
   const currentTabLabel =
     experienceTabs.find((tab) => tab.id === activeTab)?.label || "";
 
-  const activeIndex = visibleTabs.findIndex((tab) => tab.id === activeTab);
+  const activeIndex = experienceTabs.findIndex((tab) => tab.id === activeTab);
 
   return (
     <section id="experiences" className="experiences">
@@ -50,9 +38,9 @@ function Experiences({ mode = "full" }) {
         {/* Section Header */}
         <div className="experiences__header-container">
           <h1 className="experiences__header">Experience</h1>
-          {hasAnyMore && (
+          {hasMore && (
             <Link href="/experiences" className="experiences__view-all-link">
-              View All
+              View More {currentTabLabel} (+{totalCount - PREVIEW_LIMIT}){" "}
               <GoArrowUpRight size={18} />
             </Link>
           )}
@@ -68,13 +56,13 @@ function Experiences({ mode = "full" }) {
           <span
             className="experiences__indicator"
             style={{
-              "--tab-count": visibleTabs.length,
+              "--tab-count": experienceTabs.length,
               transform: `translateX(${activeIndex * 100}%)`,
             }}
             aria-hidden="true"
           />
 
-          {visibleTabs.map((tab) => (
+          {experienceTabs.map((tab) => (
             <button
               key={tab.id}
               role="tab"
@@ -139,22 +127,12 @@ function Experiences({ mode = "full" }) {
                 )
               ) : (
                 <p className="experiences__empty">
-                  No experiences to display. 🙄
+                  No {currentTabLabel} to display. 🙄
                 </p>
               )}
             </motion.div>
           </AnimatePresence>
         </motion.div>
-
-        {/* View All Button */}
-        {hasMore && (
-          <div className="experiences__footer">
-            <Link href="/experiences" className="experiences__view-all-btn">
-              View all {currentTabLabel} ({totalCount - PREVIEW_LIMIT} more)
-              <GoArrowUpRight size={18} />
-            </Link>
-          </div>
-        )}
       </div>
     </section>
   );

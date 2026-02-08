@@ -18,11 +18,9 @@ import { HiOutlineLanguage } from "react-icons/hi2";
 import { PiGraduationCapThin } from "react-icons/pi";
 import { PiCoffeeThin } from "react-icons/pi";
 
+// Experience data
 export const experienceData = {
-  // =========================
   // Education
-  // =========================
-
   education: [
     {
       id: "edu-1",
@@ -95,9 +93,7 @@ export const experienceData = {
     },
   ],
 
-  // =========================
   // Freelance / Self-Employed
-  // =========================
   freelance: [
     {
       id: "freelance-1",
@@ -161,14 +157,10 @@ export const experienceData = {
     },
   ],
 
-  // =========================
   // Work Experience
-  // =========================
   work: [],
 
-  // =========================
   // Certifications
-  // =========================
   certifications: [
     {
       id: "cert-1",
@@ -222,9 +214,7 @@ export const experienceData = {
     },
   ],
 
-  // =========================
   // Languages
-  // =========================
   languages: [
     {
       id: "lang-1",
@@ -262,6 +252,7 @@ export const experienceTabs = [
   { id: "languages", label: "Languages", icon: HiOutlineLanguage },
 ];
 
+// Helper function to parse experience dates
 function parseExperienceDate(dateStr) {
   if (!dateStr) return 0;
   if (dateStr.toLowerCase() === "present") return Date.now();
@@ -270,6 +261,7 @@ function parseExperienceDate(dateStr) {
   return isNaN(date.getTime()) ? 0 : date.getTime();
 }
 
+// Helper function to get experiences
 export function getExperiences(category, limit = null) {
   const experiences = experienceData[category] || [];
 
@@ -280,6 +272,5 @@ export function getExperiences(category, limit = null) {
   return limit ? sorted.slice(0, limit) : sorted;
 }
 
+// Preview limit
 export const PREVIEW_LIMIT = 2;
-
-export default experienceData;
