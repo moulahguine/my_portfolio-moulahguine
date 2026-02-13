@@ -12,7 +12,7 @@ import {
 } from "@/data/experienceData";
 import ExperienceCard from "@/components/ExperienceCard/ExperienceCard";
 import { GoArrowUpRight } from "react-icons/go";
-import hireMeAvatar from "@/assets/images/expreriences-section/work/hire-me-avatar.svg";
+import hireMeAvatar from "@/assets/images/expreriences-section/work/hire-me-avatar.png";
 import "./Experiences.scss";
 import { RiSendPlaneLine } from "react-icons/ri";
 
