@@ -8,24 +8,25 @@
     @include container;
 
     // Header container with "View All" link
-    .experiences__header-container {
+    .experiences__header {
       @include flex-between;
     }
 
     // Section header
-    .experiences__header {
+    .title {
       @include header_section;
     }
 
     // View all link (top right, preview mode)
-    .experiences__view-all-link {
+    .view-all-link {
       @include next-button-style;
     }
 
     // Tabs container
-    .experiences__tabs {
-      @include flex-between;
-      justify-content: space-around;
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(var(--tab-count), 1fr);
+      grid-template-rows: 1fr;
       position: relative;
       gap: clamp($space-4, 2vw, $space-8);
       margin: clamp($space-8, 2vw, $space-16) 0;
@@ -35,15 +36,16 @@
       width: 100%;
 
       // Sliding indicator
-      .experiences__indicator {
+      .indicator {
         position: absolute;
         top: $space-4;
         left: $space-4;
-        width: calc((100% - #{$space-8}) / var(--tab-count));
+        width: calc(calc(100% - #{$space-8}) / var(--tab-count));
         height: calc(100% - #{$space-8});
-        background-color: $white;
         border-radius: $radius-md;
-        transition: transform 0.3s ease-in-out;
+        transform: translateX(calc(var(--active-index) * 100%));
+        background-color: $white;
+        transition: all 0.3s ease-in-out;
         z-index: 0;
 
         @media (max-width: $breakpoint-md) {
@@ -52,7 +54,7 @@
       }
 
       // Individual tab button
-      .experiences__tab {
+      .tab {
         @include flex-center;
         gap: clamp($space-4, 2vw, $space-8);
         position: relative;
@@ -68,6 +70,7 @@
         cursor: pointer;
         transition: color 0.3s ease-in-out;
         white-space: nowrap;
+        text-align: center;
 
         svg {
           color: inherit !important;
@@ -100,6 +103,8 @@
           &.active {
             flex: 1 1 100%;
             background-color: $white;
+            padding-left: $space-12;
+            padding-right: $space-12;
 
             .label {
               width: auto;
@@ -114,22 +119,22 @@
       }
     }
 
-    .experiences__timeline-wrapper {
+    .timeline-wrapper {
       overflow: hidden;
     }
 
     // Timeline container
-    .experiences__timeline {
+    .timeline {
       @include flex-column;
       padding: $space-8 0;
     }
 
     // Languages list
-    .experiences__languages {
+    .languages {
       @include flex-column;
       gap: 0;
 
-      .experiences__language {
+      .language {
         display: flex;
         align-items: center;
         padding: $space-16 $space-8;
@@ -166,7 +171,7 @@
     }
 
     // Hire me card (work empty state)
-    .experiences__hire-me {
+    .hire-me {
       background-color: $gray-50;
       border-radius: $radius-lg;
       padding: clamp($space-16, 2vw, $space-24) clamp($space-24, 2vw, $space-32);
@@ -188,10 +193,7 @@
           font-size: clamp($font-size-32, 2vw, $font-size-40);
           font-weight: $fw-bold;
           line-height: $line-height-tight;
-          min-width: 180px;
-          max-width: 400px;
-          width: 100%;
-          word-wrap: normal;
+          width: clamp(300px, 60vw, 500px);
           text-shadow: 0 0 1px $white;
           -webkit-text-stroke: 1px $gray-900;
           -webkit-text-fill-color: transparent;
@@ -199,6 +201,7 @@
 
         .button {
           @include flex-center;
+          width: fit-content;
           gap: $space-4;
           outline: none;
           border: 2px solid $gray-50;
@@ -210,11 +213,20 @@
           margin-top: clamp($space-24, 2vw, $space-32);
           text-transform: capitalize;
           border-radius: $radius-lg;
-          cursor: pointer;
           font-size: clamp($font-size-20, 2vw, $font-size-24);
           transition: all 0.3s ease-in-out;
+
+          svg {
+            transition: all 0.3s ease-in-out;
+          }
+
           &:hover {
             background-color: $gray-800;
+
+            svg {
+              translate: 3px;
+              scale: 1.2;
+            }
           }
         }
       }
@@ -240,7 +252,7 @@
     }
 
     // Empty state
-    .experiences__empty {
+    .empty {
       @include flex-column;
       justify-content: center;
       text-align: center;

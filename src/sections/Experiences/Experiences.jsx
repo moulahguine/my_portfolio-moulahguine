@@ -36,42 +36,45 @@ function Experiences({ mode = "full" }) {
   const activeIndex = experienceTabs.findIndex((tab) => tab.id === activeTab);
 
   return (
-    <section id="experiences" className="experiences">
+    // Experiences section
+    <section
+      id="experiences"
+      className="experiences"
+      style={{
+        "--tab-count": experienceTabs.length,
+        "--active-index": activeIndex,
+      }}
+    >
+      {/* Container */}
       <div className="container">
-        {/* Section Header */}
-        <div className="experiences__header-container">
-          <h1 className="experiences__header">Experience</h1>
+        {/* Header */}
+        <header className="experiences__header">
+          {/* Title */}
+          <h2 className="title">Experience</h2>
+
+          {/* View all link */}
           {hasMore && (
-            <Link href="/experiences" className="experiences__view-all-link">
+            <Link href="/experiences" className="view-all-link">
               View More {currentTabLabel} (+{totalCount - PREVIEW_LIMIT}){" "}
               <GoArrowUpRight size={18} />
             </Link>
           )}
-        </div>
+        </header>
 
         {/* Tabs */}
-        <div
-          className="experiences__tabs"
-          role="tablist"
-          aria-label="Experience categories"
-        >
+        <div className="tabs" role="tablist" aria-label="Experience categories">
           {/* Sliding indicator */}
-          <span
-            className="experiences__indicator"
-            style={{
-              "--tab-count": experienceTabs.length,
-              transform: `translateX(${activeIndex * 100}%)`,
-            }}
-            aria-hidden="true"
-          />
+          <span className="indicator" aria-hidden="true" />
 
+          {/* Tabs */}
           {experienceTabs.map((tab) => (
+            // Tab button
             <button
               key={tab.id}
               role="tab"
               aria-selected={activeTab === tab.id}
               aria-controls={`panel-${tab.id}`}
-              className={`experiences__tab ${activeTab === tab.id ? "active" : ""}`}
+              className={`tab ${activeTab === tab.id ? "active" : ""}`}
               onClick={() => setActiveTab(tab.id)}
             >
               <tab.icon size={18} />
@@ -81,30 +84,32 @@ function Experiences({ mode = "full" }) {
         </div>
 
         {/* Timeline Content */}
-        <motion.div
-          layout
-          transition={spring}
-          className="experiences__timeline-wrapper"
-        >
+        <motion.div layout transition={spring} className="timeline-wrapper">
           <AnimatePresence mode="wait">
+            {/* Time line */}
             <motion.div
               key={activeTab}
               id={`panel-${activeTab}`}
               role="tabpanel"
               aria-labelledby={activeTab}
-              className="experiences__timeline"
-              initial={{ opacity: 0, y: 10 }}
+              className="timeline"
+              initial={{ opacity: 0.5, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
             >
+              {/* Experiences */}
               {currentExperiences.length > 0 ? (
                 activeTab === "languages" ? (
-                  <ul className="experiences__languages">
+                  //  Languages
+                  <ul className="languages">
                     {currentExperiences.map((lang) => (
-                      <li key={lang.id} className="experiences__language">
-                        <span className="name">{lang.name}</span>
-                        <span className="level">{lang.level}</span>
+                      <li key={lang.id} className="language">
+                        {/* Name */}
+                        <h4 className="name">{lang.name}</h4>
+                        {/* Level */}
+                        <p className="level">{lang.level}</p>
+                        {/* Flag */}
                         <span className="flag" aria-label={`${lang.name} flag`}>
                           <lang.flag title={lang.name} />
                         </span>
@@ -123,7 +128,7 @@ function Experiences({ mode = "full" }) {
                   ))
                 )
               ) : activeTab === "work" ? (
-                <div className="experiences__hire-me">
+                <div className="hire-me">
                   <div className="content">
                     <motion.p
                       className="text"
@@ -132,40 +137,24 @@ function Experiences({ mode = "full" }) {
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
                     >
-                      Actively moving into a full-time frontend position.
+                      Seeking First Frontend Role
                     </motion.p>
-                    <motion.button
-                      className="button"
-                      initial={{ opacity: 0.5, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.97 }}
-                      transition={{ duration: 0.2 }}
-                    >
+                    <Link className="button" href="/contact">
                       <span>hire me</span>
                       <RiSendPlaneLine size={20} />
-                    </motion.button>
+                    </Link>
                   </div>
                   <motion.div
                     className="avatar"
-                    initial={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0.5, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
                   >
-                    <Image
-                      src={hireMeAvatar}
-                      alt="Developer avatar"
-                      width={700}
-                      height={700}
-                      priority
-                    />
+                    <Image src={hireMeAvatar} alt="Developer avatar" fill />
                   </motion.div>
                 </div>
               ) : (
-                <p className="experiences__empty">
-                  No {currentTabLabel} to display.
-                </p>
+                <p className="empty">No {currentTabLabel} to display.</p>
               )}
             </motion.div>
           </AnimatePresence>

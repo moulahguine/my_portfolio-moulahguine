@@ -7,13 +7,13 @@
   position: relative;
 
   // Timeline elements
-  .experience-card__timeline {
+  .timeline {
     @include flex-column;
     align-items: center;
     padding-top: $space-4;
     min-width: clamp(10px, 2vw, 20px);
 
-    .experience-card__dot {
+    .dot {
       width: clamp(8px, 2vw, 10px);
       height: clamp(8px, 2vw, 10px);
       background-color: $gray-300;
@@ -24,7 +24,7 @@
       z-index: 1;
     }
 
-    .experience-card__line {
+    .line {
       width: clamp(1px, 0.5vw, 2px);
       flex: 1;
       background-color: $gray-200;
@@ -33,7 +33,7 @@
   }
 
   // Card content wrapper
-  .experience-card__content {
+  .content {
     flex: 1;
     min-width: 0;
     margin-bottom: clamp($space-16, 2vw, $space-24);
@@ -45,50 +45,48 @@
       align-items: flex-start;
 
       // Company logo/initials
-      .experience-card__logo {
+      .logo {
+        @include flex-center;
         width: clamp(30px, 2vw, 40px);
         height: clamp(30px, 2vw, 40px);
         border-radius: $radius-md;
         background-color: $gray-100;
         border: 1px solid $gray-200;
-        @include flex-center;
         flex-shrink: 0;
         overflow: hidden;
 
-        .experience-card__logo-img {
-          width: 100% !important;
-          height: 100% !important;
+        .logo-img {
+          width: 100%;
           object-fit: cover;
         }
 
-        .experience-card__initials {
+        .initials {
           font-size: clamp($font-size-12, 2vw, $font-size-16);
           font-weight: $fw-semibold;
           color: $gray-500;
         }
       }
       // Info section
-      .experience-card__info {
+      .info {
         flex: 1;
         min-width: 0;
 
-        .experience-card__title-row {
+        .title-row {
           display: flex;
           justify-content: space-between;
           align-items: baseline;
           gap: clamp($space-4, 2vw, $space-8);
           flex-wrap: wrap;
 
-          .experience-card__company {
+          .company {
             font-size: clamp($font-size-12, 2vw, $font-size-14);
             font-weight: $fw-semibold;
             color: $gray-900;
 
-            .experience-card__link {
-              transition: color 0.3s ease-in-out;
-              display: inline-flex;
-              align-items: center;
+            .link {
+              @include flex-center;
               gap: clamp($space-4, 2vw, $space-8);
+              transition: color 0.3s ease-in-out;
 
               &:hover {
                 color: $gray-600;
@@ -96,26 +94,26 @@
             }
           }
 
-          .experience-card__date {
+          .date {
             font-size: clamp($font-size-10, 2vw, $font-size-12);
             color: $gray-500;
             white-space: nowrap;
           }
         }
-        .experience-card__role {
+        .role {
           font-size: clamp($font-size-12, 2vw, $font-size-14);
           color: $gray-600;
           margin: clamp($space-4, 2vw, $space-8) 0 0;
           font-weight: $fw-regular;
         }
 
-        .experience-card__meta {
+        .meta {
           display: flex;
           align-items: center;
           gap: clamp($space-4, 2vw, $space-8);
           margin-top: clamp($space-4, 2vw, $space-8);
           flex-wrap: wrap;
-          .experience-card__type {
+          .type {
             display: inline-block;
             font-size: clamp($font-size-10, 2vw, $font-size-12);
             color: $gray-500;
@@ -124,7 +122,7 @@
             border-radius: $radius-sm;
           }
 
-          .experience-card__location {
+          .location {
             display: inline-block;
             font-size: clamp($font-size-10, 2vw, $font-size-12);
             color: $gray-500;
@@ -133,7 +131,7 @@
       }
     }
     // Description list
-    .experience-card__description {
+    .description {
       margin: clamp($space-8, 2vw, $space-12) 0 0;
       padding-left: clamp($space-8, 2vw, $space-16);
 
@@ -150,8 +148,8 @@
       }
     }
 
-    // Clamped description (preview mode)
-    .experience-card__description--clamped {
+    // Clamped description
+    .description--clamped {
       display: -webkit-box;
       -webkit-line-clamp: 3;
       line-clamp: 3;
@@ -159,25 +157,42 @@
       overflow: hidden;
     }
 
-    .experience-card__read-more {
+    .read-more {
       display: inline-block;
-      margin-top: $space-4;
-      color: $gray-400;
+      margin: clamp($space-4, 2vw, $space-8);
+      color: $gray-700;
       font-size: clamp($font-size-10, 1.5vw, $font-size-12);
-      font-weight: $fw-medium;
-      transition: color 0.2s ease;
+      font-weight: $fw-semibold;
+      transition: all 0.3s ease-in-out;
+      text-transform: capitalize;
+      position: relative;
 
+      &::after {
+        content: "";
+        display: block;
+        width: 0%;
+        height: 1px;
+        background-color: $gray-700;
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        transition: inherit;
+      }
       &:hover {
-        color: $gray-700;
+        color: $gray-800;
+        &::after {
+          width: 100%;
+        }
       }
     }
 
     // Technologies
-    .experience-card__technologies {
+    .technologies {
       display: flex;
       flex-wrap: wrap;
       gap: $space-4;
       margin-top: clamp($space-8, 2vw, $space-12);
+      cursor: default;
 
       .tech-item {
         font-size: clamp($font-size-10, 1vw, $font-size-12);
@@ -190,10 +205,9 @@
       }
 
       .tech-item.more {
-        color: $gray-500;
+        color: $gray-600;
         font-weight: $fw-medium;
-        background-color: $gray-100;
-        border-color: $gray-300;
+        background-color: rgba($gray-200, 0.5);
       }
     }
   }
