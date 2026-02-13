@@ -12,7 +12,7 @@ import {
 } from "@/data/experienceData";
 import ExperienceCard from "@/components/ExperienceCard/ExperienceCard";
 import { GoArrowUpRight } from "react-icons/go";
-import hireMeAvatar from "@/assets/images/expreriences-section/work/hire-me-avatar.png";
+import hireMeAvatar from "@/assets/images/expreriences-section/work/hire-me-avatar.svg";
 import "./Experiences.scss";
 import { RiSendPlaneLine } from "react-icons/ri";
 
@@ -150,7 +150,12 @@ function Experiences({ mode = "full" }) {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
                   >
-                    <Image src={hireMeAvatar} alt="Developer avatar" fill />
+                    <Image
+                      src={hireMeAvatar}
+                      alt="Developer avatar"
+                      width={700}
+                      height={700}
+                    />
                   </motion.div>
                 </div>
               ) : (
