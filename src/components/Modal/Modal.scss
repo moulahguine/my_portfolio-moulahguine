@@ -95,14 +95,9 @@
 
       .modal__content-close {
         position: absolute;
-        top: $space-16;
-        right: $space-16;
+        top: clamp($space-8, 5vw, $space-16);
+        right: clamp($space-8, 5vw, $space-16);
         z-index: 1001;
-
-        @media (max-width: $breakpoint-md) {
-          top: $space-8;
-          right: $space-8;
-        }
       }
     }
   }

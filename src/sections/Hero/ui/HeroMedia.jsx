@@ -28,8 +28,8 @@ export default function HeroMedia({ classFigure, classImage }) {
           alt="Portrait of Mohamed Oulahguine, Frontend Developer"
           loading="eager"
           decoding="async"
-          height={400}
-          priority
+          fill
+          priority={true}
         />
         <span className="hero__media-overlay">
           <BsArrowsFullscreen size={18} />

@@ -155,6 +155,7 @@ function Experiences({ mode = "full" }) {
                       alt="Developer avatar"
                       width={700}
                       height={700}
+                      priority={true}
                     />
                   </motion.div>
                 </div>

@@ -1,23 +1,27 @@
 @use "../../../assets/styles/variables" as *;
 @use "../../../assets/styles/mixins" as *;
 
-.imageViewer {
+.imageViewer__frame {
   @include flex-center;
+  position: relative;
+  width: 100%;
+  // height: clamp(300px, 15dvh, 500px);
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  background-color: $gray-300;
 
-  &__frame {
-    position: relative;
+  @media (max-width: $breakpoint-sm) {
+    height: 500px;
+  }
+  img {
     width: 100%;
     height: 100%;
-    aspect-ratio: 1/1;
-    overflow: hidden;
-    background-color: $gray-300;
+    border-radius: inherit;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
 
-    img {
-      width: inherit;
-      height: inherit;
-      border-radius: inherit;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
+  > figcaption {
+    display: none;
   }
 }
