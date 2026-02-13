@@ -1,3 +1,6 @@
+// ----------------------- FONT -----------------------
+$font-primary: var(--font-comic), "Comic Sans MS", cursive, sans-serif;
+
 // ----------------------- TYPOGRAPHY -----------------------
 $base-font-size: 16px;
 $font-size-10: 0.625rem;
@@ -21,7 +24,7 @@ $fw-medium: 500;
 $fw-semibold: 600;
 $fw-bold: 700;
 
-// ----------------------- SPACING (scale) -----------------------
+// ----------------------- SPACING -----------------------
 $space-4: 0.25rem;
 $space-8: 0.5rem;
 $space-12: 0.75rem;
@@ -71,3 +74,8 @@ $gray-300: #d2d3d5;
 $gray-200: #e6e7e9;
 $gray-100: #f3f3f4;
 $gray-50: #fafafa;
+
+// Semantic color aliases
+$color-primary: $gray-900;
+$color-primary-500: $gray-700;
+$color-text-light: $gray-500;

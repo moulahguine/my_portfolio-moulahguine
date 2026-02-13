@@ -1,5 +1,4 @@
-@use "../../assets/styles/variables" as *;
-@use "../../assets/styles/mixins" as *;
+@use "styles" as *;
 
 .blog-card {
   padding: $space-16 $space-20;

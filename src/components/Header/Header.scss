@@ -1,5 +1,4 @@
-@use "../../assets/styles/variables" as *;
-@use "../../assets/styles/mixins" as *;
+@use "styles" as *;
 
 .header {
   position: fixed;
@@ -22,13 +21,13 @@
 
     @media (max-width: $breakpoint-md) {
       border-radius: 0;
-      padding: 0;
-      height: 60px;
+      height: 55px;
+      background-color: transparent;
     }
   }
 
   @media (max-width: $breakpoint-md) {
-    bottom: 0;
+    bottom: $space-8;
     padding: 0;
   }
 }

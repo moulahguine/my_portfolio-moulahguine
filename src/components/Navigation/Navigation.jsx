@@ -3,14 +3,34 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { HiOutlineHome, HiOutlineFolder, HiOutlineBriefcase, HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
+import {
+  HiOutlineHome,
+  HiOutlineFolder,
+  HiOutlineBriefcase,
+  HiOutlineChatBubbleLeftRight,
+} from "react-icons/hi2";
 import "./Navigation.scss";
 
 const NAVIGATION_ITEMS = [
   { id: "home", label: "Home", path: "/", icon: HiOutlineHome },
-  { id: "projects", label: "Projects", path: "/projects", icon: HiOutlineFolder },
-  { id: "experiences", label: "Experiences", path: "/experiences", icon: HiOutlineBriefcase },
-  { id: "blogs", label: "Blogs", path: "/blogs", icon: HiOutlineChatBubbleLeftRight },
+  {
+    id: "projects",
+    label: "Projects",
+    path: "/projects",
+    icon: HiOutlineFolder,
+  },
+  {
+    id: "experiences",
+    label: "Experiences",
+    path: "/experiences",
+    icon: HiOutlineBriefcase,
+  },
+  {
+    id: "blogs",
+    label: "Blogs",
+    path: "/blogs",
+    icon: HiOutlineChatBubbleLeftRight,
+  },
 ];
 
 function normalizePath(path) {
@@ -61,8 +81,12 @@ export default function Navigation() {
                 className={`nav__link ${isActive ? "active" : ""}`}
                 aria-current={isActive ? "page" : undefined}
               >
-                {Icon && <span className="nav__icon" aria-hidden="true"><Icon size={22} /></span>}
-                <span className="nav__link__inner">
+                {Icon && (
+                  <span className="nav__icon" aria-hidden="true">
+                    <Icon size={20} />
+                  </span>
+                )}
+                <h4 className="nav__link__inner">
                   <motion.span
                     className="nav__link__slide"
                     variants={deepChild}
@@ -76,7 +100,7 @@ export default function Navigation() {
                       {item.label}
                     </span>
                   </motion.span>
-                </span>
+                </h4>
               </Link>
             </motion.li>
           );

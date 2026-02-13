@@ -1,5 +1,4 @@
-@use "../../assets/styles/variables" as *;
-@use "../../assets/styles/mixins" as *;
+@use "styles" as *;
 
 .location {
   transition: all 0.3s ease-in-out;

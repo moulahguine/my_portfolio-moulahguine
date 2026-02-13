@@ -1,14 +1,21 @@
+import { Comic_Neue } from "next/font/google";
 import { metadata as siteMetadata } from "./metadata";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import "../assets/styles/main.scss";
-import "./layout.scss";
+
+const comicNeue = Comic_Neue({
+  weight: ["300", "400", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-comic",
+});
 
 export const metadata = siteMetadata;
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={comicNeue.variable}>
       <head>
         {/* Font Awesome */}
         <link
