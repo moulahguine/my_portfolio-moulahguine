@@ -27,7 +27,7 @@ export default function Hero() {
                 />
               </h1>
               <p className="hero__role">
-                Frontend Developer | Nextjs & TypeScript
+                Frontend Engineer | Open to Opportunities
               </p>
               <div className="hero__location">
                 <PiMapPinLight /> Istanbul / Türkiye

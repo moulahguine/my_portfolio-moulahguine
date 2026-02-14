@@ -133,12 +133,13 @@
 
 @mixin header_section {
   width: fit-content;
-  font-size: clamp($font-size-10, 1.5vw, $font-size-12);
+  font-size: clamp($font-size-12, 1.5vw, $font-size-14);
   font-weight: 100;
-  color: $gray-400;
+  color: $gray-500;
+  font-weight: $fw-bold;
   background-color: $gray-100;
-  border-radius: 5px;
-  padding: 4px 8px;
+  border-radius: $radius-sm;
+  padding: $space-4 $space-8;
   cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;

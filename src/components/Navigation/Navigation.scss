@@ -51,7 +51,7 @@
       display: flex;
 
       .nav__link {
-        color: $gray-700;
+        color: $gray-400;
         font-size: clamp($font-size-12, 2vw, $font-size-16);
         padding: $space-12;
         @include flex-center;
@@ -96,9 +96,7 @@
         }
 
         &.active {
-          color: $gray-800;
-          font-weight: $fw-semibold;
-          text-decoration: underline curve;
+          color: $gray-900;
 
           @media (max-width: $breakpoint-md) {
             color: $white;
