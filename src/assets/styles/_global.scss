@@ -15,7 +15,7 @@
 }
 
 html {
-  scroll-behavior: smooth !important;
+  scroll-behavior: smooth;
   width: 100%;
   height: 100%;
 }
@@ -28,7 +28,7 @@ body {
   min-height: 100vh;
 
   @media (max-width: $breakpoint-md) {
-    padding: 0 $space-8 !important;
+    padding: 0 $space-8;
   }
 }
 
@@ -57,7 +57,6 @@ img {
     user-select: none;
   }
 
-  /* Fix mobile re-rendering/flashing issue */
   section {
     will-change: auto;
     transform: translateZ(0);
@@ -65,7 +64,6 @@ img {
     -webkit-backface-visibility: hidden;
   }
 
-  /* Prevent sections from disappearing on mobile */
   main#main-content {
     position: relative;
     z-index: 1;

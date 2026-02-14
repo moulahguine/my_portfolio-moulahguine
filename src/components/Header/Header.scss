@@ -15,14 +15,17 @@
     min-height: 40px;
     background-color: $white;
     border-radius: $radius-2xl;
+    border: 1px solid $gray-200;
     padding: $space-4 $space-8;
-    box-shadow: 0 0 1px $gray-300;
     overflow: hidden;
 
     @media (max-width: $breakpoint-md) {
-      border-radius: 0;
+      width: fit-content;
       height: 55px;
-      background-color: transparent;
+      border-radius: 0;
+      border-radius: $radius-2xl;
+      background-color: $gray-700;
+      border: 1px solid $gray-300;
     }
   }
 
