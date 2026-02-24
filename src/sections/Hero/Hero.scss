@@ -5,7 +5,7 @@
   @include section;
   margin-top: 80px;
   position: relative;
-  z-index: 1;
+  z-index: $z-base;
 
   @media (max-width: $breakpoint-md) {
     margin-top: $space-8;
@@ -23,7 +23,7 @@
       height: 250px;
       background-color: $gray-100;
       position: relative;
-      z-index: 5;
+      z-index: $z-elevated;
       overflow: hidden;
       border-radius: $radius-lg $radius-lg 0 0;
 
@@ -38,7 +38,7 @@
         left: 0;
         width: 100%;
         height: 30%;
-        z-index: 5;
+        z-index: $z-above;
         background: linear-gradient(to top, $white 0%, transparent 100%);
         border-radius: inherit;
         pointer-events: none;
@@ -48,7 +48,7 @@
         width: 100%;
         height: 100%;
         position: relative;
-        z-index: 4;
+        z-index: $z-base;
 
         .leaflet-container {
           width: 100%;
@@ -72,7 +72,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      z-index: 5;
+      z-index: $z-above;
     }
 
     .hero__profile {
@@ -97,7 +97,7 @@
         }
 
         .hero__media {
-          --square-size: 150px;
+          --square-size: 10rem;
           width: var(--square-size);
           height: var(--square-size);
           margin-top: -70px;
@@ -106,7 +106,7 @@
           overflow: hidden;
           border: $space-4 solid $white;
           position: relative;
-          z-index: 155;
+          z-index: $z-elevated;
           cursor: pointer;
           background-color: $gray-100;
 
@@ -116,11 +116,9 @@
           }
 
           .hero__image {
-            object-fit: cover !important;
-            object-position: top;
-            width: 100%;
-            height: 100%;
-            transform: scale(1.5);
+            width: var(--square-size);
+            height: var(--square-size);
+            object-fit: cover;
             transition: all 0.3s ease-in-out;
           }
 
@@ -139,7 +137,7 @@
             svg {
               color: $gray-100;
               transition: all 0.3s ease-in-out;
-              transition-delay: 0.6s;
+              transition-delay: 0.3s;
             }
           }
 
@@ -221,18 +219,17 @@
 .hero-cta-btn {
   @include flex-center;
   gap: $space-4;
-  padding: $space-12;
-  border-radius: $radius-md;
   cursor: pointer;
   border: none;
   outline: none;
   text-decoration: none;
-  box-shadow: 0 0 1px $gray-700;
   overflow: hidden;
 
   &--resume {
     background-color: $gray-700;
     color: $gray-100;
+    padding: calc($space-8 + 2px);
+    border-radius: $radius-md;
 
     .hero-cta-btn__icon svg,
     .hero-cta-btn__label {
@@ -248,6 +245,7 @@
 
   &--light {
     background-color: $white;
+    padding: $space-12 0;
 
     .hero-cta-btn__icon svg,
     .hero-cta-btn__label {

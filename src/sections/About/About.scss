@@ -1,33 +1,110 @@
 @use "../../assets/styles" as *;
 
+// =============================================
+// About Section
+// =============================================
 .about {
   @include section;
 
   .container {
     @include container;
 
+    // Section label chip
     .about__header {
       @include header_section;
     }
 
-    .about__content {
-      width: 100%;
-      margin: $space-16 0 0;
+    // -- Two-column layout: text | video --
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $space-32;
+      margin-top: $space-16;
+      align-items: start;
+    }
 
+    // -- Left column: text --
+    .about__text {
       .about__info {
         text-indent: $space-12;
         font-size: $font-size-14;
         font-weight: $fw-regular;
         line-height: 1.8;
-        width: 100%;
         color: $gray-800;
-
-        @media (max-width: $breakpoint-md) {
-          font-size: $font-size-12;
-          word-spacing: 2px;
-          word-wrap: nowrap;
-        }
       }
+    }
+
+    // -- Right column: video wrapper --
+    .about__video {
+      width: 100%;
+    }
+  }
+}
+
+// =============================================
+// Video Preview Card (used inside About)
+// =============================================
+// A clickable card showing a poster + play icon.
+// No video plays on the page — purely static.
+
+.video-preview {
+  // Reset button styles (this is a <button> for accessibility)
+  all: unset;
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 6;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid $gray-200;
+  background-color: $gray-100;
+
+  // Subtle lift on hover
+  transition: box-shadow 0.25s ease;
+
+  &:hover {
+    box-shadow: 0 4px 20px rgba($black, 0.06);
+
+    // Reveal play button more on hover
+    .video-preview__play {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+  }
+
+  // -- Poster image (fills the card) --
+  &__poster {
+    position: absolute;
+    inset: 0;
+
+    &-img {
+      object-fit: cover;
+    }
+  }
+
+  // -- Play button overlay (centered) --
+  &__play {
+    @include flex-center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: $z-above;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: $white;
+    color: $gray-700;
+    border: 1px solid $gray-200;
+    box-shadow: 0 2px 10px rgba($black, 0.08);
+    opacity: 0.9;
+    transition: all 0.25s ease;
+
+    svg {
+      flex-shrink: 0;
+      // Slight right offset to visually center the play triangle
+      margin-left: 2px;
     }
   }
 }

@@ -47,98 +47,9 @@ const projectsData = [
       image: porfolio,
     },
   },
+
   {
     id: 2,
-    slug: "fashion-shop-ecommerce",
-    title: "Fashion Shop  E-Commerce Website",
-    description:
-      "From browsing to buying, every interaction is intentional. Built to handle real product behavior.",
-    year: 2023,
-    featured: true,
-
-    color: "#9f9f9f",
-
-    demoLink: "https://e-fashionshop.netlify.app/",
-    githubLink: "https://moulahguine.github.io/fashion-shop/",
-
-    technologies: [
-      {
-        techKey: technologies.React.name,
-        name: technologies.React.name,
-        icon: technologies.React.icon,
-        color: technologies.React.color,
-      },
-      {
-        techKey: technologies.TailwindCSS.name,
-        name: technologies.TailwindCSS.name,
-        icon: technologies.TailwindCSS.icon,
-        color: technologies.TailwindCSS.color,
-      },
-      {
-        techKey: technologies.Vite.name,
-        name: technologies.Vite.name,
-        icon: technologies.Vite.icon,
-        color: technologies.Vite.color,
-      },
-      {
-        techKey: technologies.JavaScript.name,
-        name: technologies.JavaScript.name,
-        icon: technologies.JavaScript.icon,
-        color: technologies.JavaScript.color,
-      },
-    ],
-
-    media: {
-      image: ecommerce,
-    },
-  },
-  {
-    id: 3,
-    slug: "clinic-dashboard",
-    title: "Clinic Website",
-    description:
-      "Refined my approach to building complex dashboards. Addressed challenges in displaying structured data, creating responsive cards, and improving accessibility for better usability.",
-    year: 2023,
-    featured: false,
-
-    color: "#f1f1f1",
-
-    demoLink: "https://clinic-dashboard.netlify.app/",
-    githubLink: "https://github.com/moulahguine/clinic-dashboard",
-
-    technologies: [
-      {
-        techKey: technologies.React.name,
-        name: technologies.React.name,
-        icon: technologies.React.icon,
-        color: technologies.React.color,
-      },
-      {
-        techKey: technologies.MUI.name,
-        name: technologies.MUI.name,
-        icon: technologies.MUI.icon,
-        color: technologies.MUI.color,
-      },
-      {
-        techKey: technologies.TailwindCSS.name,
-        name: technologies.TailwindCSS.name,
-        icon: technologies.TailwindCSS.icon,
-        color: technologies.TailwindCSS.color,
-      },
-      {
-        techKey: technologies.Vite.name,
-        name: technologies.Vite.name,
-        icon: technologies.Vite.icon,
-        color: technologies.Vite.color,
-      },
-    ],
-
-    media: {
-      image: clinic,
-    },
-  },
-  {
-    id: 4,
     slug: "modern-landing-page",
     title: "Modern Landing Page",
     description:

@@ -46,7 +46,7 @@
       align-items: flex-end;
       justify-content: center;
       padding-bottom: $space-8;
-      z-index: 10;
+      z-index: $z-elevated;
 
       // down arrow indicator
       .skills__more-indicator {
@@ -106,7 +106,7 @@
     .skills__content {
       padding: $space-16 0;
       position: relative;
-      z-index: 1;
+      z-index: $z-base;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: $space-16;
@@ -147,7 +147,7 @@
             position: relative;
             transition: all 0.3s ease-in-out;
             color: $gray-600 !important;
-            z-index: 2;
+            z-index: $z-above;
           }
         }
 

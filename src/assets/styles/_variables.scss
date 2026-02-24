@@ -56,9 +56,28 @@ $breakpoint-lg: 1130px;
 $breakpoint-xl: 1280px;
 
 // ----------------------- Z-INDEX -----------------------
-$z-dropdown: 1000;
+$z-base: 1;
+$z-above: 2;
+$z-elevated: 10;
+$z-card: 15;
+$z-floating: 50;
 $z-header: 900;
+$z-dropdown: 1000;
 $z-modal: 1100;
+$z-modal-content: 1110;
+$z-route-transition: 1200;
+
+// ----------------------- MODAL TOKENS -----------------------
+$modal-width-fluid: 92vw;
+$modal-width-sm: 28rem; // 448px
+$modal-width-md: 36rem; // 576px
+$modal-width-lg: 56rem; // 896px
+$modal-width-xl: 72rem; // 1152px
+
+$modal-max-height-sm: 60dvh;
+$modal-max-height-md: 70dvh;
+$modal-max-height-lg: 80dvh;
+$modal-max-height-xl: 85dvh;
 
 // ----------------------- COLORS -----------------------
 $black: #0f0f10;

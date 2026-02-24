@@ -12,8 +12,8 @@ import { PiShareFatLight } from "react-icons/pi";
 import * as motion from "motion/react-client";
 
 // Constants
-const spring = { type: "spring", stiffness: 400, damping: 30 };
-const springFast = { type: "spring", stiffness: 500, damping: 35 };
+const spring = { type: "spring", stiffness: 200, damping: 30 };
+const springFast = { type: "spring", stiffness: 300, damping: 35 };
 
 const EXPANDED_RESUME = "resume";
 const EXPANDED_CONNECT = "connect";
@@ -57,7 +57,7 @@ function HeroButton({
     <>
       {/* Icon */}
       <span className="hero-cta-btn__icon" aria-hidden="true">
-        <Icon size={18} />
+        <Icon size={20} />
       </span>
       {/* Label */}
       {label != null && (
@@ -95,7 +95,7 @@ function HeroButton({
         href={href}
         download={download}
         {...sharedProps}
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ opacity: 0.9 }}
         whileTap={{ scale: 0.97 }}
         transition={springFast}
       >

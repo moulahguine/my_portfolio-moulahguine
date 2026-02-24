@@ -3,6 +3,8 @@
 import * as motion from "motion/react-client";
 import { usePathname } from "next/navigation";
 
+const Z_INDEX_ROUTE_TRANSITION = 1200;
+
 export default function Template({ children }) {
   const pathname = usePathname();
 
@@ -34,7 +36,7 @@ export default function Template({ children }) {
           inset: 0,
           background: "#f3f3f4",
           transformOrigin: "bottom",
-          zIndex: 9999,
+          zIndex: Z_INDEX_ROUTE_TRANSITION,
           pointerEvents: "none",
         }}
       />

@@ -5,7 +5,7 @@
   all: unset;
   position: fixed;
   inset: 0;
-  z-index: 999999;
+  z-index: $z-modal;
   @include flex-center;
   background: rgb($gray-600, 0.5);
   backdrop-filter: blur(10px) saturate(100%);
@@ -14,15 +14,19 @@
 
   // start modal container
   .modal__container {
+    // Default (large) modal scale tokens.
+    --modal-max-width: #{$modal-width-lg};
+    --modal-max-height: #{$modal-max-height-lg};
+
     position: relative;
     display: flex;
     flex-direction: column;
     background-color: $gray-100;
     border-radius: $radius-lg;
     box-shadow: 0 0px 40px 0px rgb($gray-500, 0.8);
-    width: 90%;
-    height: 80dvh;
-    max-height: 90dvh;
+    width: min(#{$modal-width-fluid}, var(--modal-max-width));
+    height: fit-content;
+    max-height: var(--modal-max-height);
     overflow: hidden;
     transition: all 0.2s ease;
     transform: scale(0.95);
@@ -42,31 +46,23 @@
 
     // Size variants
     &.small {
-      max-width: 448px;
-      max-height: 60dvh;
-      min-height: 30dvh;
-      height: fit-content;
+      --modal-max-width: #{$modal-width-sm};
+      --modal-max-height: #{$modal-max-height-sm};
     }
 
     &.medium {
-      max-width: 512px;
-      max-height: 70dvh;
-      min-height: 40dvh;
-      height: fit-content;
+      --modal-max-width: #{$modal-width-md};
+      --modal-max-height: #{$modal-max-height-md};
     }
 
     &.large {
-      max-width: 896px;
-      max-height: 80dvh;
-      min-height: 50dvh;
-      height: fit-content;
+      --modal-max-width: #{$modal-width-lg};
+      --modal-max-height: #{$modal-max-height-lg};
     }
 
     &.xlarge {
-      max-width: 1152px;
-      max-height: 85dvh;
-      min-height: 65dvh;
-      height: fit-content;
+      --modal-max-width: #{$modal-width-xl};
+      --modal-max-height: #{$modal-max-height-xl};
     }
 
     // start modal header
@@ -94,9 +90,9 @@
 
       .modal__content-close {
         position: absolute;
-        top: clamp($space-8, 5vw, $space-16);
-        right: clamp($space-8, 5vw, $space-16);
-        z-index: 1001;
+        top: $space-16;
+        right: $space-16;
+        z-index: $z-modal-content;
       }
     }
   }

@@ -20,7 +20,7 @@
       border: 2px solid $white;
       box-shadow: 0 0 0 2px $gray-200;
       flex-shrink: 0;
-      z-index: 1;
+      z-index: $z-base;
     }
 
     .line {

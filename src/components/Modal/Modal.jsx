@@ -6,6 +6,8 @@ import { RemoveScroll } from "react-remove-scroll";
 import CloseButton from "../CloseButton/CloseButton";
 import "./Modal.scss";
 
+const MODAL_SIZES = new Set(["small", "medium", "large", "xlarge"]);
+
 export default function Modal({
   isOpen,
   onClose,
@@ -37,9 +39,8 @@ export default function Modal({
       setIsAnimating(false);
     }
   }, [isOpen]);
-  // end use effect
 
-  // start use callback
+  // -- Callbacks --
   const handleClose = useCallback(() => {
     setTimeout(() => {
       onClose?.();
@@ -51,10 +52,24 @@ export default function Modal({
       handleClose();
     }
   };
-  // end use callback
+
+  // Close modal on ESC key press
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        handleClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, handleClose]);
 
   // start return
   if (!mounted || !isOpen) return null;
+  const normalizedSize = MODAL_SIZES.has(size) ? size : "large";
 
   const modalContent = (
     // start remove scroll
@@ -69,7 +84,7 @@ export default function Modal({
           {/* start modal container */}
           <div
             tabIndex={-1}
-            className={`modal__container ${size} ${
+            className={`modal__container ${normalizedSize} ${
               isAnimating ? "animating" : "closing"
             }`}
             onClick={(e) => e.stopPropagation()}

@@ -8,7 +8,7 @@
   --height: 380px;
   height: var(--height);
   position: relative;
-  z-index: 15;
+  z-index: $z-card;
   overflow: hidden;
   background: $white;
   border-radius: $radius-md;
@@ -84,7 +84,7 @@
     .project-card__content {
       @include flex-column;
       position: relative;
-      z-index: 10;
+      z-index: $z-elevated;
       gap: $space-12;
 
       // Description styling

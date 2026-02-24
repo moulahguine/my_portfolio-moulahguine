@@ -4,7 +4,6 @@
   @include flex-center;
   position: relative;
   width: 100%;
-  // height: clamp(300px, 15dvh, 500px);
   aspect-ratio: 1/1;
   overflow: hidden;
   background-color: $gray-300;
@@ -12,6 +11,7 @@
   @media (max-width: $breakpoint-sm) {
     height: 500px;
   }
+
   img {
     width: 100%;
     height: 100%;
