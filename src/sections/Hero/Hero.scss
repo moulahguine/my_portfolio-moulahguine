@@ -3,7 +3,7 @@
 // HERO SECTION - START
 .hero {
   @include section;
-  margin-top: 80px;
+  // margin-top: 80px;
   position: relative;
   z-index: $z-base;
 
@@ -118,8 +118,8 @@
           .hero__image {
             width: var(--square-size);
             height: var(--square-size);
-            object-fit: cover;
-            transition: all 0.3s ease-in-out;
+            object-fit: scale-down;
+            transform: scale(1.5);
           }
 
           .hero__media-overlay {

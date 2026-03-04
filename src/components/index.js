@@ -17,6 +17,9 @@ export { default as BlogCard } from "./BlogCard/BlogCard";
 export { default as ProjectCard } from "./ProjectCard/ProjectCard";
 export { default as ProjectLinks } from "./ProjectCard/ProjectLinks";
 
+// SettingsMenu Component
+export { default as SettingsMenu } from "./SettingsMenu/SettingsMenu";
+
 // ModalContent Components
 export { default as ImageViewer } from "./ModalContent/ImageViewer/ImageViewer";
 export { default as VideoViewer } from "./ModalContent/VideoViewer/VideoViewer";

@@ -26,6 +26,9 @@ body {
   width: 100%;
   height: 100%;
   min-height: 100vh;
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+  transition: background-color 0.25s ease, color 0.25s ease;
 
   @media (max-width: $breakpoint-md) {
     padding: 0 $space-8;
@@ -44,6 +47,10 @@ main {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+address {
+  font-style: normal;
 }
 
 img {
@@ -71,6 +78,6 @@ img {
 }
 
 ::selection {
-  background: $gray-800;
-  color: $white;
+  background: var(--theme-selection-bg);
+  color: var(--theme-selection-text);
 }

@@ -1,34 +1,31 @@
 @use "../../assets/styles" as *;
 
 .header {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
   width: 100%;
-  padding: $space-16 0 0;
+  padding: $space-8 0;
   background-color: transparent;
   z-index: $z-header;
 
   .header__container {
     @include container;
-    @include flex-center;
+    @include flex-between;
     min-height: 40px;
     background-color: $white;
-    border-radius: $radius-2xl;
-    border: 1px solid $gray-200;
-    padding: $space-4 $space-8;
-    overflow: hidden;
+    margin: 0 auto;
+    padding: $space-4 0;
 
     @media (max-width: $breakpoint-md) {
       width: fit-content;
       height: 55px;
-      border-radius: 0;
       border-radius: $radius-2xl;
       background-color: $gray-700;
     }
   }
 
   @media (max-width: $breakpoint-md) {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
     bottom: $space-8;
     padding: 0;
   }

@@ -29,9 +29,9 @@ export default function Hero() {
               <p className="hero__role">
                 Frontend Engineer | Open to Opportunities
               </p>
-              <div className="hero__location">
-                <PiMapPinLight /> Istanbul / Türkiye
-              </div>
+              <address className="hero__location">
+                <PiMapPinLight aria-hidden="true" /> Istanbul / Türkiye
+              </address>
             </div>
           </div>
 

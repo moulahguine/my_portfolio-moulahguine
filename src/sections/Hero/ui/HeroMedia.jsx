@@ -13,8 +13,6 @@ export default function HeroMedia({ classFigure, classImage }) {
   const [isImageOpen, setIsImageOpen] = useState(false);
   const handleCloseModal = () => setIsImageOpen(false);
 
-  const squareSize = "150px";
-
   return (
     <>
       <figure
@@ -32,8 +30,6 @@ export default function HeroMedia({ classFigure, classImage }) {
           alt="my profile picture, Mohamed Oulahguine, Frontend Developer"
           loading="eager"
           decoding="async"
-          // width={squareSize}
-          // height={squareSize}
           fill={true}
           quality={100}
           priority={true}

@@ -8,7 +8,7 @@ const DynamicMap = dynamic(
     ssr: false,
     loading: () => (
       <div className="hero__mapLoading" aria-live="polite">
-        Loading map...
+        Loading Map Interactive...
       </div>
     ),
   }

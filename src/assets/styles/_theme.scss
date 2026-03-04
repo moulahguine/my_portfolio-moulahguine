@@ -1,0 +1,40 @@
+@use "variables" as *;
+
+// =============================================
+//  Global Theme — CSS Custom Properties
+//  Toggle by setting data-theme on <html>.
+//  Default = dark.
+// =============================================
+
+// --- Dark theme (default) ---
+:root,
+html[data-theme="dark"] {
+  --theme-bg: #{$gray-900};
+  --theme-bg-muted: #{$gray-800};
+  --theme-surface: #{$gray-800};
+  --theme-surface-hover: #{$gray-700};
+  --theme-border: #{$gray-600};
+  --theme-text: #{$gray-100};
+  --theme-text-muted: #{$gray-400};
+  --theme-accent: #{$white};
+  --theme-accent-hover: #{$gray-200};
+  --theme-overlay: #{rgba($black, 0.6)};
+  --theme-selection-bg: #{$gray-700};
+  --theme-selection-text: #{$white};
+}
+
+// --- Light theme ---
+html[data-theme="light"] {
+  --theme-bg: #{$white};
+  --theme-bg-muted: #{$gray-100};
+  --theme-surface: #{$white};
+  --theme-surface-hover: #{$gray-100};
+  --theme-border: #{$gray-200};
+  --theme-text: #{$gray-800};
+  --theme-text-muted: #{$gray-500};
+  --theme-accent: #{$gray-800};
+  --theme-accent-hover: #{$gray-700};
+  --theme-overlay: #{rgba($gray-600, 0.5)};
+  --theme-selection-bg: #{$gray-800};
+  --theme-selection-text: #{$white};
+}
