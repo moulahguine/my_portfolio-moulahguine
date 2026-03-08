@@ -17,8 +17,14 @@ export { default as BlogCard } from "./BlogCard/BlogCard";
 export { default as ProjectCard } from "./ProjectCard/ProjectCard";
 export { default as ProjectLinks } from "./ProjectCard/ProjectLinks";
 
-// SettingsMenu Component
-export { default as SettingsMenu } from "./SettingsMenu/SettingsMenu";
+// QuickMenu Component
+export { default as Menu } from "./Menu/Menu";
+
+// ConnectLinks Component
+export { default as ConnectLinks } from "./ConnectLinks/ConnectLinks";
+
+// SharePortfolio Component
+export { default as SharePortfolio } from "./SharePortfolio/SharePortfolio";
 
 // ModalContent Components
 export { default as ImageViewer } from "./ModalContent/ImageViewer/ImageViewer";

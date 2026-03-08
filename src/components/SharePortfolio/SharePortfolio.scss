@@ -1,0 +1,48 @@
+@use "../../assets/styles" as *;
+
+.share-portfolio-modal {
+  @include flex-column;
+  align-items: center;
+  gap: $space-20;
+  padding: calc($space-40 + $space-24) $space-24 $space-24 $space-24;
+  border-radius: $radius-lg;
+  overflow: hidden;
+
+  @media (max-width: $breakpoint-md) {
+    padding-top: $space-40 + $space-16;
+    gap: $space-8;
+  }
+
+  .qr {
+    @include flex-center;
+    padding: clamp($space-8, 1.5vw, $space-16);
+    background-color: $white;
+    border-radius: $radius-md;
+    box-shadow: 0 0 1px $gray-300;
+
+    svg {
+      display: block;
+    }
+  }
+
+  .download-btn {
+    width: 100%;
+    max-width: clamp(160px, 40vw, 200px);
+    padding: $space-12 $space-16;
+    border-radius: $radius-xl;
+    border: none;
+    outline: none;
+    background-color: $gray-800;
+    color: $gray-100;
+    font-size: clamp($font-size-12, 1.5vw, $font-size-14);
+    font-weight: $fw-semibold;
+    cursor: pointer;
+    box-shadow: 0 0 1px $gray-700;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $gray-200;
+      color: $gray-800;
+    }
+  }
+}

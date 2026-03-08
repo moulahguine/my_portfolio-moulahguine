@@ -7,9 +7,9 @@ import { BsArrowsFullscreen } from "react-icons/bs";
 
 export default function HeroMedia({ classFigure, classImage }) {
   const smallProfilePicture =
-    "https://ik.imagekit.io/moulahguine/smallprofilepicture";
+    "https://ik.imagekit.io/moulahguine/smallprofilepicture?updatedAt=1772958051315&tr=w-700,h-700,fo-auto";
   const fullProfilePicture =
-    "https://ik.imagekit.io/moulahguine/lagreprofilepicture";
+    "https://ik.imagekit.io/moulahguine/lagreprofilepicture?updatedAt=1772958051315";
   const [isImageOpen, setIsImageOpen] = useState(false);
   const handleCloseModal = () => setIsImageOpen(false);
 
@@ -30,7 +30,8 @@ export default function HeroMedia({ classFigure, classImage }) {
           alt="my profile picture, Mohamed Oulahguine, Frontend Developer"
           loading="eager"
           decoding="async"
-          fill={true}
+          fill
+          sizes="(max-width: 778px) 300px, 160px"
           quality={100}
           priority={true}
         />

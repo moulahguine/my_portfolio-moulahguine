@@ -1,8 +1,8 @@
 import InlineMap from "./ui/InlineMap";
 import HeroMedia from "./ui/HeroMedia";
-import HeroCta from "./ui/HeroCta";
 import VerifiedBadge from "@/components/Icons/VerifiedBadge";
 import { PiMapPinLight } from "react-icons/pi";
+import { FaRegFileAlt } from "react-icons/fa";
 import "./Hero.scss";
 
 export default function Hero() {
@@ -35,7 +35,20 @@ export default function Hero() {
             </div>
           </div>
 
-          <HeroCta />
+          <div className="hero__cta">
+            <a
+              href="/resume.pdf"
+              download
+              className="hero-cta-btn hero-cta-btn--resume"
+              aria-label="Download my resume (PDF)"
+              title="Download my resume"
+            >
+              <span className="hero-cta-btn__icon" aria-hidden="true">
+                <FaRegFileAlt size={20} />
+              </span>
+              <span className="hero-cta-btn__label">Resume</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

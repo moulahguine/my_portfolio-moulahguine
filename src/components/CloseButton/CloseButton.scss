@@ -4,17 +4,18 @@
   @include flex-center;
   width: 40px;
   aspect-ratio: 1/1;
-  background: $gray-500;
+  background: rgba($white, 0.3);
+  backdrop-filter: blur(50px);
   border: none;
   border-radius: 50%;
-  color: $white;
+  color: $gray-600;
   font-size: $font-size-18;
   cursor: pointer;
   transition: all 0.2s ease;
   z-index: $z-elevated;
 
   &:hover {
-    background: $gray-600;
+    background: rgba($gray-100, 0.5);
     transform: scale(1.1);
   }
 

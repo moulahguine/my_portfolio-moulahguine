@@ -1,19 +1,14 @@
 @use "../../assets/styles" as *;
 
-// HERO SECTION - START
+// HERO SECTION
 .hero {
   @include section;
-  // margin-top: 80px;
   position: relative;
   z-index: $z-base;
 
-  @media (max-width: $breakpoint-md) {
-    margin-top: $space-8;
-  }
-
   .container {
     @include container;
-    border: 1px solid $gray-200;
+    // border: 1px solid $gray-200;
     border-radius: $radius-lg;
     padding-top: 0;
     overflow: hidden;
@@ -29,6 +24,7 @@
 
       @media (max-width: $breakpoint-md) {
         height: clamp(200px, 30vw, 400px);
+        border-radius: 0;
       }
 
       &::after {
@@ -116,10 +112,10 @@
           }
 
           .hero__image {
-            width: var(--square-size);
-            height: var(--square-size);
-            object-fit: scale-down;
-            transform: scale(1.5);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            scale: 1.1;
           }
 
           .hero__media-overlay {
@@ -211,6 +207,10 @@
 
     @media (max-width: $breakpoint-md) {
       height: 100%;
+      padding-bottom: $space-40;
+      padding-left: 0;
+      padding-right: 0;
+      border-radius: 0;
     }
   }
 }
@@ -266,105 +266,5 @@
   .hero-cta-btn__label {
     display: inline-block;
     overflow: hidden;
-  }
-}
-
-// // Social links grid inside modal
-.social-links-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: $space-12;
-  padding: $space-8;
-
-  @media (max-width: $breakpoint-md) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .social-link-item {
-    @include flex-column;
-    align-items: center;
-    gap: $space-8;
-    padding: $space-16;
-    border-radius: $radius-md;
-    background-color: $white;
-    border: 1px solid $gray-400;
-    cursor: pointer;
-    transition: all 0.2s ease;
-
-    &:hover {
-      color: var(--hover-color, $gray-100);
-      border-color: var(--hover-color, $gray-300);
-      transform: translateY(-2px);
-
-      .social-link-icon {
-        color: var(--hover-color);
-      }
-
-      .social-link-label {
-        color: $gray-500;
-      }
-    }
-
-    .social-link-icon {
-      color: $gray-600;
-      transition: color 0.2s ease;
-    }
-
-    .social-link-label {
-      font-size: clamp($font-size-10, 1.4vw, $font-size-12);
-      font-weight: $fw-medium;
-      color: $gray-600;
-      transition: color 0.2s ease;
-    }
-  }
-}
-
-// Share portfolio modal
-.share-portfolio-modal {
-  @include flex-column;
-  align-items: center;
-  gap: $space-20;
-  padding: calc($space-40 + $space-24) $space-24 $space-24 $space-24;
-  border-radius: $radius-lg;
-  overflow: hidden;
-
-  @media (max-width: $breakpoint-md) {
-    padding-top: $space-40 + $space-16;
-    gap: $space-8;
-  }
-
-  // qr code
-  .qr {
-    @include flex-center;
-    padding: clamp($space-8, 1.5vw, $space-16);
-    background-color: $white;
-    border-radius: $radius-md;
-    box-shadow: 0 0 1px $gray-300;
-
-    svg {
-      display: block;
-    }
-  }
-
-  // download button
-  .download-btn {
-    width: 100%;
-    max-width: clamp(160px, 40vw, 200px);
-    padding: $space-12 $space-16;
-    border-radius: $radius-xl;
-    border: none;
-    outline: none;
-    background-color: $gray-800;
-    color: $gray-100;
-    font-size: clamp($font-size-12, 1.5vw, $font-size-14);
-    font-weight: $fw-semibold;
-    cursor: pointer;
-    box-shadow: 0 0 1px $gray-700;
-    transition: all 0.2s ease;
-
-    &:hover {
-      background-color: $gray-200;
-      color: $gray-800;
-    }
   }
 }

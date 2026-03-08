@@ -1,0 +1,39 @@
+{
+  "name": "Mohamed Oulahguine | Frontend Developer",
+  "short_name": "moulahguine",
+  "description": "Frontend developer portfolio showcasing projects, skills, and experience. Built with Next.js, SCSS, and Framer Motion.",
+  "start_url": "/",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/favicon/android-chrome-dark-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/android-chrome-dark-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/android-chrome-light-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/android-chrome-light-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#0e0e10",
+  "background_color": "#0e0e10",
+  "theme_color_dark": "#0e0e10",
+  "theme_color_light": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait"
+}
