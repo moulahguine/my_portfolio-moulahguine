@@ -5,35 +5,29 @@
   position: relative;
   padding: $space-4;
 
-  .nav__icon {
+  &__icon {
     display: none;
     @media (max-width: $breakpoint-md) {
       display: block;
     }
   }
 
-  .nav__list {
+  &__list {
     @include flex-between;
     gap: $space-4;
     height: 100%;
-    animation: nav-fade-in 0.5s ease-in-out 0.5s both;
 
-    @media (max-width: $breakpoint-md) {
-      padding: 0 $space-12;
-    }
     .nav__item {
       display: flex;
 
       .nav__link {
         color: $gray-400;
         font-size: clamp($font-size-12, 2vw, $font-size-16);
-        padding: $space-8;
+        padding: clamp($space-4, 1vw, $space-8);
         @include flex-center;
 
         @media (max-width: $breakpoint-md) {
           @include flex-column;
-          color: $gray-400;
-          padding: $space-4;
         }
 
         .nav__link__inner {
@@ -54,7 +48,10 @@
 
         &:hover .nav__link__slide {
           transform: translateY(-52%);
-          color: $gray-800;
+
+          @media (min-width: $breakpoint-md) {
+            color: $gray-900;
+          }
         }
 
         .nav__link__text {
@@ -63,21 +60,18 @@
           flex-shrink: 0;
           height: 1.25em;
           white-space: nowrap;
+          font-weight: $fw-semibold;
         }
 
         &.active {
           color: $gray-900;
+          font-weight: $fw-bold;
+          @media (max-width: $breakpoint-md) {
+            background-color: $gray-100;
+            border-radius: $radius-xl;
+          }
         }
       }
     }
-  }
-}
-
-@keyframes nav-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

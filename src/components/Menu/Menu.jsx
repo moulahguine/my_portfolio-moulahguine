@@ -96,7 +96,7 @@ export default function Menu() {
         aria-label="Open menu"
         aria-expanded={isOpen}
       >
-        <CiMenuFries size={20} />
+        <CiMenuFries size={20} aria-hidden="true" />
       </button>
 
       {isOpen && (

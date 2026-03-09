@@ -9,31 +9,21 @@ export default function Header() {
     <>
       {/* start desktop header */}
       <header className="header">
-        <div className="header__container">
+        <div className="container">
           {/* start logo */}
           <Link href="/" className="header__logo" aria-label="Home">
             <Image
-              src="/logo/LogoInLightTheme.svg"
-              alt="portfolio main logo"
-              width={120}
-              height={28}
-              className="header__logo-dark"
-              priority
-            />
-            <Image
-              src="/logo/LogoInDarkTheme.svg"
-              alt="portfolio main logo"
-              width={120}
-              height={28}
-              className="header__logo-light"
+              src="/logo/Logo.svg"
+              alt="The logo of the website"
+              width={32}
+              height={32}
+              className="header__logo-img"
               priority
             />
           </Link>
           {/* end logo */}
           {/* start navigation */}
-          <div className="header__nav-desktop">
-            <Navigation />
-          </div>
+          <Navigation className="nav-desktop" />
           {/* end navigation */}
           <Menu />
         </div>

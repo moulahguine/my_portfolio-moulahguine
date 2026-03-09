@@ -21,6 +21,7 @@ html[data-theme="dark"] {
   --theme-overlay: #{rgba($black, 0.6)};
   --theme-selection-bg: #{$gray-700};
   --theme-selection-text: #{$white};
+  --theme-logo-filter: invert(1) brightness(1.2) contrast(1.05);
 }
 
 // --- Light theme ---
@@ -37,4 +38,5 @@ html[data-theme="light"] {
   --theme-overlay: #{rgba($gray-600, 0.5)};
   --theme-selection-bg: #{$gray-800};
   --theme-selection-text: #{$white};
+  --theme-logo-filter: none;
 }

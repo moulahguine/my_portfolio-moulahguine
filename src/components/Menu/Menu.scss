@@ -9,15 +9,12 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: $gray-400;
+    color: $gray-900 !important;
     padding: $space-8;
     border-radius: $radius-md;
-    transition: color $transition-fast, background-color $transition-fast;
-
-    &:hover {
-      color: var(--theme-text);
-      background-color: var(--theme-surface-hover);
-    }
+    transition: all 0.3s ease-in-out;
+    background-color: rgba($white, 0.1);
+    backdrop-filter: blur(50px);
   }
 
   &__panel {

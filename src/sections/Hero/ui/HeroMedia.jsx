@@ -7,10 +7,13 @@ import { BsArrowsFullscreen } from "react-icons/bs";
 
 export default function HeroMedia({ classFigure, classImage }) {
   const smallProfilePicture =
-    "https://ik.imagekit.io/moulahguine/smallprofilepicture?updatedAt=1772958051315&tr=w-700,h-700,fo-auto";
+    "https://ik.imagekit.io/moulahguine/smallprofilepicture?updatedAt=1772992448799&tr=w-800,h-800,fo-auto";
   const fullProfilePicture =
     "https://ik.imagekit.io/moulahguine/lagreprofilepicture?updatedAt=1772958051315";
+
+  // state to open and close the modal
   const [isImageOpen, setIsImageOpen] = useState(false);
+  // function to close the modal
   const handleCloseModal = () => setIsImageOpen(false);
 
   return (
@@ -27,7 +30,7 @@ export default function HeroMedia({ classFigure, classImage }) {
         <Image
           className={classImage}
           src={smallProfilePicture}
-          alt="my profile picture, Mohamed Oulahguine, Frontend Developer"
+          alt="my profile picture"
           loading="eager"
           decoding="async"
           fill
@@ -38,9 +41,7 @@ export default function HeroMedia({ classFigure, classImage }) {
         <span className="hero__media-overlay">
           <BsArrowsFullscreen size={18} />
         </span>
-        <figcaption className="sr-only">
-          my profile picture, Mohamed Oulahguine, Frontend Developer
-        </figcaption>
+        <figcaption className="sr-only">my profile picture image</figcaption>
       </figure>
 
       <Modal

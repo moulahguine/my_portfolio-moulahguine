@@ -1,8 +1,11 @@
 import InlineMap from "./ui/InlineMap";
 import HeroMedia from "./ui/HeroMedia";
+// Icons
 import VerifiedBadge from "@/components/Icons/VerifiedBadge";
 import { PiMapPinLight } from "react-icons/pi";
-import { FaRegFileAlt } from "react-icons/fa";
+import { PiFilePdfDuotone } from "react-icons/pi";
+
+// Styles
 import "./Hero.scss";
 
 export default function Hero() {
@@ -27,7 +30,7 @@ export default function Hero() {
                 />
               </h1>
               <p className="hero__role">
-                Frontend Engineer | Open to Opportunities
+                Frontend Developer | React • Next.js • TypeScript
               </p>
               <address className="hero__location">
                 <PiMapPinLight aria-hidden="true" /> Istanbul / Türkiye
@@ -35,18 +38,18 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="hero__cta">
+          <div className="resume-btn-container">
             <a
               href="/resume.pdf"
               download
-              className="hero-cta-btn hero-cta-btn--resume"
+              className="resume-btn"
               aria-label="Download my resume (PDF)"
-              title="Download my resume"
+              title="Download My Resume (PDF)"
             >
-              <span className="hero-cta-btn__icon" aria-hidden="true">
-                <FaRegFileAlt size={20} />
+              <span className="resume-btn__icon" aria-hidden="true">
+                <PiFilePdfDuotone aria-hidden="true" />
               </span>
-              <span className="hero-cta-btn__label">Resume</span>
+              <span className="resume-btn__label">Resume</span>
             </a>
           </div>
         </div>

@@ -19,15 +19,15 @@ const NAVIGATION_ITEMS = [
     icon: HiOutlineFolder,
   },
   {
-    id: "experiences",
-    label: "Experiences",
-    path: "/experiences",
+    id: "experience",
+    label: "Experience",
+    path: "/experience",
     icon: HiOutlineBriefcase,
   },
   {
-    id: "blogs",
-    label: "Blogs",
-    path: "/blogs",
+    id: "blog",
+    label: "Blog",
+    path: "/blog",
     icon: HiOutlineChatBubbleLeftRight,
   },
 ];
@@ -42,11 +42,11 @@ function isActivePath(current, target) {
   return current === target || current.startsWith(target + "/");
 }
 
-export default function Navigation() {
+export default function Navigation({ className }) {
   const pathname = normalizePath(usePathname());
 
   return (
-    <nav className="nav" aria-label="Main navigation">
+    <nav className={`nav ${className}`} aria-label="Primary navigation">
       <ul className="nav__list">
         {NAVIGATION_ITEMS.map((item) => {
           const itemPath = normalizePath(item.path);
@@ -62,17 +62,17 @@ export default function Navigation() {
               >
                 {Icon && (
                   <span className="nav__icon" aria-hidden="true">
-                    <Icon size={18} />
+                    <Icon size={18} aria-hidden="true" />
                   </span>
                 )}
-                <h4 className="nav__link__inner">
-                  <span className="nav__link__slide">
+                <span className="nav__link__inner">
+                  <div className="nav__link__slide">
                     <span className="nav__link__text">{item.label}</span>
                     <span className="nav__link__text" aria-hidden="true">
                       {item.label}
                     </span>
-                  </span>
-                </h4>
+                  </div>
+                </span>
               </Link>
             </li>
           );

@@ -21,9 +21,9 @@ export const metadata = {
   },
 };
 
-export default function ExperiencesPage() {
+export default function ExperiencePage() {
   return (
-    <main className="experiences-page">
+    <main className="experience-page">
       <Experiences mode="full" />
     </main>
   );

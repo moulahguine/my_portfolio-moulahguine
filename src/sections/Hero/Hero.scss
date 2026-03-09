@@ -8,7 +8,6 @@
 
   .container {
     @include container;
-    // border: 1px solid $gray-200;
     border-radius: $radius-lg;
     padding-top: 0;
     overflow: hidden;
@@ -23,7 +22,7 @@
       border-radius: $radius-lg $radius-lg 0 0;
 
       @media (max-width: $breakpoint-md) {
-        height: clamp(200px, 30vw, 400px);
+        height: clamp(250px, 30vw, 400px);
         border-radius: 0;
       }
 
@@ -35,7 +34,7 @@
         width: 100%;
         height: 30%;
         z-index: $z-above;
-        background: linear-gradient(to top, $white 0%, transparent 100%);
+        background: linear-gradient(to top, $white 15%, transparent 100%);
         border-radius: inherit;
         pointer-events: none;
       }
@@ -62,9 +61,9 @@
       @include flex-center;
       width: 100%;
       height: 100%;
-      background-color: $gray-100;
+      background-color: $gray-50;
       border-radius: $radius-lg;
-      color: $gray-400;
+      color: $gray-600;
       position: absolute;
       top: 0;
       left: 0;
@@ -78,7 +77,7 @@
 
       @media (max-width: $breakpoint-md) {
         flex-direction: column;
-        gap: $space-32;
+        gap: $space-12;
       }
 
       .hero__profile-content {
@@ -90,6 +89,7 @@
           flex-direction: column;
           width: 100%;
           padding-left: 0;
+          gap: $space-12;
         }
 
         .hero__media {
@@ -108,7 +108,7 @@
 
           @media (max-width: $breakpoint-md) {
             --square-size: clamp(200px, 18vw, 300px);
-            margin-top: clamp(-50px, -10vw, -70px);
+            margin-top: clamp(-65px, -10vw, -70px);
           }
 
           .hero__image {
@@ -155,6 +155,10 @@
           gap: $space-4;
           padding-left: $space-12;
 
+          @media (max-width: $breakpoint-md) {
+            gap: $space-8;
+          }
+
           .hero__title {
             display: flex;
             align-items: center;
@@ -198,10 +202,52 @@
         }
       }
 
-      // buttons group
-      .hero__cta {
+      // Hero Resume Button
+      .resume-btn-container {
         @include flex-center;
-        gap: $space-8;
+        min-width: 100px;
+        width: auto;
+        background-color: transparent;
+        border-radius: $radius-xl;
+        overflow: hidden;
+        border: 1px solid $gray-400;
+
+        @media (max-width: $breakpoint-md) {
+          margin-left: $space-16;
+        }
+
+        .resume-btn {
+          width: 100%;
+          @include flex-center;
+          padding: $space-4 $space-12 $space-4 $space-4;
+          background-color: $gray-700;
+          transition: all 0.3s ease-in-out;
+          gap: $space-8;
+
+          .resume-btn__icon {
+            background-color: $white;
+            padding: $space-4;
+            @include flex-center;
+            border-radius: 50%;
+            color: $gray-700;
+            border: 1px solid $gray-50;
+
+            svg {
+              font-size: clamp($font-size-12, 5vw, $font-size-20);
+            }
+          }
+
+          .resume-btn__label {
+            color: $white;
+            font-weight: $fw-bold;
+            font-size: clamp($font-size-12, 0.8vw, $font-size-14);
+            text-transform: uppercase;
+          }
+
+          &:hover {
+            background-color: $gray-800;
+          }
+        }
       }
     }
 
@@ -212,59 +258,5 @@
       padding-right: 0;
       border-radius: 0;
     }
-  }
-}
-
-// Hero CTA Button
-.hero-cta-btn {
-  @include flex-center;
-  gap: $space-4;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  text-decoration: none;
-  overflow: hidden;
-
-  &--resume {
-    background-color: $gray-700;
-    color: $gray-100;
-    padding: calc($space-8 + 2px);
-    border-radius: $radius-md;
-
-    .hero-cta-btn__icon svg,
-    .hero-cta-btn__label {
-      color: $gray-100;
-    }
-
-    .hero-cta-btn__label {
-      font-size: clamp($font-size-12, 1.4vw, $font-size-14);
-      font-weight: $fw-bold;
-      text-transform: uppercase;
-    }
-  }
-
-  &--light {
-    background-color: $white;
-    padding: $space-12 0;
-
-    .hero-cta-btn__icon svg,
-    .hero-cta-btn__label {
-      color: $gray-500;
-    }
-
-    .hero-cta-btn__label {
-      font-size: clamp($font-size-12, 1.5vw, $font-size-14);
-      font-weight: $fw-semibold;
-    }
-  }
-
-  .hero-cta-btn__icon {
-    @include flex-center;
-    flex-shrink: 0;
-  }
-
-  .hero-cta-btn__label {
-    display: inline-block;
-    overflow: hidden;
   }
 }
