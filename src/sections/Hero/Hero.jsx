@@ -1,9 +1,11 @@
 import InlineMap from "./ui/InlineMap";
 import HeroMedia from "./ui/HeroMedia";
+import ResumeButton from "./ui/ResumeButton";
 // Icons
 import VerifiedBadge from "@/components/Icons/VerifiedBadge";
-import { PiMapPinLight } from "react-icons/pi";
-import { PiFilePdfDuotone } from "react-icons/pi";
+import { PiMapPinLight, PiFilePdfDuotone } from "react-icons/pi";
+import { MdOutlineFileDownload } from "react-icons/md";
+import { CiCircleChevDown } from "react-icons/ci";
 
 // Styles
 import "./Hero.scss";
@@ -39,18 +41,7 @@ export default function Hero() {
           </div>
 
           <div className="resume-btn-container">
-            <a
-              href="/resume.pdf"
-              download
-              className="resume-btn"
-              aria-label="Download my resume (PDF)"
-              title="Download My Resume (PDF)"
-            >
-              <span className="resume-btn__icon" aria-hidden="true">
-                <PiFilePdfDuotone aria-hidden="true" />
-              </span>
-              <span className="resume-btn__label">Resume</span>
-            </a>
+            <ResumeButton />
           </div>
         </div>
       </div>

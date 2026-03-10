@@ -206,47 +206,69 @@
       // Hero Resume Button
       .resume-btn-container {
         @include flex-center;
-        min-width: 100px;
-        width: auto;
+        width: 150px;
         background-color: transparent;
-        border-radius: $radius-xl;
-        overflow: hidden;
-        border: 1px solid $gray-400;
+        border-radius: $radius-2xl;
+        border: 1px solid $gray-700;
 
         @media (max-width: $breakpoint-md) {
           margin-left: $space-16;
         }
 
         .resume-btn {
-          width: 100%;
           @include flex-center;
-          padding: $space-4 $space-12 $space-4 $space-4;
-          background-color: $gray-700;
-          transition: all 0.3s ease-in-out;
+          justify-content: flex-start;
           gap: $space-8;
+          width: inherit;
+          padding: $space-4 $space-12 $space-4 $space-4;
+          background-color: $white;
+          text-decoration: none;
+          transition: background-color 0.25s ease;
+          border-radius: inherit;
 
-          .resume-btn__icon {
-            background-color: $white;
-            padding: $space-4;
+          &__icon-shell {
             @include flex-center;
+            position: relative;
+            width: $space-32;
+            height: $space-32;
+            flex-shrink: 0;
             border-radius: 50%;
-            color: $gray-700;
-            border: 1px solid $gray-50;
+            background-color: $gray-700;
+            color: $gray-100;
+            isolation: isolate;
+          }
+
+          &__icon {
+            @include flex-center;
+            position: absolute;
+            inset: 0;
+            z-index: $z-above;
 
             svg {
-              font-size: clamp($font-size-12, 5vw, $font-size-20);
+              font-size: $font-size-20;
             }
           }
 
-          .resume-btn__label {
-            color: $white;
-            font-weight: $fw-bold;
-            font-size: clamp($font-size-12, 0.8vw, $font-size-14);
-            text-transform: uppercase;
+          &__ripples {
+            position: absolute;
+            inset: 0;
+            z-index: $z-base;
+            pointer-events: none;
           }
 
-          &:hover {
-            background-color: $gray-800;
+          &__ripple {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 1.5px solid rgba($gray-700, 0.95);
+          }
+
+          &__label {
+            color: $gray-700;
+            font-weight: $fw-bold;
+            font-size: $font-size-14;
+            text-transform: uppercase;
+            white-space: nowrap;
           }
         }
       }

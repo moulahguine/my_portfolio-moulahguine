@@ -1,27 +1,44 @@
 @use "../../assets/styles" as *;
 
+// menu transition
+$menu-transition: 0.3s ease-in-out;
+
+// line active color
+@mixin line-active-color {
+  .trigger__line {
+    background-color: $gray-800;
+  }
+}
+
+// menu styles
 .header__menu {
   @include flex-center;
   position: relative;
 
+  // menu trigger styles
   .menu__trigger {
-    width: calc($space-32 + $space-4);
-    height: calc($space-32 + $space-4);
-    background: none;
-    border: none;
-    cursor: pointer;
+    width: clamp($space-32, 5vw, $space-40);
+    height: clamp($space-32, 5vw, $space-40);
     padding: 0 $space-4;
+    border: none;
     border-radius: $radius-md;
-    transition: all 0.3s ease-in-out;
+    background: none;
+    cursor: pointer;
     overflow: hidden;
+    transition:
+      background-color $menu-transition,
+      backdrop-filter $menu-transition;
 
     .trigger__line {
       display: block;
       width: calc(100% - $space-4);
       height: 1px;
-      background-color: $gray-500;
       margin: calc($space-8 - 1px) auto;
-      transition: all 0.3s ease-in-out;
+      background-color: $gray-500;
+      transition:
+        width $menu-transition,
+        transform $menu-transition,
+        background-color $menu-transition;
 
       &.first {
         width: 50%;
@@ -33,49 +50,55 @@
         transform: translateX(37%);
       }
     }
-    &.active .trigger__line {
-      background-color: $gray-800;
-      &.first {
-        width: 100%;
-        transform: translateX(0%) translateY(8px) rotate(45deg);
-      }
 
-      &.second {
-        width: 10%;
-        transform: translateX(0%) translateY(0%) rotate(0deg);
-      }
-
-      &.third {
-        width: 100%;
-        transform: translateX(0%) translateY(-8px) rotate(-45deg);
-      }
+    &:is(:hover, .active) {
+      @include glass-bg();
+      @include line-active-color;
     }
 
     @media (hover: hover) {
-      &:not(.active):hover .trigger__line {
-        background-color: $gray-800;
+      &:hover:not(.active) {
+        .trigger__line {
+          &.first {
+            width: 100%;
+            transform: translateX(0);
+          }
 
+          &.second {
+            width: 50%;
+            transform: translateX(50%);
+          }
+
+          &.third {
+            width: 100%;
+            transform: translateX(0);
+          }
+        }
+      }
+    }
+
+    &.active {
+      .trigger__line {
         &.first {
           width: 100%;
-          transform: translateX(0%);
+          transform: translateX(0) translateY(8px) rotate(45deg);
         }
 
         &.second {
-          width: 50%;
-          transform: translateX(50%);
+          width: 10%;
+          transform: translateX(0) rotate(0);
         }
 
         &.third {
           width: 100%;
-          transform: translateX(0%);
+          transform: translateX(0) translateY(-8px) rotate(-45deg);
         }
       }
     }
 
-    // @media (max-width: $breakpoint-md) {
-    background-color: rgba($white, 0.1);
-    backdrop-filter: blur(50px);
-    // }
+    @media (max-width: $breakpoint-md) {
+      @include glass-bg(rgba($white, 0.9));
+    }
   }
 
   .menu__container {
