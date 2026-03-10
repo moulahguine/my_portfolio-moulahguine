@@ -37,8 +37,8 @@ function InteractiveMap() {
         opacity: 1,
       }
     : {
-        color: "#1e1f23",
-        fillColor: "#141518",
+        color: "#515256",
+        fillColor: "#6f7074",
         fillOpacity: 0.9,
         weight: 2,
         opacity: 0.95,

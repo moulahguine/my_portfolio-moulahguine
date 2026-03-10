@@ -21,13 +21,14 @@
       display: flex;
 
       .nav__link {
-        color: var(--gray-400);
+        color: var(--gray-500);
         font-size: clamp($font-size-12, 2vw, $font-size-16);
         padding: clamp($space-4, 1vw, $space-8);
         @include flex-center;
 
         @media (max-width: $breakpoint-md) {
           @include flex-column;
+          width: 80px;
         }
 
         .nav__link__inner {

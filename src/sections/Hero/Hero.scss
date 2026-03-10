@@ -210,7 +210,7 @@
       // Hero Resume Button
       .resume-btn-container {
         @include flex-center;
-        width: 150px;
+        width: 110px;
         background-color: transparent;
         border-radius: $radius-2xl;
         border: 1px solid var(--gray-700);
@@ -225,7 +225,7 @@
           gap: $space-8;
           width: inherit;
           padding: $space-4 $space-12 $space-4 $space-4;
-          background-color: var(--white);
+          background-color: var(--gray-700);
           text-decoration: none;
           transition: background-color 0.25s ease;
           border-radius: inherit;
@@ -237,8 +237,8 @@
             height: $space-32;
             flex-shrink: 0;
             border-radius: 50%;
-            background-color: var(--gray-700);
-            color: var(--gray-100);
+            background-color: var(--gray-100);
+            color: var(--gray-700);
             isolation: isolate;
           }
 
@@ -265,11 +265,11 @@
             inset: 0;
             border-radius: 50%;
             border: 1.5px solid
-              color-mix(in srgb, var(--gray-700) 95%, transparent);
+              color-mix(in srgb, var(--gray-100) 95%, transparent);
           }
 
           &__label {
-            color: var(--gray-700);
+            color: var(--gray-100);
             font-weight: $fw-bold;
             font-size: $font-size-14;
             text-transform: uppercase;

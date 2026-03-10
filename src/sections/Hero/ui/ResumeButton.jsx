@@ -45,8 +45,8 @@ export default function ResumeButton() {
       href={RESUME_URL}
       download
       className="resume-btn"
-      aria-label="Download my resume PDF"
-      title="Download my resume PDF"
+      aria-label="Download My Resume"
+      title="Download My Resume"
       onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -115,7 +115,7 @@ export default function ResumeButton() {
             exit={{ scale: 0.7, opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            Download CV
+            Resume
           </motion.span>
         ) : (
           <motion.span
