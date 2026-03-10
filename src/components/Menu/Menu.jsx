@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import {
-  HiOutlineEllipsisVertical,
   HiOutlineMoon,
   HiOutlineSun,
   HiOutlineChatBubbleLeftRight,
@@ -17,28 +16,17 @@ import SharePortfolio from "@/components/SharePortfolio/SharePortfolio";
 import "./Menu.scss";
 
 const STORAGE_THEME_KEY = "portfolio-theme";
-const STORAGE_LANG_KEY = "portfolio-lang";
 const DEFAULT_THEME = "dark";
-const DEFAULT_LANG = "en";
-
-const LANGUAGES = [
-  { code: "en", label: "EN" },
-  { code: "tr", label: "TR" },
-  { code: "ar", label: "AR" },
-];
 
 export default function Menu() {
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState(DEFAULT_THEME);
-  const [lang, setLang] = useState(DEFAULT_LANG);
   const panelRef = useRef(null);
   const triggerRef = useRef(null);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem(STORAGE_THEME_KEY) || DEFAULT_THEME;
-    const savedLang = localStorage.getItem(STORAGE_LANG_KEY) || DEFAULT_LANG;
     setTheme(savedTheme);
-    setLang(savedLang);
     document.documentElement.setAttribute("data-theme", savedTheme);
   }, []);
 
@@ -65,8 +53,6 @@ export default function Menu() {
     };
   }, [isOpen]);
 
-  const togglePanel = useCallback(() => setIsOpen((prev) => !prev), []);
-
   const switchTheme = useCallback(
     (newTheme) => {
       if (newTheme === theme) return;
@@ -77,82 +63,65 @@ export default function Menu() {
     [theme]
   );
 
-  const switchLang = useCallback(
-    (newLang) => {
-      if (newLang === lang) return;
-      setLang(newLang);
-      localStorage.setItem(STORAGE_LANG_KEY, newLang);
-    },
-    [lang]
-  );
-
+  // return menu component
   return (
-    <div className="quick-menu">
+    <div className="header__menu">
       <button
         ref={triggerRef}
         type="button"
-        className="quick-menu__trigger"
-        onClick={togglePanel}
+        className={`menu__trigger ${isOpen ? "active" : ""}`}
+        onClick={() => setIsOpen((prev) => !prev)}
         aria-label="Open menu"
         aria-expanded={isOpen}
       >
-        <CiMenuFries size={20} aria-hidden="true" />
+        <span className="trigger__line first"></span>
+        <span className="trigger__line second"></span>
+        <span className="trigger__line third"></span>
       </button>
 
       {isOpen && (
-        <div ref={panelRef} className="quick-menu__panel" role="dialog">
+        <div ref={panelRef} className="menu__container" role="dialog">
           {/* --- Theme --- */}
-          <div className="quick-menu__section">
-            <span className="quick-menu__label">Theme</span>
-            <div className="quick-menu__options">
+          <section className="theme__section">
+            {/* theme title */}
+            <h2 className="theme__title">Theme</h2>
+            {/* theme options */}
+            <div className="theme__options">
+              {/* theme option dark */}
               <button
                 type="button"
-                className={`quick-menu__option ${theme === "dark" ? "quick-menu__option--active" : ""}`}
+                className={`option dark ${theme === "dark" ? "option--active" : ""}`}
                 onClick={() => switchTheme("dark")}
               >
-                <HiOutlineMoon size={16} />
-                Dark
+                <HiOutlineMoon size={16} aria-hidden="true" />
+                <span className="name">Dark</span>
               </button>
+              {/* theme option light */}
               <button
                 type="button"
-                className={`quick-menu__option ${theme === "light" ? "quick-menu__option--active" : ""}`}
+                className={`option light ${theme === "light" ? "option--active" : ""}`}
                 onClick={() => switchTheme("light")}
               >
-                <HiOutlineSun size={16} />
-                Light
+                <HiOutlineSun size={16} aria-hidden="true" />
+                <span className="name">Light</span>
               </button>
             </div>
-          </div>
-
-          {/* --- Language --- */}
-          <div className="quick-menu__section">
-            <span className="quick-menu__label">Language</span>
-            <div className="quick-menu__options">
-              {LANGUAGES.map((l) => (
-                <button
-                  key={l.code}
-                  type="button"
-                  className={`quick-menu__option ${lang === l.code ? "quick-menu__option--active" : ""}`}
-                  onClick={() => switchLang(l.code)}
-                >
-                  {l.label}
-                </button>
-              ))}
-            </div>
-          </div>
+          </section>
 
           {/* --- Links --- */}
-          <div className="quick-menu__section quick-menu__section--border-top">
-            <span className="quick-menu__label">Quick Links</span>
-            <div className="quick-menu__links">
+          <section className="links__section">
+            {/* contact and share title */}
+            <h2 className="links__title"> contact and share</h2>
+            {/* contact and share links */}
+            <div className="links__options">
               <ConnectLinks
                 renderTrigger={({ open }) => (
                   <button
                     type="button"
-                    className="quick-menu__link-btn"
+                    className="social__link-btn"
                     onClick={open}
                   >
-                    <RxPerson size={16} />
+                    <RxPerson size={16} aria-hidden="true" />
                     Social Links
                   </button>
                 )}
@@ -161,24 +130,24 @@ export default function Menu() {
                 renderTrigger={({ open }) => (
                   <button
                     type="button"
-                    className="quick-menu__link-btn"
+                    className="share__link-btn"
                     onClick={open}
                   >
-                    <PiShareFatLight size={16} />
+                    <PiShareFatLight size={16} aria-hidden="true" />
                     Share Portfolio
                   </button>
                 )}
               />
               <Link
-                href="/#contact"
-                className="quick-menu__link-btn"
+                href="/contact"
+                className="contact__link-btn"
                 onClick={() => setIsOpen(false)}
               >
-                <HiOutlineChatBubbleLeftRight size={16} />
+                <HiOutlineChatBubbleLeftRight size={16} aria-hidden="true" />
                 Contact Me
               </Link>
             </div>
-          </div>
+          </section>
         </div>
       )}
     </div>

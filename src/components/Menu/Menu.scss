@@ -1,23 +1,84 @@
 @use "../../assets/styles" as *;
 
-.quick-menu {
-  position: relative;
+.header__menu {
   @include flex-center;
+  position: relative;
 
-  &__trigger {
-    @include flex-center;
+  .menu__trigger {
+    width: calc($space-32 + $space-4);
+    height: calc($space-32 + $space-4);
     background: none;
     border: none;
     cursor: pointer;
-    color: $gray-900 !important;
-    padding: $space-8;
+    padding: 0 $space-4;
     border-radius: $radius-md;
     transition: all 0.3s ease-in-out;
+    overflow: hidden;
+
+    .trigger__line {
+      display: block;
+      width: calc(100% - $space-4);
+      height: 1px;
+      background-color: $gray-500;
+      margin: calc($space-8 - 1px) auto;
+      transition: all 0.3s ease-in-out;
+
+      &.first {
+        width: 50%;
+        transform: translateX(-37%);
+      }
+
+      &.third {
+        width: 50%;
+        transform: translateX(37%);
+      }
+    }
+    &.active .trigger__line {
+      background-color: $gray-800;
+      &.first {
+        width: 100%;
+        transform: translateX(0%) translateY(8px) rotate(45deg);
+      }
+
+      &.second {
+        width: 10%;
+        transform: translateX(0%) translateY(0%) rotate(0deg);
+      }
+
+      &.third {
+        width: 100%;
+        transform: translateX(0%) translateY(-8px) rotate(-45deg);
+      }
+    }
+
+    @media (hover: hover) {
+      &:not(.active):hover .trigger__line {
+        background-color: $gray-800;
+
+        &.first {
+          width: 100%;
+          transform: translateX(0%);
+        }
+
+        &.second {
+          width: 50%;
+          transform: translateX(50%);
+        }
+
+        &.third {
+          width: 100%;
+          transform: translateX(0%);
+        }
+      }
+    }
+
+    // @media (max-width: $breakpoint-md) {
     background-color: rgba($white, 0.1);
     backdrop-filter: blur(50px);
+    // }
   }
 
-  &__panel {
+  .menu__container {
     position: absolute;
     top: calc(100% + $space-12);
     right: 0;
@@ -28,109 +89,5 @@
     border-radius: $radius-lg;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     z-index: $z-dropdown;
-    animation: quick-menu-slide-in 0.15s ease-out;
-
-    @media (max-width: $breakpoint-md) {
-      right: -$space-4;
-      min-width: 180px;
-    }
-  }
-
-  &__section {
-    padding: $space-8 0;
-
-    &--border-top {
-      border-top: 1px solid var(--theme-border);
-      margin-top: $space-4;
-      padding-top: $space-12;
-    }
-  }
-
-  &__label {
-    display: block;
-    font-size: $font-size-10;
-    font-weight: $fw-bold;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--theme-text-muted);
-    margin-bottom: $space-8;
-  }
-
-  &__options {
-    display: flex;
-    gap: $space-4;
-  }
-
-  &__option {
-    @include flex-center;
-    gap: $space-4;
-    flex: 1;
-    padding: $space-4 $space-8;
-    font-size: $font-size-12;
-    font-weight: $fw-medium;
-    font-family: inherit;
-    border: 1px solid var(--theme-border);
-    border-radius: $radius-md;
-    background-color: transparent;
-    color: var(--theme-text-muted);
-    cursor: pointer;
-    transition: all $transition-fast;
-    white-space: nowrap;
-
-    &:hover {
-      border-color: var(--theme-text-muted);
-      color: var(--theme-text);
-    }
-
-    &--active {
-      background-color: var(--theme-accent);
-      border-color: var(--theme-accent);
-      color: var(--theme-bg);
-
-      &:hover {
-        background-color: var(--theme-accent-hover);
-        border-color: var(--theme-accent-hover);
-        color: var(--theme-bg);
-      }
-    }
-  }
-
-  &__links {
-    display: flex;
-    flex-direction: column;
-    gap: $space-4;
-  }
-
-  &__link-btn {
-    display: flex;
-    align-items: center;
-    gap: $space-8;
-    width: 100%;
-    padding: $space-8;
-    font-size: $font-size-12;
-    font-weight: $fw-medium;
-    font-family: inherit;
-    color: var(--theme-text);
-    background: none;
-    border: none;
-    border-radius: $radius-md;
-    cursor: pointer;
-    transition: background-color $transition-fast;
-    text-decoration: none;
-
-    &:hover {
-      background-color: var(--theme-surface-hover);
-    }
-  }
-}
-
-@keyframes quick-menu-slide-in {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
