@@ -2,6 +2,7 @@
 
 import React, { useMemo } from "react";
 import { MapContainer, TileLayer, CircleMarker } from "react-leaflet";
+import { useTheme } from "next-themes";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -14,11 +15,34 @@ L.Icon.Default.mergeOptions({
 });
 
 function InteractiveMap() {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme !== "light";
+
   // Center point between Turkey and Morocco to show both countries
   const mapCenter = useMemo(() => [41.0082, 28.9784], []);
 
   // Coordinates
   const istanbul = useMemo(() => [41.0082, 28.9784], []);
+
+  const tileUrl = isDark
+    ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+    : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
+
+  const markerStyle = isDark
+    ? {
+        color: "#f3f3f4",
+        fillColor: "#ffffff",
+        fillOpacity: 0.95,
+        weight: 2,
+        opacity: 1,
+      }
+    : {
+        color: "#1e1f23",
+        fillColor: "#141518",
+        fillOpacity: 0.9,
+        weight: 2,
+        opacity: 0.95,
+      };
 
   return (
     <div className="interactive-map-container">
@@ -32,26 +56,17 @@ function InteractiveMap() {
         dragging={true}
         touchZoom={true}
       >
-        {/* style tile layer - Light */}
+        {/* style tile layer */}
         <TileLayer
+          key={tileUrl}
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+          url={tileUrl}
           subdomains="abcd"
           maxZoom={63}
         />
 
         {/* Location Dots for Istanbul and Morocco */}
-        <CircleMarker
-          center={istanbul}
-          radius={6}
-          pathOptions={{
-            color: "#3b82f6",
-            fillColor: "#60a5fa",
-            fillOpacity: 0.8,
-            weight: 2,
-            opacity: 0.9,
-          }}
-        />
+        <CircleMarker center={istanbul} radius={6} pathOptions={markerStyle} />
       </MapContainer>
     </div>
   );

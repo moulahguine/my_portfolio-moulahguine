@@ -6,7 +6,7 @@ $menu-transition: 0.3s ease-in-out;
 // line active color
 @mixin line-active-color {
   .trigger__line {
-    background-color: var(--gray-800);
+    background-color: var(--black);
   }
 }
 
@@ -52,7 +52,7 @@ $menu-transition: 0.3s ease-in-out;
     }
 
     &:is(:hover, .active) {
-      @include glass-bg();
+      @include glass-bg(color-mix(in srgb, $white 10%, transparent));
       @include line-active-color;
     }
 
@@ -60,17 +60,17 @@ $menu-transition: 0.3s ease-in-out;
       &:hover:not(.active) {
         .trigger__line {
           &.first {
-            width: 100%;
+            width: 80%;
             transform: translateX(0);
           }
 
           &.second {
             width: 50%;
-            transform: translateX(50%);
+            transform: translateX(30%);
           }
 
           &.third {
-            width: 100%;
+            width: 80%;
             transform: translateX(0);
           }
         }
@@ -80,7 +80,7 @@ $menu-transition: 0.3s ease-in-out;
     &.active {
       .trigger__line {
         &.first {
-          width: 100%;
+          width: 80%;
           transform: translateX(0) translateY(8px) rotate(45deg);
         }
 
@@ -90,14 +90,14 @@ $menu-transition: 0.3s ease-in-out;
         }
 
         &.third {
-          width: 100%;
+          width: 80%;
           transform: translateX(0) translateY(-8px) rotate(-45deg);
         }
       }
     }
 
     @media (max-width: $breakpoint-md) {
-      @include glass-bg(color-mix(in srgb, var(--white) 90%, transparent));
+      @include glass-bg(color-mix(in srgb, $white 10%, transparent));
     }
   }
 
@@ -107,11 +107,13 @@ $menu-transition: 0.3s ease-in-out;
     right: 0;
     min-width: 200px;
     padding: $space-12;
-    background-color: var(--white);
-    border: 1px solid var(--gray-300);
+    background-color: color-mix(in srgb, var(--white) 35%, transparent);
+    backdrop-filter: blur(50px);
+    // -webkit-backdrop-filter: blur(50px);
+    border: 1px solid var(--gray-100);
     border-radius: $radius-md;
-    box-shadow: 0 0 $space-8
-      color-mix(in srgb, var(--gray-800) 20%, transparent);
+    // box-shadow: 0 0 $space-8
+    //   color-mix(in srgb, var(--gray-800) 20%, transparent);
     z-index: $z-dropdown;
 
     .menu__section {
@@ -119,6 +121,7 @@ $menu-transition: 0.3s ease-in-out;
         font-size: $font-size-16;
         font-weight: $fw-bold;
         color: var(--gray-800);
+        margin-top: $space-4;
         margin-bottom: $space-4;
       }
     }
@@ -132,7 +135,7 @@ $menu-transition: 0.3s ease-in-out;
         .option {
           @include flex-center;
           gap: $space-4;
-          padding: $space-4;
+          padding: $space-4 $space-12;
           border-radius: $radius-md;
           background-color: var(--white);
           border: 1px solid var(--gray-500);
@@ -154,6 +157,25 @@ $menu-transition: 0.3s ease-in-out;
               color: var(--white);
             }
           }
+        }
+      }
+    }
+
+    .links__section {
+      .link__options {
+        @include flex-column;
+        gap: $space-4;
+
+        .link-btn {
+          @include flex-center;
+          justify-content: start;
+          gap: $space-4;
+          padding: $space-4 $space-12 $space-4 $space-4;
+          border-radius: $radius-md;
+          background-color: var(--white);
+          border: none;
+          outline: none;
+          cursor: pointer;
         }
       }
     }

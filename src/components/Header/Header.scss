@@ -41,8 +41,7 @@
     }
 
     @media (max-width: $breakpoint-md) {
-      background-color: color-mix(in srgb, var(--white) 50%, transparent);
-      backdrop-filter: blur(5px);
+      @include glass-bg(color-mix(in srgb, $white 5%, transparent));
       border-radius: 50%;
     }
   }

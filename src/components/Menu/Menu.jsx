@@ -125,12 +125,12 @@ export default function Menu() {
           <section className="links__section menu__section">
             <h2 className="links__title menu__title">Contact & Share</h2>
 
-            <div className="links__options">
+            <div className="link__options">
               <ConnectLinks
                 renderTrigger={({ open }) => (
                   <button
                     type="button"
-                    className="social__link-btn"
+                    className="social link-btn"
                     onClick={open}
                   >
                     <RxPerson size={16} aria-hidden="true" />
@@ -143,7 +143,7 @@ export default function Menu() {
                 renderTrigger={({ open }) => (
                   <button
                     type="button"
-                    className="share__link-btn"
+                    className="share link-btn"
                     onClick={open}
                   >
                     <PiShareFatLight size={16} aria-hidden="true" />
@@ -154,7 +154,7 @@ export default function Menu() {
 
               <Link
                 href="/contact"
-                className="contact__link-btn"
+                className="contact link-btn"
                 onClick={() => setIsOpen(false)}
               >
                 <HiOutlineChatBubbleLeftRight size={16} aria-hidden="true" />
