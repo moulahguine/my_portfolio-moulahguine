@@ -3,9 +3,7 @@ import HeroMedia from "./ui/HeroMedia";
 import ResumeButton from "./ui/ResumeButton";
 // Icons
 import VerifiedBadge from "@/components/Icons/VerifiedBadge";
-import { PiMapPinLight, PiFilePdfDuotone } from "react-icons/pi";
-import { MdOutlineFileDownload } from "react-icons/md";
-import { CiCircleChevDown } from "react-icons/ci";
+import { PiMapPinLight } from "react-icons/pi";
 
 // Styles
 import "./Hero.scss";
