@@ -5,13 +5,13 @@ $menu-transition: 0.3s ease-in-out;
 
 // line active color
 @mixin line-active-color {
-  .trigger__line {
+  .menu__trigger-line {
     background-color: var(--black);
   }
 }
 
 // menu styles
-.header__menu {
+.menu {
   @include flex-center;
   position: relative;
 
@@ -29,7 +29,7 @@ $menu-transition: 0.3s ease-in-out;
       background-color $menu-transition,
       backdrop-filter $menu-transition;
 
-    .trigger__line {
+    .menu__trigger-line {
       display: block;
       width: calc(100% - $space-4);
       height: 1px;
@@ -40,36 +40,37 @@ $menu-transition: 0.3s ease-in-out;
         transform $menu-transition,
         background-color $menu-transition;
 
-      &.first {
+      &--first {
         width: 50%;
         transform: translateX(-37%);
       }
 
-      &.third {
+      &--third {
         width: 50%;
         transform: translateX(37%);
       }
     }
 
-    &:is(:hover, .active) {
+    &:hover,
+    &--active {
       @include glass-bg(color-mix(in srgb, $white 10%, transparent));
       @include line-active-color;
     }
 
     @media (hover: hover) {
-      &:hover:not(.active) {
-        .trigger__line {
-          &.first {
+      &:hover:not(.menu__trigger--active) {
+        .menu__trigger-line {
+          &--first {
             width: 80%;
             transform: translateX(0);
           }
 
-          &.second {
+          &--second {
             width: 50%;
             transform: translateX(30%);
           }
 
-          &.third {
+          &--third {
             width: 80%;
             transform: translateX(0);
           }
@@ -77,19 +78,19 @@ $menu-transition: 0.3s ease-in-out;
       }
     }
 
-    &.active {
-      .trigger__line {
-        &.first {
+    &--active {
+      .menu__trigger-line {
+        &--first {
           width: 80%;
           transform: translateX(0) translateY(8px) rotate(45deg);
         }
 
-        &.second {
+        &--second {
           width: 0%;
           transform: translateX(0) rotate(0);
         }
 
-        &.third {
+        &--third {
           width: 80%;
           transform: translateX(0) translateY(-8px) rotate(-45deg);
         }
@@ -101,7 +102,7 @@ $menu-transition: 0.3s ease-in-out;
     }
   }
 
-  .menu__container {
+  .menu__panel {
     @include flex-column;
     gap: $space-16;
     position: absolute;
@@ -117,7 +118,7 @@ $menu-transition: 0.3s ease-in-out;
     z-index: $z-dropdown;
 
     .menu__section {
-      .menu__title {
+      .menu__section-title {
         font-size: $font-size-16;
         font-weight: $fw-bold;
         color: var(--gray-800);
@@ -126,69 +127,65 @@ $menu-transition: 0.3s ease-in-out;
       }
     }
 
-    .theme__section {
-      .theme__options {
-        @include flex-center;
-        justify-content: start;
-        gap: $space-4;
+    .menu__theme-options {
+      @include flex-center;
+      justify-content: start;
+      gap: $space-4;
+    }
 
-        .option {
-          @include flex-center;
-          gap: $space-4;
-          padding: $space-4 $space-12;
-          border-radius: $radius-md;
-          background-color: var(--white);
-          border: 1px solid var(--gray-500);
-          cursor: pointer;
-          opacity: 0.3;
-          transition: opacity 0.3s ease-in-out;
+    .menu__theme-btn {
+      @include flex-center;
+      gap: $space-4;
+      padding: $space-4 $space-12;
+      border-radius: $radius-md;
+      background-color: var(--white);
+      border: 1px solid var(--gray-500);
+      cursor: pointer;
+      opacity: 0.3;
+      transition: opacity 0.3s ease-in-out;
 
-          .name,
-          svg {
-            font-size: $font-size-16;
-            font-weight: $fw-bold;
-            color: var(--gray-800);
-          }
+      .menu__theme-label,
+      svg {
+        font-size: $font-size-16;
+        font-weight: $fw-bold;
+        color: var(--gray-800);
+      }
 
-          &:hover {
-            opacity: 0.7;
-          }
+      &:hover {
+        opacity: 0.7;
+      }
 
-          &.active {
-            opacity: 1;
-            background-color: var(--gray-800);
-            border-color: var(--gray-100);
+      &--active {
+        opacity: 1;
+        background-color: var(--gray-800);
+        border-color: var(--gray-100);
 
-            .name,
-            svg {
-              color: var(--white);
-            }
-          }
+        .menu__theme-label,
+        svg {
+          color: var(--white);
         }
       }
     }
 
-    .links__section {
-      .link__options {
-        @include flex-column;
-        gap: $space-4;
+    .menu__links {
+      @include flex-column;
+      gap: $space-4;
+    }
 
-        .link-btn {
-          @include flex-center;
-          justify-content: start;
-          gap: $space-4;
-          padding: $space-8 $space-12;
-          border-radius: $radius-md;
-          background-color: transparent;
-          border: none;
-          outline: none;
-          cursor: pointer;
-          transition: background-color 0.3s ease-in-out;
+    .menu__link-btn {
+      @include flex-center;
+      justify-content: start;
+      gap: $space-4;
+      padding: $space-8 $space-12;
+      border-radius: $radius-md;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
 
-          &:hover {
-            background-color: var(--gray-200);
-          }
-        }
+      &:hover {
+        background-color: var(--gray-200);
       }
     }
   }

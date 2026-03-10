@@ -31,6 +31,12 @@ export default function Menu() {
 
     function handlePointerDown(event) {
       const target = event.target;
+      const targetElement = target instanceof Element ? target : null;
+
+      const clickedInsideModal = targetElement?.closest(
+        ".modal__overlay, .modal__container"
+      );
+      if (clickedInsideModal) return;
 
       const clickedInsidePanel =
         panelRef.current && panelRef.current.contains(target);
@@ -66,36 +72,36 @@ export default function Menu() {
   };
 
   return (
-    <div className="header__menu">
+    <div className="menu">
       <button
         ref={triggerRef}
         type="button"
-        className={`menu__trigger ${isOpen ? "active" : ""}`}
+        className={`menu__trigger ${isOpen ? "menu__trigger--active" : ""}`}
         onClick={() => setIsOpen((prev) => !prev)}
         aria-label={isOpen ? "Close menu" : "Open menu"}
         aria-expanded={isOpen}
         aria-haspopup="dialog"
       >
-        <span className="trigger__line first"></span>
-        <span className="trigger__line second"></span>
-        <span className="trigger__line third"></span>
+        <span className="menu__trigger-line menu__trigger-line--first"></span>
+        <span className="menu__trigger-line menu__trigger-line--second"></span>
+        <span className="menu__trigger-line menu__trigger-line--third"></span>
       </button>
 
       {isOpen && (
         <div
           ref={panelRef}
-          className="menu__container"
+          className="menu__panel"
           role="dialog"
           aria-modal="false"
         >
-          <section className="theme__section menu__section">
-            <h2 className="theme__title menu__title">Theme</h2>
+          <section className="menu__section">
+            <h2 className="menu__section-title">Theme</h2>
 
-            <div className="theme__options">
+            <div className="menu__theme-options">
               <button
                 type="button"
-                className={`option dark ${
-                  currentTheme === "dark" ? "active" : ""
+                className={`menu__theme-btn ${
+                  currentTheme === "dark" ? "menu__theme-btn--active" : ""
                 }`}
                 onClick={() => {
                   switchTheme("dark");
@@ -103,13 +109,13 @@ export default function Menu() {
                 }}
               >
                 <HiOutlineMoon size={16} aria-hidden="true" />
-                <span className="name">Dark</span>
+                <span className="menu__theme-label">Dark</span>
               </button>
 
               <button
                 type="button"
-                className={`option light ${
-                  currentTheme === "light" ? "active" : ""
+                className={`menu__theme-btn ${
+                  currentTheme === "light" ? "menu__theme-btn--active" : ""
                 }`}
                 onClick={() => {
                   switchTheme("light");
@@ -117,20 +123,20 @@ export default function Menu() {
                 }}
               >
                 <HiOutlineSun size={16} aria-hidden="true" />
-                <span className="name">Light</span>
+                <span className="menu__theme-label">Light</span>
               </button>
             </div>
           </section>
 
-          <section className="links__section menu__section">
-            <h2 className="links__title menu__title">Contact & Share</h2>
+          <section className="menu__section">
+            <h2 className="menu__section-title">Contact & Share</h2>
 
-            <div className="link__options">
+            <div className="menu__links">
               <ConnectLinks
                 renderTrigger={({ open }) => (
                   <button
                     type="button"
-                    className="social link-btn"
+                    className="menu__link-btn menu__link-btn--social"
                     onClick={open}
                   >
                     <RxPerson size={16} aria-hidden="true" />
@@ -143,7 +149,7 @@ export default function Menu() {
                 renderTrigger={({ open }) => (
                   <button
                     type="button"
-                    className="share link-btn"
+                    className="menu__link-btn menu__link-btn--share"
                     onClick={open}
                   >
                     <PiShareFatLight size={16} aria-hidden="true" />
@@ -154,7 +160,7 @@ export default function Menu() {
 
               <Link
                 href="/contact"
-                className="contact link-btn"
+                className="menu__link-btn menu__link-btn--contact"
                 onClick={() => setIsOpen(false)}
               >
                 <HiOutlineChatBubbleLeftRight size={16} aria-hidden="true" />

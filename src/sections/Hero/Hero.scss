@@ -169,7 +169,7 @@
             align-items: center;
             gap: $space-4;
             font-size: $font-size-24;
-            color: var(--gray-700);
+            color: var(--gray-900);
             text-wrap: nowrap;
             margin-bottom: -$space-4;
 
@@ -181,7 +181,7 @@
 
           .hero__role {
             font-size: calc($font-size-14 - 1px);
-            color: var(--gray-600);
+            color: var(--gray-700);
 
             span {
               color: var(--gray-500);
@@ -190,7 +190,7 @@
 
           .hero__location {
             font-size: $font-size-12;
-            color: var(--gray-500);
+            color: var(--gray-600);
             font-weight: $fw-medium;
           }
 
@@ -265,7 +265,7 @@
             inset: 0;
             border-radius: 50%;
             border: 1.5px solid
-              color-mix(in srgb, var(--gray-100) 95%, transparent);
+              color-mix(in srgb, var(--gray-900) 95%, transparent);
           }
 
           &__label {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef } from "react";
+import { useTheme } from "next-themes";
 import { Modal, DefaultContent } from "@/components";
 import { QRCodeSVG } from "qrcode.react";
 import { PiShareFatLight } from "react-icons/pi";
@@ -10,6 +11,7 @@ import "./SharePortfolio.scss";
 const CANONICAL_URL = "https://mohamedoulahguine.com";
 
 export default function SharePortfolio({ renderTrigger }) {
+  const { resolvedTheme } = useTheme();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
   const cardRef = useRef(null);
@@ -39,9 +41,9 @@ export default function SharePortfolio({ renderTrigger }) {
   }, []);
 
   const qrImageSrc =
-    typeof window !== "undefined"
-      ? `${window.location.origin}/favicon/android-chrome-512x512.png`
-      : "/favicon/android-chrome-512x512.png";
+    resolvedTheme === "light"
+      ? "/favicon/android-chrome-dark-512x512.png"
+      : "/favicon/android-chrome-dark-512x512.png";
 
   const open = () => setIsModalOpen(true);
 
