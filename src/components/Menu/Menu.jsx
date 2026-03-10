@@ -1,69 +1,70 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 import {
   HiOutlineMoon,
   HiOutlineSun,
   HiOutlineChatBubbleLeftRight,
 } from "react-icons/hi2";
-import { CiMenuFries } from "react-icons/ci";
-
 import { RxPerson } from "react-icons/rx";
 import { PiShareFatLight } from "react-icons/pi";
 import ConnectLinks from "@/components/ConnectLinks/ConnectLinks";
 import SharePortfolio from "@/components/SharePortfolio/SharePortfolio";
 import "./Menu.scss";
 
-const STORAGE_THEME_KEY = "portfolio-theme";
-const DEFAULT_THEME = "dark";
-
 export default function Menu() {
   const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState(DEFAULT_THEME);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
   const panelRef = useRef(null);
   const triggerRef = useRef(null);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem(STORAGE_THEME_KEY) || DEFAULT_THEME;
-    setTheme(savedTheme);
-    document.documentElement.setAttribute("data-theme", savedTheme);
+    setMounted(true);
   }, []);
 
   useEffect(() => {
     if (!isOpen) return;
-    function handleClickOutside(e) {
-      if (
-        panelRef.current &&
-        !panelRef.current.contains(e.target) &&
-        triggerRef.current &&
-        !triggerRef.current.contains(e.target)
-      ) {
+
+    function handlePointerDown(event) {
+      const target = event.target;
+
+      const clickedInsidePanel =
+        panelRef.current && panelRef.current.contains(target);
+
+      const clickedOnTrigger =
+        triggerRef.current && triggerRef.current.contains(target);
+
+      if (!clickedInsidePanel && !clickedOnTrigger) {
         setIsOpen(false);
       }
     }
-    function handleEscape(e) {
-      if (e.key === "Escape") setIsOpen(false);
+
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
     }
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleEscape);
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen]);
 
-  const switchTheme = useCallback(
-    (newTheme) => {
-      if (newTheme === theme) return;
-      setTheme(newTheme);
-      localStorage.setItem(STORAGE_THEME_KEY, newTheme);
-      document.documentElement.setAttribute("data-theme", newTheme);
-    },
-    [theme]
-  );
+  const currentTheme = theme || "dark";
 
-  // return menu component
+  const switchTheme = (newTheme) => {
+    if (!mounted || currentTheme === newTheme) return;
+    setTheme(newTheme);
+  };
+
   return (
     <div className="header__menu">
       <button
@@ -71,8 +72,9 @@ export default function Menu() {
         type="button"
         className={`menu__trigger ${isOpen ? "active" : ""}`}
         onClick={() => setIsOpen((prev) => !prev)}
-        aria-label="Open menu"
+        aria-label={isOpen ? "Close menu" : "Open menu"}
         aria-expanded={isOpen}
+        aria-haspopup="dialog"
       >
         <span className="trigger__line first"></span>
         <span className="trigger__line second"></span>
@@ -80,27 +82,39 @@ export default function Menu() {
       </button>
 
       {isOpen && (
-        <div ref={panelRef} className="menu__container" role="dialog">
-          {/* --- Theme --- */}
-          <section className="theme__section">
-            {/* theme title */}
-            <h2 className="theme__title">Theme</h2>
-            {/* theme options */}
+        <div
+          ref={panelRef}
+          className="menu__container"
+          role="dialog"
+          aria-modal="false"
+        >
+          <section className="theme__section menu__section">
+            <h2 className="theme__title menu__title">Theme</h2>
+
             <div className="theme__options">
-              {/* theme option dark */}
               <button
                 type="button"
-                className={`option dark ${theme === "dark" ? "option--active" : ""}`}
-                onClick={() => switchTheme("dark")}
+                className={`option dark ${
+                  currentTheme === "dark" ? "active" : ""
+                }`}
+                onClick={() => {
+                  switchTheme("dark");
+                  setIsOpen(false);
+                }}
               >
                 <HiOutlineMoon size={16} aria-hidden="true" />
                 <span className="name">Dark</span>
               </button>
-              {/* theme option light */}
+
               <button
                 type="button"
-                className={`option light ${theme === "light" ? "option--active" : ""}`}
-                onClick={() => switchTheme("light")}
+                className={`option light ${
+                  currentTheme === "light" ? "active" : ""
+                }`}
+                onClick={() => {
+                  switchTheme("light");
+                  setIsOpen(false);
+                }}
               >
                 <HiOutlineSun size={16} aria-hidden="true" />
                 <span className="name">Light</span>
@@ -108,11 +122,9 @@ export default function Menu() {
             </div>
           </section>
 
-          {/* --- Links --- */}
-          <section className="links__section">
-            {/* contact and share title */}
-            <h2 className="links__title"> contact and share</h2>
-            {/* contact and share links */}
+          <section className="links__section menu__section">
+            <h2 className="links__title menu__title">Contact & Share</h2>
+
             <div className="links__options">
               <ConnectLinks
                 renderTrigger={({ open }) => (
@@ -126,6 +138,7 @@ export default function Menu() {
                   </button>
                 )}
               />
+
               <SharePortfolio
                 renderTrigger={({ open }) => (
                   <button
@@ -138,6 +151,7 @@ export default function Menu() {
                   </button>
                 )}
               />
+
               <Link
                 href="/contact"
                 className="contact__link-btn"

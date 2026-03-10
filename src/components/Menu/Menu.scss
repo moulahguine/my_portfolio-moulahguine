@@ -6,7 +6,7 @@ $menu-transition: 0.3s ease-in-out;
 // line active color
 @mixin line-active-color {
   .trigger__line {
-    background-color: $gray-800;
+    background-color: var(--gray-800);
   }
 }
 
@@ -34,7 +34,7 @@ $menu-transition: 0.3s ease-in-out;
       width: calc(100% - $space-4);
       height: 1px;
       margin: calc($space-8 - 1px) auto;
-      background-color: $gray-500;
+      background-color: var(--gray-500);
       transition:
         width $menu-transition,
         transform $menu-transition,
@@ -97,20 +97,65 @@ $menu-transition: 0.3s ease-in-out;
     }
 
     @media (max-width: $breakpoint-md) {
-      @include glass-bg(rgba($white, 0.9));
+      @include glass-bg(color-mix(in srgb, var(--white) 90%, transparent));
     }
   }
 
   .menu__container {
     position: absolute;
-    top: calc(100% + $space-12);
+    top: calc(100% + $space-4);
     right: 0;
     min-width: 200px;
     padding: $space-12;
-    background-color: var(--theme-surface);
-    border: 1px solid var(--theme-border);
-    border-radius: $radius-lg;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    background-color: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: $radius-md;
+    box-shadow: 0 0 $space-8
+      color-mix(in srgb, var(--gray-800) 20%, transparent);
     z-index: $z-dropdown;
+
+    .menu__section {
+      .menu__title {
+        font-size: $font-size-16;
+        font-weight: $fw-bold;
+        color: var(--gray-800);
+        margin-bottom: $space-4;
+      }
+    }
+
+    .theme__section {
+      .theme__options {
+        @include flex-center;
+        justify-content: start;
+        gap: $space-4;
+
+        .option {
+          @include flex-center;
+          gap: $space-4;
+          padding: $space-4;
+          border-radius: $radius-md;
+          background-color: var(--white);
+          border: 1px solid var(--gray-500);
+          cursor: pointer;
+
+          .name,
+          svg {
+            font-size: $font-size-16;
+            font-weight: $fw-bold;
+            color: var(--gray-800);
+          }
+
+          &.active {
+            background-color: var(--gray-800);
+            border-color: var(--gray-100);
+
+            .name,
+            svg {
+              color: var(--white);
+            }
+          }
+        }
+      }
+    }
   }
 }

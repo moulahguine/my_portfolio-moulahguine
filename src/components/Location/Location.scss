@@ -11,12 +11,12 @@
     transform: translateY(-1px);
 
     p {
-      color: $gray-700;
+      color: var(--gray-700);
     }
   }
 
   p {
-    color: $gray-500;
+    color: var(--gray-500);
     font-size: $font-size-14;
   }
 }

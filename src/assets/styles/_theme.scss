@@ -1,42 +1,39 @@
 @use "variables" as *;
 
-// =============================================
-//  Global Theme — CSS Custom Properties
-//  Toggle by setting data-theme on <html>.
-//  Default = dark.
-// =============================================
-
 // --- Dark theme (default) ---
 :root,
-html[data-theme="dark"] {
-  --theme-bg: #{$gray-900};
-  --theme-bg-muted: #{$gray-800};
-  --theme-surface: #{$gray-800};
-  --theme-surface-hover: #{$gray-700};
-  --theme-border: #{$gray-600};
-  --theme-text: #{$gray-100};
-  --theme-text-muted: #{$gray-400};
-  --theme-accent: #{$white};
-  --theme-accent-hover: #{$gray-200};
-  --theme-overlay: #{rgba($black, 0.6)};
-  --theme-selection-bg: #{$gray-700};
-  --theme-selection-text: #{$white};
-  --theme-logo-filter: invert(1) brightness(1.2) contrast(1.05);
+html[data-theme="light"] {
+  --black: #{$black};
+  --white: #{$white};
+
+  --gray-950: #{$gray-950};
+  --gray-900: #{$gray-900};
+  --gray-800: #{$gray-800};
+  --gray-700: #{$gray-700};
+  --gray-600: #{$gray-600};
+  --gray-500: #{$gray-500};
+  --gray-400: #{$gray-400};
+  --gray-300: #{$gray-300};
+  --gray-200: #{$gray-200};
+  --gray-100: #{$gray-100};
+  --gray-50: #{$gray-50};
 }
 
 // --- Light theme ---
-html[data-theme="light"] {
-  --theme-bg: #{$white};
-  --theme-bg-muted: #{$gray-100};
-  --theme-surface: #{$white};
-  --theme-surface-hover: #{$gray-100};
-  --theme-border: #{$gray-200};
-  --theme-text: #{$gray-800};
-  --theme-text-muted: #{$gray-500};
-  --theme-accent: #{$gray-800};
-  --theme-accent-hover: #{$gray-700};
-  --theme-overlay: #{rgba($gray-600, 0.5)};
-  --theme-selection-bg: #{$gray-800};
-  --theme-selection-text: #{$white};
-  --theme-logo-filter: none;
+html[data-theme="dark"] {
+  --black: #{$white};
+  --white: #{$black};
+
+  --gray-950: #{$gray-50};
+  --gray-900: #{$gray-100};
+  --gray-800: #{$gray-200};
+  --gray-700: #{$gray-300};
+  --gray-600: #{$gray-400};
+  --gray-500: #{$gray-500};
+  --gray-400: #{$gray-600};
+  --gray-300: #{$gray-700};
+  --gray-200: #{$gray-800};
+  --gray-100: #{$gray-900};
+  --gray-50: #{$gray-950};
+  --theme-logo-filter: invert(1) brightness(1.2) contrast(1.2);
 }

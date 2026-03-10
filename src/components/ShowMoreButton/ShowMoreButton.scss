@@ -4,6 +4,6 @@
   @include next-button-style;
   font-size: $font-size-12;
   font-weight: $fw-medium;
-  color: $gray-600;
+  color: var(--gray-600);
   text-transform: capitalize;
 }

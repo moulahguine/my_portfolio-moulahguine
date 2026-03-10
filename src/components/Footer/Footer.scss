@@ -1,8 +1,8 @@
 @use "../../assets/styles" as *;
 
 .footer {
-  background: $white;
-  border-top: 1px solid $gray-200;
+  background: var(--white);
+  border-top: 1px solid var(--gray-200);
 
   .footer__container {
     @include container;
@@ -30,21 +30,21 @@
 
   .footer__copyright {
     font-size: $font-size-14;
-    color: $gray-500;
+    color: var(--gray-500);
   }
 
   .footer__divider {
-    color: $gray-300;
+    color: var(--gray-300);
   }
 
   .footer__link {
     font-size: $font-size-14;
-    color: $gray-500;
+    color: var(--gray-500);
     text-decoration: none;
     transition: color 0.2s ease;
 
     &:hover {
-      color: $gray-900;
+      color: var(--gray-900);
     }
   }
 
@@ -59,12 +59,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $gray-500;
+    color: var(--gray-500);
     font-size: $font-size-20;
     transition: color 0.2s ease;
 
     &:hover {
-      color: $gray-900;
+      color: var(--gray-900);
     }
   }
 }

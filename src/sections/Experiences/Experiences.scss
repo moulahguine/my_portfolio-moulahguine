@@ -30,7 +30,7 @@
       gap: clamp($space-4, 2vw, $space-8);
       margin: clamp($space-8, 2vw, $space-16) 0;
       padding: $space-4;
-      background-color: $gray-100;
+      background-color: var(--gray-100);
       border-radius: $radius-md;
       width: 100%;
 
@@ -43,7 +43,7 @@
         height: calc(100% - #{$space-8});
         border-radius: $radius-md;
         transform: translateX(calc(var(--active-index) * 100%));
-        background-color: $white;
+        background-color: var(--white);
         transition: all 0.3s ease-in-out;
         z-index: 0;
 
@@ -62,7 +62,7 @@
         padding: clamp($space-4, 2vw, $space-8) 0;
         font-size: clamp($font-size-12, 2vw, $font-size-14);
         font-weight: $fw-medium;
-        color: $gray-400;
+        color: var(--gray-400);
         background: transparent;
         border: none;
         border-radius: $radius-md;
@@ -77,7 +77,7 @@
         }
 
         &.active {
-          color: $gray-700;
+          color: var(--gray-700);
           font-weight: $fw-semibold;
 
           svg {
@@ -101,7 +101,7 @@
 
           &.active {
             flex: 1 1 100%;
-            background-color: $white;
+            background-color: var(--white);
             padding-left: $space-12;
             padding-right: $space-12;
 
@@ -137,7 +137,7 @@
         display: flex;
         align-items: center;
         padding: $space-16 $space-8;
-        border-bottom: 1px solid $gray-200;
+        border-bottom: 1px solid var(--gray-200);
 
         &:last-child {
           border-bottom: none;
@@ -147,12 +147,12 @@
           flex: 1;
           font-size: clamp($font-size-14, 2vw, $font-size-16);
           font-weight: $fw-medium;
-          color: $gray-700;
+          color: var(--gray-700);
         }
 
         .level {
           font-size: clamp($font-size-12, 2vw, $font-size-14);
-          color: $gray-500;
+          color: var(--gray-500);
           margin-right: $space-16;
         }
 
@@ -171,7 +171,7 @@
 
     // Hire me card (work empty state)
     .hire-me {
-      background-color: $gray-50;
+      background-color: var(--gray-50);
       border-radius: $radius-lg;
       padding: clamp($space-16, 2vw, $space-24) clamp($space-24, 2vw, $space-32);
       overflow: hidden;
@@ -193,8 +193,8 @@
           font-weight: $fw-bold;
           line-height: $line-height-tight;
           width: clamp(300px, 60vw, 500px);
-          text-shadow: 0 0 1px $white;
-          -webkit-text-stroke: 1px $gray-900;
+          text-shadow: 0 0 1px var(--white);
+          -webkit-text-stroke: 1px var(--gray-900);
           -webkit-text-fill-color: transparent;
         }
 
@@ -203,9 +203,9 @@
           width: fit-content;
           gap: $space-4;
           outline: none;
-          border: 2px solid $gray-50;
-          background-color: $gray-700;
-          color: $white;
+          border: 2px solid var(--gray-50);
+          background-color: var(--gray-700);
+          color: var(--white);
           padding: clamp($space-4, 2vw, $space-8)
             clamp($space-18, 2vw, $space-24);
 
@@ -220,7 +220,7 @@
           }
 
           &:hover {
-            background-color: $gray-800;
+            background-color: var(--gray-800);
 
             svg {
               translate: 3px;
@@ -255,7 +255,7 @@
       @include flex-column;
       justify-content: center;
       text-align: center;
-      color: $gray-500;
+      color: var(--gray-500);
       font-size: clamp($font-size-12, 2vw, $font-size-14);
       padding: $space-32 0;
     }

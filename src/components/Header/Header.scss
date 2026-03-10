@@ -5,7 +5,7 @@
   padding: $space-8 0;
   position: sticky;
   top: 0;
-  background-color: rgba($white, 0.7);
+  background-color: color-mix(in srgb, var(--white) 70%, transparent);
   backdrop-filter: blur(50px);
   z-index: $z-header;
 
@@ -41,7 +41,7 @@
     }
 
     @media (max-width: $breakpoint-md) {
-      background-color: rgba($white, 0.5);
+      background-color: color-mix(in srgb, var(--white) 50%, transparent);
       backdrop-filter: blur(5px);
       border-radius: 50%;
     }
@@ -58,8 +58,8 @@
     bottom: $space-8;
     left: 50%;
     transform: translateX(-50%);
-    background-color: $gray-800;
-    border: 1px solid $gray-200;
+    background-color: var(--gray-800);
+    border: 1px solid var(--gray-200);
     border-radius: $radius-xl;
     padding: 0 2px;
     z-index: $z-header;

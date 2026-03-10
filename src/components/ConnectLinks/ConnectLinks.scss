@@ -16,14 +16,14 @@
     gap: $space-8;
     padding: $space-16;
     border-radius: $radius-md;
-    background-color: $white;
-    border: 1px solid $gray-400;
+    background-color: var(--white);
+    border: 1px solid var(--gray-400);
     cursor: pointer;
     transition: all 0.2s ease;
 
     &:hover {
-      color: var(--hover-color, $gray-100);
-      border-color: var(--hover-color, $gray-300);
+      color: var(--hover-color, var(--gray-100));
+      border-color: var(--hover-color, var(--gray-300));
       transform: translateY(-2px);
 
       .social-link-icon {
@@ -31,19 +31,19 @@
       }
 
       .social-link-label {
-        color: $gray-500;
+        color: var(--gray-500);
       }
     }
 
     .social-link-icon {
-      color: $gray-600;
+      color: var(--gray-600);
       transition: color 0.2s ease;
     }
 
     .social-link-label {
       font-size: clamp($font-size-10, 1.4vw, $font-size-12);
       font-weight: $fw-medium;
-      color: $gray-600;
+      color: var(--gray-600);
       transition: color 0.2s ease;
     }
   }

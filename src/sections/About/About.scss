@@ -30,7 +30,7 @@
         font-size: $font-size-14;
         font-weight: $fw-regular;
         line-height: 1.8;
-        color: $gray-800;
+        color: var(--gray-800);
       }
     }
 
@@ -57,14 +57,14 @@
   border-radius: $radius-lg;
   overflow: hidden;
   cursor: pointer;
-  border: 1px solid $gray-200;
-  background-color: $gray-100;
+  border: 1px solid var(--gray-200);
+  background-color: var(--gray-100);
 
   // Subtle lift on hover
   transition: box-shadow 0.25s ease;
 
   &:hover {
-    box-shadow: 0 4px 20px rgba($black, 0.06);
+    box-shadow: 0 4px 20px color-mix(in srgb, var(--black) 6%, transparent);
 
     // Reveal play button more on hover
     .video-preview__play {
@@ -94,10 +94,10 @@
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    background-color: $white;
-    color: $gray-700;
-    border: 1px solid $gray-200;
-    box-shadow: 0 2px 10px rgba($black, 0.08);
+    background-color: var(--white);
+    color: var(--gray-700);
+    border: 1px solid var(--gray-200);
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--black) 8%, transparent);
     opacity: 0.9;
     transition: all 0.25s ease;
 

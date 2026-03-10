@@ -2,6 +2,7 @@ import { Comic_Neue } from "next/font/google";
 import { metadata as siteMetadata } from "./metadata";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import Providers from "./providers";
 import "../assets/styles/main.scss";
 
 const comicNeue = Comic_Neue({
@@ -15,7 +16,7 @@ export const metadata = siteMetadata;
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-theme="dark" className={comicNeue.variable}>
+    <html lang="en" className={comicNeue.variable} suppressHydrationWarning>
       <head>
         {/* Font Awesome */}
         <link
@@ -87,9 +88,11 @@ export default function RootLayout({ children }) {
           justifyContent: "space-between",
         }}
       >
-        <Header />
-        <main id="main-content">{children}</main>
-        <Footer />
+        <Providers>
+          <Header />
+          <main id="main-content">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

@@ -37,9 +37,9 @@
       background: linear-gradient(
         to bottom,
         transparent 0%,
-        rgba($white, 0.6) 20%,
-        rgba($white, 0.9) 60%,
-        $white 100%
+        color-mix(in srgb, var(--white) 60%, transparent) 20%,
+        color-mix(in srgb, var(--white) 90%, transparent) 60%,
+        var(--white) 100%
       );
       pointer-events: none;
       display: flex;
@@ -58,16 +58,16 @@
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        background-color: $white;
-        border: 1px solid $gray-200;
-        color: $gray-500;
+        background-color: var(--white);
+        border: 1px solid var(--gray-200);
+        color: var(--gray-500);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         animation: bounce 2s infinite;
         transition: all 0.3s ease;
 
         &:hover {
-          background-color: $gray-100;
-          color: $gray-700;
+          background-color: var(--gray-100);
+          color: var(--gray-700);
         }
 
         svg {
@@ -84,17 +84,17 @@
       gap: $space-4;
       margin: $space-16 auto 0;
       padding: $space-8 $space-16;
-      background-color: $white;
-      border: 1px solid $gray-200;
+      background-color: var(--white);
+      border: 1px solid var(--gray-200);
       border-radius: $radius-md;
-      color: $gray-500;
+      color: var(--gray-500);
       font-size: $font-size-14;
       cursor: pointer;
       transition: all 0.3s ease;
 
       &:hover {
-        background-color: $gray-100;
-        color: $gray-700;
+        background-color: var(--gray-100);
+        color: var(--gray-700);
       }
 
       svg {
@@ -123,8 +123,8 @@
         align-items: center;
         padding: $space-24 $space-8;
         border-radius: $radius-md;
-        border: solid 1px $gray-300;
-        background-color: $white;
+        border: solid 1px var(--gray-300);
+        background-color: var(--white);
         transition: all 0.3s ease-in-out;
         width: 130px;
         -webkit-user-select: none;
@@ -146,7 +146,7 @@
           svg {
             position: relative;
             transition: all 0.3s ease-in-out;
-            color: $gray-600 !important;
+            color: var(--gray-600) !important;
             z-index: $z-above;
           }
         }
@@ -156,7 +156,7 @@
           // name style
           margin-top: auto;
           font-weight: $fw-regular;
-          color: $gray-600;
+          color: var(--gray-600);
           font-size: $font-size-14;
           text-align: center;
 

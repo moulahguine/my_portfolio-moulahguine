@@ -7,7 +7,7 @@
   inset: 0;
   z-index: $z-modal;
   @include flex-center;
-  background: rgb($gray-600, 0.5);
+  background: color-mix(in srgb, var(--gray-600) 50%, transparent);
   backdrop-filter: blur(10px) saturate(100%);
   transition: opacity 0.2s ease;
   overflow: hidden;
@@ -21,9 +21,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: $gray-100;
+    background-color: var(--gray-100);
     border-radius: $radius-lg;
-    box-shadow: 0 0px 40px 0px rgb($gray-500, 0.8);
+    box-shadow: 0 0px 40px 0px color-mix(in srgb, var(--gray-500) 80%, transparent);
     width: min(#{$modal-width-fluid}, var(--modal-max-width));
     height: fit-content;
     max-height: var(--modal-max-height);
@@ -77,7 +77,7 @@
       &-title {
         font-size: $font-size-24;
         font-weight: $fw-bold;
-        color: $gray-400;
+        color: var(--gray-400);
         margin: 0;
       }
     }

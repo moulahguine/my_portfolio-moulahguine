@@ -15,7 +15,7 @@
     .hero__map {
       width: 100%;
       height: 250px;
-      background-color: $gray-100;
+      background-color: var(--gray-100);
       position: relative;
       z-index: $z-elevated;
       overflow: hidden;
@@ -34,7 +34,7 @@
         width: 100%;
         height: 30%;
         z-index: $z-above;
-        background: linear-gradient(to top, $white 15%, transparent 100%);
+        background: linear-gradient(to top, var(--white) 15%, transparent 100%);
         border-radius: inherit;
         pointer-events: none;
       }
@@ -48,7 +48,7 @@
         .leaflet-container {
           width: 100%;
           height: 100%;
-          background: #f8fafc;
+          background: var(--gray-100);
         }
 
         .leaflet-control-attribution {
@@ -61,9 +61,9 @@
       @include flex-center;
       width: 100%;
       height: 100%;
-      background-color: $gray-50;
+      background-color: var(--gray-50);
       border-radius: $radius-lg;
-      color: $gray-600;
+      color: var(--gray-600);
       position: absolute;
       top: 0;
       left: 0;
@@ -100,11 +100,11 @@
           margin-left: $space-12;
           border-radius: 50%;
           overflow: hidden;
-          border: $space-4 solid $white;
+          border: $space-4 solid var(--white);
           position: relative;
           z-index: $z-elevated;
           cursor: pointer;
-          background-color: $gray-100;
+          background-color: var(--gray-100);
 
           @media (max-width: $breakpoint-md) {
             --square-size: clamp(200px, 18vw, 300px);
@@ -126,13 +126,17 @@
             position: absolute;
             left: 0;
             top: 0;
-            background-color: rgba($gray-900, 0.2);
+            background-color: color-mix(
+              in srgb,
+              var(--gray-900) 20%,
+              transparent
+            );
             opacity: 1;
             opacity: 0;
             transition: all 0.5s ease-in-out;
 
             svg {
-              color: $gray-100;
+              color: var(--gray-100);
               transition: all 0.3s ease-in-out;
               transition-delay: 0.3s;
             }
@@ -165,7 +169,7 @@
             align-items: center;
             gap: $space-4;
             font-size: $font-size-24;
-            color: $gray-700;
+            color: var(--gray-700);
             text-wrap: nowrap;
             margin-bottom: -$space-4;
 
@@ -177,16 +181,16 @@
 
           .hero__role {
             font-size: calc($font-size-14 - 1px);
-            color: $gray-600;
+            color: var(--gray-600);
 
             span {
-              color: $gray-500;
+              color: var(--gray-500);
             }
           }
 
           .hero__location {
             font-size: $font-size-12;
-            color: $gray-500;
+            color: var(--gray-500);
             font-weight: $fw-medium;
           }
 
@@ -209,7 +213,7 @@
         width: 150px;
         background-color: transparent;
         border-radius: $radius-2xl;
-        border: 1px solid $gray-700;
+        border: 1px solid var(--gray-700);
 
         @media (max-width: $breakpoint-md) {
           margin-left: $space-16;
@@ -221,7 +225,7 @@
           gap: $space-8;
           width: inherit;
           padding: $space-4 $space-12 $space-4 $space-4;
-          background-color: $white;
+          background-color: var(--white);
           text-decoration: none;
           transition: background-color 0.25s ease;
           border-radius: inherit;
@@ -233,8 +237,8 @@
             height: $space-32;
             flex-shrink: 0;
             border-radius: 50%;
-            background-color: $gray-700;
-            color: $gray-100;
+            background-color: var(--gray-700);
+            color: var(--gray-100);
             isolation: isolate;
           }
 
@@ -260,11 +264,12 @@
             position: absolute;
             inset: 0;
             border-radius: 50%;
-            border: 1.5px solid rgba($gray-700, 0.95);
+            border: 1.5px solid
+              color-mix(in srgb, var(--gray-700) 95%, transparent);
           }
 
           &__label {
-            color: $gray-700;
+            color: var(--gray-700);
             font-weight: $fw-bold;
             font-size: $font-size-14;
             text-transform: uppercase;

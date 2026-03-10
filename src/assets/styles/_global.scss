@@ -22,16 +22,18 @@ body {
   font-family: $font-primary;
   line-height: $line-height-normal;
   min-height: 100vh;
-  background-color: var(--theme-bg);
-  color: var(--theme-text);
+  background-color: var(--gray-900);
+  color: var(--gray-100);
   transition:
     background-color 0.25s ease,
     color 0.25s ease;
   position: relative;
+}
 
-  @media (max-width: $breakpoint-md) {
-    // padding: 0 $space-8;
-  }
+html[data-theme="dark"] body,
+html[data-theme="light"] body {
+  background-color: var(--white);
+  color: var(--gray-800);
 }
 
 html,
@@ -77,6 +79,12 @@ img {
 }
 
 ::selection {
-  background: var(--theme-selection-bg);
-  color: var(--theme-selection-text);
+  background: var(--gray-700);
+  color: var(--white);
+}
+
+html[data-theme="light"] ::selection,
+html[data-theme="dark"] ::selection {
+  background: var(--gray-800);
+  color: var(--white);
 }

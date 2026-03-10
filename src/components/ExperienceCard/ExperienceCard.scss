@@ -15,10 +15,10 @@
     .dot {
       width: clamp(8px, 2vw, 10px);
       height: clamp(8px, 2vw, 10px);
-      background-color: $gray-300;
+      background-color: var(--gray-300);
       border-radius: 50%;
-      border: 2px solid $white;
-      box-shadow: 0 0 0 2px $gray-200;
+      border: 2px solid var(--white);
+      box-shadow: 0 0 0 2px var(--gray-200);
       flex-shrink: 0;
       z-index: $z-base;
     }
@@ -26,7 +26,7 @@
     .line {
       width: clamp(1px, 0.5vw, 2px);
       flex: 1;
-      background-color: $gray-200;
+      background-color: var(--gray-200);
       margin-top: $space-4;
     }
   }
@@ -49,8 +49,8 @@
         width: clamp(30px, 2vw, 40px);
         height: clamp(30px, 2vw, 40px);
         border-radius: $radius-md;
-        background-color: $gray-100;
-        border: 1px solid $gray-200;
+        background-color: var(--gray-100);
+        border: 1px solid var(--gray-200);
         flex-shrink: 0;
         overflow: hidden;
 
@@ -63,7 +63,7 @@
         .initials {
           font-size: clamp($font-size-12, 2vw, $font-size-16);
           font-weight: $fw-semibold;
-          color: $gray-500;
+          color: var(--gray-500);
         }
       }
       // Info section
@@ -81,7 +81,7 @@
           .company {
             font-size: clamp($font-size-12, 2vw, $font-size-14);
             font-weight: $fw-semibold;
-            color: $gray-900;
+            color: var(--gray-900);
 
             .link {
               @include flex-center;
@@ -89,20 +89,20 @@
               transition: color 0.3s ease-in-out;
 
               &:hover {
-                color: $gray-600;
+                color: var(--gray-600);
               }
             }
           }
 
           .date {
             font-size: clamp($font-size-10, 2vw, $font-size-12);
-            color: $gray-500;
+            color: var(--gray-500);
             white-space: nowrap;
           }
         }
         .role {
           font-size: clamp($font-size-12, 2vw, $font-size-14);
-          color: $gray-600;
+          color: var(--gray-600);
           margin: clamp($space-4, 2vw, $space-8) 0 0;
           font-weight: $fw-regular;
         }
@@ -116,8 +116,8 @@
           .type {
             display: inline-block;
             font-size: clamp($font-size-10, 2vw, $font-size-12);
-            color: $gray-500;
-            background-color: $gray-100;
+            color: var(--gray-500);
+            background-color: var(--gray-100);
             padding: clamp(1px, 0.5vw, 2px) clamp($space-4, 2vw, $space-8);
             border-radius: $radius-sm;
           }
@@ -125,7 +125,7 @@
           .location {
             display: inline-block;
             font-size: clamp($font-size-10, 2vw, $font-size-12);
-            color: $gray-500;
+            color: var(--gray-500);
           }
         }
       }
@@ -138,7 +138,7 @@
       li {
         list-style: disc;
         font-size: clamp($font-size-12, 2vw, $font-size-14);
-        color: $gray-600;
+        color: var(--gray-600);
         line-height: 1.6;
         margin-bottom: clamp($space-4, 2vw, $space-8);
 
@@ -160,7 +160,7 @@
     .read-more {
       display: inline-block;
       margin: clamp($space-4, 2vw, $space-8);
-      color: $gray-700;
+      color: var(--gray-700);
       font-size: clamp($font-size-10, 1.5vw, $font-size-12);
       font-weight: $fw-semibold;
       transition: all 0.3s ease-in-out;
@@ -172,14 +172,14 @@
         display: block;
         width: 0%;
         height: 1px;
-        background-color: $gray-700;
+        background-color: var(--gray-700);
         position: absolute;
         bottom: -3px;
         left: 0;
         transition: inherit;
       }
       &:hover {
-        color: $gray-800;
+        color: var(--gray-800);
         &::after {
           width: 100%;
         }
@@ -196,18 +196,18 @@
 
       .tech-item {
         font-size: clamp($font-size-10, 1vw, $font-size-12);
-        color: $gray-600;
-        background-color: rgb($gray-50, 0.5);
+        color: var(--gray-600);
+        background-color: color-mix(in srgb, var(--gray-50) 50%, transparent);
         padding: clamp($space-4, 2vw, $space-8);
         border-radius: $radius-lg;
-        border: 0.5px solid $gray-200;
+        border: 0.5px solid var(--gray-200);
         white-space: nowrap;
       }
 
       .tech-item.more {
-        color: $gray-600;
+        color: var(--gray-600);
         font-weight: $fw-medium;
-        background-color: rgba($gray-200, 0.5);
+        background-color: color-mix(in srgb, var(--gray-200) 50%, transparent);
       }
     }
   }

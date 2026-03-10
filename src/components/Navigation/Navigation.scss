@@ -21,7 +21,7 @@
       display: flex;
 
       .nav__link {
-        color: $gray-400;
+        color: var(--gray-400);
         font-size: clamp($font-size-12, 2vw, $font-size-16);
         padding: clamp($space-4, 1vw, $space-8);
         @include flex-center;
@@ -50,7 +50,7 @@
           transform: translateY(-52%);
 
           @media (min-width: $breakpoint-md) {
-            color: $gray-900;
+            color: var(--gray-900);
           }
         }
 
@@ -64,10 +64,10 @@
         }
 
         &.active {
-          color: $gray-900;
+          color: var(--gray-900);
           font-weight: $fw-bold;
           @media (max-width: $breakpoint-md) {
-            background-color: $gray-100;
+            background-color: var(--gray-100);
             border-radius: $radius-xl;
           }
         }

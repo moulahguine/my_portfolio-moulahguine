@@ -10,10 +10,10 @@
   position: relative;
   z-index: $z-card;
   overflow: hidden;
-  background: $white;
+  background: var(--white);
   border-radius: $radius-md;
   transition: all 0.3s ease;
-  box-shadow: 0 0 $space-4 $gray-300;
+  box-shadow: 0 0 $space-4 var(--gray-300);
   padding: clamp($space-8, 1vw, $space-16);
 
   // Hover effect for the card
@@ -24,7 +24,7 @@
     left: 0;
     width: 100%;
     height: 0;
-    background: linear-gradient(175deg, var(--project-color) 0%, $white 30%);
+    background: linear-gradient(175deg, var(--project-color) 0%, var(--white) 30%);
     z-index: 0;
     transition: all 0.2s ease-in-out;
   }
@@ -39,7 +39,7 @@
     overflow: hidden;
     width: 100%;
     height: calc((var(--height) / 2) - 20px);
-    background-color: $gray-100;
+    background-color: var(--gray-100);
     border-radius: $radius-md;
     transition: all 0.3s ease;
 
@@ -71,7 +71,7 @@
       justify-content: flex-start;
       width: fit-content;
       font-size: $font-size-14;
-      color: $gray-600;
+      color: var(--gray-600);
       font-weight: $fw-semibold;
       margin-bottom: $space-8;
 
@@ -90,7 +90,7 @@
       // Description styling
       .project-card__description {
         word-spacing: -1px;
-        color: $gray-500;
+        color: var(--gray-500);
         line-height: 1.5;
         font-size: $font-size-14;
         display: -webkit-box;
@@ -118,12 +118,12 @@
           gap: $space-4;
           border-radius: $radius-sm;
           padding: $space-4 $space-8;
-          color: $gray-500;
+          color: var(--gray-500);
           transition: all 0.3s ease;
-          background-color: $gray-100;
+          background-color: var(--gray-100);
 
           &:hover {
-            color: $white;
+            color: var(--white);
             background-color: var(--colorTech);
           }
 
@@ -155,8 +155,8 @@
           cursor: pointer;
           font: inherit;
           &:hover {
-            color: $white;
-            background-color: $gray-700;
+            color: var(--white);
+            background-color: var(--gray-700);
           }
 
           @media (max-width: $breakpoint-md) {
@@ -169,7 +169,7 @@
 
   // Title hover effect
   &:hover .project-card__details .project-card__title {
-    color: $gray-700;
+    color: var(--gray-700);
 
     &::after {
       display: none;
