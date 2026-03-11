@@ -5,7 +5,7 @@
 
   .container {
     @include container;
-    top: 55px;
+    // top: 55px;
 
     .projects-page__header {
       @include header_section;

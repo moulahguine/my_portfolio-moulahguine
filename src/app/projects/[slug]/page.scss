@@ -38,7 +38,7 @@
   }
 
   &__title {
-    @include heading-1;
+    // @include heading-1;
     margin: 0 0 $space-12 0;
     line-height: 1.08;
   }
@@ -89,7 +89,7 @@
   }
 
   .signals__title {
-    @include heading-3;
+    // @include heading-3;
     margin-bottom: $space-12;
   }
 
