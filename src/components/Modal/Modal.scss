@@ -1,97 +1,87 @@
 @use "../../assets/styles" as *;
 
-// start modal overlay
+// Modal overlay section
 .modal__overlay {
   all: unset;
+  @include flex-center;
   position: fixed;
   inset: 0;
-  z-index: $z-modal;
-  @include flex-center;
-  background: color-mix(in srgb, var(--gray-600) 50%, transparent);
-  backdrop-filter: blur(10px) saturate(100%);
-  transition: opacity 0.2s ease;
-  overflow: hidden;
+  z-index: $z-modal; // Modal z-index
+  background: color-mix(
+    in srgb,
+    var(--gray-600) 20%,
+    transparent
+  ); // Modal overlay background color
+  backdrop-filter: blur(5px); // Modal overlay backdrop filter
+  transition: opacity 0.2s ease; // Modal overlay transition
+  overflow: hidden; // Modal overlay overflow
 
-  // start modal container
+  // Modal container section
   .modal__container {
-    // Default (large) modal scale tokens.
-    --modal-max-width: #{$modal-width-lg};
-    --modal-max-height: #{$modal-max-height-lg};
+    --modal-max-width: 45.3125rem;
 
     position: relative;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
+    width: auto;
+    max-width: min(92vw, var(--modal-max-width));
+    max-height: $modal-max-height-desktop;
+    @media (max-width: $breakpoint-md) {
+      max-height: $modal-max-height-mobile;
+    }
     background-color: var(--gray-100);
     border-radius: $radius-lg;
-    box-shadow: 0 0px 40px 0px color-mix(in srgb, var(--gray-500) 80%, transparent);
-    width: min(#{$modal-width-fluid}, var(--modal-max-width));
-    height: fit-content;
-    max-height: var(--modal-max-height);
+    box-shadow: 0 0 40px 0 color-mix(in srgb, var(--gray-500) 80%, transparent);
     overflow: hidden;
-    transition: all 0.2s ease;
-    transform: scale(0.95);
-    opacity: 0;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
 
-    // start animating
-    &.animating {
-      transform: scale(1);
-      opacity: 1;
-    }
-
-    // start closing
-    &.closing {
-      transform: scale(0.95);
-      opacity: 0;
-    }
-
-    // Size variants
+    // Small modal section
     &.small {
-      --modal-max-width: #{$modal-width-sm};
-      --modal-max-height: #{$modal-max-height-sm};
+      --modal-max-width: 28rem;
     }
 
+    // Medium modal section
     &.medium {
-      --modal-max-width: #{$modal-width-md};
-      --modal-max-height: #{$modal-max-height-md};
+      --modal-max-width: 36rem;
     }
 
+    // Large modal section
     &.large {
-      --modal-max-width: #{$modal-width-lg};
-      --modal-max-height: #{$modal-max-height-lg};
+      --modal-max-width: 45.3125rem;
     }
 
-    &.xlarge {
-      --modal-max-width: #{$modal-width-xl};
-      --modal-max-height: #{$modal-max-height-xl};
-    }
-
-    // start modal header
+    // Modal header section
     .modal__header {
       @include flex-between;
       padding: $space-24;
+      flex-shrink: 0;
 
       @media (max-width: $breakpoint-md) {
-        padding: $space-12 $space-8 $space-8 $space-24;
+        padding: $space-12 $space-8;
       }
 
+      // Modal header title section
       &-title {
+        margin: 0;
         font-size: $font-size-24;
         font-weight: $fw-bold;
-        color: var(--gray-400);
-        margin: 0;
+        color: var(--gray-900);
       }
     }
 
-    // start modal content
+    // Modal content section
     .modal__content {
-      flex: 1;
+      flex: 1 1 auto;
+      min-height: 0;
       padding: 0;
-      overflow-y: hidden;
+      overflow-y: auto;
 
+      // Modal content close button section
       .modal__content-close {
         position: absolute;
-        top: $space-16;
-        right: $space-16;
+        top: clamp($space-12, 1.2vw, $space-16);
+        right: clamp($space-8, 1.2vw, $space-16);
         z-index: $z-modal-content;
       }
     }

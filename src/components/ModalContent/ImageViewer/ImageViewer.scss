@@ -3,20 +3,31 @@
 .imageViewer__frame {
   @include flex-center;
   position: relative;
+  box-sizing: border-box;
   width: 100%;
+  max-width: 100%;
+
   aspect-ratio: 1/1;
   overflow: hidden;
   background-color: var(--gray-300);
+  border-radius: inherit;
+  user-select: none;
+  touch-action: manipulation;
+}
 
-  img {
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
+.imageViewer__frame img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
+  transition: transform 0.3s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
 
-  > figcaption {
-    display: none;
-  }
+.imageViewer__frame > figcaption {
+  display: none;
 }

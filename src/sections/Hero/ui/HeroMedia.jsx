@@ -1,20 +1,22 @@
 "use client";
 
+// React
 import { useState } from "react";
 import Image from "next/image";
+// Components
 import { Modal, ImageViewer } from "@/components";
+// Icons
 import { BsArrowsFullscreen } from "react-icons/bs";
 
+// Data URLs
 export default function HeroMedia({ classFigure, classImage }) {
   const smallProfilePicture =
     "https://ik.imagekit.io/moulahguine/smallprofilepicture?updatedAt=1772992448799&tr=w-800,h-800,fo-auto";
   const fullProfilePicture =
-    "https://ik.imagekit.io/moulahguine/lagreprofilepicture?updatedAt=1772958051315";
+    "https://ik.imagekit.io/moulahguine/lagreprofilepicture?updatedAt=1772958051315&tr=w-800,fo-auto";
 
   // state to open and close the modal
   const [isImageOpen, setIsImageOpen] = useState(false);
-  // function to close the modal
-  const handleCloseModal = () => setIsImageOpen(false);
 
   return (
     <>
@@ -46,7 +48,7 @@ export default function HeroMedia({ classFigure, classImage }) {
 
       <Modal
         isOpen={isImageOpen}
-        onClose={handleCloseModal}
+        onClose={() => setIsImageOpen(false)}
         size="large"
         closeOnOverlayClick={true}
         allowPinchZoom
@@ -54,6 +56,7 @@ export default function HeroMedia({ classFigure, classImage }) {
       >
         <ImageViewer
           src={fullProfilePicture}
+          sizes="(max-width: 778px) 100vw, 80vw"
           alt="after clicking on the image, a modal will open to view the full size portrait"
         />
       </Modal>

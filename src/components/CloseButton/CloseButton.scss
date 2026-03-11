@@ -4,18 +4,17 @@
   @include flex-center;
   width: 40px;
   aspect-ratio: 1/1;
-  background: color-mix(in srgb, var(--white) 30%, transparent);
+  background: color-mix(in srgb, $white 10%, transparent);
   backdrop-filter: blur(50px);
   border: none;
   border-radius: 50%;
-  color: var(--gray-600);
-  font-size: $font-size-18;
+  color: var(--gray-900);
   cursor: pointer;
   transition: all 0.2s ease;
   z-index: $z-elevated;
 
   &:hover {
-    background: color-mix(in srgb, var(--gray-100) 50%, transparent);
+    background: color-mix(in srgb, $gray-50 30%, transparent);
     transform: scale(1.1);
   }
 
@@ -25,7 +24,6 @@
 
   // Icon styling
   svg {
-    width: 18px;
-    height: 18px;
+    font-size: $font-size-18 !important;
   }
 }

@@ -1,4 +1,4 @@
-import { FiX } from "react-icons/fi";
+import { MdClose } from "react-icons/md";
 import "./CloseButton.scss";
 
 const CloseButton = ({
@@ -15,7 +15,7 @@ const CloseButton = ({
       aria-label={ariaLabel}
       {...props}
     >
-      <FiX size={20} />
+      <MdClose aria-hidden="true" size={23} />
     </button>
   );
 };

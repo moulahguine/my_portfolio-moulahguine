@@ -1,49 +1,62 @@
 "use client";
 
+// React
 import { useEffect, useRef } from "react";
+
+// Styles
 import "./VideoViewer.scss";
 
+// Component
 export default function VideoViewer({
   src,
-  // layoutId = "video-modal",
-  className = "myvideo_intro",
-  autoplayInline = true,
-  loop = true,
-  playsInline = true,
+  className = "myvideo__intro",
+  autoplayInline = false,
+  loop = false,
+  playsInline = false,
   preload = "none",
   isOpen,
 }) {
   const videoRef = useRef(null);
 
+  // Use effect to handle video playback
   useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
+    const video = videoRef.current;
+    if (!video) return;
 
+    // If the video is open, play the video
     if (isOpen) {
-      v.muted = false;
-      v.controls = true;
-      v.currentTime = 0;
-      v.play().catch(() => {});
+      video.muted = false;
+      video.controls = true;
+      video.currentTime = 0;
+      // Play the video
+      video.play().catch(() => {
+        console.error("Failed to play video");
+      });
+      // If the video is not open, pause the video
     } else if (autoplayInline) {
-      v.pause();
-      v.currentTime = 0;
-      v.muted = true;
-      v.controls = false;
-      v.play().catch(() => {});
+      video.pause();
+      video.currentTime = 0;
+      video.muted = true;
+      video.controls = false;
+      // Play the video
+      video.play().catch(() => {
+        console.error("Failed to play video");
+      });
+      // If the video is not open and autoplay is not enabled, pause the video
     } else {
-      v.pause();
-      v.currentTime = 0;
-      v.muted = true;
-      v.controls = false;
+      video.pause();
+      video.currentTime = 0;
+      video.muted = true;
+      video.controls = false;
     }
   }, [isOpen, autoplayInline]);
 
   return (
+    // Video viewer
     <div className="videoViewer">
-      <div
-        // layoutId={layoutId}
-        className={`videoViewer__frame ${isOpen ? "is-open" : ""}`}
-      >
+      {/* Video viewer frame  */}
+      <div className={`videoViewer__frame ${isOpen ? "is-open" : ""}`}>
+        {/* Video element  */}
         <video
           ref={videoRef}
           className={className}
@@ -52,6 +65,8 @@ export default function VideoViewer({
           loop={loop}
           playsInline={playsInline}
           preload={preload}
+          sizes="(max-width: 768px) 100vw, 100vw"
+          quality={100}
         />
       </div>
     </div>

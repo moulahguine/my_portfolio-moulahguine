@@ -1,13 +1,20 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+// React
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { RemoveScroll } from "react-remove-scroll";
+// Motion
+import { AnimatePresence, motion } from "framer-motion";
+// Components
 import CloseButton from "../CloseButton/CloseButton";
+// Styles
 import "./Modal.scss";
 
+// Constants
 const MODAL_SIZES = new Set(["small", "medium", "large", "xlarge"]);
 
+// Component
 export default function Modal({
   isOpen,
   onClose,
@@ -17,116 +24,102 @@ export default function Modal({
   showHeader = true,
   showCloseButton = true,
   closeOnOverlayClick = true,
-  animationDuration = 200,
   style,
   removeScrollBar = true,
   allowPinchZoom = false,
 }) {
-  // start state
+  // state to mount the component
   const [mounted, setMounted] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
-  // end state
 
-  // start use effect
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    if (isOpen) {
-      setIsAnimating(true);
-    } else {
-      setIsAnimating(false);
-    }
-  }, [isOpen]);
-
-  // -- Callbacks --
-  const handleClose = useCallback(() => {
-    setTimeout(() => {
-      onClose?.();
-    }, animationDuration);
-  }, [onClose, animationDuration]);
-
-  const handleOverlayClick = (e) => {
-    if (closeOnOverlayClick && e.target === e.currentTarget) {
-      handleClose();
-    }
-  };
-
-  // Close modal on ESC key press
-  useEffect(() => {
     if (!isOpen) return;
 
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        handleClose();
+        onClose?.();
       }
     };
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, handleClose]);
+  }, [isOpen, onClose]);
 
-  // start return
-  if (!mounted || !isOpen) return null;
+  const handleOverlayClick = (e) => {
+    if (closeOnOverlayClick && e.target === e.currentTarget) {
+      onClose?.();
+    }
+  };
+
+  if (!mounted) return null;
+
+  // Normalize the size of the modal
   const normalizedSize = MODAL_SIZES.has(size) ? size : "large";
 
   const modalContent = (
-    // start remove scroll
-    <RemoveScroll
-      enabled={isOpen}
-      removeScrollBar={removeScrollBar}
-      allowPinchZoom={allowPinchZoom}
-    >
-      {/* start modal overlay */}
+    // AnimatePresence is used to animate the modal when it is opened and closed
+    <AnimatePresence>
       {isOpen && (
-        <div className={`modal__overlay `} onClick={handleOverlayClick}>
-          {/* start modal container */}
-          <div
-            tabIndex={-1}
-            className={`modal__container ${normalizedSize} ${
-              isAnimating ? "animating" : "closing"
-            }`}
-            onClick={(e) => e.stopPropagation()}
-            style={{ ...style }}
+        // RemoveScroll is used to prevent the scrollbar from appearing when the modal is open
+        <RemoveScroll
+          enabled={isOpen}
+          removeScrollBar={removeScrollBar}
+          allowPinchZoom={allowPinchZoom}
+        >
+          {/* Overlay */}
+          <motion.div
+            className="modal__overlay"
+            onClick={handleOverlayClick}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* start modal header */}
-            {showHeader && (title || showCloseButton) && (
-              <header className="modal__header">
-                {title && <h2 className="modal__header-title">{title}</h2>}
-                {showCloseButton && (
-                  <CloseButton onClick={handleClose} ariaLabel="Close modal" />
-                )}
-              </header>
-            )}
-            {/* end modal header */}
-            {/* start modal content */}
-            <div
-              className={`modal__content ${
-                showHeader && (title || showCloseButton)
-                  ? "with-header"
-                  : "without-header"
-              }`}
+            {/* Container */}
+            <motion.div
+              tabIndex={-1}
+              className={`modal__container ${normalizedSize}`}
+              onClick={(e) => e.stopPropagation()}
+              style={{ ...style }}
+              initial={{ scale: 0.94, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.94, opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
-              {/* If no header, show close button inside content */}
-              {!showHeader && showCloseButton && (
-                <div className="modal__content-close">
-                  <CloseButton onClick={handleClose} ariaLabel="Close modal" />
-                </div>
+              {/* Header */}
+              {showHeader && (title || showCloseButton) && (
+                <header className="modal__header">
+                  {title && <h2 className="modal__header-title">{title}</h2>}
+                  {showCloseButton && (
+                    <CloseButton onClick={onClose} ariaLabel="Close modal" />
+                  )}
+                </header>
               )}
-              {children}
-            </div>
-            {/* end modal content */}
-          </div>
-          {/* end modal container */}
-        </div>
+
+              {/* Content */}
+              <div
+                className={`modal__content ${
+                  showHeader && (title || showCloseButton)
+                    ? "with-header"
+                    : "without-header"
+                }`}
+              >
+                {!showHeader && showCloseButton && (
+                  <div className="modal__content-close">
+                    <CloseButton onClick={onClose} ariaLabel="Close modal" />
+                  </div>
+                )}
+                {children}
+              </div>
+            </motion.div>
+          </motion.div>
+        </RemoveScroll>
       )}
-      {/* end modal overlay */}
-    </RemoveScroll>
-    // end remove scroll
+    </AnimatePresence>
   );
-  // end return
-  // start create portal
+
   return createPortal(modalContent, document.body);
-  // end create portal
 }

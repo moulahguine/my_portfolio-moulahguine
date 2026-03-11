@@ -1,36 +1,51 @@
+// Components
 import IntroVideo from "./IntroVideo";
+
+// Styles
 import "./About.scss";
 
-/**
- * About section — Two-column layout.
- *
- * Left column:  Text describing how I work.
- * Right column: Video preview card (IntroVideo).
- *               Clicking it opens a video modal.
- */
+// Component
 export default function About() {
   return (
     <section id="about" className="about">
+      {/* Container section */}
       <div className="container">
-        {/* Section label */}
-        <h1 className="about__header header__section">How I Work</h1>
+        {/* Header section */}
+        <header className="about__header">
+          <h3 className="about__header-title">how I work</h3>
+        </header>
 
-        {/* Two-column grid: text + video */}
-        <div className="about__grid">
-          {/* Left column — text content */}
-          <article className="about__text">
-            <p className="about__info">
+        {/* Content section */}
+        <div className="about__content">
+          {/* About me section */}
+          <article className="about__me">
+            <p className="about__text">
               I focus on building interfaces that feel fast, predictable, and
-              easy to use. I care about the details that usually cause problems
-              later, like component structure, rendering behavior, and
-              accessibility. I work comfortably with designers and backend teams
-              to turn ideas into clear, reusable UI. Most of my recent work uses
-              Next.js (App Router), TypeScript, Tailwind, and Framer Motion,
-              with an emphasis on performance and purposeful motion.
+              easy to use. Beyond visual design, I pay close attention to the
+              details that often create problems later in development, such as
+              component structure, rendering behavior, and accessibility.
+            </p>
+
+            <p className="about__text">
+              My goal is to build interfaces that remain clear and maintainable
+              as products grow. I care about creating systems that make it
+              easier for teams to extend, improve, and work with the UI over
+              time.
+            </p>
+
+            <p className="about__text">
+              I enjoy collaborating closely with designers and backend engineers
+              to turn product ideas into clear, reusable interfaces and
+              maintainable UI systems.
+            </p>
+
+            <p className="about__video-note">
+              For a quick look at how I approach frontend development, you can
+              watch the short video below.
             </p>
           </article>
 
-          {/* Right column — video preview */}
+          {/* Video section */}
           <div className="about__video">
             <IntroVideo />
           </div>

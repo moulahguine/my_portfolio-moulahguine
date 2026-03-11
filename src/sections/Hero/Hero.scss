@@ -6,19 +6,20 @@
   position: relative;
   z-index: $z-base;
 
+  // Container section
   .container {
     @include container;
     border-radius: $radius-lg;
     padding-top: 0;
     overflow: hidden;
 
+    // Map section
     .hero__map {
       width: 100%;
       height: 250px;
       background-color: var(--gray-100);
       position: relative;
       z-index: $z-elevated;
-      overflow: hidden;
       border-radius: $radius-lg $radius-lg 0 0;
 
       @media (max-width: $breakpoint-md) {
@@ -26,37 +27,46 @@
         border-radius: 0;
       }
 
+      // Gradient overlay
       &::after {
         content: "";
         position: absolute;
-        bottom: 0;
+        bottom: -15px;
         left: 0;
         width: 100%;
         height: 30%;
         z-index: $z-above;
-        background: linear-gradient(to top, var(--white) 15%, transparent 100%);
+        background: linear-gradient(
+          to top,
+          var(--white) 25px,
+          transparent 100%
+        );
         border-radius: inherit;
         pointer-events: none;
       }
 
+      // Interactive map container
       .interactive-map-container {
         width: 100%;
         height: 100%;
         position: relative;
         z-index: $z-base;
 
+        // Leaflet container
         .leaflet-container {
           width: 100%;
           height: 100%;
           background: var(--gray-100);
         }
 
+        // Leaflet control attribution
         .leaflet-control-attribution {
           display: none !important;
         }
       }
     }
 
+    // Map loading section
     .hero__mapLoading {
       @include flex-center;
       width: 100%;
@@ -70,6 +80,7 @@
       z-index: $z-above;
     }
 
+    // Profile section
     .hero__profile {
       @include flex-between;
       gap: $space-8;
@@ -80,6 +91,7 @@
         gap: $space-12;
       }
 
+      // Profile content section
       .hero__profile-content {
         @include flex-between;
         width: fit-content;
@@ -92,6 +104,7 @@
           gap: $space-12;
         }
 
+        // Media section
         .hero__media {
           --square-size: 10rem;
           width: var(--square-size);
@@ -111,14 +124,14 @@
             margin-top: clamp(-65px, -10vw, -70px);
           }
 
+          // Image section
           .hero__image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            // scale: 1.1;
-            zoom: 1.1;
           }
 
+          // Media overlay section
           .hero__media-overlay {
             @include flex-center;
             width: 100%;
@@ -142,6 +155,7 @@
             }
           }
 
+          // Media overlay hover
           &:hover {
             .hero__media-overlay {
               opacity: 1;
@@ -151,10 +165,12 @@
             }
           }
 
+          // User select none
           user-select: none;
           -webkit-user-drag: none;
         }
 
+        // Hero info section
         .hero__info {
           @include flex-column;
           gap: $space-4;
@@ -164,6 +180,7 @@
             gap: $space-8;
           }
 
+          // Hero title section
           .hero__title {
             display: flex;
             align-items: center;
@@ -173,12 +190,14 @@
             text-wrap: nowrap;
             margin-bottom: -$space-4;
 
+            // Verified badge section
             .verified-badge {
-              width: clamp($space-16, 1.2vw, $space-20);
-              height: clamp($space-16, 1.2vw, $space-20);
+              width: clamp($space-18, 1.2vw, $space-20);
+              height: clamp($space-18, 1.2vw, $space-20);
             }
           }
 
+          // Hero role section
           .hero__role {
             font-size: calc($font-size-14 - 1px);
             color: var(--gray-700);
@@ -188,6 +207,7 @@
             }
           }
 
+          // Hero location section
           .hero__location {
             font-size: $font-size-12;
             color: var(--gray-600);
@@ -279,6 +299,7 @@
       }
     }
 
+    // Media query for mobile devices
     @media (max-width: $breakpoint-md) {
       height: 100%;
       padding-bottom: $space-40;

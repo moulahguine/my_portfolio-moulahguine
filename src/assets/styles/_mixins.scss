@@ -1,29 +1,6 @@
-@use "variables" as *;
+@use "./variables" as *;
 
-// Typography
-@mixin heading-1 {
-  font-size: clamp($font-size-28, 5vw, $font-size-40);
-  font-weight: $fw-bold;
-  line-height: $line-height-tight;
-}
-
-@mixin heading-2 {
-  font-size: clamp($font-size-20, 3vw, $font-size-28);
-  font-weight: $fw-semibold;
-  line-height: $line-height-tight;
-}
-
-@mixin heading-3 {
-  font-size: clamp($font-size-18, 2.5vw, $font-size-24);
-  font-weight: $fw-semibold;
-  line-height: $line-height-tight;
-}
-
-@mixin body-text {
-  font-size: clamp($font-size-16, 1.9vw, $font-size-18);
-  line-height: $line-height-relaxed;
-}
-
+// Subtitle
 @mixin subtitle {
   font-size: clamp($font-size-12, 2.5vw, $font-size-16);
   font-weight: $fw-regular;
@@ -35,27 +12,29 @@
   opacity: 0.9;
 }
 
-// Flexbox
+// Flexbox mixins
 @mixin flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+// Flexbox between mixin
 @mixin flex-between {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+// Flexbox column mixin
 @mixin flex-column {
   display: flex;
   flex-direction: column;
 }
 
-// Container
+// Container mixin
 @mixin container {
-  max-width: 767px;
+  max-width: $container-width;
   margin: 0 auto;
   padding: $space-32 0;
   position: relative;
@@ -63,81 +42,24 @@
   @media (max-width: $breakpoint-md) {
     width: 100%;
     max-width: 100%;
-    padding: 0 $space-8;
+    padding: 0 $space-12;
   }
 }
 
+// Section mixin
 @mixin section {
   width: 100%;
   background-color: var(--white);
 }
 
-// Hover effects
-@mixin hover-scale($scale: 1.05) {
-  transition: transform $transition-base ease;
-
-  &:hover {
-    transform: scale($scale);
-  }
-}
-
-@mixin skillPosition($top: 0%, $left: 0%, $rotate: 0deg) {
-  top: $top;
-  left: $left;
-  transform: rotate($rotate);
-}
-
-// Section Header Style
-@mixin section-header-style {
-  font-size: $font-size-48 + 1rem;
-  font-weight: $fw-bold;
-  color: $color-primary;
-}
-
-@mixin sweep-hover($bg-color, $duration: 0.3s, $display: block) {
-  &::before {
-    content: "";
-    display: $display;
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, $bg-color, transparent);
-    transition: left $duration ease-out;
-    z-index: $z-floating;
-  }
-  &:hover::before {
-    left: 100%;
-  }
-}
-
-// Text Mixins
-@mixin text-gradient {
-  background: linear-gradient(135deg, $color-primary, $color-primary-500);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-@mixin section-title {
-  font-size: $font-size-48;
-  font-weight: $fw-bold;
-  color: $color-primary;
-  text-align: center;
-  margin-bottom: $space-40 + 2rem;
-  @media (max-width: $breakpoint-lg) {
-    font-size: clamp($font-size-32, 4vw, $font-size-48 + 1rem);
-  }
-}
-
+// Header section mixin
 @mixin header_section {
   width: fit-content;
-  font-size: clamp($font-size-12, 1.5vw, $font-size-14);
+  font-size: clamp($font-size-12, 1vw, $font-size-14);
   font-weight: 100;
-  color: var(--gray-500);
+  background-color: var(--gray-200);
+  color: var(--gray-600);
   font-weight: $fw-bold;
-  background-color: var(--gray-100);
   border-radius: $radius-sm;
   padding: $space-4 $space-8;
   cursor: default;
@@ -147,6 +69,7 @@
   user-select: none;
 }
 
+// Next button style mixin
 @mixin next-button-style {
   @include flex-center;
   gap: clamp($space-4, 1.5vw, $space-8);
@@ -193,7 +116,7 @@
   }
 }
 
-// glass background
+// Glass background mixin
 @mixin glass-bg($bg: rgba($white, 0.7), $blur: 50px) {
   background-color: $bg;
   backdrop-filter: blur($blur);

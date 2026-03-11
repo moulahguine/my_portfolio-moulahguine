@@ -1,23 +1,29 @@
 "use client";
 
+// React
+// Components
 import Image from "next/image";
+// Styles
 import "./ImageViewer.scss";
 
+// Component
 export default function ImageViewer({
   src,
   alt,
-  fill = true,
+
   sizes = "(max-width: 778px) 100vw, 80vw",
   className = "",
   style,
 }) {
   return (
+    // Figure is used to display the image
     <figure className={`imageViewer__frame ${className}`}>
       <figcaption className="sr-only">{alt}</figcaption>
       <Image
         src={src}
         alt={alt}
-        fill={fill}
+        width={1000}
+        height={1000}
         sizes={sizes}
         onContextMenu={(e) => e.preventDefault()}
         style={{ ...style }}
