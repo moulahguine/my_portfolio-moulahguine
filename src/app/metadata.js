@@ -48,18 +48,17 @@ export const metadata = {
     type: "website",
     locale: "en_US",
     url: "https://mohamedoulahguine.com",
-    siteName: "Mohamed Oulahguine",
-    title: "Mohamed Oulahguine",
+    siteName: "Mohamed Oulahguine | Frontend Developer",
+    title: "Mohamed Oulahguine | Frontend Developer",
     description:
       "Frontend developer portfolio showcasing modern web applications built with Next.js, Framer Motion, and SCSS.",
     images: [
       {
-        url: "https://mohamedoulahguine.com/og/og-image.png",
+        url: "https://ik.imagekit.io/moulahguine/og-image",
         width: 1200,
         height: 630,
         alt: "this is the og image",
         type: "image/png",
-        secureUrl: "https://mohamedoulahguine.com/og/og-image.png",
       },
     ],
   },
