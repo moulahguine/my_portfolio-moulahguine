@@ -5,10 +5,10 @@
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  max-width: 100%;
+  width: $modal-max-width-lg;
   aspect-ratio: 1/1;
   overflow: hidden;
-  background-color: var(--gray-300);
+  background-color: var(--gray-100);
   user-select: none;
   touch-action: manipulation;
 }
@@ -17,12 +17,18 @@
   display: block;
   width: auto;
   height: auto;
-  max-width: 100%;
+  max-width: calc($modal-max-width-lg - $space-16);
   object-fit: cover;
   object-position: center;
   transition: transform 0.3s ease;
   user-select: none;
   -webkit-user-drag: none;
+  margin: 0 $space-8;
+  border-radius: $radius-lg;
+
+  @media (max-width: $breakpoint-md) {
+    border-radius: $radius-md;
+  }
 }
 
 .imageViewer__frame > figcaption {

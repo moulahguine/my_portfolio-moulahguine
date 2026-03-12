@@ -6,7 +6,7 @@ export default function Providers({ children }) {
   return (
     <ThemeProvider
       attribute="data-theme"
-      defaultTheme="light"
+      defaultTheme="dark"
       enableSystem={false}
     >
       {children}

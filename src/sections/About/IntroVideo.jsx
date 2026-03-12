@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 // Icons
-import { HiPlay } from "react-icons/hi2";
+import { BsFillPlayCircleFill } from "react-icons/bs";
 // Motion;
 import { motion } from "framer-motion";
 // Components
@@ -23,8 +23,13 @@ export default function IntroVideo() {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, resolvedTheme } = useTheme();
 
-  const activeTheme = resolvedTheme ?? theme ?? "dark";
-  const posterSrc = activeTheme === "light" ? POSTER_LIGHT_URL : POSTER_DARK_URL;
+  const rootTheme =
+    typeof document !== "undefined"
+      ? document.documentElement.getAttribute("data-theme")
+      : null;
+  const activeTheme = resolvedTheme ?? theme ?? rootTheme ?? "dark";
+  const posterSrc =
+    activeTheme === "light" ? POSTER_LIGHT_URL : POSTER_DARK_URL;
 
   return (
     <>
@@ -55,7 +60,7 @@ export default function IntroVideo() {
 
         {/* Play button overlay */}
         <span className="video__preview__play">
-          <HiPlay size={27} aria-hidden="true" />
+          <BsFillPlayCircleFill aria-hidden="true" />
         </span>
       </motion.button>
       {/* Modal */}
@@ -73,6 +78,7 @@ export default function IntroVideo() {
           isOpen={isOpen}
           autoplayInline={false}
           loop={false}
+          volume={0.1}
         />
       </Modal>
     </>

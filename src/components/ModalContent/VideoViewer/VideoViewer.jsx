@@ -15,6 +15,7 @@ export default function VideoViewer({
   playsInline = false,
   preload = "none",
   isOpen,
+  volume = 1,
 }) {
   const videoRef = useRef(null);
 
@@ -26,6 +27,7 @@ export default function VideoViewer({
     // If the video is open, play the video
     if (isOpen) {
       video.muted = false;
+      video.volume = Math.min(Math.max(volume, 0), 1);
       video.controls = true;
       video.currentTime = 0;
       // Play the video
@@ -49,7 +51,7 @@ export default function VideoViewer({
       video.muted = true;
       video.controls = false;
     }
-  }, [isOpen, autoplayInline]);
+  }, [isOpen, autoplayInline, volume]);
 
   return (
     // Video viewer

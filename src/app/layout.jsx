@@ -16,7 +16,12 @@ export const metadata = siteMetadata;
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={comicNeue.variable} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={comicNeue.variable}
+      data-theme="dark"
+      suppressHydrationWarning
+    >
       <head>
         {/* Font Awesome */}
         <link

@@ -18,16 +18,18 @@ export default function ImageViewer({
   return (
     // Figure is used to display the image
     <figure className={`imageViewer__frame ${className}`}>
+      <div className="imageViewer__frame-image">
+        <Image
+          src={src}
+          alt={alt}
+          width={1000}
+          height={1000}
+          sizes={sizes}
+          onContextMenu={(e) => e.preventDefault()}
+          style={{ ...style }}
+        />
+      </div>
       <figcaption className="sr-only">{alt}</figcaption>
-      <Image
-        src={src}
-        alt={alt}
-        width={1000}
-        height={1000}
-        sizes={sizes}
-        onContextMenu={(e) => e.preventDefault()}
-        style={{ ...style }}
-      />
     </figure>
   );
 }
