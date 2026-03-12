@@ -1,22 +1,32 @@
 import Blogs from "@/sections/Blog/Blogs";
 
 export const metadata = {
-  title: "Blog | Mohamed Oulahguine - Frontend Developer",
+  title: "Blog | Mohamed Oulahguine",
   description:
-    "Read my thoughts on frontend development, React, Next.js, homelabs, AI tools, and web accessibility. Practical insights from real-world projects.",
+    "here you can find my blog posts about frontend development, React, Next.js, and practical coding insights.",
   keywords: [
     "frontend development blog",
-    "React tutorials",
-    "Next.js tips",
-    "web development insights",
-    "homelab setup",
-    "AI coding tools",
-    "accessibility best practices",
+    "React blog",
+    "Next.js blog",
+    "web development blog",
+    "portfolio blog",
+    "ecommerce blog",
+    "clinic management blog",
+    "modern web design blog",
+    "blog posts",
+    "blog articles",
+    "blog content",
+    "blog writing",
+    "blog ideas",
+    "blog topics",
+    "blog categories",
+    "blog tags",
+    "blog comments",
   ],
   openGraph: {
     title: "Blog | Mohamed Oulahguine",
     description:
-      "Articles on frontend development, React, Next.js, and practical coding insights.",
+      "here you can find my blog posts about frontend development, React, Next.js, and practical coding insights.",
     type: "website",
   },
 };

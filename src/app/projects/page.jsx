@@ -1,40 +1,29 @@
-import Link from "next/link";
-import { getAllProjects } from "@/lib/projects";
-import { ProjectCard } from "@/components";
-import "./page.scss";
+export const metadata = {
+  title: "Projects | Mohamed Oulahguine",
+  description:
+    "Explore my projects: personal portfolio, ecommerce store, clinic management system, and modern web design.",
+  keywords: [
+    "frontend developer projects",
+    "React projects",
+    "Next.js projects",
+    "web development projects",
+    "portfolio projects",
+    "ecommerce projects",
+    "clinic management projects",
+    "modern web design projects",
+  ],
+  openGraph: {
+    title: "Projects | Mohamed Oulahguine",
+    description:
+      "Explore my projects: personal portfolio, ecommerce store, clinic management system, and modern web design.",
+    type: "website",
+  },
+};
 
-export default function Projects() {
-  const allProjects = getAllProjects();
-
+export default function ProjectsPage() {
   return (
-    <div className="projects-page">
-      <div className="container">
-        <h3 className="projects-page__header">All Projects</h3>
-
-        {/* Projects Grid (inlined from ProjectsClient) */}
-        {allProjects.length === 0 ? (
-          <div className="projects__empty">
-            <p>Oops!! no projects available. 🙄</p>
-          </div>
-        ) : (
-          <div className="projects__grid">
-            {allProjects.map((project, index) => (
-              <Link
-                key={project.id}
-                href={`/projects/${project.slug}`}
-                className="project-card__link"
-              >
-                <article
-                  className="project-card"
-                  style={{ "--project-color": project.color }}
-                >
-                  <ProjectCard project={project} index={index} />
-                </article>
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
+    <div className="projects__page">
+      <div className="container"></div>
     </div>
   );
 }

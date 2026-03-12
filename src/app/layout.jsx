@@ -14,6 +14,54 @@ const comicNeue = Comic_Neue({
 
 export const metadata = siteMetadata;
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  mainEntity: {
+    "@type": "Person",
+    name: "Mohamed Oulahguine",
+    alternateName: "moulahguine",
+    jobTitle: "Frontend Developer",
+    description:
+      "Frontend developer specializing in building modern web applications using React, Next.js, and TypeScript.",
+    url: "https://mohamedoulahguine.com",
+    mainEntityOfPage: "https://mohamedoulahguine.com",
+    image: "https://ik.imagekit.io/moulahguine/mohamedoulahguine",
+    sameAs: [
+      "https://www.linkedin.com/in/moulahguine",
+      "https://github.com/moulahguine",
+      "https://leetcode.com/moulahguine",
+      "https://www.upwork.com/freelancers/moulahguine",
+      "https://medium.com/@moulahguine",
+      "https://www.instagram.com/moulahguine",
+      "https://www.youtube.com/@moulahguine",
+      "https://t.me/moulahguine",
+      "https://codepen.io/moulahguine",
+    ],
+    email: "mailto:hello@mohamedoulahguine.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Istanbul",
+      addressCountry: "TR",
+    },
+    knowsAbout: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "Frontend Development",
+      "Web Development",
+      "SCSS",
+      "CSS",
+      "HTML",
+      "Tailwind CSS",
+      "Redux",
+      "Material UI",
+      "Framer Motion",
+    ],
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html
@@ -23,68 +71,19 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <head>
-        {/* Font Awesome */}
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         />
 
-        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Mohamed Oulahguine",
-              alternateName: "Oulahguine",
-              jobTitle: "Frontend Developer",
-              description:
-                "Expert Frontend Developer specializing in Next, React, JavaScript, and modern web development",
-              url: "https://mohamedoulahguine.com",
-              image: "https://mohamedoulahguine.com/og/og-image.png",
-              sameAs: [
-                "https://github.com/moulahguine",
-                "https://linkedin.com/in/moulahguine",
-              ],
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Istanbul",
-                addressCountry: "Turkey",
-              },
-              birthPlace: {
-                "@type": "Place",
-                name: "Morocco",
-              },
-              knowsAbout: [
-                "React",
-                "Next",
-                "TypeScript",
-                "JavaScript",
-                "Frontend Development",
-                "Web Development",
-                "SCSS",
-                "CSS",
-                "HTML",
-                "tailwindCss",
-                "vite",
-                "jest",
-                "redux",
-                "materia UI",
-                "Framer Motion",
-              ],
-              hasOccupation: {
-                "@type": "Occupation",
-                name: "Frontend Developer",
-                occupationLocation: {
-                  "@type": "City",
-                  name: "Istanbul",
-                },
-              },
-            }),
+            __html: JSON.stringify(personJsonLd),
           }}
         />
       </head>
+
       <body
         style={{
           display: "flex",

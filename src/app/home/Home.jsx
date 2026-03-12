@@ -8,7 +8,7 @@ import * as motion from "motion/react-client";
 
 const HomePage = () => {
   return (
-    <div className="home-page">
+    <div className="home__page">
       <Hero />
       <About />
       <Skills />
