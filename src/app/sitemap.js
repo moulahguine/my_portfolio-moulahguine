@@ -1,4 +1,5 @@
 const BASE_URL = "https://mohamedoulahguine.com";
+export const dynamic = "force-static";
 
 export default function sitemap() {
   return [
