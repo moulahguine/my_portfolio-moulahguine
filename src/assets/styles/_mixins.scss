@@ -42,7 +42,7 @@
   @media (max-width: $breakpoint-md) {
     width: 100%;
     max-width: 100%;
-    padding: 0 $space-12;
+    padding: $space-16 $space-12;
   }
 }
 

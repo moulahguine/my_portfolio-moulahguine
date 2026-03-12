@@ -1,57 +1,87 @@
-import { FaGithub, FaGitAlt, FaHtml5, FaJs, FaReact } from "react-icons/fa";
+import { BsCursor } from "react-icons/bs";
+
 import {
+  FaGithub,
+  FaGitAlt,
+  FaHtml5,
+  FaJs,
+  FaReact,
+  FaNodeJs,
+  FaFigma,
+  FaUniversalAccess,
+  FaMobileAlt,
+} from "react-icons/fa";
+import {
+  SiAxios,
   SiCsswizardry,
+  SiDocker,
+  SiExpress,
   SiFramer,
   SiJest,
   SiMui,
   SiNextdotjs,
+  SiPostgresql,
+  SiPrisma,
+  SiReacthookform,
   SiReactquery,
   SiReactrouter,
   SiRedux,
   SiSass,
   SiTailwindcss,
+  SiTestinglibrary,
   SiTypescript,
   SiVite,
+  SiZod,
 } from "react-icons/si";
 import { VscVscodeInsiders } from "react-icons/vsc";
-import { BsEmojiDizzy } from "react-icons/bs";
+import { BsEmojiDizzy, BsShieldLock } from "react-icons/bs";
 
 // Icon map
 export const iconMap = {
   FaGithub,
   FaGitAlt,
   FaHtml5,
+  BsCursor,
   FaJs,
   FaReact,
+  FaNodeJs,
+  FaFigma,
+  FaUniversalAccess,
+  FaMobileAlt,
+  SiAxios,
   SiCsswizardry,
+  SiDocker,
+  SiExpress,
   SiFramer,
   SiJest,
   SiMui,
   SiNextdotjs,
+  SiPostgresql,
+  SiPrisma,
+  SiReacthookform,
   SiReactquery,
   SiReactrouter,
   SiRedux,
   SiSass,
   SiTailwindcss,
+  SiTestinglibrary,
   SiTypescript,
   SiVite,
+  SiZod,
   VscVscodeInsiders,
+  BsShieldLock,
 };
 
 const DEFAULT_ICON = BsEmojiDizzy;
 
 // SkillIcon component
-function SkillIcon({ icon, color = "#6C757D", size = 28, title, className }) {
+function SkillIcon({ icon, color = "#6C757D", title, className }) {
   const IconComponent = iconMap[icon] ?? DEFAULT_ICON;
-
-  const iconElement = (
-    <IconComponent size={size} color={color} style={{ color }} />
-  );
   const mergedClassName = ["skill-icon", className].filter(Boolean).join(" ");
 
   return (
-    <span className={mergedClassName} title={title} aria-hidden={!title}>
-      {iconElement}
+    <span className={mergedClassName} title={title}>
+      <IconComponent color={color} style={{ color }} aria-hidden={true} />
     </span>
   );
 }
@@ -61,192 +91,311 @@ export default SkillIcon;
 // Technologies mapping
 export const technologies = {
   HTML: { name: "HTML", icon: "FaHtml5", color: "#E34F26" },
-  CSS4: { name: "CSS4", icon: "SiCsswizardry", color: "#66309a" },
+  CSS: { name: "CSS", icon: "SiCsswizardry", color: "#66309A" },
+  Sass: { name: "Sass", icon: "SiSass", color: "#CC6699" },
   JavaScript: { name: "JavaScript", icon: "FaJs", color: "#F7DF1E" },
-  TypeScript: { name: "TypeScript", icon: "SiTypescript", color: "#007FFF" },
+  TypeScript: { name: "TypeScript", icon: "SiTypescript", color: "#3178C6" },
+
   React: { name: "React", icon: "FaReact", color: "#61DAFB" },
-  NextJS: { name: "Next.js", icon: "SiNextdotjs", color: "#000000" },
-  Redux: { name: "Redux", icon: "SiRedux", color: "#764ABC" },
-  Framer: { name: "Framer", icon: "SiFramer", color: "#0055FF" },
-  "Framer Motion": {
-    name: "Framer Motion",
-    icon: "SiFramer",
-    color: "#0055FF",
+  NextJS: { name: "Next.js", icon: "SiNextdotjs", color: "#FFFFFF" },
+  Vite: { name: "Vite", icon: "SiVite", color: "#646CFF" },
+  "React Router": {
+    name: "React Router",
+    icon: "SiReactrouter",
+    color: "#CA4245",
   },
+
   TailwindCSS: {
     name: "Tailwind CSS",
     icon: "SiTailwindcss",
     color: "#06B6D4",
   },
-  Sass: { name: "Sass", icon: "SiSass", color: "#CC6699" },
-  SCSS: { name: "SCSS", icon: "SiSass", color: "#CC6699" },
   MUI: { name: "MUI", icon: "SiMui", color: "#007FFF" },
+  FramerMotion: {
+    name: "Framer Motion",
+    icon: "SiFramer",
+    color: "#0055FF",
+  },
+
+  cursor: { name: "cursor", icon: "BsCursor", color: "#000000" },
+  Redux: { name: "Redux", icon: "SiRedux", color: "#764ABC" },
+  ReactQuery: {
+    name: "React Query",
+    icon: "SiReactquery",
+    color: "#FF4154",
+  },
+  Axios: { name: "Axios", icon: "SiAxios", color: "#5A29E4" },
+
+  ReactHookForm: {
+    name: "React Hook Form",
+    icon: "SiReacthookform",
+    color: "#EC5990",
+  },
+  Zod: { name: "Zod", icon: "SiZod", color: "#3E67B1" },
+
   Jest: { name: "Jest", icon: "SiJest", color: "#C21325" },
+  ReactTestingLibrary: {
+    name: "React Testing Library",
+    icon: "SiTestinglibrary",
+    color: "#E33332",
+  },
+
+  NodeJS: { name: "Node.js", icon: "FaNodeJs", color: "#339933" },
+  Express: { name: "Express", icon: "SiExpress", color: "#FFFFFF" },
+  Prisma: { name: "Prisma", icon: "SiPrisma", color: "#2D3748" },
+  PostgreSQL: { name: "PostgreSQL", icon: "SiPostgresql", color: "#336791" },
+  Auth: { name: "Authentication", icon: "BsShieldLock", color: "#22C55E" },
+
   Git: { name: "Git", icon: "FaGitAlt", color: "#F05032" },
-  GitHub: { name: "GitHub", icon: "FaGithub", color: "#181717" },
-  Vite: { name: "Vite", icon: "SiVite", color: "#646CFF" },
-  "VS Code": { name: "VS Code", icon: "VscVscodeInsiders", color: "#007ACC" },
-  Figma: { name: "Figma", icon: "FaHtml5", color: "#F24E1E" },
-  REST: { name: "REST API", icon: "FaHtml5", color: "#FF6B6B" },
-  Accessibility: { name: "Accessibility", icon: "FaHtml5", color: "#4CAF50" },
-  Responsive: { name: "Responsive", icon: "FaHtml5", color: "#9C27B0" },
-  ReactQuery: { name: "React Query", icon: "SiReactquery", color: "#FF4154" },
-  "React Router": {
-    name: "React Router",
-    icon: "SiReactrouter",
-    color: "#F05032",
+  GitHub: { name: "GitHub", icon: "FaGithub", color: "#FFFFFF" },
+  Docker: { name: "Docker", icon: "SiDocker", color: "#2496ED" },
+  "VS Code": {
+    name: "VS Code",
+    icon: "VscVscodeInsiders",
+    color: "#007ACC",
+  },
+
+  Figma: { name: "Figma", icon: "FaFigma", color: "#F24E1E" },
+  REST: { name: "REST API", icon: "FaJs", color: "#FF6B6B" },
+  Accessibility: {
+    name: "Accessibility",
+    icon: "FaUniversalAccess",
+    color: "#4CAF50",
+  },
+  Responsive: {
+    name: "Responsive Design",
+    icon: "FaMobileAlt",
+    color: "#9C27B0",
   },
 };
 
+// Reusable helper
+const createSkill = ({ id, key, category, priority = 99 }) => ({
+  id,
+  key,
+  category,
+  priority,
+  name: technologies[key].name,
+  icon: technologies[key].icon,
+  color: technologies[key].color,
+});
+
 // Skills data
 export const skills = [
-  {
+  // Frontend Core
+  createSkill({
     id: 1,
-    name: "HTML",
-    icon: technologies.HTML.icon,
-    color: technologies.HTML.color,
-    blog: "HTML is the foundation of every web page. I learned HTML through building semantic, accessible websites. Understanding the importance of proper document structure, semantic elements like <header>, <main>, <section>, and accessibility attributes has been crucial. I've built numerous projects focusing on clean, semantic markup that works across all browsers and devices.",
-    showOnHome: true,
-  },
-  {
+    key: "HTML",
+    category: "Frontend Core",
+  }),
+  createSkill({
     id: 2,
-    name: "CSS4",
-    icon: technologies.CSS4.icon,
-    color: technologies.CSS4.color,
-    blog: "CSS transformed how I approach web design. From basic styling to advanced techniques like Flexbox, Grid, and CSS animations, I've mastered the art of creating beautiful, responsive interfaces. I particularly enjoy working with CSS custom properties (variables) and modern layout techniques that make designs both flexible and maintainable.",
-    showOnHome: true,
-  },
-  {
+    key: "CSS",
+    category: "Frontend Core",
+  }),
+  createSkill({
     id: 3,
-    name: "Sass",
-    icon: technologies.Sass.icon,
-    color: technologies.Sass.color,
-    blog: "Sass brought organization and power to my CSS. Variables, mixins, nesting, and functions have made my stylesheets more maintainable and DRY. I've built scalable CSS architectures using Sass, creating reusable components and maintaining consistent design systems across large projects.",
-    showOnHome: true,
-  },
-  {
+    key: "Sass",
+    category: "Frontend Core",
+    priority: 6,
+  }),
+  createSkill({
     id: 4,
-    name: "JavaScript",
-    icon: technologies.JavaScript.icon,
-    color: technologies.JavaScript.color,
-    blog: "JavaScript opened the door to interactive web development. Starting with ES5 fundamentals, I progressed through ES6+ features like arrow functions, destructuring, async/await, and modules. I've built everything from simple DOM manipulations to complex applications with modern JavaScript patterns, always focusing on clean, readable code.",
-    showOnHome: true,
-  },
-  {
-    id: 19,
-    name: "TypeScript",
-    icon: technologies.TypeScript.icon,
-    color: technologies.TypeScript.color,
-    blog: "TypeScript adds static typing to JavaScript for safer, scalable code. I use it to improve maintainability and developer experience.",
-    showOnHome: true,
-  },
-  {
+    key: "JavaScript",
+    category: "Frontend Core",
+    priority: 4,
+  }),
+  createSkill({
     id: 5,
-    name: "React",
-    icon: technologies.React.icon,
-    color: technologies.React.color,
-    blog: "React changed everything about how I think about building user interfaces. The component-based architecture, virtual DOM, and unidirectional data flow have made complex applications manageable. I've built everything from simple components to full-scale applications, always focusing on performance optimization and clean code patterns.",
-    showOnHome: true,
-  },
-  {
-    id: 18,
-    name: "NextJS",
-    icon: technologies.NextJS.icon,
-    color: technologies.NextJS.color,
-    blog: "Next.js brings SSR/SSG, file-based routing, API routes, and great DX. I use it for SEO-friendly, production-ready React apps.",
-    showOnHome: true,
-  },
-  {
+    key: "TypeScript",
+    category: "Frontend Core",
+    priority: 3,
+  }),
+  createSkill({
     id: 6,
-    name: "TailwindCSS",
-    icon: technologies.TailwindCSS.icon,
-    color: technologies.TailwindCSS.color,
-    blog: "TailwindCSS revolutionized my styling workflow. The utility-first approach allows me to build custom designs rapidly without leaving HTML. I love how it promotes consistency, reduces CSS bloat, and enables rapid prototyping. The responsive prefixes and state variants make complex layouts surprisingly simple to implement.",
-    showOnHome: true,
-  },
-  {
-    id: 10,
-    name: "Framer",
-    icon: technologies.Framer.icon,
-    color: technologies.Framer.color,
-    blog: "Framer Motion brought my designs to life with smooth animations and transitions. I've learned to create engaging user experiences through gesture-based interactions, page transitions, and micro-animations. The declarative API makes complex animations surprisingly simple to implement and maintain.",
-    showOnHome: true,
-  },
-  {
-    id: 11,
-    name: "ReactQuery",
-    icon: technologies.ReactQuery.icon,
-    color: technologies.ReactQuery.color,
-    blog: "React Query (TanStack Query) transformed how I handle server state. The powerful caching, background updates, and optimistic updates have made data fetching both efficient and user-friendly. I've implemented complex data synchronization patterns that keep users informed and applications responsive.",
-    showOnHome: true,
-  },
-  {
-    id: 12,
-    name: "MUI",
-    icon: technologies.MUI.icon,
-    color: technologies.MUI.color,
-    blog: "Material-UI provided me with a comprehensive design system and component library. I've learned to customize themes, create consistent interfaces, and leverage the extensive component ecosystem. The theming system allows me to maintain brand consistency while benefiting from Google's Material Design principles.",
-    showOnHome: true,
-  },
-  {
-    id: 17,
-    name: "React Router",
-    icon: technologies["React Router"].icon,
-    color: technologies["React Router"].color,
-    blog: "React Router enables intuitive client-side routing with nested routes and data APIs. I use it for clean, accessible navigation and route-based code splitting.",
-    showOnHome: true,
-  },
-  {
+    key: "React",
+    category: "Frontend Core",
+    priority: 2,
+  }),
+  createSkill({
     id: 7,
-    name: "Redux",
-    icon: technologies.Redux.icon,
-    color: technologies.Redux.color,
-    blog: "Redux taught me the power of predictable state management. Understanding actions, reducers, and the store pattern has helped me build scalable applications with complex state requirements. I've implemented Redux Toolkit for modern Redux development, making state management both powerful and developer-friendly.",
-    showOnHome: true,
-  },
-  {
+    key: "NextJS",
+    category: "Frontend Core",
+    priority: 1,
+  }),
+  createSkill({
     id: 8,
-    name: "Jest",
-    icon: technologies.Jest.icon,
-    color: technologies.Jest.color,
-    blog: "Jest has become my go-to testing framework for JavaScript applications. I've learned to write comprehensive unit tests, integration tests, and snapshot tests. The powerful mocking capabilities, assertion library, and excellent React integration have made testing an integral part of my development workflow, ensuring code quality and preventing regressions.",
-    showOnHome: true,
-  },
-  {
+    key: "Vite",
+    category: "Frontend Core",
+  }),
+  createSkill({
     id: 9,
-    name: "Vite",
-    icon: technologies.Vite.icon,
-    color: technologies.Vite.color,
-    blog: "Vite has revolutionized my development experience with its lightning-fast build times and hot module replacement. The modern ES modules approach and excellent plugin ecosystem have made it my preferred build tool for React projects. The development server is incredibly fast, making the development cycle much more enjoyable.",
-    showOnHome: true,
-  },
-  {
+    key: "React Router",
+    category: "Frontend Core",
+  }),
+
+  // Styling & UI
+  createSkill({
+    id: 10,
+    key: "TailwindCSS",
+    category: "Styling & UI",
+    priority: 5,
+  }),
+  createSkill({
+    id: 11,
+    key: "MUI",
+    category: "Styling & UI",
+    priority: 7,
+  }),
+  createSkill({
+    id: 12,
+    key: "FramerMotion",
+    category: "Styling & UI",
+    priority: 8,
+  }),
+  createSkill({
     id: 13,
-    name: "Git",
-    icon: technologies.Git.icon,
-    color: technologies.Git.color,
-    blog: "Git is the backbone of modern development workflows. I've mastered version control concepts, branching strategies, and collaborative development practices. Understanding Git's distributed nature and powerful features like rebasing, cherry-picking, and conflict resolution has made me an effective team member and project maintainer.",
-    showOnHome: true,
-  },
-  {
+    key: "Responsive",
+    category: "Styling & UI",
+  }),
+  createSkill({
     id: 14,
-    name: "GitHub",
-    icon: technologies.GitHub.icon,
-    color: technologies.GitHub.color,
-    blog: "GitHub extends Git with powerful collaboration features. I've learned to manage repositories, create pull requests, use GitHub Actions for CI/CD, and leverage the platform's project management tools. GitHub has become central to my workflow for code hosting, collaboration, and open-source contributions.",
-    showOnHome: true,
-  },
-  {
+    key: "Accessibility",
+    category: "Styling & UI",
+  }),
+
+  // State, Data & Forms
+  createSkill({
     id: 16,
-    name: "VS Code",
-    icon: technologies["VS Code"].icon,
-    color: technologies["VS Code"].color,
-    blog: "VS Code is my primary development environment. I've customized it with extensions, themes, and settings that optimize my productivity. The integrated terminal, debugging tools, and extensive extension ecosystem make it a powerful IDE for any type of development work.",
-    showOnHome: true,
-  },
+    key: "Redux",
+    category: "State, Data & Forms",
+    priority: 11,
+  }),
+  // createSkill({
+  //   id: 17,
+  //   key: "ReactQuery",
+  //   category: "State, Data & Forms",
+  // }),
+  // createSkill({
+  //   id: 18,
+  //   key: "Axios",
+  //   category: "State, Data & Forms",
+  //   priority: 18,
+  // }),
+  createSkill({
+    id: 19,
+    key: "REST",
+    category: "State, Data & Forms",
+    priority: 19,
+  }),
+  createSkill({
+    id: 20,
+    key: "ReactHookForm",
+    category: "State, Data & Forms",
+    priority: 17,
+  }),
+  // createSkill({
+  //   id: 21,
+  //   key: "Zod",
+  //   category: "State, Data & Forms",
+  //   priority: 23,
+  // }),
+
+  // Testing
+  createSkill({
+    id: 22,
+    key: "Jest",
+    category: "Testing",
+    priority: 24,
+  }),
+  // createSkill({
+  //   id: 23,
+  //   key: "ReactTestingLibrary",
+  //   category: "Testing",
+  //   priority: 25,
+  // }),
+
+  // Backend Basics
+  createSkill({
+    id: 24,
+    key: "NodeJS",
+    category: "Backend Basics",
+    priority: 26,
+  }),
+  // createSkill({
+  //   id: 25,
+  //   key: "Express",
+  //   category: "Backend Basics",
+  //   priority: 27,
+  // }),
+  // createSkill({
+  //   id: 26,
+  //   key: "Prisma",
+  //   category: "Backend Basics",
+  //   priority: 28,
+  // }),
+  // createSkill({
+  //   id: 27,
+  //   key: "PostgreSQL",
+  //   category: "Backend Basics",
+  //   priority: 29,
+  // }),
+  // createSkill({
+  //   id: 28,
+  //   key: "Auth",
+  //   category: "Backend Basics",
+  //   priority: 30,
+  // }),
+
+  // Tools
+  createSkill({
+    id: 29,
+    key: "Git",
+    category: "Tools",
+    priority: 9,
+  }),
+  createSkill({
+    id: 30,
+    key: "GitHub",
+    category: "Tools",
+    priority: 6,
+  }),
+  // createSkill({
+  //   id: 31,
+  //   key: "Docker",
+  //   category: "Tools",
+  //   priority: 31,
+  // }),
+  createSkill({
+    id: 32,
+    key: "VS Code",
+    category: "Tools",
+    priority: 32,
+  }),
+  createSkill({
+    id: 33,
+    key: "cursor",
+    category: "Tools",
+    priority: 10,
+  }),
 ];
 
+// Optional helpers
 export const skillColors = skills.reduce((acc, skill) => {
   acc[skill.name] = skill.color;
+  return acc;
+}, {});
+
+export const skillCategories = [
+  "Frontend Core",
+  "Styling & UI",
+  "State, Data & Forms",
+  "Testing",
+  "Backend Basics",
+  "Tools",
+];
+
+export const skillsByCategory = skillCategories.reduce((acc, category) => {
+  acc[category] = skills.filter((skill) => skill.category === category);
   return acc;
 }, {});

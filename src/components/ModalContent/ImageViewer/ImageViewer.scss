@@ -6,11 +6,9 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-
   aspect-ratio: 1/1;
   overflow: hidden;
   background-color: var(--gray-300);
-  border-radius: inherit;
   user-select: none;
   touch-action: manipulation;
 }
@@ -22,7 +20,6 @@
   max-width: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: inherit;
   transition: transform 0.3s ease;
   user-select: none;
   -webkit-user-drag: none;

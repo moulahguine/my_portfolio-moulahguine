@@ -94,7 +94,9 @@ export default function Modal({
                 <header className="modal__header">
                   {title && <h2 className="modal__header-title">{title}</h2>}
                   {showCloseButton && (
-                    <CloseButton onClick={onClose} ariaLabel="Close modal" />
+                    <span className="modal__header-close">
+                      <CloseButton onClick={onClose} ariaLabel="Close modal" />
+                    </span>
                   )}
                 </header>
               )}
@@ -108,9 +110,9 @@ export default function Modal({
                 }`}
               >
                 {!showHeader && showCloseButton && (
-                  <div className="modal__content-close">
+                  <span className="modal__content-close">
                     <CloseButton onClick={onClose} ariaLabel="Close modal" />
-                  </div>
+                  </span>
                 )}
                 {children}
               </div>

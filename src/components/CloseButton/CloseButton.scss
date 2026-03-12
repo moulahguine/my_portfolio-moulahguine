@@ -2,7 +2,7 @@
 
 .close-button {
   @include flex-center;
-  width: 40px;
+  width: clamp($space-24, 2vw, $space-40);
   aspect-ratio: 1/1;
   background: color-mix(in srgb, $white 10%, transparent);
   backdrop-filter: blur(50px);
@@ -24,6 +24,6 @@
 
   // Icon styling
   svg {
-    font-size: $font-size-18 !important;
+    font-size: clamp($font-size-16, 2vw, $font-size-20);
   }
 }

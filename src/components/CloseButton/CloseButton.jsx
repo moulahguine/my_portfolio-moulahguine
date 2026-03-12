@@ -15,7 +15,7 @@ const CloseButton = ({
       aria-label={ariaLabel}
       {...props}
     >
-      <MdClose aria-hidden="true" size={23} />
+      <MdClose aria-hidden="true" />
     </button>
   );
 };

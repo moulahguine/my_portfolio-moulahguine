@@ -2,6 +2,7 @@
 // React
 import { useState } from "react";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 // Icons
 import { HiPlay } from "react-icons/hi2";
 // Motion;
@@ -12,12 +13,18 @@ import { Modal, VideoViewer } from "@/components";
 // Data URLs
 const VIDEO_URL =
   "https://ik.imagekit.io/moulahguine/introVideo?updatedAt=1773223008996&tr=w-720,h-400,q-100";
-const POSTER_URL =
-  "https://ik.imagekit.io/moulahguine/Thumbnaill?updatedAt=1771736165293&tr=w-400";
+const POSTER_DARK_URL =
+  "https://ik.imagekit.io/moulahguine/ThumbnailDarkTheme?updatedAt=1773285647898&tr=w-800";
+const POSTER_LIGHT_URL =
+  "https://ik.imagekit.io/moulahguine/ThumbnailLightTheme?updatedAt=1773285633672&tr=w-800";
 
 // Component
 export default function IntroVideo() {
   const [isOpen, setIsOpen] = useState(false);
+  const { theme, resolvedTheme } = useTheme();
+
+  const activeTheme = resolvedTheme ?? theme ?? "dark";
+  const posterSrc = activeTheme === "light" ? POSTER_LIGHT_URL : POSTER_DARK_URL;
 
   return (
     <>
@@ -36,7 +43,8 @@ export default function IntroVideo() {
         {/*  Thumbnail image */}
         <div className="thumbnail">
           <Image
-            src={POSTER_URL}
+            key={posterSrc}
+            src={posterSrc}
             alt="Video thumbnail"
             fill
             sizes="(max-width: 768px) 100vw, 100vw"
@@ -46,15 +54,16 @@ export default function IntroVideo() {
         </div>
 
         {/* Play button overlay */}
-        <span className="video-preview__play">
-          <HiPlay size={28} aria-hidden="true" />
+        <span className="video__preview__play">
+          <HiPlay size={27} aria-hidden="true" />
         </span>
       </motion.button>
       {/* Modal */}
       <Modal
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-        showHeader={false}
+        showHeader={true}
+        title="A Quick Introduction"
         size="xlarge"
         allowPinchZoom
       >

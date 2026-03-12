@@ -9,12 +9,18 @@
 .videoViewer__frame {
   position: relative;
   cursor: pointer;
-  border-radius: $radius-lg;
   overflow: hidden;
-  width: $modal-max-width-lg;
+  width: calc($modal-max-width-lg - $space-16);
+  margin: $space-8;
+  border-radius: $radius-lg;
   aspect-ratio: 16 / 9;
   background-color: var(--gray-300);
 
+  @media (max-width: $breakpoint-md) {
+    width: calc(100% - $space-8);
+    margin: $space-4;
+    border-radius: $radius-md;
+  }
   // Video element section
   > video,
   // My video intro section

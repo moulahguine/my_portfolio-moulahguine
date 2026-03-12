@@ -1,43 +1,53 @@
 "use client";
 
+// hook
 import { useState } from "react";
+// icons
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
+// motion
+import * as motion from "motion/react-client";
 
+// component to toggle the skills section
 export default function SkillsToggle({ children }) {
   const [isExpanded, setIsExpanded] = useState(false);
-
   return (
     <>
-      <div
-        className={`skills__wrapper ${isExpanded ? "skills__wrapper--expanded" : ""}`}
+      {/* wrapper */}
+      <motion.div
+        className={"skills__wrapper"}
+        initial={{ height: 0 }}
+        animate={{ height: isExpanded ? "auto" : 230 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
       >
+        {/* content */}
         <div className="skills__content">{children}</div>
 
-        {!isExpanded && (
+        {!isExpanded ? (
+          //  fade overlay
           <div className="skills__fade">
+            {/* more indicator button */}
             <button
               className="skills__more-indicator"
               onClick={() => setIsExpanded(true)}
               aria-label="Show all skills"
               type="button"
             >
-              <GoChevronDown size={24} />
+              <GoChevronDown size={24} aria-hidden="true" />
             </button>
           </div>
+        ) : (
+          // collapse button
+          <button
+            className="skills__collapse-btn"
+            onClick={() => setIsExpanded(false)}
+            aria-label="Show less skills"
+            type="button"
+          >
+            <GoChevronUp size={24} aria-hidden="true" />
+            Show Less
+          </button>
         )}
-      </div>
-
-      {isExpanded && (
-        <button
-          className="skills__collapse-btn"
-          onClick={() => setIsExpanded(false)}
-          aria-label="Show less skills"
-          type="button"
-        >
-          <GoChevronUp size={20} />
-          Show Less
-        </button>
-      )}
+      </motion.div>
     </>
   );
 }
