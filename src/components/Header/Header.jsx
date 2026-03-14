@@ -1,8 +1,16 @@
+// nextjs client components
 import Link from "next/link";
 import Image from "next/image";
-import Navigation from "../Navigation/Navigation";
-import Menu from "../Menu/Menu";
+
+// components
+import { Navigation, Menu } from "@/components";
+
+// styles
 import "./Header.scss";
+
+// logo
+const logo =
+  "https://ik.imagekit.io/moulahguine/myPortfolio/portfolioLogo/logo?updatedAt=1773486593918&tr=q-80,w-800,h-800";
 
 export default function Header() {
   return (
@@ -13,12 +21,13 @@ export default function Header() {
           {/* start logo */}
           <Link href="/" className="header__logo" aria-label="Home">
             <Image
-              src="/logo/Logo.svg"
-              alt="The logo of the website"
-              width={32}
-              height={32}
+              src={logo}
               className="header__logo-img"
+              alt="Mohamed Oulahguine portfolio logo"
+              width={40}
+              height={40}
               priority
+              quality={100}
             />
           </Link>
           {/* end logo */}

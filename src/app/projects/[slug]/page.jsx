@@ -107,7 +107,7 @@ export default async function ProjectDetail({ params }) {
         <figure className="case-study__visual">
           <Image
             src={project.media.image}
-            alt={project.title}
+            alt={`${project.title} full case-study hero image showing the implemented frontend interface`}
             width={1200}
             height={700}
             className="visual__img"

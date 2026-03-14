@@ -1,10 +1,9 @@
 import { technologies } from "@/data/skillsData";
 
-// Project media assets
-import porfolio from "@/assets/images/project-section/porfolio/porfolio.webp";
-import ecommerce from "@/assets/images/project-section/ecommerce/ecommerce.webp";
-import clinic from "@/assets/images/project-section/clinic/clinic.webp";
-import Moder from "@/assets/images/project-section/modern/modern.webp";
+const porfolio =
+  "https://ik.imagekit.io/moulahguine/myPortfolio/projects/myPortfolio?tr=f-auto,q-92,dpr-2,w-1200,h-800";
+const modernLandingPage =
+  "https://ik.imagekit.io/moulahguine/myPortfolio/projects/myPortfolio?tr=f-auto,q-92,dpr-2,w-1200,h-800";
 
 // Single source of truth for all project metadata
 const projectsData = [
@@ -84,7 +83,7 @@ const projectsData = [
     ],
 
     media: {
-      image: Moder,
+      image: modernLandingPage,
     },
   },
 ];

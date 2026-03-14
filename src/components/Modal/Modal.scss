@@ -6,15 +6,11 @@
   @include flex-center;
   position: fixed;
   inset: 0;
-  z-index: $z-modal; // Modal z-index
-  background: color-mix(
-    in srgb,
-    var(--gray-600) 20%,
-    transparent
-  ); // Modal overlay background color
-  backdrop-filter: blur(5px); // Modal overlay backdrop filter
-  transition: opacity 0.2s ease; // Modal overlay transition
-  overflow: hidden; // Modal overlay overflow
+  z-index: $z-modal;
+  background: color-mix(in srgb, var(--gray-600) 20%, transparent);
+  backdrop-filter: blur(5px);
+  transition: opacity 0.2s ease;
+  overflow: hidden;
 
   // Modal container section
   .modal__container {
@@ -22,7 +18,7 @@
 
     position: relative;
     @include flex-column;
-    width: auto;
+    width: min(92vw, var(--modal-max-width));
     max-width: min(92vw, var(--modal-max-width));
     max-height: $modal-max-height-desktop;
     background-color: var(--gray-100);
@@ -77,6 +73,7 @@
     // Modal content section
     .modal__content {
       flex: 1 1 auto;
+      width: 100%;
       min-height: 0;
       padding: 0;
       overflow-y: auto;

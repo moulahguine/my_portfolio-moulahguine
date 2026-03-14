@@ -5,6 +5,7 @@ import Footer from "@/components/Footer/Footer";
 import Providers from "./providers";
 import "../assets/styles/main.scss";
 
+// Font
 const comicNeue = Comic_Neue({
   weight: ["300", "400", "700"],
   subsets: ["latin"],
@@ -12,8 +13,16 @@ const comicNeue = Comic_Neue({
   variable: "--font-comic",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
+// Metadata
 export const metadata = siteMetadata;
 
+// Person JSON-LD
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
@@ -26,17 +35,19 @@ const personJsonLd = {
       "Frontend developer specializing in building modern web applications using React, Next.js, and TypeScript.",
     url: "https://mohamedoulahguine.com",
     mainEntityOfPage: "https://mohamedoulahguine.com",
-    image: "https://ik.imagekit.io/moulahguine/mohamedoulahguine",
+    image:
+      "https://ik.imagekit.io/moulahguine/myPortfolio/og/og-image?tr=f-auto,q-92,dpr-2,w-1200,h-630",
+
     sameAs: [
       "https://www.linkedin.com/in/moulahguine",
       "https://github.com/moulahguine",
-      "https://leetcode.com/moulahguine",
       "https://www.upwork.com/freelancers/moulahguine",
       "https://medium.com/@moulahguine",
       "https://www.instagram.com/moulahguine",
-      "https://www.youtube.com/@moulahguine",
-      "https://t.me/moulahguine",
+      "https://leetcode.com/moulahguine",
       "https://codepen.io/moulahguine",
+      "https://t.me/moulahguine",
+      "https://www.youtube.com/@moulahguine",
     ],
     email: "mailto:hello@mohamedoulahguine.com",
     address: {
@@ -45,23 +56,24 @@ const personJsonLd = {
       addressCountry: "TR",
     },
     knowsAbout: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "JavaScript",
-      "Frontend Development",
-      "Web Development",
-      "SCSS",
       "CSS",
       "HTML",
-      "Tailwind CSS",
+      "SCSS",
+      "React",
       "Redux",
+      "Next.js",
+      "JavaScript",
+      "TypeScript",
       "Material UI",
+      "Tailwind CSS",
       "Framer Motion",
+      "Web Development",
+      "Frontend Development",
     ],
   },
 };
 
+// Root layout
 export default function RootLayout({ children }) {
   return (
     <html
@@ -71,11 +83,6 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <head>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        />
-
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -84,14 +91,7 @@ export default function RootLayout({ children }) {
         />
       </head>
 
-      <body
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100dvh",
-          justifyContent: "space-between",
-        }}
-      >
+      <body>
         <Providers>
           <Header />
           <main id="main-content">{children}</main>

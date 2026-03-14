@@ -1,15 +1,19 @@
-// Education logos
-import atlasUniversityLogo from "@/assets/images/expreriences-section/education/Atlas_university.jpg";
-import lyceeAhmedChaoukiLogo from "@/assets/images/expreriences-section/education/Ahmed_Chawki.png";
-import nisantasiUniversityLogo from "@/assets/images/expreriences-section/education/nisantasi_university.png";
+const atlasUniversityLogo =
+  "https://ik.imagekit.io/moulahguine/myPortfolio/experience/edu/atlasUniversity?tr=f-auto,q-90,dpr-2,w-360";
+const lyceeAhmedChaoukiLogo =
+  "https://ik.imagekit.io/moulahguine/myPortfolio/experience/edu/ahmedChawki?tr=f-auto,q-90,dpr-2,w-360";
+const nisantasiUniversityLogo =
+  "https://ik.imagekit.io/moulahguine/myPortfolio/experience/edu/nisantasiLogo?tr=f-auto,q-90,dpr-2,w-360";
 
-// Freelance logos
-import upworkLogo from "@/assets/images/expreriences-section/freelance/upwork.png";
-import selfEmployedLogo from "@/assets/images/expreriences-section/freelance/freelancer.jpg";
+const upworkLogo =
+  "https://ik.imagekit.io/moulahguine/myPortfolio/experience/Freelance/upwork?tr=f-auto,q-90,dpr-2,w-360";
+const selfEmployedLogo =
+  "https://ik.imagekit.io/moulahguine/myPortfolio/experience/Freelance/freelancer?tr=f-auto,q-90,dpr-2,w-360";
 
-// Certifications logos
-import freecodecampLogo from "@/assets/images/expreriences-section/certifications/freecodecamp.jpg";
-import simplilearnLogo from "@/assets/images/expreriences-section/certifications/simplilearn.png";
+const freecodecampLogo =
+  "https://ik.imagekit.io/moulahguine/myPortfolio/experience/cert/freecodecamp?tr=f-auto,q-90,dpr-2,w-360";
+const simplilearnLogo =
+  "https://ik.imagekit.io/moulahguine/myPortfolio/experience/cert/simplilearn?tr=f-auto,q-90,dpr-2,w-360";
 
 // Icons
 import { PiBagSimpleThin } from "react-icons/pi";

@@ -40,11 +40,10 @@ function ExperienceCard({ experience, section, isPreview, isLast }) {
             {logo ? (
               <Image
                 src={logo}
-                alt={`${company} logo`}
+                alt={`${company} organization logo for ${role}`}
                 width={40}
                 height={40}
                 className="logo-img"
-                placeholder="blur"
               />
             ) : (
               <span className="initials">

@@ -10,6 +10,7 @@ import {
 } from "react-icons/hi2";
 import "./Navigation.scss";
 
+// Navigation items
 const NAVIGATION_ITEMS = [
   { id: "home", label: "Home", path: "/", icon: HiOutlineHome },
   {
@@ -32,17 +33,20 @@ const NAVIGATION_ITEMS = [
   },
 ];
 
+// Normalize the path
 function normalizePath(path) {
   if (!path || path === "/") return "/";
   return path.toLowerCase().replace(/\/+$/, "") || "/";
 }
 
+// Check if the current path is active
 function isActivePath(current, target) {
   if (target === "/") return current === "/";
   return current === target || current.startsWith(target + "/");
 }
 
 export default function Navigation({ className }) {
+  // Get the current pathname
   const pathname = normalizePath(usePathname());
 
   return (

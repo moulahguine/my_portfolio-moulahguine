@@ -1,9 +1,8 @@
 "use client";
 
 // React
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 // Components
 import { Modal, ImageViewer } from "@/components";
 // Icons
@@ -11,32 +10,14 @@ import { BsArrowsFullscreen } from "react-icons/bs";
 
 // Data URLs
 export default function HeroMedia({ classFigure, classImage }) {
-  const profilePictureDark =
-    "https://ik.imagekit.io/moulahguine/profilePictureDarkTheme?updatedAt=1773306637302&tr=w-800,h-800";
-  const profilePictureLight =
-    "https://ik.imagekit.io/moulahguine/profilePictureLightTheme?updatedAt=1773306637302&tr=w-800,h-800";
-
+  // ImageKit URLs
+  const profilePicture =
+    "https://ik.imagekit.io/moulahguine/myPortfolio/profilePicture/profilePicture?tr=w-400,h-400";
   const largeProfilePicture =
-    "https://ik.imagekit.io/moulahguine/lagreprofilepicture?updatedAt=1772958051315&tr=w-800,h-800";
+    "https://ik.imagekit.io/moulahguine/myPortfolio/profilePicture/lagreprofilepicture?tr=w-800,h-800";
 
   // state to open and close the modal
   const [isImageOpen, setIsImageOpen] = useState(false);
-  const [useDarkFallback, setUseDarkFallback] = useState(false);
-  const { theme, resolvedTheme } = useTheme();
-
-  const rootTheme =
-    typeof document !== "undefined"
-      ? document.documentElement.getAttribute("data-theme")
-      : null;
-  const activeTheme = resolvedTheme ?? theme ?? rootTheme ?? "dark";
-  const isLight = activeTheme === "light" && !useDarkFallback;
-  const profilePicture = isLight ? profilePictureLight : profilePictureDark;
-
-  useEffect(() => {
-    if (activeTheme === "light") {
-      setUseDarkFallback(false);
-    }
-  }, [activeTheme]);
 
   return (
     <>
@@ -46,26 +27,28 @@ export default function HeroMedia({ classFigure, classImage }) {
         onKeyDown={(e) => e.key === "Enter" && setIsImageOpen(true)}
         tabIndex={0}
         role="button"
-        aria-label="View full size portrait"
-        title="Click to enlarge"
+        aria-label="Open full-size portrait of Mohamed Oulahguine"
+        title="Open full-size portrait"
       >
         <Image
           key={profilePicture}
           className={classImage}
           src={profilePicture}
-          alt="my profile picture"
+          alt="Portrait of Mohamed Oulahguine, frontend developer specialized in React and Next.js"
           loading="eager"
           decoding="async"
           fill
           sizes="(max-width: 778px) 300px, 160px"
           quality={100}
           priority={true}
-          onError={() => setUseDarkFallback(true)}
         />
         <span className="hero__media-overlay">
           <BsArrowsFullscreen size={18} />
         </span>
-        <figcaption className="sr-only">my profile picture image</figcaption>
+        <figcaption className="sr-only">
+          Portrait of Mohamed Oulahguine, frontend developer specialized in
+          React and Next.js
+        </figcaption>
       </figure>
 
       <Modal
@@ -75,12 +58,11 @@ export default function HeroMedia({ classFigure, classImage }) {
         closeOnOverlayClick={true}
         allowPinchZoom
         showHeader={true}
-        title="My Profile Picture"
+        title="Profile picture"
       >
         <ImageViewer
           src={largeProfilePicture}
-          sizes="(max-width: 778px) 100vw, 80vw"
-          alt="after clicking on the image, a modal will open to view the full size portrait"
+          alt={`Portrait of Mohamed Oulahguine, frontend developer specialized in React and Next.js in full size`}
         />
       </Modal>
     </>

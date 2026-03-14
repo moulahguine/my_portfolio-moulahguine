@@ -11,14 +11,11 @@
   .project-card__link {
     @include flex-center;
     background-color: transparent;
-    border: none;
-    outline: none;
     width: 40px;
     height: 40px;
     gap: $space-4;
     color: var(--gray-500);
     transition: all 0.3s ease-in-out;
-    cursor: pointer;
 
     // Link text styling
     span {

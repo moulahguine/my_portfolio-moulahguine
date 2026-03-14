@@ -54,7 +54,7 @@ export const metadata = {
       "Frontend developer portfolio showcasing modern web applications built with Next.js, Framer Motion, and SCSS.",
     images: [
       {
-        url: "https://ik.imagekit.io/moulahguine/og-image",
+        url: "https://ik.imagekit.io/moulahguine/myPortfolio/og/og-image?tr=f-auto,q-92,dpr-2,w-1200,h-630",
         width: 1200,
         height: 630,
         alt: "this is the og image",

@@ -1,4 +1,4 @@
-import Experiences from "@/sections/Experiences/Experiences";
+import { Experience } from "@/sections";
 
 export const metadata = {
   title: "Experience | Mohamed Oulahguine",
@@ -29,7 +29,7 @@ export const metadata = {
 export default function ExperiencePage() {
   return (
     <main className="experience-page">
-      <Experiences mode="full" />
+      <Experience mode="full" />
     </main>
   );
 }

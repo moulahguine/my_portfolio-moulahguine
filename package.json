@@ -1,9 +1,8 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
+  "name": "mohamedoulahguine-portfolio",
+  "version": "2.0.0",
   "private": true,
   "dependencies": {
-    "@formspree/react": "^3.0.0",
     "country-flag-icons": "^1.6.12",
     "html-to-image": "^1.11.13",
     "leaflet": "^1.9.4",
@@ -25,12 +24,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "start": "next start"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0",
     "prettier": "^3.6.2",
     "sass": "^1.90.0"
   }

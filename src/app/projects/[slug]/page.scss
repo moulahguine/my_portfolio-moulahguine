@@ -22,7 +22,6 @@
 
     a {
       color: var(--gray-500);
-      text-decoration: none;
     }
     .sep {
       opacity: 0.5;
@@ -72,7 +71,6 @@
     display: block;
 
     .visual__img {
-      display: block;
       width: 100%;
       height: auto;
       border-radius: $radius-lg;
@@ -122,7 +120,6 @@
   .btn {
     padding: $space-12 $space-16;
     border-radius: $radius-lg;
-    text-decoration: none;
     font-weight: $fw-semibold;
     font-size: $font-size-16;
     display: inline-flex;
@@ -146,7 +143,6 @@
 
   .back-link {
     color: var(--gray-500);
-    text-decoration: none;
     font-size: $font-size-14;
   }
 }

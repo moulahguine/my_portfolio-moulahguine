@@ -17,7 +17,10 @@ export { default as BlogCard } from "./BlogCard/BlogCard";
 export { default as ProjectCard } from "./ProjectCard/ProjectCard";
 export { default as ProjectLinks } from "./ProjectCard/ProjectLinks";
 
-// QuickMenu Component
+// Navigation Component
+export { default as Navigation } from "./Navigation/Navigation";
+
+// Menu Component
 export { default as Menu } from "./Menu/Menu";
 
 // ConnectLinks Component

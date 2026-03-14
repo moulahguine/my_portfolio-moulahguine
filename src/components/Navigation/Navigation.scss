@@ -1,10 +1,12 @@
 @use "../../assets/styles" as *;
 
+// Navigation
 .nav {
   @include flex-center;
   position: relative;
   padding: $space-4;
 
+  // icon
   &__icon {
     display: none;
     @media (max-width: $breakpoint-md) {
@@ -12,14 +14,17 @@
     }
   }
 
+  // list
   &__list {
     @include flex-between;
     gap: $space-4;
     height: 100%;
 
+    // item
     .nav__item {
       display: flex;
 
+      // link
       .nav__link {
         color: var(--gray-500);
         font-size: clamp($font-size-12, 2vw, $font-size-16);
@@ -31,11 +36,13 @@
           width: 80px;
         }
 
+        // inner
         .nav__link__inner {
           display: inline-block;
           overflow: hidden;
           height: 1.25em;
 
+          // slide
           .nav__link__slide {
             @include flex-column;
             will-change: transform;
@@ -47,6 +54,7 @@
           }
         }
 
+        // hover slide
         &:hover .nav__link__slide {
           transform: translateY(-52%);
 
@@ -55,6 +63,7 @@
           }
         }
 
+        // text
         .nav__link__text {
           @include flex-center;
           padding: $space-8 $space-12;
@@ -64,6 +73,7 @@
           font-weight: $fw-semibold;
         }
 
+        // active
         &.active {
           color: var(--gray-900);
           font-weight: $fw-bold;

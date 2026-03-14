@@ -55,18 +55,21 @@
 // Header section mixin
 @mixin header_section {
   width: fit-content;
-  font-size: clamp($font-size-12, 1vw, $font-size-14);
-  font-weight: 100;
-  background-color: var(--gray-200);
-  color: var(--gray-600);
-  font-weight: $fw-bold;
-  border-radius: $radius-sm;
   padding: $space-4 $space-8;
+  border-radius: $radius-sm;
+  background-color: var(--gray-200);
+  font-size: clamp($font-size-12, 1vw, $font-size-14);
   cursor: default;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+
+  h3 {
+    font-size: clamp($font-size-12, 1vw, $font-size-14);
+    color: var(--gray-600);
+    font-weight: $fw-bold;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 }
 
 // Next button style mixin

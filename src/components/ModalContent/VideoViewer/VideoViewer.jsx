@@ -10,6 +10,7 @@ import "./VideoViewer.scss";
 export default function VideoViewer({
   src,
   className = "myvideo__intro",
+  ariaLabel = "Video content",
   autoplayInline = false,
   loop = false,
   playsInline = false,
@@ -63,6 +64,8 @@ export default function VideoViewer({
           ref={videoRef}
           className={className}
           src={src}
+          aria-label={ariaLabel}
+          title={ariaLabel}
           muted
           loop={loop}
           playsInline={playsInline}

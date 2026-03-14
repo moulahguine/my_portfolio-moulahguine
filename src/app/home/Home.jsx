@@ -1,21 +1,15 @@
-import Hero from "../../sections/Hero/Hero";
-import About from "../../sections/About/About";
-import Skills from "../../sections/Skills/Skills";
-import Experiences from "../../sections/Experiences/Experiences";
-import Projects from "../../sections/Projects/Projects";
-import Blogs from "../../sections/Blog/Blogs";
-import * as motion from "motion/react-client";
+import { Hero, About, Skills, Projects, Experience, Blogs } from "@/sections";
 
 const HomePage = () => {
   return (
-    <div className="home__page">
+    <>
       <Hero />
       <About />
       <Skills />
       <Projects />
-      <Experiences mode="preview" />
+      <Experience mode="preview" />
       <Blogs mode="preview" />
-    </div>
+    </>
   );
 };
 

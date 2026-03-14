@@ -1,10 +1,7 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-/* =============================================
-   Global Reset & Base Styles
-   ============================================= */
-
+// Global reset and base styles
 * {
   margin: 0;
   padding: 0;
@@ -14,20 +11,24 @@
   font-family: inherit;
 }
 
+// HTML
 html {
   scroll-behavior: smooth;
 }
 
+// Body
 body {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
   font-family: $font-primary;
   line-height: $line-height-normal;
-  min-height: 100vh;
   background-color: var(--gray-900);
   color: var(--gray-100);
   transition:
     background-color 0.25s ease,
     color 0.25s ease;
-  position: relative;
 }
 
 html[data-theme="dark"] body,
@@ -36,29 +37,68 @@ html[data-theme="light"] body {
   color: var(--gray-800);
 }
 
+// Overflow scrolling
 html,
 body {
   -webkit-overflow-scrolling: touch;
 }
 
-main {
-  flex: 1;
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $fw-medium;
 }
 
+// Buttons
+button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+// Links
 a {
   text-decoration: none;
   color: inherit;
 }
 
+// Address
 address {
   font-style: normal;
 }
 
+// Images
 img {
   max-width: 100%;
   display: block;
 }
 
+figure {
+  display: block;
+}
+
+figcaption {
+  display: none;
+}
+
+// Selection
+::selection {
+  background: var(--gray-700);
+  color: var(--white);
+}
+
+html[data-theme="light"] ::selection,
+html[data-theme="dark"] ::selection {
+  background: var(--gray-800);
+  color: var(--white);
+}
+
+// Media queries
 @media (max-width: $breakpoint-md) {
   * {
     -webkit-tap-highlight-color: transparent;
@@ -76,15 +116,4 @@ img {
     position: relative;
     z-index: $z-base;
   }
-}
-
-::selection {
-  background: var(--gray-700);
-  color: var(--white);
-}
-
-html[data-theme="light"] ::selection,
-html[data-theme="dark"] ::selection {
-  background: var(--gray-800);
-  color: var(--white);
 }

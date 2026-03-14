@@ -30,13 +30,10 @@
     max-width: clamp(160px, 40vw, 200px);
     padding: $space-12 $space-16;
     border-radius: $radius-xl;
-    border: none;
-    outline: none;
     background-color: var(--gray-800);
     color: var(--gray-100);
     font-size: clamp($font-size-12, 1.5vw, $font-size-14);
     font-weight: $fw-semibold;
-    cursor: pointer;
     box-shadow: 0 0 1px var(--gray-700);
     transition: all 0.2s ease;
 

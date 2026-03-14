@@ -1,0 +1,259 @@
+@use "../../assets/styles" as *;
+
+.experiences {
+  @include section;
+
+  .container {
+    @include container;
+
+    // Header container with "View All" link
+    .experiences__header {
+      @include flex-between;
+    }
+
+    // Section header
+    .title {
+      @include header_section;
+    }
+
+    // View all link (top right, preview mode)
+    .view-all-link {
+      @include next-button-style;
+    }
+
+    // Tabs container
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(var(--tab-count), 1fr);
+      grid-template-rows: 1fr;
+      position: relative;
+      gap: clamp($space-4, 2vw, $space-8);
+      margin: clamp($space-8, 2vw, $space-16) 0;
+      padding: $space-4;
+      background-color: var(--gray-100);
+      border-radius: $radius-md;
+      width: 100%;
+
+      // Sliding indicator
+      .indicator {
+        position: absolute;
+        top: $space-4;
+        left: $space-4;
+        width: calc(calc(100% - #{$space-8}) / var(--tab-count));
+        height: calc(100% - #{$space-8});
+        border-radius: $radius-md;
+        transform: translateX(calc(var(--active-index) * 100%));
+        background-color: var(--white);
+        transition: all 0.3s ease-in-out;
+        z-index: 0;
+
+        @media (max-width: $breakpoint-md) {
+          display: none;
+        }
+      }
+
+      // Individual tab button
+      .tab {
+        @include flex-center;
+        gap: clamp($space-4, 2vw, $space-8);
+        position: relative;
+        z-index: $z-base;
+        flex: 1 0 auto;
+        padding: clamp($space-4, 2vw, $space-8) 0;
+        font-size: clamp($font-size-12, 2vw, $font-size-14);
+        font-weight: $fw-medium;
+        color: var(--gray-400);
+        border-radius: $radius-md;
+        transition: color 0.3s ease-in-out;
+        white-space: nowrap;
+        text-align: center;
+
+        svg {
+          color: inherit !important;
+          transition: all 0.3s ease-in-out !important;
+        }
+
+        &.active {
+          color: var(--gray-700);
+          font-weight: $fw-semibold;
+
+          svg {
+            transition: all 0.3s ease-in-out;
+            color: inherit !important;
+            transform: scale(1.1);
+          }
+        }
+        @media (max-width: $breakpoint-md) {
+          .label {
+            width: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+          }
+
+          svg {
+            margin: 0 $space-12;
+            scale: 1.1;
+          }
+
+          &.active {
+            flex: 1 1 100%;
+            background-color: var(--white);
+            padding-left: $space-12;
+            padding-right: $space-12;
+
+            .label {
+              width: auto;
+              opacity: 1;
+            }
+
+            svg {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .timeline-wrapper {
+      overflow: hidden;
+    }
+
+    // Timeline container
+    .timeline {
+      @include flex-column;
+      padding: $space-8 0;
+    }
+
+    // Languages list
+    .languages {
+      @include flex-column;
+      gap: 0;
+
+      .language {
+        display: flex;
+        align-items: center;
+        padding: $space-16 $space-8;
+        border-bottom: 1px solid var(--gray-200);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .name {
+          flex: 1;
+          font-size: clamp($font-size-14, 2vw, $font-size-16);
+          font-weight: $fw-medium;
+          color: var(--gray-700);
+        }
+
+        .level {
+          font-size: clamp($font-size-12, 2vw, $font-size-14);
+          color: var(--gray-500);
+          margin-right: $space-16;
+        }
+
+        .flag {
+          display: inline-flex;
+          align-items: center;
+
+          svg {
+            width: clamp(32px, 4vw, 44px);
+            height: auto;
+            border-radius: $radius-sm;
+          }
+        }
+      }
+    }
+
+    // Hire me card (work empty state)
+    .hire-me {
+      background-color: var(--gray-50);
+      border-radius: $radius-lg;
+      padding: clamp($space-16, 2vw, $space-24) clamp($space-24, 2vw, $space-32);
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 400px;
+
+      .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: clamp($space-16, 2vw, $space-24)
+          clamp($space-24, 2vw, $space-32);
+        width: auto;
+        z-index: $z-base;
+
+        .text {
+          font-size: clamp($font-size-32, 2vw, $font-size-40);
+          font-weight: $fw-bold;
+          line-height: $line-height-tight;
+          width: clamp(300px, 60vw, 500px);
+          text-shadow: 0 0 1px var(--white);
+          -webkit-text-stroke: 1px var(--gray-900);
+          -webkit-text-fill-color: transparent;
+        }
+
+        .button {
+          @include flex-center;
+          width: fit-content;
+          gap: $space-4;
+          border: 2px solid var(--gray-50);
+          background-color: var(--gray-700);
+          color: var(--white);
+          padding: clamp($space-4, 2vw, $space-8)
+            clamp($space-18, 2vw, $space-24);
+
+          margin-top: clamp($space-24, 2vw, $space-32);
+          text-transform: capitalize;
+          border-radius: $radius-lg;
+          font-size: clamp($font-size-20, 2vw, $font-size-24);
+          transition: all 0.3s ease-in-out;
+
+          svg {
+            transition: all 0.3s ease-in-out;
+          }
+
+          &:hover {
+            background-color: var(--gray-800);
+
+            svg {
+              translate: 3px;
+              scale: 1.2;
+            }
+          }
+        }
+      }
+
+      .avatar {
+        position: absolute;
+        bottom: clamp($space-8, 2vw, $space-16);
+        right: clamp($space-8, 2vw, $space-16);
+        width: 400px;
+        height: inherit;
+
+        @media (max-width: $breakpoint-sm) {
+          width: 300px;
+          height: 300px;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+
+    // Empty state
+    .empty {
+      @include flex-column;
+      justify-content: center;
+      text-align: center;
+      color: var(--gray-500);
+      font-size: clamp($font-size-12, 2vw, $font-size-14);
+      padding: $space-32 0;
+    }
+  }
+}

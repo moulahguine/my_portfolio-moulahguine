@@ -15,13 +15,13 @@ export default function ProjectCard({ project }) {
         <Image
           className="project-card__mediaImg"
           src={project.media.image}
-          alt={`${project.title} - Frontend Development Project Screenshot`}
+          alt={`${project.title} project interface screenshot built by Mohamed Oulahguine`}
           width={1200}
           height={800}
         />
 
         <figcaption className="sr-only">
-          {project.title} – Project preview screenshot
+          Preview of the {project.title} project interface and user experience
         </figcaption>
       </figure>
 

@@ -6,10 +6,8 @@
   aspect-ratio: 1/1;
   background: color-mix(in srgb, $white 10%, transparent);
   backdrop-filter: blur(50px);
-  border: none;
   border-radius: 50%;
   color: var(--gray-900);
-  cursor: pointer;
   transition: all 0.2s ease;
   z-index: $z-elevated;
 

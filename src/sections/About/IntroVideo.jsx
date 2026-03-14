@@ -12,11 +12,11 @@ import { Modal, VideoViewer } from "@/components";
 
 // Data URLs
 const VIDEO_URL =
-  "https://ik.imagekit.io/moulahguine/introVideo?updatedAt=1773223008996&tr=w-720,h-400,q-100";
+  "https://ik.imagekit.io/moulahguine/myPortfolio/introVideo/introVideo?tr=f-auto,q-92,w-720,h-400";
 const POSTER_DARK_URL =
-  "https://ik.imagekit.io/moulahguine/ThumbnailDarkTheme?updatedAt=1773285647898&tr=w-800";
+  "https://ik.imagekit.io/moulahguine/myPortfolio/introVideo/ThumbnailDarkTheme?tr=f-auto,q-92,dpr-2,w-800";
 const POSTER_LIGHT_URL =
-  "https://ik.imagekit.io/moulahguine/ThumbnailLightTheme?updatedAt=1773285633672&tr=w-800";
+  "https://ik.imagekit.io/moulahguine/myPortfolio/introVideo/ThumbnailLightTheme?tr=f-auto,q-92,dpr-2,w-800";
 
 // Component
 export default function IntroVideo() {
@@ -38,7 +38,7 @@ export default function IntroVideo() {
         type="button"
         className="video__preview"
         onClick={() => setIsOpen(true)}
-        aria-label="Play introduction video"
+        aria-label="Play Mohamed Oulahguine's frontend developer introduction video"
         initial={{ scale: 0.9 }}
         whileInView={{ scale: 1 }}
         exit={{ scale: 0.9 }}
@@ -50,7 +50,7 @@ export default function IntroVideo() {
           <Image
             key={posterSrc}
             src={posterSrc}
-            alt="Video thumbnail"
+            alt="Thumbnail preview for Mohamed Oulahguine's frontend developer introduction video"
             fill
             sizes="(max-width: 768px) 100vw, 100vw"
             quality={100}
@@ -79,6 +79,7 @@ export default function IntroVideo() {
           autoplayInline={false}
           loop={false}
           volume={0.1}
+          ariaLabel="Mohamed Oulahguine introducing his frontend development background, projects, and technical focus"
         />
       </Modal>
     </>
